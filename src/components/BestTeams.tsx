@@ -391,7 +391,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                 return (
                   <div
                     key={idx}
-                    className={`rounded-2xl border p-4 flex flex-col justify-between space-y-3 transition-all ${
+                    className={`rounded-2xl border p-4 flex flex-col space-y-3.5 transition-all ${
                       isSubSlot 
                         ? 'bg-[#0f0b1e] border-amber-500/30' 
                         : 'bg-[#150f2b] border-[#2d214e]'
@@ -441,12 +441,12 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     </div>
 
                     {/* Viable Substitutes */}
-                    {slot.substitutes && slot.substitutes.length > 0 && (
-                      <div className="space-y-1.5 pt-2 border-t border-[#231840]">
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
-                          Substitutos Viáveis:
-                        </span>
-                        <div className="flex flex-col gap-1.5">
+                    <div className="flex-1 flex flex-col pt-3 border-t border-[#231840] space-y-2">
+                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+                        Substitutos Viáveis:
+                      </span>
+                      {slot.substitutes && slot.substitutes.length > 0 ? (
+                        <div className="flex flex-col gap-1.5 flex-1">
                           {slot.substitutes.map((sub, sIdx) => {
                             const localSub = characters.find((c) => c.id === sub.characterId);
                             return (
@@ -478,8 +478,13 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                             );
                           })}
                         </div>
-                      </div>
-                    )}
+                      ) : (
+                        <div className="flex-1 flex flex-col items-center justify-center p-4 rounded-xl bg-[#0b0816]/40 border border-dashed border-[#231840] text-center min-h-[90px]">
+                          <span className="text-[11px] text-gray-500 italic">Posição única do meta</span>
+                          <span className="text-[9px] text-gray-600 mt-0.5">Sem substituto direto recomendado</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 );
               })}

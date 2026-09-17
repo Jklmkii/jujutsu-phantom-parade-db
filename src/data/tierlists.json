@@ -223,26 +223,6 @@
             "hasDupeScaling": false
           },
           {
-            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
-            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
-            "name": "Yuji Itadori",
-            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRYujiArt2.gif",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
-            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
-            "name": "Yuji Itadori",
-            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRYujiArt2.gif",
-            "hasDupeScaling": false
-          },
-          {
             "characterId": "_Burning_Passion__Yu_Haibara",
             "title": "(Burning Passion) Yu Haibara",
             "name": "Yu Haibara",
@@ -285,16 +265,6 @@
             "element": "Green",
             "rarity": "SSR",
             "image": "GreenSSRMutaArt1.gif",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_A_Bad_Match__Nobara_Kugisaki",
-            "title": "(A Bad Match) Nobara Kugisaki",
-            "name": "Nobara Kugisaki",
-            "slug": "A_Bad_Match_Nobara_Kugisaki",
-            "element": "Red",
-            "rarity": "SSR",
-            "image": "RedNobaraSSRArt1.webp",
             "hasDupeScaling": false
           },
           {
@@ -373,16 +343,6 @@
             "hasDupeScaling": false
           },
           {
-            "characterId": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
-            "title": "(A Life Entrusted to Me) Yuji Itadori",
-            "name": "Yuji Itadori",
-            "slug": "Cursed_Energy_Focusing_Yuji_Itadori",
-            "element": "Green",
-            "rarity": "SSR",
-            "image": "GreenItadoriSSRArt2.webp",
-            "hasDupeScaling": false
-          },
-          {
             "characterId": "_Ratio_Technique__Kento_Nanami",
             "title": "(Ratio Technique) Kento Nanami",
             "name": "Kento Nanami",
@@ -410,16 +370,6 @@
             "element": "Blue",
             "rarity": "SSR",
             "image": "BlueGojoSSRArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
-            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
-            "name": "Satoru Gojo",
-            "slug": "Hollow_Technique_Purple_Satoru_Gojo",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRGojoArt2.gif",
             "hasDupeScaling": false
           },
           {
@@ -596,16 +546,6 @@
             "rarity": "SSR",
             "image": "YellowSSRDagonArt1.gif",
             "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Early_Morning_Departure__Maki_Zen_in",
-            "title": "(Early Morning Departure) Maki Zen'in",
-            "name": "Maki Zen'in",
-            "slug": "Curses_Team_Up_If_Theyre_Weak_Maki_Zenin",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueMakiSSRArt1.gif",
-            "hasDupeScaling": false
           }
         ]
       }
@@ -747,26 +687,6 @@
             "element": "Green",
             "rarity": "SSR",
             "image": "GreenSSRMiwaArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
-            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
-            "name": "Satoru Gojo",
-            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRGojoArt2.gif",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
-            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
-            "name": "Satoru Gojo",
-            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRGojoArt2.gif",
             "hasDupeScaling": false
           },
           {
@@ -935,16 +855,6 @@
         "rank": "C",
         "slots": [
           {
-            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
-            "title": "(Bond of Friendship) Megumi Fushiguro",
-            "name": "Megumi Fushiguro",
-            "slug": "Bond_of_Friendship_Megumi_Fushiguro",
-            "element": "Green",
-            "rarity": "SSR",
-            "image": "GreenMegumiSSRArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
             "characterId": "_Ex-Office_Worker_Turned_Jujutsu_Sorcerer__Kento_Nanami",
             "title": "(Ex-Office Worker Turned Jujutsu Sorcerer) Kento Nanami",
             "name": "Kento Nanami",
@@ -997,16 +907,6 @@
             "element": "Green",
             "rarity": "SR",
             "image": "GreenMomoSRArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Background_Support__Kiyotaka_Ijichi",
-            "title": "(Background Support) Kiyotaka Ijichi",
-            "name": "Kiyotaka Ijichi",
-            "slug": "Background_Support_Kiyotaka_Ijichi",
-            "element": "Green",
-            "rarity": "R",
-            "image": "GreenIjichiRArt1.webp",
             "hasDupeScaling": false
           },
           {
@@ -1369,26 +1269,6 @@
             "hasDupeScaling": false
           },
           {
-            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
-            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
-            "name": "Yuji Itadori",
-            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRYujiArt2.gif",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
-            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
-            "name": "Yuji Itadori",
-            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRYujiArt2.gif",
-            "hasDupeScaling": false
-          },
-          {
             "characterId": "_Crushed_With_Speed__Naobito_Zen_in",
             "title": "(Crushed With Speed) Naobito Zen'in",
             "name": "Naobito Zen'in",
@@ -1519,16 +1399,6 @@
             "hasDupeScaling": false
           },
           {
-            "characterId": "_Shatter_To_Pieces__Toge_Inumaki",
-            "title": "(Shatter To Pieces) Toge Inumaki",
-            "name": "Toge Inumaki",
-            "slug": "Baton_of_Counterattack_Toge_Inumaki",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueSSRInumakiArt1.gif",
-            "hasDupeScaling": false
-          },
-          {
             "characterId": "_With_Takada-Chan__Aoi_Todo",
             "title": "(With Takada-Chan) Aoi Todo",
             "name": "Aoi Todo",
@@ -1546,16 +1416,6 @@
             "element": "Blue",
             "rarity": "SR",
             "image": "BluePanda0SRArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Early_Morning_Departure__Maki_Zen_in",
-            "title": "(Early Morning Departure) Maki Zen'in",
-            "name": "Maki Zen'in",
-            "slug": "Curses_Team_Up_If_Theyre_Weak_Maki_Zenin",
-            "element": "Blue",
-            "rarity": "SSR",
-            "image": "BlueMakiSSRArt1.gif",
             "hasDupeScaling": false
           }
         ]
@@ -2058,16 +1918,6 @@
         "rank": "B",
         "slots": [
           {
-            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
-            "title": "(Bond of Friendship) Megumi Fushiguro",
-            "name": "Megumi Fushiguro",
-            "slug": "Bond_of_Friendship_Megumi_Fushiguro",
-            "element": "Green",
-            "rarity": "SSR",
-            "image": "GreenMegumiSSRArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
             "characterId": "_Cursed_Energy_Melody__Yoshinobu_Gakuganji",
             "title": "(Cursed Energy Melody) Yoshinobu Gakuganji",
             "name": "Yoshinobu Gakuganji",
@@ -2181,16 +2031,6 @@
             "rarity": "R",
             "image": "GreenSakiRArt1.webp",
             "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Background_Support__Kiyotaka_Ijichi",
-            "title": "(Background Support) Kiyotaka Ijichi",
-            "name": "Kiyotaka Ijichi",
-            "slug": "Background_Support_Kiyotaka_Ijichi",
-            "element": "Green",
-            "rarity": "R",
-            "image": "GreenIjichiRArt1.webp",
-            "hasDupeScaling": false
           }
         ]
       },
@@ -2297,26 +2137,6 @@
             "element": "Yellow",
             "rarity": "SSR",
             "image": "YellowSSRUraumeArt1.webp",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
-            "title": "(Melting Sweet Summer Treats) Satoru Gojo",
-            "name": "Satoru Gojo",
-            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
-            "element": "Yellow",
-            "rarity": "SSR",
-            "image": "YellowGojoSSRArt2.gif",
-            "hasDupeScaling": false
-          },
-          {
-            "characterId": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
-            "title": "(Melting Sweet Summer Treats) Satoru Gojo",
-            "name": "Satoru Gojo",
-            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
-            "element": "Yellow",
-            "rarity": "SSR",
-            "image": "YellowGojoSSRArt2.gif",
             "hasDupeScaling": false
           },
           {

@@ -252,79 +252,90 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
 
           {/* Official Tiers Display */}
           <div className="space-y-4">
-            {currentOfficial.tiers.map((tier) => (
-              <div
-                key={tier.rank}
-                className="flex flex-col md:flex-row bg-[#110c22] border border-[#231a40] rounded-2xl overflow-hidden shadow-lg"
-              >
-                {/* Tier Rank Header */}
-                <div className={`w-full md:w-28 p-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-2 border-b md:border-b-0 md:border-r border-[#231a40] shrink-0 ${
-                  tier.rank === 'S' ? 'bg-amber-950/30' :
-                  tier.rank === 'A' ? 'bg-purple-950/30' :
-                  tier.rank === 'B' ? 'bg-blue-950/30' :
-                  tier.rank === 'C' ? 'bg-emerald-950/30' : 'bg-gray-900/40'
-                }`}>
-                  <span className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-black shadow-md border ${getRankBadgeStyle(tier.rank)}`}>
-                    {tier.rank}
-                  </span>
-                  <span className="text-[11px] font-bold text-gray-400">
-                    {tier.slots.length} unidades
-                  </span>
+            {currentOfficial.tiers.map((tier) => {
+              // Deduplicate slots defensively in case json or previous state has redundant entries
+              const seenIds = new Set<string>();
+              const uniqueSlots = tier.slots.filter(slot => {
+                const key = slot.characterId || slot.title;
+                if (!key || seenIds.has(key)) return false;
+                seenIds.add(key);
+                return true;
+              });
+
+              return (
+                <div
+                  key={`${currentOfficial.id}-${tier.rank}`}
+                  className="flex flex-col md:flex-row bg-[#110c22] border border-[#231a40] rounded-2xl overflow-hidden shadow-lg"
+                >
+                  {/* Tier Rank Header */}
+                  <div className={`w-full md:w-28 p-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-2 border-b md:border-b-0 md:border-r border-[#231a40] shrink-0 ${
+                    tier.rank === 'S' ? 'bg-amber-950/30' :
+                    tier.rank === 'A' ? 'bg-purple-950/30' :
+                    tier.rank === 'B' ? 'bg-blue-950/30' :
+                    tier.rank === 'C' ? 'bg-emerald-950/30' : 'bg-gray-900/40'
+                  }`}>
+                    <span className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-black shadow-md border ${getRankBadgeStyle(tier.rank)}`}>
+                      {tier.rank}
+                    </span>
+                    <span className="text-[11px] font-bold text-gray-400">
+                      {uniqueSlots.length} unidades
+                    </span>
+                  </div>
+
+                  {/* Character Slots Grid */}
+                  <div className="p-4 flex-1 flex flex-wrap gap-3 items-center min-h-[90px]">
+                    {uniqueSlots.map((slot, sIdx) => {
+                      const localChar = characters.find(c => c.id === slot.characterId);
+                      const thumbUrl = localChar
+                        ? getStaticThumbUrl(localChar.id, localChar.image)
+                        : getAssetPath(`assets/${slot.image}`);
+
+                      return (
+                        <div
+                          key={`${currentOfficial.id}-${tier.rank}-${slot.characterId || sIdx}`}
+                          onClick={() => {
+                            playSelect();
+                            if (localChar) onSelectCharacter(localChar);
+                          }}
+                          className="group relative flex flex-col items-center p-2 rounded-xl bg-[#171030] hover:bg-[#221848] border border-[#2c1f4e] hover:border-purple-400 transition-all duration-200 cursor-pointer w-24 text-center hover:scale-105 shadow-md"
+                          title={`${slot.title}\nClique para ver detalhes`}
+                        >
+                          {/* Avatar */}
+                          <div className="w-14 h-14 rounded-lg overflow-hidden border border-purple-900/60 group-hover:border-purple-400 relative mb-1.5 shadow">
+                            <img
+                              src={thumbUrl}
+                              alt={slot.title}
+                              className="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-300"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = getAssetPath(`assets/${slot.image}`);
+                              }}
+                            />
+                            {slot.hasDupeScaling && (
+                              <span className="absolute bottom-0 right-0 bg-red-600/90 text-[9px] font-black text-white px-1 rounded-tl" title="Escala com Duplicatas">
+                                ★
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Name & Title */}
+                          <div className="text-white text-[11px] font-bold truncate w-full group-hover:text-purple-300">
+                            {slot.name}
+                          </div>
+                          <div className="text-gray-400 text-[9px] truncate w-full">
+                            {slot.title.replace(`(${slot.name})`, '').trim() || slot.title}
+                          </div>
+
+                          {/* Element tag */}
+                          <div className="mt-1">
+                            <ElementBadge element={slot.element} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-
-                {/* Character Slots Grid */}
-                <div className="p-4 flex-1 flex flex-wrap gap-3 items-center min-h-[90px]">
-                  {tier.slots.map((slot, sIdx) => {
-                    const localChar = characters.find(c => c.id === slot.characterId);
-                    const thumbUrl = localChar
-                      ? getStaticThumbUrl(localChar.id, localChar.image)
-                      : getAssetPath(`assets/${slot.image}`);
-
-                    return (
-                      <div
-                        key={slot.characterId || sIdx}
-                        onClick={() => {
-                          playSelect();
-                          if (localChar) onSelectCharacter(localChar);
-                        }}
-                        className="group relative flex flex-col items-center p-2 rounded-xl bg-[#171030] hover:bg-[#221848] border border-[#2c1f4e] hover:border-purple-400 transition-all duration-200 cursor-pointer w-24 text-center hover:scale-105 shadow-md"
-                        title={`${slot.title}\nClique para ver detalhes`}
-                      >
-                        {/* Avatar */}
-                        <div className="w-14 h-14 rounded-lg overflow-hidden border border-purple-900/60 group-hover:border-purple-400 relative mb-1.5 shadow">
-                          <img
-                            src={thumbUrl}
-                            alt={slot.title}
-                            className="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-300"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = getAssetPath(`assets/${slot.image}`);
-                            }}
-                          />
-                          {slot.hasDupeScaling && (
-                            <span className="absolute bottom-0 right-0 bg-red-600/90 text-[9px] font-black text-white px-1 rounded-tl" title="Escala com Duplicatas">
-                              ★
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Name & Title */}
-                        <div className="text-white text-[11px] font-bold truncate w-full group-hover:text-purple-300">
-                          {slot.name}
-                        </div>
-                        <div className="text-gray-400 text-[9px] truncate w-full">
-                          {slot.title.replace(`(${slot.name})`, '').trim() || slot.title}
-                        </div>
-
-                        {/* Element tag */}
-                        <div className="mt-1">
-                          <ElementBadge element={slot.element} />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
