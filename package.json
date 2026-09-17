@@ -28,6 +28,7 @@
       "owner": "Jklmkii",
       "repo": "jujutsu-phantom-parade-db"
     },
+    "compression": "maximum",
     "directories": {
       "output": "C:/temp/jjk-release"
     },

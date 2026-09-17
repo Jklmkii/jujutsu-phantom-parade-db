@@ -32,7 +32,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "LetsComparePatienceArt.gif",
+    "image": "LetsComparePatienceArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt\n(The lower own HP is, the higher the Damage increase)",
       "cooldown": "7"
@@ -53,7 +53,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "GojoRescueArt.gif",
+    "image": "GojoRescueArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 35.0% (Lv 1) → 45.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -74,7 +74,7 @@
     },
     "active_cooldown": "3",
     "passive_cooldown": "/",
-    "image": "LiveALongLifeArt.gif",
+    "image": "LiveALongLifeArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Fills own Ultimate Skill Gauge by 250\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 300\nSacrifices 15.0% of own HP\n(Cannot die from sacrificing HP)",
       "cooldown": "3"
@@ -95,7 +95,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "LetsWinThisArt.gif",
+    "image": "LetsWinThisArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 20.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)",
       "cooldown": "6"
@@ -137,7 +137,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "SistersArt.gif",
+    "image": "SistersArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn)",
       "cooldown": "6"
@@ -179,7 +179,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "YouAreLateArt.gif",
+    "image": "YouAreLateArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)\nRecovers own Cursed Energy by 10",
       "cooldown": "6"
@@ -305,7 +305,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "CalledNobaraArt.gif",
+    "image": "CalledNobaraArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "6"
@@ -326,7 +326,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "TheGrandBreakThroughArt.gif",
+    "image": "TheGrandBreakThroughArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -347,7 +347,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "SlightDistanceArt.gif",
+    "image": "SlightDistanceArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 35.0% (Lv 1) → 40.0% (Lv 10)\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15",
       "cooldown": "6"
@@ -389,7 +389,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "DreamOfFutureDaysArt.gif",
+    "image": "DreamOfFutureDaysArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers all allies' HP by 30.0% (Lv 1) → 35.0% (Lv 10)",
       "cooldown": "8"
@@ -410,7 +410,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "ActivitiesBeginArt1.gif",
+    "image": "ActivitiesBeginArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nRecovers own HP by 2.5% (Lv 1) → 3.8% (Lv 10) every turn (4 Turns)",
       "cooldown": "/"
@@ -431,7 +431,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "AdultTimeArt.gif",
+    "image": "AdultTimeArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 70.0% (Lv 1) → 75.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "6"
@@ -452,7 +452,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "AfterSchoolArt.gif",
+    "image": "AfterSchoolArt.webp",
     "active_skill": {
       "description": "At the start of the battle,\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15",
       "cooldown": "/"
@@ -536,7 +536,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "KyotoArrivalArt.gif",
+    "image": "KyotoArrivalArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 20.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)",
       "cooldown": "6"
@@ -557,7 +557,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "Art_Museum_in_night.gif",
+    "image": "Art_Museum_in_night.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases all enemies’ Taijutsu Stat by 10.0% (Lv 1) → 20.0% (Lv 10) (1 Turn)",
       "cooldown": "6"
@@ -578,7 +578,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "RightHandManArt.gif",
+    "image": "RightHandManArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -662,7 +662,7 @@
     },
     "active_cooldown": "3",
     "passive_cooldown": "/",
-    "image": "BewareFierceDogArt1.gif",
+    "image": "BewareFierceDogArt1.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nReduces own Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Turn)",
       "cooldown": "3"
@@ -683,7 +683,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "InADazeArt1.gif",
+    "image": "InADazeArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\n**Lv 1:** Draws all enemies' Attacks to self (1 Turn/1 Time)\n**Lv 10 (Máx):** Draws all enemies' Attacks to self (2 Turns/2 Times)\n**Lv 1:** Grants Evasion Status to self (1 Turn/1 Time)\n**Lv 10 (Máx):** Grants Evasion Status to self (2 Turns/2 Times)",
       "cooldown": "8"
@@ -704,7 +704,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "IllusionArt1.gif",
+    "image": "IllusionArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\n**Lv 1:** Grants Stealth Status to self (1 Turn)\n**Lv 10 (Máx):** Grants Stealth Status to self (2 Turns)",
       "cooldown": "/"
@@ -788,7 +788,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "YourBrotherAndSisterArt.gif",
+    "image": "YourBrotherAndSisterArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 35.0% (Lv 1) → 40.0% (Lv 10)\n(Available after 2 Turns have passed)",
       "cooldown": "8"
@@ -809,7 +809,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "BusinessCallArt1.gif",
+    "image": "BusinessCallArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nDecreases own Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Time)",
       "cooldown": "/"
@@ -830,7 +830,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "COOLeyeglassesArt1.gif",
+    "image": "COOLeyeglassesArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10.0% (Lv 1) → 15.0% (Lv 10)",
       "cooldown": "6"
@@ -851,7 +851,7 @@
     },
     "active_cooldown": "9",
     "passive_cooldown": "/",
-    "image": "LeisurelyWatchingVideosArt.gif",
+    "image": "LeisurelyWatchingVideosArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Jujutsu Damage Received by 45.0% (Lv 1) → 50.0% (Lv 10) (3 Turns)",
       "cooldown": "9"
@@ -893,7 +893,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "ChildhoodPromiseArt.gif",
+    "image": "ChildhoodPromiseArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases all allies' Taijutsu Stat by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -935,7 +935,7 @@
     },
     "active_cooldown": "5",
     "passive_cooldown": "/",
-    "image": "ClinicalRecordArt1.gif",
+    "image": "ClinicalRecordArt1.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nRecovers own HP by 14.0% (Lv 1) → 17.0% (Lv 10)",
       "cooldown": "5"
@@ -998,7 +998,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "CurseBornFromTheLandArt.gif",
+    "image": "CurseBornFromTheLandArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nSacrifices 15.0% of own HP\n(Cannot die from sacrificing HP)\nIncreases own Damage by 45.0% (Lv 1) → 50.0% (Lv 10) (1 Turn)\n(The lower own HP is, the greater the Damage boost)",
       "cooldown": "7"
@@ -1019,7 +1019,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "CurseEachotherArt.gif",
+    "image": "CurseEachotherArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 5.0% (Lv 1) → 10.0% (Lv 10) (1 Turn)",
       "cooldown": "7"
@@ -1040,7 +1040,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "ViciousnessArt.gif",
+    "image": "ViciousnessArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "7"
@@ -1061,7 +1061,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "CursedSpiritBeachArt.gif",
+    "image": "CursedSpiritBeachArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 70.0% (Lv 1) → 85.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"夜\" (Green) Type attacks)",
       "cooldown": "7"
@@ -1103,7 +1103,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "PlayBubblesWithTheCursesArt.gif",
+    "image": "PlayBubblesWithTheCursesArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15\nRecovers own HP by 30.0% (Lv 1) → 35.0% (Lv 10)",
       "cooldown": "7"
@@ -1145,7 +1145,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "CutieStuffArt.gif",
+    "image": "CutieStuffArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 5.0% (Lv 1) → 8.0% (Lv 10) every turn (2 Turns)",
       "cooldown": "6"
@@ -1166,7 +1166,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "DayofAwakening.gif",
+    "image": "DayofAwakening.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 55.0% (Lv 1) → 60.0% (Lv 10) (1 Turn/1 Time)\nIf own HP is 30.0% or less,\nIncreases own Jujutsu Stat by an additional 10.0% (1 Turn/1 Time)",
       "cooldown": "6"
@@ -1208,7 +1208,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "DeathByWaspArt.gif",
+    "image": "DeathByWaspArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
       "cooldown": "8"
@@ -1271,7 +1271,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "DesireBehindDisplayArt.gif",
+    "image": "DesireBehindDisplayArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill are activated,\nIncreases all allies' Critical Hit Rate by 10% (Lv 1) → 15% (Lv 10) (2 Turns)",
       "cooldown": "8"
@@ -1292,7 +1292,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "AFightToDeathArt.gif",
+    "image": "AFightToDeathArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 40.0% (Lv 1) → 45.0% (Lv 10) (2 Turns)\nIf own HP is 50.0% or below when activating,\nIncreases own Damage Dealt by 15.0% (Lv 1) → 20.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -1334,7 +1334,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "HanamiMemoryArt1.gif",
+    "image": "HanamiMemoryArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 5.0% (Lv 1) → 10.0% (Lv 10) every turn (3 Turns)",
       "cooldown": "7"
@@ -1439,7 +1439,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "EachOnTheirOwnPathArt.gif",
+    "image": "EachOnTheirOwnPathArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (1 Turn/1 Time)\nIncreases own Damage Dealt by 5.0% (Lv 1) → 10.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "8"
@@ -1523,7 +1523,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "ToTheHorizonArt.gif",
+    "image": "ToTheHorizonArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "7"
@@ -1544,7 +1544,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "EverydayLifeArt.gif",
+    "image": "EverydayLifeArt.webp",
     "active_skill": {
       "description": "At the start of the battle,\nIncreases all allies' Taijutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (3 Turns)",
       "cooldown": "/"
@@ -1670,7 +1670,7 @@
     },
     "active_cooldown": "10",
     "passive_cooldown": "/",
-    "image": "FollowClueArt.gif",
+    "image": "FollowClueArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Taijutsu Damage Received by 5.0% (Lv 1) → 10.0% (Lv 10) (5 Turns)",
       "cooldown": "10"
@@ -1691,7 +1691,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "ForMyselfArt.gif",
+    "image": "ForMyselfArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 35.0% (Lv 1) → 40.0% (Lv 10)\n(Available after 2 Turns have passed)",
       "cooldown": "7"
@@ -1817,7 +1817,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "CleaningDutyArt.gif",
+    "image": "CleaningDutyArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (3 Turns)",
       "cooldown": "8"
@@ -1838,7 +1838,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "SpectacularstageArt1.gif",
+    "image": "SpectacularstageArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nRecovers own HP by 11.0% (Lv 1) → 14.0% (Lv 10)\n(Available after 2 Turns have passed)",
       "cooldown": "4"
@@ -1859,7 +1859,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "GrandpasWordsArt.gif",
+    "image": "GrandpasWordsArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 20.0% (Lv 1) → 25.0% (Lv 10)",
       "cooldown": "4"
@@ -1922,7 +1922,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "HiddenGemArt.gif",
+    "image": "HiddenGemArt.webp",
     "active_skill": {
       "description": "At the start of the turn, if own HP is 50.0% or lower,\nIncreases all allies' Taijutsu Stat by 25.0% (Lv 1) → 30.0% (Lv 10) (2 Turns)\n(Up to 1 Time during battle)",
       "cooldown": "/"
@@ -1943,7 +1943,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "HomeRunArt.gif",
+    "image": "HomeRunArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Break Damage by 80.0% (Lv 1) → 90.0% (Lv 10) (1 Turn/1 Time)\n(Available after 1 Turn has passed)",
       "cooldown": "7"
@@ -1964,7 +1964,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "HotPotPartyArt.gif",
+    "image": "HotPotPartyArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 15\n**Lv 10 (Máx):** Recovers own Cursed Energy by 20\n(Available after 3 Turns have passed)",
       "cooldown": "8"
@@ -2006,7 +2006,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "IBoughtLocalSouvenirsArt.gif",
+    "image": "IBoughtLocalSouvenirsArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 28.0% (Lv 1) → 33.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "4"
@@ -2027,7 +2027,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "ISeeThenDieArt1.gif",
+    "image": "ISeeThenDieArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)",
       "cooldown": "6"
@@ -2048,7 +2048,7 @@
     },
     "active_cooldown": "5",
     "passive_cooldown": "/",
-    "image": "InonanamiArt1.gif",
+    "image": "InonanamiArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases own Critical Hit Rate by 25.0% (Lv 1) → 30.0% (Lv 10) (3 Turns)",
       "cooldown": "5"
@@ -2153,7 +2153,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "WhatIfYouthArt.gif",
+    "image": "WhatIfYouthArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 15\n**Lv 10 (Máx):** Recovers own Cursed Energy by 20",
       "cooldown": "4"
@@ -2174,7 +2174,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "ExcellentShapeArt.gif",
+    "image": "ExcellentShapeArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\n**Lv 1:** Fills own Ultimate Skill Gauge by 260\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 360",
       "cooldown": "4"
@@ -2363,7 +2363,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "KeptwaitingArt1.gif",
+    "image": "KeptwaitingArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\n**Lv 1:** Fills own Ultimate Skill Gauge by 110\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 220\nIf any ally’s HP is 35.0% or below when activating (Excluding self),\n**Lv 1:** Fills their Ultimate Skill Gauge by 110\n**Lv 10 (Máx):** Fills their Ultimate Skill Gauge by 220",
       "cooldown": "6"
@@ -2384,7 +2384,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "DisguisementArt1.gif",
+    "image": "DisguisementArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nDecreases own Damage Received by 4.0% (Lv 1) → 7.0% (Lv 10)",
       "cooldown": "/"
@@ -2426,7 +2426,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "KillingTimeArt1.gif",
+    "image": "KillingTimeArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nIncreases own Critical Hit Rate by 5.0% (Lv 1) → 10.0% (Lv 10)",
       "cooldown": "/"
@@ -2489,7 +2489,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "SorrowArt1.gif",
+    "image": "SorrowArt1.webp",
     "active_skill": {
       "description": "At the start of each wave,\nDecreases all enemies' Damage Dealt by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Turn)",
       "cooldown": "/"
@@ -2552,7 +2552,7 @@
     },
     "active_cooldown": "3",
     "passive_cooldown": "/",
-    "image": "MaiMakiArt3.gif",
+    "image": "MaiMakiArt3.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nGrants Taunt Status to self (1 Turn)\nDecreases own Damage Received by 20.0% (Lv 1) → 25.0% (Lv 10) (1 Turn)",
       "cooldown": "3"
@@ -2657,7 +2657,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "MalevolentShrineArt.gif",
+    "image": "MalevolentShrineArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "6"
@@ -2678,7 +2678,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "AppointmentArt1.gif",
+    "image": "AppointmentArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nIncreases own Critical Hit Rate by 5.0% (Lv 1) → 10.0% (Lv 10)",
       "cooldown": "/"
@@ -2699,7 +2699,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "MemoriesInACornerArt.gif",
+    "image": "MemoriesInACornerArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nGrants Taunt Status to self (2 Turns)",
       "cooldown": "6"
@@ -2720,7 +2720,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "Mensore.gif",
+    "image": "Mensore.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 5\n**Lv 10 (Máx):** Recovers own Cursed Energy by 10",
       "cooldown": "7"
@@ -2741,7 +2741,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "TheSpectatorinMidSummerArt1.gif",
+    "image": "TheSpectatorinMidSummerArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 25.0% (Lv 1) → 30.0% (Lv 10) (4 Turns)",
       "cooldown": "6"
@@ -2762,7 +2762,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "MissionBeginsArt.gif",
+    "image": "MissionBeginsArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Critical Hit Rate by 60.0% (Lv 1) → 65.0% (Lv 10) (3 Turns)",
       "cooldown": "6"
@@ -2825,7 +2825,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "BelieveInEachOtherArt.gif",
+    "image": "BelieveInEachOtherArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases all allies' Damage Received by 30.0% (Lv 1) → 35.0% (Lv 10) (1 Turn)",
       "cooldown": "8"
@@ -2846,7 +2846,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "MybestbatterArt1.gif",
+    "image": "MybestbatterArt1.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)",
       "cooldown": "7"
@@ -2909,7 +2909,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "CarefreeYouthArt.gif",
+    "image": "CarefreeYouthArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 70.0% (Lv 1) → 75.0% (Lv 10) (1 Turn/1 Time)\nIf own HP is 50.0% or below when activating,\nIncreases own Taijutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (1 Turn/1 Time)\n(Available after 4 Turns have passed)",
       "cooldown": "8"
@@ -2930,7 +2930,7 @@
     },
     "active_cooldown": "5",
     "passive_cooldown": "/",
-    "image": "AdvancingInTheFaceOfDeathArt.gif",
+    "image": "AdvancingInTheFaceOfDeathArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 31.0% (Lv 1) → 38.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "5"
@@ -2972,7 +2972,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "NightInHakataArt.gif",
+    "image": "NightInHakataArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10.0% (Lv 1) → 15.0% (Lv 10)\nDecreases own Damage Received by 15.0% (Lv 1) → 20.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -2993,7 +2993,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "NightOutArt.gif",
+    "image": "NightOutArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -3014,7 +3014,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "NightontheSacredMountainArt1.gif",
+    "image": "NightontheSacredMountainArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases own Damage Received by 60.0% (Lv 1) → 70.0% (Lv 10) (3 Turns/1 Time)",
       "cooldown": "6"
@@ -3056,7 +3056,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "NotGonnaAdmitThatWeGotIntoTroubleArt.gif",
+    "image": "NotGonnaAdmitThatWeGotIntoTroubleArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Critical Hit Rate by 10.0% (Lv 1) → 15.0% (Lv 10) (4 Turns)",
       "cooldown": "7"
@@ -3077,7 +3077,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "NonStandardArt.gif",
+    "image": "NonStandardArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 80.0% (Lv 1) → 85.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "6"
@@ -3098,7 +3098,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "TheArcheryTeachingFromNoritoshiKamoArt.gif",
+    "image": "TheArcheryTeachingFromNoritoshiKamoArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 20.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)\nIf own Ultimate Skill Gauge is full when activating,\nIncreases own Damage Dealt by 35.0% (Lv 1) → 40.0% (Lv 10) (2 Turns/1 Time)",
       "cooldown": "6"
@@ -3119,7 +3119,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "TheSacrificeOfSnakeDeityArt.gif",
+    "image": "TheSacrificeOfSnakeDeityArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)\nSacrifices 15.0% of own HP\n(Cannot die from sacrificing HP)",
       "cooldown": "7"
@@ -3203,7 +3203,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "AunsBreathArt.gif",
+    "image": "AunsBreathArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases all allies’ Damage Dealt by 30.0% (Lv 1) → 35.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "7"
@@ -3287,7 +3287,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "TheStrongestFoolingAroundArt.gif",
+    "image": "TheStrongestFoolingAroundArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases own Taijutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -3350,7 +3350,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "Warm-UpExerciseArt1.gif",
+    "image": "Warm-UpExerciseArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\n**Lv 1:** Grants Taunt Status to self (2 Turns)\n**Lv 10 (Máx):** Grants Taunt Status to self (3 Turns)",
       "cooldown": "/"
@@ -3392,7 +3392,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "DiscouragedArt1.gif",
+    "image": "DiscouragedArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases own Taijutsu Stat by 12.0% (Lv 1) → 17.5% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "4"
@@ -3434,7 +3434,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "RemembranceArt1.gif",
+    "image": "RemembranceArt1.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "4"
@@ -3476,7 +3476,7 @@
     },
     "active_cooldown": "5",
     "passive_cooldown": "/",
-    "image": "TheBreakTimeForAdultArt.gif",
+    "image": "TheBreakTimeForAdultArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 25.0% (Lv 1) → 30.0% (Lv 10)\n**Lv 1:** Fills own Ultimate Skill Gauge by 200\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 250",
       "cooldown": "5"
@@ -3581,7 +3581,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "3",
-    "image": "SatoruGojosSoloCampArt.gif",
+    "image": "SatoruGojosSoloCampArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn)",
       "cooldown": "6"
@@ -3602,7 +3602,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "UnequallyArt.gif",
+    "image": "UnequallyArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Break Damage by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "6"
@@ -3644,7 +3644,7 @@
     },
     "active_cooldown": "5",
     "passive_cooldown": "/",
-    "image": "InvestigationArt1.gif",
+    "image": "InvestigationArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 19.0% (Lv 1) → 21.5% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "5"
@@ -3686,7 +3686,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "StreetStallShoppingAndEatingArt.gif",
+    "image": "StreetStallShoppingAndEatingArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nGrants Taunt Status to self (2 Turns)",
       "cooldown": "7"
@@ -3707,7 +3707,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "ShoppingArt1.gif",
+    "image": "ShoppingArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 14.0% (Lv 1) → 22.0% (Lv 10) of own Jujutsu",
       "cooldown": "4"
@@ -3728,7 +3728,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "The_bond_of_siblingArt1.gif",
+    "image": "The_bond_of_siblingArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own \"Poison\" Resistance by 100.0%\nIncreases own Ultimate Skill Gauge Charge Rate by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -3770,7 +3770,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "SmallPleasuresArt.gif",
+    "image": "SmallPleasuresArt.webp",
     "active_skill": {
       "description": "At the start of the battle,\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15",
       "cooldown": "/"
@@ -3833,7 +3833,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "SomedayWithEveryoneArt.gif",
+    "image": "SomedayWithEveryoneArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
       "cooldown": "6"
@@ -3917,7 +3917,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "SourceofStressArt1.gif",
+    "image": "SourceofStressArt1.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases all allies' Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
       "cooldown": "8"
@@ -3980,7 +3980,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "StudentsDutyArt.gif",
+    "image": "StudentsDutyArt.webp",
     "active_skill": {
       "description": "When activating Command Skill or Ultimate Skill,\nRecovers own HP by 20.0% (Lv 1) → 25.0% (Lv 10)\nIncreases own Damage by 50.0% (Lv 1) → 55.0% (Lv 10) (1 Turn)\n(Effective for \"幻\" (Red) Type attacks)",
       "cooldown": "6"
@@ -4001,7 +4001,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "FashionDressUpArt.gif",
+    "image": "FashionDressUpArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 35.0% (Lv 1) → 40.0% (Lv 10) (3 Turns)",
       "cooldown": "7"
@@ -4022,7 +4022,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "SukunaVesselArt.gif",
+    "image": "SukunaVesselArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases all allies' Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)\n(The lower own HP is, the greater the Damage Received decrease)",
       "cooldown": "6"
@@ -4085,7 +4085,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "TakadaChanArt.gif",
+    "image": "TakadaChanArt.webp",
     "active_skill": {
       "description": "At the start of the 4th turn from the start of the battle,\nIncreases all allies' Taijutsu Stat by 20.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)",
       "cooldown": "/"
@@ -4106,7 +4106,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "BreakTimeArt1.gif",
+    "image": "BreakTimeArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nIncreases all allies' Damage Dealt by 2.0% (Lv 1) → 3.5% (Lv 10) (2 Turns)",
       "cooldown": "/"
@@ -4127,7 +4127,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "ByeTakeCareArt.gif",
+    "image": "ByeTakeCareArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases own Jujutsu Stat by 10.0% (Lv 1) → 15.0% (Lv 10) (3 Turns)",
       "cooldown": "8"
@@ -4148,7 +4148,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "TeaPartyArt.gif",
+    "image": "TeaPartyArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases own Damage Received by 20.0% (Lv 1) → 25.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "7"
@@ -4211,7 +4211,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "CoffeShopArt.gif",
+    "image": "CoffeShopArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -4316,7 +4316,7 @@
     },
     "active_cooldown": "10",
     "passive_cooldown": "/",
-    "image": "LastMomentsArt.gif",
+    "image": "LastMomentsArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases own Damage Received by 50.0% (Lv 1) → 55.0% (Lv 10) (1 Turn)",
       "cooldown": "10"
@@ -4337,7 +4337,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "ExcitingStampCollectionArt.gif",
+    "image": "ExcitingStampCollectionArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10.0% (Lv 1) → 20.0% (Lv 10)",
       "cooldown": "6"
@@ -4484,7 +4484,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "TheStrongestDuoArt.gif",
+    "image": "TheStrongestDuoArt.webp",
     "active_skill": {
       "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -4526,7 +4526,7 @@
     },
     "active_cooldown": "4",
     "passive_cooldown": "/",
-    "image": "DivergingPathsArt.gif",
+    "image": "DivergingPathsArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nIncreases own Taijutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "4"
@@ -4547,7 +4547,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "1000YrMaster&FollowerMemArt.gif",
+    "image": "1000YrMaster&FollowerMemArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill are activated,\nIncreases own and the Ally Behind's Critical Hit Damage by 30% (Lv 1) → 35% (Lv 10) (2 Turns)\nRecovers own and the Ally Behind's Cursed Energy by 10\nIf the equipped character is \"行\" (Yellow) Type,\nIncreases own and the Ally Behind's Jujutsu Stat by 20% (Lv 1) → 25% (Lv 10) (2 Turns)",
       "cooldown": "6"
@@ -4610,7 +4610,7 @@
     },
     "active_cooldown": "8",
     "passive_cooldown": "/",
-    "image": "AwakenedMahitoBossEventArt.gif",
+    "image": "AwakenedMahitoBossEventArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 25% (Lv 1) → 30% (Lv 10) (2 Turns)",
       "cooldown": "8"
@@ -4736,7 +4736,7 @@
     },
     "active_cooldown": "5",
     "passive_cooldown": "/",
-    "image": "VisitFukuokaArt.gif",
+    "image": "VisitFukuokaArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 30.0% (Lv 1) → 35.0% (Lv 10)\n(Available once 3 Turns have passed*)\n''*Turns count starting from the equipping character's appearance''",
       "cooldown": "5"
@@ -4778,7 +4778,7 @@
     },
     "active_cooldown": "/",
     "passive_cooldown": "/",
-    "image": "HesitationArt1.gif",
+    "image": "HesitationArt1.webp",
     "active_skill": {
       "description": "At the start of the battle,\nDecreases all allies' Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Time)",
       "cooldown": "/"
@@ -4820,7 +4820,7 @@
     },
     "active_cooldown": "7",
     "passive_cooldown": "/",
-    "image": "TheOriginOfConspiracyArt.gif",
+    "image": "TheOriginOfConspiracyArt.webp",
     "active_skill": {
       "description": "When Command Skill is activated,\nDecreases own Damage Received by 40.0% (Lv 1) → 45.0% (Lv 10) (2 Turns)",
       "cooldown": "7"
@@ -4904,7 +4904,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "WinterNewStepArt.gif",
+    "image": "WinterNewStepArt.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
       "cooldown": "6"
@@ -5030,7 +5030,7 @@
     },
     "active_cooldown": "6",
     "passive_cooldown": "/",
-    "image": "RindoMemoryArt1.gif",
+    "image": "RindoMemoryArt1.webp",
     "active_skill": {
       "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 75.0% (Lv 1) → 80.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"夜\" (Green) Type attacks)\nIf own HP is 35.0% or below when activating,\nIncreases own Taijutsu & Jujutsu Stat by 20.0% (Lv 1) → 30.0% (Lv 10) (1 Turn/1 Time)",
       "cooldown": "6"

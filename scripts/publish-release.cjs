@@ -121,56 +121,120 @@ async function main() {
 
   const uploadBaseUrl = targetRelease.upload_url.split('{')[0];
 
+  // Try using GitHub CLI if available (handles large assets natively with retries)
+  let hasGhCli = false;
+  try {
+    execSync('gh --version', { stdio: 'ignore' });
+    hasGhCli = true;
+  } catch {
+    hasGhCli = false;
+  }
+
+  // Upload binaries FIRST, blockmap next, and latest.yml LAST
   const filesToUpload = [
-    { name: 'latest.yml', type: 'application/x-yaml' },
-    { name: `JJKPPDB-Offline-Setup-${pkg.version}.exe.blockmap`, type: 'application/octet-stream' },
-    { name: `JJKPPDB-Offline-Setup-${pkg.version}.exe`, type: 'application/octet-stream' },
-    { name: `JJKPPDB-Offline-${pkg.version}-portable.exe`, type: 'application/octet-stream' }
+    { name: `JJKPPDB-Offline-Setup-${pkg.version}.exe`, type: 'application/octet-stream', critical: true },
+    { name: `JJKPPDB-Offline-${pkg.version}-portable.exe`, type: 'application/octet-stream', critical: false },
+    { name: `JJKPPDB-Offline-Setup-${pkg.version}.exe.blockmap`, type: 'application/octet-stream', critical: false },
+    { name: 'latest.yml', type: 'application/x-yaml', critical: true, uploadLast: true }
   ];
 
+  let setupExeUploaded = false;
+
   for (const file of filesToUpload) {
-    const filePath = findAssetFile(file.name);
-    if (!filePath) {
-      console.warn(`File ${file.name} not found in release directories, skipping.`);
-      continue;
+    if (file.uploadLast && !setupExeUploaded) {
+      throw new Error(`CRÍTICO: O instalador JJKPPDB-Offline-Setup-${pkg.version}.exe não foi enviado com sucesso. Abortando upload de ${file.name} para impedir release corrompida!`);
     }
 
-    const existingAsset = (targetRelease.assets || []).find(a => a.name === file.name);
-    if (existingAsset) {
-      console.log(`Asset ${file.name} already exists (ID ${existingAsset.id}), deleting before re-upload...`);
-      await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases/assets/${existingAsset.id}`, {
-        method: 'DELETE',
-        headers
-      });
+    const filePath = findAssetFile(file.name);
+    if (!filePath) {
+      if (file.critical) {
+        throw new Error(`CRÍTICO: Arquivo essencial ${file.name} não foi encontrado para upload.`);
+      }
+      console.warn(`Arquivo opcional ${file.name} não encontrado, pulando.`);
+      continue;
     }
 
     const stat = fs.statSync(filePath);
     const sizeMb = (stat.size / (1024 * 1024)).toFixed(2);
-    console.log(`Uploading ${file.name} (${sizeMb} MB) from ${filePath}...`);
-    const fileStream = fs.createReadStream(filePath);
-    const fileSize = stat.size;
 
-    const uploadRes = await fetch(`${uploadBaseUrl}?name=${encodeURIComponent(file.name)}`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `token ${GITHUB_TOKEN}`,
-        'Content-Type': file.type,
-        'Content-Length': fileSize.toString(),
-        'User-Agent': 'JJKPPDB-Publisher'
-      },
-      body: fileStream,
-      duplex: 'half'
-    });
+    let success = false;
 
-    if (!uploadRes.ok) {
-      const err = await uploadRes.text();
-      console.error(`Failed to upload ${file.name}: ${uploadRes.status} ${err}`);
+    // Method 1: Try gh CLI if available
+    if (hasGhCli) {
+      try {
+        console.log(`[gh cli] Uploading ${file.name} (${sizeMb} MB)...`);
+        execSync(`gh release upload "${TAG}" "${filePath}" --clobber`, {
+          stdio: 'inherit',
+          env: { ...process.env, GH_TOKEN: GITHUB_TOKEN }
+        });
+        success = true;
+      } catch (ghErr) {
+        console.warn(`[gh cli] Falha no upload via gh, tentando fallback via REST API:`, ghErr.message);
+      }
+    }
+
+    // Method 2: REST API fallback with retries
+    if (!success) {
+      const existingAsset = (targetRelease.assets || []).find(a => a.name === file.name);
+      if (existingAsset) {
+        console.log(`Asset ${file.name} já existe (ID ${existingAsset.id}), removendo antes de re-enviar...`);
+        await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases/assets/${existingAsset.id}`, {
+          method: 'DELETE',
+          headers
+        });
+      }
+
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        console.log(`Uploading ${file.name} (${sizeMb} MB) [Tentativa ${attempt}/3]...`);
+        const fileStream = fs.createReadStream(filePath);
+        const fileSize = stat.size;
+
+        try {
+          const uploadRes = await fetch(`${uploadBaseUrl}?name=${encodeURIComponent(file.name)}`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `token ${GITHUB_TOKEN}`,
+              'Content-Type': file.type,
+              'Content-Length': fileSize.toString(),
+              'User-Agent': 'JJKPPDB-Publisher'
+            },
+            body: fileStream,
+            duplex: 'half'
+          });
+
+          if (uploadRes.ok) {
+            console.log(`✓ Upload de ${file.name} concluído com sucesso!`);
+            success = true;
+            break;
+          } else {
+            const err = await uploadRes.text();
+            console.error(`Falha no upload de ${file.name} (${uploadRes.status}): ${err}`);
+          }
+        } catch (netErr) {
+          console.error(`Erro de rede no upload de ${file.name}:`, netErr.message);
+        }
+
+        if (attempt < 3) {
+          console.log('Aguardando 4 segundos antes de tentar novamente...');
+          await new Promise(r => setTimeout(r, 4000));
+        }
+      }
+    }
+
+    if (!success) {
+      if (file.critical) {
+        throw new Error(`CRÍTICO: Falha fatal ao fazer upload do arquivo essencial ${file.name} após todas as tentativas.`);
+      } else {
+        console.warn(`Aviso: falha ao enviar ${file.name}, mas prosseguindo.`);
+      }
     } else {
-      console.log(`Successfully uploaded ${file.name}!`);
+      if (file.name.includes('Setup') && file.name.endsWith('.exe')) {
+        setupExeUploaded = true;
+      }
     }
   }
 
-  console.log('\n--- Release publication completed successfully! ---');
+  console.log('\n--- Publicação da Release concluída com 100% de integridade! ---');
 }
 
 main().catch(err => {
