@@ -15,12 +15,18 @@
     "electron": "electron .",
     "desktop": "npm run build && electron .",
     "pack:win": "electron-builder --win --x64",
+    "electron:build": "tsc -b && vite build && electron-builder --win --x64",
     "build:exe": "node scripts/build_exe.cjs",
     "thumbs": "electron scripts/generate_static_thumbs.cjs"
   },
   "build": {
     "appId": "com.jjkppdb.offline",
     "productName": "JJKPPDB Offline",
+    "publish": {
+      "provider": "github",
+      "owner": "Jklmkii",
+      "repo": "jujutsu-phantom-parade-db"
+    },
     "directories": {
       "output": "C:/temp/jjk-release"
     },
@@ -33,23 +39,34 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         },
         {
           "target": "portable",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ]
     },
     "nsis": {
       "oneClick": true,
       "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": "always",
       "createStartMenuShortcut": true,
-      "shortcutName": "JJKPPDB Offline"
+      "shortcutName": "JJKPPDB Offline",
+      "artifactName": "JJKPPDB-Offline-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "JJKPPDB-Offline-${version}-portable.${ext}"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.13.3",

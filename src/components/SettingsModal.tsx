@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { X, Volume2, VolumeX, Download, Upload, Trash2, CheckCircle2, AlertCircle, ShieldCheck, Database } from 'lucide-react';
+import { X, Volume2, VolumeX, Download, Upload, Trash2, CheckCircle2, AlertCircle, ShieldCheck, Database, RefreshCw, Sparkles } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { playClick, playTransformSurge } from '../utils/sound';
 
@@ -23,6 +23,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [confirmReset, setConfirmReset] = useState(false);
+  const [checkingUpdate, setCheckingUpdate] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   if (!isOpen) return null;
@@ -30,6 +31,27 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const showNotification = (type: 'success' | 'error', text: string) => {
     setNotification({ type, text });
     setTimeout(() => setNotification(null), 4000);
+  };
+
+  const handleCheckUpdate = async () => {
+    playClick();
+    if (!window.electronAPI?.checkForUpdates) {
+      showNotification('error', 'Verificação de atualizações disponível no aplicativo Desktop.');
+      return;
+    }
+    setCheckingUpdate(true);
+    try {
+      const res = await window.electronAPI.checkForUpdates();
+      if (res.success) {
+        showNotification('success', res.message || 'Buscando atualizações no GitHub Releases...');
+      } else {
+        showNotification('error', res.error || 'Falha ao buscar atualizações.');
+      }
+    } catch {
+      showNotification('error', 'Erro ao conectar ao serviço de atualização.');
+    } finally {
+      setCheckingUpdate(false);
+    }
   };
 
   // Export JSON (Native Electron or Web Download)
@@ -255,7 +277,33 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           </div>
         </div>
 
-        {/* Section 4: Reset Safety */}
+        {/* Section: App Updates */}
+        <div className="space-y-3">
+          <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
+            Atualizações do Aplicativo
+          </label>
+          <div className="flex items-center justify-between p-4 bg-[#16102c] border border-[#271d47] rounded-2xl">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-purple-950/60 rounded-xl border border-purple-500/30 text-purple-400">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white">JJKPPDB Offline</p>
+                <p className="text-xs text-gray-400">Verificação automática via GitHub Releases</p>
+              </div>
+            </div>
+            <button
+              onClick={handleCheckUpdate}
+              disabled={checkingUpdate}
+              className="flex items-center gap-2 px-3.5 py-2 bg-purple-600/80 hover:bg-purple-600 disabled:opacity-50 border border-purple-400/50 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-purple-900/30 cursor-pointer"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${checkingUpdate ? 'animate-spin' : ''}`} />
+              <span>{checkingUpdate ? 'Verificando...' : 'Verificar Atualizações'}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Section: Reset Safety */}
         <div className="pt-2 border-t border-[#251b44]">
           {confirmReset ? (
             <div className="p-4 bg-red-950/40 border border-red-500/40 rounded-2xl space-y-3">

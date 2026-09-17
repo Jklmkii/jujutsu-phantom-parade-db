@@ -1,0 +1,60 @@
+name: CI & Jules PR Verification
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run Verification & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies (safe, no lifecycle scripts)
+        run: npm ci --ignore-scripts || npm install --ignore-scripts
+
+      - name: Run static linter
+        run: npm run lint
+
+      - name: Verify build bundle
+        run: npm run build
+
+  auto-merge-jules:
+    name: Auto Merge Verified Jules PR
+    needs: test
+    runs-on: ubuntu-latest
+    # Security gates:
+    # 1. MUST NOT be from an external fork (head repository must match base repository)
+    # 2. Author MUST strictly match the verified Jules bot or repo owner
+    if: >
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      (github.event.pull_request.user.login == 'google-jules[bot]' ||
+       github.event.pull_request.user.login == 'google-labs-jules[bot]' ||
+       github.actor == 'google-jules[bot]' ||
+       github.actor == 'google-labs-jules[bot]' ||
+       github.event.pull_request.user.id == 192535081 ||
+       github.event.pull_request.user.login == github.repository_owner)
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Approve and merge PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr review ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --approve --body "Aprovado automaticamente após 100% de sucesso na verificação de lint e build do JJKPPDB." || true
+          gh pr merge ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --merge

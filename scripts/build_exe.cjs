@@ -34,13 +34,13 @@ try {
   } catch {}
 
   const tempFiles = fs.readdirSync(tempReleaseDir);
-  const exeFiles = tempFiles.filter(f => f.endsWith('.exe'));
+  const filesToCopy = tempFiles.filter(f => f.endsWith('.exe') || f.endsWith('.yml') || f.endsWith('.blockmap'));
 
-  if (exeFiles.length === 0) {
-    throw new Error('Nenhum arquivo .exe encontrado em ' + tempReleaseDir);
+  if (filesToCopy.length === 0) {
+    throw new Error('Nenhum arquivo compilado encontrado em ' + tempReleaseDir);
   }
 
-  for (const file of exeFiles) {
+  for (const file of filesToCopy) {
     const srcPath = path.join(tempReleaseDir, file);
     const destPath = path.join(targetReleaseDir, file);
     console.log(`Copiando ${file} -> release/${file}`);

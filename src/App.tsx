@@ -9,6 +9,7 @@ import { TierlistMaker } from './components/TierlistMaker';
 import { BestTeams } from './components/BestTeams';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { SettingsModal } from './components/SettingsModal';
+import { UpdateBanner } from './components/UpdateBanner';
 import { useJjkStore } from './store/useJjkStore';
 
 import charactersData from './data/characters.json';
@@ -55,6 +56,9 @@ export function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 ml-16 md:ml-64 min-h-screen p-4 md:p-8 overflow-y-auto pb-24">
+        {/* Auto-Updater Toast Banner */}
+        <UpdateBanner />
+
         {selectedCharacter ? (
           <CharacterDetail
             key={selectedCharacter.id}

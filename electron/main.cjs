@@ -1,6 +1,11 @@
 const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
+const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
+
+// Configuracao do autoUpdater
+autoUpdater.autoDownload = true;
+autoUpdater.autoInstallOnAppQuit = true;
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 let mainWindow = null;
@@ -132,8 +137,85 @@ ipcMain.handle('dialog:openFile', async (event, { filters }) => {
   }
 });
 
+// Auto-Updater status helper
+function sendUpdateStatus(data) {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send('updater:status', data);
+  }
+}
+
+autoUpdater.on('checking-for-update', () => {
+  sendUpdateStatus({ status: 'checking', message: 'Buscando atualizações no GitHub...' });
+});
+
+autoUpdater.on('update-available', (info) => {
+  sendUpdateStatus({
+    status: 'available',
+    version: info.version,
+    releaseDate: info.releaseDate,
+    message: `Nova versão ${info.version} disponível! Baixando atualização...`,
+  });
+});
+
+autoUpdater.on('update-not-available', () => {
+  sendUpdateStatus({
+    status: 'not-available',
+    message: 'O JJKPPDB já está atualizado com a versão mais recente.',
+  });
+});
+
+autoUpdater.on('download-progress', (progress) => {
+  sendUpdateStatus({
+    status: 'downloading',
+    percent: Math.floor(progress.percent),
+    bytesPerSecond: progress.bytesPerSecond,
+    transferred: progress.transferred,
+    total: progress.total,
+    message: `Baixando atualização: ${Math.floor(progress.percent)}%`,
+  });
+});
+
+autoUpdater.on('update-downloaded', (info) => {
+  sendUpdateStatus({
+    status: 'downloaded',
+    version: info.version,
+    message: `Versão ${info.version} pronta! Reinicie para atualizar.`,
+  });
+});
+
+autoUpdater.on('error', (err) => {
+  sendUpdateStatus({
+    status: 'error',
+    message: err.message || 'Não foi possível verificar atualizações no momento.',
+  });
+});
+
+ipcMain.handle('updater:check', async () => {
+  if (isDev) {
+    return { success: true, message: 'Atualizações desativadas em ambiente de desenvolvimento.' };
+  }
+  try {
+    const result = await autoUpdater.checkForUpdates();
+    return { success: true, updateInfo: result?.updateInfo };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('updater:install', () => {
+  autoUpdater.quitAndInstall(false, true);
+  return { success: true };
+});
+
 app.whenReady().then(() => {
   createWindow();
+
+  // Check for updates silently on startup after 3 seconds
+  if (!isDev) {
+    setTimeout(() => {
+      autoUpdater.checkForUpdates().catch(() => {});
+    }, 3000);
+  }
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

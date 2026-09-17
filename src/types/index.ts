@@ -133,6 +133,17 @@ export interface TimelineEvent {
 
 export type ActiveTab = 'home' | 'characters' | 'memories' | 'tierlist' | 'teams' | 'releases' | 'timeline';
 
+export interface UpdaterStatus {
+  status: 'checking' | 'available' | 'not-available' | 'downloading' | 'downloaded' | 'error';
+  version?: string;
+  releaseDate?: string;
+  percent?: number;
+  bytesPerSecond?: number;
+  transferred?: number;
+  total?: number;
+  message?: string;
+}
+
 declare global {
   interface Window {
     electronAPI?: {
@@ -145,6 +156,9 @@ declare global {
       openFile: (
         filters?: Array<{ name: string; extensions: string[] }>
       ) => Promise<{ success: boolean; content?: string; filePath?: string; canceled?: boolean; error?: string }>;
+      checkForUpdates?: () => Promise<{ success: boolean; updateInfo?: unknown; error?: string; message?: string }>;
+      installUpdate?: () => Promise<{ success: boolean }>;
+      onUpdateStatus?: (callback: (status: UpdaterStatus) => void) => () => void;
     };
   }
 }
