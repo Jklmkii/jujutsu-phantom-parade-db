@@ -17,7 +17,8 @@
     "pack:win": "electron-builder --win --x64",
     "electron:build": "tsc -b && vite build && electron-builder --win --x64",
     "build:exe": "node scripts/build_exe.cjs",
-    "thumbs": "electron scripts/generate_static_thumbs.cjs"
+    "thumbs": "electron scripts/generate_static_thumbs.cjs",
+    "sync": "node scripts/sync_new_content.cjs"
   },
   "build": {
     "appId": "com.jjkppdb.offline",

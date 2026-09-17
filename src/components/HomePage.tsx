@@ -25,19 +25,24 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectCharacter,
   onNavigate 
 }) => {
-  // Select top featured recent units for the Hero Carousel
+  // Helper to parse DD-MM-YYYY or DD/MM/YYYY into timestamp
+  const parseDate = (str?: string): number => {
+    if (!str) return 0;
+    const parts = str.replace(/\//g, '-').split('-');
+    if (parts.length === 3) {
+      const d = parseInt(parts[0], 10);
+      const m = parseInt(parts[1], 10) - 1;
+      const y = parseInt(parts[2], 10);
+      return new Date(y, m, d).getTime();
+    }
+    return 0;
+  };
+
+  // Select top 8 most recently released characters in JP
   const featuredUnits = React.useMemo(() => {
-    return characters.filter((c) => 
-      c.rarity === 'SSR' && 
-      (c.title.includes('Haibara') || 
-       c.title.includes('Geto') || 
-       c.title.includes('Zone') || 
-       c.title.includes('Maximum') ||
-       c.title.includes('Awakening') ||
-       c.title.includes('Melting') ||
-       c.title.includes('Smash') ||
-       c.title.includes('Mahito'))
-    ).slice(0, 6);
+    return [...characters]
+      .sort((a, b) => parseDate(b.release_date) - parseDate(a.release_date))
+      .slice(0, 8);
   }, [characters]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -88,11 +93,16 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Left Info */}
             <div className="space-y-4 max-w-xl z-10">
               <div className="space-y-1">
-                {currentUnit.epithet && (
-                  <p className="text-xs md:text-sm font-bold tracking-wider uppercase text-red-400">
-                    {currentUnit.epithet}
-                  </p>
-                )}
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-600/30 text-red-400 border border-red-500/40">
+                    Recente JP #{currentIndex + 1}
+                  </span>
+                  {currentUnit.epithet && (
+                    <p className="text-xs md:text-sm font-bold tracking-wider uppercase text-red-400">
+                      {currentUnit.epithet}
+                    </p>
+                  )}
+                </div>
                 <h1 className="text-3xl md:text-5xl font-black text-white font-serif tracking-tight drop-shadow-lg">
                   {currentUnit.name.toUpperCase()}
                 </h1>
@@ -111,7 +121,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               {currentUnit.release_date && currentUnit.release_date !== 'N/A' && (
                 <p className="text-xs text-gray-400">
-                  Lançamento oficial: <span className="text-gray-200 font-semibold">{currentUnit.release_date}</span>
+                  Lançamento no Japão: <span className="text-gray-200 font-semibold">{currentUnit.release_date}</span>
                 </p>
               )}
 
