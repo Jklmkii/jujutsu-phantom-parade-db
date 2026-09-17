@@ -65,6 +65,8 @@ export interface Character {
   affiliation: string;
   release_date: string;
   limited: boolean;
+  in_pool?: boolean;
+  pool_status?: 'in_pool' | 'waiting' | 'limited';
   sp?: boolean;
   tags?: string[];
   stats: CharacterStats;

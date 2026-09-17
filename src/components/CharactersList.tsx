@@ -57,8 +57,8 @@ export const CharactersList: React.FC<CharactersListProps> = ({
   const [filterSP, setFilterSP] = useState<boolean>(false);
   const [filterLimited, setFilterLimited] = useState<boolean>(false);
 
-  // Standard Pool: 'ALL' | 'IN_POOL' | 'NOT_IN_POOL'
-  const [poolFilter, setPoolFilter] = useState<'ALL' | 'IN_POOL' | 'NOT_IN_POOL'>('ALL');
+  // Standard Pool: 'ALL' | 'IN_POOL' | 'WAITING' | 'NOT_IN_POOL'
+  const [poolFilter, setPoolFilter] = useState<'ALL' | 'IN_POOL' | 'WAITING' | 'NOT_IN_POOL'>('ALL');
 
   // Tags: Multi-select
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -117,10 +117,13 @@ export const CharactersList: React.FC<CharactersListProps> = ({
       }
 
       // 7. Standard Pool
-      if (poolFilter === 'IN_POOL' && char.limited) {
+      if (poolFilter === 'IN_POOL' && !char.in_pool) {
         return false;
       }
-      if (poolFilter === 'NOT_IN_POOL' && !char.limited) {
+      if (poolFilter === 'WAITING' && char.pool_status !== 'waiting') {
+        return false;
+      }
+      if (poolFilter === 'NOT_IN_POOL' && char.in_pool) {
         return false;
       }
 
@@ -355,35 +358,58 @@ export const CharactersList: React.FC<CharactersListProps> = ({
 
           {/* 5. Standard Pool */}
           <div className="space-y-2">
-            <label className="text-xs font-bold text-gray-400 block tracking-wide">
-              Standard Pool
-            </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-gray-400 block tracking-wide">
+                Standard Pool
+              </label>
+              {poolFilter !== 'ALL' && (
+                <span className="text-[10px] font-mono text-purple-300">
+                  {poolFilter === 'IN_POOL' ? '72 no pool' : poolFilter === 'WAITING' ? '16 aguardando' : '37 fora'}
+                </span>
+              )}
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
               <button
                 onClick={() => {
                   playClick();
                   setPoolFilter(poolFilter === 'IN_POOL' ? 'ALL' : 'IN_POOL');
                 }}
-                className={`py-1.5 rounded-full text-xs font-bold border transition-all cursor-pointer ${
+                className={`py-1.5 px-1 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
                   poolFilter === 'IN_POOL'
-                    ? 'bg-cyan-950/70 border-cyan-400 text-cyan-300 ring-2 ring-cyan-500/40 shadow-sm shadow-cyan-500/20'
+                    ? 'bg-cyan-950/80 border-cyan-400 text-cyan-300 ring-2 ring-cyan-500/40 shadow-sm shadow-cyan-500/20'
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-cyan-500/40'
                 }`}
+                title="Personagens que já entraram oficialmente na rotação permanente do banner padrão"
               >
                 In Pool
               </button>
               <button
                 onClick={() => {
                   playClick();
+                  setPoolFilter(poolFilter === 'WAITING' ? 'ALL' : 'WAITING');
+                }}
+                className={`py-1.5 px-1 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
+                  poolFilter === 'WAITING'
+                    ? 'bg-amber-950/80 border-amber-400 text-amber-300 ring-2 ring-amber-500/40 shadow-sm shadow-amber-500/20'
+                    : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-amber-500/40'
+                }`}
+                title="Banner padrão mas que ainda não entraram no pool permanente (Kenjaku, Kusakabe, Megumi Coelho, etc.)"
+              >
+                Aguardando
+              </button>
+              <button
+                onClick={() => {
+                  playClick();
                   setPoolFilter(poolFilter === 'NOT_IN_POOL' ? 'ALL' : 'NOT_IN_POOL');
                 }}
-                className={`py-1.5 rounded-full text-xs font-bold border transition-all cursor-pointer ${
+                className={`py-1.5 px-1 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
                   poolFilter === 'NOT_IN_POOL'
-                    ? 'bg-pink-950/70 border-pink-400 text-pink-300 ring-2 ring-pink-500/40 shadow-sm shadow-pink-500/20'
+                    ? 'bg-pink-950/80 border-pink-400 text-pink-300 ring-2 ring-pink-500/40 shadow-sm shadow-pink-500/20'
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-pink-500/40'
                 }`}
+                title="Todos os personagens que atualmente não estão no pool permanente (Aguardando + Limitados)"
               >
-                Not in Pool
+                Fora Pool
               </button>
             </div>
           </div>
@@ -520,6 +546,11 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                         {char.limited && (
                           <span className="px-1.5 py-0 rounded text-[9px] font-extrabold bg-red-950/90 text-red-300 border border-red-500/50">
                             LIM
+                          </span>
+                        )}
+                        {char.pool_status === 'waiting' && (
+                          <span className="px-1.5 py-0 rounded text-[9px] font-extrabold bg-amber-950/90 text-amber-300 border border-amber-500/50 shadow-sm" title="Aguardando inclusão no Pool Padrão">
+                            WAIT
                           </span>
                         )}
                         {char.sp && (

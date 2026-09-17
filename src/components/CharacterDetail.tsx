@@ -225,7 +225,19 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                   SP
                 </span>
               )}
-              {character.limited && <TagBadge label="Limitado" variant="default" />}
+              {character.limited ? (
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-950/80 text-red-300 border border-red-500/50">
+                  Limitado
+                </span>
+              ) : character.pool_status === 'waiting' ? (
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-950/80 text-amber-300 border border-amber-500/50" title="Banner Padrão: Aguardando adição ao Pool Permanente">
+                  ⏳ Padrão (Aguardando Pool)
+                </span>
+              ) : (
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/50">
+                  ✓ No Pool Padrão
+                </span>
+              )}
             </div>
 
             {/* Combat Tags */}
@@ -252,6 +264,19 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                   📅 Lançamento: {character.release_date}
                 </span>
               )}
+              <span className={`px-3 py-1 rounded-full border ${
+                character.limited
+                  ? 'bg-red-950/40 border-red-800/40 text-red-300'
+                  : character.pool_status === 'waiting'
+                  ? 'bg-amber-950/40 border-amber-800/40 text-amber-300'
+                  : 'bg-emerald-950/40 border-emerald-800/40 text-emerald-300'
+              }`}>
+                {character.limited
+                  ? '🚫 Banner Limitado (Exclusivo)'
+                  : character.pool_status === 'waiting'
+                  ? '⏳ Banner Padrão (Aguardando Entrada no Pool)'
+                  : '✨ Disponível no Pool Padrão Permanente'}
+              </span>
             </div>
           </div>
         </div>

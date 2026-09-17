@@ -152,7 +152,9 @@
       "Stat Buffer",
       "Heal"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
@@ -340,7 +342,9 @@
       "DMG Debuffer",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_A_Bad_Match__Nobara_Kugisaki",
@@ -507,7 +511,9 @@
       "ATK Down",
       "Black Flash"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_A_Clever_Bullet__Mai_Zen_in",
@@ -661,7 +667,9 @@
     "tags": [
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
@@ -869,7 +877,9 @@
       "Counter",
       "BF Rate Up"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Aerial_Reconnaissance__Momo_Nishimiya",
@@ -1024,7 +1034,9 @@
       "DMG Buffer",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Are_you_satisfied_with_that___Aoi_Todo",
@@ -1270,7 +1282,9 @@
       "Stat Buffer",
       "Counter"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Ariadne_s_Thread_Educator__Masamichi_Yaga",
@@ -1413,7 +1427,9 @@
       "DMG Debuffer",
       "ATK Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Awakening__Satoru_Gojo__Teen_",
@@ -1653,7 +1669,9 @@
       "Counter",
       "Revival"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Background_Support__Kiyotaka_Ijichi",
@@ -1796,7 +1814,9 @@
       "DMG Reduction",
       "ULT Charge"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Battle_of_firepower__Ryomen_Sukuna",
@@ -1988,7 +2008,9 @@
       "DMG Debuffer",
       "Counter"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Blast_From_The_Past__Aoi_Todo",
@@ -2149,7 +2171,9 @@
       "Counter",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Blood_Borne_Resolve__Noritoshi_Kamo",
@@ -2330,7 +2354,9 @@
     "tags": [
       "Stat Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Blood_of_the_Big_Three_Families__Noritoshi_Kamo",
@@ -2484,7 +2510,9 @@
     "tags": [
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Bond_of_Friendship__Megumi_Fushiguro",
@@ -2682,7 +2710,9 @@
       "DMG Debuffer",
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Burning_Passion__Yu_Haibara",
@@ -2877,7 +2907,9 @@
       }
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Chain_Mark__Full_Throttle__Eiji_Urushi",
@@ -3123,7 +3155,9 @@
       "DMG Debuffer",
       "Crit RES Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Crafty_Rock__Yoshinobu_Gakuganji",
@@ -3289,7 +3323,9 @@
       "Stun",
       "ULT Count Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Crushed_With_Speed__Naobito_Zen_in",
@@ -3466,7 +3502,9 @@
       "Break Debuffer",
       "Stat Buffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Cursed_Corpse_Battle__Masamichi_Yaga",
@@ -3625,7 +3663,9 @@
       "DMG Buffer",
       "Stat Buffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Cursed_Energy_Catastrophe__Saki_Rindo",
@@ -3766,7 +3806,9 @@
     "tags": [
       "Taunt"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Cursed_Energy_Flashes_Black__Yuji_Itadori",
@@ -3943,7 +3985,9 @@
       "Black Flash",
       "Crit RES Down"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Cursed_Energy_Melody__Yoshinobu_Gakuganji",
@@ -4085,7 +4129,9 @@
       "Stat Debuffer",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Cursed_Power_of_Words__Toge_Inumaki",
@@ -4228,7 +4274,9 @@
       "ULT Charge",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Cursed_Technique_Boost__Kaito_Yuki",
@@ -4371,7 +4419,9 @@
       "Energy Recovery",
       "Stat Buffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Delayed_Quota__Miguel",
@@ -4533,7 +4583,9 @@
       "Taunt",
       "Stat Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Determined_Counter__Kasumi_Miwa",
@@ -4694,7 +4746,9 @@
       "Taunt",
       "Counter"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Don_t_Look_Down_On_Me__Momo_Nishimiya",
@@ -4849,7 +4903,9 @@
       "Crit RES Down",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Don_t_Underestimate_A_Puppet__Panda",
@@ -5068,7 +5124,9 @@
       "Revival",
       "Taunt"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Early_Morning_Departure__Maki_Zen_in",
@@ -5230,7 +5288,9 @@
       }
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Effective_Range__Mai_Zen_in",
@@ -5406,7 +5466,9 @@
       "Crit RES Down",
       "Break Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Enjoying_The_Cool_Summer_Breeze__Megumi_Fushiguro",
@@ -5564,7 +5626,9 @@
       "Crit RES Down",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Ex-Office_Worker_Turned_Jujutsu_Sorcerer__Kento_Nanami",
@@ -5719,7 +5783,9 @@
       "DMG Buffer",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Executioner__Yuta_Okkotsu",
@@ -5885,7 +5951,9 @@
       "DMG Debuffer",
       "Heal"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_First-Grade_Sorcerer_s_Skill__Kento_Nanami",
@@ -6083,7 +6151,9 @@
       "DMG Buffer",
       "Crit RES Down"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Fulfilling_His_Duty_as_the_Older_Brother__Choso",
@@ -6303,7 +6373,9 @@
       "DoT",
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Genuine_Jujutsu__Ryomen_Sukuna",
@@ -6518,7 +6590,9 @@
       "DMG Debuffer",
       "Domain"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Girl_Of_Steel__Nobara_Kugisaki",
@@ -6690,7 +6764,9 @@
       "Crit RES Down",
       "Stat Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Heart_s_Resolve__Saki_Rindo",
@@ -6861,7 +6937,9 @@
       "Taunt",
       "Revival"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Hollow_Purple__Satoru_Gojo",
@@ -7038,7 +7116,9 @@
       "ULT Count Down",
       "ATK Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_I_ve_Seen_It_All__Kokichi_Muta",
@@ -7202,7 +7282,9 @@
     "tags": [
       "ULT Count Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Incomplete_Domain__Megumi_Fushiguro",
@@ -7397,7 +7479,9 @@
       "Stat Debuffer",
       "DMG Dealt Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Indomitable_Auspicious_Beasts__Takuma_Ino",
@@ -7592,7 +7676,9 @@
       "Crit RES Down",
       "DMG Buffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Infuse_Your_Cursed_Energy__Yuji_Itadori",
@@ -7656,7 +7742,9 @@
         "name": "Zone, Outburst",
         "description": "When Black Flash is performed,\nDecreases Skills' Cursed Energy cost by 10 (5 Turns)"
       }
-    ]
+    ],
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Inherited_Cursed_Technique__Megumi_Fushiguro",
@@ -7821,7 +7909,9 @@
       "Stun",
       "DMG Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Innate_Talent__Maki_Zen_in",
@@ -7962,7 +8052,9 @@
     "tags": [
       "Crit RES Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Inspiration_From__Death___Mahito",
@@ -8172,7 +8264,9 @@
       "Domain",
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Just_Bring_It__Saki_Rindo",
@@ -8326,7 +8420,9 @@
     "tags": [
       "Taunt"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Keep_Hammering_At_Them__Nobara_Kugisaki",
@@ -8490,7 +8586,9 @@
     "tags": [
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Lend_Me_Your_Power__Yuta_Okkotsu",
@@ -8689,7 +8787,9 @@
       "Counter",
       "Black Flash"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Life_Saver__Shoko_Ieiri",
@@ -8847,7 +8947,9 @@
       "DMG Buffer",
       "ULT Charge"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Longsword_Battle__Maki_Zen_in",
@@ -9011,7 +9113,9 @@
     "tags": [
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Maverick_Outcast__Maki_Zen_in",
@@ -9175,7 +9279,9 @@
     "tags": [
       "ATK Down"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Maximum_Cursed_Energy_Output__Yuji_Itadori",
@@ -9416,7 +9522,9 @@
       "DMG Reduction",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
@@ -9472,7 +9580,9 @@
         "name": "Urgent Business",
         "description": "At the start of battle,\nGrants \"Urgent Business\" Status to self (8 Turns)\nGrants Taunt Immunity to self\nWhen self is leaving the battlefield, for the rest of the battle,\nGrant the following effects to all \"行\" (Yellow) allies (Including the Character on Backup):\nIncreases Taijutsu & Jujutsu Stat (Urgent Business) by 8.75% (Maximum of 50%)\nDamage Dealt (Urgent Business) by 5.25% (Maximum of 30%)\n*Effect can scale with each turn passed, up to 12 Turns"
       }
-    ]
+    ],
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Meteor_of_Fierceness__Jogo",
@@ -9650,7 +9760,9 @@
       "DMG Dealt Down",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Mode__Albatross__Ultimate_Mechamaru",
@@ -9802,7 +9914,9 @@
       }
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Need_Some_Help___Panda",
@@ -9992,7 +10106,9 @@
       "DMG Dealt Down",
       "Revival"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Night_Of_Dancing_Crows__Mei_Mei",
@@ -10146,7 +10262,9 @@
     "tags": [
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Night-Lurking_Sorcerer__Toge_Inumaki",
@@ -10302,7 +10420,9 @@
       "Stat Debuffer",
       "ULT Charge"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Nimble_Body__Yuji_Itadori",
@@ -10478,7 +10598,9 @@
       "Stat Debuffer",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_No_Conceit__Takuma_Ino",
@@ -10657,7 +10779,9 @@
       }
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Panda_Is_Not_A_Panda__Panda",
@@ -10798,7 +10922,9 @@
     "tags": [
       "Taunt"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Pick_Up_After_Hard_Work__Kiyotaka_Ijichi",
@@ -10955,7 +11081,9 @@
       "ULT Charge",
       "DMG Reduction"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Pivotal_Guardian__Masamichi_Yaga",
@@ -11112,7 +11240,9 @@
       "Crit RES Down",
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Pride_Of_A_Cursed_Spirit__Jogo",
@@ -11277,7 +11407,9 @@
       "DoT",
       "Domain"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Promising_New_Student__Kento_Nanami__Teen_",
@@ -11443,7 +11575,9 @@
       "Break Debuffer",
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Queen_of_Curses__Yuta_Okkotsu",
@@ -11659,7 +11793,9 @@
       "DMG Debuffer",
       "Counter"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Rabbit_s_Disruption__Megumi_Fushiguro",
@@ -11846,7 +11982,9 @@
     "tags": [
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Ratio_Technique__Kento_Nanami",
@@ -12014,7 +12152,9 @@
       "Stun",
       "DMG Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Reckless_Grade_1__Aoi_Todo",
@@ -12172,7 +12312,9 @@
       }
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Resolved_Cursed_Speech__Toge_Inumaki",
@@ -12336,7 +12478,9 @@
     "tags": [
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Reverse_Cursed_Technique__Shoko_Ieiri",
@@ -12478,7 +12622,9 @@
       "Heal",
       "Crit RES Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Seance__Toji_Fushiguro",
@@ -12649,7 +12795,9 @@
     "tags": [
       "DoT"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Shatter_To_Pieces__Toge_Inumaki",
@@ -12803,7 +12951,9 @@
     "tags": [
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Silent_Suppression__Kento_Nanami",
@@ -13010,7 +13160,9 @@
       "Revival",
       "Counter"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
@@ -13191,7 +13343,9 @@
       "Black Flash",
       "DMG Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Sprinting__Kasumi_Miwa",
@@ -13410,7 +13564,9 @@
       "Taunt",
       "Crit Buffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Step_back__third-rate__Uraume",
@@ -13612,7 +13768,9 @@
       "Break Debuffer",
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Striking_Eternal_Summer__Nobara_Kugisaki",
@@ -13786,7 +13944,9 @@
     "tags": [
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Sukuna_s_Vessel__Yuji_Itadori",
@@ -13940,7 +14100,9 @@
     "tags": [
       "Taunt"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Sword_Option__Ultimate_Mechamaru",
@@ -14118,7 +14280,9 @@
       "Taunt",
       "DMG Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Take_The_Shortest_Way__Panda",
@@ -14274,7 +14438,9 @@
       "Stat Debuffer",
       "Revival"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Team_Up_If_They_Are_Weak__Maki_Zen_in",
@@ -14417,7 +14583,9 @@
       "ATK Down",
       "Break Buffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Baton_Of_Counterattack__Toge_Inumaki",
@@ -14573,7 +14741,9 @@
       "DMG Debuffer",
       "Taunt"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Final_Bullet__Mai_Zen_in",
@@ -14737,7 +14907,9 @@
     "tags": [
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Golden_Age_of_Jujutsu__Noritoshi_Kamo",
@@ -14942,7 +15114,9 @@
       "ATK Down",
       "Break Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_The_Resolve_Of_Being_A_Sorcerer__Kaito_Yuki",
@@ -15083,7 +15257,9 @@
     "tags": [
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Sorcerer_Killer__Toji_Fushiguro",
@@ -15247,7 +15423,9 @@
     "tags": [
       "Crit RES Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Strongest_Blue__Satoru_Gojo__Teen_",
@@ -15429,7 +15607,9 @@
       "Taunt",
       "DMG Dealt Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Strongest__Satoru_Gojo",
@@ -15603,7 +15783,9 @@
     "tags": [
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_The_Thrill_Of_The_Fight__Hanami",
@@ -15768,7 +15950,9 @@
       "Domain",
       "DMG Dealt Down"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_This_Is_Justice__Suguru_Geto",
@@ -15939,7 +16123,9 @@
       "Stat Debuffer",
       "DMG Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_To_Protect_Non-Sorcerers__Suguru_Geto__Teen_",
@@ -16103,7 +16289,9 @@
     "tags": [
       "Stat Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_To_Stay_True_To_Myself__Nobara_Kugisaki",
@@ -16242,7 +16430,9 @@
       0
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Tool_Manipulation__Momo_Nishimiya",
@@ -16411,7 +16601,9 @@
       "Break Debuffer",
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_Unbridled_Soul__Mahito",
@@ -16665,7 +16857,9 @@
       "Break Debuffer",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Unfair_Salvation__Megumi_Fushiguro",
@@ -16806,7 +17000,9 @@
     "tags": [
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Unlimited_Shikigami__Dagon",
@@ -17012,7 +17208,9 @@
       "Stun",
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Value_Of_Life__Junpei_Yoshino",
@@ -17166,7 +17364,9 @@
     "tags": [
       "DoT"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Ward_off_with_Sharp_Blade__Atsuya_Kusakabe",
@@ -17369,7 +17569,9 @@
       "DMG Reduction",
       "DMG Buffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_What_Lies_at_the_End__Suguru_Geto__Teen_",
@@ -17541,7 +17743,9 @@
       }
     ],
     "tags": [],
-    "sp": false
+    "sp": false,
+    "pool_status": "waiting",
+    "in_pool": false
   },
   {
     "id": "_With_Takada-Chan__Aoi_Todo",
@@ -17713,7 +17917,9 @@
       "Black Flash",
       "Revival"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_With_That_Will_In_Mind__Kaito_Yuki",
@@ -17872,7 +18078,9 @@
       "DMG Dealt Down",
       "Stun"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Within_Infinity__Satoru_Gojo",
@@ -18052,7 +18260,9 @@
       "Crit RES Down",
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   },
   {
     "id": "_Working_Overtime__Kento_Nanami",
@@ -18218,7 +18428,9 @@
       "Crit RES Down",
       "DMG Debuffer"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Young_Fish_And_Reverse_Punishment__Junpei_Yoshino",
@@ -18409,7 +18621,9 @@
       "DMG Reduction",
       "Stat Buffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Zanshin__Kasumi_Miwa",
@@ -18588,7 +18802,9 @@
       "Stat Buffer",
       "Stat Debuffer"
     ],
-    "sp": true
+    "sp": true,
+    "pool_status": "in_pool",
+    "in_pool": true
   },
   {
     "id": "_Zone__Yuji_Itadori",
@@ -18785,6 +19001,8 @@
     "tags": [
       "Black Flash"
     ],
-    "sp": false
+    "sp": false,
+    "pool_status": "limited",
+    "in_pool": false
   }
 ]
