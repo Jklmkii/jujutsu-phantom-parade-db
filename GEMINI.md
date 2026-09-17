@@ -34,3 +34,11 @@ O propósito central desta regra é **poupar a cota e os tokens do Antigravity**
 Ao despachar uma tarefa para a Jules:
 - Enviar apenas a descrição do sintoma observável, arquivo provável e comportamento esperado ("o quê", não "como").
 - Não enviar código pronto para colar nem diffs prévios.
+
+---
+
+## 5. Notificação Mandatória de Complexidade e Roteamento ao Usuário
+A cada solicitação ou tarefa processada, o Antigravity **DEVE sempre informar expressamente** no corpo de sua resposta ao usuário:
+1. O **Nível de Dificuldade / Complexidade** avaliado (`Baixa`, `Média`, `Média-Alta` ou `Alta`), baseado estritamente na matriz da Seção 1.
+2. O **Agente Responsável** (`Jules AI` via API ou `Antigravity` local) e a justificativa técnica clara do roteamento, permitindo que o usuário confira e audite a conformidade da governança agêntica.
+
