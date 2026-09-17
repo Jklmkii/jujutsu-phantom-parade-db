@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
-import type { Character } from '../types';
+import type { Character, OfficialTierCategory } from '../types';
 import { useJjkStore } from '../store/useJjkStore';
 import { ElementBadge } from './Badges';
-import { Award, RotateCcw, Search, X, GripVertical, Trash2 } from 'lucide-react';
-import { playClick } from '../utils/sound';
-import { getAssetUrl, getStaticThumbUrl } from '../utils/assets';
+import { 
+  Award, 
+  RotateCcw, 
+  Search, 
+  X, 
+  GripVertical, 
+  Trash2, 
+  Sparkles, 
+  Sliders, 
+  Copy, 
+  Flame, 
+  Moon, 
+  Ghost, 
+  Skull, 
+  Sword, 
+  ShieldCheck, 
+  Star 
+} from 'lucide-react';
+import { playClick, playSelect } from '../utils/sound';
+import { getAssetPath, getStaticThumbUrl } from '../utils/assets';
+import officialTierlistsData from '../data/tierlists.json';
 
 interface TierlistMakerProps {
   characters: Character[];
   onSelectCharacter: (char: Character) => void;
 }
 
+type ViewMode = 'official' | 'custom';
+
 export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSelectCharacter }) => {
   const { tierList, setTierForChar, removeTierForChar, resetTierList } = useJjkStore();
+  const [viewMode, setViewMode] = useState<ViewMode>('official');
+  const [selectedOfficialCat, setSelectedOfficialCat] = useState<string>('damage');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTier, setActiveTier] = useState<string>('S+');
   const [draggedCharId, setDraggedCharId] = useState<string | null>(null);
   const [dragOverTier, setDragOverTier] = useState<string | null>(null);
   const [isDragOverUnrank, setIsDragOverUnrank] = useState<boolean>(false);
+
+  const officialCategories = officialTierlistsData as OfficialTierCategory[];
+  const currentOfficial = officialCategories.find(c => c.id === selectedOfficialCat) || officialCategories[0];
 
   const TIERS = [
     { id: 'S+', label: 'S+', color: 'bg-red-600/20 border-red-500 text-red-300', badgeColor: 'bg-red-600' },
@@ -27,10 +52,34 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
     { id: 'C', label: 'C', color: 'bg-emerald-600/20 border-emerald-500 text-emerald-300', badgeColor: 'bg-emerald-600' },
   ];
 
-  // Default pre-filled meta tierlist if empty
+  const getRankBadgeStyle = (rank: string) => {
+    switch (rank) {
+      case 'S+': return 'bg-gradient-to-r from-red-600 to-rose-600 text-white border-red-400';
+      case 'S': return 'bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-black border-amber-300';
+      case 'A': return 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-purple-400';
+      case 'B': return 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-blue-400';
+      case 'C': return 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-emerald-400';
+      case 'D': return 'bg-gradient-to-r from-gray-600 to-slate-700 text-gray-200 border-gray-500';
+      default: return 'bg-purple-900 text-purple-200 border-purple-700';
+    }
+  };
+
+  const getCategoryIcon = (id: string) => {
+    switch (id) {
+      case 'damage': return <Sword className="w-4 h-4 text-rose-400" />;
+      case 'support': return <ShieldCheck className="w-4 h-4 text-emerald-400" />;
+      case 'sp': return <Star className="w-4 h-4 text-yellow-400" />;
+      case 'blue': return <Moon className="w-4 h-4 text-blue-400" />;
+      case 'red': return <Flame className="w-4 h-4 text-red-400" />;
+      case 'green': return <Ghost className="w-4 h-4 text-emerald-400" />;
+      case 'yellow': return <Skull className="w-4 h-4 text-amber-400" />;
+      default: return <Award className="w-4 h-4 text-purple-400" />;
+    }
+  };
+
+  // Seed default custom tierlist if empty
   React.useEffect(() => {
     if (Object.keys(tierList).length === 0) {
-      // Seed some meta units
       characters.forEach((c) => {
         if (c.title.includes('0.2-Second') || c.title.includes('Hollow Purple') || c.title.includes('Queen of Curses') || c.title.includes('Zone')) {
           setTierForChar(c.id, 'S+');
@@ -44,6 +93,18 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
       });
     }
   }, [characters, tierList, setTierForChar]);
+
+  const cloneOfficialToCustom = (cat: OfficialTierCategory) => {
+    playSelect();
+    resetTierList();
+    cat.tiers.forEach(rankObj => {
+      const targetRank = rankObj.rank === 'D' ? 'C' : rankObj.rank;
+      rankObj.slots.forEach(slot => {
+        setTierForChar(slot.characterId, targetRank);
+      });
+    });
+    setViewMode('custom');
+  };
 
   const getCharactersInTier = (tierId: string) => {
     return characters.filter((c) => tierList[c.id] === tierId);
@@ -94,266 +155,402 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
-      {/* Header */}
+      {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#251b40] pb-6">
         <div>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
+              JJKPPDB Official Meta
+            </span>
+          </div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight flex items-center gap-3">
-            <Award className="w-7 h-7 text-yellow-400" />
-            TIER LIST INTERATIVA (RANKING DE FEITICEIROS)
+            <Award className="w-8 h-8 text-yellow-400" />
+            TIER LISTS OFICIAIS & RANKINGS
           </h1>
-          <p className="text-sm text-gray-400">
-            Arraste e solte os personagens livremente entre as linhas de tier ou clique para adicionar.
+          <p className="text-sm text-gray-400 mt-1">
+            Consulte os rankings oficiais do JJKPPDB por Categoria / Elemento ou monte sua própria classificação interativa.
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Mode Switcher */}
+        <div className="flex items-center gap-2 bg-[#120d26] p-1.5 rounded-xl border border-[#2b1f4c]">
           <button
-            onClick={resetTierList}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a1333] hover:bg-red-950 text-gray-300 hover:text-red-300 border border-[#2d2250] hover:border-red-500/40 text-xs font-bold transition-all"
+            onClick={() => {
+              playClick();
+              setViewMode('official');
+            }}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              viewMode === 'official'
+                ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/40'
+                : 'text-gray-400 hover:text-white'
+            }`}
           >
-            <RotateCcw className="w-4 h-4" />
-            <span>Resetar Tier List</span>
+            <Sparkles className="w-4 h-4" />
+            Oficiais (JJKPPDB)
+          </button>
+          <button
+            onClick={() => {
+              playClick();
+              setViewMode('custom');
+            }}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+              viewMode === 'custom'
+                ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/40'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            <Sliders className="w-4 h-4" />
+            Criador Customizado
           </button>
         </div>
       </div>
 
-      {/* Drop Zone to remove / unrank character (Shown while dragging an already ranked unit) */}
-      {draggedCharId && isDraggedRanked && (
-        <div
-          onDragOver={(e) => {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            if (!isDragOverUnrank) setIsDragOverUnrank(true);
-          }}
-          onDragLeave={(e) => {
-            if (e.currentTarget.contains(e.relatedTarget as Node)) return;
-            setIsDragOverUnrank(false);
-          }}
-          onDrop={handleDropOnUnrank}
-          className={`p-4 rounded-2xl border-2 border-dashed flex items-center justify-center gap-3 transition-all duration-200 ${
-            isDragOverUnrank
-              ? 'bg-red-950/60 border-red-500 text-red-200 scale-[1.01] shadow-[0_0_20px_rgba(239,68,68,0.4)]'
-              : 'bg-red-950/20 border-red-500/40 text-red-300/80 hover:border-red-400'
-          }`}
-        >
-          <Trash2 className="w-5 h-5 animate-pulse text-red-400" />
-          <span className="text-sm font-bold tracking-wide">
-            Solte aqui para remover "{draggedChar?.name}" do tier e mover para não classificados
-          </span>
-        </div>
-      )}
-
-      {/* Tier Rows */}
-      <div className="space-y-4">
-        {TIERS.map((tier) => {
-          const charsInTier = getCharactersInTier(tier.id);
-          const isOver = dragOverTier === tier.id;
-
-          return (
-            <div
-              key={tier.id}
-              onDragOver={(e) => {
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'move';
-                if (dragOverTier !== tier.id) setDragOverTier(tier.id);
-              }}
-              onDragLeave={(e) => {
-                if (e.currentTarget.contains(e.relatedTarget as Node)) return;
-                if (dragOverTier === tier.id) setDragOverTier(null);
-              }}
-              onDrop={(e) => handleDropOnTier(e, tier.id)}
-              className={`rounded-2xl border-2 flex flex-col md:flex-row overflow-hidden bg-[#120e24] ${tier.color} transition-all duration-200 ${
-                isOver ? 'ring-2 ring-purple-400 border-purple-400 bg-purple-950/40 shadow-[0_0_25px_rgba(168,85,247,0.35)] scale-[1.008]' : ''
-              }`}
-            >
-              {/* Tier Header / Badge */}
-              <div className={`w-full md:w-28 min-h-[90px] ${tier.badgeColor} flex flex-col items-center justify-center p-4 text-center shadow-lg select-none`}>
-                <span className="text-3xl font-black text-white font-mono drop-shadow">
-                  {tier.label}
-                </span>
-                <span className="text-[10px] font-bold text-white/80 mt-0.5">
-                  ({charsInTier.length})
-                </span>
-              </div>
-
-              {/* Characters inside this tier */}
-              <div className="flex-1 p-3 flex flex-wrap gap-2.5 items-center min-h-[90px] bg-[#0c0818]/60 relative">
-                {charsInTier.length === 0 ? (
-                  <div className="w-full flex items-center justify-center py-4 text-xs text-gray-500 italic">
-                    {isOver ? (
-                      <span className="text-purple-300 font-bold animate-pulse">
-                        Solte o personagem para adicionar ao Tier {tier.label}
-                      </span>
-                    ) : (
-                      <span>Arraste personagens para cá ou selecione na lista abaixo</span>
-                    )}
-                  </div>
-                ) : (
-                  charsInTier.map((c) => (
-                    <div
-                      key={c.id}
-                      draggable={true}
-                      onDragStart={(e) => handleDragStart(e, c.id)}
-                      onDragEnd={handleDragEnd}
-                      className={`group relative w-16 h-16 rounded-xl overflow-hidden border border-purple-500/40 bg-[#090612] cursor-grab active:cursor-grabbing hover:scale-105 transition-all select-none ${
-                        draggedCharId === c.id ? 'opacity-30 scale-95 border-dashed border-purple-300' : ''
-                      }`}
-                      title={`${c.title} (Arraste para mudar de tier, clique duas vezes para ver detalhes)`}
-                    >
-                      <img
-                        src={getStaticThumbUrl(c.image)}
-                        alt={c.title}
-                        onClick={() => onSelectCharacter(c)}
-                        className="w-full h-full object-cover pointer-events-none"
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          if (!target.dataset.fallback) {
-                            target.dataset.fallback = 'true';
-                            target.src = getAssetUrl(c.image);
-                          } else {
-                            target.src = getAssetUrl();
-                          }
-                        }}
-                      />
-                      <div className="absolute top-0.5 right-0.5 pointer-events-none">
-                        <ElementBadge element={c.element} showLabel={false} className="scale-[0.65]" />
-                      </div>
-
-                      {/* Grip indicator on hover */}
-                      <div className="absolute bottom-0.5 left-0.5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 rounded p-0.5">
-                        <GripVertical className="w-2.5 h-2.5 text-white/80" />
-                      </div>
-
-                      {/* Quick delete button */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          removeTierForChar(c.id);
-                          playClick();
-                        }}
-                        className="absolute top-0.5 left-0.5 p-0.5 rounded-full bg-black/80 hover:bg-red-600 text-gray-300 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                        title="Remover do tier"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Unranked Roster Selector */}
-      {unrankedCharacters.length > 0 && (
-        <div
-          onDragOver={(e) => {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            if (!isDragOverUnrank) setIsDragOverUnrank(true);
-          }}
-          onDragLeave={(e) => {
-            if (e.currentTarget.contains(e.relatedTarget as Node)) return;
-            setIsDragOverUnrank(false);
-          }}
-          onDrop={handleDropOnUnrank}
-          className={`bg-[#120e24] border rounded-2xl p-6 space-y-4 shadow-xl transition-all duration-200 ${
-            isDragOverUnrank
-              ? 'border-purple-500 ring-2 ring-purple-500/40 bg-[#160f2f]'
-              : 'border-[#271d44]'
-          }`}
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#201838] pb-3">
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-wider text-purple-300 flex items-center gap-2">
-                <span>Personagens sem Tier ({unrankedCharacters.length})</span>
-                {draggedCharId && isDraggedRanked && (
-                  <span className="text-xs font-normal text-purple-400 bg-purple-950/60 px-2 py-0.5 rounded-md">
-                    (Solte aqui para desclassificar)
-                  </span>
-                )}
-              </h3>
-              <p className="text-xs text-gray-400">
-                Arraste o feiticeiro para qualquer tier acima, ou clique para adicionar ao tier ativo.
-              </p>
-            </div>
-
-            {/* Target Tier Selector & Search */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="relative">
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500" />
-                <input
-                  type="text"
-                  placeholder="Buscar feiticeiro..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-[#0b0817] border border-[#251b40] rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
-                />
-              </div>
-
-              <div className="flex items-center gap-1 bg-[#0b0817] p-1 rounded-xl border border-[#251b40]">
-                <span className="text-[11px] font-bold text-gray-400 px-2">Adicionar ao:</span>
-                {TIERS.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => {
-                      playClick();
-                      setActiveTier(t.id);
-                    }}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                      activeTier === t.id
-                        ? `${t.badgeColor} text-white shadow-md`
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    {t.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+      {/* ========================================================================= */}
+      {/* MODE 1: OFFICIAL JJKPPDB TIERLISTS                                        */}
+      {/* ========================================================================= */}
+      {viewMode === 'official' && (
+        <div className="space-y-6">
+          {/* Category Tabs */}
+          <div className="flex flex-wrap gap-2">
+            {officialCategories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  playClick();
+                  setSelectedOfficialCat(cat.id);
+                }}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                  selectedOfficialCat === cat.id
+                    ? 'bg-[#221644] text-white border border-purple-500/60 shadow-lg shadow-purple-950/40 ring-1 ring-purple-400/40'
+                    : 'bg-[#100b21] text-gray-400 hover:text-gray-200 border border-[#20183b]'
+                }`}
+              >
+                {getCategoryIcon(cat.id)}
+                <span>{cat.title}</span>
+              </button>
+            ))}
           </div>
 
-          <div className="flex flex-wrap gap-2.5 max-h-72 overflow-y-auto pr-1">
-            {unrankedCharacters.map((c) => (
+          {/* Active Category Description & Clone Action */}
+          <div className="bg-[#120d24] border border-[#231a40] rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                {getCategoryIcon(currentOfficial.id)}
+                {currentOfficial.title}
+              </h2>
+              <p className="text-sm text-gray-400 mt-1">{currentOfficial.description}</p>
+            </div>
+            <button
+              onClick={() => cloneOfficialToCustom(currentOfficial)}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-950/80 hover:bg-purple-900 text-purple-200 border border-purple-700/50 hover:border-purple-500 text-xs font-bold transition-all shrink-0"
+              title="Copiar esta lista para o Criador Customizado para editar à sua vontade"
+            >
+              <Copy className="w-4 h-4" />
+              Editar no Criador Customizado
+            </button>
+          </div>
+
+          {/* Official Tiers Display */}
+          <div className="space-y-4">
+            {currentOfficial.tiers.map((tier) => (
               <div
-                key={c.id}
-                draggable={true}
-                onDragStart={(e) => handleDragStart(e, c.id)}
-                onDragEnd={handleDragEnd}
-                onClick={() => {
-                  setTierForChar(c.id, activeTier);
-                  playClick();
-                }}
-                className={`group relative w-16 h-16 rounded-xl overflow-hidden border border-gray-700 hover:border-purple-400 bg-[#090612] cursor-grab active:cursor-grabbing hover:scale-105 transition-all select-none ${
-                  draggedCharId === c.id ? 'opacity-30 scale-95 border-dashed border-purple-300' : ''
-                }`}
-                title={`Arraste para um tier ou clique para mover para o Tier ${activeTier}`}
+                key={tier.rank}
+                className="flex flex-col md:flex-row bg-[#110c22] border border-[#231a40] rounded-2xl overflow-hidden shadow-lg"
               >
-                <img
-                  src={getStaticThumbUrl(c.image)}
-                  alt={c.title}
-                  className="w-full h-full object-cover pointer-events-none"
-                  loading="lazy"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (!target.dataset.fallback) {
-                      target.dataset.fallback = 'true';
-                      target.src = getAssetUrl(c.image);
-                    } else {
-                      target.src = getAssetUrl();
-                    }
-                  }}
-                />
-                <div className="absolute top-0.5 right-0.5 pointer-events-none">
-                  <ElementBadge element={c.element} showLabel={false} className="scale-[0.65]" />
+                {/* Tier Rank Header */}
+                <div className={`w-full md:w-28 p-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-2 border-b md:border-b-0 md:border-r border-[#231a40] shrink-0 ${
+                  tier.rank === 'S' ? 'bg-amber-950/30' :
+                  tier.rank === 'A' ? 'bg-purple-950/30' :
+                  tier.rank === 'B' ? 'bg-blue-950/30' :
+                  tier.rank === 'C' ? 'bg-emerald-950/30' : 'bg-gray-900/40'
+                }`}>
+                  <span className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-black shadow-md border ${getRankBadgeStyle(tier.rank)}`}>
+                    {tier.rank}
+                  </span>
+                  <span className="text-[11px] font-bold text-gray-400">
+                    {tier.slots.length} unidades
+                  </span>
                 </div>
-                <div className="absolute bottom-0.5 left-0.5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 rounded p-0.5">
-                  <GripVertical className="w-2.5 h-2.5 text-white/80" />
+
+                {/* Character Slots Grid */}
+                <div className="p-4 flex-1 flex flex-wrap gap-3 items-center min-h-[90px]">
+                  {tier.slots.map((slot, sIdx) => {
+                    const localChar = characters.find(c => c.id === slot.characterId);
+                    const thumbUrl = localChar
+                      ? getStaticThumbUrl(localChar.id, localChar.image)
+                      : getAssetPath(`assets/${slot.image}`);
+
+                    return (
+                      <div
+                        key={slot.characterId || sIdx}
+                        onClick={() => {
+                          playSelect();
+                          if (localChar) onSelectCharacter(localChar);
+                        }}
+                        className="group relative flex flex-col items-center p-2 rounded-xl bg-[#171030] hover:bg-[#221848] border border-[#2c1f4e] hover:border-purple-400 transition-all duration-200 cursor-pointer w-24 text-center hover:scale-105 shadow-md"
+                        title={`${slot.title}\nClique para ver detalhes`}
+                      >
+                        {/* Avatar */}
+                        <div className="w-14 h-14 rounded-lg overflow-hidden border border-purple-900/60 group-hover:border-purple-400 relative mb-1.5 shadow">
+                          <img
+                            src={thumbUrl}
+                            alt={slot.title}
+                            className="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-300"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = getAssetPath(`assets/${slot.image}`);
+                            }}
+                          />
+                          {slot.hasDupeScaling && (
+                            <span className="absolute bottom-0 right-0 bg-red-600/90 text-[9px] font-black text-white px-1 rounded-tl" title="Escala com Duplicatas">
+                              ★
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Name & Title */}
+                        <div className="text-white text-[11px] font-bold truncate w-full group-hover:text-purple-300">
+                          {slot.name}
+                        </div>
+                        <div className="text-gray-400 text-[9px] truncate w-full">
+                          {slot.title.replace(`(${slot.name})`, '').trim() || slot.title}
+                        </div>
+
+                        {/* Element tag */}
+                        <div className="mt-1">
+                          <ElementBadge element={slot.element} />
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* MODE 2: CUSTOM INTERACTIVE DRAG & DROP TIERLIST                           */}
+      {/* ========================================================================= */}
+      {viewMode === 'custom' && (
+        <div className="space-y-8">
+          {/* Custom Action Bar */}
+          <div className="flex items-center justify-between bg-[#120d24] border border-[#231a40] rounded-xl p-4">
+            <div className="text-sm text-gray-300">
+              <span className="font-bold text-white">Modo Criador:</span> Arraste os feiticeiros entre os tiers ou solte na lixeira para desclassificar.
+            </div>
+            <button
+              onClick={resetTierList}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a1333] hover:bg-red-950 text-gray-300 hover:text-red-300 border border-[#2d2250] hover:border-red-500/40 text-xs font-bold transition-all"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span>Resetar Customização</span>
+            </button>
+          </div>
+
+          {/* Drop Zone to remove / unrank character (Shown while dragging an already ranked unit) */}
+          {draggedCharId && isDraggedRanked && (
+            <div
+              onDragOver={(e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                if (!isDragOverUnrank) setIsDragOverUnrank(true);
+              }}
+              onDragLeave={(e) => {
+                if (e.currentTarget.contains(e.relatedTarget as Node)) return;
+                setIsDragOverUnrank(false);
+              }}
+              onDrop={handleDropOnUnrank}
+              className={`p-4 rounded-2xl border-2 border-dashed flex items-center justify-center gap-3 transition-all duration-200 ${
+                isDragOverUnrank
+                  ? 'bg-red-950/60 border-red-500 text-red-200 scale-[1.01] shadow-[0_0_20px_rgba(239,68,68,0.4)]'
+                  : 'bg-red-950/20 border-red-500/40 text-red-300/80 hover:border-red-400'
+              }`}
+            >
+              <Trash2 className="w-5 h-5 animate-pulse text-red-400" />
+              <span className="text-sm font-bold tracking-wide">
+                Solte aqui para remover "{draggedChar?.name}" do tier e mover para não classificados
+              </span>
+            </div>
+          )}
+
+          {/* Tier Rows */}
+          <div className="space-y-4">
+            {TIERS.map((tier) => {
+              const charsInTier = getCharactersInTier(tier.id);
+              const isOver = dragOverTier === tier.id;
+
+              return (
+                <div
+                  key={tier.id}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    if (dragOverTier !== tier.id) setDragOverTier(tier.id);
+                  }}
+                  onDragLeave={(e) => {
+                    if (e.currentTarget.contains(e.relatedTarget as Node)) return;
+                    setDragOverTier(null);
+                  }}
+                  onDrop={(e) => handleDropOnTier(e, tier.id)}
+                  className={`flex flex-col md:flex-row bg-[#110c22] border rounded-2xl overflow-hidden shadow-lg transition-all duration-200 ${
+                    isOver
+                      ? 'border-purple-400 ring-2 ring-purple-400/50 bg-[#191136]'
+                      : 'border-[#231a40]'
+                  }`}
+                >
+                  {/* Tier Label */}
+                  <div className={`w-full md:w-28 p-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-2 border-b md:border-b-0 md:border-r border-[#231a40] shrink-0 ${tier.color}`}>
+                    <span className="text-2xl font-black">{tier.label}</span>
+                    <span className="text-[11px] font-bold opacity-75">
+                      {charsInTier.length} unidades
+                    </span>
+                  </div>
+
+                  {/* Character Slots Grid */}
+                  <div className="p-4 flex-1 flex flex-wrap gap-2.5 items-center min-h-[90px]">
+                    {charsInTier.map((c) => {
+                      const isBeingDragged = draggedCharId === c.id;
+                      return (
+                        <div
+                          key={c.id}
+                          draggable
+                          onDragStart={(e) => handleDragStart(e, c.id)}
+                          onDragEnd={handleDragEnd}
+                          onDoubleClick={() => onSelectCharacter(c)}
+                          className={`group relative flex items-center gap-2 p-1.5 pr-2.5 rounded-xl bg-[#160f2d] hover:bg-[#201642] border border-[#2c1f4e] hover:border-purple-400 transition-all duration-200 cursor-grab active:cursor-grabbing select-none ${
+                            isBeingDragged ? 'opacity-30 border-dashed border-purple-400' : ''
+                          }`}
+                          title={`${c.title}\nArraste para mover ou dê duplo clique para abrir a ficha`}
+                        >
+                          <GripVertical className="w-3.5 h-3.5 text-gray-500 group-hover:text-purple-300 -mr-1" />
+                          <div className="w-10 h-10 rounded-lg overflow-hidden border border-purple-900/50 group-hover:border-purple-400 shrink-0 relative">
+                            <img
+                              src={getStaticThumbUrl(c.id, c.image)}
+                              alt={c.title}
+                              className="w-full h-full object-cover object-top pointer-events-none"
+                            />
+                          </div>
+                          <div className="flex flex-col max-w-[110px]">
+                            <span className="text-xs font-bold text-white truncate group-hover:text-purple-300">
+                              {c.name}
+                            </span>
+                            <span className="text-[10px] text-gray-400 truncate">
+                              {c.title}
+                            </span>
+                          </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removeTierForChar(c.id);
+                            }}
+                            className="text-gray-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity p-0.5 ml-0.5"
+                            title="Remover deste tier"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      );
+                    })}
+
+                    {charsInTier.length === 0 && (
+                      <div className="text-xs font-medium text-gray-500 italic flex items-center gap-2 p-2">
+                        <span>Arraste os feiticeiros aqui para ranquear em {tier.label}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Unranked Pool */}
+          <div className="bg-[#120d24] border border-[#231a40] rounded-2xl p-6 space-y-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  <span>Feiticeiros Não Classificados</span>
+                  <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-900/40 text-purple-300 border border-purple-700/40">
+                    {unrankedCharacters.length}
+                  </span>
+                </h3>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  Arraste qualquer feiticeiro diretamente para os tiers acima ou selecione um tier de destino rápido.
+                </p>
+              </div>
+
+              {/* Quick Destination Select & Search */}
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-1.5 bg-[#0a0714] p-1 rounded-xl border border-[#251a44]">
+                  <span className="text-[11px] font-semibold text-gray-400 px-2">Destino Rápido:</span>
+                  {TIERS.map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => setActiveTier(t.id)}
+                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                        activeTier === t.id
+                          ? `${t.badgeColor} text-white shadow-md`
+                          : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      {t.id}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="relative w-full md:w-64">
+                  <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Filtrar feiticeiros..."
+                    className="w-full pl-9 pr-4 py-1.5 bg-[#0a0714] border border-[#251a44] rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Unranked Cards Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 max-h-[420px] overflow-y-auto p-1 pr-2 custom-scrollbar">
+              {unrankedCharacters.map((c) => {
+                const isBeingDragged = draggedCharId === c.id;
+                return (
+                  <div
+                    key={c.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, c.id)}
+                    onDragEnd={handleDragEnd}
+                    onClick={() => {
+                      setTierForChar(c.id, activeTier);
+                      playClick();
+                    }}
+                    onDoubleClick={() => onSelectCharacter(c)}
+                    className={`group relative flex flex-col items-center p-2 rounded-xl bg-[#0e0a1c] hover:bg-[#191136] border border-[#20183b] hover:border-purple-400 transition-all duration-200 cursor-grab active:cursor-grabbing text-center hover:scale-[1.02] shadow-sm select-none ${
+                      isBeingDragged ? 'opacity-30 border-dashed border-purple-400' : ''
+                    }`}
+                    title={`${c.title}\nClique para adicionar ao tier ${activeTier} ou arraste até a linha desejada`}
+                  >
+                    <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#2b1f4c] group-hover:border-purple-400 relative mb-1.5 shrink-0 shadow">
+                      <img
+                        src={getStaticThumbUrl(c.id, c.image)}
+                        alt={c.title}
+                        className="w-full h-full object-cover object-top pointer-events-none"
+                      />
+                    </div>
+                    <span className="text-[11px] font-bold text-gray-200 group-hover:text-purple-300 truncate w-full">
+                      {c.name}
+                    </span>
+                    <span className="text-[9px] text-gray-500 truncate w-full">
+                      {c.title}
+                    </span>
+                    <div className="mt-1">
+                      <ElementBadge element={c.element} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}

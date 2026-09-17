@@ -131,7 +131,78 @@ export interface TimelineEvent {
   days: string;
 }
 
-export type ActiveTab = 'home' | 'characters' | 'memories' | 'tierlist' | 'teams' | 'releases' | 'timeline';
+export type ActiveTab = 'home' | 'characters' | 'memories' | 'tierlist' | 'teams' | 'buffs' | 'releases' | 'timeline';
+
+export interface OfficialTierSlot {
+  characterId: string;
+  title: string;
+  name: string;
+  slug: string;
+  element: string;
+  rarity: string;
+  image: string;
+  hasDupeScaling?: boolean;
+}
+
+export interface OfficialTierRank {
+  rank: string;
+  slots: OfficialTierSlot[];
+}
+
+export interface OfficialTierCategory {
+  id: string;
+  title: string;
+  description: string;
+  tiers: OfficialTierRank[];
+}
+
+export interface MetaTeamSlotChar {
+  characterId: string;
+  title: string;
+  name: string;
+  element: string;
+  rarity: string;
+  image: string;
+}
+
+export interface MetaTeamSlot {
+  role: string;
+  main: MetaTeamSlotChar;
+  substitutes: MetaTeamSlotChar[];
+}
+
+export interface MetaTeam {
+  id: string;
+  element: string;
+  label: string;
+  best: boolean;
+  summary: string;
+  char_notes: { title: string; note: string }[];
+  slots: MetaTeamSlot[];
+}
+
+export interface BuffItem {
+  id: string;
+  characterId: string;
+  slug: string;
+  title: string;
+  name: string;
+  element: string;
+  rarity: string;
+  image: string;
+  buff: string;
+  target: 'AoE' | 'ST' | 'Both' | string;
+  maxStack: string;
+  statType?: 'Jujutsu' | 'Taijutsu' | 'Both' | 'Damage' | string;
+  notes: string;
+  category: 'buff' | 'debuff' | 'dmgUp';
+}
+
+export interface BuffsData {
+  buff: BuffItem[];
+  debuff: BuffItem[];
+  dmgUp: BuffItem[];
+}
 
 export interface UpdaterStatus {
   status: 'checking' | 'available' | 'not-available' | 'downloading' | 'downloaded' | 'error';

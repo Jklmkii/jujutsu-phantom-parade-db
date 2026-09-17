@@ -1,0 +1,2506 @@
+[
+  {
+    "id": "damage",
+    "title": "Top Dano (DPS)",
+    "description": "Ranking geral dos maiores causadores de dano da meta atual.",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
+            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "0.2-Second_Domain_Expansion_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRGojoArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Battle_of_firepower__Ryomen_Sukuna",
+            "title": "(Battle of firepower) Ryomen Sukuna",
+            "name": "Ryomen Sukuna",
+            "slug": "Battle_of_firepower_Ryomen_Sukuna",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRSukunaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Executioner__Yuta_Okkotsu",
+            "title": "(Executioner) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Executioner_Yuta_Okkotsu",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYutaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Maximum_Cursed_Energy_Output__Yuji_Itadori",
+            "title": "(Maximum Cursed Energy Output) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Maximum_Cursed_Energy_Output_Yuji_Itadori",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYujiSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Zone__Yuji_Itadori",
+            "title": "(Zone) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Zone_Yuji_Itadori",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYujiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Queen_of_Curses__Yuta_Okkotsu",
+            "title": "(Queen of Curses) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Queen_of_Curses_Yuta_Okkotsu",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYutaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Are_you_satisfied_with_that___Aoi_Todo",
+            "title": "(Are you satisfied with that?) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "Are_you_satisfied_with_that_Aoi_Todo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRTodoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Awakening__Satoru_Gojo__Teen_",
+            "title": "(Awakening) Satoru Gojo (Teen)",
+            "name": "Satoru Gojo (Teen)",
+            "slug": "Awakening_Satoru_Gojo_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRGojoArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_First-Grade_Sorcerer_s_Skill__Kento_Nanami",
+            "title": "(First-Grade Sorcerer's Skill) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "First-Grade_Sorcerers_Skill_Kento_Nanami",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNanamiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_A_Bad_Match__Nobara_Kugisaki",
+            "title": "(A Bad Match) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Everlasting_Summer_Nobara_Kugisaki",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Silent_Suppression__Kento_Nanami",
+            "title": "(Silent Suppression) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Silent_Suppression_Kento_Nanami",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenNanamiSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
+            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYujiArt2.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_The_Golden_Age_of_Jujutsu__Noritoshi_Kamo",
+            "title": "(The Golden Age of Jujutsu) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "The_Golden_Age_of_Jujutsu_Noritoshi_Kamo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRKenjakuArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Fulfilling_His_Duty_as_the_Older_Brother__Choso",
+            "title": "(Fulfilling His Duty as the Older Brother) Choso",
+            "name": "Choso",
+            "slug": "Fulfilling_His_Duty_as_the_Older_Brother_Choso",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRChosoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Unbridled_Soul__Mahito",
+            "title": "(Unbridled Soul) Mahito",
+            "name": "Mahito",
+            "slug": "Unbridled_Soul_Mahito",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMahitoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Sorcerer_Killer__Toji_Fushiguro",
+            "title": "(The Sorcerer Killer) Toji Fushiguro",
+            "name": "Toji Fushiguro",
+            "slug": "The_Sorcerer_Killer_Toji_Fushiguro",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRTojiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Lend_Me_Your_Power__Yuta_Okkotsu",
+            "title": "(Lend Me Your Power) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Lend_Me_Your_Power_Yuta_Okkotsu",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYutaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Chain_Mark__Full_Throttle__Eiji_Urushi",
+            "title": "(Chain Mark: Full Throttle) Eiji Urushi",
+            "name": "Eiji Urushi",
+            "slug": "Chain_Mark_Full_Throttle_Eiji_Urushi",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSREijiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Strongest_Blue__Satoru_Gojo__Teen_",
+            "title": "(The Strongest Blue) Satoru Gojo (Teen)",
+            "name": "Satoru Gojo (Teen)",
+            "slug": "The_Strongest_Blue_Satoru_Gojo_Teen",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowGojoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
+            "title": "(A Life Entrusted to Me) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "A_Life_Entrusted_to_Me_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sprinting__Kasumi_Miwa",
+            "title": "(Sprinting) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Sprinting_Kasumi_Miwa",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMiwaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
+            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYujiArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
+            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYujiArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Burning_Passion__Yu_Haibara",
+            "title": "(Burning Passion) Yu Haibara",
+            "name": "Yu Haibara",
+            "slug": "Burning_Feelings_Yu_Haibara",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRHaibaraArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_Crushed_With_Speed__Naobito_Zen_in",
+            "title": "(Crushed With Speed) Naobito Zen'in",
+            "name": "Naobito Zen'in",
+            "slug": "Crushed_With_Speed_Naobito_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNaobitoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Energy_Flashes_Black__Yuji_Itadori",
+            "title": "(Cursed Energy Flashes Black) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Cursed_Energy_Flashes_Black_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_I_ve_Seen_It_All__Kokichi_Muta",
+            "title": "(I've Seen It All) Kokichi Muta",
+            "name": "Kokichi Muta",
+            "slug": "Ive_Seen_It_All_Kokichi_Muta",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMutaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_A_Bad_Match__Nobara_Kugisaki",
+            "title": "(A Bad Match) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "A_Bad_Match_Nobara_Kugisaki",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Meteor_of_Fierceness__Jogo",
+            "title": "(Meteor of Fierceness) Jogo",
+            "name": "Jogo",
+            "slug": "Meteor_of_Fierceness_Jogo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRJogoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Genuine_Jujutsu__Ryomen_Sukuna",
+            "title": "(Genuine Jujutsu) Ryomen Sukuna",
+            "name": "Ryomen Sukuna",
+            "slug": "Genuine_Jujutsu_Ryomen_Sukuna",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRSukunaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Seance__Toji_Fushiguro",
+            "title": "(Seance) Toji Fushiguro",
+            "name": "Toji Fushiguro",
+            "slug": "Seance_Toji_Fushiguro",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRTojiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Nimble_Body__Yuji_Itadori",
+            "title": "(Nimble Body) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Nimble_Body_Yuji_Itadori",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYujiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Early_Morning_Departure__Maki_Zen_in",
+            "title": "(Early Morning Departure) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Early_Morning_Departure_Maki_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMakiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sword_Option__Ultimate_Mechamaru",
+            "title": "(Sword Option) Ultimate Mechamaru",
+            "name": "Ultimate Mechamaru",
+            "slug": "Sword_Option_Ultimate_Mechamaru",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowMechamaruSSRArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_Blood_Borne_Resolve__Noritoshi_Kamo",
+            "title": "(Blood Borne Resolve) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "Blood_Borne_Resolve_Noritoshi_Kamo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueNoritoshiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
+            "title": "(A Life Entrusted to Me) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Cursed_Energy_Focusing_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ratio_Technique__Kento_Nanami",
+            "title": "(Ratio Technique) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Ratio_Technique_Kento_Nanami",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenNanamiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Inherited_Cursed_Technique__Megumi_Fushiguro",
+            "title": "(Inherited Cursed Technique) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Inherited_Cursed_Technique_Megumi_Fushiguro",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Strongest__Satoru_Gojo",
+            "title": "(The Strongest) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "The_Strongest_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueGojoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
+            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Hollow_Technique_Purple_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRGojoArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ex-Office_Worker_Turned_Jujutsu_Sorcerer__Kento_Nanami",
+            "title": "(Ex-Office Worker Turned Jujutsu Sorcerer) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Overtime_Work_Kento_Nanami",
+            "element": "Red",
+            "rarity": "SR",
+            "image": "RedNanamiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Pride_Of_A_Cursed_Spirit__Jogo",
+            "title": "(Pride Of A Cursed Spirit) Jogo",
+            "name": "Jogo",
+            "slug": "Pride_Of_A_Cursed_Spirit_Jogo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueJogoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Within_Infinity__Satoru_Gojo",
+            "title": "(Within Infinity) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Within_Infinity_Satoru_Gojo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRGojoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Night_Of_Dancing_Crows__Mei_Mei",
+            "title": "(Night Of Dancing Crows) Mei Mei",
+            "name": "Mei Mei",
+            "slug": "Night_Of_Dancing_Crows_Mei_Mei",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMeiMeiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Girl_Of_Steel__Nobara_Kugisaki",
+            "title": "(Girl Of Steel) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Girl_Of_Steel_Nobara_Kugisaki",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Shatter_To_Pieces__Toge_Inumaki",
+            "title": "(Shatter To Pieces) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Shatter_To_Pieces_Toge_Inumaki",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRInumakiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
+            "title": "(Bond of Friendship) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Bond_of_Friendship_Megumi_Fushiguro",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Corpse_Battle__Masamichi_Yaga",
+            "title": "(Cursed Corpse Battle) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Cursed_Corpse_Battle_Masamichi_Yaga",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYagaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Zanshin__Kasumi_Miwa",
+            "title": "(Zanshin) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Zanshin_Kasumi_Miwa",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMiwaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Heart_s_Resolve__Saki_Rindo",
+            "title": "(Heart's Resolve) Saki Rindo",
+            "name": "Saki Rindo",
+            "slug": "Hearts_Resolve_Saki_Rindo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRSakiArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_To_Protect_Non-Sorcerers__Suguru_Geto__Teen_",
+            "title": "(To Protect Non-Sorcerers) Suguru Geto (Teen)",
+            "name": "Suguru Geto (Teen)",
+            "slug": "To_Protect_Non-Sorcerers_Suguru_Geto_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenGetoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Promising_New_Student__Kento_Nanami__Teen_",
+            "title": "(Promising New Student) Kento Nanami (Teen)",
+            "name": "Kento Nanami (Teen)",
+            "slug": "Promising_New_Student_Kento_Nanami_Teen",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRNanamiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Inspiration_From__Death___Mahito",
+            "title": "(Inspiration From “Death”) Mahito",
+            "name": "Mahito",
+            "slug": "Inspiration_Of_Death_Mahito",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMahitoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Keep_Hammering_At_Them__Nobara_Kugisaki",
+            "title": "(Keep Hammering At Them) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Keep_Hammering_At_Them_Nobara_Kugisaki",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "NobaraArt.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Longsword_Battle__Maki_Zen_in",
+            "title": "(Longsword Battle) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Longsword_Battle_Maki_Zenin",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMakiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_No_Conceit__Takuma_Ino",
+            "title": "(No Conceit) Takuma Ino",
+            "name": "Takuma Ino",
+            "slug": "No_Conceit_Takuma_Ino",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRInoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Unlimited_Shikigami__Dagon",
+            "title": "(Unlimited Shikigami) Dagon",
+            "name": "Dagon",
+            "slug": "Unlimited_Shikigami_Dagon",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRDagonArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Early_Morning_Departure__Maki_Zen_in",
+            "title": "(Early Morning Departure) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Curses_Team_Up_If_Theyre_Weak_Maki_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMakiSSRArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "support",
+    "title": "Top Suporte & Buffers",
+    "description": "Ranking dos melhores suportes, amplificadores de ataque e curandeiros.",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
+            "title": "(A Life Entrusted to Me) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "A_Life_Entrusted_to_Me_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Corpse_Battle__Masamichi_Yaga",
+            "title": "(Cursed Corpse Battle) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Cursed_Corpse_Battle_Masamichi_Yaga",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYagaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Rabbit_s_Disruption__Megumi_Fushiguro",
+            "title": "(Rabbit's Disruption) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Rabbits_Disruption_Megumi_Fushiguro",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMegumiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Step_back__third-rate__Uraume",
+            "title": "(Step back, third-rate) Uraume",
+            "name": "Uraume",
+            "slug": "Step_back_third-rate_Uraume",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRUraumeArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Promising_New_Student__Kento_Nanami__Teen_",
+            "title": "(Promising New Student) Kento Nanami (Teen)",
+            "name": "Kento Nanami (Teen)",
+            "slug": "Promising_New_Student_Kento_Nanami_Teen",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRNanamiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Delayed_Quota__Miguel",
+            "title": "(Delayed Quota) Miguel",
+            "name": "Miguel",
+            "slug": "Delayed_Quota_Miguel",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRMiguelArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Tool_Manipulation__Momo_Nishimiya",
+            "title": "(Tool Manipulation) Momo Nishimiya",
+            "name": "Momo Nishimiya",
+            "slug": "Tool_Manipulation_Momo_Nishimiya",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMomoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Pivotal_Guardian__Masamichi_Yaga",
+            "title": "(Pivotal Guardian) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Pivotal_Guardian_Masamichi_Yaga",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYagaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Life_Saver__Shoko_Ieiri",
+            "title": "(Life Saver) Shoko Ieiri",
+            "name": "Shoko Ieiri",
+            "slug": "Life_Saver_Shoko_Ieiri",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRShokoSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "__Fwoo_Hyoi___Shoko_Ieiri__Teen_",
+            "title": "('Fwoo Hyoi') Shoko Ieiri (Teen)",
+            "name": "Shoko Ieiri (Teen)",
+            "slug": "Fwoo_Hyoi_Shoko_Ieiri_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRShokoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Fulfilling_His_Duty_as_the_Older_Brother__Choso",
+            "title": "(Fulfilling His Duty as the Older Brother) Choso",
+            "name": "Choso",
+            "slug": "Fulfilling_His_Duty_as_the_Older_Brother_Choso",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRChosoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Zanshin__Kasumi_Miwa",
+            "title": "(Zanshin) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Zanshin_Kasumi_Miwa",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMiwaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sprinting__Kasumi_Miwa",
+            "title": "(Sprinting) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Sprinting_Kasumi_Miwa",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMiwaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
+            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRGojoArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
+            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRGojoArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
+            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRGojoArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
+            "title": "(Bond of Friendship) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Cooling_Sea_Breeze_Megumi_Fushiguro",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_Shatter_To_Pieces__Toge_Inumaki",
+            "title": "(Shatter To Pieces) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Shatter_To_Pieces_Toge_Inumaki",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRInumakiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ariadne_s_Thread_Educator__Masamichi_Yaga",
+            "title": "(Ariadne's Thread Educator) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Ariadnes_Thread_Educator_Masamichi_Yaga",
+            "element": "Red",
+            "rarity": "SR",
+            "image": "RedYagaSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ward_off_with_Sharp_Blade__Atsuya_Kusakabe",
+            "title": "(Ward off with Sharp Blade) Atsuya Kusakabe",
+            "name": "Atsuya Kusakabe",
+            "slug": "Ward_off_with_Sharp_Blade_Atsuya_Kusakabe",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRKusakabeArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Blood_Borne_Resolve__Noritoshi_Kamo",
+            "title": "(Blood Borne Resolve) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "Blood_Borne_Resolve_Noritoshi_Kamo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueNoritoshiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Incomplete_Domain__Megumi_Fushiguro",
+            "title": "(Incomplete Domain) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Incomplete_Domain_Megumi_Fushiguro",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_First-Grade_Sorcerer_s_Skill__Kento_Nanami",
+            "title": "(First-Grade Sorcerer's Skill) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "First-Grade_Sorcerers_Skill_Kento_Nanami",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNanamiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_To_Protect_Non-Sorcerers__Suguru_Geto__Teen_",
+            "title": "(To Protect Non-Sorcerers) Suguru Geto (Teen)",
+            "name": "Suguru Geto (Teen)",
+            "slug": "To_Protect_Non-Sorcerers_Suguru_Geto_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenGetoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Background_Support__Kiyotaka_Ijichi",
+            "title": "(Background Support) Kiyotaka Ijichi",
+            "name": "Kiyotaka Ijichi",
+            "slug": "Grateful_Send-off_Kiyotaka_Ijichi",
+            "element": "Green",
+            "rarity": "R",
+            "image": "GreenIjichiRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Indomitable_Auspicious_Beasts__Takuma_Ino",
+            "title": "(Indomitable Auspicious Beasts) Takuma Ino",
+            "name": "Takuma Ino",
+            "slug": "Unyielding_Sacred_Beast_Takuma_Ino",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenInoSSRArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_The_Final_Bullet__Mai_Zen_in",
+            "title": "(The Final Bullet) Mai Zen'in",
+            "name": "Mai Zen'in",
+            "slug": "The_Final_Bullet_Mai_Zenin",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMaiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Don_t_Look_Down_On_Me__Momo_Nishimiya",
+            "title": "(Don't Look Down On Me) Momo Nishimiya",
+            "name": "Momo Nishimiya",
+            "slug": "Dont_Look_Down_On_Me_Momo_Nishimiya",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMomoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Are_you_satisfied_with_that___Aoi_Todo",
+            "title": "(Are you satisfied with that?) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "Are_you_satisfied_with_that_Aoi_Todo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRTodoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Within_Infinity__Satoru_Gojo",
+            "title": "(Within Infinity) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Within_Infinity_Satoru_Gojo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRGojoArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
+            "title": "(Bond of Friendship) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Bond_of_Friendship_Megumi_Fushiguro",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ex-Office_Worker_Turned_Jujutsu_Sorcerer__Kento_Nanami",
+            "title": "(Ex-Office Worker Turned Jujutsu Sorcerer) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Ex-Office_Worker_Turned_Jujutsu_Sorcerer_Kento_Nanami",
+            "element": "Red",
+            "rarity": "SR",
+            "image": "RedNanamiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Energy_Melody__Yoshinobu_Gakuganji",
+            "title": "(Cursed Energy Melody) Yoshinobu Gakuganji",
+            "name": "Yoshinobu Gakuganji",
+            "slug": "Cursed_Energy_Melody_Yoshinobu_Gakuganji",
+            "element": "Green",
+            "rarity": "SR",
+            "image": "GreenSRGakuganjiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_With_That_Will_In_Mind__Kaito_Yuki",
+            "title": "(With That Will In Mind) Kaito Yuki",
+            "name": "Kaito Yuki",
+            "slug": "With_That_Will_In_Mind_Kaito_Yuki",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRKaitoArt.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Night-Lurking_Sorcerer__Toge_Inumaki",
+            "title": "(Night-Lurking Sorcerer) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Night-Lurking_Sorcerer_Toge_Inumaki",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRInumakiArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_Aerial_Reconnaissance__Momo_Nishimiya",
+            "title": "(Aerial Reconnaissance) Momo Nishimiya",
+            "name": "Momo Nishimiya",
+            "slug": "Aerial_Reconnaissance_Momo_Nishimiya",
+            "element": "Green",
+            "rarity": "SR",
+            "image": "GreenMomoSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Background_Support__Kiyotaka_Ijichi",
+            "title": "(Background Support) Kiyotaka Ijichi",
+            "name": "Kiyotaka Ijichi",
+            "slug": "Background_Support_Kiyotaka_Ijichi",
+            "element": "Green",
+            "rarity": "R",
+            "image": "GreenIjichiRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Technique_Boost__Kaito_Yuki",
+            "title": "(Cursed Technique Boost) Kaito Yuki",
+            "name": "Kaito Yuki",
+            "slug": "Conjuring_Technique_Kaito_Yuki",
+            "element": "Yellow",
+            "rarity": "R",
+            "image": "YellowKaitoRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sp",
+    "title": "Grau Especial (SP)",
+    "description": "Personagens com Expansão de Domínio ou mecânicas especiais de combate.",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_Sword_Option__Ultimate_Mechamaru",
+            "title": "(Sword Option) Ultimate Mechamaru",
+            "name": "Ultimate Mechamaru",
+            "slug": "Sword_Option_Ultimate_Mechamaru",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowMechamaruSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_This_Is_Justice__Suguru_Geto",
+            "title": "(This Is Justice) Suguru Geto",
+            "name": "Suguru Geto",
+            "slug": "This_Is_Justice_Suguru_Geto",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueGetoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Blood_Borne_Resolve__Noritoshi_Kamo",
+            "title": "(Blood Borne Resolve) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "Blood_Borne_Resolve_Noritoshi_Kamo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueNoritoshiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Delayed_Quota__Miguel",
+            "title": "(Delayed Quota) Miguel",
+            "name": "Miguel",
+            "slug": "Delayed_Quota_Miguel",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRMiguelArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Value_Of_Life__Junpei_Yoshino",
+            "title": "(Value Of Life) Junpei Yoshino",
+            "name": "Junpei Yoshino",
+            "slug": "Small_Fry_and_Reverse_Retribution_Junpei_Yoshino",
+            "element": "Blue",
+            "rarity": "SR",
+            "image": "BlueJunpeiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Zanshin__Kasumi_Miwa",
+            "title": "(Zanshin) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Zanshin_Kasumi_Miwa",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMiwaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_First-Grade_Sorcerer_s_Skill__Kento_Nanami",
+            "title": "(First-Grade Sorcerer's Skill) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "First-Grade_Sorcerers_Skill_Kento_Nanami",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNanamiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sprinting__Kasumi_Miwa",
+            "title": "(Sprinting) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Sprinting_Kasumi_Miwa",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMiwaArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_A_Bad_Match__Nobara_Kugisaki",
+            "title": "(A Bad Match) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "A_Bad_Match_Nobara_Kugisaki",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Lend_Me_Your_Power__Yuta_Okkotsu",
+            "title": "(Lend Me Your Power) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Lend_Me_Your_Power_Yuta_Okkotsu",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYutaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Energy_Flashes_Black__Yuji_Itadori",
+            "title": "(Cursed Energy Flashes Black) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Cursed_Energy_Flashes_Black_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
+            "title": "(A Life Entrusted to Me) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Cursed_Energy_Focusing_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Heart_s_Resolve__Saki_Rindo",
+            "title": "(Heart's Resolve) Saki Rindo",
+            "name": "Saki Rindo",
+            "slug": "Hearts_Resolve_Saki_Rindo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRSakiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Need_Some_Help___Panda",
+            "title": "(Need Some Help?) Panda",
+            "name": "Panda",
+            "slug": "Need_Some_Help_Panda",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRPandaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Pride_Of_A_Cursed_Spirit__Jogo",
+            "title": "(Pride Of A Cursed Spirit) Jogo",
+            "name": "Jogo",
+            "slug": "Pride_Of_A_Cursed_Spirit_Jogo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueJogoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Inherited_Cursed_Technique__Megumi_Fushiguro",
+            "title": "(Inherited Cursed Technique) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Inherited_Cursed_Technique_Megumi_Fushiguro",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_Ratio_Technique__Kento_Nanami",
+            "title": "(Ratio Technique) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Ratio_Technique_Kento_Nanami",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenNanamiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Girl_Of_Steel__Nobara_Kugisaki",
+            "title": "(Girl Of Steel) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Girl_Of_Steel_Nobara_Kugisaki",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_With_Takada-Chan__Aoi_Todo",
+            "title": "(With Takada-Chan) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "With_Takada-Chan_Aoi_Todo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueTodoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Maverick_Outcast__Maki_Zen_in",
+            "title": "(Maverick Outcast) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Maverick_Outcast_Maki_Zenin",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedMakiSSRArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blue",
+    "title": "Elemento Noite (Azul)",
+    "description": "Tier list especializada para feiticeiros do atributo Noite (Blue / Sombra).",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
+            "title": "(0.2-Second Domain Expansion) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "0.2-Second_Domain_Expansion_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRGojoArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Queen_of_Curses__Yuta_Okkotsu",
+            "title": "(Queen of Curses) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Queen_of_Curses_Yuta_Okkotsu",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYutaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_This_Is_Justice__Suguru_Geto",
+            "title": "(This Is Justice) Suguru Geto",
+            "name": "Suguru Geto",
+            "slug": "This_Is_Justice_Suguru_Geto",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueGetoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Zanshin__Kasumi_Miwa",
+            "title": "(Zanshin) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Zanshin_Kasumi_Miwa",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMiwaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_First-Grade_Sorcerer_s_Skill__Kento_Nanami",
+            "title": "(First-Grade Sorcerer's Skill) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "First-Grade_Sorcerers_Skill_Kento_Nanami",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNanamiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Pivotal_Guardian__Masamichi_Yaga",
+            "title": "(Pivotal Guardian) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Pivotal_Guardian_Masamichi_Yaga",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYagaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
+            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYujiArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Striking_Eternal_Summer__Nobara_Kugisaki",
+            "title": "(Striking Eternal Summer) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Everlasting_Summer_Nobara_Kugisaki",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNobaraArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Effective_Range__Mai_Zen_in",
+            "title": "(Effective Range) Mai Zen'in",
+            "name": "Mai Zen'in",
+            "slug": "Effective_Range_Mai_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRMaiArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_Delayed_Quota__Miguel",
+            "title": "(Delayed Quota) Miguel",
+            "name": "Miguel",
+            "slug": "Delayed_Quota_Miguel",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRMiguelArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
+            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYujiArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
+            "title": "(Smash It Into the Summer Sky) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Smash_It_Into_the_Summer_Sky_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRYujiArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Crushed_With_Speed__Naobito_Zen_in",
+            "title": "(Crushed With Speed) Naobito Zen'in",
+            "name": "Naobito Zen'in",
+            "slug": "Crushed_With_Speed_Naobito_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRNaobitoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Blood_Borne_Resolve__Noritoshi_Kamo",
+            "title": "(Blood Borne Resolve) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "Blood_Borne_Resolve_Noritoshi_Kamo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueNoritoshiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Shatter_To_Pieces__Toge_Inumaki",
+            "title": "(Shatter To Pieces) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Shatter_To_Pieces_Toge_Inumaki",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRInumakiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Early_Morning_Departure__Maki_Zen_in",
+            "title": "(Early Morning Departure) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Early_Morning_Departure_Maki_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMakiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Don_t_Look_Down_On_Me__Momo_Nishimiya",
+            "title": "(Don't Look Down On Me) Momo Nishimiya",
+            "name": "Momo Nishimiya",
+            "slug": "Dont_Look_Down_On_Me_Momo_Nishimiya",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMomoSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_Infuse_Your_Cursed_Energy__Yuji_Itadori",
+            "title": "(Infuse Your Cursed Energy) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Cursed_Energy_Focusing_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRItadoriArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Genuine_Jujutsu__Ryomen_Sukuna",
+            "title": "(Genuine Jujutsu) Ryomen Sukuna",
+            "name": "Ryomen Sukuna",
+            "slug": "Genuine_Jujutsu_Ryomen_Sukuna",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRSukunaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Inherited_Cursed_Technique__Megumi_Fushiguro",
+            "title": "(Inherited Cursed Technique) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Inherited_Cursed_Technique_Megumi_Fushiguro",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Strongest__Satoru_Gojo",
+            "title": "(The Strongest) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "The_Strongest_Satoru_Gojo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueGojoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Pride_Of_A_Cursed_Spirit__Jogo",
+            "title": "(Pride Of A Cursed Spirit) Jogo",
+            "name": "Jogo",
+            "slug": "Pride_Of_A_Cursed_Spirit_Jogo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueJogoSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_Reverse_Cursed_Technique__Shoko_Ieiri",
+            "title": "(Reverse Cursed Technique) Shoko Ieiri",
+            "name": "Shoko Ieiri",
+            "slug": "Reverse_Cursed_Technique_Shoko_Ieiri",
+            "element": "Blue",
+            "rarity": "SR",
+            "image": "BlueShokoSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_No_Conceit__Takuma_Ino",
+            "title": "(No Conceit) Takuma Ino",
+            "name": "Takuma Ino",
+            "slug": "No_Conceit_Takuma_Ino",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRInoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Shatter_To_Pieces__Toge_Inumaki",
+            "title": "(Shatter To Pieces) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Baton_of_Counterattack_Toge_Inumaki",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueSSRInumakiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_With_Takada-Chan__Aoi_Todo",
+            "title": "(With Takada-Chan) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "With_Takada-Chan_Aoi_Todo",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueTodoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Take_The_Shortest_Way__Panda",
+            "title": "(Take The Shortest Way) Panda",
+            "name": "Panda",
+            "slug": "The_Shortest_Route_Panda",
+            "element": "Blue",
+            "rarity": "SR",
+            "image": "BluePanda0SRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Early_Morning_Departure__Maki_Zen_in",
+            "title": "(Early Morning Departure) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Curses_Team_Up_If_Theyre_Weak_Maki_Zenin",
+            "element": "Blue",
+            "rarity": "SSR",
+            "image": "BlueMakiSSRArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_Blood_of_the_Big_Three_Families__Noritoshi_Kamo",
+            "title": "(Blood of the Big Three Families) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "Blood_of_the_Big_Three_Families_Noritoshi_Kamo",
+            "element": "Blue",
+            "rarity": "SR",
+            "image": "BlueKamoSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_To_Stay_True_To_Myself__Nobara_Kugisaki",
+            "title": "(To Stay True To Myself) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "To_Stay_True_To_Myself_Nobara_Kugisaki",
+            "element": "Blue",
+            "rarity": "R",
+            "image": "BlueNobaraRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Value_Of_Life__Junpei_Yoshino",
+            "title": "(Value Of Life) Junpei Yoshino",
+            "name": "Junpei Yoshino",
+            "slug": "Value_Of_Life_Junpei_Yoshino",
+            "element": "Blue",
+            "rarity": "SR",
+            "image": "BlueJunpeiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sukuna_s_Vessel__Yuji_Itadori",
+            "title": "(Sukuna’s Vessel) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Sukunas_Vessel_Yuji_Itadori",
+            "element": "Blue",
+            "rarity": "R",
+            "image": "BlueItadoriRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "red",
+    "title": "Elemento Chamas (Vermelho)",
+    "description": "Tier list especializada para feiticeiros do atributo Chamas (Red / Flare).",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_Unbridled_Soul__Mahito",
+            "title": "(Unbridled Soul) Mahito",
+            "name": "Mahito",
+            "slug": "Unbridled_Soul_Mahito",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMahitoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Promising_New_Student__Kento_Nanami__Teen_",
+            "title": "(Promising New Student) Kento Nanami (Teen)",
+            "name": "Kento Nanami (Teen)",
+            "slug": "Promising_New_Student_Kento_Nanami_Teen",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRNanamiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Tool_Manipulation__Momo_Nishimiya",
+            "title": "(Tool Manipulation) Momo Nishimiya",
+            "name": "Momo Nishimiya",
+            "slug": "Tool_Manipulation_Momo_Nishimiya",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMomoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Rabbit_s_Disruption__Megumi_Fushiguro",
+            "title": "(Rabbit's Disruption) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Rabbits_Disruption_Megumi_Fushiguro",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMegumiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Maximum_Cursed_Energy_Output__Yuji_Itadori",
+            "title": "(Maximum Cursed Energy Output) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Maximum_Cursed_Energy_Output_Yuji_Itadori",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYujiSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Golden_Age_of_Jujutsu__Noritoshi_Kamo",
+            "title": "(The Golden Age of Jujutsu) Noritoshi Kamo",
+            "name": "Noritoshi Kamo",
+            "slug": "The_Golden_Age_of_Jujutsu_Noritoshi_Kamo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRKenjakuArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Crafty_Rock__Yoshinobu_Gakuganji",
+            "title": "(Crafty Rock) Yoshinobu Gakuganji",
+            "name": "Yoshinobu Gakuganji",
+            "slug": "Crafty_Rock_Yoshinobu_Gakuganji",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRGakuganjiArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_Ariadne_s_Thread_Educator__Masamichi_Yaga",
+            "title": "(Ariadne's Thread Educator) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Ariadnes_Thread_Educator_Masamichi_Yaga",
+            "element": "Red",
+            "rarity": "SR",
+            "image": "RedYagaSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Lend_Me_Your_Power__Yuta_Okkotsu",
+            "title": "(Lend Me Your Power) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Lend_Me_Your_Power_Yuta_Okkotsu",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYutaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Within_Infinity__Satoru_Gojo",
+            "title": "(Within Infinity) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Within_Infinity_Satoru_Gojo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRGojoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Sorcerer_Killer__Toji_Fushiguro",
+            "title": "(The Sorcerer Killer) Toji Fushiguro",
+            "name": "Toji Fushiguro",
+            "slug": "The_Sorcerer_Killer_Toji_Fushiguro",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRTojiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Burning_Passion__Yu_Haibara",
+            "title": "(Burning Passion) Yu Haibara",
+            "name": "Yu Haibara",
+            "slug": "Burning_Feelings_Yu_Haibara",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRHaibaraArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_Meteor_of_Fierceness__Jogo",
+            "title": "(Meteor of Fierceness) Jogo",
+            "name": "Jogo",
+            "slug": "Meteor_of_Fierceness_Jogo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRJogoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Night-Lurking_Sorcerer__Toge_Inumaki",
+            "title": "(Night-Lurking Sorcerer) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Night-Lurking_Sorcerer_Toge_Inumaki",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRInumakiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ex-Office_Worker_Turned_Jujutsu_Sorcerer__Kento_Nanami",
+            "title": "(Ex-Office Worker Turned Jujutsu Sorcerer) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Ex-Office_Worker_Turned_Jujutsu_Sorcerer_Kento_Nanami",
+            "element": "Red",
+            "rarity": "SR",
+            "image": "RedNanamiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_A_Bad_Match__Nobara_Kugisaki",
+            "title": "(A Bad Match) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "A_Bad_Match_Nobara_Kugisaki",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Final_Bullet__Mai_Zen_in",
+            "title": "(The Final Bullet) Mai Zen'in",
+            "name": "Mai Zen'in",
+            "slug": "The_Final_Bullet_Mai_Zenin",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMaiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Nimble_Body__Yuji_Itadori",
+            "title": "(Nimble Body) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Nimble_Body_Yuji_Itadori",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedYujiSSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_The_Thrill_Of_The_Fight__Hanami",
+            "title": "(The Thrill Of The Fight) Hanami",
+            "name": "Hanami",
+            "slug": "The_Thrill_Of_The_Fight_Hanami",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedHanamiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Blast_From_The_Past__Aoi_Todo",
+            "title": "(Blast From The Past) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "Blast_From_The_Past_Aoi_Todo",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedTodoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Need_Some_Help___Panda",
+            "title": "(Need Some Help?) Panda",
+            "name": "Panda",
+            "slug": "Need_Some_Help_Panda",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRPandaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Power_of_Words__Toge_Inumaki",
+            "title": "(Cursed Power of Words) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Cursed_Power_of_Words_Toge_Inumaki",
+            "element": "Red",
+            "rarity": "R",
+            "image": "RedTogeRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Night_Of_Dancing_Crows__Mei_Mei",
+            "title": "(Night Of Dancing Crows) Mei Mei",
+            "name": "Mei Mei",
+            "slug": "Night_Of_Dancing_Crows_Mei_Mei",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedSSRMeiMeiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Determined_Counter__Kasumi_Miwa",
+            "title": "(Determined Counter) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Determined_Counter_Kasumi_Miwa",
+            "element": "Red",
+            "rarity": "SR",
+            "image": "RedMiwaSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_Maverick_Outcast__Maki_Zen_in",
+            "title": "(Maverick Outcast) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Maverick_Outcast_Maki_Zenin",
+            "element": "Red",
+            "rarity": "SSR",
+            "image": "RedMakiSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Innate_Talent__Maki_Zen_in",
+            "title": "(Innate Talent) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Innate_Talent_Maki_Zenin",
+            "element": "Red",
+            "rarity": "R",
+            "image": "RedMakiRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "green",
+    "title": "Elemento Fantasma (Verde)",
+    "description": "Tier list especializada para feiticeiros do atributo Fantasma (Green / Phantom).",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_Are_you_satisfied_with_that___Aoi_Todo",
+            "title": "(Are you satisfied with that?) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "Are_you_satisfied_with_that_Aoi_Todo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRTodoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
+            "title": "(A Life Entrusted to Me) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "A_Life_Entrusted_to_Me_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Fulfilling_His_Duty_as_the_Older_Brother__Choso",
+            "title": "(Fulfilling His Duty as the Older Brother) Choso",
+            "name": "Choso",
+            "slug": "Fulfilling_His_Duty_as_the_Older_Brother_Choso",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRChosoArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "__Fwoo_Hyoi___Shoko_Ieiri__Teen_",
+            "title": "('Fwoo Hyoi') Shoko Ieiri (Teen)",
+            "name": "Shoko Ieiri (Teen)",
+            "slug": "Fwoo_Hyoi_Shoko_Ieiri_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRShokoArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Awakening__Satoru_Gojo__Teen_",
+            "title": "(Awakening) Satoru Gojo (Teen)",
+            "name": "Satoru Gojo (Teen)",
+            "slug": "Awakening_Satoru_Gojo_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRGojoArt2.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sprinting__Kasumi_Miwa",
+            "title": "(Sprinting) Kasumi Miwa",
+            "name": "Kasumi Miwa",
+            "slug": "Sprinting_Kasumi_Miwa",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMiwaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
+            "title": "(Bond of Friendship) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Cooling_Sea_Breeze_Megumi_Fushiguro",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Silent_Suppression__Kento_Nanami",
+            "title": "(Silent Suppression) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Silent_Suppression_Kento_Nanami",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenNanamiSSRArt2.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_Cursed_Energy_Flashes_Black__Yuji_Itadori",
+            "title": "(Cursed Energy Flashes Black) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Cursed_Energy_Flashes_Black_Yuji_Itadori",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenItadoriSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_I_ve_Seen_It_All__Kokichi_Muta",
+            "title": "(I've Seen It All) Kokichi Muta",
+            "name": "Kokichi Muta",
+            "slug": "Ive_Seen_It_All_Kokichi_Muta",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMutaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Inspiration_From__Death___Mahito",
+            "title": "(Inspiration From “Death”) Mahito",
+            "name": "Mahito",
+            "slug": "Inspiration_Of_Death_Mahito",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMahitoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_To_Protect_Non-Sorcerers__Suguru_Geto__Teen_",
+            "title": "(To Protect Non-Sorcerers) Suguru Geto (Teen)",
+            "name": "Suguru Geto (Teen)",
+            "slug": "To_Protect_Non-Sorcerers_Suguru_Geto_Teen",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenGetoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Background_Support__Kiyotaka_Ijichi",
+            "title": "(Background Support) Kiyotaka Ijichi",
+            "name": "Kiyotaka Ijichi",
+            "slug": "Grateful_Send-off_Kiyotaka_Ijichi",
+            "element": "Green",
+            "rarity": "R",
+            "image": "GreenIjichiRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Indomitable_Auspicious_Beasts__Takuma_Ino",
+            "title": "(Indomitable Auspicious Beasts) Takuma Ino",
+            "name": "Takuma Ino",
+            "slug": "Unyielding_Sacred_Beast_Takuma_Ino",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenInoSSRArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_Bond_of_Friendship__Megumi_Fushiguro",
+            "title": "(Bond of Friendship) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Bond_of_Friendship_Megumi_Fushiguro",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Energy_Melody__Yoshinobu_Gakuganji",
+            "title": "(Cursed Energy Melody) Yoshinobu Gakuganji",
+            "name": "Yoshinobu Gakuganji",
+            "slug": "Cursed_Energy_Melody_Yoshinobu_Gakuganji",
+            "element": "Green",
+            "rarity": "SR",
+            "image": "GreenSRGakuganjiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Longsword_Battle__Maki_Zen_in",
+            "title": "(Longsword Battle) Maki Zen'in",
+            "name": "Maki Zen'in",
+            "slug": "Longsword_Battle_Maki_Zenin",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRMakiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Aerial_Reconnaissance__Momo_Nishimiya",
+            "title": "(Aerial Reconnaissance) Momo Nishimiya",
+            "name": "Momo Nishimiya",
+            "slug": "Aerial_Reconnaissance_Momo_Nishimiya",
+            "element": "Green",
+            "rarity": "SR",
+            "image": "GreenMomoSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Heart_s_Resolve__Saki_Rindo",
+            "title": "(Heart's Resolve) Saki Rindo",
+            "name": "Saki Rindo",
+            "slug": "Hearts_Resolve_Saki_Rindo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenSSRSakiArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ratio_Technique__Kento_Nanami",
+            "title": "(Ratio Technique) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Ratio_Technique_Kento_Nanami",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenNanamiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Hollow_Purple__Satoru_Gojo",
+            "title": "(Hollow Purple) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Hollow_Technique_Purple_Satoru_Gojo",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenGojoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Keep_Hammering_At_Them__Nobara_Kugisaki",
+            "title": "(Keep Hammering At Them) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Keep_Hammering_At_Them_Nobara_Kugisaki",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "NobaraArt.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Resolve_Of_Being_A_Sorcerer__Kaito_Yuki",
+            "title": "(The Resolve Of Being A Sorcerer) Kaito Yuki",
+            "name": "Kaito Yuki",
+            "slug": "The_Resolve_Of_Being_A_Sorcerer_Kaito_Yuki",
+            "element": "Green",
+            "rarity": "SR",
+            "image": "GreenKaitoSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_Mode__Albatross__Ultimate_Mechamaru",
+            "title": "(Mode: Albatross) Ultimate Mechamaru",
+            "name": "Ultimate Mechamaru",
+            "slug": "Mode_Albatross_Ultimate_Mechamaru",
+            "element": "Green",
+            "rarity": "SR",
+            "image": "GreenMechSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Don_t_Underestimate_A_Puppet__Panda",
+            "title": "(Don't Underestimate A Puppet) Panda",
+            "name": "Panda",
+            "slug": "Dont_Underestimate_A_Puppet_Panda",
+            "element": "Green",
+            "rarity": "SSR",
+            "image": "GreenPandaSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Energy_Catastrophe__Saki_Rindo",
+            "title": "(Cursed Energy Catastrophe) Saki Rindo",
+            "name": "Saki Rindo",
+            "slug": "Cursed_Energy_Catastrophe_Saki_Rindo",
+            "element": "Green",
+            "rarity": "R",
+            "image": "GreenSakiRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Background_Support__Kiyotaka_Ijichi",
+            "title": "(Background Support) Kiyotaka Ijichi",
+            "name": "Kiyotaka Ijichi",
+            "slug": "Background_Support_Kiyotaka_Ijichi",
+            "element": "Green",
+            "rarity": "R",
+            "image": "GreenIjichiRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_Unfair_Salvation__Megumi_Fushiguro",
+            "title": "(Unfair Salvation) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Unfair_Salvation_Megumi_Fushiguro",
+            "element": "Green",
+            "rarity": "R",
+            "image": "GreenMegumiRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yellow",
+    "title": "Elemento Decaimento (Amarelo)",
+    "description": "Tier list especializada para feiticeiros do atributo Decaimento (Yellow / Decay).",
+    "tiers": [
+      {
+        "rank": "S",
+        "slots": [
+          {
+            "characterId": "_Battle_of_firepower__Ryomen_Sukuna",
+            "title": "(Battle of firepower) Ryomen Sukuna",
+            "name": "Ryomen Sukuna",
+            "slug": "Battle_of_firepower_Ryomen_Sukuna",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRSukunaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Executioner__Yuta_Okkotsu",
+            "title": "(Executioner) Yuta Okkotsu",
+            "name": "Yuta Okkotsu",
+            "slug": "Executioner_Yuta_Okkotsu",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYutaArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Life_Saver__Shoko_Ieiri",
+            "title": "(Life Saver) Shoko Ieiri",
+            "name": "Shoko Ieiri",
+            "slug": "Life_Saver_Shoko_Ieiri",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRShokoSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Cursed_Corpse_Battle__Masamichi_Yaga",
+            "title": "(Cursed Corpse Battle) Masamichi Yaga",
+            "name": "Masamichi Yaga",
+            "slug": "Cursed_Corpse_Battle_Masamichi_Yaga",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYagaArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Incomplete_Domain__Megumi_Fushiguro",
+            "title": "(Incomplete Domain) Megumi Fushiguro",
+            "name": "Megumi Fushiguro",
+            "slug": "Incomplete_Domain_Megumi_Fushiguro",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowMegumiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Zone__Yuji_Itadori",
+            "title": "(Zone) Yuji Itadori",
+            "name": "Yuji Itadori",
+            "slug": "Zone_Yuji_Itadori",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRYujiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Ward_off_with_Sharp_Blade__Atsuya_Kusakabe",
+            "title": "(Ward off with Sharp Blade) Atsuya Kusakabe",
+            "name": "Atsuya Kusakabe",
+            "slug": "Ward_off_with_Sharp_Blade_Atsuya_Kusakabe",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRKusakabeArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Step_back__third-rate__Uraume",
+            "title": "(Step back, third-rate) Uraume",
+            "name": "Uraume",
+            "slug": "Step_back_third-rate_Uraume",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRUraumeArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
+            "title": "(Melting Sweet Summer Treats) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowGojoSSRArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
+            "title": "(Melting Sweet Summer Treats) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowGojoSSRArt2.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
+            "title": "(Melting Sweet Summer Treats) Satoru Gojo",
+            "name": "Satoru Gojo",
+            "slug": "Melting_the_Shaved_Ice_Satoru_Gojo",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowGojoSSRArt2.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "A",
+        "slots": [
+          {
+            "characterId": "_Chain_Mark__Full_Throttle__Eiji_Urushi",
+            "title": "(Chain Mark: Full Throttle) Eiji Urushi",
+            "name": "Eiji Urushi",
+            "slug": "Chain_Mark_Full_Throttle_Eiji_Urushi",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSREijiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Sword_Option__Ultimate_Mechamaru",
+            "title": "(Sword Option) Ultimate Mechamaru",
+            "name": "Ultimate Mechamaru",
+            "slug": "Sword_Option_Ultimate_Mechamaru",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowMechamaruSSRArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Young_Fish_And_Reverse_Punishment__Junpei_Yoshino",
+            "title": "(Young Fish And Reverse Punishment) Junpei Yoshino",
+            "name": "Junpei Yoshino",
+            "slug": "Small_Fry_and_Reverse_Retribution_Junpei_Yoshino",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowJunpeiSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_The_Strongest_Blue__Satoru_Gojo__Teen_",
+            "title": "(The Strongest Blue) Satoru Gojo (Teen)",
+            "name": "Satoru Gojo (Teen)",
+            "slug": "The_Strongest_Blue_Satoru_Gojo_Teen",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowGojoSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_With_That_Will_In_Mind__Kaito_Yuki",
+            "title": "(With That Will In Mind) Kaito Yuki",
+            "name": "Kaito Yuki",
+            "slug": "With_That_Will_In_Mind_Kaito_Yuki",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRKaitoArt.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "B",
+        "slots": [
+          {
+            "characterId": "_Cursed_Technique_Boost__Kaito_Yuki",
+            "title": "(Cursed Technique Boost) Kaito Yuki",
+            "name": "Kaito Yuki",
+            "slug": "Conjuring_Technique_Kaito_Yuki",
+            "element": "Yellow",
+            "rarity": "R",
+            "image": "YellowKaitoRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Seance__Toji_Fushiguro",
+            "title": "(Seance) Toji Fushiguro",
+            "name": "Toji Fushiguro",
+            "slug": "Seance_Toji_Fushiguro",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRTojiArt1.gif",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Working_Overtime__Kento_Nanami",
+            "title": "(Working Overtime) Kento Nanami",
+            "name": "Kento Nanami",
+            "slug": "Overtime_Work_Kento_Nanami",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRNanamiArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "C",
+        "slots": [
+          {
+            "characterId": "_Girl_Of_Steel__Nobara_Kugisaki",
+            "title": "(Girl Of Steel) Nobara Kugisaki",
+            "name": "Nobara Kugisaki",
+            "slug": "Girl_Of_Steel_Nobara_Kugisaki",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowNobaraSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Resolved_Cursed_Speech__Toge_Inumaki",
+            "title": "(Resolved Cursed Speech) Toge Inumaki",
+            "name": "Toge Inumaki",
+            "slug": "Resolved_Cursed_Speech_Toge_Inumaki",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowTogeSSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Unlimited_Shikigami__Dagon",
+            "title": "(Unlimited Shikigami) Dagon",
+            "name": "Dagon",
+            "slug": "Unlimited_Shikigami_Dagon",
+            "element": "Yellow",
+            "rarity": "SSR",
+            "image": "YellowSSRDagonArt1.gif",
+            "hasDupeScaling": false
+          }
+        ]
+      },
+      {
+        "rank": "D",
+        "slots": [
+          {
+            "characterId": "_A_Clever_Bullet__Mai_Zen_in",
+            "title": "(A Clever Bullet) Mai Zen'in",
+            "name": "Mai Zen'in",
+            "slug": "A_Clever_Bullet_Mai_Zenin",
+            "element": "Yellow",
+            "rarity": "SR",
+            "image": "YellowMaiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Just_Bring_It__Saki_Rindo",
+            "title": "(Just Bring It) Saki Rindo",
+            "name": "Saki Rindo",
+            "slug": "Just_Bring_It_Saki_Rindo",
+            "element": "Yellow",
+            "rarity": "SR",
+            "image": "YellowSakiSRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Panda_Is_Not_A_Panda__Panda",
+            "title": "(Panda Is Not A Panda) Panda",
+            "name": "Panda",
+            "slug": "Panda_Is_Not_A_Panda_Panda",
+            "element": "Yellow",
+            "rarity": "R",
+            "image": "YellowPandaRArt1.webp",
+            "hasDupeScaling": false
+          },
+          {
+            "characterId": "_Reckless_Grade_1__Aoi_Todo",
+            "title": "(Reckless Grade 1) Aoi Todo",
+            "name": "Aoi Todo",
+            "slug": "Reckless_Grade_1_Aoi_Todo",
+            "element": "Yellow",
+            "rarity": "SR",
+            "image": "YellowTodoSRArt1.webp",
+            "hasDupeScaling": false
+          }
+        ]
+      }
+    ]
+  }
+]

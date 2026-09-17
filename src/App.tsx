@@ -7,6 +7,7 @@ import { MemoriesList } from './components/MemoriesList';
 import { TimelineView } from './components/TimelineView';
 import { TierlistMaker } from './components/TierlistMaker';
 import { BestTeams } from './components/BestTeams';
+import { BuffsRankings } from './components/BuffsRankings';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { SettingsModal } from './components/SettingsModal';
 import { UpdateBanner } from './components/UpdateBanner';
@@ -100,6 +101,13 @@ export function App() {
               <BestTeams 
                 characters={characters}
                 memories={memories}
+                onSelectCharacter={handleSelectCharacter}
+              />
+            )}
+
+            {activeTab === 'buffs' && (
+              <BuffsRankings 
+                characters={characters}
                 onSelectCharacter={handleSelectCharacter}
               />
             )}

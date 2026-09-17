@@ -58,6 +58,34 @@ export function playClick(): void {
   }
 }
 
+/** Tactical confirmation / selection chime */
+export function playSelect(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const now = ctx.currentTime;
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(520, now);
+    osc.frequency.exponentialRampToValueAtTime(780, now + 0.05);
+
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.06);
+  } catch {
+    // Silent fail
+  }
+}
+
 /** Tab switch whoosh chime */
 export function playTabSwitch(): void {
   if (!isAudioAllowed()) return;
