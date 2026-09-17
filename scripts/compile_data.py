@@ -255,9 +255,13 @@ def compile_all_data():
         cover_art = fm.get("cover_art", "")
         img_match = re.search(r'\[\[(?:_assets/)?([^\]]+)\]\]', cover_art)
         image_file = img_match.group(1) if img_match else ""
+        blacklist = ['icon', 'type.png', 'energy', 'ssr.png', 'sr.png', 'r.png', 'heal', 'skill', 'damage', 'up.png', 'resistance', 'debuff', 'shield', 'sword', 'gauge', 'recharge', 'buff']
+        if image_file and any(b in image_file.lower() for b in blacklist):
+            image_file = ""
         if not image_file:
-            img_match2 = re.search(r'!\[\[(?:_assets/)?([^\]|]+)', content)
-            image_file = img_match2.group(1) if img_match2 else ""
+            all_imgs = re.findall(r'!\[\[(?:_assets/)?([^\]|]+)', content)
+            valid_imgs = [im for im in all_imgs if not any(b in im.lower() for b in blacklist)]
+            image_file = valid_imgs[0] if valid_imgs else ""
 
         # Active skill
         active = {}
