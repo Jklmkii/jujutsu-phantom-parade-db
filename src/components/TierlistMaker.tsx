@@ -4,6 +4,7 @@ import { useJjkStore } from '../store/useJjkStore';
 import { ElementBadge } from './Badges';
 import { Award, RotateCcw, Search, X } from 'lucide-react';
 import { playClick } from '../utils/sound';
+import { getAssetUrl } from '../utils/assets';
 
 interface TierlistMakerProps {
   characters: Character[];
@@ -105,12 +106,12 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                       title={`${c.title} (Clique duas vezes para abrir, ou clique no X para remover)`}
                     >
                       <img
-                        src={c.image ? `/assets/${c.image}` : '/assets/placeholder.png'}
+                        src={getAssetUrl(c.image)}
                         alt={c.title}
                         onClick={() => onSelectCharacter(c)}
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80';
+                          (e.target as HTMLImageElement).src = getAssetUrl();
                         }}
                       />
                       <div className="absolute top-0.5 right-0.5 pointer-events-none">
@@ -192,11 +193,11 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                 title={`Clique para mover para o Tier ${activeTier}`}
               >
                 <img
-                  src={c.image ? `/assets/${c.image}` : '/assets/placeholder.png'}
+                  src={getAssetUrl(c.image)}
                   alt={c.title}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80';
+                    (e.target as HTMLImageElement).src = getAssetUrl();
                   }}
                 />
                 <div className="absolute top-0.5 right-0.5 pointer-events-none">

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import type { Memory } from '../types';
 import { RarityBadge } from './Badges';
 import { Search, Sparkles, Clock, Shield } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 interface MemoriesListProps {
   memories: Memory[];
@@ -71,7 +72,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
       {/* Memories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredMemories.map((mem) => {
-          const imgUrl = mem.image ? `/assets/${mem.image}` : '/assets/placeholder.png';
+          const imgUrl = getAssetUrl(mem.image);
           const isSSR = mem.rarity === 'SSR';
           const isSR = mem.rarity === 'SR';
 
@@ -94,7 +95,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                     alt={mem.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80';
+                      (e.target as HTMLImageElement).src = getAssetUrl();
                     }}
                   />
                   <div className="absolute top-2.5 left-2.5">

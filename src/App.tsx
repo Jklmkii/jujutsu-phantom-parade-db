@@ -57,6 +57,7 @@ export function App() {
       <main className="flex-1 ml-16 md:ml-64 min-h-screen p-4 md:p-8 overflow-y-auto pb-24">
         {selectedCharacter ? (
           <CharacterDetail
+            key={selectedCharacter.id}
             character={selectedCharacter}
             onBack={() => setSelectedCharacter(null)}
           />

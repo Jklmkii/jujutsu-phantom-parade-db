@@ -3,6 +3,7 @@ import type { Character, Memory } from '../types';
 import { useJjkStore, type CustomTeam } from '../store/useJjkStore';
 import { ElementBadge } from './Badges';
 import { Shield, Plus, Trash2, Users } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 interface BestTeamsProps {
   characters: Character[];
@@ -164,11 +165,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                       >
                         <div className="relative w-20 h-20 rounded-xl overflow-hidden border-2 border-purple-500/40 bg-[#090612] group-hover:scale-105 transition-transform">
                           <img
-                            src={char.image ? `/assets/${char.image}` : '/assets/placeholder.png'}
+                            src={getAssetUrl(char.image)}
                             alt={char.title}
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80';
+                              (e.target as HTMLImageElement).src = getAssetUrl();
                             }}
                           />
                           <div className="absolute top-1 right-1">

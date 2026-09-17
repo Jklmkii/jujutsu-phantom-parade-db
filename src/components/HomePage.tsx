@@ -12,6 +12,7 @@ import {
   HelpCircle,
   ChevronDown
 } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 interface HomePageProps {
   characters: Character[];
@@ -128,11 +129,11 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Right Banner Art */}
             <div className="relative w-full max-w-md aspect-[16/10] rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-2xl shadow-purple-900/30 bg-[#090612] group">
               <img
-                src={currentUnit.image ? `/assets/${currentUnit.image}` : '/assets/placeholder.png'}
+                src={getAssetUrl(currentUnit.image)}
                 alt={currentUnit.title}
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80';
+                  (e.target as HTMLImageElement).src = getAssetUrl();
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c081a] via-transparent to-transparent pointer-events-none" />

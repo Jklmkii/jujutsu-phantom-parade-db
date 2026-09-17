@@ -441,7 +441,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Boogie Woogie Combination (Mudado)",
+            "name": "Boogie Woogie Combination",
             "cost": "20",
             "description": "In \"Climax☆Jumping\" Status,\nDeals 388.5% (Lv 1) → 650% (Lv 10) Melee Taijutsu Damage to the selected enemy (4 Hits)\nDisrupt the selected enemy (Special) (3 Turns/2 Times/Chance: 35%)\nIncreases own Critical Hit Rate 7% (Lv 1) → 15% (Lv 10) (3 Turns)",
             "combat_rates": {
@@ -565,7 +565,7 @@
         {
           "id": "changed",
           "label": "Mudado: Iluminado",
-          "name": "Converge And Strike (Mudado)",
+          "name": "Cursed Technique Lapse - Blue",
           "cost": "0",
           "description": "Deals 376.0% (Lv 1) → 420% (Lv 10) ranged Jujutsu Damage (4 Hits) to all enemies\nLower all enemies' damage by 14.0% (Lv 1) → 30% (Lv 10) (3 turns)",
           "combat_rates": {
@@ -593,7 +593,7 @@
           {
             "id": "changed",
             "label": "Mudado: Iluminado",
-            "name": "Cursed Technique Reversal - Red (Mudado)",
+            "name": "Cursed Technique Reversal - Red",
             "cost": "1",
             "description": "Deals 510.9% (Lv 1) → 750% (Lv 10) ranged Jujutsu damage to the selected enemy (Critical Hit Chance: Large)\nIncreases own “Core of Cursed Energy” count by 1",
             "combat_rates": {
@@ -748,7 +748,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Dismantle (Mudado)",
+            "name": "Dismantle",
             "cost": "15",
             "description": "If there is 1 enemy in the wave, change the skill effect:\nDeals 354.4% (Lv 1) → 600% (Lv 10) ranged Jujutsu Damage to the selected enemy (4 Hits)\nInflicts 2 stacks of  30% Continuous Jujutsu Damage (Laceration) (4 Turns)\n(Each stacks increases additional Damage by 20%)\nIncreases the selected enemy's Damage Received by 11.1% (Lv 1) → 15% (Lv 10) (3 Turns)",
             "combat_rates": {
@@ -980,7 +980,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "\"Divine Dog\" (Mudado)",
+            "name": "\"Divine Dog\"",
             "cost": "25",
             "description": "Change Skill Effect when White & Black Divine Dog have been summoned:\nDeals 386.0% (Lv 1) → 620.0% (Lv 10) ranged Jujutsu damage to the selected enemy (2 Hits)\nand Increases the selected enemy's Jujutsu damage received by 20.1% (Lv 1) → 30.0% (Lv 10) (3 Turns)\n(Effective for \"夜\" (Green) Type attacks, Ignore \"Darkness\" status when attacking)",
             "combat_rates": {}
@@ -1004,7 +1004,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Strike (Mudado)",
+            "name": "Strike",
             "cost": "30",
             "description": "Change Skill Effect when White Divine Dog is summoned:\nDeals 192.2% (Lv 1) → 320.0% (Lv 10) ranged Jujutsu damage to the selected enemy\nWhen Black Divine Dog is summoned,\nDeals an additional 227.9% (Lv 1) → 380.0% (Lv 10) ranged Jujutsu damage,\nlowers the selected enemy's damage by 20% (3 Turns)\nDeals an additional 146.2% (Lv 1) → 220.0% (Lv 10) melee Taijutsu damage after Divine dog has attacked\nIncreases the Ultimate Gauge Charging amount by 25% (3 Turns)\nwhen Black Divine Dog is not summoned",
             "combat_rates": {}
@@ -1066,7 +1066,7 @@
         {
           "id": "changed",
           "label": "Mudado",
-          "name": "Burst Eruption (Mudado)",
+          "name": "Burst Eruption",
           "cost": "0",
           "description": "In \"Vaporous\" State,\nDeals melee Mixed Damage equal to 59.7% (Lv 1) → 100% (Lv 10) Taijutsu & 59.7% (Lv 1) → 100% (Lv 10) Jujutsu to the selected enemy\nIf own Cursed Energy is 10 or more at the start of turn,\nIncreases the Damage Dealt up to 50% of the original effect\nRecovers own Cursed Energy by 10 (Critical Hit Exclusive, Missing the attack will not activate the effect)\nOtherwise, Recovers own Cursed Energy by 5 (Missing the attack will not activate the effect)\nIf own Cursed Energy is 10 or less at the start of turn, this skill will not cost any Cursed Energy\nIf the ally performs a Critical hit with a Melee Command or Melee Ultimate Skill to enemy:\nPerforms a follow-up S1 \"Burst Eruption\" to the same enemy (1 Time per Turn, CE: 0)\n*Combo Ultimate Excluded, randomly attack 1 enemy if the attack was AOE\nIncreases own and that ally's Taijutsu & Jujutsu Stat by 26.3% (Lv 1) → 45% (Lv 10) (Vaporous) (3 Turns/Cannot be Stacked)",
           "combat_rates": {}
@@ -1097,7 +1097,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Kanketsusen (Mudado)",
+            "name": "Kanketsusen",
             "cost": "35",
             "description": "Deals melee Mixed Damage equal to 220.1% (Lv 1) → 350% (Lv 10) Taijutsu & 220.1% (Lv 1) → 350% (Lv 10) Jujutsu to the selected enemy (2 Hits)\nIncreases the selected enemy's \"幻\" (Red) Taijutsu & Jujutsu Damage Received by 12.2% (Lv 1) → 20% (Lv 10) (3 Turns)\nRecovers own Cursed Energy by 5 (Bypass Limit) (Critical Hit Exclusive)",
             "combat_rates": {}
@@ -1159,7 +1159,7 @@
         {
           "id": "changed",
           "label": "Mudado: Força Total",
-          "name": "Chain Mark (Mudado)",
+          "name": "Chain Mark",
           "cost": "0",
           "description": "Condition: \"Full Throttle\" Mode\nDeal 443% (Lv 1) → 750% (Lv 10) melee Taijutsu Damage to the selected enemy (Critical Hit Rate: Large)\nIf own Cursed Energy is 20 or more,\nCursed Energy Cost: 20\nIncreases own Ultimate Gauge Charging Rate by 11.1% (Lv 1) → 15% (Lv 10) (2 Turns)",
           "combat_rates": {}
@@ -1184,7 +1184,7 @@
           {
             "id": "changed",
             "label": "Mudado: Força Total",
-            "name": "Face Your Sins! (Mudado)",
+            "name": "Face Your Sins!",
             "cost": "40",
             "description": "Condition: \"Full Throttle\" Mode\nDeal 482.8% (Lv 1) → 800% (Lv 10) melee Taijutsu Damage to the selected enemy (4 Hits)\nGrants Counter State (Chain Mark) (2 Turns/Cannot be Stacked)\nIncreases own Taijutsu Stat by 22.2% (Lv 1) → 25% (Lv 10) (2 Turns)",
             "combat_rates": {}
@@ -2229,7 +2229,7 @@
         {
           "id": "changed",
           "label": "Mudado",
-          "name": "\"Blood Edge\" (Mudado)",
+          "name": "\"Blood Edge\"",
           "cost": "0",
           "description": "Deals melee combined Damage of 149.4% (Lv 1) → 300% (Lv 10) Taijutsu & 49.8% (Lv 1) → 100% (Lv 10) Jujutsu to the selected enemy (2 Hits)\nInflict 72.4% (Lv 1) → 100% (Lv 10) Continuous Jujutsu Damage (Poison) to the selected enemy (3 Turns)\nIncreases enemy's Damage Received by 27.3% (Lv 1) → 30% (Lv 10) (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)",
           "combat_rates": {
@@ -2257,7 +2257,7 @@
           {
             "id": "changed",
             "label": "Mudado: Escala Vermelha",
-            "name": "\"Flowing Red Scale\" (Mudado)",
+            "name": "Flowing Red Scale: Stack",
             "cost": "30",
             "description": "Grant \"Flowing Red Scale: Stack\" State (6 Turns/Cannot be stacked, Re-activation will override turn count)\nIncreases own Jujutsu, Taijutsu Stat & Damage Dealt by 34.7% (Lv 1) → 50% (Lv 10)\nDecreases own Damage Received by 41.9% (Lv 1) → 60% (Lv 10) (Chance: 40%)\nDeals melee combined Damage of 224.1% (Lv 1) → 450% (Lv 10) Taijutsu & 149.4% (Lv 1) → 300% (Lv 10) Jujutsu to the selected enemy\n(3 Hits, Counter Nullification)\nIncreases enemy's Damage Received by 25% (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)",
             "combat_rates": {
@@ -2284,7 +2284,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "\"Slicing Exorcism\" (Mudado)",
+            "name": "Supernova",
             "cost": "20",
             "description": "Deals 149.4% (Lv 1) → 300% (Lv 10) ranged Jujutsu Damage to the selected enemy (3 Hits)\nInflict 72.1% (Lv 1) → 100% (Lv 10) Continuous Jujutsu Damage (Poison) to the selected enemy (3 Turns)\nDeals an additional 149.4% (Lv 1) → 300% (Lv 10) ranged Jujutsu Damage to the selected enemy (3 Hits)\nInflict 72.1% (Lv 1) → 100% (Lv 10) Continuous Jujutsu Damage (Poison) to the selected enemy (3 Turns)\nIncreases the selected enemy's Damage Received by 34.7% (Lv 1) → 50% (Lv 10) (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)\nInflict \"Disruption\" Effect to the selected enemy (2 Turns/Chance: 72.1% (Lv 1) → 100% (Lv 10))",
             "combat_rates": {
@@ -2311,7 +2311,7 @@
         {
           "id": "changed",
           "label": "Mudado",
-          "name": "\"Piercing Blood\" (Mudado)",
+          "name": "\"Piercing Blood\"",
           "cost": "0",
           "description": "Deals 531.6% (Lv 1) → 900% (Lv 10) ranged Jujutsu Damage to the selected enemy (3 Hits)\nInflict 72.1% (Lv 1) → 100% (Lv 10) Continuous Jujutsu Damage (Poison) to the selected enemy (3 Turns)\nIncreases the selected enemy's Damage Received by 34.7% (Lv 1) → 50% (Lv 10) (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)\nDeals an additional 201% (Lv 1) → 400% (Lv 10) ranged Jujutsu Damage to the selected enemy (5 Hits)\nInflict 72.1% (Lv 1) → 100% (Lv 10) Continuous Jujutsu Damage (Poison) to the selected enemy (3 Turns)\nIncreases the selected enemy's Damage Received by 34.7% (Lv 1) → 50% (Lv 10) (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)",
           "combat_rates": {
@@ -2373,7 +2373,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Show me (Mudado)",
+            "name": "Show me",
             "cost": "0",
             "description": "If \"Skill Restriction\" Status is active, Change Skill Effect:\nIncreases own Damage Dealt by 50.0% (1 Time)\n(The higher own Cursed Energy is when Skill is activated, the greater the Damage Dealt Increase/Up to 150.0% at 115 Cursed Energy)\nDeals 300.0% (Lv 1) → 451.2% (Lv 10) Melee Taijutsu Damage to the selected enemy (3 Hits)\nIncreases the selected enemy's damage received by 30.0% (Lv 1) → 45.1% (Lv 10) (3 Turns)",
             "combat_rates": {}
@@ -2397,7 +2397,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Unseen Slash (Mudado)",
+            "name": "Unseen Slash",
             "cost": "40",
             "description": "If own Cursed Energy is 40 or more, Change Skill Effect:\nDeals 320.0% (Lv 1) → 481.3% (Lv 10) ranged Jujutsu damage to the selected enemy,\nInflicts 2 stacks of 40% Continuous Jujutsu Damage (Laceration) (3 Turns)\n''(Each stack of Laceration increases an additional Damage of Laceration by 20%)''\nIf \"Skill Restriction\" Status is active:\nSkill cannot be used",
             "combat_rates": {}
@@ -2405,7 +2405,7 @@
           {
             "id": "changed_v2",
             "label": "Mudado: V2",
-            "name": "Unseen Slash (V2)",
+            "name": "Unseen Slash",
             "cost": "90",
             "description": "If own Cursed Energy is 90 or more, Change Skill Effect:\nDeals 800.0% (Lv 1) → 1203.2% (Lv 10) ranged Jujutsu damage to the selected enemy,\nInflicts 3 stacks of 50% Continuous Jujutsu Damage (Laceration) (3 Turns)\n''(Each stack of Laceration increases an additional Damage of Laceration by 20%)''\nIf \"Skill Restriction\" Status is active:\nSkill cannot be used",
             "combat_rates": {}
@@ -2687,7 +2687,7 @@
         {
           "id": "changed",
           "label": "Mudado: Domínio Incompleto",
-          "name": "Exorcist Slash (Mudado)",
+          "name": "Exorcist Slash",
           "cost": "0",
           "description": "Deals 200.0% (Lv 1) → 300.8% (Lv 10) Melee Taijutsu Damage to the selected enemy\nIncreases the selected enemy's Damage Received by 75.0% (Lv 1) → 99.3% (Lv 10) (3 Turns)",
           "combat_rates": {}
@@ -2717,7 +2717,7 @@
           {
             "id": "changed",
             "label": "Mudado: Domínio Incompleto",
-            "name": "Continuous Exorcist Slashes (Mudado)",
+            "name": "Continuous Exorcist Slashes",
             "cost": "10",
             "description": "Deals Melee Combined Damage equal to 140.3% (Lv 1) → 210.5% (Lv 10) Taijutsu and 140.3% (Lv 1) → 210.5% (Lv 10) Jujutsu to all enemies (2 Hits)\nDeals 120.1% (Lv 1) → 180.4% (Lv 10) Ranged Jujutsu Damage to all enemies",
             "combat_rates": {}
@@ -2746,7 +2746,7 @@
           {
             "id": "changed",
             "label": "Mudado: Domínio Incompleto",
-            "name": "Sudden Slash (Mudado)",
+            "name": "Sudden Slash",
             "cost": "20",
             "description": "Deals Melee Combined Damage equal to 300.0% (Lv 1) → 451.2% (Lv 10) Taijutsu and 150.0% (Lv 1) → 225.6% (Lv 10) Jujutsu to the selected enemy\nDeals 150.0% (Lv 1) → 225.6% (Lv 10) Ranged Jujutsu Damage to the selected enemy\nIncreases the selected enemy's Taijutsu Damage Received by 60.0% (2 Turns)\nStuns the selected enemy (1 Turn/Chance: 100.0%)",
             "combat_rates": {}
@@ -3051,7 +3051,7 @@
         {
           "id": "changed",
           "label": "Mudado",
-          "name": "Defiguration Attack (Mudado)",
+          "name": "Defiguration Attack",
           "cost": "0",
           "description": "Deals 133.4% (Lv 1) → 200.0% (Lv 10) Ranged Taijutsu Damage to the selected enemy as a Type that the selected enemy has a weakness to\n(Attacks without a Type when selecting an enemy without a weakness)\nWhile the Domain is active,\nDepending on own Jujutsu and enemy's remaining HP, instantly kill the enemy\n(Some enemies excluded/Effectiveness: High)",
           "combat_rates": {}
@@ -3076,7 +3076,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Malleable Appearance (Mudado)",
+            "name": "Malleable Appearance",
             "cost": "10",
             "description": "Deals 224.3% (Lv 1) → 336.9% (Lv 10) Melee Taijutsu Damage as a Type that the selected enemy has a weakness to\n(Attacks without a Type when selecting an enemy without a weakness)\nIncreases the selected enemy's Taijutsu Damage Received by 20.0% (2 Turns)\nDepending on own Jujutsu and enemy's remaining HP, instantly kill the enemy\n(Some enemies excluded/Effectiveness: High)",
             "combat_rates": {}
@@ -3100,7 +3100,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Idle Transfiguration (Mudado)",
+            "name": "Idle Transfiguration",
             "cost": "20",
             "description": "Increases own Jujutsu Stat by 20.1% (Lv 1) → 30.0% (Lv 10) (1 Turn/1 Time)\nDeals 450.0% (Lv 1) → 676.8% (Lv 10) Melee Jujutsu Damage to the selected enemy\nDepending on own Jujutsu and enemy's remaining HP, instantly kill the enemy\n(Some enemies excluded/Effectiveness: High)",
             "combat_rates": {}
@@ -4491,7 +4491,7 @@
         {
           "id": "changed",
           "label": "Mudado",
-          "name": "Exorcist Slash (Mudado)",
+          "name": "Exorcist Slash",
           "cost": "0",
           "description": "Deals 34.7% (Lv 1) → 50% (Lv 10) Melee Taijutsu Damage & 65.7% (Lv 1) → 100% (Lv 10) ranged Jujutsu Damage to the selected enemy\n(Taijutsu Damage will ignore counter & Jujutsu Damage will ignore Darkness)\nDelays an action (1 Turn/1 Time/Chance: 50%)",
           "combat_rates": {
@@ -4520,7 +4520,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Continuous Exorcist Slashes (Mudado)",
+            "name": "Continuous Exorcist Slashes",
             "cost": "20",
             "description": "Deals 74.7% (Lv 1) → 150% (Lv 10) Melee Taijutsu Damage & 65.7% (Lv 1) → 100% (Lv 10) ranged Jujutsu Damage to the selected enemy\n(Taijutsu Damage will ignore counter & Jujutsu Damage will ignore Darkness)\nIncreases the selected enemy's Taijutsu & Jujutsu Damage Received by 34.7% (Lv 1) → 50% (Lv 10) (3 Turns)\n(Effective for \"幻\" (Red) Type attacks)",
             "combat_rates": {
@@ -4802,7 +4802,7 @@
           {
             "id": "changed",
             "label": "Mudado: Sessão Espiritual",
-            "name": "Sharpened Fang (Mudado)",
+            "name": "Sharpened Fang",
             "cost": "0",
             "description": "Increases own Break Damage by 170.3% (Lv 1) → 250% (Lv 10) (1 Turn/1 Time)\nDeals 122.8% (Lv 1) → 200% (Lv 10) Melee Taijutsu Damage to the selected enemy\nInflicts 1 stack of 40% Continuous Taijutsu Damage (Sting) (4 Turns)\n(Each stack of Sting increases an additional Damage by 20%)\nIncreases own Combo Count by 3",
             "combat_rates": {}
@@ -5117,7 +5117,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Ice Formation (Mudado)",
+            "name": "Ice Formation",
             "cost": "20",
             "description": "When Freeze Enhancement is Lvl 3 or more,\nDeals 97.4% (Lv 1) → 145% (Lv 10) ranged Jujutsu Damage to the selected enemy (2 Hits)\nIncreases the selected enemy's \"行\" (Yellow) Type Jujutsu Damage Received by 10% (Lv 1) → 20% (Lv 10) (3 Turns)\nWhen DOT (Freeze) is inflicted,\nDeals an additional 142.3% (Lv 1) → 199.9% (Lv 10) ranged Jujutsu Damage to the selected enemy\nRemoves 1 DOT (Freeze) (Prioritize newest one)\nInflicts 30% Jujutsu Damage DOT (Freeze) to the selected enemy (3 Turns)\nIncreases Freeze Enhancement Lvl by 1 (Up to 20)",
             "combat_rates": {}
@@ -5141,7 +5141,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Frost Calm (Mudado)",
+            "name": "Frost Calm",
             "cost": "30",
             "description": "When Freeze Enhancement is Lvl 5 or more,\nDeals 284.7% (Lv 1) → 400% (Lv 10) ranged Jujutsu Damage to all enemies\nInflicts 50% Jujutsu Damage DOT (Freeze) to all enemies (6 Turns)\nIncreases all enemies' Break Damage Received by 14.3% (Lv 1) → 30% (Lv 10) (3 Turns)\nIncreases Freeze Enhancement Lvl by 3 (Up to 20)",
             "combat_rates": {}
@@ -5747,7 +5747,7 @@
           {
             "id": "changed",
             "label": "Mudado: Iluminado",
-            "name": "Limitless Cursed Technique (Mudado)",
+            "name": "Limitless Cursed Technique",
             "cost": "1",
             "description": "Increases own Damage by 53.9% (Lv 1) → 80.0% (Lv 10) (4 Turns)\nIncreases own Critical Hit Rate by 30.0% (4 Turns)",
             "combat_rates": {}
@@ -6338,7 +6338,7 @@
         {
           "id": "changed",
           "label": "Mudado",
-          "name": "Kick (Mudado)",
+          "name": "Death Swarm (1)",
           "cost": "0",
           "description": "Deals 209.5% (Lv 1) → 300% (Lv 10) ranged Jujutsu Damage to all enemies (5 Hits)\nRecovers own Cursed Energy by 10 (Regardless of Maximum Cursed Energy Cap)",
           "combat_rates": {
@@ -6367,7 +6367,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Defence from Water (Mudado)",
+            "name": "Death Swarm (2)",
             "cost": "15",
             "description": "Increases own Jujutsu Stat by 22.2% (Lv 1) → 25% (Lv 10) (3 Turns)\nDeals 245.4% (Lv 1) → 400% (Lv 10) ranged Jujutsu Damage to all enemies\nIncreases all enemies' Damage Received by 7.4% (Lv 1) → 10% (Lv 10) (3 Turns)",
             "combat_rates": {
@@ -6395,7 +6395,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "Disaster Tides (Mudado)",
+            "name": "Death Swarm (3)",
             "cost": "40",
             "description": "Deals 240.8% (Lv 1) → 360% (Lv 10) ranged Jujutsu Damage to all enemies (4 Hits)\nStop all enemies' action (Chance: 20%/2 Turns/1 Time)\nIncreases all enemies' Damage Received by 7.4% (Lv 1) → 10% (Lv 10) (3 Turns)\nInflicts 1 stack of 25% Continuous Jujutsu Damage (Horizon of the Captivating Skandha)\n(3 Turns/Each Stack increases an additional 20% Damage)",
             "combat_rates": {
@@ -6516,7 +6516,7 @@
           {
             "id": "changed",
             "label": "Mudado",
-            "name": "New Shadow Style: Simple Domain (Mudado)",
+            "name": "New Shadow Style: Simple Domain",
             "cost": "20",
             "description": "If \"Simple Domain\" State is already applied,\nExtends the following effect to all allies:\nDecreases Jujutsu Damage Received by 19.4% (Lv 1) → 40% (Lv 10)\nNullify enemy's Domain Continuous Effect",
             "combat_rates": {}
@@ -6978,7 +6978,7 @@
           {
             "id": "changed",
             "label": "Mudado: Zona",
-            "name": "Strike of Resolve (Mudado)",
+            "name": "Strike of Resolve",
             "cost": "25",
             "description": "Deals 340.0% (Lv 1) → 517.6% (Lv 10) Melee Taijutsu Damage to the selected enemy (2 Hits)\nIncreases own Taijutsu Stat by 20.0% (Lv 1) → 29.0% (Lv 10) (2 Turns)\n(Ultimate Skill Gauge charge provided is halved)\nWhen performing an additional action, activates an effect depending on the order in which the Skill is used during the turn:\nAs the First Action:\nIncreases own Critical Hit Rate by 40.0% (1 Turn)\nIncreases own Black Flash Rate by 15.0% (1 Turn)\nAs the Second Action:\nIncreases own Damage Dealt by 30.0% (2 Turns)",
             "combat_rates": {
@@ -7006,7 +7006,7 @@
           {
             "id": "changed",
             "label": "Mudado: Zona",
-            "name": "Exorcism Flurry (Mudado)",
+            "name": "Exorcism Flurry",
             "cost": "20",
             "description": "Increases own Break Damage by 166.2% (Lv 1) → 250.0% (Lv 10) (1 Turn/1 Time)\nDeals 434.4% (Lv 1) → 680.0% (Lv 10) Melee Taijutsu Damage to the selected enemy (3 Hits)\n(Ultimate Skill Gauge charge provided is halved)",
             "combat_rates": {

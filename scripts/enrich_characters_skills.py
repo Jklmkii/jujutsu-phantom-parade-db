@@ -288,8 +288,8 @@ def run():
                     attrs.get("Changed Normal Attack Effect", ""),
                     attrs.get("Changed Normal Attack Effect 10", attrs.get("Changed Normal Attack Effect", ""))
                 )
-                changed_name = parse_skill_name_from_text(changed_desc, f"{reg_name} (Mudado)")
-                label_changed = detect_contextual_label(changed_desc, title, "Mudado")
+                changed_name = parse_skill_name_from_text(f"{reg_desc} {changed_desc}", reg_name)
+                label_changed = detect_contextual_label(f"{reg_desc} {changed_desc}", title, "Mudado")
 
                 na_combat_rates = {}
                 if "ChangedS1CritRate" in attrs: na_combat_rates["crit_rate"] = attrs["ChangedS1CritRate"]
@@ -346,8 +346,8 @@ def run():
                             attrs.get(f"Changed Skill {slot} Effect 10", attrs.get(f"Changed Skill {slot} Effect", ""))
                         )
                         c_cost = attrs.get(f"Changed Energy Cost S{slot}", reg_cost)
-                        c_name = parse_skill_name_from_text(c_desc, f"{reg_name} (Mudado)")
-                        c_label = detect_contextual_label(c_desc, title, "Mudado")
+                        c_name = parse_skill_name_from_text(f"{reg_desc} {c_desc}", reg_name)
+                        c_label = detect_contextual_label(f"{reg_desc} {c_desc}", title, "Mudado")
 
                         c_rates = {}
                         crit_key = f"ChangedS{slot+1}CritRate"
@@ -372,8 +372,8 @@ def run():
                             attrs.get(f"Second Changed Skill {slot} Effect 10", attrs.get(f"Second Changed Skill {slot} Effect", ""))
                         )
                         c2_cost = attrs.get(f"Second Changed Energy Cost S{slot}", reg_cost)
-                        c2_name = parse_skill_name_from_text(c2_desc, f"{reg_name} (V2)")
-                        c2_label = detect_contextual_label(c2_desc, title, "Mudado: V2")
+                        c2_name = parse_skill_name_from_text(f"{reg_desc} {c2_desc}", reg_name)
+                        c2_label = detect_contextual_label(f"{reg_desc} {c2_desc}", title, "Mudado: V2")
 
                         c2_rates = {}
                         crit_key2 = f"SecondChangedS{slot+1}CritRate"
@@ -405,8 +405,8 @@ def run():
                     attrs.get("Changed Ult Effect", ""),
                     attrs.get("Changed Ult Effect 10", attrs.get("Changed Ult Effect", ""))
                 )
-                changed_ult_name = parse_skill_name_from_text(changed_ult_desc, f"{reg_ult_name} (Mudado)")
-                ult_label = detect_contextual_label(changed_ult_desc, title, "Mudado")
+                changed_ult_name = parse_skill_name_from_text(f"{reg_ult_desc} {changed_ult_desc}", reg_ult_name)
+                ult_label = detect_contextual_label(f"{reg_ult_desc} {changed_ult_desc}", title, "Mudado")
 
                 ult_rates = {}
                 if "ChangedUltCritRate" in attrs: ult_rates["crit_rate"] = attrs["ChangedUltCritRate"]

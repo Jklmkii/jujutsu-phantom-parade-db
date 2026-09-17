@@ -4,6 +4,7 @@ import { ElementBadge, RarityBadge } from './Badges';
 import { Search, Filter, X, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { playClick } from '../utils/sound';
+import { getAssetUrl } from '../utils/assets';
 
 interface CharactersListProps {
   characters: Character[];
@@ -257,7 +258,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3.5">
               {filteredCharacters.map((char) => {
-                const imgUrl = char.image ? `/assets/${char.image}` : '/assets/placeholder.png';
+                const imgUrl = getAssetUrl(char.image);
                 const isSSR = char.rarity === 'SSR';
                 const isSR = char.rarity === 'SR';
 
@@ -280,7 +281,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                         alt={char.title}
                         className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80';
+                          (e.target as HTMLImageElement).src = getAssetUrl();
                         }}
                       />
 

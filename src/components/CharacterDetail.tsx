@@ -4,6 +4,7 @@ import { ElementBadge, RarityBadge, TagBadge } from './Badges';
 import { ArrowLeft, Zap, Shield, Sparkles, Swords, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { playClick, playStarToggle, playTransformSurge, playLevelUp } from '../utils/sound';
+import { getAssetUrl } from '../utils/assets';
 
 interface CharacterDetailProps {
   character: Character;
@@ -29,9 +30,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
     }
   };
 
-  const imageSrc = character.image 
-    ? `/assets/${character.image}`
-    : '/assets/placeholder.png';
+  const imageSrc = getAssetUrl(character.image);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
@@ -75,8 +74,8 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               alt={character.title}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               onError={(e) => {
-                // Fallback image if gif not found
-                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80';
+                // Fallback offline image if gif not found
+                (e.target as HTMLImageElement).src = getAssetUrl();
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
