@@ -1,4 +1,4 @@
-﻿const { execSync } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -24,6 +24,14 @@ try {
   if (!fs.existsSync(targetReleaseDir)) {
     fs.mkdirSync(targetReleaseDir, { recursive: true });
   }
+
+  // Close any running instance to prevent EBUSY locks
+  try {
+    if (process.platform === 'win32') {
+      execSync('taskkill /F /IM "JJKPPDB Offline.exe" /T 2>nul || exit 0', { shell: true, stdio: 'ignore' });
+      execSync('taskkill /F /IM "JJKPPDB Offline 1.0.0.exe" /T 2>nul || exit 0', { shell: true, stdio: 'ignore' });
+    }
+  } catch {}
 
   const tempFiles = fs.readdirSync(tempReleaseDir);
   const exeFiles = tempFiles.filter(f => f.endsWith('.exe'));

@@ -16,6 +16,9 @@ export interface SkillVariant {
   name: string;
   cost: string;
   description: string;
+  description_10?: string;
+  image_key?: string;
+  icon?: string | null;
   combat_rates?: CombatRates;
 }
 
@@ -24,6 +27,9 @@ export interface SkillItem {
   name: string;
   cost: string;
   description: string;
+  description_10?: string;
+  image_key?: string;
+  icon?: string;
   changed?: {
     name: string;
     cost: string;
@@ -35,12 +41,15 @@ export interface SkillItem {
 export interface PassiveItem {
   name: string;
   description: string;
+  image_key?: string;
+  icon?: string;
 }
 
 export interface CombatRates {
   crit_rate?: string;
   crit_dmg?: string;
   black_flash?: string;
+  black_flash_dmg?: string;
 }
 
 export interface Character {
@@ -61,19 +70,31 @@ export interface Character {
   normal_attack?: {
     name: string;
     description: string;
+    description_10?: string;
+    image_key?: string;
+    icon?: string;
     variants?: SkillVariant[];
   };
   skills: SkillItem[];
   ultimate: {
     name: string;
     description: string;
+    description_10?: string;
+    image_key?: string;
+    icon?: string;
     combo?: string;
     variants?: SkillVariant[];
   };
   passives: PassiveItem[];
+  auto_skills?: {
+    name: string;
+    description: string;
+    image_key?: string;
+    icon?: string;
+  }[];
   has_transformation?: boolean;
   transform_name?: string;
-  skill_priority?: string[];
+  skill_priority?: (number | string)[];
   combat_rates?: CombatRates;
 }
 

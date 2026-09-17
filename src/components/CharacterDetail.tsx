@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import type { Character } from '../types';
+import type { Character, SkillVariant } from '../types';
 import { ElementBadge, RarityBadge, TagBadge } from './Badges';
 import { ArrowLeft, Zap, Shield, Sparkles, Swords, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { playClick, playStarToggle, playTransformSurge, playLevelUp } from '../utils/sound';
-import { getAssetUrl } from '../utils/assets';
+import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
 
 interface CharacterDetailProps {
   character: Character;
@@ -15,13 +15,32 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
   const [selectedNormalAttackVariant, setSelectedNormalAttackVariant] = useState<string>('regular');
   const [selectedSkillVariants, setSelectedSkillVariants] = useState<Record<number, string>>({});
   const [selectedUltVariant, setSelectedUltVariant] = useState<string>('regular');
-  const [skillLevel, setSkillLevel] = useState<1 | 10>(10);
-  const { isFavoriteChar, toggleFavoriteChar } = useJjkStore();
+  
+  // Global & card-level skill level toggles (default 10)
+  const [globalSkillLevel, setGlobalSkillLevel] = useState<1 | 10>(10);
+  const [cardSkillLevels, setCardSkillLevels] = useState<Record<string, 1 | 10>>({});
 
+  const { isFavoriteChar, toggleFavoriteChar } = useJjkStore();
   const isFavorite = isFavoriteChar(character.id);
 
+  const getEffectiveLevel = (cardKey: string): 1 | 10 => {
+    return cardSkillLevels[cardKey] ?? globalSkillLevel;
+  };
+
+  const setCardLevel = (cardKey: string, lvl: 1 | 10) => {
+    playLevelUp();
+    setCardSkillLevels(prev => ({ ...prev, [cardKey]: lvl }));
+  };
+
   // Helper to format text scaling between Lv 1 and Lv 10
-  const formatSkillText = (text: string, level: 1 | 10) => {
+  const formatSkillDescription = (desc1?: string, desc10?: string, level: 1 | 10 = 10) => {
+    if (level === 10 && desc10) {
+      return desc10;
+    }
+    if (level === 1 && desc1) {
+      return desc1;
+    }
+    const text = desc10 || desc1 || '';
     if (!text) return '';
     if (level === 1) {
       return text.replace(/(\d+(?:\.\d+)?%?)\s*\(Lv 1\)\s*→\s*(\d+(?:\.\d+)?%?)\s*\(Lv 10\)/g, '$1');
@@ -29,6 +48,97 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
       return text.replace(/(\d+(?:\.\d+)?%?)\s*\(Lv 1\)\s*→\s*(\d+(?:\.\d+)?%?)\s*\(Lv 10\)/g, '$2');
     }
   };
+
+  // Structured bullet renderer for skill effects
+  const renderFormattedDescription = (text: string) => {
+    if (!text) return null;
+    const lines = text.split('\n');
+    return (
+      <div className="space-y-1.5 text-xs sm:text-sm text-gray-200 leading-relaxed font-sans">
+        {lines.map((rawLine, i) => {
+          const line = rawLine.trim();
+          if (!line) return <div key={i} className="h-1" />;
+          
+          if (line.startsWith('▼') || line.startsWith('â–¼')) {
+            const clean = line.replace(/^(?:▼|â–¼)\s*/, '');
+            return (
+              <div key={i} className="text-purple-300 font-bold flex items-start gap-1.5 mt-2 first:mt-0">
+                <span className="text-purple-400 text-xs mt-0.5 select-none">▼</span>
+                <span>{clean}</span>
+              </div>
+            );
+          }
+          if (line.startsWith('※') || line.startsWith('*')) {
+            const clean = line.replace(/^[※*]\s*/, '');
+            return (
+              <div key={i} className="text-amber-300/90 text-xs italic pl-4 flex items-start gap-1 mt-1">
+                <span className="select-none">※</span>
+                <span>{clean}</span>
+              </div>
+            );
+          }
+          if (line.startsWith('·') || line.startsWith('-')) {
+            const clean = line.replace(/^[·-]\s*/, '');
+            return (
+              <div key={i} className="text-gray-300 pl-4 flex items-start gap-1.5">
+                <span className="text-purple-400 select-none">•</span>
+                <span>{clean}</span>
+              </div>
+            );
+          }
+          return (
+            <div key={i} className="pl-3 text-gray-300">
+              {line}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Resolve Skill Priority item details (#1, #2, #3, #4)
+  const getPriorityItemData = (item: number | string) => {
+    let idx = typeof item === 'number' ? item : parseInt(item, 10);
+    if (isNaN(idx)) {
+      const s = String(item).toLowerCase();
+      if (s.includes('ult') || s.includes('suprema')) idx = 3;
+      else if (s.includes('3')) idx = 2;
+      else if (s.includes('2')) idx = 1;
+      else idx = 0;
+    }
+
+    if (idx === 2) {
+      const s = character.skills && character.skills.length > 1 ? character.skills[1] : character.skills?.[0];
+      return {
+        label: 'Skill 3',
+        name: s?.name || 'Skill 3',
+        icon: s?.icon || s?.image_key || character.skills?.[1]?.variants?.[0]?.icon,
+      };
+    } else if (idx === 3) {
+      return {
+        label: 'Ultimate',
+        name: character.ultimate?.name || 'Ultimate',
+        icon: character.ultimate?.icon || character.ultimate?.image_key || character.ultimate?.variants?.[0]?.icon,
+      };
+    } else if (idx === 1) {
+      const s = character.skills?.[0];
+      return {
+        label: 'Skill 2',
+        name: s?.name || 'Skill 2',
+        icon: s?.icon || s?.image_key || s?.variants?.[0]?.icon,
+      };
+    } else {
+      return {
+        label: 'Skill 1',
+        name: character.normal_attack?.name || 'Skill 1',
+        icon: character.normal_attack?.icon || character.normal_attack?.image_key || character.normal_attack?.variants?.[0]?.icon,
+      };
+    }
+  };
+
+  const priorityList = character.skill_priority && character.skill_priority.length > 0
+    ? character.skill_priority
+    : [2, 3, 1, 0];
 
   const imageSrc = getAssetUrl(character.image);
 
@@ -41,7 +151,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             playClick();
             onBack();
           }}
-          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161126] hover:bg-[#201838] text-purple-300 hover:text-white border border-[#2b2149] transition-all text-sm font-medium shadow-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161126] hover:bg-[#201838] text-purple-300 hover:text-white border border-[#2b2149] transition-all text-sm font-medium shadow-sm cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Todos os personagens</span>
@@ -52,7 +162,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             playStarToggle(!isFavorite);
             toggleFavoriteChar(character.id);
           }}
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border font-bold text-xs transition-all shadow-md ${
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border font-bold text-xs transition-all shadow-md cursor-pointer ${
             isFavorite
               ? 'bg-amber-950/80 border-amber-500 text-amber-300'
               : 'bg-[#161126] border-[#2b2149] text-gray-400 hover:text-white'
@@ -74,7 +184,6 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               alt={character.title}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               onError={(e) => {
-                // Fallback offline image if gif not found
                 (e.target as HTMLImageElement).src = getAssetUrl();
               }}
             />
@@ -145,10 +254,11 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               <button
                 onClick={() => {
                   playLevelUp();
-                  setSkillLevel(1);
+                  setGlobalSkillLevel(1);
+                  setCardSkillLevels({});
                 }}
-                className={`px-3 py-1 rounded text-xs font-bold transition-all ${
-                  skillLevel === 1 
+                className={`px-3 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
+                  globalSkillLevel === 1 
                     ? 'bg-purple-600 text-white shadow-sm' 
                     : 'text-gray-400 hover:text-white'
                 }`}
@@ -158,10 +268,11 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               <button
                 onClick={() => {
                   playLevelUp();
-                  setSkillLevel(10);
+                  setGlobalSkillLevel(10);
+                  setCardSkillLevels({});
                 }}
-                className={`px-3 py-1 rounded text-xs font-bold transition-all ${
-                  skillLevel === 10 
+                className={`px-3 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
+                  globalSkillLevel === 10 
                     ? 'bg-purple-600 text-white shadow-sm' 
                     : 'text-gray-400 hover:text-white'
                 }`}
@@ -171,186 +282,318 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             </div>
           </div>
 
-          {/* Ataque Básico */}
+          {/* Ataque Básico (SKILL 1) */}
           {character.normal_attack && (() => {
             const na = character.normal_attack;
-            const hasVariants = na.variants && na.variants.length > 1;
-            const activeVariant = (hasVariants && na.variants)
-              ? (na.variants.find(v => v.id === selectedNormalAttackVariant) || na.variants[0])
-              : null;
-            const name = activeVariant ? activeVariant.name : na.name;
-            const description = activeVariant ? activeVariant.description : na.description;
-            const combatRates = activeVariant?.combat_rates || character.combat_rates;
+            const variants: SkillVariant[] = (na.variants && na.variants.length > 0)
+              ? na.variants
+              : [{
+                  id: 'regular',
+                  label: 'Base',
+                  name: na.name,
+                  cost: '0',
+                  description: na.description,
+                  description_10: na.description_10,
+                  icon: na.icon || na.image_key,
+                  combat_rates: character.combat_rates
+                }];
+            
+            const activeVariant = variants.find(v => v.id === selectedNormalAttackVariant) || variants[0];
+            const name = activeVariant.name;
+            const icon = activeVariant.icon || activeVariant.image_key || na.icon || na.image_key;
+            const combatRates = activeVariant.combat_rates || character.combat_rates;
+            const effLevel = getEffectiveLevel('na');
+            const desc = formatSkillDescription(activeVariant.description, activeVariant.description_10, effLevel);
 
             return (
-              <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-3">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] uppercase font-bold tracking-wider text-gray-400">
-                        Ataque Básico
-                      </span>
-                      {activeVariant && activeVariant.id !== 'regular' && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 border border-red-500/40 text-red-300">
-                          {activeVariant.label}
+              <div className="bg-[#120e24] border border-[#291f47] rounded-xl shadow-lg flex flex-row overflow-hidden hover:border-purple-500/40 transition-colors">
+                {/* Left Vertical Tab Strip */}
+                <div className="w-20 sm:w-24 shrink-0 flex flex-col border-r border-[#241a3e] bg-[#0c081d]">
+                  {variants.map((v) => {
+                    const isSel = (selectedNormalAttackVariant || 'regular') === v.id;
+                    return (
+                      <button
+                        key={v.id}
+                        onClick={() => {
+                          playTransformSurge();
+                          setSelectedNormalAttackVariant(v.id);
+                        }}
+                        className={`py-3 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${
+                          isSel
+                            ? v.id === 'sp'
+                              ? 'bg-[#2a1c0d] text-amber-300 border-amber-400'
+                              : v.id === 'changed'
+                              ? 'bg-[#0e2133] text-cyan-300 border-cyan-400'
+                              : 'bg-[#181230] text-white border-purple-400'
+                            : 'text-gray-400 hover:text-gray-200 hover:bg-[#140f28] border-transparent'
+                        }`}
+                      >
+                        {v.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Right Main Content */}
+                <div className="flex-1 p-4 sm:p-5 space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      {/* Skill Icon Thumbnail */}
+                      <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-[#090614] border-2 border-purple-500/40 shrink-0 shadow-md flex items-center justify-center">
+                        <img 
+                          src={getSkillIconUrl(icon)} 
+                          alt={name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = getSkillIconUrl();
+                          }}
+                        />
+                      </div>
+
+                      {/* Title & Level Selector */}
+                      <div>
+                        <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400 block">
+                          SKILL 1 • ATAQUE BÁSICO
+                        </span>
+                        <h3 className="text-base sm:text-lg font-black text-white leading-tight mt-0.5">
+                          {name}
+                        </h3>
+                        <div className="flex items-center gap-1.5 mt-1">
+                          <button
+                            onClick={() => setCardLevel('na', 1)}
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${
+                              effLevel === 1 
+                                ? 'bg-purple-600 text-white shadow-sm' 
+                                : 'bg-[#150f29] text-gray-400 hover:text-white border border-[#2b1f4a]'
+                            }`}
+                          >
+                            Lv.1
+                          </button>
+                          <button
+                            onClick={() => setCardLevel('na', 10)}
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${
+                              effLevel === 10 
+                                ? 'bg-purple-600 text-white shadow-sm' 
+                                : 'bg-[#150f29] text-gray-400 hover:text-white border border-[#2b1f4a]'
+                            }`}
+                          >
+                            Lv.10
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CE Cost Badge */}
+                    <div className="shrink-0">
+                      <div className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#0d2218] border border-emerald-500/40 text-emerald-300 flex items-center gap-1">
+                        <span>0</span>
+                        <span className="text-emerald-400 text-xs">💧</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Formatted Description */}
+                  <div className="bg-[#0b0819] p-3.5 rounded-lg border border-[#1f1737]">
+                    {renderFormattedDescription(desc)}
+                  </div>
+
+                  {/* Combat Rates Badges */}
+                  {combatRates && (
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      {combatRates.crit_rate && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/40">
+                          Crit Rate {combatRates.crit_rate}
+                        </span>
+                      )}
+                      {combatRates.crit_dmg && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/40">
+                          Crit DMG {combatRates.crit_dmg}
+                        </span>
+                      )}
+                      {combatRates.black_flash && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/60 text-red-300 border border-red-800/40">
+                          Black Flash {combatRates.black_flash}
+                        </span>
+                      )}
+                      {combatRates.black_flash_dmg && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/60 text-red-300 border border-red-800/40">
+                          Black Flash DMG {combatRates.black_flash_dmg}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg font-bold text-white mt-0.5">
-                      {name}
-                    </h3>
-                  </div>
-
-                  {hasVariants && (
-                    <div className="flex flex-wrap items-center gap-1.5 bg-[#0e0a1d] p-1 rounded-lg border border-[#251c42]">
-                      {na.variants!.map((v) => {
-                        const isSelected = (selectedNormalAttackVariant || 'regular') === v.id;
-                        return (
-                          <button
-                            key={v.id}
-                            onClick={() => {
-                              playTransformSurge();
-                              setSelectedNormalAttackVariant(v.id);
-                            }}
-                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
-                              isSelected
-                                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md border border-purple-400/50'
-                                : 'text-gray-400 hover:text-gray-200'
-                            }`}
-                          >
-                            {v.label}
-                          </button>
-                        );
-                      })}
-                    </div>
                   )}
                 </div>
-
-                <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line bg-[#0c0919] p-3.5 rounded-lg border border-[#1f1737]">
-                  {formatSkillText(description, skillLevel)}
-                </div>
-
-                {combatRates && (
-                  <div className="flex flex-wrap items-center gap-2 pt-1">
-                    {combatRates.crit_rate && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                        Taxa Crítica: {combatRates.crit_rate}
-                      </span>
-                    )}
-                    {combatRates.crit_dmg && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                        Dano Crítico: {combatRates.crit_dmg}
-                      </span>
-                    )}
-                    {combatRates.black_flash && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
-                        ⚡ Flash Negro: {combatRates.black_flash}
-                      </span>
-                    )}
-                  </div>
-                )}
               </div>
             );
           })()}
 
-          {/* Command Skills */}
-          {character.skills.map((skill) => {
-            const hasVariants = skill.variants && skill.variants.length > 1;
-            const currentVariantId = selectedSkillVariants[skill.slot] || 'regular';
-            const activeVariant = (hasVariants && skill.variants)
-              ? (skill.variants.find(v => v.id === currentVariantId) || skill.variants[0])
-              : null;
+          {/* Command Skills (SKILL 2 & SKILL 3) */}
+          {character.skills.map((skill, index) => {
+            const slotDisplayNum = skill.slot ? (skill.slot === 1 ? 2 : 3) : index + 2;
+            const slotLabel = `SKILL ${slotDisplayNum}`;
+            const cardKey = `skill-${skill.slot || index + 1}`;
+            
+            const variants: SkillVariant[] = (skill.variants && skill.variants.length > 0)
+              ? skill.variants
+              : [{
+                  id: 'regular',
+                  label: 'Base',
+                  name: skill.name,
+                  cost: skill.cost || '20',
+                  description: skill.description,
+                  description_10: skill.description_10,
+                  icon: skill.icon || skill.image_key,
+                  combat_rates: character.combat_rates
+                }];
 
-            const name = activeVariant ? activeVariant.name : skill.name;
-            const cost = activeVariant ? activeVariant.cost : skill.cost;
-            const description = activeVariant ? activeVariant.description : skill.description;
-            const combatRates = activeVariant?.combat_rates || character.combat_rates;
+            const currentVariantId = selectedSkillVariants[skill.slot] || 'regular';
+            const activeVariant = variants.find(v => v.id === currentVariantId) || variants[0];
+            const name = activeVariant.name;
+            const cost = activeVariant.cost || skill.cost || '20';
+            const icon = activeVariant.icon || activeVariant.image_key || skill.icon || skill.image_key;
+            const combatRates = activeVariant.combat_rates || character.combat_rates;
+            const effLevel = getEffectiveLevel(cardKey);
+            const desc = formatSkillDescription(activeVariant.description, activeVariant.description_10, effLevel);
 
             return (
               <div 
-                key={skill.slot} 
-                className="bg-[#120e24] border border-[#291f47] rounded-xl shadow-lg p-5 space-y-3 group hover:border-purple-500/40 transition-colors"
+                key={skill.slot || index} 
+                className="bg-[#120e24] border border-[#291f47] rounded-xl shadow-lg flex flex-row overflow-hidden hover:border-purple-500/40 transition-colors"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400">
-                        Habilidade {skill.slot}
-                      </span>
-                      {activeVariant && activeVariant.id !== 'regular' && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 border border-red-500/40 text-red-300">
-                          {activeVariant.label}
+                {/* Left Vertical Tab Strip */}
+                <div className="w-20 sm:w-24 shrink-0 flex flex-col border-r border-[#241a3e] bg-[#0c081d]">
+                  {variants.map((v) => {
+                    const isSel = currentVariantId === v.id;
+                    return (
+                      <button
+                        key={v.id}
+                        onClick={() => {
+                          playTransformSurge();
+                          setSelectedSkillVariants(prev => ({ ...prev, [skill.slot]: v.id }));
+                        }}
+                        className={`py-3.5 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${
+                          isSel
+                            ? v.id === 'sp'
+                              ? 'bg-[#2a1c0d] text-amber-300 border-amber-400'
+                              : v.id === 'changed2'
+                              ? 'bg-[#0b2426] text-emerald-300 border-emerald-400'
+                              : v.id === 'changed'
+                              ? 'bg-[#0e2133] text-cyan-300 border-cyan-400'
+                              : 'bg-[#181230] text-white border-purple-400'
+                            : v.id === 'sp'
+                            ? 'text-amber-500/70 hover:text-amber-300 hover:bg-[#1f150c] border-transparent'
+                            : 'text-gray-400 hover:text-gray-200 hover:bg-[#140f28] border-transparent'
+                        }`}
+                      >
+                        {v.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Right Main Content */}
+                <div className="flex-1 p-4 sm:p-5 space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      {/* Skill Icon Thumbnail */}
+                      <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-[#090614] border-2 border-purple-500/40 shrink-0 shadow-md flex items-center justify-center">
+                        <img 
+                          src={getSkillIconUrl(icon)} 
+                          alt={name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = getSkillIconUrl();
+                          }}
+                        />
+                      </div>
+
+                      {/* Title & Level Selector */}
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400">
+                            {slotLabel}
+                          </span>
+                          {activeVariant.id === 'sp' && (
+                            <span className="px-2 py-0.2 rounded text-[10px] font-black bg-amber-950 border border-amber-500/50 text-amber-300">
+                              SP UNLOCKED
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-base sm:text-lg font-black text-white leading-tight mt-0.5">
+                          {name}
+                        </h3>
+                        <div className="flex items-center gap-1.5 mt-1">
+                          <button
+                            onClick={() => setCardLevel(cardKey, 1)}
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${
+                              effLevel === 1 
+                                ? 'bg-purple-600 text-white shadow-sm' 
+                                : 'bg-[#150f29] text-gray-400 hover:text-white border border-[#2b1f4a]'
+                            }`}
+                          >
+                            Lv.1
+                          </button>
+                          <button
+                            onClick={() => setCardLevel(cardKey, 10)}
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${
+                              effLevel === 10 
+                                ? 'bg-purple-600 text-white shadow-sm' 
+                                : 'bg-[#150f29] text-gray-400 hover:text-white border border-[#2b1f4a]'
+                            }`}
+                          >
+                            Lv.10
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CE Cost Badge */}
+                    <div className="shrink-0">
+                      {cost && cost !== '0' ? (
+                        <div className="px-3 py-1 rounded-full text-xs font-black bg-[#0d1e38] border border-cyan-500/40 text-cyan-300 flex items-center gap-1 shadow-sm">
+                          <span>{cost}</span>
+                          <span className="text-cyan-400 text-xs">💧</span>
+                        </div>
+                      ) : (
+                        <div className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#0d2218] border border-emerald-500/40 text-emerald-300 flex items-center gap-1">
+                          <span>0</span>
+                          <span className="text-emerald-400 text-xs">💧</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Formatted Description */}
+                  <div className="bg-[#0b0819] p-3.5 rounded-lg border border-[#1f1737]">
+                    {renderFormattedDescription(desc)}
+                  </div>
+
+                  {/* Combat Rates Badges */}
+                  {combatRates && (
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      {combatRates.crit_rate && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/40">
+                          Crit Rate {combatRates.crit_rate}
+                        </span>
+                      )}
+                      {combatRates.crit_dmg && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/40">
+                          Crit DMG {combatRates.crit_dmg}
+                        </span>
+                      )}
+                      {combatRates.black_flash && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/60 text-red-300 border border-red-800/40">
+                          Black Flash {combatRates.black_flash}
+                        </span>
+                      )}
+                      {combatRates.black_flash_dmg && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/60 text-red-300 border border-red-800/40">
+                          Black Flash DMG {combatRates.black_flash_dmg}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg font-bold text-white mt-0.5">
-                      {name}
-                    </h3>
-                  </div>
-
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {hasVariants && (
-                      <div className="flex flex-wrap items-center gap-1 bg-[#0e0a1d] p-1 rounded-lg border border-[#251c42]">
-                        {skill.variants!.map((v) => {
-                          const isSelected = currentVariantId === v.id;
-                          return (
-                            <button
-                              key={v.id}
-                              onClick={() => {
-                                playTransformSurge();
-                                setSelectedSkillVariants(prev => ({ ...prev, [skill.slot]: v.id }));
-                              }}
-                              className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
-                                isSelected
-                                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md border border-purple-400/50'
-                                  : 'text-gray-400 hover:text-gray-200'
-                              }`}
-                            >
-                              {v.label}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
-
-                    {cost && cost !== '0' && (
-                      <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-950/60 border border-purple-600/40 text-purple-300">
-                        ⚡ {cost} CE
-                      </span>
-                    )}
-                    {cost === '0' && (
-                      <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-950/60 border border-emerald-600/40 text-emerald-300">
-                        ⚡ 0 CE
-                      </span>
-                    )}
-                  </div>
+                  )}
                 </div>
-
-                {/* Skill Description */}
-                <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line bg-[#0c0919] p-3.5 rounded-lg border border-[#1f1737]">
-                  {formatSkillText(description, skillLevel)}
-                </div>
-
-                {/* Combat Rate Badges */}
-                {combatRates && (
-                  <div className="flex flex-wrap items-center gap-2 pt-1">
-                    {combatRates.crit_rate && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                        Taxa Crítica: {combatRates.crit_rate}
-                      </span>
-                    )}
-                    {combatRates.crit_dmg && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                        Dano Crítico: {combatRates.crit_dmg}
-                      </span>
-                    )}
-                    {combatRates.black_flash && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
-                        ⚡ Flash Negro: {combatRates.black_flash}
-                      </span>
-                    )}
-                  </div>
-                )}
               </div>
             );
           })}
@@ -358,99 +601,160 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           {/* Ultimate Skill */}
           {character.ultimate && character.ultimate.name && (() => {
             const ult = character.ultimate;
-            const hasVariants = ult.variants && ult.variants.length > 1;
-            const activeVariant = (hasVariants && ult.variants)
-              ? (ult.variants.find(v => v.id === selectedUltVariant) || ult.variants[0])
-              : null;
+            const variants: SkillVariant[] = (ult.variants && ult.variants.length > 0)
+              ? ult.variants
+              : [{
+                  id: 'regular',
+                  label: 'Base',
+                  name: ult.name,
+                  cost: '0',
+                  description: ult.description,
+                  description_10: ult.description_10,
+                  icon: ult.icon || ult.image_key,
+                  combat_rates: character.combat_rates
+                }];
 
-            const name = activeVariant ? activeVariant.name : ult.name;
-            const description = activeVariant ? activeVariant.description : ult.description;
-            const combatRates = activeVariant?.combat_rates || character.combat_rates;
+            const activeVariant = variants.find(v => v.id === selectedUltVariant) || variants[0];
+            const name = activeVariant.name;
+            const icon = activeVariant.icon || activeVariant.image_key || ult.icon || ult.image_key;
+            const combatRates = activeVariant.combat_rates || character.combat_rates;
+            const effLevel = getEffectiveLevel('ult');
+            const desc = formatSkillDescription(activeVariant.description, activeVariant.description_10, effLevel);
 
             return (
-              <div className="bg-gradient-to-b from-[#18112e] to-[#120d24] border-2 border-purple-600/40 rounded-xl p-5 shadow-xl shadow-purple-950/40 space-y-3">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div>
-                    <span className="text-xs uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      TÉCNICA SUPREMA (ULTIMATE)
-                    </span>
-                    <h3 className="text-xl font-black text-white mt-0.5">
-                      {name}
-                    </h3>
-                  </div>
+              <div className="bg-gradient-to-b from-[#18112e] to-[#120d24] border-2 border-purple-600/40 rounded-xl shadow-xl shadow-purple-950/40 flex flex-row overflow-hidden">
+                {/* Left Vertical Tab Strip */}
+                <div className="w-20 sm:w-24 shrink-0 flex flex-col border-r border-[#241a3e] bg-[#0c081d]">
+                  {variants.map((v) => {
+                    const isSel = (selectedUltVariant || 'regular') === v.id;
+                    return (
+                      <button
+                        key={v.id}
+                        onClick={() => {
+                          playTransformSurge();
+                          setSelectedUltVariant(v.id);
+                        }}
+                        className={`py-3.5 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${
+                          isSel
+                            ? v.id === 'changed'
+                              ? 'bg-[#0e2133] text-cyan-300 border-cyan-400'
+                              : 'bg-[#181230] text-amber-300 border-amber-400'
+                            : 'text-gray-400 hover:text-gray-200 hover:bg-[#140f28] border-transparent'
+                        }`}
+                      >
+                        {v.label}
+                      </button>
+                    );
+                  })}
+                </div>
 
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {hasVariants && (
-                      <div className="flex flex-wrap items-center gap-1 bg-[#0e0a1d] p-1 rounded-lg border border-[#251c42]">
-                        {ult.variants!.map((v) => {
-                          const isSelected = (selectedUltVariant || 'regular') === v.id;
-                          return (
-                            <button
-                              key={v.id}
-                              onClick={() => {
-                                playTransformSurge();
-                                setSelectedUltVariant(v.id);
-                              }}
-                              className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
-                                isSelected
-                                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md border border-purple-400/50'
-                                  : 'text-gray-400 hover:text-gray-200'
-                              }`}
-                            >
-                              {v.label}
-                            </button>
-                          );
-                        })}
+                {/* Right Main Content */}
+                <div className="flex-1 p-4 sm:p-5 space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      {/* Ultimate Icon Thumbnail */}
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-[#090614] border-2 border-amber-500/50 shrink-0 shadow-lg shadow-amber-950/50 flex items-center justify-center">
+                        <img 
+                          src={getSkillIconUrl(icon)} 
+                          alt={name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = getSkillIconUrl();
+                          }}
+                        />
                       </div>
-                    )}
 
-                    <div className="px-3 py-1 rounded-lg text-xs font-bold bg-amber-950/60 border border-amber-500/40 text-amber-300">
-                      Special: {character.stats.special_gauge}
+                      {/* Title & Level Selector */}
+                      <div>
+                        <span className="text-xs uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          ULTIMATE SKILL • TÉCNICA SUPREMA
+                        </span>
+                        <h3 className="text-lg sm:text-xl font-black text-white leading-tight mt-0.5">
+                          {name}
+                        </h3>
+                        <div className="flex items-center gap-1.5 mt-1">
+                          <button
+                            onClick={() => setCardLevel('ult', 1)}
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${
+                              effLevel === 1 
+                                ? 'bg-purple-600 text-white shadow-sm' 
+                                : 'bg-[#150f29] text-gray-400 hover:text-white border border-[#2b1f4a]'
+                            }`}
+                          >
+                            Lv.1
+                          </button>
+                          <button
+                            onClick={() => setCardLevel('ult', 10)}
+                            className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all cursor-pointer ${
+                              effLevel === 10 
+                                ? 'bg-purple-600 text-white shadow-sm' 
+                                : 'bg-[#150f29] text-gray-400 hover:text-white border border-[#2b1f4a]'
+                            }`}
+                          >
+                            Lv.10
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Special Gauge Badge */}
+                    <div className="shrink-0">
+                      <div className="px-3 py-1 rounded-full text-xs font-bold bg-amber-950/60 border border-amber-500/40 text-amber-300">
+                        Gauge: {character.stats.special_gauge}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="text-sm text-gray-200 leading-relaxed whitespace-pre-line bg-[#0c0919] p-4 rounded-lg border border-[#2c204d]">
-                  {formatSkillText(description, skillLevel)}
-                </div>
-
-                {combatRates && (
-                  <div className="flex flex-wrap items-center gap-2 pt-1">
-                    {combatRates.crit_rate && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                        Taxa Crítica: {combatRates.crit_rate}
-                      </span>
-                    )}
-                    {combatRates.crit_dmg && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                        Dano Crítico: {combatRates.crit_dmg}
-                      </span>
-                    )}
-                    {combatRates.black_flash && (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
-                        ⚡ Flash Negro: {combatRates.black_flash}
-                      </span>
-                    )}
+                  {/* Formatted Description */}
+                  <div className="bg-[#0b0819] p-4 rounded-lg border border-[#2c204d]">
+                    {renderFormattedDescription(desc)}
                   </div>
-                )}
 
-                {character.ultimate.combo && (
-                  <div className="mt-3 p-3.5 rounded-lg bg-indigo-950/30 border border-indigo-500/30 space-y-1">
-                    <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider block">
-                      ⚡ Efeito em Combo de Especial:
-                    </span>
-                    <p className="text-xs text-gray-300 whitespace-pre-line">
-                      {character.ultimate.combo}
-                    </p>
-                  </div>
-                )}
+                  {/* Combat Rates Badges */}
+                  {combatRates && (
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      {combatRates.crit_rate && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/40">
+                          Crit Rate {combatRates.crit_rate}
+                        </span>
+                      )}
+                      {combatRates.crit_dmg && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/40">
+                          Crit DMG {combatRates.crit_dmg}
+                        </span>
+                      )}
+                      {combatRates.black_flash && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/60 text-red-300 border border-red-800/40">
+                          Black Flash {combatRates.black_flash}
+                        </span>
+                      )}
+                      {combatRates.black_flash_dmg && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950/60 text-red-300 border border-red-800/40">
+                          Black Flash DMG {combatRates.black_flash_dmg}
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Combo Ultimate */}
+                  {character.ultimate.combo && (
+                    <div className="mt-2 p-3 rounded-lg bg-indigo-950/30 border border-indigo-500/30 space-y-1">
+                      <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider block">
+                        ⚡ Efeito em Combo de Especial:
+                      </span>
+                      <p className="text-xs text-gray-300 whitespace-pre-line">
+                        {character.ultimate.combo}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })()}
 
-          {/* Passives */}
-          {character.passives && character.passives.length > 0 && (
+          {/* Passives / Auto Skills */}
+          {((character.auto_skills && character.auto_skills.length > 0) || (character.passives && character.passives.length > 0)) && (
             <div className="space-y-4 pt-4 border-t border-[#251b40]">
               <h2 className="text-xl font-bold tracking-wide text-purple-200 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-purple-400" />
@@ -458,18 +762,29 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               </h2>
 
               <div className="grid grid-cols-1 gap-3">
-                {character.passives.map((p, idx) => (
+                {(character.auto_skills && character.auto_skills.length > 0 ? character.auto_skills : character.passives).map((p, idx) => (
                   <div 
                     key={idx} 
-                    className="bg-[#120e24] border border-[#251b40] rounded-xl p-4 space-y-1.5"
+                    className="bg-[#120e24] border border-[#251b40] rounded-xl p-4 flex items-start gap-3 hover:border-purple-500/30 transition-colors"
                   >
-                    <h4 className="text-sm font-bold text-purple-300 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-purple-500" />
-                      {p.name}
-                    </h4>
-                    <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line pl-4">
-                      {p.description}
-                    </p>
+                    <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#0a0718] border border-purple-500/30 shrink-0 flex items-center justify-center">
+                      <img 
+                        src={getSkillIconUrl(p.icon || p.image_key)} 
+                        alt={p.name} 
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = getSkillIconUrl();
+                        }}
+                      />
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <h4 className="text-sm font-bold text-purple-300">
+                        {p.name}
+                      </h4>
+                      <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line">
+                        {p.description}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -477,8 +792,49 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           )}
         </div>
 
-        {/* Right Column: Estatísticas e Recomendações */}
+        {/* Right Column: Estatísticas e Prioridade de Habilidades */}
         <div className="space-y-6">
+          {/* Skill Priority Widget */}
+          <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-3.5">
+            <h2 className="text-sm font-black tracking-wider uppercase text-purple-300 border-b border-[#251b40] pb-2.5 flex items-center gap-2">
+              <Zap className="w-4 h-4 text-purple-400" />
+              SKILL PRIORITY
+            </h2>
+            
+            <div className="grid grid-cols-4 gap-2">
+              {priorityList.map((item, idx) => {
+                const data = getPriorityItemData(item);
+                return (
+                  <div 
+                    key={idx} 
+                    className="bg-[#16102d] border border-purple-900/40 rounded-xl p-2 flex flex-col items-center text-center group hover:border-purple-500/60 transition-colors"
+                  >
+                    <span className="text-[11px] font-black text-purple-400 mb-1.5">
+                      #{idx + 1}
+                    </span>
+                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#090614] border border-purple-500/30 mb-1.5 shrink-0 flex items-center justify-center">
+                      <img 
+                        src={getSkillIconUrl(data.icon)} 
+                        alt={data.label}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = getSkillIconUrl();
+                        }}
+                      />
+                    </div>
+                    <span className="text-[11px] font-bold text-gray-300 truncate w-full" title={data.name}>
+                      {data.label}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <p className="text-[11px] text-gray-400 leading-normal pt-1">
+              Ordem recomendada para investimento de materiais e livros de técnicas amaldiçoadas.
+            </p>
+          </div>
+
           {/* Stats Box */}
           <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-4">
             <h2 className="text-lg font-bold tracking-wide text-purple-200 border-b border-[#251b40] pb-2">
@@ -518,34 +874,10 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                 Características do Personagem:
               </span>
               <p className="text-xs text-yellow-300/90 leading-relaxed bg-yellow-950/20 border border-yellow-800/30 p-2.5 rounded-lg">
-                🛡️ Resistente a veneno e dano à alma. Capaz de desferir ataques com propriedades de Flash Negro.
+                🛡️ Dados de combate sincronizados com os registros de técnicas de Phantom Parade.
               </p>
             </div>
           </div>
-
-          {/* Skill Priority */}
-          <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-3">
-            <h2 className="text-sm font-bold tracking-wide uppercase text-purple-300 border-b border-[#251b40] pb-2 flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-purple-400" />
-              PRIORIDADE DE HABILIDADES
-            </h2>
-            <div className="flex items-center gap-2">
-              {(character.skill_priority || ['Habilidade 2', 'Habilidade 3', 'Habilidade 1']).map((item, idx) => (
-                <div key={idx} className="flex-1 bg-[#1a1433] border border-purple-900/40 p-2 rounded-lg text-center">
-                  <span className="block text-[10px] font-bold text-purple-400 uppercase">
-                    {idx + 1}º Foco
-                  </span>
-                  <span className="text-xs font-bold text-white">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <p className="text-[11px] text-gray-400">
-              Ordem recomendada para investimento de materiais e livros de técnicas amaldiçoadas.
-            </p>
-          </div>
-
         </div>
       </div>
     </div>

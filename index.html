@@ -7,7 +7,17 @@
     <title>JJKPPDB — Jujutsu Kaisen: Phantom Parade Database Offline</title>
   </head>
   <body class="bg-[#090710] text-gray-100">
-    <div id="root"></div>
+    <div id="root">
+      <div style="min-height: 100vh; background-color: #090710; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: system-ui, sans-serif;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; border: 3px solid rgba(168, 85, 247, 0.2); border-top-color: #a855f7; animation: spin 0.9s linear infinite;"></div>
+        <span style="margin-top: 16px; font-size: 12px; font-weight: 700; color: #a855f7; letter-spacing: 1.5px; text-transform: uppercase;">Carregando JJKPPDB...</span>
+      </div>
+      <style>
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

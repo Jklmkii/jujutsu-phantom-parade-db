@@ -4,8 +4,33 @@ const fs = require('fs');
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 let mainWindow = null;
+let splashWindow = null;
+
+function createSplashWindow() {
+  splashWindow = new BrowserWindow({
+    width: 460,
+    height: 320,
+    frame: false,
+    resizable: false,
+    alwaysOnTop: true,
+    center: true,
+    show: true,
+    backgroundColor: '#0a0614',
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+    },
+  });
+
+  const splashPath = path.join(__dirname, 'splash.html');
+  if (fs.existsSync(splashPath)) {
+    splashWindow.loadFile(splashPath);
+  }
+}
 
 function createWindow() {
+  createSplashWindow();
+
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 850,
@@ -37,7 +62,15 @@ function createWindow() {
   }
 
   mainWindow.once('ready-to-show', () => {
-    mainWindow.show();
+    setTimeout(() => {
+      if (splashWindow && !splashWindow.isDestroyed()) {
+        splashWindow.destroy();
+        splashWindow = null;
+      }
+      if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.show();
+      }
+    }, 450);
   });
 
   // External links open in default OS browser
