@@ -65,6 +65,8 @@ export interface Character {
   affiliation: string;
   release_date: string;
   limited: boolean;
+  sp?: boolean;
+  tags?: string[];
   stats: CharacterStats;
   image: string;
   normal_attack?: {

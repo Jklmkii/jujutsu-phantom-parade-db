@@ -147,7 +147,12 @@
         "image_key": "TeenShokoHeal1",
         "icon": "skill_icons/TeenShokoHeal1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Buffer",
+      "Heal"
+    ],
+    "sp": false
   },
   {
     "id": "_0_2-Second_Domain_Expansion__Satoru_Gojo",
@@ -327,7 +332,15 @@
         "image_key": "GojoImmortality",
         "icon": "skill_icons/GojoImmortality.png"
       }
-    ]
+    ],
+    "tags": [
+      "Crit RES Down",
+      "Break Debuffer",
+      "Stun",
+      "DMG Debuffer",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_A_Bad_Match__Nobara_Kugisaki",
@@ -488,7 +501,13 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "ATK Down",
+      "Black Flash"
+    ],
+    "sp": true
   },
   {
     "id": "_A_Clever_Bullet__Mai_Zen_in",
@@ -638,7 +657,11 @@
         "image_key": "MaiAutoSkill1",
         "icon": "skill_icons/MaiAutoSkill1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_A_Life_Entrusted_to_Me__Yuji_Itadori",
@@ -835,7 +858,18 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer",
+      "Crit Buffer",
+      "Break Debuffer",
+      "DMG Buffer",
+      "Black Flash",
+      "Crit DMG Up",
+      "Counter",
+      "BF Rate Up"
+    ],
+    "sp": false
   },
   {
     "id": "_Aerial_Reconnaissance__Momo_Nishimiya",
@@ -985,7 +1019,12 @@
         "image_key": "Increasesdamagereceived",
         "icon": "skill_icons/Increasesdamagereceived.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Buffer",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Are_you_satisfied_with_that___Aoi_Todo",
@@ -1224,7 +1263,14 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "BF Rate Up",
+      "Stat Buffer",
+      "Counter"
+    ],
+    "sp": false
   },
   {
     "id": "_Ariadne_s_Thread_Educator__Masamichi_Yaga",
@@ -1235,7 +1281,7 @@
     "rarity": "SR",
     "element": "Red",
     "role": "Support",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "21-11-2023",
     "limited": false,
@@ -1361,7 +1407,13 @@
       3,
       2,
       0
-    ]
+    ],
+    "tags": [
+      "Stat Buffer",
+      "DMG Debuffer",
+      "ATK Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Awakening__Satoru_Gojo__Teen_",
@@ -1596,7 +1648,12 @@
         "image_key": "CoreCE",
         "icon": "skill_icons/CoreCE.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "Revival"
+    ],
+    "sp": false
   },
   {
     "id": "_Background_Support__Kiyotaka_Ijichi",
@@ -1733,7 +1790,13 @@
       3,
       2,
       0
-    ]
+    ],
+    "tags": [
+      "Stat Buffer",
+      "DMG Reduction",
+      "ULT Charge"
+    ],
+    "sp": false
   },
   {
     "id": "_Battle_of_firepower__Ryomen_Sukuna",
@@ -1919,7 +1982,13 @@
         "image_key": "DismantleCounter",
         "icon": "skill_icons/DismantleCounter.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "DMG Debuffer",
+      "Counter"
+    ],
+    "sp": false
   },
   {
     "id": "_Blast_From_The_Past__Aoi_Todo",
@@ -2075,7 +2144,12 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_Blood_Borne_Resolve__Noritoshi_Kamo",
@@ -2252,7 +2326,11 @@
         "image_key": "BlueKamoSSRP1",
         "icon": "skill_icons/BlueKamoSSRP1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Blood_of_the_Big_Three_Families__Noritoshi_Kamo",
@@ -2263,7 +2341,7 @@
     "rarity": "SR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Taijutsu",
     "affiliation": "Kyoto Jujutsu High Year 3",
     "release_date": "21-11-2023",
     "limited": false,
@@ -2402,7 +2480,11 @@
         "image_key": "BlueKamoSRAutoskill1",
         "icon": "skill_icons/BlueKamoSRAutoskill1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Bond_of_Friendship__Megumi_Fushiguro",
@@ -2413,7 +2495,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Debuffer",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Year 1 Tokyo Jujutsu High",
     "release_date": "31/10/2024",
     "limited": false,
@@ -2595,7 +2677,12 @@
         "image_key": "DivineDog",
         "icon": "skill_icons/DivineDog.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer",
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Burning_Passion__Yu_Haibara",
@@ -2606,7 +2693,7 @@
     "rarity": "SSR",
     "element": "Red",
     "role": "Attacker",
-    "focus": "Mixed",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "31-8-2026",
     "limited": false,
@@ -2788,7 +2875,9 @@
         "image_key": "RedSSRHaibaraP2",
         "icon": "skill_icons/RedSSRHaibaraP2.png"
       }
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_Chain_Mark__Full_Throttle__Eiji_Urushi",
@@ -3027,7 +3116,14 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt",
+      "Counter",
+      "DMG Debuffer",
+      "Crit RES Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Crafty_Rock__Yoshinobu_Gakuganji",
@@ -3187,7 +3283,13 @@
         "image_key": "RedSSRGakuganjiP2",
         "icon": "skill_icons/RedSSRGakuganjiP2.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "Stun",
+      "ULT Count Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Crushed_With_Speed__Naobito_Zen_in",
@@ -3198,7 +3300,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Special Grade 1 Sorcerer",
     "release_date": "29-8-2025",
     "limited": false,
@@ -3357,7 +3459,14 @@
         "image_key": "FallingBlossomEmotion",
         "icon": "skill_icons/FallingBlossomEmotion.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "Break Buffer",
+      "Break Debuffer",
+      "Stat Buffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Cursed_Corpse_Battle__Masamichi_Yaga",
@@ -3368,7 +3477,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Debuffer",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "30-7-2024",
     "limited": false,
@@ -3507,7 +3616,16 @@
         "image_key": "Educational Principles",
         "icon": "skill_icons/Educational Principles.png"
       }
-    ]
+    ],
+    "tags": [
+      "Crit RES Down",
+      "ATK Down",
+      "Stat Debuffer",
+      "DMG Debuffer",
+      "DMG Buffer",
+      "Stat Buffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Cursed_Energy_Catastrophe__Saki_Rindo",
@@ -3518,7 +3636,7 @@
     "rarity": "R",
     "element": "Green",
     "role": "Defender",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Fukuoka Jujutsu High Year 1",
     "release_date": "21-11-2023",
     "limited": false,
@@ -3644,7 +3762,11 @@
       3,
       2,
       0
-    ]
+    ],
+    "tags": [
+      "Taunt"
+    ],
+    "sp": false
   },
   {
     "id": "_Cursed_Energy_Flashes_Black__Yuji_Itadori",
@@ -3816,7 +3938,12 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "Crit RES Down"
+    ],
+    "sp": true
   },
   {
     "id": "_Cursed_Energy_Melody__Yoshinobu_Gakuganji",
@@ -3953,7 +4080,12 @@
       3,
       0,
       1
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Cursed_Power_of_Words__Toge_Inumaki",
@@ -4090,7 +4222,13 @@
       2,
       3,
       0
-    ]
+    ],
+    "tags": [
+      "DMG Reduction",
+      "ULT Charge",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Cursed_Technique_Boost__Kaito_Yuki",
@@ -4227,7 +4365,13 @@
       3,
       1,
       0
-    ]
+    ],
+    "tags": [
+      "DMG Reduction",
+      "Energy Recovery",
+      "Stat Buffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Delayed_Quota__Miguel",
@@ -4238,7 +4382,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Obstructor",
-    "focus": "Combined",
+    "focus": "Taijutsu",
     "affiliation": "Curse Users",
     "release_date": "13-12-2024",
     "limited": true,
@@ -4383,7 +4527,13 @@
         "image_key": "CritUpEnhance(SP)",
         "icon": "skill_icons/CritUpEnhance(SP).png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer",
+      "Taunt",
+      "Stat Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Determined_Counter__Kasumi_Miwa",
@@ -4394,7 +4544,7 @@
     "rarity": "SR",
     "element": "Red",
     "role": "Defender",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Kyoto Jujutsu High Year 2",
     "release_date": "21-11-2023",
     "limited": false,
@@ -4539,7 +4689,12 @@
         "image_key": "SimpleDomainAutoSkill1",
         "icon": "skill_icons/SimpleDomainAutoSkill1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt",
+      "Counter"
+    ],
+    "sp": false
   },
   {
     "id": "_Don_t_Look_Down_On_Me__Momo_Nishimiya",
@@ -4684,7 +4839,17 @@
         "image_key": "MemoryDodge",
         "icon": "skill_icons/MemoryDodge.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer",
+      "DMG Buffer",
+      "Crit Buffer",
+      "Break Buffer",
+      "Crit DMG Up",
+      "Crit RES Down",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Don_t_Underestimate_A_Puppet__Panda",
@@ -4695,7 +4860,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Tank",
-    "focus": "HP",
+    "focus": "Taijutsu",
     "affiliation": "Year 2 Tokyo Jujutsu High",
     "release_date": "21-11-2023",
     "limited": false,
@@ -4898,7 +5063,12 @@
         "image_key": "GorillaMode(Auto)",
         "icon": "skill_icons/GorillaMode(Auto).png"
       }
-    ]
+    ],
+    "tags": [
+      "Revival",
+      "Taunt"
+    ],
+    "sp": false
   },
   {
     "id": "_Early_Morning_Departure__Maki_Zen_in",
@@ -5058,7 +5228,9 @@
         "image_key": "HeavenlyRestriction",
         "icon": "skill_icons/HeavenlyRestriction.png"
       }
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_Effective_Range__Mai_Zen_in",
@@ -5069,7 +5241,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Debuffer",
-    "focus": "Mixed",
+    "focus": "Hybrid",
     "affiliation": "Kyoto Jujutsu High Year 2",
     "release_date": "31-7-2026",
     "limited": false,
@@ -5228,7 +5400,13 @@
         "image_key": "RedSSRMaiAuto1",
         "icon": "skill_icons/RedSSRMaiAuto1.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer",
+      "Crit RES Down",
+      "Break Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Enjoying_The_Cool_Summer_Breeze__Megumi_Fushiguro",
@@ -5378,7 +5556,15 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "DMG Debuffer",
+      "Break Debuffer",
+      "Crit RES Down",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Ex-Office_Worker_Turned_Jujutsu_Sorcerer__Kento_Nanami",
@@ -5389,7 +5575,7 @@
     "rarity": "SR",
     "element": "Red",
     "role": "Support",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "21-11-2023",
     "limited": false,
@@ -5528,7 +5714,12 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Buffer",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_Executioner__Yuta_Okkotsu",
@@ -5539,7 +5730,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Attacker",
-    "focus": "Mixed",
+    "focus": "Hybrid",
     "affiliation": "Year 2 Tokyo Jujutsu High",
     "release_date": "27-3-2026",
     "limited": true,
@@ -5688,7 +5879,13 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Break Debuffer",
+      "DMG Debuffer",
+      "Heal"
+    ],
+    "sp": false
   },
   {
     "id": "_First-Grade_Sorcerer_s_Skill__Kento_Nanami",
@@ -5699,7 +5896,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "20/8/2024",
     "limited": false,
@@ -5880,7 +6077,13 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "DMG Buffer",
+      "Crit RES Down"
+    ],
+    "sp": true
   },
   {
     "id": "_Fulfilling_His_Duty_as_the_Older_Brother__Choso",
@@ -5891,7 +6094,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Incarnation<br>Cursed Womb: Death Paintings",
     "release_date": "31-7-2025",
     "limited": false,
@@ -6095,7 +6298,12 @@
         "image_key": "ChosoAutoBuffIcon",
         "icon": "skill_icons/ChosoAutoBuffIcon.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Genuine_Jujutsu__Ryomen_Sukuna",
@@ -6106,7 +6314,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Incarnation",
     "release_date": "30-12-2024",
     "limited": true,
@@ -6304,7 +6512,13 @@
         "image_key": "KingOfCurses",
         "icon": "skill_icons/KingOfCurses.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "DMG Debuffer",
+      "Domain"
+    ],
+    "sp": false
   },
   {
     "id": "_Girl_Of_Steel__Nobara_Kugisaki",
@@ -6470,7 +6684,13 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stun",
+      "Crit RES Down",
+      "Stat Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Heart_s_Resolve__Saki_Rindo",
@@ -6481,7 +6701,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Fukuoka Jujutsu High Year 1",
     "release_date": "16-7-2024",
     "limited": false,
@@ -6636,7 +6856,12 @@
         "image_key": "ShieldUp",
         "icon": "skill_icons/ShieldUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt",
+      "Revival"
+    ],
+    "sp": true
   },
   {
     "id": "_Hollow_Purple__Satoru_Gojo",
@@ -6647,7 +6872,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Debuffer",
-    "focus": "Mixed",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "29-1-2024",
     "limited": false,
@@ -6806,7 +7031,14 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer",
+      "Black Flash",
+      "ULT Count Down",
+      "ATK Down"
+    ],
+    "sp": false
   },
   {
     "id": "_I_ve_Seen_It_All__Kokichi_Muta",
@@ -6817,7 +7049,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Kyoto Jujutsu High Year 2",
     "release_date": "31/1/2025",
     "limited": false,
@@ -6966,7 +7198,11 @@
         "image_key": "KyotoAutoSkillIcon1",
         "icon": "skill_icons/KyotoAutoSkillIcon1.png"
       }
-    ]
+    ],
+    "tags": [
+      "ULT Count Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Incomplete_Domain__Megumi_Fushiguro",
@@ -6977,7 +7213,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "28-12-2023",
     "limited": false,
@@ -7153,7 +7389,15 @@
       0,
       2,
       1
-    ]
+    ],
+    "tags": [
+      "Domain",
+      "Stun",
+      "DMG Debuffer",
+      "Stat Debuffer",
+      "DMG Dealt Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Indomitable_Auspicious_Beasts__Takuma_Ino",
@@ -7164,7 +7408,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Debuffer",
-    "focus": "Mixed",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "19-8-2026",
     "limited": false,
@@ -7340,7 +7584,15 @@
         "image_key": "GreenSSRInoAuto3",
         "icon": "skill_icons/GreenSSRInoAuto3.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "DMG Debuffer",
+      "Break Debuffer",
+      "Crit RES Down",
+      "DMG Buffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Infuse_Your_Cursed_Energy__Yuji_Itadori",
@@ -7564,7 +7816,12 @@
         "image_key": "SwordUp",
         "icon": "skill_icons/SwordUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stun",
+      "DMG Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Innate_Talent__Maki_Zen_in",
@@ -7701,7 +7958,11 @@
       1,
       2,
       0
-    ]
+    ],
+    "tags": [
+      "Crit RES Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Inspiration_From__Death___Mahito",
@@ -7712,7 +7973,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Cursed Spirit",
     "release_date": "12-4-2024",
     "limited": false,
@@ -7906,7 +8167,12 @@
         "image_key": "SoulWeakness",
         "icon": "skill_icons/SoulWeakness.png"
       }
-    ]
+    ],
+    "tags": [
+      "Domain",
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Just_Bring_It__Saki_Rindo",
@@ -7917,7 +8183,7 @@
     "rarity": "SR",
     "element": "Yellow",
     "role": "Defender",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Fukuoka Jujutsu High Year 1",
     "release_date": "21-11-2023",
     "limited": false,
@@ -8056,7 +8322,11 @@
         "image_key": "ShieldUp",
         "icon": "skill_icons/ShieldUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt"
+    ],
+    "sp": false
   },
   {
     "id": "_Keep_Hammering_At_Them__Nobara_Kugisaki",
@@ -8067,7 +8337,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Year 1 Tokyo Jujutsu High",
     "release_date": "22/10/2024",
     "limited": false,
@@ -8216,7 +8486,11 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_Lend_Me_Your_Power__Yuta_Okkotsu",
@@ -8227,7 +8501,7 @@
     "rarity": "SSR",
     "element": "Red",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Year 1 Tokyo Jujutsu High",
     "release_date": "15-12-2023",
     "limited": true,
@@ -8408,7 +8682,14 @@
         "image_key": "CritUpEnhance(SP)",
         "icon": "skill_icons/CritUpEnhance(SP).png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "Heal",
+      "Counter",
+      "Black Flash"
+    ],
+    "sp": true
   },
   {
     "id": "_Life_Saver__Shoko_Ieiri",
@@ -8558,7 +8839,15 @@
         "image_key": "Heal1",
         "icon": "skill_icons/Heal1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Heal",
+      "DMG Debuffer",
+      "Stat Buffer",
+      "DMG Buffer",
+      "ULT Charge"
+    ],
+    "sp": false
   },
   {
     "id": "_Longsword_Battle__Maki_Zen_in",
@@ -8718,7 +9007,11 @@
         "image_key": "HeavenlyRestriction",
         "icon": "skill_icons/HeavenlyRestriction.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Maverick_Outcast__Maki_Zen_in",
@@ -8878,7 +9171,11 @@
         "image_key": "Melee1",
         "icon": "skill_icons/Melee1.png"
       }
-    ]
+    ],
+    "tags": [
+      "ATK Down"
+    ],
+    "sp": true
   },
   {
     "id": "_Maximum_Cursed_Energy_Output__Yuji_Itadori",
@@ -9113,7 +9410,13 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt",
+      "DMG Reduction",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_Melting_Sweet_Summer_Treats__Satoru_Gojo",
@@ -9339,7 +9642,15 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "Stat Debuffer",
+      "ATK Down",
+      "DMG Dealt Down",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Mode__Albatross__Ultimate_Mechamaru",
@@ -9489,7 +9800,9 @@
         "image_key": "MechAutoSkill1",
         "icon": "skill_icons/MechAutoSkill1.png"
       }
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_Need_Some_Help___Panda",
@@ -9671,7 +9984,15 @@
         "image_key": "ContinuousAttackYuji",
         "icon": "skill_icons/ContinuousAttackYuji.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt",
+      "DMG Reduction",
+      "Crit RES Down",
+      "DMG Dealt Down",
+      "Revival"
+    ],
+    "sp": true
   },
   {
     "id": "_Night_Of_Dancing_Crows__Mei_Mei",
@@ -9821,7 +10142,11 @@
         "image_key": "MeiMeiHammer1",
         "icon": "skill_icons/MeiMeiHammer1.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Night-Lurking_Sorcerer__Toge_Inumaki",
@@ -9971,7 +10296,13 @@
         "image_key": "Nodonaorheal",
         "icon": "skill_icons/Nodonaorheal.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stun",
+      "Stat Debuffer",
+      "ULT Charge"
+    ],
+    "sp": false
   },
   {
     "id": "_Nimble_Body__Yuji_Itadori",
@@ -10141,7 +10472,13 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Break Buffer",
+      "Stat Debuffer",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_No_Conceit__Takuma_Ino",
@@ -10152,7 +10489,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "28/4/2025",
     "limited": false,
@@ -10318,7 +10655,9 @@
         "image_key": "SpiritTurtleIcon",
         "icon": "skill_icons/SpiritTurtleIcon.png"
       }
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_Panda_Is_Not_A_Panda__Panda",
@@ -10455,7 +10794,11 @@
       2,
       3,
       0
-    ]
+    ],
+    "tags": [
+      "Taunt"
+    ],
+    "sp": false
   },
   {
     "id": "_Pick_Up_After_Hard_Work__Kiyotaka_Ijichi",
@@ -10605,7 +10948,14 @@
         "image_key": "InformationSharingAutoIcon",
         "icon": "skill_icons/InformationSharingAutoIcon.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Buffer",
+      "DMG Buffer",
+      "ULT Charge",
+      "DMG Reduction"
+    ],
+    "sp": false
   },
   {
     "id": "_Pivotal_Guardian__Masamichi_Yaga",
@@ -10616,7 +10966,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Support",
-    "focus": "Mixed",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "19-3-2026",
     "limited": false,
@@ -10755,7 +11105,14 @@
         "image_key": "CursedCorpseActivatedAutoIcon",
         "icon": "skill_icons/CursedCorpseActivatedAutoIcon.png"
       }
-    ]
+    ],
+    "tags": [
+      "Crit Buffer",
+      "Stat Buffer",
+      "Crit RES Down",
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Pride_Of_A_Cursed_Spirit__Jogo",
@@ -10915,7 +11272,12 @@
         "image_key": "JogoTheEssenceofCurse",
         "icon": "skill_icons/JogoTheEssenceofCurse.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "Domain"
+    ],
+    "sp": true
   },
   {
     "id": "_Promising_New_Student__Kento_Nanami__Teen_",
@@ -10926,7 +11288,7 @@
     "rarity": "SSR",
     "element": "Red",
     "role": "Support",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "30-6-2025",
     "limited": true,
@@ -11075,7 +11437,13 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Buffer",
+      "Break Debuffer",
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Queen_of_Curses__Yuta_Okkotsu",
@@ -11086,7 +11454,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Mixed",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "18-10-2025",
     "limited": true,
@@ -11284,7 +11652,14 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Crit RES Down",
+      "Break Debuffer",
+      "DMG Debuffer",
+      "Counter"
+    ],
+    "sp": false
   },
   {
     "id": "_Rabbit_s_Disruption__Megumi_Fushiguro",
@@ -11295,7 +11670,7 @@
     "rarity": "SSR",
     "element": "Red",
     "role": "Debuffer",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "12-9-2025",
     "limited": false,
@@ -11467,7 +11842,11 @@
         "image_key": "DivineDogTotalityIcon1",
         "icon": "skill_icons/DivineDogTotalityIcon1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Ratio_Technique__Kento_Nanami",
@@ -11478,7 +11857,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "21-11-2023",
     "limited": false,
@@ -11629,7 +12008,13 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "Stun",
+      "DMG Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Reckless_Grade_1__Aoi_Todo",
@@ -11785,7 +12170,9 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_Resolved_Cursed_Speech__Toge_Inumaki",
@@ -11945,7 +12332,11 @@
         "image_key": "Heal1",
         "icon": "skill_icons/Heal1.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Reverse_Cursed_Technique__Shoko_Ieiri",
@@ -12082,7 +12473,12 @@
       3,
       1,
       0
-    ]
+    ],
+    "tags": [
+      "Heal",
+      "Crit RES Down"
+    ],
+    "sp": false
   },
   {
     "id": "_Seance__Toji_Fushiguro",
@@ -12249,7 +12645,11 @@
         "image_key": "Physical Gifted",
         "icon": "skill_icons/Physical Gifted.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT"
+    ],
+    "sp": false
   },
   {
     "id": "_Shatter_To_Pieces__Toge_Inumaki",
@@ -12260,7 +12660,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Support",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Year 2 Tokyo Jujutsu High",
     "release_date": "30-9-2024",
     "limited": false,
@@ -12399,7 +12799,11 @@
         "image_key": "Nodonaorheal",
         "icon": "skill_icons/Nodonaorheal.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Silent_Suppression__Kento_Nanami",
@@ -12410,7 +12814,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Attacker",
-    "focus": "Mixed",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "27-2-2026",
     "limited": false,
@@ -12595,7 +12999,18 @@
         "image_key": "UltGaugeUp",
         "icon": "skill_icons/UltGaugeUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "DMG Debuffer",
+      "Stun",
+      "Break Debuffer",
+      "Crit RES Down",
+      "DMG Buffer",
+      "Revival",
+      "Counter"
+    ],
+    "sp": false
   },
   {
     "id": "_Smash_It_Into_the_Summer_Sky__Yuji_Itadori",
@@ -12771,7 +13186,12 @@
         "image_key": "CritUpEnhance(SP)",
         "icon": "skill_icons/CritUpEnhance(SP).png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "DMG Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Sprinting__Kasumi_Miwa",
@@ -12983,7 +13403,14 @@
         "image_key": "KyotoAutoSkillIcon1",
         "icon": "skill_icons/KyotoAutoSkillIcon1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "Stat Buffer",
+      "Taunt",
+      "Crit Buffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Step_back__third-rate__Uraume",
@@ -13176,7 +13603,16 @@
         "image_key": "FreezeEnhancementAutoIcon",
         "icon": "skill_icons/FreezeEnhancementAutoIcon.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "Stun",
+      "ATK Down",
+      "Stat Debuffer",
+      "Break Debuffer",
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Striking_Eternal_Summer__Nobara_Kugisaki",
@@ -13346,7 +13782,11 @@
         "image_key": "BlueNobaraSSRPassive3",
         "icon": "skill_icons/BlueNobaraSSRPassive3.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Sukuna_s_Vessel__Yuji_Itadori",
@@ -13496,7 +13936,11 @@
         "image_key": "SukunaFingerUp",
         "icon": "skill_icons/SukunaFingerUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt"
+    ],
+    "sp": false
   },
   {
     "id": "_Sword_Option__Ultimate_Mechamaru",
@@ -13507,7 +13951,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Taijutsu",
     "affiliation": "Kyoto Jujutsu High Year 2",
     "release_date": "22-3-2024",
     "limited": false,
@@ -13668,7 +14112,13 @@
         "image_key": "BreakAutoSkillIcon1",
         "icon": "skill_icons/BreakAutoSkillIcon1.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "Taunt",
+      "DMG Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Take_The_Shortest_Way__Panda",
@@ -13682,7 +14132,7 @@
     "focus": "Taijutsu",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "6-12-2023",
-    "limited": true,
+    "limited": false,
     "stats": {
       "hp": "22,478",
       "attack": "6,884",
@@ -13819,7 +14269,12 @@
         "image_key": "I'm getting my edge back now",
         "icon": "skill_icons/I'm getting my edge back now.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "Revival"
+    ],
+    "sp": false
   },
   {
     "id": "_Team_Up_If_They_Are_Weak__Maki_Zen_in",
@@ -13833,7 +14288,7 @@
     "focus": "Taijutsu",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "6-12-2023",
-    "limited": true,
+    "limited": false,
     "stats": {
       "hp": "20,282",
       "attack": "8,170",
@@ -13956,7 +14411,13 @@
       0,
       1,
       2
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "ATK Down",
+      "Break Buffer"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Baton_Of_Counterattack__Toge_Inumaki",
@@ -13970,7 +14431,7 @@
     "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "6-12-2023",
-    "limited": true,
+    "limited": false,
     "stats": {
       "hp": "19,966",
       "attack": "6,458",
@@ -14106,7 +14567,13 @@
         "image_key": "Nodonaorheal",
         "icon": "skill_icons/Nodonaorheal.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "DMG Debuffer",
+      "Taunt"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Final_Bullet__Mai_Zen_in",
@@ -14266,7 +14733,11 @@
         "image_key": "RedSSRMaiAuto1",
         "icon": "skill_icons/RedSSRMaiAuto1.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Golden_Age_of_Jujutsu__Noritoshi_Kamo",
@@ -14462,7 +14933,16 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "Stun",
+      "Crit RES Down",
+      "DMG Dealt Down",
+      "ATK Down",
+      "Break Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Resolve_Of_Being_A_Sorcerer__Kaito_Yuki",
@@ -14599,7 +15079,11 @@
       0,
       3,
       2
-    ]
+    ],
+    "tags": [
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Sorcerer_Killer__Toji_Fushiguro",
@@ -14759,7 +15243,11 @@
         "image_key": "I'm getting my edge back now",
         "icon": "skill_icons/I'm getting my edge back now.png"
       }
-    ]
+    ],
+    "tags": [
+      "Crit RES Down"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Strongest_Blue__Satoru_Gojo__Teen_",
@@ -14770,7 +15258,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "21-5-2024",
     "limited": false,
@@ -14936,7 +15424,12 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Taunt",
+      "DMG Dealt Down"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Strongest__Satoru_Gojo",
@@ -14947,7 +15440,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Balanced",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Teacher",
     "release_date": "21-11-2023",
     "limited": false,
@@ -15106,7 +15599,11 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_The_Thrill_Of_The_Fight__Hanami",
@@ -15266,7 +15763,12 @@
         "image_key": "JogoTheEssenceofCurse",
         "icon": "skill_icons/JogoTheEssenceofCurse.png"
       }
-    ]
+    ],
+    "tags": [
+      "Domain",
+      "DMG Dealt Down"
+    ],
+    "sp": false
   },
   {
     "id": "_This_Is_Justice__Suguru_Geto",
@@ -15277,7 +15779,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Curse Users",
     "release_date": "18-12-2023",
     "limited": true,
@@ -15432,7 +15934,12 @@
         "image_key": "GetoAbsorption",
         "icon": "skill_icons/GetoAbsorption.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer",
+      "DMG Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_To_Protect_Non-Sorcerers__Suguru_Geto__Teen_",
@@ -15443,7 +15950,7 @@
     "rarity": "SSR",
     "element": "Green",
     "role": "Debuffer",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "31-5-2024",
     "limited": false,
@@ -15592,7 +16099,11 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_To_Stay_True_To_Myself__Nobara_Kugisaki",
@@ -15729,7 +16240,9 @@
       1,
       3,
       0
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_Tool_Manipulation__Momo_Nishimiya",
@@ -15889,7 +16402,16 @@
         "image_key": "MemoryDodge",
         "icon": "skill_icons/MemoryDodge.png"
       }
-    ]
+    ],
+    "tags": [
+      "Stat Buffer",
+      "Break Buffer",
+      "ULT Charge",
+      "Stun",
+      "Break Debuffer",
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Unbridled_Soul__Mahito",
@@ -15900,7 +16422,7 @@
     "rarity": "SSR",
     "element": "Red",
     "role": "Debuffer",
-    "focus": "Mixed",
+    "focus": "Hybrid",
     "affiliation": "Cursed Spirit",
     "release_date": "4-12-2025",
     "limited": true,
@@ -16136,7 +16658,14 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Crit RES Down",
+      "DMG Debuffer",
+      "Break Debuffer",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_Unfair_Salvation__Megumi_Fushiguro",
@@ -16273,7 +16802,11 @@
       1,
       2,
       0
-    ]
+    ],
+    "tags": [
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Unlimited_Shikigami__Dagon",
@@ -16472,7 +17005,14 @@
         "image_key": "JogoTheEssenceofCurse",
         "icon": "skill_icons/JogoTheEssenceofCurse.png"
       }
-    ]
+    ],
+    "tags": [
+      "Domain",
+      "DoT",
+      "Stun",
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Value_Of_Life__Junpei_Yoshino",
@@ -16622,7 +17162,11 @@
         "image_key": "SwordUp",
         "icon": "skill_icons/SwordUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT"
+    ],
+    "sp": false
   },
   {
     "id": "_Ward_off_with_Sharp_Blade__Atsuya_Kusakabe",
@@ -16819,7 +17363,13 @@
         "image_key": "CritUp",
         "icon": "skill_icons/CritUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "DMG Reduction",
+      "DMG Buffer"
+    ],
+    "sp": false
   },
   {
     "id": "_What_Lies_at_the_End__Suguru_Geto__Teen_",
@@ -16989,7 +17539,9 @@
         "image_key": "GetoAbsorption",
         "icon": "skill_icons/GetoAbsorption.png"
       }
-    ]
+    ],
+    "tags": [],
+    "sp": false
   },
   {
     "id": "_With_Takada-Chan__Aoi_Todo",
@@ -17156,7 +17708,12 @@
         "image_key": "Takada-chan's Guidance(Auto)",
         "icon": "skill_icons/Takada-chan's Guidance(Auto).png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "Revival"
+    ],
+    "sp": true
   },
   {
     "id": "_With_That_Will_In_Mind__Kaito_Yuki",
@@ -17167,7 +17724,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Fukuoka Jujutsu High Year 1",
     "release_date": "17/11/2024",
     "limited": false,
@@ -17306,7 +17863,16 @@
         "image_key": "CEContinualRegenIcon",
         "icon": "skill_icons/CEContinualRegenIcon.png"
       }
-    ]
+    ],
+    "tags": [
+      "DMG Buffer",
+      "Energy Recovery",
+      "Stat Buffer",
+      "DMG Reduction",
+      "DMG Dealt Down",
+      "Stun"
+    ],
+    "sp": false
   },
   {
     "id": "_Within_Infinity__Satoru_Gojo",
@@ -17317,7 +17883,7 @@
     "rarity": "SSR",
     "element": "Red",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Jujutsu",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "29/11/2024",
     "limited": true,
@@ -17476,7 +18042,17 @@
         "image_key": "GojoImmortality",
         "icon": "skill_icons/GojoImmortality.png"
       }
-    ]
+    ],
+    "tags": [
+      "Domain",
+      "Stun",
+      "ULT Count Down",
+      "DMG Debuffer",
+      "DMG Dealt Down",
+      "Crit RES Down",
+      "Black Flash"
+    ],
+    "sp": false
   },
   {
     "id": "_Working_Overtime__Kento_Nanami",
@@ -17487,7 +18063,7 @@
     "rarity": "SSR",
     "element": "Yellow",
     "role": "Attacker",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "30-4-2024",
     "limited": false,
@@ -17636,7 +18212,13 @@
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash",
+      "Crit RES Down",
+      "DMG Debuffer"
+    ],
+    "sp": false
   },
   {
     "id": "_Young_Fish_And_Reverse_Punishment__Junpei_Yoshino",
@@ -17818,7 +18400,16 @@
         "image_key": "SwordUp",
         "icon": "skill_icons/SwordUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "DoT",
+      "ATK Down",
+      "DMG Debuffer",
+      "Taunt",
+      "DMG Reduction",
+      "Stat Buffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Zanshin__Kasumi_Miwa",
@@ -17829,7 +18420,7 @@
     "rarity": "SSR",
     "element": "Blue",
     "role": "Defender",
-    "focus": "Combined",
+    "focus": "Hybrid",
     "affiliation": "Kyoto Jujutsu High Year 2",
     "release_date": "28-6-2024",
     "limited": false,
@@ -17990,7 +18581,14 @@
         "image_key": "ProjectionSorcery(Counter)",
         "icon": "skill_icons/ProjectionSorcery(Counter).png"
       }
-    ]
+    ],
+    "tags": [
+      "Counter",
+      "Taunt",
+      "Stat Buffer",
+      "Stat Debuffer"
+    ],
+    "sp": true
   },
   {
     "id": "_Zone__Yuji_Itadori",
@@ -18183,6 +18781,10 @@
         "image_key": "SukunaFingerUp",
         "icon": "skill_icons/SukunaFingerUp.png"
       }
-    ]
+    ],
+    "tags": [
+      "Black Flash"
+    ],
+    "sp": false
   }
 ]

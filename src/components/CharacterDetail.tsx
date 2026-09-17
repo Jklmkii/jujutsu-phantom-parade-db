@@ -220,8 +220,27 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               <ElementBadge element={character.element} />
               <TagBadge label={character.focus || 'Taijutsu'} variant="amber" />
               <TagBadge label={character.role || 'Attacker'} variant="purple" />
+              {character.sp && (
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-black tracking-wider uppercase bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/20">
+                  SP
+                </span>
+              )}
               {character.limited && <TagBadge label="Limitado" variant="default" />}
             </div>
+
+            {/* Combat Tags */}
+            {character.tags && character.tags.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                {character.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1433] text-purple-200 border border-purple-800/40"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {/* Sub Info */}
             <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400 pt-2 border-t border-[#251b40]">
