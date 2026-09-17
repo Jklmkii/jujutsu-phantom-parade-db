@@ -59,8 +59,8 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           const line = rawLine.trim();
           if (!line) return <div key={i} className="h-1" />;
           
-          if (line.startsWith('▼') || line.startsWith('â–¼')) {
-            const clean = line.replace(/^(?:▼|â–¼)\s*/, '');
+          if (/^(?:▼|▽|â–¼|\u00e2\u0096\u00bc)/.test(line)) {
+            const clean = line.replace(/^(?:▼|▽|â–¼|\u00e2\u0096\u00bc)\s*/, '');
             return (
               <div key={i} className="text-purple-300 font-bold flex items-start gap-1.5 mt-2 first:mt-0">
                 <span className="text-purple-400 text-xs mt-0.5 select-none">▼</span>
@@ -68,8 +68,8 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               </div>
             );
           }
-          if (line.startsWith('※') || line.startsWith('*')) {
-            const clean = line.replace(/^[※*]\s*/, '');
+          if (/^(?:※|\*|\u00e2\u0080\u00bb)/.test(line)) {
+            const clean = line.replace(/^(?:※|\*|\u00e2\u0080\u00bb)\s*/, '');
             return (
               <div key={i} className="text-amber-300/90 text-xs italic pl-4 flex items-start gap-1 mt-1">
                 <span className="select-none">※</span>
@@ -77,8 +77,8 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               </div>
             );
           }
-          if (line.startsWith('·') || line.startsWith('-')) {
-            const clean = line.replace(/^[·-]\s*/, '');
+          if (/^(?:·|•|-|\u00c2\u00b7)/.test(line)) {
+            const clean = line.replace(/^(?:·|•|-|\u00c2\u00b7)\s*/, '');
             return (
               <div key={i} className="text-gray-300 pl-4 flex items-start gap-1.5">
                 <span className="text-purple-400 select-none">•</span>

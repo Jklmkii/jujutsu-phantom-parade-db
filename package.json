@@ -15,7 +15,8 @@
     "electron": "electron .",
     "desktop": "npm run build && electron .",
     "pack:win": "electron-builder --win --x64",
-    "build:exe": "node scripts/build_exe.cjs"
+    "build:exe": "node scripts/build_exe.cjs",
+    "thumbs": "electron scripts/generate_static_thumbs.cjs"
   },
   "build": {
     "appId": "com.jjkppdb.offline",

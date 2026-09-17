@@ -4,7 +4,7 @@ import { useJjkStore } from '../store/useJjkStore';
 import { ElementBadge } from './Badges';
 import { Award, RotateCcw, Search, X } from 'lucide-react';
 import { playClick } from '../utils/sound';
-import { getAssetUrl } from '../utils/assets';
+import { getAssetUrl, getStaticThumbUrl } from '../utils/assets';
 
 interface TierlistMakerProps {
   characters: Character[];
@@ -106,12 +106,19 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                       title={`${c.title} (Clique duas vezes para abrir, ou clique no X para remover)`}
                     >
                       <img
-                        src={getAssetUrl(c.image)}
+                        src={getStaticThumbUrl(c.image)}
                         alt={c.title}
                         onClick={() => onSelectCharacter(c)}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = getAssetUrl();
+                          const target = e.target as HTMLImageElement;
+                          if (!target.dataset.fallback) {
+                            target.dataset.fallback = 'true';
+                            target.src = getAssetUrl(c.image);
+                          } else {
+                            target.src = getAssetUrl();
+                          }
                         }}
                       />
                       <div className="absolute top-0.5 right-0.5 pointer-events-none">
@@ -193,11 +200,18 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                 title={`Clique para mover para o Tier ${activeTier}`}
               >
                 <img
-                  src={getAssetUrl(c.image)}
+                  src={getStaticThumbUrl(c.image)}
                   alt={c.title}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = getAssetUrl();
+                    const target = e.target as HTMLImageElement;
+                    if (!target.dataset.fallback) {
+                      target.dataset.fallback = 'true';
+                      target.src = getAssetUrl(c.image);
+                    } else {
+                      target.src = getAssetUrl();
+                    }
                   }}
                 />
                 <div className="absolute top-0.5 right-0.5 pointer-events-none">

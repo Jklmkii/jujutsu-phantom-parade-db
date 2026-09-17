@@ -24,3 +24,12 @@ export const getSkillIconUrl = (imageKeyOrPath?: string | null): string => {
   }
   return `./assets/${clean}`;
 };
+
+export const getStaticThumbUrl = (fileName?: string): string => {
+  if (!fileName) {
+    return getAssetUrl();
+  }
+  const cleanName = fileName.replace(/^\/+/, '').replace(/^assets\//, '');
+  const baseName = cleanName.replace(/\.[^/.]+$/, '');
+  return `./assets/static_thumbs/${baseName}.jpg`;
+};
