@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import type { TimelineEvent } from '../types';
 import { 
   Calendar, 
@@ -14,9 +14,14 @@ import {
   ChevronDown, 
   ChevronUp, 
   TrendingUp,
-  Sparkle
+  Sparkle,
+  Ticket,
+  CalendarCheck,
+  X
 } from 'lucide-react';
 import { playClick, playSelect } from '../utils/sound';
+import { useJjkStore } from '../store/useJjkStore';
+import { formatDateDisplay, getDeviceLocalDateString } from '../utils/date';
 
 interface TimelineViewProps {
   events: TimelineEvent[];
@@ -42,14 +47,25 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   const [filterStatus, setFilterStatus] = useState<'ALL' | 'RELEASED' | 'UPCOMING'>('ALL');
   const [showCalculator, setShowCalculator] = useState(true);
   
-  // Calculator state
+  // Calculator state from persistent store
   const upcomingEvents = useMemo(() => events.filter(e => e.status !== 'released'), [events]);
-  const [selectedBannerIndex, setSelectedBannerIndex] = useState<number>(() => {
-    return upcomingEvents[0]?.index ?? 161;
-  });
-  const [customLag, setCustomLag] = useState<number>(DEFAULT_LAG);
-  const [currentCubes, setCurrentCubes] = useState<number>(15000);
-  const [dailyCubesIncome, setDailyCubesIncome] = useState<number>(350);
+  const savingsPlan = useJjkStore((state) => state.savingsPlan);
+  const updateSavingsPlan = useJjkStore((state) => state.updateSavingsPlan);
+  const checkAndApplyDailySavings = useJjkStore((state) => state.checkAndApplyDailySavings);
+  const simulateNextDay = useJjkStore((state) => state.simulateNextDay);
+  const resetSavingsPlan = useJjkStore((state) => state.resetSavingsPlan);
+  const dismissDailyIncrementAlert = useJjkStore((state) => state.dismissDailyIncrementAlert);
+
+  // Check and apply 24h daily increment on mount
+  useEffect(() => {
+    checkAndApplyDailySavings();
+  }, [checkAndApplyDailySavings]);
+
+  const selectedBannerIndex = savingsPlan.selectedBannerIndex ?? (upcomingEvents[0]?.index ?? 161);
+  const customLag = savingsPlan.customLag ?? DEFAULT_LAG;
+  const currentCubes = savingsPlan.currentCubes ?? 15000;
+  const dailyCubesIncome = savingsPlan.dailyIncome ?? 350;
+  const pityPoints = savingsPlan.pityPoints ?? 0;
 
   const calcSectionRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +73,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
     return events.find(e => e.index === selectedBannerIndex) || upcomingEvents[0] || events[0];
   }, [events, selectedBannerIndex, upcomingEvents]);
 
-  // Dynamic calculations
+  // Dynamic calculations with Pity Points and Cards
   const calcResults = useMemo(() => {
     if (!selectedEvent) return null;
     const jpDate = parseDMY(selectedEvent.jp_date);
@@ -69,30 +85,32 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
 
     const accumulatedCubes = daysRemaining * dailyCubesIncome;
     const totalProjectedCubes = currentCubes + accumulatedCubes;
-    const totalPulls = Math.floor(totalProjectedCubes / 300);
-    const pityPulls = 250;
-    const pityCubes = pityPulls * 300; // 75,000
-    const pityProgress = Math.min(100, Math.round((totalProjectedCubes / pityCubes) * 100));
-    const missingCubes = Math.max(0, pityCubes - totalProjectedCubes);
-    const missingPulls = Math.ceil(missingCubes / 300);
-    const isGuaranteed = totalProjectedCubes >= pityCubes;
+    const pullsFromCubes = Math.floor(totalProjectedCubes / 300);
+    const totalPulls = pullsFromCubes + pityPoints;
+    const pityTargetPulls = 250;
+    const pityProgress = Math.min(100, Math.round((totalPulls / pityTargetPulls) * 100));
+    const missingPulls = Math.max(0, pityTargetPulls - totalPulls);
+    const missingCubes = missingPulls * 300;
+    const isGuaranteed = totalPulls >= pityTargetPulls;
 
     return {
       predictedGlobalFormatted: formatDMY(predictedGlobal),
       daysRemaining,
       accumulatedCubes,
       totalProjectedCubes,
+      pullsFromCubes,
       totalPulls,
+      pityPoints,
       pityProgress,
       missingCubes,
       missingPulls,
       isGuaranteed
     };
-  }, [selectedEvent, customLag, currentCubes, dailyCubesIncome]);
+  }, [selectedEvent, customLag, currentCubes, dailyCubesIncome, pityPoints]);
 
   const handleSelectBannerForCalc = (evIndex: number) => {
     playSelect();
-    setSelectedBannerIndex(evIndex);
+    updateSavingsPlan({ selectedBannerIndex: evIndex });
     setShowCalculator(true);
     calcSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
@@ -209,8 +227,90 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
 
         {showCalculator && calcResults && (
           <div className="space-y-6 relative z-10 animate-fadeIn">
-            {/* Controls Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Daily Increment Notification Banner */}
+            {(savingsPlan.lastIncrementAmount ?? 0) > 0 && (
+              <div className="bg-gradient-to-r from-emerald-950/80 via-teal-950/70 to-[#120d24] border border-emerald-500/40 rounded-2xl p-4 flex items-center justify-between gap-4 text-xs animate-fadeIn shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 shrink-0">
+                    <Sparkles className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <span className="font-black text-emerald-300 text-sm flex items-center gap-2">
+                      <span>🎉 Acumulação Diária Aplicada com Sucesso!</span>
+                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 font-mono">
+                        +{savingsPlan.lastIncrementDays} dia(s)
+                      </span>
+                    </span>
+                    <p className="text-gray-300 mt-0.5">
+                      Foram adicionados automaticamente <strong className="text-emerald-300 font-mono">+{savingsPlan.lastIncrementAmount?.toLocaleString()} cubos</strong> à sua reserva com base na sua estimativa de ganho diário.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => {
+                    playClick();
+                    dismissDailyIncrementAlert();
+                  }}
+                  className="p-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 transition-colors cursor-pointer shrink-0"
+                  title="Dispensar aviso"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+
+            {/* Daily Auto-Tracking & Persistence Status Bar */}
+            <div className="bg-[#0c0919] border border-[#2b1f4c] rounded-2xl p-3.5 flex flex-wrap items-center justify-between gap-3 text-xs shadow-inner">
+              <div className="flex flex-wrap items-center gap-3">
+                <label className="flex items-center gap-2 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={savingsPlan.autoDailyIncrementEnabled}
+                    onChange={(e) => {
+                      playClick();
+                      updateSavingsPlan({ autoDailyIncrementEnabled: e.target.checked });
+                    }}
+                    className="accent-purple-500 rounded cursor-pointer w-4 h-4"
+                  />
+                  <span className="font-bold text-gray-300 hover:text-white transition-colors">
+                    Acumulação Automática Diária (24h)
+                  </span>
+                </label>
+                <span className="text-gray-600 text-[11px] hidden sm:inline">•</span>
+                <span className="text-[11px] text-gray-400 flex items-center gap-1.5">
+                  <CalendarCheck className="w-3.5 h-3.5 text-purple-400" />
+                  Última sincronização: <strong className="text-purple-300 font-mono">{formatDateDisplay(savingsPlan.lastUpdatedDate)}</strong>
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    playClick();
+                    simulateNextDay();
+                  }}
+                  className="flex items-center gap-1 px-3 py-1.5 bg-purple-600/20 hover:bg-purple-600/35 border border-purple-500/40 rounded-xl text-purple-300 hover:text-white font-bold text-[11px] transition-all cursor-pointer shadow-sm"
+                  title="Simula o avanço de 24 horas creditando o ganho diário imediatamente para teste"
+                >
+                  <TrendingUp className="w-3 h-3 text-purple-400" />
+                  <span>Simular +1 Dia (+{dailyCubesIncome.toLocaleString()} cubos)</span>
+                </button>
+                <button
+                  onClick={() => {
+                    playClick();
+                    resetSavingsPlan();
+                  }}
+                  className="flex items-center gap-1 px-2.5 py-1.5 bg-gray-800/40 hover:bg-gray-800/80 border border-gray-700/50 rounded-xl text-gray-400 hover:text-gray-200 text-[11px] transition-all cursor-pointer"
+                  title="Restaurar valores padrões da calculadora"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  <span>Restaurar</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Controls Grid - 4 Columns */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Banner Selector */}
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
@@ -221,7 +321,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   value={selectedBannerIndex}
                   onChange={(e) => {
                     playSelect();
-                    setSelectedBannerIndex(Number(e.target.value));
+                    updateSavingsPlan({ selectedBannerIndex: Number(e.target.value) });
                   }}
                   className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400 cursor-pointer shadow-inner"
                 >
@@ -231,8 +331,8 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     </option>
                   ))}
                 </select>
-                <span className="text-[10px] text-gray-500 block">
-                  Lançamento no Japão: <strong>{selectedEvent.jp_date}</strong>
+                <span className="text-[10px] text-gray-500 block truncate">
+                  Lançamento JP: <strong>{selectedEvent.jp_date}</strong>
                 </span>
               </div>
 
@@ -248,13 +348,16 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     min="0"
                     step="500"
                     value={currentCubes}
-                    onChange={(e) => setCurrentCubes(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                    onChange={(e) => {
+                      const val = Math.max(0, parseInt(e.target.value, 10) || 0);
+                      updateSavingsPlan({ currentCubes: val, lastUpdatedDate: getDeviceLocalDateString() });
+                    }}
                     className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2 text-sm font-mono text-amber-300 focus:outline-none focus:border-amber-400 shadow-inner"
                   />
                   <button
                     onClick={() => {
                       playClick();
-                      setCurrentCubes(c => c + 3000);
+                      updateSavingsPlan({ currentCubes: currentCubes + 3000, lastUpdatedDate: getDeviceLocalDateString() });
                     }}
                     className="px-2.5 py-1 bg-amber-500/20 border border-amber-500/40 rounded-xl text-xs font-bold text-amber-300 hover:bg-amber-500/30 transition-all cursor-pointer whitespace-nowrap"
                     title="+3.000 Cubos (10 giros)"
@@ -263,7 +366,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   </button>
                 </div>
                 <span className="text-[10px] text-gray-500 block">
-                  Equivale a <strong>{Math.floor(currentCubes / 300)} giros</strong> agora.
+                  Equivale a <strong>{Math.floor(currentCubes / 300)} giros</strong> em cubos.
                 </span>
               </div>
 
@@ -276,16 +379,75 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
-                    min="50"
+                    min="0"
                     step="50"
                     value={dailyCubesIncome}
-                    onChange={(e) => setDailyCubesIncome(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                    onChange={(e) => {
+                      const val = Math.max(0, parseInt(e.target.value, 10) || 0);
+                      updateSavingsPlan({ dailyIncome: val });
+                    }}
                     className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2 text-sm font-mono text-emerald-300 focus:outline-none focus:border-emerald-400 shadow-inner"
                   />
                   <span className="text-xs text-gray-400 shrink-0">cubos/dia</span>
                 </div>
                 <span className="text-[10px] text-gray-500 block">
-                  Média mensal: ~{(dailyCubesIncome * 30).toLocaleString()} cubos (missões, logins e eventos)
+                  ~{(dailyCubesIncome * 30).toLocaleString()} cubos/mês estimados
+                </span>
+              </div>
+
+              {/* Pity Points & Gacha Cards Input */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-300 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5">
+                    <Ticket className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Pontos / Cartas de Pity:</span>
+                  </span>
+                  <span className="text-[10px] text-cyan-400 font-mono font-bold">
+                    {pityPoints}/250 pts
+                  </span>
+                </label>
+                <div className="flex gap-1.5">
+                  <input
+                    type="number"
+                    min="0"
+                    max="250"
+                    step="1"
+                    value={pityPoints}
+                    onChange={(e) => {
+                      const val = Math.min(250, Math.max(0, parseInt(e.target.value, 10) || 0));
+                      updateSavingsPlan({ pityPoints: val });
+                    }}
+                    className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3 py-2 text-sm font-mono text-cyan-300 focus:outline-none focus:border-cyan-400 shadow-inner"
+                  />
+                  <button
+                    onClick={() => {
+                      playClick();
+                      updateSavingsPlan({ pityPoints: Math.min(250, pityPoints + 1) });
+                    }}
+                    className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-xl text-xs font-bold text-cyan-300 hover:bg-cyan-500/30 transition-all cursor-pointer whitespace-nowrap"
+                    title="+1 Ponto de Gacha / Carta de Pity (+1 giro)"
+                  >
+                    +1
+                  </button>
+                  <button
+                    onClick={() => {
+                      playClick();
+                      updateSavingsPlan({ pityPoints: Math.min(250, pityPoints + 10) });
+                    }}
+                    className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-xl text-xs font-bold text-cyan-300 hover:bg-cyan-500/30 transition-all cursor-pointer whitespace-nowrap"
+                    title="+10 Pontos de Gacha / Cartas de Pity (+10 giros)"
+                  >
+                    +10
+                  </button>
+                </div>
+                <span className="text-[10px] text-gray-500 block truncate">
+                  {pityPoints > 0 ? (
+                    <span className="text-cyan-400 font-medium">
+                      Abate <strong>{(pityPoints * 300).toLocaleString()} cubos</strong> do Pity.
+                    </span>
+                  ) : (
+                    <span>1 pt/carta = 1 giro (300 cubos) a menos.</span>
+                  )}
                 </span>
               </div>
             </div>
@@ -308,7 +470,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   <button
                     onClick={() => {
                       playClick();
-                      setCustomLag(DEFAULT_LAG);
+                      updateSavingsPlan({ customLag: DEFAULT_LAG });
                     }}
                     className="flex items-center gap-1 text-[11px] text-purple-400 hover:text-purple-200 cursor-pointer transition-colors"
                   >
@@ -324,7 +486,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   min="50"
                   max="110"
                   value={customLag}
-                  onChange={(e) => setCustomLag(Number(e.target.value))}
+                  onChange={(e) => updateSavingsPlan({ customLag: Number(e.target.value) })}
                   className="w-full accent-purple-500 cursor-pointer"
                 />
                 <span className="text-[11px] text-gray-500">110d</span>
@@ -368,7 +530,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   {calcResults.totalProjectedCubes.toLocaleString()}
                 </div>
                 <span className="text-xs text-amber-200/80 font-bold">
-                  {calcResults.totalPulls} giros totais
+                  {calcResults.pullsFromCubes} giros de cubos {pityPoints > 0 && `+ ${pityPoints} pts pity`}
                 </span>
               </div>
 
@@ -379,7 +541,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   : 'bg-[#0f0a21] border-rose-500/30'
               }`}>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">
-                  Meta Pity (250 Giros)
+                  Meta Pity (250 Giros / Pts)
                 </span>
                 <div className="flex items-center justify-between">
                   <span className={`text-xl font-black font-mono ${
@@ -401,6 +563,11 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     style={{ width: `${calcResults.pityProgress}%` }}
                   />
                 </div>
+                {pityPoints > 0 && (
+                  <span className="text-[10px] text-cyan-400 font-mono block">
+                    Inclui {pityPoints} pts/cartas ({pityPoints * 300} cubos abatidos)
+                  </span>
+                )}
               </div>
             </div>
 
@@ -420,13 +587,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   <div className="font-bold text-sm">
                     {calcResults.isGuaranteed 
                       ? '🎉 PITY GARANTIDO (100% de Certeza)!' 
-                      : `⚠️ Quase lá! Faltam ${calcResults.missingCubes.toLocaleString()} cubos (${calcResults.missingPulls} giros) para o Pity Garantido.`
+                      : `⚠️ Quase lá! Faltam ${calcResults.missingCubes.toLocaleString()} cubos (${calcResults.missingPulls} giros/pontos) para o Pity Garantido.`
                     }
                   </div>
-                  <p className="text-[11px] opacity-80 mt-0.5">
+                  <p className="text-[11px] opacity-80 mt-0.5 leading-relaxed">
                     {calcResults.isGuaranteed
-                      ? `Você acumulará ${calcResults.totalProjectedCubes.toLocaleString()} cubos até a chegada do banner (${calcResults.totalPulls} giros), superando os 250 giros necessários para o pity.`
-                      : `Com o ritmo diário atual de ${dailyCubesIncome} cubos/dia, você alcançará ${calcResults.totalPulls} de 250 giros. Considere completar missões extras da Torre Ilusória ou eventos especiais.`
+                      ? `Você terá ${calcResults.totalPulls} giros/pontos no total (${calcResults.pullsFromCubes} giros vindos de ${calcResults.totalProjectedCubes.toLocaleString()} cubos + ${calcResults.pityPoints} pontos/cartas de pity), superando a meta de 250 pontos para o Câmbio do Banner!`
+                      : `Com o ritmo diário atual de ${dailyCubesIncome} cubos/dia e seus ${calcResults.pityPoints} pts de pity/cartas, você acumulará ${calcResults.totalPulls} de 250 giros até o banner. Faltam ${calcResults.missingCubes.toLocaleString()} cubos (${calcResults.missingPulls} giros). Considere completar missões extras da Torre Ilusória ou eventos especiais.`
                     }
                   </p>
                 </div>

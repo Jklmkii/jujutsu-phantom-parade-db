@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { HomePage } from './components/HomePage';
 import { CharactersList } from './components/CharactersList';
@@ -24,7 +24,11 @@ export function App() {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [charactersSearch, setCharactersSearch] = useState<string>('');
 
-  const { isSettingsOpen, toggleSettings } = useJjkStore();
+  const { isSettingsOpen, toggleSettings, checkAndApplyDailySavings } = useJjkStore();
+
+  useEffect(() => {
+    checkAndApplyDailySavings();
+  }, [checkAndApplyDailySavings]);
   const characters = charactersData as Character[];
   const memories = memoriesData as Memory[];
   const timeline = timelineData as TimelineEvent[];

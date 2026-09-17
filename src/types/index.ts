@@ -208,6 +208,18 @@ export interface BuffsData {
   dmgUp: BuffItem[];
 }
 
+export interface CalculatorSavingsPlan {
+  currentCubes: number;
+  dailyIncome: number;
+  selectedBannerIndex: number;
+  customLag: number;
+  pityPoints: number; // Pontos de Gacha Exclusivo acumulados no banner + Cartas de Ponto de Gacha
+  lastUpdatedDate: string; // YYYY-MM-DD local
+  autoDailyIncrementEnabled: boolean;
+  lastIncrementAmount?: number;
+  lastIncrementDays?: number;
+}
+
 export interface UpdaterStatus {
   status: 'checking' | 'available' | 'not-available' | 'downloading' | 'downloaded' | 'error';
   version?: string;

@@ -1,5 +1,19 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import type { CalculatorSavingsPlan } from '../types';
+import { getDeviceLocalDateString, getDaysBetweenDates } from '../utils/date';
+
+export const DEFAULT_SAVINGS_PLAN: CalculatorSavingsPlan = {
+  currentCubes: 15000,
+  dailyIncome: 350,
+  selectedBannerIndex: 161,
+  customLag: 79,
+  pityPoints: 0,
+  lastUpdatedDate: getDeviceLocalDateString(),
+  autoDailyIncrementEnabled: true,
+  lastIncrementAmount: 0,
+  lastIncrementDays: 0,
+};
 
 export interface TeamMember {
   slot: number; // 1 to 4 frontline, 5 backup
@@ -46,6 +60,14 @@ interface JjkState {
   // Tactical Scratchpad (Floating Whiteboard)
   isScratchpadOpen: boolean;
   toggleScratchpad: () => void;
+
+  // Savings Plan & Gacha Pity Calculator
+  savingsPlan: CalculatorSavingsPlan;
+  updateSavingsPlan: (updates: Partial<CalculatorSavingsPlan>) => void;
+  checkAndApplyDailySavings: () => { applied: boolean; daysAdded: number; cubesAdded: number };
+  simulateNextDay: () => void;
+  resetSavingsPlan: () => void;
+  dismissDailyIncrementAlert: () => void;
 
   // Export / Import / Reset Backup (Ported from Quantora)
   exportBackupJSON: () => string;
@@ -130,6 +152,78 @@ export const useJjkStore = create<JjkState>()(
       isScratchpadOpen: false,
       toggleScratchpad: () => set((state) => ({ isScratchpadOpen: !state.isScratchpadOpen })),
 
+      // Savings Plan & Gacha Pity Calculator
+      savingsPlan: DEFAULT_SAVINGS_PLAN,
+
+      updateSavingsPlan: (updates) =>
+        set((state) => ({
+          savingsPlan: {
+            ...state.savingsPlan,
+            ...updates,
+          },
+        })),
+
+      checkAndApplyDailySavings: () => {
+        const { savingsPlan } = get();
+        const todayStr = getDeviceLocalDateString();
+
+        if (!savingsPlan.lastUpdatedDate) {
+          set((state) => ({
+            savingsPlan: { ...state.savingsPlan, lastUpdatedDate: todayStr },
+          }));
+          return { applied: false, daysAdded: 0, cubesAdded: 0 };
+        }
+
+        const daysDiff = getDaysBetweenDates(savingsPlan.lastUpdatedDate, todayStr);
+        if (daysDiff > 0 && savingsPlan.autoDailyIncrementEnabled) {
+          const cubesAdded = daysDiff * savingsPlan.dailyIncome;
+          const newCurrentCubes = Math.max(0, savingsPlan.currentCubes + cubesAdded);
+          set((state) => ({
+            savingsPlan: {
+              ...state.savingsPlan,
+              currentCubes: newCurrentCubes,
+              lastUpdatedDate: todayStr,
+              lastIncrementAmount: cubesAdded,
+              lastIncrementDays: daysDiff,
+            },
+          }));
+          return { applied: true, daysAdded: daysDiff, cubesAdded };
+        }
+
+        return { applied: false, daysAdded: 0, cubesAdded: 0 };
+      },
+
+      simulateNextDay: () => {
+        set((state) => {
+          const plan = state.savingsPlan;
+          return {
+            savingsPlan: {
+              ...plan,
+              currentCubes: plan.currentCubes + plan.dailyIncome,
+              lastIncrementAmount: plan.dailyIncome,
+              lastIncrementDays: 1,
+            },
+          };
+        });
+      },
+
+      resetSavingsPlan: () =>
+        set(() => ({
+          savingsPlan: {
+            ...DEFAULT_SAVINGS_PLAN,
+            lastUpdatedDate: getDeviceLocalDateString(),
+          },
+        })),
+
+      dismissDailyIncrementAlert: () =>
+        set((state) => ({
+          savingsPlan: {
+            ...state.savingsPlan,
+            lastIncrementAmount: 0,
+            lastIncrementDays: 0,
+          },
+        })),
+
       // Backup & Restore
       exportBackupJSON: () => {
         const state = get();
@@ -141,6 +235,7 @@ export const useJjkStore = create<JjkState>()(
           teams: state.teams,
           tierList: state.tierList,
           soundEnabled: state.soundEnabled,
+          savingsPlan: state.savingsPlan,
         };
         return JSON.stringify(payload, null, 2);
       },
@@ -157,6 +252,10 @@ export const useJjkStore = create<JjkState>()(
             teams: Array.isArray(data.teams) ? data.teams : [],
             tierList: typeof data.tierList === 'object' && data.tierList !== null ? data.tierList : {},
             soundEnabled: typeof data.soundEnabled === 'boolean' ? data.soundEnabled : true,
+            savingsPlan:
+              data.savingsPlan && typeof data.savingsPlan === 'object'
+                ? { ...DEFAULT_SAVINGS_PLAN, ...data.savingsPlan }
+                : DEFAULT_SAVINGS_PLAN,
           });
           return { success: true, message: 'Backup importado com sucesso!' };
         } catch {
@@ -170,6 +269,10 @@ export const useJjkStore = create<JjkState>()(
           favoriteMemoryIds: [],
           teams: [],
           tierList: {},
+          savingsPlan: {
+            ...DEFAULT_SAVINGS_PLAN,
+            lastUpdatedDate: getDeviceLocalDateString(),
+          },
         });
       },
     }),
