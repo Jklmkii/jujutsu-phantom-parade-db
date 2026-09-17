@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #090710;
+  --bg-sidebar: #0e0b18;
+  --bg-card: #151124;
+  --bg-card-hover: #1c1630;
+  --border-subtle: #251e3b;
+  --accent-purple: #8b5cf6;
+  --accent-glow: rgba(139, 92, 246, 0.35);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090710;
+}
+::-webkit-scrollbar-thumb {
+  background: #271f3d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b2f5c;
+}
+
+/* Glowing rarity borders */
+.rarity-ssr {
+  border-color: #eab308;
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.25);
+}
+.rarity-sr {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+.rarity-r {
+  border-color: #a8a29e;
+  box-shadow: 0 0 8px rgba(168, 162, 158, 0.15);
+}
+
+/* Jujutsu element colors */
+.elem-blue {
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.4);
+  background-color: rgba(96, 165, 250, 0.1);
+}
+.elem-red {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.4);
+  background-color: rgba(248, 113, 113, 0.1);
+}
+.elem-green {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.4);
+  background-color: rgba(74, 222, 128, 0.1);
+}
+.elem-yellow {
+  color: #facc15;
+  border-color: rgba(250, 204, 21, 0.4);
+  background-color: rgba(250, 204, 21, 0.1);
+}

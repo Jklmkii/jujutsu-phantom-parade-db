@@ -1,0 +1,5063 @@
+[
+  {
+    "id": "I_m_glad_I_gave_birth_to_you___",
+    "title": "I'm glad I gave birth to you...",
+    "rarity": "SSR",
+    "release_date": "31-7-2026",
+    "stats": {
+      "hp": "44.02%<br>(Level 80)",
+      "taijutsu": "31.21%<br>(Level 80)",
+      "jujutsu": "31.21%<br>(Level 80)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "GladGaveBirthToYouArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all \"影\" (Blue) allies' Damage Dealt by 25% (Lv 1) → 30% (Lv 10) (1 Turn)\nIncreases own Critical Hit Rate by 15% (Lv 1) → 20% (Lv 10) (3 Turns)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "If \"Chance to Evade\" is inflicted at the start of turn,\nIncreases own \"影\" (Blue) Damage Dealt by 5% (1 Turn)\nGrant an additional effect If the equipped character is a Kyoto Jujutsu High Year 2,\nIncreases own \"影\" (Blue) Damage Dealt by 15% (1 Turn)\nRecovers own Cursed Energy by 10 (3 Times per Battle)"
+    }
+  },
+  {
+    "id": "Let_s_Have_A_Game_Of_Endurance",
+    "title": "Let’s Have A Game Of Endurance",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "0%",
+      "jujutsu": "26.63% (Level 45)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "LetsComparePatienceArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt\n(The lower own HP is, the higher the Damage increase)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nGrants Revival Status to self"
+    }
+  },
+  {
+    "id": "Let_s_Rescue_Satoru_Gojo_",
+    "title": "Let's Rescue Satoru Gojo!",
+    "rarity": "SSR",
+    "release_date": "23-4-2025",
+    "stats": {
+      "hp": "13.3%<br>(Level 55)",
+      "taijutsu": "34.6%<br>(Level 55)",
+      "jujutsu": "34.6%<br>(Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "GojoRescueArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 35.0% (Lv 1) → 45.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If own Ultimate Skill Gauge is filled at the start of turn,\nIncreases own Damage Dealt by 25.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "Live_A_Long_Life",
+    "title": "Live A Long Life",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.53% (Level 45)",
+      "taijutsu": "15.37% (Level 45)",
+      "jujutsu": "15.37% (Level 45)"
+    },
+    "active_cooldown": "3",
+    "passive_cooldown": "/",
+    "image": "LiveALongLifeArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Fills own Ultimate Skill Gauge by 250\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 300\nSacrifices 15.0% of own HP\n(Cannot die from sacrificing HP)",
+      "cooldown": "3"
+    },
+    "passive_skill": {
+      "description": "When the character leaves the field,\nRecovers all allies' HP by 10.0%\nRecovers all allies' Cursed Energy by 10\nIncreases all allies' Damage Dealt by 10.0%"
+    }
+  },
+  {
+    "id": "To_Victory_",
+    "title": "To Victory!",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "26.63% (Level 45)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "LetsWinThisArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 20.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Taijutsu Stat by 10.0%\n(The more characters from Tokyo Jujutsu High there are at the start of the wave, the higher the Taijutsu Stat increase)"
+    }
+  },
+  {
+    "id": "Watch_Closely",
+    "title": "Watch Closely",
+    "rarity": "SSR",
+    "release_date": "11-9-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0% (Level 80)",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "WatchCloselyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own \"行\" (Yellow) Damage Dealt by 30% (Lv 1) → 35% (Lv 10) (1 Turn)\nIf the equipped character is a \"Curse User\",\nIncreases own Jujutsu Stat by 30% (Lv 1) → 35% (Lv 10) (1 Turn)\nRecovers own Cursed Energy by 5",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own Cursed Energy is 60 or more at the start of turn,\nIncreases all enemies' \"行\" (Yellow) Jujutsu Damage Received by 5% (2 Turns)\nIncreases all enemies' \"行\" (Yellow) Damage Received by 5% (2 Turns)\nIf the equipped character is a \"Curse User\",\nIncreases all enemies' \"行\" (Yellow) Damage Received by 5% (2 Turns)\nFills own Ultimate Gauge by 110"
+    }
+  },
+  {
+    "id": "We_re_Sisters_",
+    "title": "We’re Sisters!",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.53% (Level 45)",
+      "taijutsu": "15.37% (Level 45)",
+      "jujutsu": "15.37% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "SistersArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nGrants Stealth Status to all allies (2 Turns/Excludes self)"
+    }
+  },
+  {
+    "id": "You_Always_Die_Alone",
+    "title": "You Always Die Alone",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "14.37% (Level 45)",
+      "jujutsu": "21.01% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "DieAloneArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers 30.0% (Lv 1) → 40.0% (Lv 10) of own HP\n(Available after 3 Turns have passed)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Break Damage by 20.0%"
+    }
+  },
+  {
+    "id": "You_Are_Late",
+    "title": "You Are Late",
+    "rarity": "SSR",
+    "release_date": "18-12-2023",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.90% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "YouAreLateArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)\nRecovers own Cursed Energy by 10",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Jujutsu Stat by 15.0%"
+    }
+  },
+  {
+    "id": "120__Of_Their_Potential",
+    "title": "120% Of Their Potential",
+    "rarity": "SSR",
+    "release_date": "28-11-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "120%Potential.gif",
+    "active_skill": {
+      "description": "When performing a Command Skill or Ultimate Skill,\nIncreases own Critical Hit Rate by 25% (Lv 1) → 30% (Lv 10) (1 Turn)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "When performing a Critical Hit or Black Flash,\nIncreases own Damage Dealt by 10% (4 Turns) (Twice in a Battle)"
+    }
+  },
+  {
+    "id": "2_Problem_Children__However_The_Strongest",
+    "title": "2 Problem Children, However The Strongest",
+    "rarity": "SSR",
+    "release_date": "17-12-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "HIMovieCompilationMem.gif",
+    "active_skill": {
+      "description": "When a Command Skill or Ultimate Skill is activated,\nIncreases own and Ally Behind's Taijutsu Stat by 10% (Lv 1) → 15% (Lv 10) (1 Turn)\nIncreases own and Ally Behind's Jujutsu Stat by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases self and Ally Behind's Damage Received by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "A_Bear_is_Approaching_",
+    "title": "A Bear is Approaching!",
+    "rarity": "SSR",
+    "release_date": "19-08-25",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieHeal.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Taijutsu Damage Recieved by 25% (Lv 1) → 30% (Lv 10) (3 Turns/1 Time)\nDecreases to Ally Behind Taijutsu Damage Recieved by 25% (Lv 1) → 30% (Lv 10) (3 Turns/1 Time)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If own HP is below 50% at the start of turn,\nRecovers 20% HP (Once per Battle)"
+    }
+  },
+  {
+    "id": "A_Brief_Moment_Between_Brothers",
+    "title": "A Brief Moment Between Brothers",
+    "rarity": "SSR",
+    "release_date": "31-7-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryGreendamageskill.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 20.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "A_Drink_After_The_Onsen",
+    "title": "A Drink After The Onsen",
+    "rarity": "SSR",
+    "release_date": "26-12-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "DrinkOnsenArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 40% (Lv 1) → 45% (Lv 10) (1 turn)\n(Effective for \"影\" (Blue) Type attacks)\nIncreases own Break Damage by 15% (Lv 1) → 20% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "When Ultimate Skill is activated,\nDecreases all allies' Damage Received by 5% (3 Turns)\n(Once per Battle)"
+    }
+  },
+  {
+    "id": "A_Girl_Called_Nobara_Kugisaki",
+    "title": "A Girl Called Nobara Kugisaki",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "0%",
+      "jujutsu": "26.63% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "CalledNobaraArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nIncreases own Critical Hit Rate by 30.0%\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "A_Magnificent_Stride_Forward",
+    "title": "A Magnificent Stride Forward",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.90% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TheGrandBreakThroughArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "A_Slight_Gap",
+    "title": "A Slight Gap",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "SlightDistanceArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 35.0% (Lv 1) → 40.0% (Lv 10)\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "A_Stingy_Extra_Bill",
+    "title": "A Stingy Extra Bill",
+    "rarity": "SSR",
+    "release_date": "20-2-2026",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryEnergyRecharge.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill are activated,\n**Lv 1:** Recovers own Cursed Energy by 5\n**Lv 10 (Máx):** Recovers own Cursed Energy by 10\nIf Ultimate Gauge is at maximum,\nRecovers own HP by 10% (Lv 1) → 15% (Lv 10)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nIncreases all enemies' Damage Received by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "A_Wish_From_The_Past",
+    "title": "A Wish From The Past",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "DreamOfFutureDaysArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers all allies' HP by 30.0% (Lv 1) → 35.0% (Lv 10)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases all allies' Damage Received by 10.0% (4 Turns)"
+    }
+  },
+  {
+    "id": "Activities_Begin",
+    "title": "Activities Begin",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "ActivitiesBeginArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nRecovers own HP by 2.5% (Lv 1) → 3.8% (Lv 10) every turn (4 Turns)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Adult_Time",
+    "title": "Adult Time",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "21.38% (Level 55)",
+      "jujutsu": "31.33% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "AdultTimeArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 70.0% (Lv 1) → 75.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nIncreases all allies' Critical Hit Rate by 10.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "After-School_Activities",
+    "title": "After-School Activities",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.53% (Level 45)",
+      "taijutsu": "15.37% (Level 45)",
+      "jujutsu": "15.37% (Level 45)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "AfterSchoolArt.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nFills own Ultimate Skill Gauge by 200"
+    }
+  },
+  {
+    "id": "Annihilating_Cross-Counter",
+    "title": "Annihilating Cross-Counter",
+    "rarity": "SSR",
+    "release_date": "14-4-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "54.90% (Level 80)",
+      "jujutsu": "0% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "AnnihilatingCrossCounterArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own \"行\" (Yellow) Type Damage Dealt by 60% (Lv 1) → 65% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If self is receiving \"Chance to Evade\" State after performing Ultimate Skill,\nIncreases own Taijutsu Stat by 3% (2 Turns/Cannot be Stacked)\n(Increases the effect further with Cursed Energy, up to 15% with 80 Cursed Energy)"
+    }
+  },
+  {
+    "id": "Aoi_Todo_s_Youth_Minerals",
+    "title": "Aoi Todo's Youth Minerals",
+    "rarity": "SSR",
+    "release_date": "22/10/2024",
+    "stats": {
+      "hp": "20.59% (Level 55)",
+      "taijutsu": "21.38% (Level 55)",
+      "jujutsu": "31.33% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "AoiTodosYouthMineralsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 15.0% (Lv 1) → 20.0% (Lv 10) (2 Turns)\n(Effective for \"夜\" (Green) Type attacks)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nIncreases all enemies' Taijutsu Damage Received by 10.0% (3 Turns)\nIncreases all enemies' Jujutsu Damage Received by 10.0% (3 Turns)\n(Effective for \"夜\" (Green) Type attacks)"
+    }
+  },
+  {
+    "id": "Archers_of_The_Forest",
+    "title": "Archers of The Forest",
+    "rarity": "SSR",
+    "release_date": "19-9-2025",
+    "stats": {
+      "hp": "29.89% (Level 80)",
+      "taijutsu": "40.75% (Level 80)",
+      "jujutsu": "40.75% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Ranged Damage Dealt by 60% (Lv 1) → 65% (Lv 10),\nand ignores Darkness (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nApplies Stealth Status (3 Turns)"
+    }
+  },
+  {
+    "id": "Arrival_Of_Kyoto_School",
+    "title": "Arrival Of Kyoto School",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "0%",
+      "jujutsu": "26.63% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "KyotoArrivalArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 20.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Jujutsu Stat by 10.0%\n(The more characters from Kyoto Jujutsu High there are at the start of the wave, the higher the Jujutsu Stat increase)"
+    }
+  },
+  {
+    "id": "Art_Museum_At_Night",
+    "title": "Art Museum At Night",
+    "rarity": "SSR",
+    "release_date": "20-6-2024",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "Art_Museum_in_night.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases all enemies’ Taijutsu Stat by 10.0% (Lv 1) → 20.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nFills own Ultimate Skill Gauge by 200"
+    }
+  },
+  {
+    "id": "Battle_For_Second_Place",
+    "title": "Battle For Second Place",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "14.37% (Level 45)",
+      "jujutsu": "21.01% (Level 45)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "RightHandManArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn from the start of the battle,\nRecovers all allies' HP by 25.0%\n(Effective for characters with the \"Cursed Spirit\" affiliation)"
+    }
+  },
+  {
+    "id": "Bedeviled_Solicitation__Refused",
+    "title": "Bedeviled Solicitation, Refused",
+    "rarity": "SSR",
+    "release_date": "26-12-2025",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "54.90% (Level 80)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "12",
+    "passive_cooldown": "/",
+    "image": "BSRArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 90% (Lv 1) → 95% (Lv 10) (1 Turn/1 Time)\nIf the equipped character is \"影\" (Blue) Type,\nIncreases all allies' Damage Dealt by 20% (3 Turns)\n(Available after 7 Turns have passed)",
+      "cooldown": "12"
+    },
+    "passive_skill": {
+      "description": "If the equipped character leaves the battlefield after 8 Turns have passed,\nRecovers all allies' Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "Before_The_Battle_For_Kyushu",
+    "title": "Before The Battle For Kyushu",
+    "rarity": "SSR",
+    "release_date": "31-10-2024",
+    "stats": {
+      "hp": "6.10%",
+      "taijutsu": "4.35%",
+      "jujutsu": "4.35%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieHeal.png",
+    "active_skill": {
+      "description": "Recovers all allies' HP by 10.0% (Lv 1) → 15.0% (Lv 10),\nReduces own damage received by 10.0% (Lv 1) → 15.0% (Lv 10) ( 1 Turn )\nwhen Command Skill or Ultimate Skill is activated",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "Reduces own damage received by 5.0% at the start of battle"
+    }
+  },
+  {
+    "id": "Behold__Okinawa",
+    "title": "Behold, Okinawa",
+    "rarity": "SSR",
+    "release_date": "21-5-2026",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "BeholdOkinawaArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' \"行\" (Yellow) Type Damage Dealt by 5% (1 Turn)\nIf the equipped character is a Tokyo Jujutsu High Year 1 or Jujutsu High Officials,\nIncreases all allies' \"行\" (Yellow) Type Damage Dealt by 15% (1 Turn)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nIncreases own Ultimate Gauge Charging Rate by 2% (2 Turns)\n(At the start of the wave, increases the effect further the more Tokyo Jujutsu High Year 1 there are, up to 20%)\n*Up to 3 Characters\nIncreases own Ultimate Gauge Charging Rate by 5% (2 Turns)\n(At the start of the wave, increases the effect further the more Jujutsu High Officials there are, up to 10%)\n*Up to 1 Character"
+    }
+  },
+  {
+    "id": "Beware_Of_The_Dog",
+    "title": "Beware Of The Dog",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "3",
+    "passive_cooldown": "/",
+    "image": "BewareFierceDogArt1.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nReduces own Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Turn)",
+      "cooldown": "3"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Bewildered",
+    "title": "Bewildered",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "InADazeArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\n**Lv 1:** Draws all enemies' Attacks to self (1 Turn/1 Time)\n**Lv 10 (Máx):** Draws all enemies' Attacks to self (2 Turns/2 Times)\n**Lv 1:** Grants Evasion Status to self (1 Turn/1 Time)\n**Lv 10 (Máx):** Grants Evasion Status to self (2 Turns/2 Times)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Bewildering_Dream",
+    "title": "Bewildering Dream",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.68% (Level 35)",
+      "taijutsu": "7.15% (Level 35)",
+      "jujutsu": "10.45% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "IllusionArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\n**Lv 1:** Grants Stealth Status to self (1 Turn)\n**Lv 10 (Máx):** Grants Stealth Status to self (2 Turns)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Blazing_Magma",
+    "title": "Blazing Magma",
+    "rarity": "SSR",
+    "release_date": "6-4-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0% (Level 80)",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "BlazingMagmaArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 40% (Lv 1) → 45% (Lv 10) (1 Turn)\nIf self is receiving increases of 'Critical Hit Rate',\nIncreases own Critical Hit Damage by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At start of battle,\nIncreases own Critical Hit Rate by 5%\n(5 Turns/Effect can scale with the number of allies that are 'Cursed Spirits', up to a maximum of 25%)\n*Up to 4 Characters"
+    }
+  },
+  {
+    "id": "Blue_Spring__Set_Off_The_Firework",
+    "title": "Blue Spring, Set Off The Firework",
+    "rarity": "SSR",
+    "release_date": "21-5-2025",
+    "stats": {
+      "hp": "26.6% (Level 55)",
+      "taijutsu": "26.6% (Level 55)",
+      "jujutsu": "26.6% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "BlueSpringArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 5.0% (1 Turn)\nIf the equipped unit is belong to Tokyo Jujutsu High (Hidden inventory/Premature death) affiliation,\nIncreases an additional allies Damage Dealt by 5.0% (Lv 1) → 10.0% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 5\nIf the equipped unit is belong to Tokyo Jujutsu High (Hidden inventory/Premature death) affiliation,\nRecovers an additional Cursed Energy by 15"
+    }
+  },
+  {
+    "id": "Bonds_Of_Cooperation",
+    "title": "Bonds Of Cooperation",
+    "rarity": "SSR",
+    "release_date": "19/2/2025",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "BondsOfCooperationArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns/1 Time)\nGrants Conceal Status to self (2 Turns)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nGrants Evasion Status to self (2 Turns/1 Time)"
+    }
+  },
+  {
+    "id": "Brother_And_Sister",
+    "title": "Brother And Sister",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.53% (Level 45)",
+      "taijutsu": "15.37% (Level 45)",
+      "jujutsu": "15.37% (Level 45)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "YourBrotherAndSisterArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 35.0% (Lv 1) → 40.0% (Lv 10)\n(Available after 2 Turns have passed)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 15.0%"
+    }
+  },
+  {
+    "id": "Business_Call",
+    "title": "Business Call",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "BusinessCallArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Time)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "COOL_Glasses",
+    "title": "COOL Glasses",
+    "rarity": "SSR",
+    "release_date": "19-4-2024",
+    "stats": {
+      "hp": "33.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "COOLeyeglassesArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10.0% (Lv 1) → 15.0% (Lv 10)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own HP is 60.0% or below,\nDecreases own Damage Received by 15.0% (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Casual_Video_Watching",
+    "title": "Casual Video Watching",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "14.37% (Level 45)",
+      "jujutsu": "21.01% (Level 45)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "LeisurelyWatchingVideosArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Jujutsu Damage Received by 45.0% (Lv 1) → 50.0% (Lv 10) (3 Turns)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nDecreases all enemies' Jujutsu Stat by 30.0% (2 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Cat_Rescue",
+    "title": "Cat Rescue",
+    "rarity": "SSR",
+    "release_date": "19/2/2025",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.90% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "CatRescueArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 40.0% (Lv 10) (2 Turns)\nRecovers own HP by 10.0%",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all enemies' Continuous Damage Received by 10.0% (1 Turn)\n(Reactivates after every 4 Turns elapsed in battle)"
+    }
+  },
+  {
+    "id": "Childhood_Promise",
+    "title": "Childhood Promise",
+    "rarity": "SSR",
+    "release_date": "6-12-2023",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "ChildhoodPromiseArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases all allies' Taijutsu Stat by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If own HP is 50.0% or below,\nRecovers own HP by 10.0%\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Chit-chat",
+    "title": "Chit-chat",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.68% (Level 35)",
+      "taijutsu": "10.45% (Level 35)",
+      "jujutsu": "7.15% (Level 35)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 15.0% (Lv 1) → 19.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Clinical_Record",
+    "title": "Clinical Record",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "ClinicalRecordArt1.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nRecovers own HP by 14.0% (Lv 1) → 17.0% (Lv 10)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Coffee_Break_in_The_Afternoon",
+    "title": "Coffee Break in The Afternoon",
+    "rarity": "SSR",
+    "release_date": "28/4/2025",
+    "stats": {
+      "hp": "30.2% (Level 80)",
+      "taijutsu": "41.2% (Level 80)",
+      "jujutsu": "41.2% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "CoffeeBreakArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 50.0% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If self inflicting \"Additional Action\" State at the start of turn,\nIncreases own Damage Dealt by 15.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "Cr_pes_on_Takeshita_Street",
+    "title": "Crêpes on Takeshita Street",
+    "rarity": "SSR",
+    "release_date": "18-10-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Jujutsu Stat by 20% (Lv 1) → 25% (Lv 10) (1 Turn)\n**Lv 1:** Increases Cursed Energy by 5 for allies' with the trait \"Curse Users\"\n**Lv 10 (Máx):** Increases Cursed Energy by 10 for allies' with the trait \"Curse Users\"",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, when self's Cursed Energy is 40 or more,\nIncreases all enemies' Jujutsu Damage Received by 10% (1 Turn)"
+    }
+  },
+  {
+    "id": "Curse_Born_From_The_Land",
+    "title": "Curse Born From The Land",
+    "rarity": "SSR",
+    "release_date": "10-9-2024",
+    "stats": {
+      "hp": "HP: 4.15%",
+      "taijutsu": "Taijutsu: 5.65%",
+      "jujutsu": "Jujutsu: 5.65%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "CurseBornFromTheLandArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nSacrifices 15.0% of own HP\n(Cannot die from sacrificing HP)\nIncreases own Damage by 45.0% (Lv 1) → 50.0% (Lv 10) (1 Turn)\n(The lower own HP is, the greater the Damage boost)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Flame Resistance by 30.0%"
+    }
+  },
+  {
+    "id": "Curse_Each_Other_And_Put_Everything_On_The_Line",
+    "title": "Curse Each Other And Put Everything On The Line",
+    "rarity": "SSR",
+    "release_date": "6-12-2023",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "CurseEachotherArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 5.0% (Lv 1) → 10.0% (Lv 10) (1 Turn)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn from the start of the battle,\nIncreases all allies' Break Damage by 10.0% (2 Times)"
+    }
+  },
+  {
+    "id": "Cursed_Nature",
+    "title": "Cursed Nature",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "14.37% (Level 45)",
+      "jujutsu": "21.01% (Level 45)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "ViciousnessArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When defeating an enemy,\nRestores own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "Cursed_Spirit_Beach",
+    "title": "Cursed Spirit Beach",
+    "rarity": "SSR",
+    "release_date": "22/10/2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "CursedSpiritBeachArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 70.0% (Lv 1) → 85.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"夜\" (Green) Type attacks)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nIncreases own Cursed Energy Consumption Efficiency (2 Turns)"
+    }
+  },
+  {
+    "id": "Cursed_Spirit_School_Group",
+    "title": "Cursed Spirit School Group",
+    "rarity": "SSR",
+    "release_date": "22-7-2025",
+    "stats": {
+      "hp": "27.55% (Level 80)",
+      "taijutsu": "29.38% (Level 80)",
+      "jujutsu": "43.08% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 70% (Lv 1) → 75% (Lv 10) (1 Turn/1 Time)\nIf the equipped unit is a Cursed Spirit,\nRecovers own Cursed Energy by 15",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nFills own Ultimate Skill Gauge by 200\n(Activates up to 1 Time per Turn)"
+    }
+  },
+  {
+    "id": "Curses_And_Bubbles",
+    "title": "Curses And Bubbles",
+    "rarity": "SSR",
+    "release_date": "20-2-2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "PlayBubblesWithTheCursesArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15\nRecovers own HP by 30.0% (Lv 1) → 35.0% (Lv 10)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Jujutsu Stat by 15.0%"
+    }
+  },
+  {
+    "id": "Customary_Task__Game_Center",
+    "title": "Customary Task: Game Center",
+    "rarity": "SSR",
+    "release_date": "30-5-2025",
+    "stats": {
+      "hp": "26.6% (Level 55)",
+      "taijutsu": "26.6% (Level 55)",
+      "jujutsu": "26.6% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "GameCenterArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Damage Received by 35.0% (Lv 1) → 40.0% (Lv 10) (1 Turn)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If own Cursed Energy is below 20 at the start of turn,\nRecovers own Cursed Energy by 10\n(Up to 3 Times during battle)"
+    }
+  },
+  {
+    "id": "Cuteness_Can_Be_Cultivated_",
+    "title": "Cuteness Can Be Cultivated!",
+    "rarity": "SSR",
+    "release_date": "29-2-2024",
+    "stats": {
+      "hp": "25.54% (Level 55)",
+      "taijutsu": "18.39% (Level 55)",
+      "jujutsu": "18.39% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "CutieStuffArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 5.0% (Lv 1) → 8.0% (Lv 10) every turn (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Jujutsu Stat by 10.0% (4 Turns)"
+    }
+  },
+  {
+    "id": "Day_of_Awakening",
+    "title": "Day of Awakening",
+    "rarity": "SSR",
+    "release_date": "18-10-2024",
+    "stats": {
+      "hp": "HP: 2.50%",
+      "taijutsu": "Taijutsu: 0%",
+      "jujutsu": "Jujutsu: 7.50%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "DayofAwakening.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 55.0% (Lv 1) → 60.0% (Lv 10) (1 Turn/1 Time)\nIf own HP is 30.0% or less,\nIncreases own Jujutsu Stat by an additional 10.0% (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nGrants Revival (Day of Awakening) Status to self\nWhen Revival (Day of Awakening) Status is removed and own HP is 50.0% or less,\nIncreases own Jujutsu Stat by 20.0%\nFills own Ultimate Skill Gauge by 20.0%"
+    }
+  },
+  {
+    "id": "Dead_Mall_Encounter",
+    "title": "Dead Mall Encounter",
+    "rarity": "SSR",
+    "release_date": "22-3-2024",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "TheEncounterInTheMallOfDeathArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Break Damage by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Taijutsu Stat by 13.0%"
+    }
+  },
+  {
+    "id": "Death_By_Wasp",
+    "title": "Death By Wasp",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.53% (Level 45)",
+      "taijutsu": "0%",
+      "jujutsu": "20.03% (Level 45)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "DeathByWaspArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nRecovers own Cursed Energy by 20\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Deep_In_Thought",
+    "title": "Deep In Thought",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "0%",
+      "jujutsu": "13.27% (Level 35)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nReduces own Damage received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Turn/1 Time)\n(The more members of Tokyo Jujutsu High Year 1 are present on the field during the wave, the greater the Damage Received decrease)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Defeat_Cursed_Spirits__Rescue_Non-Sorcerers",
+    "title": "Defeat Cursed Spirits, Rescue Non-Sorcerers",
+    "rarity": "SSR",
+    "release_date": "31-3-2025",
+    "stats": {
+      "hp": "22.0% (Level 55)",
+      "taijutsu": "30.0% (Level 55)",
+      "jujutsu": "30.0% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuResistanceUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases the value of 2 of all allies' eligible debuffs by 10.0%\n(Prioritizes the most recent debuffs)\nIncreases all allies' Jujutsu Stat by 15.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nReduces own Jujutsu Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "Desire_Behind_The_Display",
+    "title": "Desire Behind The Display",
+    "rarity": "SSR",
+    "release_date": "30-1-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "DesireBehindDisplayArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill are activated,\nIncreases all allies' Critical Hit Rate by 10% (Lv 1) → 15% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the 6th Turn,\nDecreases all enemies' Taijutsu & Jujutsu Stat by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "Desperate_Resistance",
+    "title": "Desperate Resistance",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "AFightToDeathArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 40.0% (Lv 1) → 45.0% (Lv 10) (2 Turns)\nIf own HP is 50.0% or below when activating,\nIncreases own Damage Dealt by 15.0% (Lv 1) → 20.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nFills own Ultimate Skill Gauge by 1000\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Detainee_Party",
+    "title": "Detainee Party",
+    "rarity": "SSR",
+    "release_date": "29-11-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "DetaineePartyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Ultimate Skill Gauge Charge Rate by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)\nIncreases all allies' Damage Dealt by 15.0% (Lv 1) → 20.0% (Lv 10) (2 Turns)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Critical Hit Chance by 10.0%"
+    }
+  },
+  {
+    "id": "Die_And_Become_A_Sage",
+    "title": "Die And Become A Sage",
+    "rarity": "SSR",
+    "release_date": "8/7/2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "HanamiMemoryArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 5.0% (Lv 1) → 10.0% (Lv 10) every turn (3 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Jujutsu Stat by 2.0%\n(The more turns have passed, the greater the Jujutsu Stat increase/Up to 30.0%)"
+    }
+  },
+  {
+    "id": "Difference_In_Level",
+    "title": "Difference In Level",
+    "rarity": "SSR",
+    "release_date": "30-12-2024",
+    "stats": {
+      "hp": "3.85%",
+      "taijutsu": "4.10%",
+      "jujutsu": "5.95%"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "N/A",
+    "image": "DifferenceInLevel.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIf any ally’s HP is 70.0% or above,\nIncreases their Damage Dealt By 5.0% (Lv 1) → 8.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"影\" (Blue) Type attacks)\nIf any ally’s Cursed Energy is 50 or above,\nIncreases their Damage Dealt By 5.0% (Lv 1) → 8.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"影\" (Blue) Type attacks)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At The start of Battle,\nwhen own HP is 70% or more,\nIncreases own Break Damage By 15.0%"
+    }
+  },
+  {
+    "id": "Divine_Dogs__Short_Break",
+    "title": "Divine Dogs' Short Break",
+    "rarity": "SSR",
+    "release_date": "20-8-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieCritUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn)\nIncreases own Critical Hit Damage by 20.0% (Lv 1) → 25.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit or Black Flash is performed,\nIncreases own Taijutsu & Jujutsu Stat by 10.0% (4 Turns)"
+    }
+  },
+  {
+    "id": "Doctor_s_Pride",
+    "title": "Doctor's Pride",
+    "rarity": "SSR",
+    "release_date": "17-5-2024",
+    "stats": {
+      "hp": "26.6% (Level 55)",
+      "taijutsu": "26.6% (Level 55)",
+      "jujutsu": "26.6% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieHeal.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 25.0% (Lv 1) → 30.0% (Lv 10)\nIf any ally's HP is 60.0% or below,\nRecovers all allies' HP by 25.0% (Lv 1) → 30.0% (Lv 10) (Excludes self)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own Cursed Energy is 20 or below,\nRecovers own Cursed Energy by 10\n(Up to 2 Times during battle)"
+    }
+  },
+  {
+    "id": "Doctor_s_Turn",
+    "title": "Doctor's Turn",
+    "rarity": "SSR",
+    "release_date": "20-8-2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMoviePhysicalUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Taijutsu & Jujutsu Stat by 5.0% (Lv 1) → 10.0% (Lv 10) (3 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the 3rd turn from the start of the battle,\nIncreases all allies' Taijutsu & Jujutsu Stat by 10.0% (4 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Each_On_Their_Own_Path",
+    "title": "Each On Their Own Path",
+    "rarity": "SSR",
+    "release_date": "17/11/2024",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "EachOnTheirOwnPathArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (1 Turn/1 Time)\nIncreases own Damage Dealt by 5.0% (Lv 1) → 10.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "Eight-Handled_Sword_Divergent_Sila_Divine_General_Mahoraga",
+    "title": "Eight-Handled Sword Divergent Sila Divine General Mahoraga",
+    "rarity": "SSR",
+    "release_date": "4-12-2025",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MahoragaRaidEventMem.gif",
+    "active_skill": {
+      "description": "When performing a Ultimate Skill,\nIncreases own Damage Dealt by 40% (Lv 1) → 50% (Lv 10) (1 Turn/1 Time)\n(Effect can scale with each turn passed by 2% (Lv 1) → 2.50% (Lv 10), up to a maximum of 80% (Lv 1) → 100% (Lv 10) Damage Dealt)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "Every 4 Turns since the character has entered battle,\nRecovers own HP by 5% (Up to 5 times)"
+    }
+  },
+  {
+    "id": "Encounter_And_Anticipation",
+    "title": "Encounter And Anticipation",
+    "rarity": "SSR",
+    "release_date": "31/1/2025",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "EncounterAndAnticipationArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 70.0% (Lv 1) → 80.0% (Lv 10) (1 Turn/1 Time)\n(The more Kyoto Jujutsu High Student characters are present at the start of the wave, the greater the effect)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When the selected enemy is in Break State or when selected enemy enters Break State after the attack,\nIncreases own Jujutsu Stat by 20.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "Encounter_At_Dusk",
+    "title": "Encounter At Dusk",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "21.01% (Level 45)",
+      "jujutsu": "14.37% (Level 45)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MeetingInTheEveningArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Damage Received by 20.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases all allies' Damage Received by 10.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "End_Of_The_Scenery",
+    "title": "End Of The Scenery",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "0%",
+      "jujutsu": "26.63% (Level 45)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "ToTheHorizonArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nDecreases all enemies' Damage Dealt by 20.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "Everyday_Life",
+    "title": "Everyday Life",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "17.90% (Level 45)",
+      "taijutsu": "17.90% (Level 45)",
+      "jujutsu": "17.90% (Level 45)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "EverydayLifeArt.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Taijutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (3 Turns)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Jujutsu Stat by 15.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "Fake_or_Real_",
+    "title": "Fake or Real?",
+    "rarity": "SSR",
+    "release_date": "28/4/2025",
+    "stats": {
+      "hp": "22.0% (Level 55)",
+      "taijutsu": "30.0% (Level 55)",
+      "jujutsu": "30.0% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "FakeRealArt.gif",
+    "active_skill": {
+      "description": "**Progressão de Nível:**\n**Lv 1:** When Command Skill or Ultimate Skill is activated, / Grants Taunt Status to self (2 Turns)\n**Lv 10 (Máx):** When Command Skill or Ultimate Skill is activated, / Grants Taunt Status to self (2 Turns) / Increases own Damage Dealt by 10.0% (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of Battle,\nDecreases all allies' Damage Received by 5.0% (5 Turns, excluding self)"
+    }
+  },
+  {
+    "id": "Favorite_Toy",
+    "title": "Favorite Toy",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "0%",
+      "jujutsu": "13.27% (Level 35)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nRecovers own HP by 11.0% (Lv 1) → 14.0% (Lv 10)\n(Available after 2 Turns have passed)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Firework_Show_Aboard",
+    "title": "Firework Show Aboard",
+    "rarity": "SSR",
+    "release_date": "29-11-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "FireworkShowAboardArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 65.0% (Lv 1) → 70.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"行\" (Yellow) Type attacks)\nIncreases own Damage Received by 70.0% (2 Turns) (Disadvantage)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nDecreases all enemies' Critical Hit Resistance by 20% (5 Turns)"
+    }
+  },
+  {
+    "id": "Fleeting_Moments",
+    "title": "Fleeting Moments",
+    "rarity": "SSR",
+    "release_date": "30-9-2024",
+    "stats": {
+      "hp": "HP: 13.3% (Level 55)",
+      "taijutsu": "Taijutsu: 0%",
+      "jujutsu": "Jujutsu: 39.9% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "FleetingMomentsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 50.0% (Lv 1) → 60.0% (Lv 10) (2 Turns/2 Times)\n(Effective for \"影\" (Blue) Type attacks)\nIf own HP is 50.0% or below,\nIncreases own Jujutsu Damage Received by 5.0% (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each turn,\nIf \"Increases own Damage Received\" Status is active,\nIncreases own Jujutsu Stat by 30.0% (1 Turn)\n(Including \"Increases own Taijutsu/Jujutsu Damage Received\" Status as well)"
+    }
+  },
+  {
+    "id": "Fleeting_Warmth",
+    "title": "Fleeting Warmth",
+    "rarity": "SSR",
+    "release_date": "19-08-2025",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "54.90% (Level 80)",
+      "jujutsu": "N/A"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "MemoryMoviePhysicalUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 80% (Lv 1) → 85% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "When HP is under 70%,\nGrants self \"Guaranteed Hit\" Status"
+    }
+  },
+  {
+    "id": "Following_The_Clue",
+    "title": "Following The Clue",
+    "rarity": "SSR",
+    "release_date": "23-4-2025",
+    "stats": {
+      "hp": "26.6% (Level 55)",
+      "taijutsu": "26.6% (Level 55)",
+      "jujutsu": "26.6% (Level 55)"
+    },
+    "active_cooldown": "10",
+    "passive_cooldown": "/",
+    "image": "FollowClueArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Taijutsu Damage Received by 5.0% (Lv 1) → 10.0% (Lv 10) (5 Turns)",
+      "cooldown": "10"
+    },
+    "passive_skill": {
+      "description": "Starting from 5th turn,\nInflicts Disruption to all enemies (2 Turns/Chance: 30.0%)\nFor each 4 turns passed,\nRe-activate its effect"
+    }
+  },
+  {
+    "id": "For_Myself",
+    "title": "For Myself",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "26.63% (Level 45)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "ForMyselfArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 35.0% (Lv 1) → 40.0% (Lv 10)\n(Available after 2 Turns have passed)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "For_Now__A_Cola",
+    "title": "For Now, A Cola",
+    "rarity": "SSR",
+    "release_date": "21-5-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "YellowMemoryskill.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 85.0% (Lv 1) → 90.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"行\" (Yellow) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own Ultimate Skill Gauge is full,\nIncreases own Break Damage by 20.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "Girls_School_Sorcerer",
+    "title": "Girls School Sorcerer",
+    "rarity": "SSR",
+    "release_date": "20-8-2024",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 30.0% (Lv 1) → 40.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When defeating an enemy,\nIncreases own Taijutsu Stat by 40.0% (2 Turns)\n(1 time per turn)"
+    }
+  },
+  {
+    "id": "Gold_Rush",
+    "title": "Gold Rush",
+    "rarity": "SSR",
+    "release_date": "21-3-2025",
+    "stats": {
+      "hp": "13.3% (Level 55)",
+      "taijutsu": "39.9% (Level 55)",
+      "jujutsu": "N/A"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "GoldRush.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Break Damage by 20% (Lv 1) → 30% (Lv 10) (2 Turns)\nIf the equipping character is Blue, Additionally increases own Break Damage by 10% (Lv 1) → 20% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If the attacked enemy is in Break state or enters Break state after attack,\nIncreases own Damage Dealt by 20% (2 Turns/1 Time)"
+    }
+  },
+  {
+    "id": "Good_Mood",
+    "title": "Good Mood",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "0%",
+      "jujutsu": "13.27% (Level 35)"
+    },
+    "active_cooldown": "3",
+    "passive_cooldown": "/",
+    "image": "GoodMoodArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Break Damage by 33.0% (Lv 1) → 41.5% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "3"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Grade_1_Jujutsu_Sorcerer_of_Breakwater",
+    "title": "Grade 1 Jujutsu Sorcerer of Breakwater",
+    "rarity": "SSR",
+    "release_date": "30-9-2025",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieHeal.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers all allies' HP by 5% (Lv 1) → 10% (Lv 10) Per Turn (3 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If any other allies' HP is below 50% at the start of turn (Once Per Battle),\nAttract attack to self (3 Turns/2 Times)\nGrants Revival Status to self (1 Time)"
+    }
+  },
+  {
+    "id": "Grand__Exorcism",
+    "title": "Grand 'Exorcism",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "CleaningDutyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (3 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Damage Dealt by 20.0%\n(The more Tokyo Jujutsu High Students there are at the start of the wave, the higher the Damage Dealt increase)"
+    }
+  },
+  {
+    "id": "Grand_Stage",
+    "title": "Grand Stage",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.68% (Level 35)",
+      "taijutsu": "10.45% (Level 35)",
+      "jujutsu": "7.15% (Level 35)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "SpectacularstageArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nRecovers own HP by 11.0% (Lv 1) → 14.0% (Lv 10)\n(Available after 2 Turns have passed)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Grandfather_s_Words",
+    "title": "Grandfather's Words",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.28% (Level 45)",
+      "taijutsu": "15.73% (Level 45)",
+      "jujutsu": "10.85% (Level 45)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "GrandpasWordsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 20.0% (Lv 1) → 25.0% (Lv 10)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "Hero_s_Conditions",
+    "title": "Hero's Conditions",
+    "rarity": "SSR",
+    "release_date": "31/1/2025",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "HerosConditionsArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 40.0% (Lv 1) → 50.0% (Lv 10) (2 turns)\n(The more Kyoto Jujutsu High Student characters are present at the start of the wave, the greater the effect)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nDecreases the ally behind the equipping character's Damage Received by 20.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "Hey__Shisa_",
+    "title": "Hey, Shisa!",
+    "rarity": "SSR",
+    "release_date": "21-5-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "54.90% (Level 80)",
+      "jujutsu": "0% (Level 80)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "HeyShisaArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own \"影\" (Blue) Type Damage Dealt by 85% (Lv 1) → 90% (Lv 10) (1 Turn/1 Time)\nIncreases own Black Flash Rate by 15% (2 Turns)\nIf the equipped character is a Tokyo Jujutsu High Year 1,\nIncreases own Ultimate Gauge Charging Rate by 15% (Lv 1) → 20% (Lv 10) (2 Turns)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "If self is receiving increases of \"Black Flash Rate\" at the start of turn,\nIncreases own Critical Hit Rate by 20% (1 Turn)\nIncreases own Taijutsu Stat by 10% (1 Turn)"
+    }
+  },
+  {
+    "id": "Hidden_Gem",
+    "title": "Hidden Gem",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.53% (Level 45)",
+      "taijutsu": "15.37% (Level 45)",
+      "jujutsu": "15.37% (Level 45)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "HiddenGemArt.gif",
+    "active_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or lower,\nIncreases all allies' Taijutsu Stat by 25.0% (Lv 1) → 30.0% (Lv 10) (2 Turns)\n(Up to 1 Time during battle)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or lower,\nRestores own HP by 15.0%\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Home_Run_",
+    "title": "Home Run!",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.53% (Level 45)",
+      "taijutsu": "20.03% (Level 45)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "HomeRunArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Break Damage by 80.0% (Lv 1) → 90.0% (Lv 10) (1 Turn/1 Time)\n(Available after 1 Turn has passed)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 30.0% or below,\nIncreases own Taijutsu Stat by 60.0% (1 Turn)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Hot_Pot_Party",
+    "title": "Hot Pot Party",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "HotPotPartyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 15\n**Lv 10 (Máx):** Recovers own Cursed Energy by 20\n(Available after 3 Turns have passed)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 40.0% or below,\nDecreases own Damage Received by 50.0% (2 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Humans_Or_Curses__Who_Will_Have_The_Last_Laugh",
+    "title": "Humans Or Curses, Who Will Have The Last Laugh",
+    "rarity": "SSR",
+    "release_date": "21/1/2025",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "HumansOrCursesArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Break Damage by 10.00% (Lv 1) → 15.00% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When the equipping character leaves the field,\nRecovers all allies' Cursed Energy by 5"
+    }
+  },
+  {
+    "id": "I_Bought_Local_Souvenirs",
+    "title": "I Bought Local Souvenirs",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "IBoughtLocalSouvenirsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 28.0% (Lv 1) → 33.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "When own Ultimate Skill Gauge is full,\nIncreases own Taijutsu & Jujutsu Stat by 15.0% (2 Times)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "I_See__Then_Die",
+    "title": "I See, Then Die",
+    "rarity": "SSR",
+    "release_date": "16-08-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "ISeeThenDieArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each turn, if own Cursed Energy is 50 or above,\nIncreases own Damage Dealt by 20.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "I_Will_Follow_You__Mr__Nanami",
+    "title": "I Will Follow You, Mr. Nanami",
+    "rarity": "SSR",
+    "release_date": "19-1-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "InonanamiArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Critical Hit Rate by 25.0% (Lv 1) → 30.0% (Lv 10) (3 Turns)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nIncreases all allies' Taijutsu Stat by 20.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "Ice_Sorcerer",
+    "title": "Ice Sorcerer",
+    "rarity": "SSR",
+    "release_date": "12-3-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0% (Level 80)",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "IceSorcererArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Jujutsu Stat by 30% (1 Turn/1 Time)\n(Effect increases the fewer enemies there are in the wave, up to a maximum of 75%)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 5\nIf the equipped unit is a Incarnation,\nRecovers own Cursed Energy by 5"
+    }
+  },
+  {
+    "id": "Ignoring_Orders",
+    "title": "Ignoring Orders",
+    "rarity": "SSR",
+    "release_date": "28-6-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieCritUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage by 65.0% (Lv 1) → 70.0% (Lv 10) (2 Turns)\n(Effective for \"影\" (Blue) Type attacks)\nIf Ultimate Skill Gauge is full when activating,\nGrants Sure-Hit Status to self (1 Turn/1 Time)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When the character is in Counter Status and the skill ends,\nIncreases own Critical Hit Rate by 20.0% for (2 Turns/1 Time)"
+    }
+  },
+  {
+    "id": "Illusory_Alliance_Battle_-_Hidden_Inventory",
+    "title": "Illusory Alliance Battle - Hidden Inventory",
+    "rarity": "SSR",
+    "release_date": "28-11-2025",
+    "stats": {
+      "hp": "18.3% (Level 80)",
+      "taijutsu": "0%",
+      "jujutsu": "54.9% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "IABIHImem.gif",
+    "active_skill": {
+      "description": "When performing an Ultimate Skill\nIncreases own Jujutsu Stat by 80% (Lv 1) → 85% (Lv 10) (1 Turn/1 Time)\nIf the equipped unit is \"行\" (Yellow) Type,\nIncreases own Critical Hit Damage by 25% (Lv 1) → 30% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If own Cursed Energy is 60 or more at the start of turn,\nIncreases own Critical Hit Rate & Ultimate Skill Gauge Charge Rate by 20%\n(1 Turn)"
+    }
+  },
+  {
+    "id": "Illusory_Alliance_Battle_-_Young_Fish_And_Reverse_Punishment",
+    "title": "Illusory Alliance Battle - Young Fish And Reverse Punishment",
+    "rarity": "SSR",
+    "release_date": "21-11-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "10",
+    "passive_cooldown": "/",
+    "image": "IABYFRPEventMem.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own and Ally Behind's Taijutsu Stat by 10% (Lv 1) → 15% (Lv 10) (5 Turns)\nGrant self and Ally Behind Attack Nullification (2 Turns/1 Time)\n(Can only be used starting from Turn 5)",
+      "cooldown": "10"
+    },
+    "passive_skill": {
+      "description": "If self is receiving \"Attack Nullification\" at the start of turn (3 Times during battle)\nDecreases all enemies' Jujutsu Stat by 15% (3 Turns)"
+    }
+  },
+  {
+    "id": "Imaginary_Youth",
+    "title": "Imaginary Youth",
+    "rarity": "SSR",
+    "release_date": "1-12-2023 (JP) /12-11-2024 (Global)",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "WhatIfYouthArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 15\n**Lv 10 (Máx):** Recovers own Cursed Energy by 20",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "At the start of the 6th turn from the start of the battle,\nIncreases all enemies' Jujutsu Damage Received by 10.0% (2 Times)\nIf the enemy is afflicted by \"Continuous Jujutsu Damage (Poison)\" Status,\nIncreases the enemy's Jujutsu Damage Received by 20.0% (2 Times)"
+    }
+  },
+  {
+    "id": "In_Excellent_Shape",
+    "title": "In Excellent Shape",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "ExcellentShapeArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\n**Lv 1:** Fills own Ultimate Skill Gauge by 260\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 360",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nDecreases own Taijutsu Damage Received by 25.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "Innocence_Seen_in_the_Past",
+    "title": "Innocence Seen in the Past",
+    "rarity": "SSR",
+    "release_date": "1-6-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0% (Level 80)",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "InnocenceSeenInPastArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers all allies' HP by 15% (Lv 1) → 20% (Lv 10)\nIf the equipped character is a \"Tokyo Jujutsu High Year 1\"\nRecover all allies' HP by an additional 5% (Lv 1) → 10% (Lv 10)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of turn,\nIncreases all allies' Damage Dealt by 5% (1 Turn)\nIf the equipped character is a \"Tokyo Jujutsu High Year 1\"\nIncreases all allies' Damage Dealt by an additional 5% (1 Turn)"
+    }
+  },
+  {
+    "id": "Instincts_Of_A_Curse",
+    "title": "Instincts Of A Curse",
+    "rarity": "SSR",
+    "release_date": "9-8-2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 20.0% (1 Turn)\n(The more turns have passed, the greater the Jujutsu Stat increase/Up to 75.0% after 6 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each turn,\nRecovers own HP by 2.0%"
+    }
+  },
+  {
+    "id": "Intercept_the_Calamity",
+    "title": "Intercept the Calamity",
+    "rarity": "SSR",
+    "release_date": "1-6-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "InterceptCalamityArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Taijutsu & Jujutsu Stat by 10% (Lv 1) → 15% (Lv 10) (4 Turns)\nIf the equipped character is \"幻\" (Red) or \"影\" (Blue),\n**Lv 1:** Recovers all allies' Cursed Energy by 10\n**Lv 10 (Máx):** Recovers all allies' Cursed Energy by 15\nIf the equipped character is \"夜\" (Green) or \"行\" (Yellow),\n**Lv 1:** Fills all allies' Ultimate Gauge by 100\n**Lv 10 (Máx):** Fills all allies' Ultimate Gauge by 150",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers all allies' HP by 5%\nDecreases all allies' Damage Received by 10% (2 Turns)\n*Re-activated after 5 Turns"
+    }
+  },
+  {
+    "id": "Irreconcilable_Red_Scale",
+    "title": "Irreconcilable Red Scale",
+    "rarity": "SSR",
+    "release_date": "11-12-2025",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0%",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuUp.png",
+    "active_skill": {
+      "description": "When performing a Command Skill or Ultimate Skill,\nIncreases own Jujutsu Stat by 70% (Lv 1) → 75% (Lv 10) (1 Turn/1 Time)\nIgnore enemy’s damage reduction (1 Turn/1 Time)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "From the 8th Turn in Battle,\nIncreases all enemies’ DOT Damage Received by 15% (4 Turns)"
+    }
+  },
+  {
+    "id": "Irreplaceable_Moments",
+    "title": "Irreplaceable Moments",
+    "rarity": "SSR",
+    "release_date": "21-11-2025",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "54.90% (Level 80)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMoviePhysicalUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is performed,\nIncreases own Taijutsu Stat by 70% (Lv 1) → 75% (Lv 10) (1 Turn/1 time)\nIf self receiving \"Black Flash Count (Special)\"\nIncreases an additional Taijutsu Stat by 20% (Lv 1) → 25% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Black Flash is performed,\nIncreases own Black Flash & Critical Hit Rate by 10% (3 turns)\nFills own Ultimate Gauge by 100\nGrants \"Black Flash Count (Special)\" if there is none"
+    }
+  },
+  {
+    "id": "Irretrievable_Innocence",
+    "title": "Irretrievable Innocence",
+    "rarity": "SSR",
+    "release_date": "21-5-2024",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieSwordUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 5.0% (Lv 1) → 10.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Ultimate Skill Gauge Charge Rate by 10.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "Isolated_Cursed_Prison_Island",
+    "title": "Isolated Cursed Prison Island",
+    "rarity": "SSR",
+    "release_date": "11-12-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieSwordUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 35% (Lv 1) → 40% (Lv 10) (2 Turns)\nDecreases the value of 2 of self's eligible debuffs by 10%\n(Prioritizes the most recent debuffs)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, if own Cursed Energy is 20 or below,\nRecovers own Cursed Energy by 10 (Once per Battle)"
+    }
+  },
+  {
+    "id": "Jujutsu_Sorcerers__Arrival",
+    "title": "Jujutsu Sorcerers' Arrival",
+    "rarity": "SSR",
+    "release_date": "20-6-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "JujutsuSorcerersArrival.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 20.0% (Lv 1) → 30.0% (Lv 10) (1 Turn)\nIncreases own Break Damage by 20.0% (Lv 1) → 30.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50% or below,\nRecovers own Cursed Energy by 5\nFills own Ultimate Skill Gauge by 100\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Kept_Waiting",
+    "title": "Kept Waiting",
+    "rarity": "SSR",
+    "release_date": "19-7-2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "KeptwaitingArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\n**Lv 1:** Fills own Ultimate Skill Gauge by 110\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 220\nIf any ally’s HP is 35.0% or below when activating (Excluding self),\n**Lv 1:** Fills their Ultimate Skill Gauge by 110\n**Lv 10 (Máx):** Fills their Ultimate Skill Gauge by 220",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own and ally behind's Cursed Energy by 5 every turn (2 Turns)"
+    }
+  },
+  {
+    "id": "Kigurumi",
+    "title": "Kigurumi",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "DisguisementArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 4.0% (Lv 1) → 7.0% (Lv 10)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Killing_Puppet",
+    "title": "Killing Puppet",
+    "rarity": "SSR",
+    "release_date": "3-1-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "54.90% (Level 80)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "KillingPuppetArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncrease own Taijutsu Stat by 10% (2 Turns)\n(Effect can scale with each turn passed by 5%, up to a maximum of 45%)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When performing a Command Skill,\nIncrease own Critical Hit Rate by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "Killing_Time",
+    "title": "Killing Time",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.68% (Level 35)",
+      "taijutsu": "7.15% (Level 35)",
+      "jujutsu": "10.45% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "KillingTimeArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nIncreases own Critical Hit Rate by 5.0% (Lv 1) → 10.0% (Lv 10)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "King_of_Curses",
+    "title": "King of Curses",
+    "rarity": "SSR",
+    "release_date": "30-12-2024",
+    "stats": {
+      "hp": "2.5%",
+      "taijutsu": "N/A",
+      "jujutsu": "7.5%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "KingOfCurses.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 85.0% (Lv 1) → 90.0% (Lv 10) (2 Turns)\n(Effective for \"影\" (Blue) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At The Start of 7th Turn,\nIncreases own Jujutsu Stat by 10.0% (2 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Knowledge_on_Exorcising",
+    "title": "Knowledge on Exorcising",
+    "rarity": "SSR",
+    "release_date": "18-10-2025",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0%",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu stat by 65% (Lv 1) → 75% (Lv 10) (1 Turn/1 Time)\nIf the equipped unit is \"影\" (Blue) Type,\nIncreases an additional Jujutsu stat by 20% (1 Turn/1 Time)\nRecovers 10 Cursed Energy",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nIncreases Crit Rate by 20%"
+    }
+  },
+  {
+    "id": "Lamentation",
+    "title": "Lamentation",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "0%",
+      "jujutsu": "13.27% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "SorrowArt1.gif",
+    "active_skill": {
+      "description": "At the start of each wave,\nDecreases all enemies' Damage Dealt by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Turn)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Laundry_Time_After_the_Mission",
+    "title": "Laundry Time After the Mission",
+    "rarity": "SSR",
+    "release_date": "19-8-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "LaundryTimeAfterMissionArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 10% (Lv 1) → 20% (Lv 10) (1 Turn)\nIf the equipped character is a \"Jujutsu High Official\"\nIncreases all allies' Mixed Damage Dealt by 10% (Lv 1) → 20% (Lv 10) (2 Turns)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "If \"Mixed Damage Dealt Increased\" is inflicted at the start of turn,\nIncreases own Taijutsu & Jujutsu Stat by 20% (1 Turn)"
+    }
+  },
+  {
+    "id": "Leaving_Japan",
+    "title": "Leaving Japan",
+    "rarity": "SSR",
+    "release_date": "27-3-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "LeavingJapanArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 40% (Lv 1) → 45% (Lv 10) (1 Turn/1 Time)\nIncreases own \"行\" (Yellow) Type Damage Dealt by 10% (Lv 1) → 20% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own Cursed Energy is 60 or more at the start of turn,\nIncreases own Critical Hit Rate by 35% (1 Turn)\nIncreases own \"行\" (Yellow) Type Damage Dealt by 15% (1 Turn)"
+    }
+  },
+  {
+    "id": "Liar____I_Hate_You",
+    "title": "Liar... I Hate You",
+    "rarity": "SSR",
+    "release_date": "19-4-2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "3",
+    "passive_cooldown": "/",
+    "image": "MaiMakiArt3.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nGrants Taunt Status to self (1 Turn)\nDecreases own Damage Received by 20.0% (Lv 1) → 25.0% (Lv 10) (1 Turn)",
+      "cooldown": "3"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 80.0% or below,\nRecovers own HP by 13.0% every turn (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Like-Minded_Sisters",
+    "title": "Like-Minded Sisters",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "FraternalBondArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 80.0% (Lv 1) → 85.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nFills own Ultimate Skill Gauge by 200\n(Activates up to 1 Time per Turn)"
+    }
+  },
+  {
+    "id": "Lingering_Summer_Heat_and_Blue_Springtime",
+    "title": "Lingering Summer Heat and Blue Springtime",
+    "rarity": "SSR",
+    "release_date": "21-5-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "2.5AnniLoginBonusArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\n**Lv 1:** Recovers own Ultimate Gauge by 180\n**Lv 10 (Máx):** Recovers own Ultimate Gauge by 240",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of turn,\nIf own Ultimate Gauge is Maxed (Twice per Battle),\nRecovers own HP by 5%\n(Effect does not activate when HP is 100%)"
+    }
+  },
+  {
+    "id": "Louder_Than_Words",
+    "title": "Louder Than Words",
+    "rarity": "SSR",
+    "release_date": "30-9-2024",
+    "stats": {
+      "hp": "HP: 20.05% (Level 55)",
+      "taijutsu": "Taijutsu: 21.38% (Level 55)",
+      "jujutsu": "Jujutsu: 31.33% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "LouderThanWordsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage by 40.0% (Lv 1) → 50.0% (Lv 10) (2 Turns/2 Times)\n(Effective for \"影\" (Blue) Type attacks)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of each turn,\nIf own HP is 70.0% or below,\nRecovers own HP by 3.0% (Chance: 75.0%)\nReduces own Damage Received by 10.0% (1 Turn/Chance: 75.0%)"
+    }
+  },
+  {
+    "id": "Mad_Dog___Divine_Dog",
+    "title": "Mad Dog & Divine Dog",
+    "rarity": "SSR",
+    "release_date": "14-4-2026",
+    "stats": {
+      "hp": "27.55% (Level 80)",
+      "taijutsu": "43.08% (Level 80)",
+      "jujutsu": "29.38% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MadDogDivineDogArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Taijutsu Damage Received by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn,\nIncreases all allies' Taijutsu Stat by 6% (3 Turns)\n(With more enemies within the wave, increases effect up to a maximum of 12%)\n*Up to 3 Enemies"
+    }
+  },
+  {
+    "id": "Malevolent_Shrine",
+    "title": "Malevolent Shrine",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "26.63% (Level 45)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MalevolentShrineArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nIncreases all enemies' Taijutsu Damage Received by 30.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "Meet_Up",
+    "title": "Meet Up",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "7.17% (Level 35)",
+      "taijutsu": "9.96% (Level 35)",
+      "jujutsu": "9.96% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "AppointmentArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nIncreases own Critical Hit Rate by 5.0% (Lv 1) → 10.0% (Lv 10)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Memories_In_A_Nook",
+    "title": "Memories In A Nook",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "21.38% (Level 55)",
+      "jujutsu": "31.33% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoriesInACornerArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nGrants Taunt Status to self (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nDecreases all allies' Damage Received by 12.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "Mensore_",
+    "title": "Mensore!",
+    "rarity": "SSR",
+    "release_date": "24-6-2024",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "Mensore.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 5\n**Lv 10 (Máx):** Recovers own Cursed Energy by 10",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Break Damage by 35.0%\n(Effective if the selected enemy has a weakness to \"影\" (Blue) Type attacks)"
+    }
+  },
+  {
+    "id": "Midsummer_Spectators",
+    "title": "Midsummer Spectators",
+    "rarity": "SSR",
+    "release_date": "1-4-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "TheSpectatorinMidSummerArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 25.0% (Lv 1) → 30.0% (Lv 10) (4 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 20.0%"
+    }
+  },
+  {
+    "id": "Mission_Start",
+    "title": "Mission Start",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MissionBeginsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Critical Hit Rate by 60.0% (Lv 1) → 65.0% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the 6th turn from the start of the battle,\nIncreases own Taijutsu & Jujutsu Stat by 20.0%"
+    }
+  },
+  {
+    "id": "Morning_Practice_With_The_Principal",
+    "title": "Morning Practice With The Principal",
+    "rarity": "SSR",
+    "release_date": "23/1/2025",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "MorningPracticeArt1.gif",
+    "active_skill": {
+      "description": "**Progressão de Nível:**\n**Lv 1:** When Command Skill or Ultimate Skill is activated, / Increases own resistance to disruption effects by 100.00% (1 Turn)\n**Lv 10 (Máx):** When Command Skill or Ultimate Skill is activated, / Increases own resistance to disruption effects by 100.00% (1 Turn) / Decreases own Damage Received by 10.0% (1 Turn)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Damage Dealt by 5.00%"
+    }
+  },
+  {
+    "id": "Morning_Unraveling_in_The_Mirror",
+    "title": "Morning Unraveling in The Mirror",
+    "rarity": "SSR",
+    "release_date": "20-2-2026",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemorySpecialGauge.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill are activated,\nRecovers own Ultimate Gauge by 110\nIncreases all \"幻\" (Red) Type allies' Taijutsu & Jujutsu Stat by 10% (Lv 1) → 15% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own HP is below 80% at the start of turn,\nRecovers own HP by 5% (4 Times during battle)"
+    }
+  },
+  {
+    "id": "Mutual_Trust",
+    "title": "Mutual Trust",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "BelieveInEachOtherArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases all allies' Damage Received by 30.0% (Lv 1) → 35.0% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers all allies' Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "My_Best_Battery",
+    "title": "My Best Battery",
+    "rarity": "SSR",
+    "release_date": "1-4-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MybestbatterArt1.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "Nameless_Cherry_Blossom_Blizzard",
+    "title": "Nameless Cherry Blossom Blizzard",
+    "rarity": "SSR",
+    "release_date": "18-6-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "NamelessCherryBlossomBlizzardArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own and Ally Behind's Taijutsu Stat by 15% (Lv 1) → 25% (Lv 10) (1 Turn)\nIf own HP is maximum,\nRecovers own Cursed Energy by 5\n*Available after 3 Turns",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, if the enemy's Ultimate Attack Count is at maximum,\nRecovers own HP by 5%\n*Re-activates after 5 Turns"
+    }
+  },
+  {
+    "id": "Nameless_Spring",
+    "title": "Nameless Spring",
+    "rarity": "SSR",
+    "release_date": "9-1-2026",
+    "stats": {
+      "hp": "27.55% (Level 80)",
+      "taijutsu": "43.08% (Level 80)",
+      "jujutsu": "29.38% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "NamelessSpringArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill are activated,\nIncreases all allies' Taijutsu Stat by 20% (Lv 1) → 25% (Lv 10) (2 Turns)\nIf the equipped character is \"夜\" (Green),\nRecovers own Cursed Energy by 10",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nIncreases all \"夜\" (Green) allies' Damage Dealt by 10% (4 Turns)\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "Nameless_Youth",
+    "title": "Nameless Youth",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "CarefreeYouthArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 70.0% (Lv 1) → 75.0% (Lv 10) (1 Turn/1 Time)\nIf own HP is 50.0% or below when activating,\nIncreases own Taijutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (1 Turn/1 Time)\n(Available after 4 Turns have passed)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nGrants Revival Status to self (1 Time)"
+    }
+  },
+  {
+    "id": "Narrow_Escape_From_Death",
+    "title": "Narrow Escape From Death",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "AdvancingInTheFaceOfDeathArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 31.0% (Lv 1) → 38.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nDecreases own Jujutsu Damage Received by 25.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "Nice_Mid-Air_Catch",
+    "title": "Nice Mid-Air Catch",
+    "rarity": "SSR",
+    "release_date": "19-3-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "NiceAirCatchArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own and the Ally Behind's Damage Received by 15% (Lv 1) → 20% (Lv 10) (2 Turns)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the 6th turn,\nIncreases all enemies' Critical Hit Resistance by 20% (3 Turns)"
+    }
+  },
+  {
+    "id": "Night_In_Hakata",
+    "title": "Night In Hakata",
+    "rarity": "SSR",
+    "release_date": "17-9-2024",
+    "stats": {
+      "hp": "HP: 2.5%",
+      "taijutsu": "Taijutsu: 2.5%",
+      "jujutsu": "Jujutsu: 2.5%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "NightInHakataArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10.0% (Lv 1) → 15.0% (Lv 10)\nDecreases own Damage Received by 15.0% (Lv 1) → 20.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn and if own HP is 50.0% or lower (Up to 1 Time during battle),\nFills own Ultimate Skill Gauge by 500"
+    }
+  },
+  {
+    "id": "Night_Of_Jujutsu_Sorcerers",
+    "title": "Night Of Jujutsu Sorcerers",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "14.37% (Level 45)",
+      "jujutsu": "21.01% (Level 45)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "NightOutArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases all allies' Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "Night_On_The_Sacred_Mountain",
+    "title": "Night On The Sacred Mountain",
+    "rarity": "SSR",
+    "release_date": "30-7-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "NightontheSacredMountainArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases own Damage Received by 60.0% (Lv 1) → 70.0% (Lv 10) (3 Turns/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 70.0% or below,\nIncreases all allies' Taijutsu & Jujutsu Stat by 20.0% (4 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Nimble_Cursed_Speech_User",
+    "title": "Nimble Cursed Speech User",
+    "rarity": "SSR",
+    "release_date": "30-8-2024",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 25.0% (Lv 1) → 30.0% (Lv 10) (3 Turns)\nIgnores Darkness Status when attacking (1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own Cursed Energy by 10\n(Activates again after every 6 Turns that have passed)"
+    }
+  },
+  {
+    "id": "No_Mountain_Disaster_",
+    "title": "No Mountain Disaster!",
+    "rarity": "SSR",
+    "release_date": "19-1-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "NotGonnaAdmitThatWeGotIntoTroubleArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Critical Hit Rate by 10.0% (Lv 1) → 15.0% (Lv 10) (4 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nIncreases all allies' Ultimate Skill Gauge Charge Rate by 15.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "Nonstandard",
+    "title": "Nonstandard",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.90% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "NonStandardArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 80.0% (Lv 1) → 85.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nFills own Ultimate Skill Gauge by 200"
+    }
+  },
+  {
+    "id": "Noritoshi_Kamo_s_Archery_Lessons",
+    "title": "Noritoshi Kamo's Archery Lessons",
+    "rarity": "SSR",
+    "release_date": "22-3-2024",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "TheArcheryTeachingFromNoritoshiKamoArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 20.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)\nIf own Ultimate Skill Gauge is full when activating,\nIncreases own Damage Dealt by 35.0% (Lv 1) → 40.0% (Lv 10) (2 Turns/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nIncreases own Break Damage by 20.0% (2 Turns)\n(The more turns have passed, the greater the Break Damage increase/Up to 40.0%)"
+    }
+  },
+  {
+    "id": "Offering_To_The_Serpent",
+    "title": "Offering To The Serpent",
+    "rarity": "SSR",
+    "release_date": "28-12-2023",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TheSacrificeOfSnakeDeityArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)\nSacrifices 15.0% of own HP\n(Cannot die from sacrificing HP)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Ultimate Skill Gauge Charge Rate by 15.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "Ordinary_Time",
+    "title": "Ordinary Time",
+    "rarity": "SSR",
+    "release_date": "19-9-2025",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieUltgaugeUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Ultimate Skill Gauge Charge Rate by 20% (Lv 1) → 25% (Lv 10) (3 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, if your Cursed Energy is 20 or less,\nRecovers 10 of your Cursed Energy (Only Twice per Battle)"
+    }
+  },
+  {
+    "id": "Our_Priorities",
+    "title": "Our Priorities",
+    "rarity": "SSR",
+    "release_date": "28-6-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieSwordUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage by 10.0% (Lv 1) → 20.0% (Lv 10) (1 Turn)\n(Effective for \"影\" (Blue) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Damage by 10.0%\n(Effective if the selected enemy has a weakness to \"影\" (Blue) Type attacks)"
+    }
+  },
+  {
+    "id": "Panda_The_Fashionista",
+    "title": "Panda The Fashionista",
+    "rarity": "SSR",
+    "release_date": "17-5-2024",
+    "stats": {
+      "hp": "26.6% (Level 55)",
+      "taijutsu": "26.6% (Level 55)",
+      "jujutsu": "26.6% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieShieldUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Damage Received by 5.0% (Lv 1) → 10.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if any ally's HP is 40.0% or below from the start of turn (Excludes self),\nGrants Taunt Status to self (1 Turn)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Perfect_Synchronization",
+    "title": "Perfect Synchronization",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "8.73% (Level 45)",
+      "taijutsu": "26.63% (Level 45)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "AunsBreathArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases all allies’ Damage Dealt by 30.0% (Lv 1) → 35.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nFills own Ultimate Skill Gauge by 200"
+    }
+  },
+  {
+    "id": "Phanpara_of_the_Year",
+    "title": "Phanpara of the Year",
+    "rarity": "SSR",
+    "release_date": "5-11-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieSwordUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 10% (Lv 1) → 15% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When Ultimate Skill is activated,\nRecovers all allies' Cursed Energy by 10 (Once per Battle)"
+    }
+  },
+  {
+    "id": "Phantom_Journey",
+    "title": "Phantom Journey",
+    "rarity": "SSR",
+    "release_date": "21-11-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "6",
+    "image": "MemoryEnergyRecharge.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 15\n**Lv 10 (Máx):** Recovers own Cursed Energy by 20",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, when self's Cursed Energy is 40 or more,\nIncreases all enemies' Damage Received by 15% (3 Turns)"
+    }
+  },
+  {
+    "id": "Phantom_Trails",
+    "title": "Phantom Trails",
+    "rarity": "SSR",
+    "release_date": "21/11/2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "PhantomTrailsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIf own HP is 35.0% or above,\nIncreases own Damage Dealt by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn)\nIf own HP is below 35.0%,\nRecovers own HP by 10.0% (Lv 1) → 15.0% (Lv 10)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is below 50.0%,\nDecreases own Damage Received by 10.0% (2 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Play_Of_The_Strong",
+    "title": "Play Of The Strong",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.3% (Level 55)",
+      "taijutsu": "39.9% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TheStrongestFoolingAroundArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Taijutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nGrants Evasion Status to self (1 Time)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Play_a_Catchy_Tune",
+    "title": "Play a Catchy Tune",
+    "rarity": "SSR",
+    "release_date": "21-7-2026",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "PlayACatchyTuneArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases \"幻\" (Red) Damage Dealt by 25% (Lv 1) → 30% (Lv 10) to the Ally on the Last Slot (1 Turn/Up to 50% (Lv 1) → 60% (Lv 10) with 25 Debuffs & Abnormal Status)\n*Debuff/Abnormal Status without duration excluded",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own Ultimate Gauge is full at the start of turn:\nIncreases all enemies' Taijutsu & Jujutsu Damage Received by 5% (2 Turns)\nIf equipped member is belongs to \"Jujutsu High Official\",\nRecovers own Cursed Energy by 10\n(Re-activated after 5 Turns has passed)"
+    }
+  },
+  {
+    "id": "Poolside_Helper",
+    "title": "Poolside Helper",
+    "rarity": "SSR",
+    "release_date": "21-7-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "PoolsiderHelperArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases all allies' Break Damage by 20% (Lv 1) → 25% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn,\nDecreases all enemies' Taijutsu & Jujutsu Stat by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "Preparation_Activities",
+    "title": "Preparation Activities",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "5.85% (Level 35)",
+      "taijutsu": "17.55% (Level 35)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "Warm-UpExerciseArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\n**Lv 1:** Grants Taunt Status to self (2 Turns)\n**Lv 10 (Máx):** Grants Taunt Status to self (3 Turns)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Price_for_applauding",
+    "title": "Price for applauding",
+    "rarity": "SSR",
+    "release_date": "31-5-2025",
+    "stats": {
+      "hp": "20.1% (Level 55)",
+      "taijutsu": "31.3% (Level 55)",
+      "jujutsu": "21.4% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieCritUp.png",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Critical Hit Rate by 30.0% (Lv 1) → 60.0% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed,\nIncreases own Damage Dealt by 10.0% (2 Turns/1 Time)"
+    }
+  },
+  {
+    "id": "Quietness",
+    "title": "Quietness",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "13.27% (Level 35)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "DiscouragedArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Taijutsu Stat by 12.0% (Lv 1) → 17.5% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Reflection_of_Trust",
+    "title": "Reflection of Trust",
+    "rarity": "SSR",
+    "release_date": "14-05-2025",
+    "stats": {
+      "hp": "4.15% (Level 1)",
+      "taijutsu": "5.65% (Level 1)",
+      "jujutsu": "5.65% (Level 1)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "ReflectionofTrust.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies’ Damage Dealt by 10% (Lv 1) → 15% (Lv 10) (1 Turn)\n(Effective for \"行\" (Yellow) Type attacks, Self Excluded)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If self is receiving debuff or negative status at the start of turn,\nIncreases all allies’ Jujutsu stat by 5% (2 turns, Self Excluded)"
+    }
+  },
+  {
+    "id": "Reminiscence",
+    "title": "Reminiscence",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "7.17% (Level 35)",
+      "taijutsu": "9.96% (Level 35)",
+      "jujutsu": "9.96% (Level 35)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "RemembranceArt1.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Resolve_in_The_Midst_of_a_Storm",
+    "title": "Resolve in The Midst of a Storm",
+    "rarity": "SSR",
+    "release_date": "9-1-2026",
+    "stats": {
+      "hp": "27.55% (Level 80)",
+      "taijutsu": "43.08% (Level 80)",
+      "jujutsu": "29.38% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "ResolveInStormArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own and Ally Behind's Melee Damage Dealt by 25% (Lv 1) → 30% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 5\nDecreases own Damage Received by 5% (3 Turns)"
+    }
+  },
+  {
+    "id": "Rest_For_The_Adults",
+    "title": "Rest For The Adults",
+    "rarity": "SSR",
+    "release_date": "28-12-2023",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "TheBreakTimeForAdultArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 25.0% (Lv 1) → 30.0% (Lv 10)\n**Lv 1:** Fills own Ultimate Skill Gauge by 200\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 250",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn from the start of the battle,\nIncreases all allies' Damage Dealt by 25.0% (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Restored_Silence",
+    "title": "Restored Silence",
+    "rarity": "SSR",
+    "release_date": "27-2-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "RestoredSilenceArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is performed,\nIncreases own Taijutsu & Jujutsu Stat by 40% (Lv 1) → 50% (Lv 10) (1 Turn/1 Time)\nIf own Cursed Energy is 60 or more,\nIncreases own Black Flash Rate by 40% (Lv 1) → 50% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, if own Cursed Energy is 60 or more,\nIncreases own Black Flash Rate by 10% (1 Turn)\nIf the equipped character is a Tokyo Officials High,\nIncreases own Critical Hit Rate by 20% (1 Turn)\nIncreases own Black Flash Rate by 10% (1 Turn)"
+    }
+  },
+  {
+    "id": "Reunion_After_The_Rain",
+    "title": "Reunion After The Rain",
+    "rarity": "SSR",
+    "release_date": "30-4-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "YellowMemoryskill.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 20.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)\n(Effective for \"行\" (Yellow) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit or Black Flash is performed,\nIncreases own Critical Hit Rate by 30.0% (2 Turns)\nIncreases own Critical Hit Damage by 25.0% (2 Turns)"
+    }
+  },
+  {
+    "id": "Rushing_to_a_Mission_on_a_Holy_Night",
+    "title": "Rushing to a Mission on a Holy Night",
+    "rarity": "SSR",
+    "release_date": "19-12-2025",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "RushMissHolyNightMem.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies’ Damage Dealt by 20% (Lv 1) → 25% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 5\n(Re-activated every 5 Turns)"
+    }
+  },
+  {
+    "id": "Sake_for_Blossom-Viewing_on_the_Engawa",
+    "title": "Sake for Blossom-Viewing on the Engawa",
+    "rarity": "SSR",
+    "release_date": "29-8-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryMoviePhysicalUp.png",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 30% (Lv 1) → 35% (Lv 10) (3 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When dealing HP damage to the enemy,\nIncreases own Damage Dealt by 5% (4 Turns) (1 Time per Turn)\nIf dealing HP damage to the enemy within the same turn,\nIncreases own Damage Dealt by 15% (2 Turns) (1 Time per Turn)\nRecovers own Cursed Energy by 10 (1 Time per Turn)\n(% HP Damage/DOT Excluded)"
+    }
+  },
+  {
+    "id": "Satoru_Gojo_s_Solo_Camping",
+    "title": "Satoru Gojo's Solo Camping",
+    "rarity": "SSR",
+    "release_date": "12-1-2023",
+    "stats": {
+      "hp": "20.59% (Level 55)",
+      "taijutsu": "21.92% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "3",
+    "image": "SatoruGojosSoloCampArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nIncreases own Cursed Energy Consumption Efficiency (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Scales_Of_Unfairness",
+    "title": "Scales Of Unfairness",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "14.83% (Level 45)",
+      "taijutsu": "19.98% (Level 45)",
+      "jujutsu": "19.98% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "UnequallyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Break Damage by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Break Damage by 20.0%"
+    }
+  },
+  {
+    "id": "Search_In_The_Rain",
+    "title": "Search In The Rain",
+    "rarity": "SSR",
+    "release_date": "30-4-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieCritUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Critical Hit Rate by 15.0% (Lv 1) → 20.0% (Lv 10) (3 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nFills own Ultimate Skill Gauge by 220"
+    }
+  },
+  {
+    "id": "Search",
+    "title": "Search",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.68% (Level 35)",
+      "taijutsu": "7.15% (Level 35)",
+      "jujutsu": "10.45% (Level 35)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "InvestigationArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 19.0% (Lv 1) → 21.5% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Serious__Shuttlecock_Competition",
+    "title": "Serious! Shuttlecock Competition",
+    "rarity": "SSR",
+    "release_date": "1-1-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "ShuttlecockArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Taijutsu Stat by 15% (Lv 1) → 20% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nIncrease all allies' Break Damage by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "Shopping___Eating_Tour",
+    "title": "Shopping & Eating Tour",
+    "rarity": "SSR",
+    "release_date": "29-1-2024",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.90% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "StreetStallShoppingAndEatingArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nGrants Taunt Status to self (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own Ultimate Skill Gauge is full,\nIncreases own Damage Dealt by 20.0% (2 Turns)\n(The more turns have passed*, the greater the increase/Up to 100%)\n''*Turns count starting from the equipping character's appearance''\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Shopping",
+    "title": "Shopping",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.87% (Level 35)",
+      "taijutsu": "7.61% (Level 35)",
+      "jujutsu": "7.61% (Level 35)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "ShoppingArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 14.0% (Lv 1) → 22.0% (Lv 10) of own Jujutsu",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Siblings__Bond",
+    "title": "Siblings' Bond",
+    "rarity": "SSR",
+    "release_date": "12-6-2024",
+    "stats": {
+      "hp": "33.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "The_bond_of_siblingArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own \"Poison\" Resistance by 100.0%\nIncreases own Ultimate Skill Gauge Charge Rate by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle, Increases own Taijutsu Stat by 2.0%\n(The more turns have passed, the greater the Taijutsu Stat increase/Up to 30.0%)"
+    }
+  },
+  {
+    "id": "Siblings__Vacation",
+    "title": "Siblings' Vacation",
+    "rarity": "SSR",
+    "release_date": "31-3-2025",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "47.6% (Level 80)",
+      "jujutsu": "47.6% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemorySpecialGauge.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 85.0% (Lv 1) → 90.0% (Lv 10) (1 Turn)\n(Effective for \"幻\" (Red) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own HP is 70% or lower at the start of turn (Once only in a battle),\nFills own Ultimate Skill Gauge by 200,\nRecovers own HP by 20.0%"
+    }
+  },
+  {
+    "id": "Simple_Pleasure",
+    "title": "Simple Pleasure",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "14.83% (Level 45)",
+      "taijutsu": "19.98% (Level 45)",
+      "jujutsu": "19.98% (Level 45)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "SmallPleasuresArt.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\n**Lv 1:** Recovers own Cursed Energy by 10\n**Lv 10 (Máx):** Recovers own Cursed Energy by 15",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Damage Dealt by 15.0% (3 Turns)\nIncreases own Critical Hit Rate by 25.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "So__nice_to_meet_you",
+    "title": "So, nice to meet you",
+    "rarity": "SSR",
+    "release_date": "30-9-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "10",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuResistanceUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Jujutsu Damage Received by 5% (Lv 1) → 10% (Lv 10) (5 Turns)",
+      "cooldown": "10"
+    },
+    "passive_skill": {
+      "description": "If equipped character is defeated,\nIncreases all allies' Damage Dealt by 15% (3 Turns)"
+    }
+  },
+  {
+    "id": "Solo_Mission",
+    "title": "Solo Mission",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "6.68% (Level 35)",
+      "taijutsu": "7.15% (Level 35)",
+      "jujutsu": "10.45% (Level 35)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Damage is dealt,\nIncreases own Jujutsu Stat by 15.0% (Lv 1) → 20.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Someday__I_Want_To_Be_With_Everyone",
+    "title": "Someday, I Want To Be With Everyone",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "14.37% (Level 45)",
+      "jujutsu": "21.01% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "SomedayWithEveryoneArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nDecreases own Damage Received by 35.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "Someone_Like_Me_",
+    "title": "Someone Like Me?",
+    "rarity": "SSR",
+    "release_date": "20-2-2024",
+    "stats": {
+      "hp": "20.59% (Level 55)",
+      "taijutsu": "21.92% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "WeAreSameArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Jujutsu Stat by 8.0% (Lv 1) → 13.0% (Lv 10) (4 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nRecovers all allies' HP by 5.0%"
+    }
+  },
+  {
+    "id": "Something_to_Satisfy_a_Light_Hunger",
+    "title": "Something to Satisfy a Light Hunger",
+    "rarity": "SSR",
+    "release_date": "11-9-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "SatisfyLightHungerArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own and Ally Behind's \"行\" (Yellow) Damage Dealt by 15% (Lv 1) → 20% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If HP is 50% or less at the start of turn, (Once per Battle)\nRecovers own HP by 20%"
+    }
+  },
+  {
+    "id": "Sorcerers__Resolutions",
+    "title": "Sorcerers' Resolutions",
+    "rarity": "SSR",
+    "release_date": "1-1-2025",
+    "stats": {
+      "hp": "26.6% (Lvl 55)",
+      "taijutsu": "26.6% (Lvl 55)",
+      "jujutsu": "26.6% (Lvl 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "SorcerersResolutions.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 24.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of each wave,\nIncreases all enemies' Taijutsu Damage Received by 7.0% (4 Turns),\nIncreases all enemies' Jujutsu Damage Received by 7.0% (4 Turns)"
+    }
+  },
+  {
+    "id": "Source_Of_Stress",
+    "title": "Source Of Stress",
+    "rarity": "SSR",
+    "release_date": "30-7-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "31.33% (Level 55)",
+      "jujutsu": "21.38% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "SourceofStressArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases all allies' Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "When a Skill is activated,\nIf the target enemy is in a Debuffed state,\nDecreases all Debuffed enemies' Damage Dealt by 15.0% (1 Turn)\n(Up to 1 Time during the turn)"
+    }
+  },
+  {
+    "id": "Souvenir_Pondering",
+    "title": "Souvenir Pondering",
+    "rarity": "SSR",
+    "release_date": "28-2-2025",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "SouvenirPonderingArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Taijutsu Damage Received by 55.0% (Lv 1) → 60.0% (Lv 10) (2 Turns/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own HP is 50% or less at the start of turn,\nGrant Evasion State to self (3 Turns/2 Times)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Strawberry_Parfait_of_Youth",
+    "title": "Strawberry Parfait of Youth",
+    "rarity": "SSR",
+    "release_date": "31-5-2024",
+    "stats": {
+      "hp": "33.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuResistanceUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate skill is activated,\nDecreases all allies' Jujutsu Damage Received by 35.0% (Lv 1) → 40.0% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If own HP is 50.0% or below,\nRecovers own HP by 30.0%\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Student_s_Duty",
+    "title": "Student's Duty",
+    "rarity": "SSR",
+    "release_date": "20-9-2024",
+    "stats": {
+      "hp": "HP: 13.3% (Level 55)",
+      "taijutsu": "Taijutsu: 39.9% (Level 55)",
+      "jujutsu": "Jujutsu: 0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "StudentsDutyArt.gif",
+    "active_skill": {
+      "description": "When activating Command Skill or Ultimate Skill,\nRecovers own HP by 20.0% (Lv 1) → 25.0% (Lv 10)\nIncreases own Damage by 50.0% (Lv 1) → 55.0% (Lv 10) (1 Turn)\n(Effective for \"幻\" (Red) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own Cursed Energy by 15"
+    }
+  },
+  {
+    "id": "Style_Upgrade_Plan",
+    "title": "Style Upgrade Plan",
+    "rarity": "SSR",
+    "release_date": "29-2-2024",
+    "stats": {
+      "hp": "13.3% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.9% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "FashionDressUpArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 35.0% (Lv 1) → 40.0% (Lv 10) (3 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "When Memory Skill is activated,\nDecreases all allies' Damage Received by 10.0% (3 Turns)\nIf own HP is 70.0% or below,\nDecreases own Damage Received by 25.0% (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Sukuna_s_Vessel",
+    "title": "Sukuna’s Vessel",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "10.28% (Level 45)",
+      "taijutsu": "15.73% (Level 45)",
+      "jujutsu": "10.85% (Level 45)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "SukunaVesselArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases all allies' Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)\n(The lower own HP is, the greater the Damage Received decrease)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nGrants Revival Status to self (1 Time)"
+    }
+  },
+  {
+    "id": "Super_Freshman_Welcoming_Party",
+    "title": "Super Freshman Welcoming Party",
+    "rarity": "SSR",
+    "release_date": "30-6-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "SuperFreshmanParty.gif",
+    "active_skill": {
+      "description": "When Command or Ultimate Skill is activated,\nIncreases allies' Damage Dealt by 15.0% (Lv 1) → 25.0% (Lv 10) (3 Turns)\n(Effective for \"幻\" (Red) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own HP is 30% or lower at the start of turn (Once only in a battle),\nRecovers own HP by 30.0%"
+    }
+  },
+  {
+    "id": "Surrounded_by_Amazing_Seniors",
+    "title": "Surrounded by Amazing Seniors",
+    "rarity": "SSR",
+    "release_date": "30-6-2026",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "SurroundedBySeniorsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases \"夜\" (Green) Damage Dealt by 30% (Lv 1) → 40% (Lv 10) to the Ally on the Last Slot (1 Turn)\nFills own Ultimate Gauge by 110 if the equipped character is concealed",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 10\nGrants \"Attack Immunity\" to Self (7 Turns/1 Time)\n*Re-activates every 7 Turns Passed"
+    }
+  },
+  {
+    "id": "Takada_s_Quiz__Beginner_s_Edition",
+    "title": "Takada's Quiz: Beginner's Edition",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "21.01% (Level 45)",
+      "jujutsu": "14.37% (Level 45)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "TakadaChanArt.gif",
+    "active_skill": {
+      "description": "At the start of the 4th turn from the start of the battle,\nIncreases all allies' Taijutsu Stat by 20.0% (Lv 1) → 25.0% (Lv 10) (2 Turns)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn from the start of the battle,\nRecovers all allies' Cursed Energy by 5"
+    }
+  },
+  {
+    "id": "Take_A_Break",
+    "title": "Take A Break",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "0%",
+      "jujutsu": "13.27% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "BreakTimeArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nIncreases all allies' Damage Dealt by 2.0% (Lv 1) → 3.5% (Lv 10) (2 Turns)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Take_Care",
+    "title": "Take Care",
+    "rarity": "SSR",
+    "release_date": "15-12-2023",
+    "stats": {
+      "hp": "16.27% (Level 55)",
+      "taijutsu": "17.06% (Level 55)",
+      "jujutsu": "24.85% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "ByeTakeCareArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Jujutsu Stat by 10.0% (Lv 1) → 15.0% (Lv 10) (3 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If own HP is 40.0% or below,\nDecreases own Damage Received by 15.0% (2 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Tea_Party",
+    "title": "Tea Party",
+    "rarity": "SSR",
+    "release_date": "20-9-2024",
+    "stats": {
+      "hp": "HP: 13.3% (Level 55)",
+      "taijutsu": "Taijutsu: 39.9% (Level 55)",
+      "jujutsu": "Jujutsu: 0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TeaPartyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases own Damage Received by 20.0% (Lv 1) → 25.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of each turn and when HP is 50.0% or below (Up to 2 Times during battle),\nRecovers own HP by 10.0%"
+    }
+  },
+  {
+    "id": "Tension_in_the_Grass_Shade",
+    "title": "Tension in the Grass Shade",
+    "rarity": "SSR",
+    "release_date": "22-7-2025",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieShieldUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Damage Received by 10% (Lv 1) → 15% (Lv 10) (1 Turn)\nGrants Stealth Status to Ally Behind (1 Turn)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 15% (3 Turns)\nDecreases to Ally Behind Damage Received by 15% (3 Turns)"
+    }
+  },
+  {
+    "id": "The_City_Where_the_Lights_Went_Out",
+    "title": "The City Where the Lights Went Out",
+    "rarity": "SSR",
+    "release_date": "27-3-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "CityWhereLightsOutArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own \"行\" (Yellow) Type Damage Dealt by 30% (Lv 1) → 35% (Lv 10) (1 Turn)\nIncreases own Break Damage by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "If the selected enemy is in Break State or Breaking the selected enemy,\nRecovers own Cursed Energy by 5\n(Once per Battle)"
+    }
+  },
+  {
+    "id": "The_Famous_Coffee_Shop",
+    "title": "The Famous Coffee Shop",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "13.36% (Level 45)",
+      "taijutsu": "21.01% (Level 45)",
+      "jujutsu": "14.37% (Level 45)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "CoffeShopArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nIncreases all allies' Taijutsu Stat by 20.0% (1 Turn)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "The_Fastest_Game_of_Tag",
+    "title": "The Fastest Game of Tag",
+    "rarity": "SSR",
+    "release_date": "29-8-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "MemoryEnergyRecharge.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\n**Lv 1:** Recovers own Cursed Energy by 5\n**Lv 10 (Máx):** Recovers own Cursed Energy by 10",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nGrants Stun Immunity to self (1 Time)"
+    }
+  },
+  {
+    "id": "The_Footage_Left_Behind",
+    "title": "The Footage Left Behind",
+    "rarity": "SSR",
+    "release_date": "24-4-2026",
+    "stats": {
+      "hp": "27.55% (Level 80)",
+      "taijutsu": "29.38% (Level 80)",
+      "jujutsu": "43.08% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "FootageLeftBehindArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Jujutsu Damage Received by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn,\nIncreases all allies' Jujutsu Stat by 6% (3 Turns)\n(With more enemies within the wave, increases effect up to a maximum of 12%)\n*Up to 3 Enemies"
+    }
+  },
+  {
+    "id": "The_Intention_Behind_Charity",
+    "title": "The Intention Behind Charity",
+    "rarity": "SSR",
+    "release_date": "19-12-2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "IntentionBehindCharityMem.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 40% (Lv 1) → 50% (Lv 10) (1 Turn)\n(Effective for \"夜\" (Green) Type attacks)\nRecovers all allies’ HP by 5%",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "The_Kanto_Dogs_Vs_Cats_Battle",
+    "title": "The Kanto Dogs Vs Cats Battle",
+    "rarity": "SSR",
+    "release_date": "12-5-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "KantoDogVCatArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt, Taijutsu Stat & Jujutsu Stat by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn,\nDecreases own Damage Received by 6% (4 Turns)\n(With more enemies within the wave, increases effect up to a maximum of 12%)\n*Up to 3 Enemies"
+    }
+  },
+  {
+    "id": "The_Last_of_My_Cursed_Energy",
+    "title": "The Last of My Cursed Energy",
+    "rarity": "SR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "16.25% (Level 45)",
+      "taijutsu": "11.41% (Level 45)",
+      "jujutsu": "11.41% (Level 45)"
+    },
+    "active_cooldown": "10",
+    "passive_cooldown": "/",
+    "image": "LastMomentsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases own Damage Received by 50.0% (Lv 1) → 55.0% (Lv 10) (1 Turn)",
+      "cooldown": "10"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "The_Lively_Stamp_Rally",
+    "title": "The Lively Stamp Rally",
+    "rarity": "SSR",
+    "release_date": "29-1-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "21.38% (Level 55)",
+      "jujutsu": "31.33% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "ExcitingStampCollectionArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10.0% (Lv 1) → 20.0% (Lv 10)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 50.0% or below,\nIncreases own Taijutsu Stat by 15.0% (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "The_Memories_of_Days_Gone_By",
+    "title": "The Memories of Days Gone By",
+    "rarity": "SSR",
+    "release_date": "31-7-2025",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own \"Poison\" Resistance by 100.0% (2 Turns)\nRecovers own HP by 10% (Lv 1) → 20% (Lv 10)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Taijutsu Damage Received by 10% (1 Turn)\nDecreases own Jujutsu Damage Received by 10% (1 Turn)\n(Reactivate its effect for every 5 turns passed)"
+    }
+  },
+  {
+    "id": "The_Mystery_is_In_The_Book",
+    "title": "The Mystery is In The Book",
+    "rarity": "SSR",
+    "release_date": "June 30th 2025",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "NanamiStoryEventMemory.gif",
+    "active_skill": {
+      "description": "When Command or Ultimate Skill is activated,\nIncreases allies' Critical Hit Damage by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "When the character leaves the field, Increases allies' Critical Hit Damage by 30.0% for 2 Turns"
+    }
+  },
+  {
+    "id": "The_Panda_and_the_Scarred_Pillar",
+    "title": "The Panda and the Scarred Pillar",
+    "rarity": "SSR",
+    "release_date": "19-3-2026",
+    "stats": {
+      "hp": "44.02% (Level 80)",
+      "taijutsu": "31.21% (Level 80)",
+      "jujutsu": "31.21% (Level 80)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "PandaPillarArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases all allies' Taijutsu & Jujutsu Damage Received by 20% (Lv 1) → 30% (Lv 10) (1 Turn)\nIf the equipped character is a Jujutsu High Official,\nRecovers own Cursed Energy by 10",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If any allies' HP are below 60% at the start of turn (3 Times in Battle)\nRecovers all allies' HP by 10%"
+    }
+  },
+  {
+    "id": "The_Sky_Is_Connected",
+    "title": "The Sky Is Connected",
+    "rarity": "SSR",
+    "release_date": "06-12-2024",
+    "stats": {
+      "hp": "21.97% (Lvl 55)",
+      "taijutsu": "29.95％ (Lvl 55)",
+      "jujutsu": "29.95％ (Lvl 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryMoviePhysicalUp.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Taijutsu & Jujutsu Stat by 10.0% (Lv 1) → 15.0% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of battle, Recovers own Cursed Energy by 5"
+    }
+  },
+  {
+    "id": "The_Strongest_Quarrel",
+    "title": "The Strongest Quarrel",
+    "rarity": "SSR",
+    "release_date": "31-5-2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryGreendamageskill.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Damage Dealt by 55.0% (Lv 1) → 65.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"夜\" (Green) Type attacks)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own Cursed Energy is 30 or above,\nIncreases own Critical Hit Rate by 20.0% (1 Turn)"
+    }
+  },
+  {
+    "id": "The_Super_Classmate_s_Debut_Battle",
+    "title": "The Super Classmate’s Debut Battle",
+    "rarity": "SSR",
+    "release_date": "31-8-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "SuperClassmateDebutArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Critical Hit Rate by 20% (Lv 1) → 25% (Lv 10) (3 Turns)\nIf the equipped character is \"幻\" (Red),\nIncreases own Critical Hit Damage by 20% (Lv 1) → 25% (Lv 10) (3 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "When a Critical Hit or Black Flash is performed (Twice per Battle),\nIncreases own Damage Dealt by 10% (4 Turns)\n(Once per Turn)"
+    }
+  },
+  {
+    "id": "The_Two_Strongest",
+    "title": "The Two Strongest",
+    "rarity": "SSR",
+    "release_date": "18-12-2023",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.90% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TheStrongestDuoArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Ultimate Skill Gauge Charge Rate by 20.0% (3 Turns)"
+    }
+  },
+  {
+    "id": "This_is_the_World_of_the_Future",
+    "title": "This is the World of the Future",
+    "rarity": "SSR",
+    "release_date": "24-4-2026",
+    "stats": {
+      "hp": "18.30% (Level 80)",
+      "taijutsu": "0% (Level 80)",
+      "jujutsu": "54.90% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "WorldOfFutureArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own \"幻\" (Red) Damage Dealt by 80% (Lv 1) → 85% (Lv 10) (1 Turn/1 Time)\nIf the equipped character is a Curse User,\nEvades enemy's attack (2 Turns/1 Time)\nRecovers own Cursed Energy by 5",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of turn,\nIncreases own Ultimate Gauge Charging Rate by 1% (1 Turn)\n(Increases the effect further with Abnormal Statuses or Debuffs, up to 10% with 25 Abnormal Status or Debuffs)"
+    }
+  },
+  {
+    "id": "Though_the_Future_May_Differ",
+    "title": "Though the Future May Differ",
+    "rarity": "SSR",
+    "release_date": "24-11-2023",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "4",
+    "passive_cooldown": "/",
+    "image": "DivergingPathsArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nIncreases own Taijutsu Stat by 40.0% (Lv 1) → 45.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "4"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 10.0%"
+    }
+  },
+  {
+    "id": "Thousand-Year_Master___Follower_Relation",
+    "title": "Thousand-Year Master & Follower Relation",
+    "rarity": "SSR",
+    "release_date": "30-1-2026",
+    "stats": {
+      "hp": "27.55% (Level 80)",
+      "taijutsu": "29.38% (Level 80)",
+      "jujutsu": "43.08% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "1000YrMaster&FollowerMemArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill are activated,\nIncreases own and the Ally Behind's Critical Hit Damage by 30% (Lv 1) → 35% (Lv 10) (2 Turns)\nRecovers own and the Ally Behind's Cursed Energy by 10\nIf the equipped character is \"行\" (Yellow) Type,\nIncreases own and the Ally Behind's Jujutsu Stat by 20% (Lv 1) → 25% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nIncreases own and the Ally Behind's Critical Hit Rate by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "To_The_Ultra-Luxury_Dinner_Cruise",
+    "title": "To The Ultra-Luxury Dinner Cruise",
+    "rarity": "SSR",
+    "release_date": "21/11/2024",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "LuxuriousCruiseArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own Cursed Energy by 5\n**Lv 1:** Fills own Ultimate Skill Gauge by 50\n**Lv 10 (Máx):** Fills own Ultimate Skill Gauge by 100",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Taijutsu & Jujutsu Stat by 10.0% (3 Turns)\n(The more Tokyo Jujutsu High 1st Year characters there are at the start of the Wave,\nthe higher the Taijutsu Damage & Jujutsu stat increases)"
+    }
+  },
+  {
+    "id": "Tokyo_Fukuoka_Exchange",
+    "title": "Tokyo Fukuoka Exchange",
+    "rarity": "SSR",
+    "release_date": "20-6-2024",
+    "stats": {
+      "hp": "13.30% (Level 55)",
+      "taijutsu": "39.90% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMoviePhysicalUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 75.0% (Lv 1) → 85.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nIncreases own Critical Hit Rate by 20.0%"
+    }
+  },
+  {
+    "id": "True_Essence_Of_The_Soul",
+    "title": "True Essence Of The Soul",
+    "rarity": "SSR",
+    "release_date": "9-2-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "AwakenedMahitoBossEventArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 25% (Lv 1) → 30% (Lv 10) (2 Turns)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nFills own Ultimate Skill Gauge by 150\nIf the equipped unit is a Cursed Spirit,\nRecovers own Cursed Energy by 5"
+    }
+  },
+  {
+    "id": "Two_Shadows_Reflected_in_The_Evening",
+    "title": "Two Shadows Reflected in The Evening",
+    "rarity": "SSR",
+    "release_date": "11-6-2025",
+    "stats": {
+      "hp": "13.3% (Level 55)",
+      "taijutsu": "39.9% (Level 55)",
+      "jujutsu": "0%"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TwoShadowArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 40.0% (Lv 1) → 50.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "If own Cursed Energy is 10 or below at the start of turn,\nIncreases own Taijutsu Stat by 20% (1 Turn)"
+    }
+  },
+  {
+    "id": "Two_Who_Do_Not_Mesh",
+    "title": "Two Who Do Not Mesh",
+    "rarity": "SSR",
+    "release_date": "12/11/2024",
+    "stats": {
+      "hp": "32.02% (Level 55)",
+      "taijutsu": "22.71% (Level 55)",
+      "jujutsu": "22.71% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "TwoWhoDoNotMeshArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Damage Received by 70.0% (Lv 1) → 100.0% (Lv 10) (1 Turn)\nDecreases own Damage Dealt by 100.0% (2 Turns) (Disadvantage)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nAttract all enemies' Attacks to self (1 Turn)"
+    }
+  },
+  {
+    "id": "Under_the_Cherry_Tree",
+    "title": "Under the Cherry Tree",
+    "rarity": "SSR",
+    "release_date": "19-8-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "UnderCherryTreeArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' \"夜\" (Green) Damage Dealt by 5% (1 Turn)\nIf the equipped character is either a \"Kyoto Jujutsu High Year 2\" or \"Kyoto Jujutsu High Year 3\"\nIncreases all allies' \"夜\" (Green) Damage Dealt by 10% (Lv 1) → 15% (Lv 10) (1 Turn)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of the 6th turn,\nRecovers own Cursed Energy by 10"
+    }
+  },
+  {
+    "id": "Unprecedented_Gourmet_Boom",
+    "title": "Unprecedented Gourmet Boom",
+    "rarity": "SSR",
+    "release_date": "18-10-2025",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieSwordUpLvl2.png",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 50% (Lv 1) → 55% (Lv 10) (1 Turn)\nIf own HP is full,\nRecovers own Cursed Energy by 10",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "At the start of turn,\nIncreases own Critical Hit Rate by 15% (1 Turn)\nIf own HP is full when a Critical Hit is performed,\nIncreases own Damage Dealt by 15% (1 Turn)"
+    }
+  },
+  {
+    "id": "Utahime_s_Stress_Relief_Method",
+    "title": "Utahime's Stress Relief Method",
+    "rarity": "SSR",
+    "release_date": "28-2-2025",
+    "stats": {
+      "hp": "26.60% (Level 55)",
+      "taijutsu": "26.60% (Level 55)",
+      "jujutsu": "26.60% (Level 55)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "ShokoIeiriLongestDayArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nDecreases own Damage Received by 20.0% (Lv 1) → 25.0% (Lv 10) (2 Turns/1 Time)\nFills own Ultimate Gauge by 100",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn from the start of the battle,\nIncreases own Damage Dealt by 10.0% (2 Turns/1 Time)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Visit_Fukuoka",
+    "title": "Visit Fukuoka",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "21.20% (Level 55)",
+      "taijutsu": "21.20% (Level 55)",
+      "jujutsu": "21.20% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "VisitFukuokaArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 30.0% (Lv 1) → 35.0% (Lv 10)\n(Available once 3 Turns have passed*)\n''*Turns count starting from the equipping character's appearance''",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nDecreases own Damage Received by 20.0%"
+    }
+  },
+  {
+    "id": "Walk_In_Shibuya",
+    "title": "Walk In Shibuya",
+    "rarity": "SSR",
+    "release_date": "23/1/2025",
+    "stats": {
+      "hp": "28.34% (Level 80)",
+      "taijutsu": "43.08% (Level 80)",
+      "jujutsu": "29.38% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "WalkInShibuyaArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 80.00% (Lv 1) → 85.00% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if Counter State is active,\nIncreases own Damage Dealt by 30.00% (1 Turn)"
+    }
+  },
+  {
+    "id": "Wavering",
+    "title": "Wavering",
+    "rarity": "R",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "4.31% (Level 35)",
+      "taijutsu": "0%",
+      "jujutsu": "13.27% (Level 35)"
+    },
+    "active_cooldown": "/",
+    "passive_cooldown": "/",
+    "image": "HesitationArt1.gif",
+    "active_skill": {
+      "description": "At the start of the battle,\nDecreases all allies' Damage Received by 10.0% (Lv 1) → 15.0% (Lv 10) (1 Time)",
+      "cooldown": "/"
+    },
+    "passive_skill": {
+      "description": "N/A"
+    }
+  },
+  {
+    "id": "Weaving_Fantasies",
+    "title": "Weaving Fantasies",
+    "rarity": "SSR",
+    "release_date": "31-7-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "WeavingFantasiesArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own Cursed Energy by 5\nRecovers own and Ally Behind's HP by 5% (Lv 1) → 10% (Lv 10)\n*Available after 3 Turns",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of the 4th turn,\nDecreases all enemies' Taijutsu & Jujutsu Stat by 10% (3 Turns)"
+    }
+  },
+  {
+    "id": "Web_Of_Schemes",
+    "title": "Web Of Schemes",
+    "rarity": "SSR",
+    "release_date": "21-11-2023",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "21.38% (Level 55)",
+      "jujutsu": "31.33% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "TheOriginOfConspiracyArt.gif",
+    "active_skill": {
+      "description": "When Command Skill is activated,\nDecreases own Damage Received by 40.0% (Lv 1) → 45.0% (Lv 10) (2 Turns)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the 6th turn from the start of the battle,\nIncreases all allies' Cursed Energy Consumption Efficiency (3 Turns)"
+    }
+  },
+  {
+    "id": "What_Was_Inherited",
+    "title": "What Was Inherited",
+    "rarity": "SSR",
+    "release_date": "21/11/2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "InheritanceArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu Stat by 60.0% (Lv 1) → 70.0% (Lv 10) (1 Turn)\nRecovers own Cursed Energy by 10\n(Available once 5 Turns have passed)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nRecovers own Cursed Energy by 10\nAt the start of the turn, if own HP is 50.0% or below,\nDecreases own Damage Received by 15.0%\nIncreases own Taijutsu Stat by 15.0%"
+    }
+  },
+  {
+    "id": "White_Waves_and_White_Breath",
+    "title": "White Waves and White Breath",
+    "rarity": "SSR",
+    "release_date": "20-2-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieSwordUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases all allies' Damage Dealt by 40% (Lv 1) → 45% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "During Combo Ultimate,\nRecovers own Cursed Energy by 10 (2 Times during battle)"
+    }
+  },
+  {
+    "id": "Who_is_Tycoon_",
+    "title": "Who is Tycoon?",
+    "rarity": "SSR",
+    "release_date": "21-5-2025",
+    "stats": {
+      "hp": "26.6% (Level 55)",
+      "taijutsu": "26.6% (Level 55)",
+      "jujutsu": "26.6% (Level 55)"
+    },
+    "active_cooldown": "8",
+    "passive_cooldown": "/",
+    "image": "MillionaireArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 30% (Lv 1) → 40% (Lv 10) (1 Turn)\nRecovers own HP by 10%\nRecover own Cursed Energy by 5 (Chance: 50%)",
+      "cooldown": "8"
+    },
+    "passive_skill": {
+      "description": "Starting from 4th turn,\nIncreases own Jujutsu Stat by 30% (1 Turn, Chance: 50%)\nRecovers own HP by 10% (Chance: 50%)\nRecover own Cursed Energy by 5"
+    }
+  },
+  {
+    "id": "Winter__A_New_Beginning",
+    "title": "Winter, A New Beginning",
+    "rarity": "SSR",
+    "release_date": "15-12-2023",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "WinterNewStepArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 30.0% (Lv 1) → 35.0% (Lv 10) (2 Turns)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "If own HP is 40.0% or below,\nRecovers own HP by 20.0%\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Wish_summer_would_never_end",
+    "title": "Wish summer would never end",
+    "rarity": "SSR",
+    "release_date": "21-5-2025",
+    "stats": {
+      "hp": "12.3% (Level 55)",
+      "taijutsu": "N/A",
+      "jujutsu": "36.9% (Level 55)"
+    },
+    "active_cooldown": "7",
+    "passive_cooldown": "/",
+    "image": "SummerNeverEndArt.gif",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu stat by 40% (Lv 1) → 45% (Lv 10) (1 Turn/1 Time)\nIf the equipped unit is \"夜\" (Green) Type,\nIncreases an additional Jujutsu stat by 40% (Lv 1) → 50% (Lv 10) (1 Turn/1 Time)\n(Available after 6 Turns have passed)",
+      "cooldown": "7"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nFills own Ultimate Gauge by 150\n(Reactivate its effect for every 5 turns passed)"
+    }
+  },
+  {
+    "id": "With_Wings_in_Hand",
+    "title": "With Wings in Hand",
+    "rarity": "SSR",
+    "release_date": "27-2-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "9",
+    "passive_cooldown": "/",
+    "image": "WithWingsinHandArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill are activated,\nIncreases own Critical Hit Rate by 25% (Lv 1) → 30% (Lv 10) (3 Turns)\nIf the equipped unit is \"夜\" (Green) Type:\nWhen performing a Critical Hit,\nIncreases own Damage Dealt by 25% (Lv 1) → 30% (Lv 10) (3 Turns)",
+      "cooldown": "9"
+    },
+    "passive_skill": {
+      "description": "At the start of battle,\nRecovers own Ultimate Gauge by 110"
+    }
+  },
+  {
+    "id": "Workaholic_Holiday",
+    "title": "Workaholic Holiday",
+    "rarity": "SSR",
+    "release_date": "30-6-2026",
+    "stats": {
+      "hp": "36.60% (Level 80)",
+      "taijutsu": "36.60% (Level 80)",
+      "jujutsu": "36.60% (Level 80)"
+    },
+    "active_cooldown": "10",
+    "passive_cooldown": "/",
+    "image": "WorkaholicHolidayArt.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nRecovers own HP by 10% (Lv 1) → 15% (Lv 10)\n**Lv 1:** Fills own Ultimate Gauge by 30\n**Lv 10 (Máx):** Fills own Ultimate Gauge by 60\nRecovers own Cursed Energy by 5",
+      "cooldown": "10"
+    },
+    "passive_skill": {
+      "description": "At the start of turn, if own HP is 50% or less (Once per Battle),\nDecreases own Damage Received by 15% (2 Turns)"
+    }
+  },
+  {
+    "id": "Yeah__Nice_Job_",
+    "title": "Yeah, Nice Job!",
+    "rarity": "SSR",
+    "release_date": "13/12/2024",
+    "stats": {
+      "hp": "13.3% (Level 55)",
+      "taijutsu": "0%",
+      "jujutsu": "39.9% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "YeahNiceJobArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases all allies' Jujutsu Stat by 10.0% (Lv 1) → 20.0% (Lv 10) (6 Turns/1 Time)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "At the start of the battle,\nFills all allies' Ultimate Skill Gauge by 200"
+    }
+  },
+  {
+    "id": "You_Cryin__",
+    "title": "You Cryin'?",
+    "rarity": "SSR",
+    "release_date": "21-5-2024",
+    "stats": {
+      "hp": "20.05% (Level 55)",
+      "taijutsu": "21.38% (Level 55)",
+      "jujutsu": "31.33% (Level 55)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "MemoryMovieJujutsuUp.png",
+    "active_skill": {
+      "description": "When Ultimate Skill is activated,\nIncreases own Jujutsu Stat by 60.0% (Lv 1) → 65.0% (Lv 10) (1 Turn)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "When Combo Ultimate is activated,\nIncreases own Jujutsu Stat by 20.0% (3 Turns)\n(Up to 1 Time per turn)"
+    }
+  },
+  {
+    "id": "Your_Path_Forward",
+    "title": "Your Path Forward",
+    "rarity": "SSR",
+    "release_date": "16/7/2024",
+    "stats": {
+      "hp": "21.97% (Level 55)",
+      "taijutsu": "29.95% (Level 55)",
+      "jujutsu": "29.95% (Level 55)"
+    },
+    "active_cooldown": "6",
+    "passive_cooldown": "/",
+    "image": "RindoMemoryArt1.gif",
+    "active_skill": {
+      "description": "When Command Skill or Ultimate Skill is activated,\nIncreases own Damage Dealt by 75.0% (Lv 1) → 80.0% (Lv 10) (1 Turn/1 Time)\n(Effective for \"夜\" (Green) Type attacks)\nIf own HP is 35.0% or below when activating,\nIncreases own Taijutsu & Jujutsu Stat by 20.0% (Lv 1) → 30.0% (Lv 10) (1 Turn/1 Time)",
+      "cooldown": "6"
+    },
+    "passive_skill": {
+      "description": "At the start of the turn, if own HP is 35.0% or below,\nIncreases own Ultimate Skill Gauge Charge Rate by 40.0% (3 Turns)\n(Up to 1 Time during battle)"
+    }
+  },
+  {
+    "id": "Youth_Graffiti",
+    "title": "Youth Graffiti",
+    "rarity": "SSR",
+    "release_date": "31-8-2026",
+    "stats": {
+      "hp": "30.22% (Level 80)",
+      "taijutsu": "41.20% (Level 80)",
+      "jujutsu": "41.20% (Level 80)"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "YouthGraffitiArt.gif",
+    "active_skill": {
+      "description": "When an Ultimate Skill is activated,\nIncreases own Taijutsu & Jujutsu Stat by 30% (Lv 1) → 40% (Lv 10) (1 Turn)\nIf the equipped character is both \"幻\" (Red) and\n\"Tokyo Jujutsu High Student (Hidden Inventory/Premature Death)\",\nIncreases own Damage Dealt from Mixed Attack by 35% (Lv 1) → 40% (Lv 10) (2 Turns)",
+      "cooldown": "5"
+    },
+    "passive_skill": {
+      "description": "When Critical Hit is performed and it is a Mixed Attack\nFills own Ultimate Skill Gauge by 110\n(Activates up to 2 Times per Turn)"
+    }
+  }
+]
