@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { X, Volume2, VolumeX, Download, Upload, Trash2, CheckCircle2, AlertCircle, ShieldCheck, Database, RefreshCw, Sparkles } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { X, Volume2, VolumeX, Download, Upload, Trash2, CheckCircle2, AlertCircle, ShieldCheck, Database, RefreshCw, Sparkles, ArrowRight, ExternalLink } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { playClick, playTransformSurge } from '../utils/sound';
+import type { UpdaterStatus } from '../types';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -24,14 +25,37 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [confirmReset, setConfirmReset] = useState(false);
   const [checkingUpdate, setCheckingUpdate] = useState(false);
+  const [updaterStatus, setUpdaterStatus] = useState<UpdaterStatus | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  if (!isOpen) return null;
-
-  const showNotification = (type: 'success' | 'error', text: string) => {
+  const showNotification = React.useCallback((type: 'success' | 'error', text: string) => {
     setNotification({ type, text });
-    setTimeout(() => setNotification(null), 4000);
-  };
+    setTimeout(() => setNotification(null), 5000);
+  }, []);
+
+  useEffect(() => {
+    if (!window.electronAPI?.onUpdateStatus) return;
+
+    const cleanup = window.electronAPI.onUpdateStatus((status) => {
+      setUpdaterStatus(status);
+      if (status.status === 'downloaded') {
+        setCheckingUpdate(false);
+        showNotification('success', `Nova versão ${status.version ? `v${status.version} ` : ''}pronta para ser aplicada!`);
+      } else if (status.status === 'not-available') {
+        setCheckingUpdate(false);
+        showNotification('success', 'Você já está utilizando a versão mais recente.');
+      } else if (status.status === 'error') {
+        setCheckingUpdate(false);
+        showNotification('error', status.message || 'Erro ao verificar atualizações.');
+      }
+    });
+
+    return () => {
+      cleanup?.();
+    };
+  }, [showNotification]);
+
+  if (!isOpen) return null;
 
   const handleCheckUpdate = async () => {
     playClick();
@@ -280,9 +304,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
         {/* Section: App Updates */}
         <div className="space-y-3">
-          <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
-            Atualizações do Aplicativo
-          </label>
+          <div className="flex items-center justify-between">
+            <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
+              Atualizações do Aplicativo
+            </label>
+            <span className="text-[11px] font-mono text-purple-300/80 bg-purple-950/50 px-2 py-0.5 rounded-md border border-purple-500/20">
+              Versão Instalada: v1.0.6
+            </span>
+          </div>
+
           <div className="flex items-center justify-between p-4 bg-[#16102c] border border-[#271d47] rounded-2xl">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-purple-950/60 rounded-xl border border-purple-500/30 text-purple-400">
@@ -295,13 +325,104 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             </div>
             <button
               onClick={handleCheckUpdate}
-              disabled={checkingUpdate}
+              disabled={checkingUpdate || updaterStatus?.status === 'downloading'}
               className="flex items-center gap-2 px-3.5 py-2 bg-purple-600/80 hover:bg-purple-600 disabled:opacity-50 border border-purple-400/50 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-purple-900/30 cursor-pointer"
             >
-              <RefreshCw className={`w-3.5 h-3.5 ${checkingUpdate ? 'animate-spin' : ''}`} />
-              <span>{checkingUpdate ? 'Verificando...' : 'Verificar Atualizações'}</span>
+              <RefreshCw className={`w-3.5 h-3.5 ${checkingUpdate || updaterStatus?.status === 'checking' ? 'animate-spin' : ''}`} />
+              <span>{checkingUpdate || updaterStatus?.status === 'checking' ? 'Verificando...' : 'Verificar Atualizações'}</span>
             </button>
           </div>
+
+          {/* Dynamic Updater Feedback */}
+          {updaterStatus && (
+            <div className="space-y-2 animate-fadeIn">
+              {updaterStatus.status === 'downloading' && (
+                <div className="p-4 bg-gradient-to-r from-purple-950/80 to-indigo-950/80 border border-purple-500/50 rounded-2xl space-y-2.5">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="flex items-center gap-2 text-purple-300 font-semibold">
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin text-purple-400" />
+                      Baixando atualização do JJKPPDB ({updaterStatus.version ? `v${updaterStatus.version}` : 'nova versão'})...
+                    </span>
+                    <span className="font-mono font-bold text-white">{updaterStatus.percent ?? 0}%</span>
+                  </div>
+                  <div className="w-full h-2.5 bg-black/50 rounded-full overflow-hidden border border-purple-500/30">
+                    <div
+                      className="h-full bg-gradient-to-r from-purple-500 via-indigo-400 to-emerald-400 transition-all duration-300"
+                      style={{ width: `${Math.max(0, Math.min(100, updaterStatus.percent ?? 0))}%` }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-[11px] text-gray-400 font-mono">
+                    <span>
+                      {updaterStatus.transferred && updaterStatus.total
+                        ? `${(updaterStatus.transferred / (1024 * 1024)).toFixed(1)} MB / ${(updaterStatus.total / (1024 * 1024)).toFixed(1)} MB`
+                        : `${updaterStatus.percent ?? 0}% transferido`}
+                    </span>
+                    {updaterStatus.bytesPerSecond ? (
+                      <span className="text-purple-300">{(updaterStatus.bytesPerSecond / (1024 * 1024)).toFixed(1)} MB/s</span>
+                    ) : null}
+                  </div>
+                </div>
+              )}
+
+              {updaterStatus.status === 'downloaded' && (
+                <div className="p-4 bg-gradient-to-r from-emerald-950/90 to-teal-950/90 border border-emerald-500/60 rounded-2xl flex items-center justify-between gap-3 shadow-lg">
+                  <div className="flex items-center gap-2.5">
+                    <Sparkles className="w-5 h-5 text-yellow-300 fill-yellow-300 animate-pulse shrink-0" />
+                    <div>
+                      <p className="text-xs font-bold text-white">
+                        Nova versão {updaterStatus.version ? `v${updaterStatus.version}` : ''} pronta para ser aplicada!
+                      </p>
+                      <p className="text-[11px] text-emerald-300">
+                        Clique abaixo para reiniciar o aplicativo e concluir a atualização.
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      playClick();
+                      window.electronAPI?.installUpdate?.();
+                    }}
+                    className="px-3.5 py-2 bg-gradient-to-r from-emerald-400 to-teal-300 text-slate-950 rounded-xl font-black text-xs hover:brightness-110 flex items-center gap-1.5 shadow-md active:scale-95 transition-all cursor-pointer shrink-0"
+                  >
+                    <span>Reiniciar e Aplicar</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
+              )}
+
+              {updaterStatus.status === 'not-available' && (
+                <div className="flex items-center gap-2 p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-xs text-emerald-300">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Você já está utilizando a versão mais recente disponível no GitHub Releases.</span>
+                </div>
+              )}
+
+              {updaterStatus.status === 'available' && (
+                <div className="flex items-center gap-2 p-3 bg-purple-950/50 border border-purple-500/40 rounded-xl text-xs text-purple-300">
+                  <RefreshCw className="w-4 h-4 text-purple-400 animate-spin shrink-0" />
+                  <span>Nova versão {updaterStatus.version ? `v${updaterStatus.version}` : ''} encontrada! Iniciando download...</span>
+                </div>
+              )}
+
+              {updaterStatus.status === 'error' && (
+                <div className="p-3 bg-red-950/40 border border-red-500/40 rounded-xl space-y-1.5">
+                  <div className="flex items-center gap-2 text-xs text-red-300">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>{updaterStatus.message || 'Não foi possível verificar atualizações no momento.'}</span>
+                  </div>
+                  <a
+                    href="https://github.com/Jklmkii/jujutsu-phantom-parade-db/releases/latest"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] text-purple-300 hover:text-white underline font-semibold"
+                  >
+                    Abrir página de downloads do GitHub Releases <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Section: Reset Safety */}

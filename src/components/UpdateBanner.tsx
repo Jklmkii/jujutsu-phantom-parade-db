@@ -29,7 +29,7 @@ export const UpdateBanner: React.FC = () => {
 
   if (updaterState.status === 'downloading') {
     return (
-      <div className="sticky top-2 z-40 mb-4 rounded-xl overflow-hidden bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-900 border border-purple-500/40 text-white px-4 py-2 text-xs font-semibold flex items-center justify-between shadow-lg animate-in fade-in">
+      <div className="sticky top-2 z-[60] mb-4 rounded-xl overflow-hidden bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-900 border border-purple-500/40 text-white px-4 py-2 text-xs font-semibold flex items-center justify-between shadow-lg animate-in fade-in">
         <div className="flex items-center gap-2.5">
           <RefreshCw size={14} className="animate-spin text-purple-400" />
           <span>Baixando atualização do JJKPPDB Offline: {updaterState.percent ?? 0}%...</span>
@@ -55,7 +55,7 @@ export const UpdateBanner: React.FC = () => {
 
   if (updaterState.status === 'downloaded') {
     return (
-      <div className="sticky top-2 z-40 mb-4 rounded-xl overflow-hidden bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 border border-emerald-500/50 text-white px-4 py-2.5 text-xs font-bold flex items-center justify-between shadow-xl animate-in slide-in-from-top">
+      <div className="sticky top-2 z-[60] mb-4 rounded-xl overflow-hidden bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 border border-emerald-500/50 text-white px-4 py-2.5 text-xs font-bold flex items-center justify-between shadow-xl animate-in slide-in-from-top">
         <div className="flex items-center gap-2">
           <Sparkles size={16} className="text-yellow-300 fill-yellow-300 animate-pulse" />
           <span>Nova versão {updaterState.version ? `v${updaterState.version}` : ''} pronta para ser aplicada!</span>
