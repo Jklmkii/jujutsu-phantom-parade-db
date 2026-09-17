@@ -218,9 +218,11 @@ export interface UpdaterStatus {
 }
 
 declare global {
+  const __APP_VERSION__: string;
   interface Window {
     electronAPI?: {
       isElectron: boolean;
+      getAppVersion?: () => Promise<string>;
       saveFile: (
         defaultName?: string,
         content?: string,

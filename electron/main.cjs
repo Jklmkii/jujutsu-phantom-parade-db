@@ -189,7 +189,10 @@ autoUpdater.on('update-downloaded', (info) => {
 function formatUpdaterError(err) {
   if (!err) return 'Não foi possível verificar atualizações no momento.';
   const msg = typeof err === 'string' ? err : err.message || String(err);
-  if (msg.includes('404') || msg.includes('releases.atom')) {
+  if (msg.includes('404') || msg.includes('latest.yml')) {
+    return 'Uma nova versão está sendo finalizada no servidor. Tente novamente em 1 ou 2 minutos.';
+  }
+  if (msg.includes('releases.atom')) {
     return 'Nenhuma versão publicada encontrada no repositório do GitHub.';
   }
   if (msg.includes('net::ERR_INTERNET_DISCONNECTED') || msg.includes('ENOTFOUND') || msg.includes('timeout')) {
@@ -206,6 +209,10 @@ autoUpdater.on('error', (err) => {
   });
 });
 
+ipcMain.handle('app:getVersion', () => {
+  return app.getVersion();
+});
+
 ipcMain.handle('updater:check', async () => {
   if (isDev) {
     return { success: true, message: 'Atualizações desativadas em ambiente de desenvolvimento.' };
@@ -214,7 +221,37 @@ ipcMain.handle('updater:check', async () => {
     const result = await autoUpdater.checkForUpdates();
     return { success: true, updateInfo: result?.updateInfo };
   } catch (err) {
-    return { success: false, error: formatUpdaterError(err) };
+    // Intelligent fallback: check GitHub REST API directly to provide accurate status
+    try {
+      const res = await fetch('https://api.github.com/repos/Jklmkii/jujutsu-phantom-parade-db/releases', {
+        headers: { 'User-Agent': 'JJKPPDB-Updater-Fallback' }
+      });
+      if (res.ok) {
+        const releases = await res.json();
+        const published = releases.filter(r => !r.draft);
+        if (published.length > 0) {
+          const latestTag = published[0].tag_name.replace(/^v/, '');
+          const currentVer = app.getVersion();
+          if (latestTag === currentVer) {
+            const upToDateMsg = `O JJKPPDB já está na versão mais recente (v${currentVer}).`;
+            sendUpdateStatus({
+              status: 'not-available',
+              message: upToDateMsg,
+            });
+            return { success: true, message: upToDateMsg };
+          }
+        }
+      }
+    } catch {
+      // ignore fallback error and use formatted error
+    }
+
+    const formatted = formatUpdaterError(err);
+    sendUpdateStatus({
+      status: 'error',
+      message: formatted,
+    });
+    return { success: false, error: formatted };
   }
 });
 

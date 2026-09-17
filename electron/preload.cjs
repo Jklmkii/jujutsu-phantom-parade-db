@@ -3,6 +3,9 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('electronAPI', {
   isElectron: true,
 
+  getAppVersion: () =>
+    ipcRenderer.invoke('app:getVersion'),
+
   saveFile: (defaultName, content, filters) =>
     ipcRenderer.invoke('dialog:saveFile', { defaultName, content, filters }),
 

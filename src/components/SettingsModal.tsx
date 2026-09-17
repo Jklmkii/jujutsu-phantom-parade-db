@@ -26,7 +26,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const [confirmReset, setConfirmReset] = useState(false);
   const [checkingUpdate, setCheckingUpdate] = useState(false);
   const [updaterStatus, setUpdaterStatus] = useState<UpdaterStatus | null>(null);
+  const [appVersion, setAppVersion] = useState<string>(() => {
+    return typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '1.0.9';
+  });
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (window.electronAPI?.getAppVersion) {
+      window.electronAPI.getAppVersion().then((ver) => {
+        if (ver) setAppVersion(ver);
+      }).catch(() => {});
+    }
+  }, []);
 
   const showNotification = React.useCallback((type: 'success' | 'error', text: string) => {
     setNotification({ type, text });
@@ -183,7 +194,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               <Database className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-black text-white tracking-wide">CONFIGURAÇÕES & BACKUP</h2>
+              <div className="flex items-center gap-2.5">
+                <h2 className="text-lg font-black text-white tracking-wide">CONFIGURAÇÕES & BACKUP</h2>
+                <span className="text-[10px] font-mono font-bold text-purple-300 bg-purple-950/90 px-2 py-0.5 rounded-full border border-purple-500/40 shadow-sm">
+                  v{appVersion}
+                </span>
+              </div>
               <p className="text-xs text-gray-400">Gerencie armazenamento local e preferências offline</p>
             </div>
           </div>
@@ -308,8 +324,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
               Atualizações do Aplicativo
             </label>
-            <span className="text-[11px] font-mono text-purple-300/80 bg-purple-950/50 px-2 py-0.5 rounded-md border border-purple-500/20">
-              Versão Instalada: v1.0.6
+            <span className="text-[11px] font-mono text-purple-200 bg-purple-950/80 px-2.5 py-0.5 rounded-lg border border-purple-500/40 flex items-center gap-1.5 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Versão Instalada: v{appVersion}
             </span>
           </div>
 
@@ -319,8 +336,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-sm font-bold text-white">JJKPPDB Offline</p>
-                <p className="text-xs text-gray-400">Verificação automática via GitHub Releases</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-bold text-white">JJKPPDB Offline</p>
+                  <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-500/30">
+                    v{appVersion}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-400">Canal oficial de atualizações via GitHub Releases</p>
               </div>
             </div>
             <button
@@ -464,7 +486,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         {/* Offline Badge Footer */}
         <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-gray-500 pt-2 border-t border-[#201736]">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-          <span>100% Offline • Sem telemetria • Armazenamento Local Seguro</span>
+          <span>JJKPPDB Offline v{appVersion} • 100% Offline • Sem telemetria • Armazenamento Local Seguro</span>
         </div>
 
       </div>

@@ -82,7 +82,7 @@ async function main() {
   let targetRelease = releases.find(r => r.tag_name === TAG);
 
   if (!targetRelease) {
-    console.log(`Creating release ${TAG}...`);
+    console.log(`Creating release ${TAG} (as draft)...`);
     const createRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases`, {
       method: 'POST',
       headers: {
@@ -94,7 +94,7 @@ async function main() {
         target_commitish: 'main',
         name: releaseTitle,
         body: releaseBody,
-        draft: false,
+        draft: true, // Create as draft first so clients don't see an incomplete release without latest.yml
         prerelease: false
       })
     });
@@ -104,7 +104,7 @@ async function main() {
       throw new Error(`Failed to create release: ${createRes.status} ${errText}`);
     }
     targetRelease = await createRes.json();
-    console.log(`Release ${TAG} created with ID ${targetRelease.id}.`);
+    console.log(`Draft release ${TAG} created with ID ${targetRelease.id}.`);
   } else {
     console.log(`Release ${TAG} already exists (ID: ${targetRelease.id}). Updating release notes...`);
     await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases/${targetRelease.id}`, {
@@ -130,12 +130,12 @@ async function main() {
     hasGhCli = false;
   }
 
-  // Upload binaries FIRST, blockmap next, and latest.yml LAST
+  // Upload Setup executable, blockmap, and latest.yml FIRST, followed by portable
   const filesToUpload = [
     { name: `JJKPPDB-Offline-Setup-${pkg.version}.exe`, type: 'application/octet-stream', critical: true },
-    { name: `JJKPPDB-Offline-${pkg.version}-portable.exe`, type: 'application/octet-stream', critical: false },
     { name: `JJKPPDB-Offline-Setup-${pkg.version}.exe.blockmap`, type: 'application/octet-stream', critical: false },
-    { name: 'latest.yml', type: 'application/x-yaml', critical: true, uploadLast: true }
+    { name: 'latest.yml', type: 'application/x-yaml', critical: true, uploadLast: true },
+    { name: `JJKPPDB-Offline-${pkg.version}-portable.exe`, type: 'application/octet-stream', critical: false }
   ];
 
   let setupExeUploaded = false;
@@ -232,6 +232,29 @@ async function main() {
         setupExeUploaded = true;
       }
     }
+  }
+
+  // Final step: Publish the release if it was created as a draft
+  console.log(`\nFinalizing publication: publishing release ${TAG} (draft: false)...`);
+  try {
+    const publishRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/releases/${targetRelease.id}`, {
+      method: 'PATCH',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        draft: false
+      })
+    });
+    if (publishRes.ok) {
+      console.log(`✓ Release ${TAG} publicada oficialmente com sucesso!`);
+    } else {
+      const pubErr = await publishRes.text();
+      console.warn(`Aviso ao publicar release: ${publishRes.status} ${pubErr}`);
+    }
+  } catch (pubEx) {
+    console.warn('Erro ao atualizar status de publicação da release:', pubEx.message);
   }
 
   console.log('\n--- Publicação da Release concluída com 100% de integridade! ---');
