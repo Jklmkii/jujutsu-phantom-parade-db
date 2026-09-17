@@ -2,7 +2,7 @@
   "name": "jujutsu",
   "productName": "JJKPPDB Offline",
   "private": true,
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Jujutsu Kaisen: Phantom Parade Database Offline (Web & Desktop)",
   "author": "Lucas",
   "type": "module",
