@@ -51,11 +51,13 @@
       border: 2px solid rgba(192, 132, 252, 0.6);
       animation: pulse-border 1.8s infinite ease-out 0.4s;
     }
-    .core-icon {
+    .core-logo {
       position: relative;
-      font-size: 38px;
-      filter: drop-shadow(0 0 16px #a855f7);
-      animation: spin 8s linear infinite;
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 16px #a855f7) drop-shadow(0 0 24px rgba(168, 85, 247, 0.5));
+      animation: pulse-logo 2.5s ease-in-out infinite;
     }
     .title {
       font-size: 16px;
@@ -109,9 +111,9 @@
       0% { transform: scale(0.8); opacity: 1; }
       100% { transform: scale(1.4); opacity: 0; }
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes pulse-logo {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 14px #a855f7); }
+      50% { transform: scale(1.08); filter: drop-shadow(0 0 24px #c084fc); }
     }
     @keyframes progress-move {
       0% { left: -40%; width: 40%; }
@@ -124,7 +126,7 @@
   <div class="aura-container">
     <div class="pulse-ring"></div>
     <div class="pulse-ring-2"></div>
-    <div class="core-icon">🌀</div>
+    <img class="core-logo" src="../public/assets/logo.png" alt="Logo" />
   </div>
   <h1 class="title">Phantom Parade DB</h1>
   <p class="subtitle">JUJUTSU KAISEN (OFFLINE)</p>

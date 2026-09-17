@@ -17,6 +17,7 @@ import {
 import type { ActiveTab } from '../types';
 import { useJjkStore } from '../store/useJjkStore';
 import { playTabSwitch, playClick } from '../utils/sound';
+import { getAssetPath } from '../utils/assets';
 
 interface SidebarProps {
   activeTab: ActiveTab;
@@ -64,14 +65,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Brand Header */}
       <div className="h-16 flex items-center justify-between px-4 border-b border-[#201833]">
         <div className="flex items-center gap-3 overflow-hidden cursor-pointer" onClick={() => handleNav('home')}>
-          {/* Hexagon Logo */}
-          <div className="w-9 h-9 min-w-[36px] bg-gradient-to-br from-purple-600 via-indigo-600 to-purple-900 rounded-lg flex items-center justify-center shadow-lg shadow-purple-900/50 border border-purple-400/40">
-            <span className="text-white font-black text-xs tracking-wider">JJK</span>
+          {/* App Logo */}
+          <div className="w-10 h-10 min-w-[40px] flex items-center justify-center relative group">
+            <div className="absolute inset-0 bg-purple-600/30 rounded-full blur-md group-hover:bg-purple-500/50 transition-all"></div>
+            <img 
+              src={getAssetPath('assets/logo.png')} 
+              alt="JJKPPDB Logo" 
+              className="w-10 h-10 object-contain relative z-10 drop-shadow-[0_0_10px_rgba(168,85,247,0.7)] transform group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
           {!collapsed && (
-            <span className="font-extrabold text-lg tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-purple-100 to-indigo-300">
-              JJKPPDB
-            </span>
+            <div className="flex flex-col leading-tight">
+              <span className="font-black text-lg tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-purple-100 to-indigo-300">
+                JJKPPDB
+              </span>
+              <span className="text-[10px] font-bold tracking-widest text-purple-400/80 uppercase">
+                Offline DB
+              </span>
+            </div>
           )}
         </div>
         <button 

@@ -21,6 +21,7 @@ function createSplashWindow() {
     center: true,
     show: true,
     backgroundColor: '#0a0614',
+    icon: fs.existsSync(path.join(__dirname, '../public/assets/logo.png')) ? path.join(__dirname, '../public/assets/logo.png') : undefined,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -36,6 +37,7 @@ function createSplashWindow() {
 function createWindow() {
   createSplashWindow();
 
+  const iconPath = path.join(__dirname, '../public/assets/logo.png');
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 850,
@@ -43,6 +45,7 @@ function createWindow() {
     minHeight: 600,
     title: 'Jujutsu Kaisen: Phantom Parade DB (Offline)',
     backgroundColor: '#0a0614',
+    icon: fs.existsSync(iconPath) ? iconPath : undefined,
     show: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
