@@ -43,9 +43,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
     try {
       const res = await window.electronAPI.checkForUpdates();
       if (res.success) {
-        showNotification('success', res.message || 'Buscando atualizações no GitHub Releases...');
+        showNotification('success', res.message || 'Verificando atualizações no GitHub Releases...');
       } else {
-        showNotification('error', res.error || 'Falha ao buscar atualizações.');
+        const errorText = res.error ? res.error.split('\n')[0].slice(0, 100) : 'Falha ao buscar atualizações.';
+        showNotification('error', errorText);
       }
     } catch {
       showNotification('error', 'Erro ao conectar ao serviço de atualização.');

@@ -186,10 +186,23 @@ autoUpdater.on('update-downloaded', (info) => {
   });
 });
 
+function formatUpdaterError(err) {
+  if (!err) return 'Não foi possível verificar atualizações no momento.';
+  const msg = typeof err === 'string' ? err : err.message || String(err);
+  if (msg.includes('404') || msg.includes('releases.atom')) {
+    return 'Nenhuma versão publicada encontrada no repositório do GitHub.';
+  }
+  if (msg.includes('net::ERR_INTERNET_DISCONNECTED') || msg.includes('ENOTFOUND') || msg.includes('timeout')) {
+    return 'Sem conexão com a internet para verificar atualizações.';
+  }
+  const clean = msg.split('\n')[0].replace(/^Error:\s*/, '').trim();
+  return clean.length > 90 ? clean.slice(0, 90) + '...' : clean;
+}
+
 autoUpdater.on('error', (err) => {
   sendUpdateStatus({
     status: 'error',
-    message: err.message || 'Não foi possível verificar atualizações no momento.',
+    message: formatUpdaterError(err),
   });
 });
 
@@ -201,7 +214,7 @@ ipcMain.handle('updater:check', async () => {
     const result = await autoUpdater.checkForUpdates();
     return { success: true, updateInfo: result?.updateInfo };
   } catch (err) {
-    return { success: false, error: err.message };
+    return { success: false, error: formatUpdaterError(err) };
   }
 });
 
