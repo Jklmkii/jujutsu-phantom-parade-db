@@ -78,7 +78,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     },
     {
       q: "Como a Linha do Tempo calcula as previsões para o Global?",
-      a: "O servidor Global foi acelerado para diminuir a distância com a versão japonesa. Atualmente, o atraso real (lag) está calibrado em aproximadamente 65 dias, permitindo prever a chegada exata dos próximos banners."
+      a: "O servidor Global foi acelerado para diminuir a distância com a versão japonesa. Atualmente, o atraso real (lag) está calibrado em exatamente 79 dias (marco oficial do evento de Kiyotaka Ijichi lançado em 17/09/2026 às 12:00), permitindo prever a chegada exata dos próximos banners."
     }
   ];
 

@@ -2195,66 +2195,66 @@
   },
   {
     "index": 160,
-    "status": "released",
-    "status_label": "Já Lançado no Global",
+    "status": "current",
+    "status_label": "🔥 Em Andamento no Global (Lançado Hoje)",
     "name": "Featured Gacha: Ijichi's Unrelenting Vacation",
     "banners": [
       "Featured Gacha: Ijichi's Unrelenting Vacation",
       "Story Event: Ijichi's Unrelenting Vacation"
     ],
     "jp_date": "30/06/2026",
-    "global_date": "03/09/2026",
-    "days": ""
+    "global_date": "17/09/2026 (12:00)",
+    "days": "Hoje às 12:00"
   },
   {
     "index": 161,
-    "status": "current",
-    "status_label": "Em Andamento / Iminente",
+    "status": "upcoming",
+    "status_label": "⏳ Próximo no Global (em 7 dias)",
     "name": "New Content: Formidable Foe: Back",
     "banners": [
       "New Content: Formidable Foe: Back"
     ],
     "jp_date": "07/07/2026",
-    "global_date": "10/09/2026",
-    "days": ""
+    "global_date": "24/09/2026",
+    "days": "Em 7 dias"
   },
   {
     "index": 162,
-    "status": "current",
-    "status_label": "Em Andamento / Iminente",
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
     "name": "Formidable Battle: VS -Mahito (Awakened)- Rerun",
     "banners": [
       "Formidable Battle: VS -Mahito (Awakened)- Rerun",
       "Green Type PickUp Gacha: Silent Suppression & Fulfilling His Duty as the Older Brother"
     ],
     "jp_date": "13/07/2026",
-    "global_date": "16/09/2026",
-    "days": ""
+    "global_date": "30/09/2026",
+    "days": "Em 13 dias"
   },
   {
     "index": 163,
-    "status": "current",
-    "status_label": "Em Andamento / Iminente",
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
     "name": "Cursed Prison Island Main StoryChapter 5: Cursed Gathering Feast",
     "banners": [
       "Cursed Prison Island Main StoryChapter 5: Cursed Gathering Feast"
     ],
     "jp_date": "17/07/2026",
-    "global_date": "20/09/2026",
-    "days": ""
+    "global_date": "04/10/2026",
+    "days": "Em 17 dias"
   },
   {
     "index": 164,
-    "status": "current",
-    "status_label": "Em Andamento / Iminente",
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
     "name": "Featured Gacha: Crafty Rock",
     "banners": [
       "Featured Gacha: Crafty Rock",
       "Map Event: Kyoto Dead School Part 2"
     ],
     "jp_date": "21/07/2026",
-    "global_date": "24/09/2026",
-    "days": ""
+    "global_date": "08/10/2026",
+    "days": "Em 21 dias"
   },
   {
     "index": 165,
@@ -2266,8 +2266,8 @@
       "Featured Gacha: Illusory Tower: Diverse"
     ],
     "jp_date": "27/07/2026",
-    "global_date": "30/09/2026",
-    "days": ""
+    "global_date": "14/10/2026",
+    "days": "Em 27 dias"
   },
   {
     "index": 166,
@@ -2279,8 +2279,8 @@
       "Story Event: Ephemeral Family"
     ],
     "jp_date": "31/07/2026",
-    "global_date": "04/10/2026",
-    "days": ""
+    "global_date": "18/10/2026",
+    "days": "Em 31 dias"
   },
   {
     "index": 167,
@@ -2292,8 +2292,8 @@
       "Domain Investigation Campaign: Double Drops"
     ],
     "jp_date": "01/08/2026",
-    "global_date": "05/10/2026",
-    "days": ""
+    "global_date": "19/10/2026",
+    "days": "Em 32 dias"
   },
   {
     "index": 168,
@@ -2304,8 +2304,8 @@
       "Enhancement Quest Campaign: Double Drops"
     ],
     "jp_date": "08/08/2026",
-    "global_date": "12/10/2026",
-    "days": ""
+    "global_date": "26/10/2026",
+    "days": "Em 39 dias"
   },
   {
     "index": 169,
@@ -2317,8 +2317,8 @@
       "Blue Type PickUp Gacha: Blood Borne Resolve & Shatter To Pieces"
     ],
     "jp_date": "10/08/2026",
-    "global_date": "14/10/2026",
-    "days": ""
+    "global_date": "28/10/2026",
+    "days": "Em 41 dias"
   },
   {
     "index": 170,
@@ -2329,8 +2329,8 @@
       "Cursed Object Collection Campaign: Double Drops"
     ],
     "jp_date": "15/08/2026",
-    "global_date": "19/10/2026",
-    "days": ""
+    "global_date": "02/11/2026",
+    "days": "Em 46 dias"
   },
   {
     "index": 171,
@@ -2343,8 +2343,8 @@
       "1000 Days Commemoration SSR Guaranteed Paid Gacha"
     ],
     "jp_date": "17/08/2026",
-    "global_date": "21/10/2026",
-    "days": ""
+    "global_date": "04/11/2026",
+    "days": "Em 48 dias"
   },
   {
     "index": 172,
@@ -2356,8 +2356,8 @@
       "Map Event: Kyoto Dead School Part 3"
     ],
     "jp_date": "19/08/2026",
-    "global_date": "23/10/2026",
-    "days": ""
+    "global_date": "06/11/2026",
+    "days": "Em 50 dias"
   },
   {
     "index": 173,
@@ -2368,8 +2368,8 @@
       "Domain Investigation Campaign: Double Drops"
     ],
     "jp_date": "22/08/2026",
-    "global_date": "26/10/2026",
-    "days": ""
+    "global_date": "09/11/2026",
+    "days": "Em 53 dias"
   },
   {
     "index": 174,
@@ -2383,8 +2383,8 @@
       "Hidden Inventory/Premature Death Guaranteed SSR Character Paid Gacha"
     ],
     "jp_date": "31/08/2026",
-    "global_date": "04/11/2026",
-    "days": ""
+    "global_date": "18/11/2026",
+    "days": "Em 62 dias"
   },
   {
     "index": 175,
@@ -2396,8 +2396,8 @@
       "Red Type PickUp Gacha: Tool Manipulation & The Final Bullet"
     ],
     "jp_date": "07/09/2026",
-    "global_date": "11/11/2026",
-    "days": ""
+    "global_date": "25/11/2026",
+    "days": "Em 69 dias"
   },
   {
     "index": 176,
@@ -2409,8 +2409,8 @@
       "Map Event: Blue Footprints Part 1"
     ],
     "jp_date": "11/09/2026",
-    "global_date": "15/11/2026",
-    "days": ""
+    "global_date": "29/11/2026",
+    "days": "Em 73 dias"
   },
   {
     "index": 177,
@@ -2421,7 +2421,7 @@
       "Illusory Tower: Diverse Stage Update"
     ],
     "jp_date": "14/10/2026",
-    "global_date": "18/12/2026",
-    "days": ""
+    "global_date": "01/01/2027",
+    "days": "Em 106 dias"
   }
 ]

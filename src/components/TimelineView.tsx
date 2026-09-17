@@ -1,15 +1,101 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo, useRef } from 'react';
 import type { TimelineEvent } from '../types';
-import { Calendar, Clock, Search, CheckCircle2, Flame, Sparkles } from 'lucide-react';
-import { playClick } from '../utils/sound';
+import { 
+  Calendar, 
+  Clock, 
+  Search, 
+  CheckCircle2, 
+  Flame, 
+  Sparkles, 
+  Calculator, 
+  Coins, 
+  Target, 
+  RotateCcw, 
+  ChevronDown, 
+  ChevronUp, 
+  TrendingUp,
+  Sparkle
+} from 'lucide-react';
+import { playClick, playSelect } from '../utils/sound';
 
 interface TimelineViewProps {
   events: TimelineEvent[];
 }
 
+const TODAY_DATE = new Date(Date.UTC(2026, 8, 17, 12, 0, 0)); // 17/09/2026 12:00
+const DEFAULT_LAG = 79; // Calibrado: Ijichi lançado em 17/09/2026 às 12:00
+
+const parseDMY = (s: string) => {
+  const parts = s.split('/');
+  return new Date(Date.UTC(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10), 12, 0, 0));
+};
+
+const formatDMY = (date: Date) => {
+  const d = String(date.getUTCDate()).padStart(2, '0');
+  const m = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const y = date.getUTCFullYear();
+  return `${d}/${m}/${y}`;
+};
+
 export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'ALL' | 'RELEASED' | 'UPCOMING'>('ALL');
+  const [showCalculator, setShowCalculator] = useState(true);
+  
+  // Calculator state
+  const upcomingEvents = useMemo(() => events.filter(e => e.status !== 'released'), [events]);
+  const [selectedBannerIndex, setSelectedBannerIndex] = useState<number>(() => {
+    return upcomingEvents[0]?.index ?? 161;
+  });
+  const [customLag, setCustomLag] = useState<number>(DEFAULT_LAG);
+  const [currentCubes, setCurrentCubes] = useState<number>(15000);
+  const [dailyCubesIncome, setDailyCubesIncome] = useState<number>(350);
+
+  const calcSectionRef = useRef<HTMLDivElement>(null);
+
+  const selectedEvent = useMemo(() => {
+    return events.find(e => e.index === selectedBannerIndex) || upcomingEvents[0] || events[0];
+  }, [events, selectedBannerIndex, upcomingEvents]);
+
+  // Dynamic calculations
+  const calcResults = useMemo(() => {
+    if (!selectedEvent) return null;
+    const jpDate = parseDMY(selectedEvent.jp_date);
+    const predictedGlobal = new Date(jpDate.getTime());
+    predictedGlobal.setUTCDate(predictedGlobal.getUTCDate() + customLag);
+
+    const diffMs = predictedGlobal.getTime() - TODAY_DATE.getTime();
+    const daysRemaining = Math.max(0, Math.round(diffMs / (1000 * 60 * 60 * 24)));
+
+    const accumulatedCubes = daysRemaining * dailyCubesIncome;
+    const totalProjectedCubes = currentCubes + accumulatedCubes;
+    const totalPulls = Math.floor(totalProjectedCubes / 300);
+    const pityPulls = 250;
+    const pityCubes = pityPulls * 300; // 75,000
+    const pityProgress = Math.min(100, Math.round((totalProjectedCubes / pityCubes) * 100));
+    const missingCubes = Math.max(0, pityCubes - totalProjectedCubes);
+    const missingPulls = Math.ceil(missingCubes / 300);
+    const isGuaranteed = totalProjectedCubes >= pityCubes;
+
+    return {
+      predictedGlobalFormatted: formatDMY(predictedGlobal),
+      daysRemaining,
+      accumulatedCubes,
+      totalProjectedCubes,
+      totalPulls,
+      pityProgress,
+      missingCubes,
+      missingPulls,
+      isGuaranteed
+    };
+  }, [selectedEvent, customLag, currentCubes, dailyCubesIncome]);
+
+  const handleSelectBannerForCalc = (evIndex: number) => {
+    playSelect();
+    setSelectedBannerIndex(evIndex);
+    setShowCalculator(true);
+    calcSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 
   const filteredEvents = useMemo(() => {
     return events.filter((ev) => {
@@ -33,12 +119,16 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#251b40] pb-6">
         <div>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30">
               Servidor JP & Previsão Global
             </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+              <Sparkle className="w-3 h-3 text-emerald-400" />
+              Lag Calibrado Oficial: 79 Dias
+            </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
-              Lag Oficial: ~65 Dias
+              Marco: Ijichi 17/09 às 12:00
             </span>
           </div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight flex items-center gap-3">
@@ -46,7 +136,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
             CRONOGRAMA & PREVISÕES DE BANNERS
           </h1>
           <p className="text-sm text-gray-400 mt-1">
-            Histórico completo de banners e eventos da versão japonesa (JP) sincronizado com a previsão calibrada para o servidor Global.
+            Histórico completo de eventos da versão japonesa (JP) sincronizado com a previsão calibrada para o servidor Global.
           </p>
         </div>
 
@@ -69,13 +159,281 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
           <Clock className="w-5 h-5" />
         </div>
         <div className="space-y-1 text-xs text-gray-300">
-          <h3 className="font-bold text-sm text-blue-200">
-            Aceleração Oficial do Servidor Global
+          <h3 className="font-bold text-sm text-blue-200 flex items-center gap-2">
+            <span>Calibração Oficial em Tempo Real (Marco: Kiyotaka Ijichi)</span>
+            <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40">
+              17/09/2026 às 12:00
+            </span>
           </h3>
           <p className="leading-relaxed">
-            O Global acelerou o lançamento de eventos para alcançar a versão japonesa. Atualmente, a diferença média de lançamento é de apenas <strong>~65 dias</strong>. Eventos como <em>Gojo 0.2s</em>, <em>Suguru Geto</em> e <em>Yuta Okkotsu</em> já foram ajustados no cronograma.
+            Hoje, dia <strong>17/09/2026 às 12:00</strong>, o evento <em>Featured Gacha & Story Event: Ijichi's Unrelenting Vacation</em> chegou oficialmente ao Global. Esse marco calibrou a distância real entre os servidores em exatamente <strong>79 dias</strong> (de 30/06/2026 no JP até hoje). Todas as previsões da calculadora e cronograma abaixo utilizam essa métrica precisa.
           </p>
         </div>
+      </div>
+
+      {/* Interactive Calculator Section */}
+      <div ref={calcSectionRef} className="bg-gradient-to-br from-[#150f2e] via-[#181135] to-[#0f0b21] border border-purple-500/40 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+        {/* Glow effect */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Section Header */}
+        <div className="flex items-center justify-between gap-4 border-b border-[#2d2054] pb-4 mb-6 relative z-10">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-2xl bg-purple-600/20 border border-purple-500/40 text-purple-300">
+              <Calculator className="w-6 h-6" />
+            </div>
+            <div>
+              <h2 className="text-xl font-black text-white flex items-center gap-2">
+                <span>CALCULADORA DE PREVISÃO & ECONOMIA DE CUBOS</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                  Interativa
+                </span>
+              </h2>
+              <p className="text-xs text-gray-400">
+                Simule datas de chegada, acumulação de cubos e planejamento de pity para qualquer banner futuro.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => {
+              playClick();
+              setShowCalculator(!showCalculator);
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#120c24] border border-[#2d2250] text-gray-300 hover:text-white text-xs font-bold transition-all cursor-pointer"
+          >
+            <span>{showCalculator ? 'Recolher' : 'Expandir'}</span>
+            {showCalculator ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        </div>
+
+        {showCalculator && calcResults && (
+          <div className="space-y-6 relative z-10 animate-fadeIn">
+            {/* Controls Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Banner Selector */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
+                  <Target className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Banner / Evento Alvo:</span>
+                </label>
+                <select
+                  value={selectedBannerIndex}
+                  onChange={(e) => {
+                    playSelect();
+                    setSelectedBannerIndex(Number(e.target.value));
+                  }}
+                  className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400 cursor-pointer shadow-inner"
+                >
+                  {upcomingEvents.map((ev) => (
+                    <option key={ev.index} value={ev.index}>
+                      #{ev.index} — {ev.name} ({ev.days || 'Futuro'})
+                    </option>
+                  ))}
+                </select>
+                <span className="text-[10px] text-gray-500 block">
+                  Lançamento no Japão: <strong>{selectedEvent.jp_date}</strong>
+                </span>
+              </div>
+
+              {/* Cubes Input */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
+                  <Coins className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Cubos Atuais:</span>
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="0"
+                    step="500"
+                    value={currentCubes}
+                    onChange={(e) => setCurrentCubes(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                    className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2 text-sm font-mono text-amber-300 focus:outline-none focus:border-amber-400 shadow-inner"
+                  />
+                  <button
+                    onClick={() => {
+                      playClick();
+                      setCurrentCubes(c => c + 3000);
+                    }}
+                    className="px-2.5 py-1 bg-amber-500/20 border border-amber-500/40 rounded-xl text-xs font-bold text-amber-300 hover:bg-amber-500/30 transition-all cursor-pointer whitespace-nowrap"
+                    title="+3.000 Cubos (10 giros)"
+                  >
+                    +3k
+                  </button>
+                </div>
+                <span className="text-[10px] text-gray-500 block">
+                  Equivale a <strong>{Math.floor(currentCubes / 300)} giros</strong> agora.
+                </span>
+              </div>
+
+              {/* Daily Income Input */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
+                  <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Ganho Diário Estimado:</span>
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="number"
+                    min="50"
+                    step="50"
+                    value={dailyCubesIncome}
+                    onChange={(e) => setDailyCubesIncome(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                    className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2 text-sm font-mono text-emerald-300 focus:outline-none focus:border-emerald-400 shadow-inner"
+                  />
+                  <span className="text-xs text-gray-400 shrink-0">cubos/dia</span>
+                </div>
+                <span className="text-[10px] text-gray-500 block">
+                  Média mensal: ~{(dailyCubesIncome * 30).toLocaleString()} cubos (missões, logins e eventos)
+                </span>
+              </div>
+            </div>
+
+            {/* Simulated Lag Slider */}
+            <div className="bg-[#0f0b1f] border border-[#2c1f4e] rounded-2xl p-4 space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-gray-300 font-bold flex items-center gap-2">
+                  <span>Ajuste Dinâmico de Lag (Dias JP → Global):</span>
+                  <span className="font-mono text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/40">
+                    {customLag} dias
+                  </span>
+                  {customLag === DEFAULT_LAG && (
+                    <span className="text-[10px] text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/30">
+                      ✓ Calibração Oficial Ijichi
+                    </span>
+                  )}
+                </span>
+                {customLag !== DEFAULT_LAG && (
+                  <button
+                    onClick={() => {
+                      playClick();
+                      setCustomLag(DEFAULT_LAG);
+                    }}
+                    className="flex items-center gap-1 text-[11px] text-purple-400 hover:text-purple-200 cursor-pointer transition-colors"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    <span>Resetar para 79d</span>
+                  </button>
+                )}
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="text-[11px] text-gray-500">50d</span>
+                <input
+                  type="range"
+                  min="50"
+                  max="110"
+                  value={customLag}
+                  onChange={(e) => setCustomLag(Number(e.target.value))}
+                  className="w-full accent-purple-500 cursor-pointer"
+                />
+                <span className="text-[11px] text-gray-500">110d</span>
+              </div>
+            </div>
+
+            {/* Results Display */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Card 1: Data Prevista */}
+              <div className="bg-[#0f0a21] border border-blue-500/30 rounded-2xl p-4 space-y-1">
+                <span className="text-[10px] text-blue-400 uppercase font-bold tracking-wider">
+                  Previsão de Chegada
+                </span>
+                <div className="text-xl font-black text-white font-mono">
+                  {calcResults.predictedGlobalFormatted}
+                </div>
+                <span className="text-xs text-blue-300/80 font-bold">
+                  {calcResults.daysRemaining === 0 ? 'Chega Hoje!' : `Faltam ${calcResults.daysRemaining} dias`}
+                </span>
+              </div>
+
+              {/* Card 2: Acúmulo no Período */}
+              <div className="bg-[#0f0a21] border border-purple-500/30 rounded-2xl p-4 space-y-1">
+                <span className="text-[10px] text-purple-400 uppercase font-bold tracking-wider">
+                  Ganhos até o Banner
+                </span>
+                <div className="text-xl font-black text-purple-200 font-mono">
+                  +{calcResults.accumulatedCubes.toLocaleString()}
+                </div>
+                <span className="text-xs text-gray-400">
+                  {calcResults.daysRemaining} dias × {dailyCubesIncome} cubos/dia
+                </span>
+              </div>
+
+              {/* Card 3: Total Projetado */}
+              <div className="bg-[#0f0a21] border border-amber-500/30 rounded-2xl p-4 space-y-1">
+                <span className="text-[10px] text-amber-400 uppercase font-bold tracking-wider">
+                  Cubos no Dia do Banner
+                </span>
+                <div className="text-xl font-black text-amber-300 font-mono">
+                  {calcResults.totalProjectedCubes.toLocaleString()}
+                </div>
+                <span className="text-xs text-amber-200/80 font-bold">
+                  {calcResults.totalPulls} giros totais
+                </span>
+              </div>
+
+              {/* Card 4: Meta Pity */}
+              <div className={`border rounded-2xl p-4 space-y-1 ${
+                calcResults.isGuaranteed 
+                  ? 'bg-emerald-950/40 border-emerald-500/40' 
+                  : 'bg-[#0f0a21] border-rose-500/30'
+              }`}>
+                <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">
+                  Meta Pity (250 Giros)
+                </span>
+                <div className="flex items-center justify-between">
+                  <span className={`text-xl font-black font-mono ${
+                    calcResults.isGuaranteed ? 'text-emerald-300' : 'text-rose-300'
+                  }`}>
+                    {calcResults.pityProgress}%
+                  </span>
+                  <span className="text-[11px] text-gray-400 font-mono">
+                    {calcResults.totalPulls} / 250 giros
+                  </span>
+                </div>
+                <div className="w-full bg-[#1e1436] rounded-full h-2 overflow-hidden">
+                  <div 
+                    className={`h-full transition-all duration-500 rounded-full ${
+                      calcResults.isGuaranteed 
+                        ? 'bg-gradient-to-r from-emerald-500 to-teal-400' 
+                        : 'bg-gradient-to-r from-purple-500 to-amber-400'
+                    }`}
+                    style={{ width: `${calcResults.pityProgress}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Verdict Alert */}
+            <div className={`p-4 rounded-2xl border flex items-center justify-between gap-4 text-xs ${
+              calcResults.isGuaranteed
+                ? 'bg-emerald-950/50 border-emerald-500/50 text-emerald-200'
+                : 'bg-amber-950/40 border-amber-500/40 text-amber-200'
+            }`}>
+              <div className="flex items-center gap-3">
+                {calcResults.isGuaranteed ? (
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                ) : (
+                  <Flame className="w-5 h-5 text-amber-400 shrink-0" />
+                )}
+                <div>
+                  <div className="font-bold text-sm">
+                    {calcResults.isGuaranteed 
+                      ? '🎉 PITY GARANTIDO (100% de Certeza)!' 
+                      : `⚠️ Quase lá! Faltam ${calcResults.missingCubes.toLocaleString()} cubos (${calcResults.missingPulls} giros) para o Pity Garantido.`
+                    }
+                  </div>
+                  <p className="text-[11px] opacity-80 mt-0.5">
+                    {calcResults.isGuaranteed
+                      ? `Você acumulará ${calcResults.totalProjectedCubes.toLocaleString()} cubos até a chegada do banner (${calcResults.totalPulls} giros), superando os 250 giros necessários para o pity.`
+                      : `Com o ritmo diário atual de ${dailyCubesIncome} cubos/dia, você alcançará ${calcResults.totalPulls} de 250 giros. Considere completar missões extras da Torre Ilusória ou eventos especiais.`
+                    }
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Filter Tabs */}
@@ -128,24 +486,27 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
         {filteredEvents.map((ev) => {
           const isReleased = ev.status === 'released';
           const isCurrent = ev.status === 'current';
+          const isSelectedInCalc = ev.index === selectedBannerIndex;
 
           return (
             <div
               key={ev.index}
               className={`border rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all shadow-md ${
                 isCurrent 
-                  ? 'bg-gradient-to-r from-[#1e1236] to-[#120b22] border-amber-500/50 shadow-amber-950/20' 
-                  : isReleased
-                    ? 'bg-[#110c22] border-[#251b40] hover:border-purple-500/40 hover:bg-[#16102c]'
-                    : 'bg-[#140e28] border-blue-500/40 shadow-blue-950/20'
+                  ? 'bg-gradient-to-r from-[#1f153a] via-[#241744] to-[#160e2a] border-amber-500/70 shadow-amber-950/30 ring-1 ring-amber-500/40' 
+                  : isSelectedInCalc
+                    ? 'bg-[#1a1236] border-purple-500/70 ring-1 ring-purple-500/50'
+                    : isReleased
+                      ? 'bg-[#110c22] border-[#251b40] hover:border-purple-500/40 hover:bg-[#16102c]'
+                      : 'bg-[#140e28] border-blue-500/40 shadow-blue-950/20'
               }`}
             >
               {/* Event Content */}
               <div className="space-y-2 flex-1">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold border ${
                     isCurrent
-                      ? 'bg-amber-950/80 border-amber-500/50 text-amber-300 animate-pulse'
+                      ? 'bg-amber-950/90 border-amber-500/70 text-amber-300 animate-pulse'
                       : isReleased 
                         ? 'bg-emerald-950/70 border-emerald-500/40 text-emerald-300' 
                         : 'bg-blue-950/70 border-blue-500/40 text-blue-300'
@@ -159,6 +520,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     )}
                     {ev.status_label || (isReleased ? 'Já Lançado no Global' : 'Próximo no Global')}
                   </span>
+                  
+                  {ev.days && (
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#1d1636] text-purple-300 border border-purple-800/40">
+                      {ev.days}
+                    </span>
+                  )}
+
                   <span className="text-xs text-gray-500 font-mono">#{ev.index}</span>
                 </div>
 
@@ -182,25 +550,38 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 )}
               </div>
 
-              {/* Dates Box */}
-              <div className="flex items-center gap-6 bg-[#0a0714] px-4 py-3 rounded-xl border border-[#23183d] w-full md:w-auto justify-between md:justify-end text-xs shrink-0 shadow-inner">
-                <div>
-                  <span className="text-[10px] text-gray-500 block uppercase font-bold tracking-wider">
-                    Lançamento JP
-                  </span>
-                  <span className="font-mono font-bold text-gray-300 text-sm">
-                    {ev.jp_date}
-                  </span>
+              {/* Dates Box & Action */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
+                <div className="flex items-center gap-6 bg-[#0a0714] px-4 py-3 rounded-xl border border-[#23183d] justify-between md:justify-end text-xs shadow-inner">
+                  <div>
+                    <span className="text-[10px] text-gray-500 block uppercase font-bold tracking-wider">
+                      Lançamento JP
+                    </span>
+                    <span className="font-mono font-bold text-gray-300 text-sm">
+                      {ev.jp_date}
+                    </span>
+                  </div>
+
+                  <div className="border-l border-[#241a42] pl-5">
+                    <span className="text-[10px] text-purple-400 block uppercase font-bold tracking-wider">
+                      Previsão Global
+                    </span>
+                    <span className="font-mono font-black text-purple-200 text-sm">
+                      {ev.global_date}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="border-l border-[#241a42] pl-5">
-                  <span className="text-[10px] text-purple-400 block uppercase font-bold tracking-wider">
-                    Previsão Global
-                  </span>
-                  <span className="font-mono font-black text-purple-200 text-sm">
-                    {ev.global_date}
-                  </span>
-                </div>
+                {!isReleased && (
+                  <button
+                    onClick={() => handleSelectBannerForCalc(ev.index)}
+                    className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/40 text-purple-300 hover:text-white text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
+                    title="Simular este banner na calculadora de cubos"
+                  >
+                    <Calculator className="w-3.5 h-3.5" />
+                    <span>Calcular</span>
+                  </button>
+                )}
               </div>
             </div>
           );
