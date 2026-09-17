@@ -112,7 +112,7 @@ export function App() {
               />
             )}
 
-            {(activeTab === 'releases' || activeTab === 'timeline') && (
+            {activeTab === 'timeline' && (
               <TimelineView 
                 events={timeline}
               />

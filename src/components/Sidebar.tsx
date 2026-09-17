@@ -3,7 +3,6 @@ import {
   Home, 
   Users, 
   Sparkles, 
-  Clock, 
   Calendar, 
   ShieldCheck,
   Zap,
@@ -47,8 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'tierlist', label: 'Tierlists', icon: <Award className="w-5 h-5" /> },
     { id: 'teams', label: 'Best Teams', icon: <ShieldCheck className="w-5 h-5" /> },
     { id: 'buffs', label: 'Buffs & Debuffs', icon: <Zap className="w-5 h-5" /> },
-    { id: 'releases', label: 'Releases', icon: <Clock className="w-5 h-5" /> },
-    { id: 'timeline', label: 'JP Timeline', icon: <Calendar className="w-5 h-5" /> },
+    { id: 'timeline', label: 'Cronograma JP', icon: <Calendar className="w-5 h-5" /> },
   ];
 
   const handleNav = (tab: ActiveTab) => {

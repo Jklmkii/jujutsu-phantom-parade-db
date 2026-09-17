@@ -124,14 +124,16 @@ export interface Memory {
 
 export interface TimelineEvent {
   index: number;
-  status: string;
+  status: 'released' | 'current' | 'upcoming' | string;
+  status_label?: string;
   name: string;
+  banners?: string[];
   jp_date: string;
   global_date: string;
-  days: string;
+  days?: string;
 }
 
-export type ActiveTab = 'home' | 'characters' | 'memories' | 'tierlist' | 'teams' | 'buffs' | 'releases' | 'timeline';
+export type ActiveTab = 'home' | 'characters' | 'memories' | 'tierlist' | 'teams' | 'buffs' | 'timeline';
 
 export interface OfficialTierSlot {
   characterId: string;

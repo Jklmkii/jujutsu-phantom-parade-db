@@ -1,1434 +1,2427 @@
 [
   {
     "index": 1,
-    "status": "Lançamento Global: `07/11/2024`\n> - **Diferença Padrão (Lag):** ~`65 dias` (~11.5 meses).\n> - Data da análise: `16/09/2026`",
-    "name": "Status",
-    "jp_date": "Evento / Banner",
-    "global_date": "Data JP",
-    "days": "Previsão Global"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "1.5 Million Pre-Registrations Rewards",
+    "banners": [
+      "1.5 Million Pre-Registrations Rewards",
+      "Pickup Gacha: A Homesick Horizon"
+    ],
+    "jp_date": "21/11/2023",
+    "global_date": "25/01/2024",
+    "days": ""
   },
   {
     "index": 2,
-    "status": "",
-    "name": ":---:",
-    "jp_date": ":---",
-    "global_date": ":---:",
-    "days": ":---:"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: A Homesick Horizon",
+    "banners": [
+      "Story Event: A Homesick Horizon"
+    ],
+    "jp_date": "24/11/2023",
+    "global_date": "28/01/2024",
+    "days": ""
   },
   {
     "index": 3,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 1.5 Million Pre-Registrations Rewards<br>• Pickup Gacha: A Homesick Horizon",
-    "global_date": "21/11/2023",
-    "days": "**25/01/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "2 Million Players Achieved: SSR Guaranteed Paid Summon",
+    "banners": [
+      "2 Million Players Achieved: SSR Guaranteed Paid Summon"
+    ],
+    "jp_date": "27/11/2023",
+    "global_date": "31/01/2024",
+    "days": ""
   },
   {
     "index": 4,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: A Homesick Horizon",
-    "global_date": "24/11/2023",
-    "days": "**28/01/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "1 Million Players Achieved: SSR Guaranteed Ticket",
+    "banners": [
+      "1 Million Players Achieved: SSR Guaranteed Ticket"
+    ],
+    "jp_date": "29/11/2023",
+    "global_date": "02/02/2024",
+    "days": ""
   },
   {
     "index": 5,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 2 Million Players Achieved: SSR Guaranteed Paid Summon",
-    "global_date": "27/11/2023",
-    "days": "**31/01/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Pickup Gacha: Small Fry and Reverse Retribution",
+    "banners": [
+      "Pickup Gacha: Small Fry and Reverse Retribution",
+      "Grand Exorcism Battle -Spiritual Mountain Range Arc-"
+    ],
+    "jp_date": "30/11/2023",
+    "global_date": "03/02/2024",
+    "days": ""
   },
   {
     "index": 6,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 1 Million Players Achieved: SSR Guaranteed Ticket",
-    "global_date": "29/11/2023",
-    "days": "**02/02/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Login Event: Jujutsu Kaisen 0 - Part 1",
+    "banners": [
+      "Login Event: Jujutsu Kaisen 0 - Part 1",
+      "Story Event: Jujutsu Kaisen 0 - Part 1",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 1"
+    ],
+    "jp_date": "06/12/2023",
+    "global_date": "09/02/2024",
+    "days": ""
   },
   {
     "index": 7,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Pickup Gacha: Small Fry and Reverse Retribution<br>• Grand Exorcism Battle -Spiritual Mountain Range Arc-",
-    "global_date": "30/11/2023",
-    "days": "**03/02/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Login Event: 10 Tickets for Pickup Gacha: Jujutsu Kaisen 0 - Part 2",
+    "banners": [
+      "Login Event: 10 Tickets for Pickup Gacha: Jujutsu Kaisen 0 - Part 2",
+      "Map Event: Jujutsu Kaisen 0 - Part 2",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 2"
+    ],
+    "jp_date": "15/12/2023",
+    "global_date": "18/02/2024",
+    "days": ""
   },
   {
     "index": 8,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Login Event: Jujutsu Kaisen 0 - Part 1<br>• Story Event: Jujutsu Kaisen 0 - Part 1<br>• Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 1",
-    "global_date": "06/12/2023",
-    "days": "**09/02/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "3 Million Players Achieved: 3,000 Kaiju",
+    "banners": [
+      "3 Million Players Achieved: 3,000 Kaiju",
+      "Login Event: 10 Tickets for Pickup Gacha: Jujutsu Kaisen 0 - Part 3",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 3"
+    ],
+    "jp_date": "18/12/2023",
+    "global_date": "21/02/2024",
+    "days": ""
   },
   {
     "index": 9,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Login Event: 10 Tickets for Pickup Gacha: Jujutsu Kaisen 0 - Part 2<br>• Map Event: Jujutsu Kaisen 0 - Part 2<br>• Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 2",
-    "global_date": "15/12/2023",
-    "days": "**18/02/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Night Parade of 100 Demons Gift: 3,000 Kaiju",
+    "banners": [
+      "Night Parade of 100 Demons Gift: 3,000 Kaiju"
+    ],
+    "jp_date": "24/12/2023",
+    "global_date": "27/02/2024",
+    "days": ""
   },
   {
     "index": 10,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 3 Million Players Achieved: 3,000 Kaiju<br>• Login Event: 10 Tickets for Pickup Gacha: Jujutsu Kaisen 0 - Part 3<br>• Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 3",
-    "global_date": "18/12/2023",
-    "days": "**21/02/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: The Land Where Shadows Fall",
+    "banners": [
+      "Story Event: The Land Where Shadows Fall",
+      "Pickup Gacha: The Land Where Shadows Fall",
+      "New Year Paid Gacha: SSR Character Guaranteed (1 Time Only)",
+      "New Year Paid Gacha: SSR Memory Guaranteed (1 Time Only)"
+    ],
+    "jp_date": "28/12/2023",
+    "global_date": "02/03/2024",
+    "days": ""
   },
   {
     "index": 11,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Night Parade of 100 Demons Gift: 3,000 Kaiju",
-    "global_date": "24/12/2023",
-    "days": "**27/02/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Character Grade Update: Grade 9 Release",
+    "banners": [
+      "Character Grade Update: Grade 9 Release",
+      "&nbsp;&nbsp;Main Story Update: Chapter 10 Release",
+      "Strengthening Quest Campaign: Double Drops",
+      "&nbsp;&nbsp;Pickup Gacha: Nimble Body"
+    ],
+    "jp_date": "11/01/2024",
+    "global_date": "16/03/2024",
+    "days": ""
   },
   {
     "index": 12,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: The Land Where Shadows Fall<br>• Pickup Gacha: The Land Where Shadows Fall<br>• New Year Paid Gacha: SSR Character Guaranteed (1 Time Only)<br>• New Year Paid Gacha: SSR Memory Guaranteed (1 Time Only)",
-    "global_date": "28/12/2023",
-    "days": "**02/03/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Sacred Mountain Edition - 2",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Sacred Mountain Edition - 2",
+      "Pickup Gacha: I Will Follow You, Nanami-san"
+    ],
+    "jp_date": "19/01/2024",
+    "global_date": "24/03/2024",
+    "days": ""
   },
   {
     "index": 13,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Character Grade Update: Grade 9 Release<br>• &nbsp;&nbsp;Main Story Update: Chapter 10 Release<br>• Strengthening Quest Campaign: Double Drops<br>• &nbsp;&nbsp;Pickup Gacha: Nimble Body",
-    "global_date": "11/01/2024",
-    "days": "**16/03/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Gojo Satoru's Memorable Holiday?",
+    "banners": [
+      "Story Event: Gojo Satoru's Memorable Holiday?",
+      "Pickup Gacha: Gojo Satoru's Memorable Holiday?"
+    ],
+    "jp_date": "29/01/2024",
+    "global_date": "03/04/2024",
+    "days": ""
   },
   {
     "index": 14,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Sacred Mountain Edition - 2<br>• Pickup Gacha: I Will Follow You, Nanami-san",
-    "global_date": "19/01/2024",
-    "days": "**24/03/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "4 Million Players Achieved: 3,000 Kaiju",
+    "banners": [
+      "4 Million Players Achieved: 3,000 Kaiju"
+    ],
+    "jp_date": "06/02/2024",
+    "global_date": "11/04/2024",
+    "days": ""
   },
   {
     "index": 15,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Gojo Satoru's Memorable Holiday?<br>• Pickup Gacha: Gojo Satoru's Memorable Holiday?",
-    "global_date": "29/01/2024",
-    "days": "**03/04/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Eso & Kechizu",
+    "banners": [
+      "Fomidable Battle: VS Eso & Kechizu",
+      "Pickup Gacha: Fraternal Bond"
+    ],
+    "jp_date": "13/02/2024",
+    "global_date": "18/04/2024",
+    "days": ""
   },
   {
     "index": 16,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 4 Million Players Achieved: 3,000 Kaiju",
-    "global_date": "06/02/2024",
-    "days": "**11/04/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Sacred Mountain Edition - 3",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Sacred Mountain Edition - 3",
+      "Pickup Gacha: Determination Of The Bloodline",
+      "Pickup Gacha: Don't Underestimate Me"
+    ],
+    "jp_date": "20/02/2024",
+    "global_date": "25/04/2024",
+    "days": ""
   },
   {
     "index": 17,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Eso & Kechizu<br>• Pickup Gacha: Fraternal Bond",
-    "global_date": "13/02/2024",
-    "days": "**18/04/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "100 Days Since Release Campaign: 3,000 Kaiju",
+    "banners": [
+      "100 Days Since Release Campaign: 3,000 Kaiju",
+      "Story Event: For Whom Does The Heart Cry",
+      "Pickup Gacha: For Whom Does The Heart Cry"
+    ],
+    "jp_date": "29/02/2024",
+    "global_date": "04/05/2024",
+    "days": ""
   },
   {
     "index": 18,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Sacred Mountain Edition - 3<br>• Pickup Gacha: Determination Of The Bloodline<br>• Pickup Gacha: Don't Underestimate Me",
-    "global_date": "20/02/2024",
-    "days": "**25/04/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Character Grade Update: Grade 10 Release",
+    "banners": [
+      "Character Grade Update: Grade 10 Release",
+      "Main Story Update: Chapter 11 Release",
+      "Main Story Chapter 11 Release Campaign",
+      "Fomidable Battle: VS Hanami",
+      "Pickup Gacha: Desperate Struggle"
+    ],
+    "jp_date": "14/03/2024",
+    "global_date": "18/05/2024",
+    "days": ""
   },
   {
     "index": 19,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 100 Days Since Release Campaign: 3,000 Kaiju<br>• Story Event: For Whom Does The Heart Cry<br>• Pickup Gacha: For Whom Does The Heart Cry",
-    "global_date": "29/02/2024",
-    "days": "**04/05/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Dead Mall Edition - 1",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Dead Mall Edition - 1",
+      "Pickup Gacha: Sword Option"
+    ],
+    "jp_date": "22/03/2024",
+    "global_date": "26/05/2024",
+    "days": ""
   },
   {
     "index": 20,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Character Grade Update: Grade 10 Release<br>• Main Story Update: Chapter 11 Release<br>• Main Story Chapter 11 Release Campaign<br>• Fomidable Battle: VS Hanami<br>• Pickup Gacha: Desperate Struggle",
-    "global_date": "14/03/2024",
-    "days": "**18/05/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "5 Million Players Achieved: 3,000 Kaiju",
+    "banners": [
+      "5 Million Players Achieved: 3,000 Kaiju",
+      "5 Million Player Paid Gacha: Featured SSR Guaranteed"
+    ],
+    "jp_date": "25/03/2024",
+    "global_date": "29/05/2024",
+    "days": ""
   },
   {
     "index": 21,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Dead Mall Edition - 1<br>• Pickup Gacha: Sword Option",
-    "global_date": "22/03/2024",
-    "days": "**26/05/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Aoi Todo's Passionate Baseball Career",
+    "banners": [
+      "Story Event: Aoi Todo's Passionate Baseball Career",
+      "Pickup Gacha: Brothers"
+    ],
+    "jp_date": "01/04/2024",
+    "global_date": "05/06/2024",
+    "days": ""
   },
   {
     "index": 22,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 5 Million Players Achieved: 3,000 Kaiju<br>• 5 Million Player Paid Gacha: Featured SSR Guaranteed",
-    "global_date": "25/03/2024",
-    "days": "**29/05/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": ";5 Million Players Achieved: 2,000 Kaiju & 500 Phantom Medals",
+    "banners": [
+      ";5 Million Players Achieved: 2,000 Kaiju & 500 Phantom Medals",
+      "Fomidable Battle: VS Mahito",
+      "Phantom Medal Exchange Update: Mahito Released",
+      "Pickup Gacha: Cursed Energy Infusion"
+    ],
+    "jp_date": "12/04/2024",
+    "global_date": "16/06/2024",
+    "days": ""
   },
   {
     "index": 23,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Aoi Todo's Passionate Baseball Career<br>• Pickup Gacha: Brothers",
-    "global_date": "01/04/2024",
-    "days": "**05/06/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "PC Version Release Campaign: SSR Guaranteed Ticket",
+    "banners": [
+      "PC Version Release Campaign: SSR Guaranteed Ticket"
+    ],
+    "jp_date": "16/04/2024",
+    "global_date": "20/06/2024",
+    "days": ""
   },
   {
     "index": 24,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• ;5 Million Players Achieved: 2,000 Kaiju & 500 Phantom Medals<br>• Fomidable Battle: VS Mahito<br>• Phantom Medal Exchange Update: Mahito Released<br>• Pickup Gacha: Cursed Energy Infusion",
-    "global_date": "12/04/2024",
-    "days": "**16/06/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Dead Mall Edition - 2",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Dead Mall Edition - 2",
+      "&nbsp;&nbsp;Pickup Gacha: Need Help?"
+    ],
+    "jp_date": "19/04/2024",
+    "global_date": "23/06/2024",
+    "days": ""
   },
   {
     "index": 25,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• PC Version Release Campaign: SSR Guaranteed Ticket",
-    "global_date": "16/04/2024",
-    "days": "**20/06/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Golden Week Campaign: 1,200 Kaiju",
+    "banners": [
+      "Golden Week Campaign: 1,200 Kaiju",
+      "Story Event: Rain And Foosteps",
+      "Pickup Gacha: Rain And Foosteps"
+    ],
+    "jp_date": "30/04/2024",
+    "global_date": "04/07/2024",
+    "days": ""
   },
   {
     "index": 26,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Dead Mall Edition - 2<br>• &nbsp;&nbsp;Pickup Gacha: Need Help?",
-    "global_date": "19/04/2024",
-    "days": "**23/06/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Feature Released: Phantom Parade Pass",
+    "banners": [
+      "New Feature Released: Phantom Parade Pass"
+    ],
+    "jp_date": "01/05/2024",
+    "global_date": "05/07/2024",
+    "days": ""
   },
   {
     "index": 27,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Golden Week Campaign: 1,200 Kaiju<br>• Story Event: Rain And Foosteps<br>• Pickup Gacha: Rain And Foosteps",
-    "global_date": "30/04/2024",
-    "days": "**04/07/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Jogo",
+    "banners": [
+      "Fomidable Battle: VS Jogo",
+      "Pickup Gacha: Believe in Each Other"
+    ],
+    "jp_date": "14/05/2024",
+    "global_date": "18/07/2024",
+    "days": ""
   },
   {
     "index": 28,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Feature Released: Phantom Parade Pass",
-    "global_date": "01/05/2024",
-    "days": "**05/07/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Dead Mall Edition - 3",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Dead Mall Edition - 3",
+      "Pickup Gacha: Doctor's Pride"
+    ],
+    "jp_date": "17/05/2024",
+    "global_date": "21/07/2024",
+    "days": ""
   },
   {
     "index": 29,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Jogo<br>• Pickup Gacha: Believe in Each Other",
-    "global_date": "14/05/2024",
-    "days": "**18/07/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Character Grade Update: Grade 11 Release",
+    "banners": [
+      "Character Grade Update: Grade 11 Release",
+      "Half Anniversary Campaign: Login Bonus (Free Memory)",
+      "Half Anniversary Celebration: 3,000 Kaiju",
+      "New Feature Released: Referral Codes",
+      "Main Story Update: Chapter 12 Release",
+      "Memory Quest: Hidden Inventory / Premature Death 1",
+      "Pickup Gacha: Hidden Inventory / Premature Death 1",
+      "Half Anniversary Paid Gacha: Featured SSR Guaranteed"
+    ],
+    "jp_date": "21/05/2024",
+    "global_date": "25/07/2024",
+    "days": ""
   },
   {
     "index": 30,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Dead Mall Edition - 3<br>• Pickup Gacha: Doctor's Pride",
-    "global_date": "17/05/2024",
-    "days": "**21/07/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Strengthening Quest Campaign: Double Drops",
+    "banners": [
+      "Strengthening Quest Campaign: Double Drops"
+    ],
+    "jp_date": "27/05/2024",
+    "global_date": "31/07/2024",
+    "days": ""
   },
   {
     "index": 31,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Character Grade Update: Grade 11 Release<br>• Half Anniversary Campaign: Login Bonus (Free Memory)<br>• Half Anniversary Celebration: 3,000 Kaiju<br>• New Feature Released: Referral Codes<br>• Main Story Update: Chapter 12 Release<br>• Memory Quest: Hidden Inventory / Premature Death 1<br>• Pickup Gacha: Hidden Inventory / Premature Death 1<br>• Half Anniversary Paid Gacha: Featured SSR Guaranteed",
-    "global_date": "21/05/2024",
-    "days": "**25/07/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: The Evanescence Of Blue",
+    "banners": [
+      "Story Event: The Evanescence Of Blue",
+      "Pickup Gacha: Hidden Inventory / Premature Death 2"
+    ],
+    "jp_date": "31/05/2024",
+    "global_date": "04/08/2024",
+    "days": ""
   },
   {
     "index": 32,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Strengthening Quest Campaign: Double Drops",
-    "global_date": "27/05/2024",
-    "days": "**31/07/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Pickup Gacha: Hidden Inventory / Premature Death 3",
+    "banners": [
+      "Pickup Gacha: Hidden Inventory / Premature Death 3"
+    ],
+    "jp_date": "03/06/2024",
+    "global_date": "07/08/2024",
+    "days": ""
   },
   {
     "index": 33,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: The Evanescence Of Blue<br>• Pickup Gacha: Hidden Inventory / Premature Death 2",
-    "global_date": "31/05/2024",
-    "days": "**04/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Top Grossing Rewards: 3,000 Kaiju",
+    "banners": [
+      "Top Grossing Rewards: 3,000 Kaiju"
+    ],
+    "jp_date": "04/06/2024",
+    "global_date": "08/08/2024",
+    "days": ""
   },
   {
     "index": 34,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Pickup Gacha: Hidden Inventory / Premature Death 3",
-    "global_date": "03/06/2024",
-    "days": "**07/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Feature Released: Dreamy Stairwell",
+    "banners": [
+      "New Feature Released: Dreamy Stairwell"
+    ],
+    "jp_date": "06/06/2024",
+    "global_date": "10/08/2024",
+    "days": ""
   },
   {
     "index": 35,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Top Grossing Rewards: 3,000 Kaiju",
-    "global_date": "04/06/2024",
-    "days": "**08/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Eso & Kechizu Rerun",
+    "banners": [
+      "Fomidable Battle: VS Eso & Kechizu Rerun",
+      "Pickup Gacha: The Worst Match / Nimble Body"
+    ],
+    "jp_date": "12/06/2024",
+    "global_date": "16/08/2024",
+    "days": ""
   },
   {
     "index": 36,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Feature Released: Dreamy Stairwell",
-    "global_date": "06/06/2024",
-    "days": "**10/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Feature Released: Memory Stories",
+    "banners": [
+      "New Feature Released: Memory Stories",
+      "Map Event: Great Sorcerer Battle - Art Museum Edition - 1",
+      "Pickup Gacha: Tokyo Fukuoka Exchange"
+    ],
+    "jp_date": "20/06/2024",
+    "global_date": "24/08/2024",
+    "days": ""
   },
   {
     "index": 37,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Eso & Kechizu Rerun<br>• Pickup Gacha: The Worst Match / Nimble Body",
-    "global_date": "12/06/2024",
-    "days": "**16/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Memory Quest: Hidden Inventory / Premature Death 2",
+    "banners": [
+      "Memory Quest: Hidden Inventory / Premature Death 2"
+    ],
+    "jp_date": "24/06/2024",
+    "global_date": "28/08/2024",
+    "days": ""
   },
   {
     "index": 38,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Feature Released: Memory Stories<br>• Map Event: Great Sorcerer Battle - Art Museum Edition - 1<br>• Pickup Gacha: Tokyo Fukuoka Exchange",
-    "global_date": "20/06/2024",
-    "days": "**24/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: A Sorcerer's Balance",
+    "banners": [
+      "Story Event: A Sorcerer's Balance",
+      "Pickup Gacha: A Sorcerer's Balance"
+    ],
+    "jp_date": "28/06/2024",
+    "global_date": "01/09/2024",
+    "days": ""
   },
   {
     "index": 39,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Memory Quest: Hidden Inventory / Premature Death 2",
-    "global_date": "24/06/2024",
-    "days": "**28/08/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "&nbsp;&nbsp;Fomidable Battle: VS Hanami Rerun",
+    "banners": [
+      "&nbsp;&nbsp;Fomidable Battle: VS Hanami Rerun",
+      "Pickup Gacha: Determination In The Blood / Don't Underestimate Me"
+    ],
+    "jp_date": "08/07/2024",
+    "global_date": "11/09/2024",
+    "days": ""
   },
   {
     "index": 40,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: A Sorcerer's Balance<br>• Pickup Gacha: A Sorcerer's Balance",
-    "global_date": "28/06/2024",
-    "days": "**01/09/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Character Grade Update: Grade 12 Release",
+    "banners": [
+      "Character Grade Update: Grade 12 Release",
+      "Main Story Update: Chapters 13 & 14 Release"
+    ],
+    "jp_date": "12/07/2024",
+    "global_date": "15/09/2024",
+    "days": ""
   },
   {
     "index": 41,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• &nbsp;&nbsp;Fomidable Battle: VS Hanami Rerun<br>• Pickup Gacha: Determination In The Blood / Don't Underestimate Me",
-    "global_date": "08/07/2024",
-    "days": "**11/09/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Pickup Gacha: Heart's Resolve",
+    "banners": [
+      "Pickup Gacha: Heart's Resolve"
+    ],
+    "jp_date": "16/07/2024",
+    "global_date": "19/09/2024",
+    "days": ""
   },
   {
     "index": 42,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Character Grade Update: Grade 12 Release<br>• Main Story Update: Chapters 13 & 14 Release",
-    "global_date": "12/07/2024",
-    "days": "**15/09/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Art Museum Edition - 2",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Art Museum Edition - 2"
+    ],
+    "jp_date": "19/07/2024",
+    "global_date": "22/09/2024",
+    "days": ""
   },
   {
     "index": 43,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Pickup Gacha: Heart's Resolve",
-    "global_date": "16/07/2024",
-    "days": "**19/09/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Pickup Gacha: Hollow Technique: Purple",
+    "banners": [
+      "Pickup Gacha: Hollow Technique: Purple"
+    ],
+    "jp_date": "21/07/2024",
+    "global_date": "24/09/2024",
+    "days": ""
   },
   {
     "index": 44,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Art Museum Edition - 2",
-    "global_date": "19/07/2024",
-    "days": "**22/09/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Principals' Tribulations",
+    "banners": [
+      "Story Event: Principals' Tribulations",
+      "Pickup Gacha: Principals' Tribulations"
+    ],
+    "jp_date": "30/07/2024",
+    "global_date": "03/10/2024",
+    "days": ""
   },
   {
     "index": 45,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Pickup Gacha: Hollow Technique: Purple",
-    "global_date": "21/07/2024",
-    "days": "**24/09/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Mahito Rerun",
+    "banners": [
+      "Fomidable Battle: VS Mahito Rerun",
+      "Pickup Gacha: Small Fry and Reverse Retribution / Incomplete Domain"
+    ],
+    "jp_date": "09/08/2024",
+    "global_date": "13/10/2024",
+    "days": ""
   },
   {
     "index": 46,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Principals' Tribulations<br>• Pickup Gacha: Principals' Tribulations",
-    "global_date": "30/07/2024",
-    "days": "**03/10/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "6 Million Players Achieved: 3,000 Kaiju",
+    "banners": [
+      "6 Million Players Achieved: 3,000 Kaiju",
+      "Memory Quest: Hidden Inventory / Premature Death 3",
+      "Pickup Gacha: Hidden Inventory / Premature Death 1 Rerun"
+    ],
+    "jp_date": "16/08/2024",
+    "global_date": "20/10/2024",
+    "days": ""
   },
   {
     "index": 47,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Mahito Rerun<br>• Pickup Gacha: Small Fry and Reverse Retribution / Incomplete Domain",
-    "global_date": "09/08/2024",
-    "days": "**13/10/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Sorcerer Battle - Art Museum Edition - 3",
+    "banners": [
+      "Map Event: Great Sorcerer Battle - Art Museum Edition - 3",
+      "Pickup Gacha: First-Grade Sorcerer's Skill"
+    ],
+    "jp_date": "20/08/2024",
+    "global_date": "24/10/2024",
+    "days": ""
   },
   {
     "index": 48,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 6 Million Players Achieved: 3,000 Kaiju<br>• Memory Quest: Hidden Inventory / Premature Death 3<br>• Pickup Gacha: Hidden Inventory / Premature Death 1 Rerun",
-    "global_date": "16/08/2024",
-    "days": "**20/10/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Event Marathon Campaign",
+    "banners": [
+      "Event Marathon Campaign",
+      "Story Event: Dancing Amongst The Flowers",
+      "Pickup Gacha: Dancing Amongst The Flowers"
+    ],
+    "jp_date": "30/08/2024",
+    "global_date": "03/11/2024",
+    "days": ""
   },
   {
     "index": 49,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Sorcerer Battle - Art Museum Edition - 3<br>• Pickup Gacha: First-Grade Sorcerer's Skill",
-    "global_date": "20/08/2024",
-    "days": "**24/10/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Jogo Rerun",
+    "banners": [
+      "Fomidable Battle: VS Jogo Rerun",
+      "Pickup Gacha: Hidden Inventory / Premature Death 2 Rerun"
+    ],
+    "jp_date": "10/09/2024",
+    "global_date": "14/11/2024",
+    "days": ""
   },
   {
     "index": 50,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Event Marathon Campaign<br>• Story Event: Dancing Amongst The Flowers<br>• Pickup Gacha: Dancing Amongst The Flowers",
-    "global_date": "30/08/2024",
-    "days": "**03/11/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Character Grade Update: Grade 13 Release",
+    "banners": [
+      "Character Grade Update: Grade 13 Release",
+      "Main Story Update: Chapter 15 Release",
+      "Strengthening Quest Campaign: Double Drops",
+      "300 Days Since Release Campaign: 3,000 Kaiju",
+      "PC Login Gift: 500 Kaiju"
+    ],
+    "jp_date": "17/09/2024",
+    "global_date": "21/11/2024",
+    "days": ""
   },
   {
     "index": 51,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Jogo Rerun<br>• Pickup Gacha: Hidden Inventory / Premature Death 2 Rerun",
-    "global_date": "10/09/2024",
-    "days": "**14/11/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Standard Pool Update",
+    "banners": [
+      "Standard Pool Update",
+      "New Feature: Gacha Point Cards",
+      "Map Event: Great Exorcism Battle - Valley Edition - 1",
+      "14 Days Only! Start Dash Select Gacha (Non-Paid)",
+      "72 Hours Only! Start Dash Select Gacha (Paid)",
+      "Pickup Gacha: The Final Bullet"
+    ],
+    "jp_date": "20/09/2024",
+    "global_date": "24/11/2024",
+    "days": ""
   },
   {
     "index": 52,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Character Grade Update: Grade 13 Release<br>• Main Story Update: Chapter 15 Release<br>• Strengthening Quest Campaign: Double Drops<br>• 300 Days Since Release Campaign: 3,000 Kaiju<br>• PC Login Gift: 500 Kaiju",
-    "global_date": "17/09/2024",
-    "days": "**21/11/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "\"Jujutsu Kaisen\" Manga Ending: SSR Character Guaranteed Ticket",
+    "banners": [
+      "\"Jujutsu Kaisen\" Manga Ending: SSR Character Guaranteed Ticket",
+      "Story Event: Words Beget Curses",
+      "Pickup Gacha: Words Beget Curses"
+    ],
+    "jp_date": "30/09/2024",
+    "global_date": "04/12/2024",
+    "days": ""
   },
   {
     "index": 53,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Standard Pool Update<br>• New Feature: Gacha Point Cards<br>• Map Event: Great Exorcism Battle - Valley Edition - 1<br>• 14 Days Only! Start Dash Select Gacha (Non-Paid)<br>• 72 Hours Only! Start Dash Select Gacha (Paid)<br>• Pickup Gacha: The Final Bullet",
-    "global_date": "20/09/2024",
-    "days": "**24/11/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Chiki Chiki! Cursed Corpse Explorers! Stage 1",
+    "banners": [
+      "Chiki Chiki! Cursed Corpse Explorers! Stage 1"
+    ],
+    "jp_date": "04/10/2024",
+    "global_date": "08/12/2024",
+    "days": ""
   },
   {
     "index": 54,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• \"Jujutsu Kaisen\" Manga Ending: SSR Character Guaranteed Ticket<br>• Story Event: Words Beget Curses<br>• Pickup Gacha: Words Beget Curses",
-    "global_date": "30/09/2024",
-    "days": "**04/12/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Eso & Kechizu Rerun; New Content Released: SP Battle",
+    "banners": [
+      "Fomidable Battle: VS Eso & Kechizu Rerun; New Content Released: SP Battle"
+    ],
+    "jp_date": "10/10/2024",
+    "global_date": "14/12/2024",
+    "days": ""
   },
   {
     "index": 55,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Chiki Chiki! Cursed Corpse Explorers! Stage 1",
-    "global_date": "04/10/2024",
-    "days": "**08/12/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Memory Quest: Hidden Inventory / Premature Death 4",
+    "banners": [
+      "Memory Quest: Hidden Inventory / Premature Death 4",
+      "Pickup Gacha: Hidden Inventory / Premature Death 3 Rerun"
+    ],
+    "jp_date": "17/10/2024",
+    "global_date": "21/12/2024",
+    "days": ""
   },
   {
     "index": 56,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Eso & Kechizu Rerun; New Content Released: SP Battle",
-    "global_date": "10/10/2024",
-    "days": "**14/12/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Exorcism Battle - Valley Edition - 2",
+    "banners": [
+      "Map Event: Great Exorcism Battle - Valley Edition - 2",
+      "Pickup Gacha: Keep Hammering At Them"
+    ],
+    "jp_date": "22/10/2024",
+    "global_date": "26/12/2024",
+    "days": ""
   },
   {
     "index": 57,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Memory Quest: Hidden Inventory / Premature Death 4<br>• Pickup Gacha: Hidden Inventory / Premature Death 3 Rerun",
-    "global_date": "17/10/2024",
-    "days": "**21/12/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Side Story: Dawn Of Fukuoka Branch Campus",
+    "banners": [
+      "Side Story: Dawn Of Fukuoka Branch Campus",
+      "Story Event: Ijichi's Report - Kyushu Records",
+      "Pickup Gacha: Kyushu Records"
+    ],
+    "jp_date": "31/10/2024",
+    "global_date": "04/01/2025",
+    "days": ""
   },
   {
     "index": 58,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Exorcism Battle - Valley Edition - 2<br>• Pickup Gacha: Keep Hammering At Them",
-    "global_date": "22/10/2024",
-    "days": "**26/12/2024**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle VS -Hanami- Rerun",
+    "banners": [
+      "Fomidable Battle VS -Hanami- Rerun",
+      "Pickup Gacha: Hollow Technique: Purple, Heart's Resolve",
+      "Cursed Object Collection 2x Drop"
+    ],
+    "jp_date": "06/11/2024",
+    "global_date": "10/01/2025",
+    "days": ""
   },
   {
     "index": 59,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Side Story: Dawn Of Fukuoka Branch Campus<br>• Story Event: Ijichi's Report - Kyushu Records<br>• Pickup Gacha: Kyushu Records",
-    "global_date": "31/10/2024",
-    "days": "**04/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Exorcism Battle - Valley Edition - 3",
+    "banners": [
+      "Map Event: Great Exorcism Battle - Valley Edition - 3",
+      "Pickup Gacha: Overtime Work / Sword Option"
+    ],
+    "jp_date": "12/11/2024",
+    "global_date": "16/01/2025",
+    "days": ""
   },
   {
     "index": 60,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle VS -Hanami- Rerun<br>• Pickup Gacha: Hollow Technique: Purple, Heart's Resolve<br>• Cursed Object Collection 2x Drop",
-    "global_date": "06/11/2024",
-    "days": "**10/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Main Story Update: Chapter 16 Release",
+    "banners": [
+      "Main Story Update: Chapter 16 Release",
+      "Character Grade Update: Grade 14-15 Release",
+      "Main Story Chapter 16 Campaign: Login Bonus",
+      "Main Story 0 AP Cost Campaign",
+      "New Feature: Main Story Pass",
+      "Featured Gacha: With That Will In Mind"
+    ],
+    "jp_date": "17/11/2024",
+    "global_date": "21/01/2025",
+    "days": ""
   },
   {
     "index": 61,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Exorcism Battle - Valley Edition - 3<br>• Pickup Gacha: Overtime Work / Sword Option",
-    "global_date": "12/11/2024",
-    "days": "**16/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Free Multi Summon Gacha: 1st Year Anniversary",
+    "banners": [
+      "Free Multi Summon Gacha: 1st Year Anniversary"
+    ],
+    "jp_date": "17/11/2024",
+    "global_date": "21/01/2025",
+    "days": ""
   },
   {
     "index": 62,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Main Story Update: Chapter 16 Release<br>• Character Grade Update: Grade 14-15 Release<br>• Main Story Chapter 16 Campaign: Login Bonus<br>• Main Story 0 AP Cost Campaign<br>• New Feature: Main Story Pass<br>• Featured Gacha: With That Will In Mind",
-    "global_date": "17/11/2024",
-    "days": "**21/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Magnificent Phantom Ship",
+    "banners": [
+      "Story Event: Magnificent Phantom Ship",
+      "New Feature: Skin",
+      "Event Marathon 2",
+      "1st Year Anniversary Campaign: Login Bonus",
+      "1st Year Anniversary Campaign: Free 3K Cubes",
+      "Enhancement Support Mission",
+      "Free AP Recovery Campaign",
+      "Player Rank Update: Max Rank 130",
+      "Friend Invitation Reset",
+      "Limited-Time Gacha: Magnificent Phantom Ship, Part 1"
+    ],
+    "jp_date": "21/11/2024",
+    "global_date": "25/01/2025",
+    "days": ""
   },
   {
     "index": 63,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Free Multi Summon Gacha: 1st Year Anniversary",
-    "global_date": "17/11/2024",
-    "days": "**21/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Illusory Tower Update: Floor 51-60",
+    "banners": [
+      "Illusory Tower Update: Floor 51-60"
+    ],
+    "jp_date": "25/11/2024",
+    "global_date": "29/01/2025",
+    "days": ""
   },
   {
     "index": 64,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Magnificent Phantom Ship<br>• New Feature: Skin<br>• Event Marathon 2<br>• 1st Year Anniversary Campaign: Login Bonus<br>• 1st Year Anniversary Campaign: Free 3K Cubes<br>• Enhancement Support Mission<br>• Free AP Recovery Campaign<br>• Player Rank Update: Max Rank 130<br>• Friend Invitation Reset<br>• Limited-Time Gacha: Magnificent Phantom Ship, Part 1",
-    "global_date": "21/11/2024",
-    "days": "**25/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Magnificent Phantom Ship, Part 2",
+    "banners": [
+      "Limited-Time Gacha: Magnificent Phantom Ship, Part 2"
+    ],
+    "jp_date": "29/11/2024",
+    "global_date": "02/02/2025",
+    "days": ""
   },
   {
     "index": 65,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Illusory Tower Update: Floor 51-60",
-    "global_date": "25/11/2024",
-    "days": "**29/01/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Enhancement Quest Update: New Stage",
+    "banners": [
+      "Enhancement Quest Update: New Stage",
+      "15 Million Combined Players Achieved: 3,000 Kaiju & New Memory",
+      "Fomidable Battle VS -Mahito- Rerun"
+    ],
+    "jp_date": "06/12/2024",
+    "global_date": "09/02/2025",
+    "days": ""
   },
   {
     "index": 66,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Magnificent Phantom Ship, Part 2",
-    "global_date": "29/11/2024",
-    "days": "**02/02/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Character Balance Update 2",
+    "banners": [
+      "Character Balance Update 2",
+      "Story Event: Jujutsu Kaisen 0 - Part 1 Rerun",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 1",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 2"
+    ],
+    "jp_date": "13/12/2024",
+    "global_date": "16/02/2025",
+    "days": ""
   },
   {
     "index": 67,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Enhancement Quest Update: New Stage<br>• 15 Million Combined Players Achieved: 3,000 Kaiju & New Memory<br>• Fomidable Battle VS -Mahito- Rerun",
-    "global_date": "06/12/2024",
-    "days": "**09/02/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Jujutsu Kaisen 0 - Part 2 Rerun",
+    "banners": [
+      "Map Event: Jujutsu Kaisen 0 - Part 2 Rerun",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 3"
+    ],
+    "jp_date": "20/12/2024",
+    "global_date": "23/02/2025",
+    "days": ""
   },
   {
     "index": 68,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Character Balance Update 2<br>• Story Event: Jujutsu Kaisen 0 - Part 1 Rerun<br>• Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 1<br>• Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 2",
-    "global_date": "13/12/2024",
-    "days": "**16/02/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Night Parade of 100 Demons Gift: 3,000 Kaiju",
+    "banners": [
+      "Night Parade of 100 Demons Gift: 3,000 Kaiju"
+    ],
+    "jp_date": "24/12/2024",
+    "global_date": "27/02/2025",
+    "days": ""
   },
   {
     "index": 69,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Jujutsu Kaisen 0 - Part 2 Rerun<br>• Movie-Limited Gacha: Jujutsu Kaisen 0 - Part 3",
-    "global_date": "20/12/2024",
-    "days": "**23/02/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Year Paid Gacha: Selective SSR Character Guaranteed (1 Time Only)",
+    "banners": [
+      "New Year Paid Gacha: Selective SSR Character Guaranteed (1 Time Only)",
+      "New Year Paid Gacha: Selective SSR Memory Guaranteed (1 Time Only)",
+      "Story Event: Ijichi's Report: Sukuna's Finger",
+      "Limited-Time Gacha: Ijichi's Report: Sukuna's Finger",
+      "Domain Investigation Campaign: Double Drops"
+    ],
+    "jp_date": "30/12/2024",
+    "global_date": "05/03/2025",
+    "days": ""
   },
   {
     "index": 70,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Night Parade of 100 Demons Gift: 3,000 Kaiju",
-    "global_date": "24/12/2024",
-    "days": "**27/02/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Year Gift(2025): 3,000 Cubes & Login Bonus",
+    "banners": [
+      "New Year Gift(2025): 3,000 Cubes & Login Bonus",
+      "New Year Free Gacha(2025): SSR Guaranteed"
+    ],
+    "jp_date": "01/01/2025",
+    "global_date": "07/03/2025",
+    "days": ""
   },
   {
     "index": 71,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Year Paid Gacha: Selective SSR Character Guaranteed (1 Time Only)<br>• New Year Paid Gacha: Selective SSR Memory Guaranteed (1 Time Only)<br>• Story Event: Ijichi's Report: Sukuna's Finger<br>• Limited-Time Gacha: Ijichi's Report: Sukuna's Finger<br>• Domain Investigation Campaign: Double Drops",
-    "global_date": "30/12/2024",
-    "days": "**05/03/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Chiki Chiki! Cursed Corpse Explorers! Stage 2",
+    "banners": [
+      "Chiki Chiki! Cursed Corpse Explorers! Stage 2"
+    ],
+    "jp_date": "07/01/2025",
+    "global_date": "13/03/2025",
+    "days": ""
   },
   {
     "index": 72,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Year Gift(2025): 3,000 Cubes & Login Bonus<br>• New Year Free Gacha(2025): SSR Guaranteed",
-    "global_date": "01/01/2025",
-    "days": "**07/03/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "PickUp Gacha: Zanshin & Shatter To Pieces & First-Grade Sorcerer's Skill",
+    "banners": [
+      "PickUp Gacha: Zanshin & Shatter To Pieces & First-Grade Sorcerer's Skill",
+      "Fomidable Battle: VS Jogo Rerun",
+      "Strengthening Quest Campaign: Double Drops"
+    ],
+    "jp_date": "14/01/2025",
+    "global_date": "20/03/2025",
+    "days": ""
   },
   {
     "index": 73,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Chiki Chiki! Cursed Corpse Explorers! Stage 2",
-    "global_date": "07/01/2025",
-    "days": "**13/03/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Feature: Hidden Potential System",
+    "banners": [
+      "New Feature: Hidden Potential System",
+      "SP Hidden Potential Unleashed: Patch 1",
+      "New Content: Curse Sweeping Battle",
+      "Main Story: Shibuya Incident -Prelude-",
+      "Main Story, Shibuya Incident Release Gift: 3,000 Cubes"
+    ],
+    "jp_date": "21/01/2025",
+    "global_date": "27/03/2025",
+    "days": ""
   },
   {
     "index": 74,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• PickUp Gacha: Zanshin & Shatter To Pieces & First-Grade Sorcerer's Skill<br>• Fomidable Battle: VS Jogo Rerun<br>• Strengthening Quest Campaign: Double Drops",
-    "global_date": "14/01/2025",
-    "days": "**20/03/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Great Exorcism Battle - Abandoned Village Arc - 1",
+    "banners": [
+      "Map Event: Great Exorcism Battle - Abandoned Village Arc - 1",
+      "Featured Gacha: Sprinting"
+    ],
+    "jp_date": "23/01/2025",
+    "global_date": "29/03/2025",
+    "days": ""
   },
   {
     "index": 75,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Feature: Hidden Potential System<br>• SP Hidden Potential Unleashed: Patch 1<br>• New Content: Curse Sweeping Battle<br>• Main Story: Shibuya Incident -Prelude-<br>• Main Story, Shibuya Incident Release Gift: 3,000 Cubes",
-    "global_date": "21/01/2025",
-    "days": "**27/03/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: The False Hero",
+    "banners": [
+      "Story Event: The False Hero",
+      "Featured Gacha: The False Hero",
+      "Event Marathon Campaign 3"
+    ],
+    "jp_date": "31/01/2025",
+    "global_date": "06/04/2025",
+    "days": ""
   },
   {
     "index": 76,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Great Exorcism Battle - Abandoned Village Arc - 1<br>• Featured Gacha: Sprinting",
-    "global_date": "23/01/2025",
-    "days": "**29/03/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Imaginary Realm: VS Eso & Kechizu Rerun",
+    "banners": [
+      "Imaginary Realm: VS Eso & Kechizu Rerun",
+      "Cursed Object Collection: Double Drops Campaign",
+      "Featured Gacha: To Protect Non-Sorcerers / Longsword Battle"
+    ],
+    "jp_date": "12/02/2025",
+    "global_date": "18/04/2025",
+    "days": ""
   },
   {
     "index": 77,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: The False Hero<br>• Featured Gacha: The False Hero<br>• Event Marathon Campaign 3",
-    "global_date": "31/01/2025",
-    "days": "**06/04/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Grand Exorcism Battle - Abandoned Village Arc - 2",
+    "banners": [
+      "Map Event: Grand Exorcism Battle - Abandoned Village Arc - 2",
+      "Featured Gacha: Night-Lurking Sorcerer"
+    ],
+    "jp_date": "19/02/2025",
+    "global_date": "25/04/2025",
+    "days": ""
   },
   {
     "index": 78,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Imaginary Realm: VS Eso & Kechizu Rerun<br>• Cursed Object Collection: Double Drops Campaign<br>• Featured Gacha: To Protect Non-Sorcerers / Longsword Battle",
-    "global_date": "12/02/2025",
-    "days": "**18/04/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Shoko Ieiri's Longest Day",
+    "banners": [
+      "Story Event: Shoko Ieiri's Longest Day",
+      "Featured Gacha: Shoko Ieiri's Longest Day",
+      "Character Rank Update: Cap Raised to 80"
+    ],
+    "jp_date": "28/02/2025",
+    "global_date": "04/05/2025",
+    "days": ""
   },
   {
     "index": 79,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Grand Exorcism Battle - Abandoned Village Arc - 2<br>• Featured Gacha: Night-Lurking Sorcerer",
-    "global_date": "19/02/2025",
-    "days": "**25/04/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: The Strongest Blue&Cursed Corpse Battle",
+    "banners": [
+      "Featured Gacha: The Strongest Blue&Cursed Corpse Battle",
+      "Fomidable Battle VS -Hanami- Rerun: SP Battle",
+      "Strengthening Quest Campaign: Double Drops"
+    ],
+    "jp_date": "14/03/2025",
+    "global_date": "18/05/2025",
+    "days": ""
   },
   {
     "index": 80,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Shoko Ieiri's Longest Day<br>• Featured Gacha: Shoko Ieiri's Longest Day<br>• Character Rank Update: Cap Raised to 80",
-    "global_date": "28/02/2025",
-    "days": "**04/05/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Early Morning Departure",
+    "banners": [
+      "Featured Gacha: Early Morning Departure",
+      "Map Event: Abandoned Village Part 3",
+      "Domain Investigation Campaign: Double Drops",
+      "New Feature: Material Conversion/Synthesis",
+      "Auto Play Feature: Domain Investigation",
+      "New Feature: Battle Report",
+      "New Monthly Pass: Cube Bonus (30 Days)"
+    ],
+    "jp_date": "21/03/2025",
+    "global_date": "25/05/2025",
+    "days": ""
   },
   {
     "index": 81,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: The Strongest Blue&Cursed Corpse Battle<br>• Fomidable Battle VS -Hanami- Rerun: SP Battle<br>• Strengthening Quest Campaign: Double Drops",
-    "global_date": "14/03/2025",
-    "days": "**18/05/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Main Story: Shibuya Incident -Gate Open-",
+    "banners": [
+      "Main Story: Shibuya Incident -Gate Open-",
+      "Shibuya Incident New Chapter Celebration Campaign: Free 100 Tickets Pull",
+      "Chiki Chiki! Cursed Corpse Explorers! Stage 3",
+      "Shibuya Incident New Chapter Celebration GSSR Gacha (Character&Memory)"
+    ],
+    "jp_date": "26/03/2025",
+    "global_date": "30/05/2025",
+    "days": ""
   },
   {
     "index": 82,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Early Morning Departure<br>• Map Event: Abandoned Village Part 3<br>• Domain Investigation Campaign: Double Drops<br>• New Feature: Material Conversion/Synthesis<br>• Auto Play Feature: Domain Investigation<br>• New Feature: Battle Report<br>• New Monthly Pass: Cube Bonus (30 Days)",
-    "global_date": "21/03/2025",
-    "days": "**25/05/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Time= Money + Lie",
+    "banners": [
+      "Featured Gacha: Time= Money + Lie",
+      "Story Event: Time= Money + Lie",
+      "SP Hidden Potential: Second Batch"
+    ],
+    "jp_date": "31/03/2025",
+    "global_date": "04/06/2025",
+    "days": ""
   },
   {
     "index": 83,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Main Story: Shibuya Incident -Gate Open-<br>• Shibuya Incident New Chapter Celebration Campaign: Free 100 Tickets Pull<br>• Chiki Chiki! Cursed Corpse Explorers! Stage 3<br>• Shibuya Incident New Chapter Celebration GSSR Gacha (Character&Memory)",
-    "global_date": "26/03/2025",
-    "days": "**30/05/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "500 Days Celebration Login Bonus",
+    "banners": [
+      "500 Days Celebration Login Bonus",
+      "500 Days Celebration Paid Gacha"
+    ],
+    "jp_date": "03/04/2025",
+    "global_date": "07/06/2025",
+    "days": ""
   },
   {
     "index": 84,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Time= Money + Lie<br>• Story Event: Time= Money + Lie<br>• SP Hidden Potential: Second Batch",
-    "global_date": "31/03/2025",
-    "days": "**04/06/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle VS -Mahito- Rerun: SP Battle",
+    "banners": [
+      "Formidable Battle VS -Mahito- Rerun: SP Battle",
+      "Featured Gacha: Sorcerer Killer & The Final Bullet",
+      "Cursed Object Collection 2x Drop"
+    ],
+    "jp_date": "14/04/2025",
+    "global_date": "18/06/2025",
+    "days": ""
   },
   {
     "index": 85,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 500 Days Celebration Login Bonus<br>• 500 Days Celebration Paid Gacha",
-    "global_date": "03/04/2025",
-    "days": "**07/06/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Main Story: Shibuya Incident: -Seance-",
+    "banners": [
+      "Main Story: Shibuya Incident: -Seance-",
+      "Enhancement Quest Campaign: Double Drops",
+      "Illusory Tower Update: Floor 61-80",
+      "New Feature: Profile Icon"
+    ],
+    "jp_date": "21/04/2025",
+    "global_date": "25/06/2025",
+    "days": ""
   },
   {
     "index": 86,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle VS -Mahito- Rerun: SP Battle<br>• Featured Gacha: Sorcerer Killer & The Final Bullet<br>• Cursed Object Collection 2x Drop",
-    "global_date": "14/04/2025",
-    "days": "**18/06/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Grand Exorcism Battle - Ghost Town Arc - 1",
+    "banners": [
+      "Map Event: Grand Exorcism Battle - Ghost Town Arc - 1",
+      "Pickup Gacha: \"Let's Rescue Satoru Gojo!\""
+    ],
+    "jp_date": "23/04/2025",
+    "global_date": "27/06/2025",
+    "days": ""
   },
   {
     "index": 87,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Main Story: Shibuya Incident: -Seance-<br>• Enhancement Quest Campaign: Double Drops<br>• Illusory Tower Update: Floor 61-80<br>• New Feature: Profile Icon",
-    "global_date": "21/04/2025",
-    "days": "**25/06/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: No Conceit",
+    "banners": [
+      "Featured Gacha: No Conceit",
+      "Story Event: \"Ino&Nanami\" and \"Nanami&Ino\"",
+      "Official Web Shop",
+      "Golden Week Campaign"
+    ],
+    "jp_date": "28/04/2025",
+    "global_date": "02/07/2025",
+    "days": ""
   },
   {
     "index": 88,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Grand Exorcism Battle - Ghost Town Arc - 1<br>• Pickup Gacha: \"Let's Rescue Satoru Gojo!\"",
-    "global_date": "23/04/2025",
-    "days": "**27/06/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Domain Investigation Campaign: Double Drops",
+    "banners": [
+      "Domain Investigation Campaign: Double Drops"
+    ],
+    "jp_date": "03/05/2025",
+    "global_date": "07/07/2025",
+    "days": ""
   },
   {
     "index": 89,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: No Conceit<br>• Story Event: \"Ino&Nanami\" and \"Nanami&Ino\"<br>• Official Web Shop<br>• Golden Week Campaign",
-    "global_date": "28/04/2025",
-    "days": "**02/07/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Fomidable Battle: VS Jogo Rerun",
+    "banners": [
+      "Fomidable Battle: VS Jogo Rerun",
+      "Blue Type PickUp Gacha: Shatter To Pieces"
+    ],
+    "jp_date": "07/05/2025",
+    "global_date": "11/07/2025",
+    "days": ""
   },
   {
     "index": 90,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Domain Investigation Campaign: Double Drops",
-    "global_date": "03/05/2025",
-    "days": "**07/07/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Grand Exorcism Battle - Ghost Town Arc - 2",
+    "banners": [
+      "Map Event: Grand Exorcism Battle - Ghost Town Arc - 2",
+      "PickUp Gacha: With That Will In Mind"
+    ],
+    "jp_date": "14/05/2025",
+    "global_date": "18/07/2025",
+    "days": ""
   },
   {
     "index": 91,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Fomidable Battle: VS Jogo Rerun<br>• Blue Type PickUp Gacha: Shatter To Pieces",
-    "global_date": "07/05/2025",
-    "days": "**11/07/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Mystic of Hundred and Blue",
+    "banners": [
+      "Story Event: Mystic of Hundred and Blue",
+      "Limited-Time Gacha: Awakening",
+      "1.5th Anniversary Login Bonus(Part 1)",
+      "Standard Update 2",
+      "1.5th Anniversary Free Multi Gacha (10 Multi)",
+      "Free AP Recovery: 3 Times Per Day",
+      "Main Story: 0 AP Cost",
+      "Cursed Corpse Walk Update 1: Lvl 8->10",
+      "Player Rank Update 2: Rank 130->150",
+      "New Feature: Scene Replay",
+      "1.5th Anniversary Paid Gacha: SSR Character/Memory Guaranteed",
+      "Limited-Time Gacha: Zone",
+      "New Pass: Phanpara Pass",
+      "New Code: SSR Guaranteed Ticket",
+      "Event Marathon 4",
+      "1.5th Anniversary: Free 3K Cubes"
+    ],
+    "jp_date": "21/05/2025",
+    "global_date": "25/07/2025",
+    "days": ""
   },
   {
     "index": 92,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Grand Exorcism Battle - Ghost Town Arc - 2<br>• PickUp Gacha: With That Will In Mind",
-    "global_date": "14/05/2025",
-    "days": "**18/07/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Curse Sweep Battle Update 1: New Cursed Spirit",
+    "banners": [
+      "Curse Sweep Battle Update 1: New Cursed Spirit"
+    ],
+    "jp_date": "26/05/2025",
+    "global_date": "30/07/2025",
+    "days": ""
   },
   {
     "index": 93,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Mystic of Hundred and Blue<br>• Limited-Time Gacha: Awakening<br>• 1.5th Anniversary Login Bonus(Part 1)<br>• Standard Update 2<br>• 1.5th Anniversary Free Multi Gacha (10 Multi)<br>• Free AP Recovery: 3 Times Per Day<br>• Main Story: 0 AP Cost<br>• Cursed Corpse Walk Update 1: Lvl 8->10<br>• Player Rank Update 2: Rank 130->150<br>• New Feature: Scene Replay<br>• 1.5th Anniversary Paid Gacha: SSR Character/Memory Guaranteed<br>• Limited-Time Gacha: Zone<br>• New Pass: Phanpara Pass<br>• New Code: SSR Guaranteed Ticket<br>• Event Marathon 4<br>• 1.5th Anniversary: Free 3K Cubes",
-    "global_date": "21/05/2025",
-    "days": "**25/07/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: \"Fwoo\", \"Hyoi\"",
+    "banners": [
+      "Limited-Time Gacha: \"Fwoo\", \"Hyoi\"",
+      "Memory Quest: Hidden Inventory / Premature Death Rerun",
+      "PickUp Gacha: 0.5th Anniversary Rerun"
+    ],
+    "jp_date": "30/05/2025",
+    "global_date": "03/08/2025",
+    "days": ""
   },
   {
     "index": 94,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Curse Sweep Battle Update 1: New Cursed Spirit",
-    "global_date": "26/05/2025",
-    "days": "**30/07/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Toji Fushiguro-",
+    "banners": [
+      "Formidable Battle: VS -Toji Fushiguro-",
+      "Limited-Time Gacha: Within Infinity",
+      "Enhancement Quest Campaign: Double Drops",
+      "1.5th Anniversary Login Bonus(Part 2)"
+    ],
+    "jp_date": "11/06/2025",
+    "global_date": "15/08/2025",
+    "days": ""
   },
   {
     "index": 95,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: \"Fwoo\", \"Hyoi\"<br>• Memory Quest: Hidden Inventory / Premature Death Rerun<br>• PickUp Gacha: 0.5th Anniversary Rerun",
-    "global_date": "30/05/2025",
-    "days": "**03/08/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Early Morning Departure",
+    "banners": [
+      "Featured Gacha: Early Morning Departure",
+      "Map Event: Grand Exorcism Battle - Ghost Town Arc - 3",
+      "New Feature: Score Attack Statistic",
+      "New Feature: Battle Content Statistic",
+      "New Feature: Story Reminiscence"
+    ],
+    "jp_date": "20/06/2025",
+    "global_date": "24/08/2025",
+    "days": ""
   },
   {
     "index": 96,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Toji Fushiguro-<br>• Limited-Time Gacha: Within Infinity<br>• Enhancement Quest Campaign: Double Drops<br>• 1.5th Anniversary Login Bonus(Part 2)",
-    "global_date": "11/06/2025",
-    "days": "**15/08/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Promising New Student",
+    "banners": [
+      "Limited-Time Gacha: Promising New Student",
+      "Story Event: The Mystery is In The Book",
+      "Free AP Recovery: 3 Times Per Day",
+      "1.5th Anniversary Login Bonus(Part 3)"
+    ],
+    "jp_date": "30/06/2025",
+    "global_date": "03/09/2025",
+    "days": ""
   },
   {
     "index": 97,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Early Morning Departure<br>• Map Event: Grand Exorcism Battle - Ghost Town Arc - 3<br>• New Feature: Score Attack Statistic<br>• New Feature: Battle Content Statistic<br>• New Feature: Story Reminiscence",
-    "global_date": "20/06/2025",
-    "days": "**24/08/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Genuine Jujutsu",
+    "banners": [
+      "Limited-Time Gacha: Genuine Jujutsu"
+    ],
+    "jp_date": "04/07/2025",
+    "global_date": "07/09/2025",
+    "days": ""
   },
   {
     "index": 98,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Promising New Student<br>• Story Event: The Mystery is In The Book<br>• Free AP Recovery: 3 Times Per Day<br>• 1.5th Anniversary Login Bonus(Part 3)",
-    "global_date": "30/06/2025",
-    "days": "**03/09/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle VS -Mahito- Rerun",
+    "banners": [
+      "Formidable Battle VS -Mahito- Rerun",
+      "Red Type PickUp Gacha: Night Of Dancing Crows & Night-Lurking Sorcerer",
+      "Chiki Chiki! Cursed Corpse Explorers! Stage 4"
+    ],
+    "jp_date": "14/07/2025",
+    "global_date": "17/09/2025",
+    "days": ""
   },
   {
     "index": 99,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Genuine Jujutsu",
-    "global_date": "04/07/2025",
-    "days": "**07/09/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Ijichi's Struggle Part 1",
+    "banners": [
+      "Map Event: Ijichi's Struggle Part 1",
+      "Featured Gacha: Cursed Spirit School Group",
+      "Intermediate & Advanced Missions",
+      "SP Hidden Potential: Third Batch",
+      "Skill Details UI Update"
+    ],
+    "jp_date": "22/07/2025",
+    "global_date": "25/09/2025",
+    "days": ""
   },
   {
     "index": 100,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle VS -Mahito- Rerun<br>• Red Type PickUp Gacha: Night Of Dancing Crows & Night-Lurking Sorcerer<br>• Chiki Chiki! Cursed Corpse Explorers! Stage 4",
-    "global_date": "14/07/2025",
-    "days": "**17/09/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Main Story: Shibuya Incident: -Red Scale & Fluctuations-",
+    "banners": [
+      "Main Story: Shibuya Incident: -Red Scale & Fluctuations-",
+      "Phantom Medal Exchange Update: Dagon Released"
+    ],
+    "jp_date": "24/07/2025",
+    "global_date": "27/09/2025",
+    "days": ""
   },
   {
     "index": 101,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Ijichi's Struggle Part 1<br>• Featured Gacha: Cursed Spirit School Group<br>• Intermediate & Advanced Missions<br>• SP Hidden Potential: Third Batch<br>• Skill Details UI Update",
-    "global_date": "22/07/2025",
-    "days": "**25/09/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: The Days of Cursed Spirits",
+    "banners": [
+      "Featured Gacha: The Days of Cursed Spirits",
+      "Story Event: The Days of Cursed Spirits"
+    ],
+    "jp_date": "31/07/2025",
+    "global_date": "04/10/2025",
+    "days": ""
   },
   {
     "index": 102,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Main Story: Shibuya Incident: -Red Scale & Fluctuations-<br>• Phantom Medal Exchange Update: Dagon Released",
-    "global_date": "24/07/2025",
-    "days": "**27/09/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Choso-",
+    "banners": [
+      "Formidable Battle: VS -Choso-",
+      "Yellow Type PickUp Gacha: Cursed Corpse Battle & With That Will In Mind"
+    ],
+    "jp_date": "12/08/2025",
+    "global_date": "16/10/2025",
+    "days": ""
   },
   {
     "index": 103,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: The Days of Cursed Spirits<br>• Story Event: The Days of Cursed Spirits",
-    "global_date": "31/07/2025",
-    "days": "**04/10/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Cursed Object Collection 2x Drop",
+    "banners": [
+      "Cursed Object Collection 2x Drop"
+    ],
+    "jp_date": "14/08/2025",
+    "global_date": "18/10/2025",
+    "days": ""
   },
   {
     "index": 104,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Choso-<br>• Yellow Type PickUp Gacha: Cursed Corpse Battle & With That Will In Mind",
-    "global_date": "12/08/2025",
-    "days": "**16/10/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Seance",
+    "banners": [
+      "Featured Gacha: Seance",
+      "Map Event: Ijichi's Struggle Part 2",
+      "Main Story: Shibuya Incident: -Thunderclap-"
+    ],
+    "jp_date": "19/08/2025",
+    "global_date": "23/10/2025",
+    "days": ""
   },
   {
     "index": 105,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Cursed Object Collection 2x Drop",
-    "global_date": "14/08/2025",
-    "days": "**18/10/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: As Fast as a Fleeing Rabbit",
+    "banners": [
+      "Featured Gacha: As Fast as a Fleeing Rabbit",
+      "Story Event: As Fast as a Fleeing Rabbit",
+      "Story Reminiscence Update"
+    ],
+    "jp_date": "29/08/2025",
+    "global_date": "02/11/2025",
+    "days": ""
   },
   {
     "index": 106,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Seance<br>• Map Event: Ijichi's Struggle Part 2<br>• Main Story: Shibuya Incident: -Thunderclap-",
-    "global_date": "19/08/2025",
-    "days": "**23/10/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Rabbit's Disruption",
+    "banners": [
+      "Featured Gacha: Rabbit's Disruption",
+      "Formidable Battle: VS -Toji Fushiguro (Seance)-",
+      "SP Battle Update (Rework)"
+    ],
+    "jp_date": "12/09/2025",
+    "global_date": "16/11/2025",
+    "days": ""
   },
   {
     "index": 107,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: As Fast as a Fleeing Rabbit<br>• Story Event: As Fast as a Fleeing Rabbit<br>• Story Reminiscence Update",
-    "global_date": "29/08/2025",
-    "days": "**02/11/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Meteor of Fierceness",
+    "banners": [
+      "Featured Gacha: Meteor of Fierceness",
+      "Map Event: Ijichi's Struggle Part 3",
+      "25 Million Milestone SSR-Character-Guaranteed Paid Gacha",
+      "25 Million Milestone SSR-Memory-Guaranteed Paid Gacha",
+      "Hidden Potential System Update: Stage 2 Added"
+    ],
+    "jp_date": "19/09/2025",
+    "global_date": "23/11/2025",
+    "days": ""
   },
   {
     "index": 108,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Rabbit's Disruption<br>• Formidable Battle: VS -Toji Fushiguro (Seance)-<br>• SP Battle Update (Rework)",
-    "global_date": "12/09/2025",
-    "days": "**16/11/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Curse Sweep Battle Update: Hard Difficulty Added",
+    "banners": [
+      "Curse Sweep Battle Update: Hard Difficulty Added"
+    ],
+    "jp_date": "22/09/2025",
+    "global_date": "26/11/2025",
+    "days": ""
   },
   {
     "index": 109,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Meteor of Fierceness<br>• Map Event: Ijichi's Struggle Part 3<br>• 25 Million Milestone SSR-Character-Guaranteed Paid Gacha<br>• 25 Million Milestone SSR-Memory-Guaranteed Paid Gacha<br>• Hidden Potential System Update: Stage 2 Added",
-    "global_date": "19/09/2025",
-    "days": "**23/11/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Domain Investigation Event: \"Demonic Land Trailblazing\"",
+    "banners": [
+      "Domain Investigation Event: \"Demonic Land Trailblazing\""
+    ],
+    "jp_date": "25/09/2025",
+    "global_date": "29/11/2025",
+    "days": ""
   },
   {
     "index": 110,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Curse Sweep Battle Update: Hard Difficulty Added",
-    "global_date": "22/09/2025",
-    "days": "**26/11/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Slob around...",
+    "banners": [
+      "Featured Gacha: Slob around...",
+      "Story Event: Slob around..."
+    ],
+    "jp_date": "30/09/2025",
+    "global_date": "04/12/2025",
+    "days": ""
   },
   {
     "index": 111,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Domain Investigation Event: \"Demonic Land Trailblazing\"",
-    "global_date": "25/09/2025",
-    "days": "**29/11/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Jogo-",
+    "banners": [
+      "Formidable Battle: VS -Jogo-",
+      "Yellow Type PickUp Gacha: Cursed Corpse Battle & Life Saver"
+    ],
+    "jp_date": "08/10/2025",
+    "global_date": "12/12/2025",
+    "days": ""
   },
   {
     "index": 112,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Slob around...<br>• Story Event: Slob around...",
-    "global_date": "30/09/2025",
-    "days": "**04/12/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Movie-Limited Gacha: Arrived! Gourmet Boom!",
+    "banners": [
+      "Movie-Limited Gacha: Arrived! Gourmet Boom!",
+      "Story Event: Arrived! Gourmet Boom!"
+    ],
+    "jp_date": "18/10/2025",
+    "global_date": "22/12/2025",
+    "days": ""
   },
   {
     "index": 113,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Jogo-<br>• Yellow Type PickUp Gacha: Cursed Corpse Battle & Life Saver",
-    "global_date": "08/10/2025",
-    "days": "**12/12/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Suguru Geto-",
+    "banners": [
+      "Formidable Battle: VS -Suguru Geto-",
+      "Blue Type PickUp Gacha: Early Morning Departure & No Conceit",
+      "Illusory Tower Update: Floors 81-90"
+    ],
+    "jp_date": "24/10/2025",
+    "global_date": "28/12/2025",
+    "days": ""
   },
   {
     "index": 114,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Movie-Limited Gacha: Arrived! Gourmet Boom!<br>• Story Event: Arrived! Gourmet Boom!",
-    "global_date": "18/10/2025",
-    "days": "**22/12/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Event: Jujutsu Kaisen 0 - Part 1 Rerun",
+    "banners": [
+      "Story Event: Jujutsu Kaisen 0 - Part 1 Rerun",
+      "Movie-Limited Gacha: Jujutsu Kaisen 0",
+      "SP Hidden Potential: Fourth Batch",
+      "Paid Gacha: Selective SSR Character Guaranteed",
+      "Paid Gacha: Selective SSR Memory Guaranteed"
+    ],
+    "jp_date": "31/10/2025",
+    "global_date": "04/01/2026",
+    "days": ""
   },
   {
     "index": 115,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Suguru Geto-<br>• Blue Type PickUp Gacha: Early Morning Departure & No Conceit<br>• Illusory Tower Update: Floors 81-90",
-    "global_date": "24/10/2025",
-    "days": "**28/12/2025**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Phanpara of the Year Login Bonus",
+    "banners": [
+      "Phanpara of the Year Login Bonus"
+    ],
+    "jp_date": "05/11/2025",
+    "global_date": "09/01/2026",
+    "days": ""
   },
   {
     "index": 116,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Event: Jujutsu Kaisen 0 - Part 1 Rerun<br>• Movie-Limited Gacha: Jujutsu Kaisen 0<br>• SP Hidden Potential: Fourth Batch<br>• Paid Gacha: Selective SSR Character Guaranteed<br>• Paid Gacha: Selective SSR Memory Guaranteed",
-    "global_date": "31/10/2025",
-    "days": "**04/01/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "\"Jujutsu Kaisen: Execution\" Movie Release Login Bonus",
+    "banners": [
+      "\"Jujutsu Kaisen: Execution\" Movie Release Login Bonus",
+      "Main Story 0 AP Cost Campaign"
+    ],
+    "jp_date": "07/11/2025",
+    "global_date": "11/01/2026",
+    "days": ""
   },
   {
     "index": 117,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Phanpara of the Year Login Bonus",
-    "global_date": "05/11/2025",
-    "days": "**09/01/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Jujutsu Kaisen 0 - Part 2 Rerun",
+    "banners": [
+      "Map Event: Jujutsu Kaisen 0 - Part 2 Rerun"
+    ],
+    "jp_date": "11/11/2025",
+    "global_date": "15/01/2026",
+    "days": ""
   },
   {
     "index": 118,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• \"Jujutsu Kaisen: Execution\" Movie Release Login Bonus<br>• Main Story 0 AP Cost Campaign",
-    "global_date": "07/11/2025",
-    "days": "**11/01/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "2nd Anniversary Free Gacha: Daily Free 10 Pull",
+    "banners": [
+      "2nd Anniversary Free Gacha: Daily Free 10 Pull"
+    ],
+    "jp_date": "17/11/2025",
+    "global_date": "21/01/2026",
+    "days": ""
   },
   {
     "index": 119,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Jujutsu Kaisen 0 - Part 2 Rerun",
-    "global_date": "11/11/2025",
-    "days": "**15/01/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: 2nd Anniversary Part 1 & 2",
+    "banners": [
+      "Limited-Time Gacha: 2nd Anniversary Part 1 & 2",
+      "Story Event: The End of Illusory Dream Part 1",
+      "2nd Anniversary Login Bonus",
+      "2nd Anniversary Gift: 3000 Cubes",
+      "Standard Banner Update 3",
+      "2nd Anniversary Paid Gachas: SSR Character/Memory Guaranteed",
+      "2nd Anniversary Character/Memory Selectable Ticket Pack",
+      "Cube Exchange Store",
+      "Story Reminiscence Update",
+      "Free AP Recovery: 3 Times Per Day",
+      "Event Marathon 5",
+      "Friend Invitation Reset"
+    ],
+    "jp_date": "21/11/2025",
+    "global_date": "25/01/2026",
+    "days": ""
   },
   {
     "index": 120,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 2nd Anniversary Free Gacha: Daily Free 10 Pull",
-    "global_date": "17/11/2025",
-    "days": "**21/01/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: 2nd Anniversary Part 3",
+    "banners": [
+      "Limited-Time Gacha: 2nd Anniversary Part 3",
+      "Part 3 Tickets: Limited-Time Missions & Serial Code",
+      "Story Event: The End of Illusory Dream Part 2",
+      "Main Story: Shibuya Incident: -Gate Closed-",
+      "Main Story Pass: Shibuya Incident"
+    ],
+    "jp_date": "28/11/2025",
+    "global_date": "01/02/2026",
+    "days": ""
   },
   {
     "index": 121,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: 2nd Anniversary Part 1 & 2<br>• Story Event: The End of Illusory Dream Part 1<br>• 2nd Anniversary Login Bonus<br>• 2nd Anniversary Gift: 3000 Cubes<br>• Standard Banner Update 3<br>• 2nd Anniversary Paid Gachas: SSR Character/Memory Guaranteed<br>• 2nd Anniversary Character/Memory Selectable Ticket Pack<br>• Cube Exchange Store<br>• Story Reminiscence Update<br>• Free AP Recovery: 3 Times Per Day<br>• Event Marathon 5<br>• Friend Invitation Reset",
-    "global_date": "21/11/2025",
-    "days": "**25/01/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Top Grossing Rewards: 3000 Cubes",
+    "banners": [
+      "Top Grossing Rewards: 3000 Cubes"
+    ],
+    "jp_date": "29/11/2025",
+    "global_date": "02/02/2026",
+    "days": ""
   },
   {
     "index": 122,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: 2nd Anniversary Part 3<br>• Part 3 Tickets: Limited-Time Missions & Serial Code<br>• Story Event: The End of Illusory Dream Part 2<br>• Main Story: Shibuya Incident: -Gate Closed-<br>• Main Story Pass: Shibuya Incident",
-    "global_date": "28/11/2025",
-    "days": "**01/02/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: 2nd Anniversary Part 4",
+    "banners": [
+      "Limited-Time Gacha: 2nd Anniversary Part 4",
+      "Part 4 Tickets: Login Bonus & Limited-Time Missions",
+      "Raid Battle Event: VS -Mahoraga-"
+    ],
+    "jp_date": "04/12/2025",
+    "global_date": "07/02/2026",
+    "days": ""
   },
   {
     "index": 123,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Top Grossing Rewards: 3000 Cubes",
-    "global_date": "29/11/2025",
-    "days": "**02/02/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Zone, Within Infinity & Genuine Jujutsu",
+    "banners": [
+      "Limited-Time Gacha: Zone, Within Infinity & Genuine Jujutsu",
+      "Formidable Battle: VS -Choso- Rerun",
+      "Cursed Prison Island Main StoryChapter 1: Prisoner Chapter 2: Ritual of Unlocking"
+    ],
+    "jp_date": "11/12/2025",
+    "global_date": "14/02/2026",
+    "days": ""
   },
   {
     "index": 124,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: 2nd Anniversary Part 4<br>• Part 4 Tickets: Login Bonus & Limited-Time Missions<br>• Raid Battle Event: VS -Mahoraga-",
-    "global_date": "04/12/2025",
-    "days": "**07/02/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Rushing to a Mission on a Holy Night",
+    "banners": [
+      "Featured Gacha: Rushing to a Mission on a Holy Night",
+      "Map Event: Cursed Object Exhibition Part 1",
+      "New Year! Phantom Parade Grand Lottery Campaign"
+    ],
+    "jp_date": "19/12/2025",
+    "global_date": "22/02/2026",
+    "days": ""
   },
   {
     "index": 125,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Zone, Within Infinity & Genuine Jujutsu<br>• Formidable Battle: VS -Choso- Rerun<br>• Cursed Prison Island Main StoryChapter 1: Prisoner Chapter 2: Ritual of Unlocking",
-    "global_date": "11/12/2025",
-    "days": "**14/02/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Night Parade of 100 Demons Gift: 3,000 Cubes",
+    "banners": [
+      "Night Parade of 100 Demons Gift: 3,000 Cubes"
+    ],
+    "jp_date": "24/12/2025",
+    "global_date": "27/02/2026",
+    "days": ""
   },
   {
     "index": 126,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Rushing to a Mission on a Holy Night<br>• Map Event: Cursed Object Exhibition Part 1<br>• New Year! Phantom Parade Grand Lottery Campaign",
-    "global_date": "19/12/2025",
-    "days": "**22/02/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: GTG Style: How to Spend Your Day Off",
+    "banners": [
+      "Limited-Time Gacha: GTG Style: How to Spend Your Day Off",
+      "Story Event: GTG Style: How to Spend Your Day Off"
+    ],
+    "jp_date": "26/12/2025",
+    "global_date": "01/03/2026",
+    "days": ""
   },
   {
     "index": 127,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Night Parade of 100 Demons Gift: 3,000 Cubes",
-    "global_date": "24/12/2025",
-    "days": "**27/02/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Year Paid Gacha: Selective SSR Character Guaranteed",
+    "banners": [
+      "New Year Paid Gacha: Selective SSR Character Guaranteed",
+      "New Year Paid Gacha: Selective SSR Memory Guaranteed"
+    ],
+    "jp_date": "29/12/2025",
+    "global_date": "04/03/2026",
+    "days": ""
   },
   {
     "index": 128,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: GTG Style: How to Spend Your Day Off<br>• Story Event: GTG Style: How to Spend Your Day Off",
-    "global_date": "26/12/2025",
-    "days": "**01/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Year Gift(2026): 3,000 Cubes & Login Bonus",
+    "banners": [
+      "New Year Gift(2026): 3,000 Cubes & Login Bonus",
+      "New Year Free Gacha(2026): SSR Guaranteed"
+    ],
+    "jp_date": "01/01/2026",
+    "global_date": "07/03/2026",
+    "days": ""
   },
   {
     "index": 129,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Year Paid Gacha: Selective SSR Character Guaranteed<br>• New Year Paid Gacha: Selective SSR Memory Guaranteed",
-    "global_date": "29/12/2025",
-    "days": "**04/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Toji Fushiguro (Seance)- Rerun",
+    "banners": [
+      "Formidable Battle: VS -Toji Fushiguro (Seance)- Rerun",
+      "Blue Type PickUp Gacha: Crushed With Speed & No Conceit"
+    ],
+    "jp_date": "03/01/2026",
+    "global_date": "09/03/2026",
+    "days": ""
   },
   {
     "index": 130,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Year Gift(2026): 3,000 Cubes & Login Bonus<br>• New Year Free Gacha(2026): SSR Guaranteed",
-    "global_date": "01/01/2026",
-    "days": "**07/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha:Yuji Itadori's Promise",
+    "banners": [
+      "Limited-Time Gacha:Yuji Itadori's Promise",
+      "Story Event: Yuji Itadori's Promise",
+      "Anime Broadcast Collaboration Campaign Gift: (A Life Entrusted to Me) Yuji Itadori",
+      "Anime Broadcast Collaboration Missions Part 1",
+      "Anime Broadcast Collaboration Free Gacha: 120 Pulls Total & Character Exchange",
+      "Anime Broadcast Collaboration Free Yuji Itadori Gacha: SSR Guaranteed",
+      "Anime Broadcast Collaboration Growth Campaign: Weekly Rotating Double Drops",
+      "Chiki Chiki! Cursed Corpse Explorers! Stage 5"
+    ],
+    "jp_date": "09/01/2026",
+    "global_date": "15/03/2026",
+    "days": ""
   },
   {
     "index": 131,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Toji Fushiguro (Seance)- Rerun<br>• Blue Type PickUp Gacha: Crushed With Speed & No Conceit",
-    "global_date": "03/01/2026",
-    "days": "**09/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha Part 1: Awakening",
+    "banners": [
+      "Limited-Time Gacha Part 1: Awakening",
+      "Limited-Time Gacha Part 2: \"Fwoo Hyoi\""
+    ],
+    "jp_date": "16/01/2026",
+    "global_date": "22/03/2026",
+    "days": ""
   },
   {
     "index": 132,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha:Yuji Itadori's Promise<br>• Story Event: Yuji Itadori's Promise<br>• Anime Broadcast Collaboration Campaign Gift: (A Life Entrusted to Me) Yuji Itadori<br>• Anime Broadcast Collaboration Missions Part 1<br>• Anime Broadcast Collaboration Free Gacha: 120 Pulls Total & Character Exchange<br>• Anime Broadcast Collaboration Free Yuji Itadori Gacha: SSR Guaranteed<br>• Anime Broadcast Collaboration Growth Campaign: Weekly Rotating Double Drops<br>• Chiki Chiki! Cursed Corpse Explorers! Stage 5",
-    "global_date": "09/01/2026",
-    "days": "**15/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "New Feature: Phantom Orb & SP Release Phantom Book",
+    "banners": [
+      "New Feature: Phantom Orb & SP Release Phantom Book",
+      "New Year! Phantom Parade Grand Lottery Campaign:Results Announcement"
+    ],
+    "jp_date": "22/01/2026",
+    "global_date": "28/03/2026",
+    "days": ""
   },
   {
     "index": 133,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha Part 1: Awakening<br>• Limited-Time Gacha Part 2: \"Fwoo Hyoi\"",
-    "global_date": "16/01/2026",
-    "days": "**22/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Domain Investigation Event: \"Ominous Land Reclamation\" Rerun",
+    "banners": [
+      "Domain Investigation Event: \"Ominous Land Reclamation\" Rerun",
+      "Featured Gacha: Ominous Land Reclamation Part 1",
+      "Featured Gacha: Ominous Land Reclamation Part 2",
+      "Limited-Time Gacha Part 3: Promising New Student"
+    ],
+    "jp_date": "23/01/2026",
+    "global_date": "29/03/2026",
+    "days": ""
   },
   {
     "index": 134,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• New Feature: Phantom Orb & SP Release Phantom Book<br>• New Year! Phantom Parade Grand Lottery Campaign:Results Announcement",
-    "global_date": "22/01/2026",
-    "days": "**28/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Step back, third-rate",
+    "banners": [
+      "Featured Gacha: Step back, third-rate",
+      "Map Event: Cursed Object Exhibition Part 2",
+      "Map Event Score Attack Rework:Bonus ScoreOver-Damage DealtNew Difficulty: “Challenge”"
+    ],
+    "jp_date": "30/01/2026",
+    "global_date": "05/04/2026",
+    "days": ""
   },
   {
     "index": 135,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Domain Investigation Event: \"Ominous Land Reclamation\" Rerun<br>• Featured Gacha: Ominous Land Reclamation Part 1<br>• Featured Gacha: Ominous Land Reclamation Part 2<br>• Limited-Time Gacha Part 3: Promising New Student",
-    "global_date": "23/01/2026",
-    "days": "**29/03/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Cursed Prison Island Main StoryChapter 3: Robotic Warrior War",
+    "banners": [
+      "Cursed Prison Island Main StoryChapter 3: Robotic Warrior War",
+      "New Story Chapter Release Gacha: Selectable Rate-Up",
+      "New Story Chapter Release Campaign Missions: 10 \"New Story Chapter Release Gacha: Selectable Rate-Up\" Tickets",
+      "What Will You Choose!? Strike While Passion Is Hot Gacha",
+      "Anime Broadcast Collaboration Missions Part 2",
+      "Main Story 0 AP Cost Campaign"
+    ],
+    "jp_date": "06/02/2026",
+    "global_date": "12/04/2026",
+    "days": ""
   },
   {
     "index": 136,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Step back, third-rate<br>• Map Event: Cursed Object Exhibition Part 2<br>• Map Event Score Attack Rework:Bonus ScoreOver-Damage DealtNew Difficulty: “Challenge”",
-    "global_date": "30/01/2026",
-    "days": "**05/04/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Mahito (Awakened)-",
+    "banners": [
+      "Formidable Battle: VS -Mahito (Awakened)-",
+      "Yellow Type PickUp Gacha: Incomplete Domain & The Strongest Blue"
+    ],
+    "jp_date": "09/02/2026",
+    "global_date": "15/04/2026",
+    "days": ""
   },
   {
     "index": 137,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Cursed Prison Island Main StoryChapter 3: Robotic Warrior War<br>• New Story Chapter Release Gacha: Selectable Rate-Up<br>• New Story Chapter Release Campaign Missions: 10 \"New Story Chapter Release Gacha: Selectable Rate-Up\" Tickets<br>• What Will You Choose!? Strike While Passion Is Hot Gacha<br>• Anime Broadcast Collaboration Missions Part 2<br>• Main Story 0 AP Cost Campaign",
-    "global_date": "06/02/2026",
-    "days": "**12/04/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "I Want a Retrial, One More Time!! Gacha",
+    "banners": [
+      "I Want a Retrial, One More Time!! Gacha",
+      "Anime Broadcast Collaboration Missions Part 3"
+    ],
+    "jp_date": "06/03/2026",
+    "global_date": "10/05/2026",
+    "days": ""
   },
   {
     "index": 138,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Mahito (Awakened)-<br>• Yellow Type PickUp Gacha: Incomplete Domain & The Strongest Blue",
-    "global_date": "09/02/2026",
-    "days": "**15/04/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Uraume-",
+    "banners": [
+      "Formidable Battle: VS -Uraume-",
+      "Green Type PickUp Gacha: To Protect Non-Sorcerers & Bond of Friendship"
+    ],
+    "jp_date": "12/03/2026",
+    "global_date": "16/05/2026",
+    "days": ""
   },
   {
     "index": 139,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• I Want a Retrial, One More Time!! Gacha<br>• Anime Broadcast Collaboration Missions Part 3",
-    "global_date": "06/03/2026",
-    "days": "**10/05/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Pivotal Guardian",
+    "banners": [
+      "Featured Gacha: Pivotal Guardian",
+      "Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 1"
+    ],
+    "jp_date": "19/03/2026",
+    "global_date": "23/05/2026",
+    "days": ""
   },
   {
     "index": 140,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Uraume-<br>• Green Type PickUp Gacha: To Protect Non-Sorcerers & Bond of Friendship",
-    "global_date": "12/03/2026",
-    "days": "**16/05/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Before Anime Final Episode Broadcast Gift: 3 Day Login Bonus",
+    "banners": [
+      "Before Anime Final Episode Broadcast Gift: 3 Day Login Bonus"
+    ],
+    "jp_date": "23/03/2026",
+    "global_date": "27/05/2026",
+    "days": ""
   },
   {
     "index": 141,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Pivotal Guardian<br>• Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 1",
-    "global_date": "19/03/2026",
-    "days": "**23/05/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Garden of Echoes",
+    "banners": [
+      "Limited-Time Gacha: Garden of Echoes",
+      "Story Event: Garden of Echoes",
+      "Anime Final Episode Broadcast SSR-Character-Guaranteed Paid Gacha",
+      "Anime Final Episode Broadcast SSR-Memory-Guaranteed Paid Gacha"
+    ],
+    "jp_date": "27/03/2026",
+    "global_date": "31/05/2026",
+    "days": ""
   },
   {
     "index": 142,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Before Anime Final Episode Broadcast Gift: 3 Day Login Bonus",
-    "global_date": "23/03/2026",
-    "days": "**27/05/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Story Reminiscence Update",
+    "banners": [
+      "Story Reminiscence Update"
+    ],
+    "jp_date": "01/04/2026",
+    "global_date": "05/06/2026",
+    "days": ""
   },
   {
     "index": 143,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Garden of Echoes<br>• Story Event: Garden of Echoes<br>• Anime Final Episode Broadcast SSR-Character-Guaranteed Paid Gacha<br>• Anime Final Episode Broadcast SSR-Memory-Guaranteed Paid Gacha",
-    "global_date": "27/03/2026",
-    "days": "**31/05/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Jogo- Rerun",
+    "banners": [
+      "Formidable Battle: VS -Jogo- Rerun",
+      "Yellow Type PickUp Gacha: Cursed Corpse Battle & With That Will In Mind"
+    ],
+    "jp_date": "06/04/2026",
+    "global_date": "10/06/2026",
+    "days": ""
   },
   {
     "index": 144,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Story Reminiscence Update",
-    "global_date": "01/04/2026",
-    "days": "**05/06/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Chain Mark: Full Throttle",
+    "banners": [
+      "Featured Gacha: Chain Mark: Full Throttle",
+      "Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 2",
+      "Cursed Prison Island Main StoryChapter 4: Kodoku Duel"
+    ],
+    "jp_date": "14/04/2026",
+    "global_date": "18/06/2026",
+    "days": ""
   },
   {
     "index": 145,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Jogo- Rerun<br>• Yellow Type PickUp Gacha: Cursed Corpse Battle & With That Will In Mind",
-    "global_date": "06/04/2026",
-    "days": "**10/06/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Peering into the Dim Abyss",
+    "banners": [
+      "Featured Gacha: Peering into the Dim Abyss",
+      "Story Event: Peering into the Dim Abyss",
+      "SP Hidden Potential: Fifth Batch"
+    ],
+    "jp_date": "24/04/2026",
+    "global_date": "28/06/2026",
+    "days": ""
   },
   {
     "index": 146,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Chain Mark: Full Throttle<br>• Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 2<br>• Cursed Prison Island Main StoryChapter 4: Kodoku Duel",
-    "global_date": "14/04/2026",
-    "days": "**18/06/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Domain Investigation Event: \"Ominous Land Reclamation\" Rerun",
+    "banners": [
+      "Domain Investigation Event: \"Ominous Land Reclamation\" Rerun",
+      "Featured Gacha: Ominous Land Reclamation"
+    ],
+    "jp_date": "27/04/2026",
+    "global_date": "01/07/2026",
+    "days": ""
   },
   {
     "index": 147,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Peering into the Dim Abyss<br>• Story Event: Peering into the Dim Abyss<br>• SP Hidden Potential: Fifth Batch",
-    "global_date": "24/04/2026",
-    "days": "**28/06/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Choso- Rerun",
+    "banners": [
+      "Formidable Battle: VS -Choso- Rerun",
+      "Red Type PickUp Gacha: Night-Lurking Sorcerer & Meteor of Fierceness",
+      "Golden Week Campaign"
+    ],
+    "jp_date": "01/05/2026",
+    "global_date": "05/07/2026",
+    "days": ""
   },
   {
     "index": 148,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Domain Investigation Event: \"Ominous Land Reclamation\" Rerun<br>• Featured Gacha: Ominous Land Reclamation",
-    "global_date": "27/04/2026",
-    "days": "**01/07/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 3",
+    "banners": [
+      "Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 3",
+      "Limited-Time Gacha: Zone, Within Infinity & Genuine Jujutsu",
+      "Exploration Event: Cursed Corpse Explorers!"
+    ],
+    "jp_date": "12/05/2026",
+    "global_date": "16/07/2026",
+    "days": ""
   },
   {
     "index": 149,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Choso- Rerun<br>• Red Type PickUp Gacha: Night-Lurking Sorcerer & Meteor of Fierceness<br>• Golden Week Campaign",
-    "global_date": "01/05/2026",
-    "days": "**05/07/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "2.5th Anniversary Gacha: Daily Free 10 Pull",
+    "banners": [
+      "2.5th Anniversary Gacha: Daily Free 10 Pull"
+    ],
+    "jp_date": "18/05/2026",
+    "global_date": "22/07/2026",
+    "days": ""
   },
   {
     "index": 150,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Tokyo Fukuoka: Dogs Vs Cats Battle Arc Part 3<br>• Limited-Time Gacha: Zone, Within Infinity & Genuine Jujutsu<br>• Exploration Event: Cursed Corpse Explorers!",
-    "global_date": "12/05/2026",
-    "days": "**16/07/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Blue Splashing by the Shore Part 1",
+    "banners": [
+      "Limited-Time Gacha: Blue Splashing by the Shore Part 1",
+      "Part 1 Tickets: Login Bonus & Story Event",
+      "New Feature: SP Awakened Characters",
+      "Story Event: Blue Splashing by the Shore",
+      "2.5th Anniversary Login Bonus",
+      "2.5th Anniversary Gift: 3000 Cubes",
+      "2.5th Anniversary Missions Part 1",
+      "2.5th Anniversary Paid Gachas: SSR Character/Memory Guaranteed",
+      "Standard Banner Update 4",
+      "New Feature: Certificate of Curse Sweep Battle Reward",
+      "New Feature: Character Commentary",
+      "Free AP Recovery: 3 Times Per Day",
+      "Event Marathon 7",
+      "Friend Invitation Reset"
+    ],
+    "jp_date": "21/05/2026",
+    "global_date": "25/07/2026",
+    "days": ""
   },
   {
     "index": 151,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 2.5th Anniversary Gacha: Daily Free 10 Pull",
-    "global_date": "18/05/2026",
-    "days": "**22/07/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Blue Splashing by the Shore Part 2",
+    "banners": [
+      "Limited-Time Gacha: Blue Splashing by the Shore Part 2",
+      "Part 2 Tickets: Login Bonus & Serial Code",
+      "2.5th Anniversary Character/Memory Selectable Ticket Pack"
+    ],
+    "jp_date": "25/05/2026",
+    "global_date": "29/07/2026",
+    "days": ""
   },
   {
     "index": 152,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Blue Splashing by the Shore Part 1<br>• Part 1 Tickets: Login Bonus & Story Event<br>• New Feature: SP Awakened Characters<br>• Story Event: Blue Splashing by the Shore<br>• 2.5th Anniversary Login Bonus<br>• 2.5th Anniversary Gift: 3000 Cubes<br>• 2.5th Anniversary Missions Part 1<br>• 2.5th Anniversary Paid Gachas: SSR Character/Memory Guaranteed<br>• Standard Banner Update 4<br>• New Feature: Certificate of Curse Sweep Battle Reward<br>• New Feature: Character Commentary<br>• Free AP Recovery: 3 Times Per Day<br>• Event Marathon 7<br>• Friend Invitation Reset",
-    "global_date": "21/05/2026",
-    "days": "**25/07/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Awakening, \"Fwoo Hyoi\" & Promising New Student",
+    "banners": [
+      "Limited-Time Gacha: Awakening, \"Fwoo Hyoi\" & Promising New Student"
+    ],
+    "jp_date": "29/05/2026",
+    "global_date": "02/08/2026",
+    "days": ""
   },
   {
     "index": 153,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Blue Splashing by the Shore Part 2<br>• Part 2 Tickets: Login Bonus & Serial Code<br>• 2.5th Anniversary Character/Memory Selectable Ticket Pack",
-    "global_date": "25/05/2026",
-    "days": "**29/07/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "2.5th Anniversary Missions Part 2",
+    "banners": [
+      "2.5th Anniversary Missions Part 2"
+    ],
+    "jp_date": "31/05/2026",
+    "global_date": "04/08/2026",
+    "days": ""
   },
   {
     "index": 154,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Awakening, \"Fwoo Hyoi\" & Promising New Student",
-    "global_date": "29/05/2026",
-    "days": "**02/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Limited-Time Gacha: Blue Splashing by the Shore Part 3",
+    "banners": [
+      "Limited-Time Gacha: Blue Splashing by the Shore Part 3",
+      "Limited-Time Gacha: Blue Splashing by the Shore Part 4",
+      "Part 3 Tickets: Login Bonus & Serial Code",
+      "Part 4 Tickets: Login Bonus & All-Out Battle Event Mission",
+      "All-Out Battle Event: VS-Phantom Calamity: Kouran-",
+      "Domain Investigation Campaign: Double Drops"
+    ],
+    "jp_date": "01/06/2026",
+    "global_date": "05/08/2026",
+    "days": ""
   },
   {
     "index": 155,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 2.5th Anniversary Missions Part 2",
-    "global_date": "31/05/2026",
-    "days": "**04/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Formidable Battle: VS -Toji Fushiguro (Seance)- Rerun",
+    "banners": [
+      "Formidable Battle: VS -Toji Fushiguro (Seance)- Rerun",
+      "Blue Type PickUp Gacha: Zanshin & First-Grade Sorcerer's Skill",
+      "Limited-Time Gacha Part 1: Maximum Cursed Energy Output",
+      "Limited-Time Gacha Part 2: Are you satisfied with that?",
+      "2.5th Anniversary Login Bonus Part 2",
+      "Enhancement Quest Campaign: Double Drops"
+    ],
+    "jp_date": "09/06/2026",
+    "global_date": "13/08/2026",
+    "days": ""
   },
   {
     "index": 156,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Limited-Time Gacha: Blue Splashing by the Shore Part 3<br>• Limited-Time Gacha: Blue Splashing by the Shore Part 4<br>• Part 3 Tickets: Login Bonus & Serial Code<br>• Part 4 Tickets: Login Bonus & All-Out Battle Event Mission<br>• All-Out Battle Event: VS-Phantom Calamity: Kouran-<br>• Domain Investigation Campaign: Double Drops",
-    "global_date": "01/06/2026",
-    "days": "**05/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "2.5th Anniversary Missions Part 3",
+    "banners": [
+      "2.5th Anniversary Missions Part 3"
+    ],
+    "jp_date": "10/06/2026",
+    "global_date": "14/08/2026",
+    "days": ""
   },
   {
     "index": 157,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Formidable Battle: VS -Toji Fushiguro (Seance)- Rerun<br>• Blue Type PickUp Gacha: Zanshin & First-Grade Sorcerer's Skill<br>• Limited-Time Gacha Part 1: Maximum Cursed Energy Output<br>• Limited-Time Gacha Part 2: Are you satisfied with that?<br>• 2.5th Anniversary Login Bonus Part 2<br>• Enhancement Quest Campaign: Double Drops",
-    "global_date": "09/06/2026",
-    "days": "**13/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Map Event: Kyoto Dead School Part 1",
+    "banners": [
+      "Map Event: Kyoto Dead School Part 1",
+      "Green Type PickUp Gacha: Sprinting",
+      "Limited-Time Gacha Part 3: Battle of Firepower",
+      "Limited-Time Gacha Part 4: Unbridled Soul"
+    ],
+    "jp_date": "18/06/2026",
+    "global_date": "22/08/2026",
+    "days": ""
   },
   {
     "index": 158,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 2.5th Anniversary Missions Part 3",
-    "global_date": "10/06/2026",
-    "days": "**14/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "2.5th Anniversary Missions Part 4",
+    "banners": [
+      "2.5th Anniversary Missions Part 4"
+    ],
+    "jp_date": "20/06/2026",
+    "global_date": "24/08/2026",
+    "days": ""
   },
   {
     "index": 159,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Map Event: Kyoto Dead School Part 1<br>• Green Type PickUp Gacha: Sprinting<br>• Limited-Time Gacha Part 3: Battle of Firepower<br>• Limited-Time Gacha Part 4: Unbridled Soul",
-    "global_date": "18/06/2026",
-    "days": "**22/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Raid Battle Event: VS -Mahoraga- Rerun",
+    "banners": [
+      "Raid Battle Event: VS -Mahoraga- Rerun",
+      "Limited-Time Gacha Part 5: 0.2-Second Domain Expansion"
+    ],
+    "jp_date": "24/06/2026",
+    "global_date": "28/08/2026",
+    "days": ""
   },
   {
     "index": 160,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• 2.5th Anniversary Missions Part 4",
-    "global_date": "20/06/2026",
-    "days": "**24/08/2026**"
+    "status": "released",
+    "status_label": "Já Lançado no Global",
+    "name": "Featured Gacha: Ijichi's Unrelenting Vacation",
+    "banners": [
+      "Featured Gacha: Ijichi's Unrelenting Vacation",
+      "Story Event: Ijichi's Unrelenting Vacation"
+    ],
+    "jp_date": "30/06/2026",
+    "global_date": "03/09/2026",
+    "days": ""
   },
   {
     "index": 161,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Raid Battle Event: VS -Mahoraga- Rerun<br>• Limited-Time Gacha Part 5: 0.2-Second Domain Expansion",
-    "global_date": "24/06/2026",
-    "days": "**28/08/2026**"
+    "status": "current",
+    "status_label": "Em Andamento / Iminente",
+    "name": "New Content: Formidable Foe: Back",
+    "banners": [
+      "New Content: Formidable Foe: Back"
+    ],
+    "jp_date": "07/07/2026",
+    "global_date": "10/09/2026",
+    "days": ""
   },
   {
     "index": 162,
-    "status": "",
-    "name": "✅ Já Lançado",
-    "jp_date": "<br>• Featured Gacha: Ijichi's Unrelenting Vacation<br>• Story Event: Ijichi's Unrelenting Vacation",
-    "global_date": "30/06/2026",
-    "days": "**03/09/2026**"
+    "status": "current",
+    "status_label": "Em Andamento / Iminente",
+    "name": "Formidable Battle: VS -Mahito (Awakened)- Rerun",
+    "banners": [
+      "Formidable Battle: VS -Mahito (Awakened)- Rerun",
+      "Green Type PickUp Gacha: Silent Suppression & Fulfilling His Duty as the Older Brother"
+    ],
+    "jp_date": "13/07/2026",
+    "global_date": "16/09/2026",
+    "days": ""
   },
   {
     "index": 163,
-    "status": "",
-    "name": "🔥 Em Andamento / Iminente",
-    "jp_date": "<br>• New Content: Formidable Foe: Back",
-    "global_date": "07/07/2026",
-    "days": "**10/09/2026**"
+    "status": "current",
+    "status_label": "Em Andamento / Iminente",
+    "name": "Cursed Prison Island Main StoryChapter 5: Cursed Gathering Feast",
+    "banners": [
+      "Cursed Prison Island Main StoryChapter 5: Cursed Gathering Feast"
+    ],
+    "jp_date": "17/07/2026",
+    "global_date": "20/09/2026",
+    "days": ""
   },
   {
     "index": 164,
-    "status": "",
-    "name": "🔥 Em Andamento / Iminente",
-    "jp_date": "<br>• Formidable Battle: VS -Mahito (Awakened)- Rerun<br>• Green Type PickUp Gacha: Silent Suppression & Fulfilling His Duty as the Older Brother",
-    "global_date": "13/07/2026",
-    "days": "**16/09/2026**"
+    "status": "current",
+    "status_label": "Em Andamento / Iminente",
+    "name": "Featured Gacha: Crafty Rock",
+    "banners": [
+      "Featured Gacha: Crafty Rock",
+      "Map Event: Kyoto Dead School Part 2"
+    ],
+    "jp_date": "21/07/2026",
+    "global_date": "24/09/2026",
+    "days": ""
   },
   {
     "index": 165,
-    "status": "",
-    "name": "🔥 Em Andamento / Iminente",
-    "jp_date": "<br>• Cursed Prison Island Main StoryChapter 5: Cursed Gathering Feast",
-    "global_date": "17/07/2026",
-    "days": "**20/09/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "New Content: Illusory Tower: Diverse",
+    "banners": [
+      "New Content: Illusory Tower: Diverse",
+      "Featured Gacha: Illusory Tower: Diverse"
+    ],
+    "jp_date": "27/07/2026",
+    "global_date": "30/09/2026",
+    "days": ""
   },
   {
     "index": 166,
-    "status": "",
-    "name": "🔥 Em Andamento / Iminente",
-    "jp_date": "<br>• Featured Gacha: Crafty Rock<br>• Map Event: Kyoto Dead School Part 2",
-    "global_date": "21/07/2026",
-    "days": "**24/09/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Featured Gacha: Ephemeral Family",
+    "banners": [
+      "Featured Gacha: Ephemeral Family",
+      "Story Event: Ephemeral Family"
+    ],
+    "jp_date": "31/07/2026",
+    "global_date": "04/10/2026",
+    "days": ""
   },
   {
     "index": 167,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• New Content: Illusory Tower: Diverse<br>• Featured Gacha: Illusory Tower: Diverse",
-    "global_date": "27/07/2026",
-    "days": "**30/09/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Summer Vacation Gacha: Daily Free Pull (31 Total)",
+    "banners": [
+      "Summer Vacation Gacha: Daily Free Pull (31 Total)",
+      "Domain Investigation Campaign: Double Drops"
+    ],
+    "jp_date": "01/08/2026",
+    "global_date": "05/10/2026",
+    "days": ""
   },
   {
     "index": 168,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Featured Gacha: Ephemeral Family<br>• Story Event: Ephemeral Family",
-    "global_date": "31/07/2026",
-    "days": "**04/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Enhancement Quest Campaign: Double Drops",
+    "banners": [
+      "Enhancement Quest Campaign: Double Drops"
+    ],
+    "jp_date": "08/08/2026",
+    "global_date": "12/10/2026",
+    "days": ""
   },
   {
     "index": 169,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Summer Vacation Gacha: Daily Free Pull (31 Total)<br>• Domain Investigation Campaign: Double Drops",
-    "global_date": "01/08/2026",
-    "days": "**05/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Formidable Battle: VS -Uraume- Rerun",
+    "banners": [
+      "Formidable Battle: VS -Uraume- Rerun",
+      "Blue Type PickUp Gacha: Blood Borne Resolve & Shatter To Pieces"
+    ],
+    "jp_date": "10/08/2026",
+    "global_date": "14/10/2026",
+    "days": ""
   },
   {
     "index": 170,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Enhancement Quest Campaign: Double Drops",
-    "global_date": "08/08/2026",
-    "days": "**12/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Cursed Object Collection Campaign: Double Drops",
+    "banners": [
+      "Cursed Object Collection Campaign: Double Drops"
+    ],
+    "jp_date": "15/08/2026",
+    "global_date": "19/10/2026",
+    "days": ""
   },
   {
     "index": 171,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Formidable Battle: VS -Uraume- Rerun<br>• Blue Type PickUp Gacha: Blood Borne Resolve & Shatter To Pieces",
-    "global_date": "10/08/2026",
-    "days": "**14/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "1000 Days Campaign: Login Bonus, Missions & Twitter Campaign",
+    "banners": [
+      "1000 Days Campaign: Login Bonus, Missions & Twitter Campaign",
+      "1000 Days Commemoration Selective Gacha",
+      "1000 Days Commemoration SSR Guaranteed Paid Gacha"
+    ],
+    "jp_date": "17/08/2026",
+    "global_date": "21/10/2026",
+    "days": ""
   },
   {
     "index": 172,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Cursed Object Collection Campaign: Double Drops",
-    "global_date": "15/08/2026",
-    "days": "**19/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Featured Gacha: Indomitable Auspicious Beasts",
+    "banners": [
+      "Featured Gacha: Indomitable Auspicious Beasts",
+      "Map Event: Kyoto Dead School Part 3"
+    ],
+    "jp_date": "19/08/2026",
+    "global_date": "23/10/2026",
+    "days": ""
   },
   {
     "index": 173,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• 1000 Days Campaign: Login Bonus, Missions & Twitter Campaign<br>• 1000 Days Commemoration Selective Gacha<br>• 1000 Days Commemoration SSR Guaranteed Paid Gacha",
-    "global_date": "17/08/2026",
-    "days": "**21/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Domain Investigation Campaign: Double Drops",
+    "banners": [
+      "Domain Investigation Campaign: Double Drops"
+    ],
+    "jp_date": "22/08/2026",
+    "global_date": "26/10/2026",
+    "days": ""
   },
   {
     "index": 174,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Featured Gacha: Indomitable Auspicious Beasts<br>• Map Event: Kyoto Dead School Part 3",
-    "global_date": "19/08/2026",
-    "days": "**23/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Featured Gacha: The Steam Sorcerer",
+    "banners": [
+      "Featured Gacha: The Steam Sorcerer",
+      "Story Event: The Steam Sorcerer",
+      "Hidden Inventory/Premature Death Panel Missions",
+      "Hidden Inventory/Premature Death Guaranteed SSR Character Paid Gacha"
+    ],
+    "jp_date": "31/08/2026",
+    "global_date": "04/11/2026",
+    "days": ""
   },
   {
     "index": 175,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Domain Investigation Campaign: Double Drops",
-    "global_date": "22/08/2026",
-    "days": "**26/10/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Formidable Battle: Suguru Geto's Special Training",
+    "banners": [
+      "Formidable Battle: Suguru Geto's Special Training",
+      "Red Type PickUp Gacha: Tool Manipulation & The Final Bullet"
+    ],
+    "jp_date": "07/09/2026",
+    "global_date": "11/11/2026",
+    "days": ""
   },
   {
     "index": 176,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Featured Gacha: The Steam Sorcerer<br>• Story Event: The Steam Sorcerer<br>• Hidden Inventory/Premature Death Panel Missions<br>• Hidden Inventory/Premature Death Guaranteed SSR Character Paid Gacha",
-    "global_date": "31/08/2026",
-    "days": "**04/11/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Featured Gacha: What Lies at the End",
+    "banners": [
+      "Featured Gacha: What Lies at the End",
+      "Map Event: Blue Footprints Part 1"
+    ],
+    "jp_date": "11/09/2026",
+    "global_date": "15/11/2026",
+    "days": ""
   },
   {
     "index": 177,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Formidable Battle: Suguru Geto's Special Training<br>• Red Type PickUp Gacha: Tool Manipulation & The Final Bullet",
-    "global_date": "07/09/2026",
-    "days": "**11/11/2026**"
-  },
-  {
-    "index": 178,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Featured Gacha: What Lies at the End<br>• Map Event: Blue Footprints Part 1",
-    "global_date": "11/09/2026",
-    "days": "**15/11/2026**"
-  },
-  {
-    "index": 179,
-    "status": "",
-    "name": "⏳ Futuro",
-    "jp_date": "<br>• Illusory Tower: Diverse Stage Update",
-    "global_date": "14/10/2026",
-    "days": "**18/12/2026**"
+    "status": "upcoming",
+    "status_label": "Próximo no Global",
+    "name": "Illusory Tower: Diverse Stage Update",
+    "banners": [
+      "Illusory Tower: Diverse Stage Update"
+    ],
+    "jp_date": "14/10/2026",
+    "global_date": "18/12/2026",
+    "days": ""
   }
 ]
