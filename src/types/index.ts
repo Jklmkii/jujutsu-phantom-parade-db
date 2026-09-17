@@ -10,6 +10,15 @@ export interface CharacterStats {
   special_gauge: string;
 }
 
+export interface SkillVariant {
+  id: string;
+  label: string;
+  name: string;
+  cost: string;
+  description: string;
+  combat_rates?: CombatRates;
+}
+
 export interface SkillItem {
   slot: number;
   name: string;
@@ -20,6 +29,7 @@ export interface SkillItem {
     cost: string;
     description: string;
   };
+  variants?: SkillVariant[];
 }
 
 export interface PassiveItem {
@@ -51,12 +61,14 @@ export interface Character {
   normal_attack?: {
     name: string;
     description: string;
+    variants?: SkillVariant[];
   };
   skills: SkillItem[];
   ultimate: {
     name: string;
     description: string;
     combo?: string;
+    variants?: SkillVariant[];
   };
   passives: PassiveItem[];
   has_transformation?: boolean;

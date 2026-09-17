@@ -11,7 +11,9 @@ interface CharacterDetailProps {
 }
 
 export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onBack }) => {
-  const [skillMode, setSkillMode] = useState<'base' | 'changed'>('base');
+  const [selectedNormalAttackVariant, setSelectedNormalAttackVariant] = useState<string>('regular');
+  const [selectedSkillVariants, setSelectedSkillVariants] = useState<Record<number, string>>({});
+  const [selectedUltVariant, setSelectedUltVariant] = useState<string>('regular');
   const [skillLevel, setSkillLevel] = useState<1 | 10>(10);
   const { isFavoriteChar, toggleFavoriteChar } = useJjkStore();
 
@@ -171,165 +173,282 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           </div>
 
           {/* Ataque Básico */}
-          {character.normal_attack && (
-            <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-3">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-[11px] uppercase font-bold tracking-wider text-gray-400">
-                    Ataque Básico
-                  </span>
-                  <h3 className="text-lg font-bold text-white">
-                    {character.normal_attack.name}
-                  </h3>
+          {character.normal_attack && (() => {
+            const na = character.normal_attack;
+            const hasVariants = na.variants && na.variants.length > 1;
+            const activeVariant = (hasVariants && na.variants)
+              ? (na.variants.find(v => v.id === selectedNormalAttackVariant) || na.variants[0])
+              : null;
+            const name = activeVariant ? activeVariant.name : na.name;
+            const description = activeVariant ? activeVariant.description : na.description;
+            const combatRates = activeVariant?.combat_rates || character.combat_rates;
+
+            return (
+              <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] uppercase font-bold tracking-wider text-gray-400">
+                        Ataque Básico
+                      </span>
+                      {activeVariant && activeVariant.id !== 'regular' && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 border border-red-500/40 text-red-300">
+                          {activeVariant.label}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-bold text-white mt-0.5">
+                      {name}
+                    </h3>
+                  </div>
+
+                  {hasVariants && (
+                    <div className="flex flex-wrap items-center gap-1.5 bg-[#0e0a1d] p-1 rounded-lg border border-[#251c42]">
+                      {na.variants!.map((v) => {
+                        const isSelected = (selectedNormalAttackVariant || 'regular') === v.id;
+                        return (
+                          <button
+                            key={v.id}
+                            onClick={() => {
+                              playTransformSurge();
+                              setSelectedNormalAttackVariant(v.id);
+                            }}
+                            className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
+                              isSelected
+                                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md border border-purple-400/50'
+                                : 'text-gray-400 hover:text-gray-200'
+                            }`}
+                          >
+                            {v.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
+
+                <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line bg-[#0c0919] p-3.5 rounded-lg border border-[#1f1737]">
+                  {formatSkillText(description, skillLevel)}
+                </div>
+
+                {combatRates && (
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    {combatRates.crit_rate && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
+                        Taxa Crítica: {combatRates.crit_rate}
+                      </span>
+                    )}
+                    {combatRates.crit_dmg && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
+                        Dano Crítico: {combatRates.crit_dmg}
+                      </span>
+                    )}
+                    {combatRates.black_flash && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
+                        ⚡ Flash Negro: {combatRates.black_flash}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
-              <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line bg-[#0c0919] p-3.5 rounded-lg border border-[#1f1737]">
-                {formatSkillText(character.normal_attack.description, skillLevel)}
-              </div>
-            </div>
-          )}
+            );
+          })()}
 
           {/* Command Skills */}
           {character.skills.map((skill) => {
-            const hasChanged = !!skill.changed;
-            const currentSkill = (character.has_transformation && skillMode === 'changed' && skill.changed) 
-              ? skill.changed 
-              : skill;
+            const hasVariants = skill.variants && skill.variants.length > 1;
+            const currentVariantId = selectedSkillVariants[skill.slot] || 'regular';
+            const activeVariant = (hasVariants && skill.variants)
+              ? (skill.variants.find(v => v.id === currentVariantId) || skill.variants[0])
+              : null;
+
+            const name = activeVariant ? activeVariant.name : skill.name;
+            const cost = activeVariant ? activeVariant.cost : skill.cost;
+            const description = activeVariant ? activeVariant.description : skill.description;
+            const combatRates = activeVariant?.combat_rates || character.combat_rates;
 
             return (
               <div 
                 key={skill.slot} 
-                className="relative bg-[#120e24] border border-[#291f47] rounded-xl shadow-lg flex overflow-hidden group hover:border-purple-500/40 transition-colors"
+                className="bg-[#120e24] border border-[#291f47] rounded-xl shadow-lg p-5 space-y-3 group hover:border-purple-500/40 transition-colors"
               >
-                {/* Vertical Mode Selector if Transformation Exists */}
-                {character.has_transformation && (
-                  <div className="w-16 min-w-[64px] bg-[#0c081a] border-r border-[#251b40] flex flex-col py-3 px-1 items-center justify-center gap-2">
-                    <button
-                      onClick={() => {
-                        playTransformSurge();
-                        setSkillMode('base');
-                      }}
-                      className={`w-full py-2 rounded text-[11px] font-black uppercase transition-all tracking-wider ${
-                        skillMode === 'base'
-                          ? 'bg-purple-700 text-white shadow-md'
-                          : 'text-gray-500 hover:text-gray-300'
-                      }`}
-                    >
-                      Base
-                    </button>
-                    <button
-                      onClick={() => {
-                        playTransformSurge();
-                        setSkillMode('changed');
-                      }}
-                      className={`w-full py-2 rounded text-[11px] font-black uppercase transition-all tracking-wider ${
-                        skillMode === 'changed'
-                          ? 'bg-gradient-to-b from-red-600 to-red-800 text-white shadow-md shadow-red-900/50'
-                          : 'text-gray-500 hover:text-gray-300'
-                      }`}
-                    >
-                      Mudado
-                    </button>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400">
+                        Habilidade {skill.slot}
+                      </span>
+                      {activeVariant && activeVariant.id !== 'regular' && (
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 border border-red-500/40 text-red-300">
+                          {activeVariant.label}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-bold text-white mt-0.5">
+                      {name}
+                    </h3>
+                  </div>
+
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {hasVariants && (
+                      <div className="flex flex-wrap items-center gap-1 bg-[#0e0a1d] p-1 rounded-lg border border-[#251c42]">
+                        {skill.variants!.map((v) => {
+                          const isSelected = currentVariantId === v.id;
+                          return (
+                            <button
+                              key={v.id}
+                              onClick={() => {
+                                playTransformSurge();
+                                setSelectedSkillVariants(prev => ({ ...prev, [skill.slot]: v.id }));
+                              }}
+                              className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
+                                isSelected
+                                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md border border-purple-400/50'
+                                  : 'text-gray-400 hover:text-gray-200'
+                              }`}
+                            >
+                              {v.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {cost && cost !== '0' && (
+                      <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-950/60 border border-purple-600/40 text-purple-300">
+                        ⚡ {cost} CE
+                      </span>
+                    )}
+                    {cost === '0' && (
+                      <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-950/60 border border-emerald-600/40 text-emerald-300">
+                        ⚡ 0 CE
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Skill Description */}
+                <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line bg-[#0c0919] p-3.5 rounded-lg border border-[#1f1737]">
+                  {formatSkillText(description, skillLevel)}
+                </div>
+
+                {/* Combat Rate Badges */}
+                {combatRates && (
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    {combatRates.crit_rate && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
+                        Taxa Crítica: {combatRates.crit_rate}
+                      </span>
+                    )}
+                    {combatRates.crit_dmg && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
+                        Dano Crítico: {combatRates.crit_dmg}
+                      </span>
+                    )}
+                    {combatRates.black_flash && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
+                        ⚡ Flash Negro: {combatRates.black_flash}
+                      </span>
+                    )}
                   </div>
                 )}
-
-                {/* Skill Content */}
-                <div className="flex-1 p-5 space-y-3">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400">
-                          Habilidade {skill.slot}
-                        </span>
-                        {skillMode === 'changed' && hasChanged && (
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-950 border border-red-500/40 text-red-300">
-                            {character.transform_name || 'Transformado'}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="text-lg font-bold text-white">
-                        {currentSkill.name}
-                      </h3>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      {currentSkill.cost && currentSkill.cost !== '0' && (
-                        <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-950/60 border border-purple-600/40 text-purple-300">
-                          ⚡ {currentSkill.cost} CE
-                        </span>
-                      )}
-                      {currentSkill.cost === '0' && (
-                        <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-950/60 border border-emerald-600/40 text-emerald-300">
-                          ⚡ 0 CE
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Skill Description */}
-                  <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line bg-[#0c0919] p-3.5 rounded-lg border border-[#1f1737]">
-                    {formatSkillText(currentSkill.description, skillLevel)}
-                  </div>
-
-                  {/* Combat Rate Badges (Bottom of skill) */}
-                  {character.combat_rates && (
-                    <div className="flex flex-wrap items-center gap-2 pt-1">
-                      {character.combat_rates.crit_rate && (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                          Taxa Crítica: {character.combat_rates.crit_rate}
-                        </span>
-                      )}
-                      {character.combat_rates.crit_dmg && (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
-                          Dano Crítico: {character.combat_rates.crit_dmg}
-                        </span>
-                      )}
-                      {character.combat_rates.black_flash && (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
-                          ⚡ Flash Negro: {character.combat_rates.black_flash}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
               </div>
             );
           })}
 
           {/* Ultimate Skill */}
-          {character.ultimate && character.ultimate.name && (
-            <div className="bg-gradient-to-b from-[#18112e] to-[#120d24] border-2 border-purple-600/40 rounded-xl p-5 shadow-xl shadow-purple-950/40 space-y-3">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    TÉCNICA SUPREMA (ULTIMATE)
-                  </span>
-                  <h3 className="text-xl font-black text-white">
-                    {character.ultimate.name}
-                  </h3>
-                </div>
-                <div className="px-3 py-1 rounded-lg text-xs font-bold bg-amber-950/60 border border-amber-500/40 text-amber-300">
-                  Special: {character.stats.special_gauge}
-                </div>
-              </div>
+          {character.ultimate && character.ultimate.name && (() => {
+            const ult = character.ultimate;
+            const hasVariants = ult.variants && ult.variants.length > 1;
+            const activeVariant = (hasVariants && ult.variants)
+              ? (ult.variants.find(v => v.id === selectedUltVariant) || ult.variants[0])
+              : null;
 
-              <div className="text-sm text-gray-200 leading-relaxed whitespace-pre-line bg-[#0c0919] p-4 rounded-lg border border-[#2c204d]">
-                {formatSkillText(character.ultimate.description, skillLevel)}
-              </div>
+            const name = activeVariant ? activeVariant.name : ult.name;
+            const description = activeVariant ? activeVariant.description : ult.description;
+            const combatRates = activeVariant?.combat_rates || character.combat_rates;
 
-              {character.ultimate.combo && (
-                <div className="mt-3 p-3.5 rounded-lg bg-indigo-950/30 border border-indigo-500/30 space-y-1">
-                  <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider block">
-                    ⚡ Efeito em Combo de Especial:
-                  </span>
-                  <p className="text-xs text-gray-300 whitespace-pre-line">
-                    {character.ultimate.combo}
-                  </p>
+            return (
+              <div className="bg-gradient-to-b from-[#18112e] to-[#120d24] border-2 border-purple-600/40 rounded-xl p-5 shadow-xl shadow-purple-950/40 space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div>
+                    <span className="text-xs uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      TÉCNICA SUPREMA (ULTIMATE)
+                    </span>
+                    <h3 className="text-xl font-black text-white mt-0.5">
+                      {name}
+                    </h3>
+                  </div>
+
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {hasVariants && (
+                      <div className="flex flex-wrap items-center gap-1 bg-[#0e0a1d] p-1 rounded-lg border border-[#251c42]">
+                        {ult.variants!.map((v) => {
+                          const isSelected = (selectedUltVariant || 'regular') === v.id;
+                          return (
+                            <button
+                              key={v.id}
+                              onClick={() => {
+                                playTransformSurge();
+                                setSelectedUltVariant(v.id);
+                              }}
+                              className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
+                                isSelected
+                                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md border border-purple-400/50'
+                                  : 'text-gray-400 hover:text-gray-200'
+                              }`}
+                            >
+                              {v.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    <div className="px-3 py-1 rounded-lg text-xs font-bold bg-amber-950/60 border border-amber-500/40 text-amber-300">
+                      Special: {character.stats.special_gauge}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          )}
+
+                <div className="text-sm text-gray-200 leading-relaxed whitespace-pre-line bg-[#0c0919] p-4 rounded-lg border border-[#2c204d]">
+                  {formatSkillText(description, skillLevel)}
+                </div>
+
+                {combatRates && (
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    {combatRates.crit_rate && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
+                        Taxa Crítica: {combatRates.crit_rate}
+                      </span>
+                    )}
+                    {combatRates.crit_dmg && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#1a1430] text-purple-300 border border-purple-800/30">
+                        Dano Crítico: {combatRates.crit_dmg}
+                      </span>
+                    )}
+                    {combatRates.black_flash && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/50 text-red-300 border border-red-800/30">
+                        ⚡ Flash Negro: {combatRates.black_flash}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {character.ultimate.combo && (
+                  <div className="mt-3 p-3.5 rounded-lg bg-indigo-950/30 border border-indigo-500/30 space-y-1">
+                    <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider block">
+                      ⚡ Efeito em Combo de Especial:
+                    </span>
+                    <p className="text-xs text-gray-300 whitespace-pre-line">
+                      {character.ultimate.combo}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
           {/* Passives */}
           {character.passives && character.passives.length > 0 && (
