@@ -43,6 +43,14 @@ export interface PassiveItem {
   description: string;
   image_key?: string;
   icon?: string;
+  sp_description?: string;
+  sp?: {
+    name?: string;
+    description: string;
+    image_key?: string;
+    icon?: string;
+  };
+  variants?: SkillVariant[];
 }
 
 export interface CombatRates {
@@ -90,12 +98,7 @@ export interface Character {
     variants?: SkillVariant[];
   };
   passives: PassiveItem[];
-  auto_skills?: {
-    name: string;
-    description: string;
-    image_key?: string;
-    icon?: string;
-  }[];
+  auto_skills?: PassiveItem[];
   has_transformation?: boolean;
   transform_name?: string;
   skill_priority?: (number | string)[];

@@ -798,7 +798,9 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           })()}
 
           {/* Passives / Auto Skills */}
-          {((character.auto_skills && character.auto_skills.length > 0) || (character.passives && character.passives.length > 0)) && (
+          {((character.auto_skills && character.auto_skills.length > 0) || (character.passives && character.passives.length > 0)) && (() => {
+            const passiveItems = character.auto_skills && character.auto_skills.length > 0 ? character.auto_skills : (character.passives || []);
+            return (
             <div className="space-y-4 pt-4 border-t border-[#251b40]">
               <h2 className="text-xl font-bold tracking-wide text-purple-200 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-purple-400" />
@@ -806,34 +808,109 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               </h2>
 
               <div className="grid grid-cols-1 gap-3">
-                {(character.auto_skills && character.auto_skills.length > 0 ? character.auto_skills : character.passives).map((p, idx) => (
-                  <div 
-                    key={idx} 
-                    className="bg-[#120e24] border border-[#251b40] rounded-xl p-4 flex items-start gap-3 hover:border-purple-500/30 transition-colors"
-                  >
-                    <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#0a0718] border border-purple-500/30 shrink-0 flex items-center justify-center">
-                      <img 
-                        src={getSkillIconUrl(p.icon || p.image_key)} 
-                        alt={p.name} 
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = getSkillIconUrl();
-                        }}
-                      />
+                {passiveItems.map((p, idx) => {
+                  const hasSP = !!p.sp_description;
+                  const spStateKey = `passive-${idx}`;
+                  const isShowingSP = (selectedSkillVariants as Record<string, string>)[spStateKey] === 'sp';
+                  const displayDesc = isShowingSP && p.sp_description ? p.sp_description : p.description;
+                  const spIcon = p.sp?.icon || p.sp?.image_key;
+                  const displayIcon = isShowingSP && spIcon ? spIcon : (p.icon || p.image_key);
+
+                  if (!hasSP) {
+                    return (
+                      <div 
+                        key={idx} 
+                        className="bg-[#120e24] border border-[#251b40] rounded-xl p-4 flex items-start gap-3 hover:border-purple-500/30 transition-colors"
+                      >
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#0a0718] border border-purple-500/30 shrink-0 flex items-center justify-center">
+                          <img 
+                            src={getSkillIconUrl(p.icon || p.image_key)} 
+                            alt={p.name} 
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = getSkillIconUrl();
+                            }}
+                          />
+                        </div>
+                        <div className="flex-1 space-y-1">
+                          <h4 className="text-sm font-bold text-purple-300">
+                            {p.name}
+                          </h4>
+                          {renderFormattedDescription(p.description)}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div key={idx} className="bg-[#120e24] border border-[#251b40] rounded-xl shadow-lg flex flex-row overflow-hidden hover:border-purple-500/40 transition-colors">
+                      {/* Left Vertical Tab Strip */}
+                      <div className="w-20 sm:w-24 shrink-0 flex flex-col border-r border-[#241a3e] bg-[#0c081d]">
+                        <button
+                          onClick={() => {
+                            playTransformSurge();
+                            setSelectedSkillVariants(prev => ({ ...prev, [spStateKey]: 'base' }));
+                          }}
+                          className={`py-3 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${
+                            !isShowingSP
+                              ? 'bg-[#181230] text-white border-purple-400'
+                              : 'text-gray-400 hover:text-gray-200 hover:bg-[#140f28] border-transparent'
+                          }`}
+                        >
+                          Base
+                        </button>
+                        <button
+                          onClick={() => {
+                            playTransformSurge();
+                            setSelectedSkillVariants(prev => ({ ...prev, [spStateKey]: 'sp' }));
+                          }}
+                          className={`py-3 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${
+                            isShowingSP
+                              ? 'bg-[#2a1c0d] text-amber-300 border-amber-400'
+                              : 'text-amber-500/70 hover:text-amber-300 hover:bg-[#1f150c] border-transparent'
+                          }`}
+                        >
+                          SP
+                        </button>
+                      </div>
+
+                      {/* Right Main Content */}
+                      <div className="flex-1 p-4 space-y-2">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#0a0718] border border-purple-500/30 shrink-0 flex items-center justify-center">
+                            <img 
+                              src={getSkillIconUrl(displayIcon)} 
+                              alt={p.name} 
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = getSkillIconUrl();
+                              }}
+                            />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <h4 className="text-sm font-bold text-purple-300">
+                                {isShowingSP && p.sp?.name ? p.sp.name : p.name}
+                              </h4>
+                              {isShowingSP && (
+                                <span className="px-2 py-0.5 rounded text-[10px] font-black bg-amber-950 border border-amber-500/50 text-amber-300">
+                                  SP UNLOCKED
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="bg-[#0b0819] p-3 rounded-lg border border-[#1f1737]">
+                          {renderFormattedDescription(displayDesc)}
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex-1 space-y-1">
-                      <h4 className="text-sm font-bold text-purple-300">
-                        {p.name}
-                      </h4>
-                      <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line">
-                        {p.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-          )}
+            );
+          })()}
         </div>
 
         {/* Right Column: Estatísticas e Prioridade de Habilidades */}

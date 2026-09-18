@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import type { Character } from '../types';
 import { ElementBadge, RarityBadge } from './Badges';
-import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw } from 'lucide-react';
+import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw, Check } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { playClick } from '../utils/sound';
 import { getAssetUrl } from '../utils/assets';
@@ -45,8 +45,11 @@ export const CharactersList: React.FC<CharactersListProps> = ({
   onSelectCharacter,
   initialSearch = ""
 }) => {
-  const { isFavoriteChar } = useJjkStore();
+  const { isFavoriteChar, isCharacterOwned, toggleOwnedCharacter, ownedCharacterIds } = useJjkStore();
   const [searchTerm, setSearchTerm] = useState(initialSearch);
+
+  // Collection Filter: 'ALL' | 'OWNED' | 'NOT_OWNED'
+  const [collectionFilter, setCollectionFilter] = useState<'ALL' | 'OWNED' | 'NOT_OWNED'>('ALL');
 
   // Filters State
   const [selectedElement, setSelectedElement] = useState<string>('ALL');
@@ -139,9 +142,17 @@ export const CharactersList: React.FC<CharactersListProps> = ({
         return false;
       }
 
+      // 10. Collection filter (Minha Coleção)
+      if (collectionFilter === 'OWNED' && !isCharacterOwned(char.id)) {
+        return false;
+      }
+      if (collectionFilter === 'NOT_OWNED' && isCharacterOwned(char.id)) {
+        return false;
+      }
+
       return true;
     });
-  }, [characters, searchTerm, selectedElement, selectedRarity, selectedFocus, filterSP, filterLimited, poolFilter, selectedTags, onlyFavorites, isFavoriteChar]);
+  }, [characters, searchTerm, selectedElement, selectedRarity, selectedFocus, filterSP, filterLimited, poolFilter, selectedTags, onlyFavorites, isFavoriteChar, collectionFilter, isCharacterOwned]);
 
   const resetFilters = () => {
     playClick();
@@ -154,6 +165,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
     setPoolFilter('ALL');
     setSelectedTags([]);
     setOnlyFavorites(false);
+    setCollectionFilter('ALL');
   };
 
   const hasActiveFilters = searchTerm || 
@@ -164,7 +176,8 @@ export const CharactersList: React.FC<CharactersListProps> = ({
     filterLimited || 
     poolFilter !== 'ALL' || 
     selectedTags.length > 0 || 
-    onlyFavorites;
+    onlyFavorites ||
+    collectionFilter !== 'ALL';
 
   const visibleTags = isTagsExpanded ? ALL_TAGS : ALL_TAGS.slice(0, 8);
 
@@ -479,7 +492,57 @@ export const CharactersList: React.FC<CharactersListProps> = ({
               <Star className={`w-3.5 h-3.5 ${onlyFavorites ? 'fill-amber-400 text-amber-400' : ''}`} />
               <span>{onlyFavorites ? '✓ Apenas Favoritos' : 'Filtrar Favoritos'}</span>
             </button>
+          </div>
 
+          {/* 8. Collection Filter: Minha Coleção */}
+          <div className="pt-2 border-t border-[#201538] space-y-2">
+            <label className="text-xs font-bold text-gray-400 block tracking-wide">
+              Minha Coleção ({ownedCharacterIds.length}/{characters.length})
+            </label>
+            <div className="grid grid-cols-3 gap-1.5">
+              <button
+                onClick={() => {
+                  playClick();
+                  setCollectionFilter('ALL');
+                }}
+                className={`py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
+                  collectionFilter === 'ALL'
+                    ? 'bg-purple-600/40 border-purple-400 text-white ring-1 ring-purple-400 shadow-sm'
+                    : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-purple-500/40'
+                }`}
+              >
+                Todos
+              </button>
+              <button
+                onClick={() => {
+                  playClick();
+                  setCollectionFilter(collectionFilter === 'OWNED' ? 'ALL' : 'OWNED');
+                }}
+                className={`py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
+                  collectionFilter === 'OWNED'
+                    ? 'bg-emerald-950/80 border-emerald-400 text-emerald-300 ring-2 ring-emerald-500/40 shadow-sm shadow-emerald-500/20'
+                    : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-emerald-500/40'
+                }`}
+              >
+                ✓ Tenho
+              </button>
+              <button
+                onClick={() => {
+                  playClick();
+                  setCollectionFilter(collectionFilter === 'NOT_OWNED' ? 'ALL' : 'NOT_OWNED');
+                }}
+                className={`py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
+                  collectionFilter === 'NOT_OWNED'
+                    ? 'bg-rose-950/80 border-rose-400 text-rose-300 ring-2 ring-rose-500/40 shadow-sm shadow-rose-500/20'
+                    : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-rose-500/40'
+                }`}
+              >
+                ✗ Faltam
+              </button>
+            </div>
+          </div>
+
+          <div className="pt-1 space-y-2">
             {hasActiveFilters && (
               <button
                 onClick={resetFilters}
@@ -539,6 +602,25 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                       <div className="absolute top-1.5 right-1.5 pointer-events-none">
                         <ElementBadge element={char.element} showLabel={false} className="scale-90 shadow-md" />
                       </div>
+
+                      {/* Collection Owned Toggle (Top Left) */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          playClick();
+                          toggleOwnedCharacter(char.id);
+                        }}
+                        className={`absolute top-1.5 left-1.5 w-6 h-6 rounded-full flex items-center justify-center transition-all z-10 cursor-pointer ${
+                          isCharacterOwned(char.id)
+                            ? 'bg-emerald-500 border-2 border-emerald-300 shadow-md shadow-emerald-500/50'
+                            : 'bg-black/50 border-2 border-gray-500/50 hover:border-gray-300/70'
+                        }`}
+                        title={isCharacterOwned(char.id) ? 'Remover da coleção' : 'Adicionar à coleção'}
+                      >
+                        {isCharacterOwned(char.id) && (
+                          <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                        )}
+                      </button>
 
                       {/* Rarity, Limited & SP Pills (Bottom Left) */}
                       <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 pointer-events-none">

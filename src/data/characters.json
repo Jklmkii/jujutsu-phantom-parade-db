@@ -6033,8 +6033,8 @@
             "label": "SP",
             "name": "I Hate Overtime",
             "cost": "20",
-            "description": "$1a",
-            "description_10": "$1a",
+            "description": "Applies 25.00% Damage Dealt Increase to self (3 turns)\nApplies 10.00% CRIT Rate Increase to self (3 turns)\nIncreases the effect amount of the following effects applied to self by +10.00%:\n· Taijutsu Increase\n· Jujutsu Increase\n※ Effects that do not specify an upper limit on the number of times or turns are excluded from enhancement\nIncreases the effect amount of the following effects applied to self and allies by +10.00%, and extends their effective turns by 1:\n· Taijutsu Increase (Working Overtime)\n· Jujutsu Increase (Working Overtime)\n· Damage Dealt Increase with \"蒼\" (Blue) Attribute (Working Overtime)\n▼ When Taijutsu Increase (Working Overtime) / Jujutsu Increase (Working Overtime) is not applied to self\nApplies 15.00% Taijutsu Increase (Working Overtime) to self (6 turns)\nApplies 15.00% Jujutsu Increase (Working Overtime) to self (6 turns)\n※ The effect amount of Taijutsu Increase (Working Overtime) / Jujutsu Increase (Working Overtime) applies up to a total of 100.00%, including overlapping amounts\nSP strengthened: \"Going Into Overtime\" Auto skill",
+            "description_10": "Applies 42.00% Damage Dealt Increase to self (3 turns)\nApplies 10.00% CRIT Rate Increase to self (3 turns)\nIncreases the effect amount of the following effects applied to self by +10.00%:\n· Taijutsu Increase\n· Jujutsu Increase\n※ Effects that do not specify an upper limit on the number of times or turns are excluded from enhancement\nIncreases the effect amount of the following effects applied to self and allies by +10.00%, and extends their effective turns by 1:\n· Taijutsu Increase (Working Overtime)\n· Jujutsu Increase (Working Overtime)\n· Damage Dealt Increase with \"蒼\" (Blue) Attribute (Working Overtime)\n▼ When Taijutsu Increase (Working Overtime) / Jujutsu Increase (Working Overtime) is not applied to self\nApplies 15.00% Taijutsu Increase (Working Overtime) to self (6 turns)\nApplies 15.00% Jujutsu Increase (Working Overtime) to self (6 turns)\n※ The effect amount of Taijutsu Increase (Working Overtime) / Jujutsu Increase (Working Overtime) applies up to a total of 100.00%, including overlapping amounts\nSP strengthened: \"Going Into Overtime\" Auto skill",
             "image_key": "BlueSSRNanamiS11SP",
             "icon": "skill_icons/BlueSSRNanamiS11SP.png",
             "combat_rates": {
@@ -6119,11 +6119,13 @@
     "passives": [
       {
         "name": "Going Into Overtime",
-        "description": "At the start of battle,\nRecovers own Cursed Energy by 30\nRecovers own Cursed Energy by 5 every turn\nFills own Ultimate Skill Gauge by 220\nWhen Black Flash or Critical Hit is performed,\nIncreases own Taijutsu & Jujutsu Stat by 5.0% (6 Turns)"
+        "description": "At the start of battle,\nRecovers own Cursed Energy by 30\nRecovers own Cursed Energy by 5 every turn\nFills own Ultimate Skill Gauge by 220\nWhen Black Flash or Critical Hit is performed,\nIncreases own Taijutsu & Jujutsu Stat by 5.0% (6 Turns)",
+        "sp_description": "When battle starts:\nRecovers 30 Cursed Energy to self\nApplies 5 Cursed Energy Recovery to self per turn\nRecovers 220 Ultimate Gauge\nApplies 30.00% Taijutsu Increase to self\nApplies 30.00% Jujutsu Increase to self\n▼ When self lands a CRIT or Black Flash (limited to one activation per turn):\nApplies 15.00% Taijutsu Increase (Working Overtime) to self (6 turns)\nApplies 15.00% Jujutsu Increase (Working Overtime) to self (6 turns)\n※ The effect amount of Taijutsu Increase (Working Overtime) / Jujutsu Increase (Working Overtime) applies up to a total of 100.00%, including overlapping amounts\nApplies 10.00% Damage Dealt Increase with \"蒼\" (Blue) Attribute (Working Overtime) to all allies with \"蒼\" (Blue) Attribute (4 turns)\n※ The effect amount of Damage Dealt Increase with \"蒼\" (Blue) Attribute (Working Overtime) applies up to a total of 135.00%, including overlapping amounts\n(Unlocked automatically via SP Skill 2)"
       },
       {
         "name": "Zone, Outburst",
-        "description": "When Black Flash is performed,\nIncreases own Black Flash Rate by 200.0% (4 Turns)"
+        "description": "When Black Flash is performed,\nIncreases own Black Flash Rate by 200.0% (4 Turns)",
+        "sp_description": "▼ When self launches a Black Flash (once every turn)\nApplies 200.00% Black Flash Rate Increase to self (4 turns)\nApplies 5.00% Taijutsu Increase to self (4 turns)\nApplies 5.00% Jujutsu Increase to self (4 turns)\nRecovers 10 Cursed Energy for self (No Limit)\n(Unlocked automatically via SP Skill 3)"
       }
     ],
     "skill_priority": [
@@ -6137,13 +6139,15 @@
         "name": "Going Into Overtime",
         "description": "When battle starts:\nRecovers 30 Cursed Energy to self\nApplies 5 Cursed Energy Recovery to self per turn\nRecovers 220 Ultimate Gauge\n\n▼ When self lands a CRIT or Black Flash (limited to one activation per turn):\nApplies 5.00% Taijutsu Increase to self (6 turns)\nApplies 5.00% Jujutsu Increase to self (6 turns)",
         "image_key": "Nanami1",
-        "icon": "skill_icons/Nanami1.png"
+        "icon": "skill_icons/Nanami1.png",
+        "sp_description": "When battle starts:\nRecovers 30 Cursed Energy to self\nApplies 5 Cursed Energy Recovery to self per turn\nRecovers 220 Ultimate Gauge\nApplies 30.00% Taijutsu Increase to self\nApplies 30.00% Jujutsu Increase to self\n▼ When self lands a CRIT or Black Flash (limited to one activation per turn):\nApplies 15.00% Taijutsu Increase (Working Overtime) to self (6 turns)\nApplies 15.00% Jujutsu Increase (Working Overtime) to self (6 turns)\n※ The effect amount of Taijutsu Increase (Working Overtime) / Jujutsu Increase (Working Overtime) applies up to a total of 100.00%, including overlapping amounts\nApplies 10.00% Damage Dealt Increase with \"蒼\" (Blue) Attribute (Working Overtime) to all allies with \"蒼\" (Blue) Attribute (4 turns)\n※ The effect amount of Damage Dealt Increase with \"蒼\" (Blue) Attribute (Working Overtime) applies up to a total of 135.00%, including overlapping amounts\n(Unlocked automatically via SP Skill 2)"
       },
       {
         "name": "Zone, Outburst",
         "description": "▼ When self launches a Black Flash (once every turn)\nApplies 200.00% Black Flash Rate Increase to self (4 turns)",
         "image_key": "AutoSkillZone",
-        "icon": "skill_icons/AutoSkillZone.png"
+        "icon": "skill_icons/AutoSkillZone.png",
+        "sp_description": "▼ When self launches a Black Flash (once every turn)\nApplies 200.00% Black Flash Rate Increase to self (4 turns)\nApplies 5.00% Taijutsu Increase to self (4 turns)\nApplies 5.00% Jujutsu Increase to self (4 turns)\nRecovers 10 Cursed Energy for self (No Limit)\n(Unlocked automatically via SP Skill 3)"
       }
     ],
     "tags": [
