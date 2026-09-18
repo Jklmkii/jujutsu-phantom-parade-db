@@ -21,7 +21,15 @@ import {
   Skull,
   Download
 } from 'lucide-react';
-import { playClick, playSelect } from '../utils/sound';
+import { 
+  playClick, 
+  playSelect,
+  playMemoryEquip,
+  playBreakShatter,
+  playTeamSynergyPulse,
+  playSuccessFanfare,
+  playTrashDelete
+} from '../utils/sound';
 import { getAssetUrl, getStaticThumbUrl, getAssetPath } from '../utils/assets';
 import { useTranslation } from '../i18n';
 import metaTeamsData from '../data/meta_teams.json';
@@ -144,12 +152,12 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
       members: team.members.map((m) => ({ ...m })),
     };
     addTeam(cloned);
-    playClick();
+    playTeamSynergyPulse();
   };
 
   // Import Meta Team into Custom Teams
   const handleImportMetaTeam = (meta: MetaTeam) => {
-    playSelect();
+    playSuccessFanfare();
     const importedTeam: CustomTeam = {
       id: 'team_meta_' + Date.now(),
       name: `Meta ${meta.element} - ${meta.label}`,
@@ -178,7 +186,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
     });
 
     updateTeam({ ...team, members: updatedMembers });
-    playClick();
+    if (charId) {
+      playSelect();
+    } else {
+      playBreakShatter();
+    }
     setPicker(null);
   };
 
@@ -196,7 +208,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
     });
 
     updateTeam({ ...team, members: updatedMembers });
-    playClick();
+    if (memId) {
+      playMemoryEquip();
+    } else {
+      playBreakShatter();
+    }
     setPicker(null);
   };
 
@@ -882,7 +898,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                               : `Do you really want to delete team "${team.name}"?`;
                             if (window.confirm(confirmMsg)) {
                               deleteTeam(team.id);
-                              playClick();
+                              playTrashDelete();
                             }
                           }}
                           className="p-2 rounded-xl bg-[#1c1536] hover:bg-red-950 border border-[#312354] hover:border-red-500/40 text-gray-300 hover:text-red-300 transition-all"

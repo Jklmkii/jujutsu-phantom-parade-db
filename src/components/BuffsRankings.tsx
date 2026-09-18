@@ -14,7 +14,13 @@ import type { Character, BuffItem } from '../types';
 import buffsRawData from '../data/buffs.json';
 import { getAssetPath } from '../utils/assets';
 import { useTranslation } from '../i18n';
-import { playClick, playSelect } from '../utils/sound';
+import { 
+  playClick, 
+  playSelect, 
+  playCursedEnergyCharge, 
+  playBreakShatter, 
+  playBlackFlash 
+} from '../utils/sound';
 
 interface BuffsRankingsProps {
   characters: Character[];
@@ -151,7 +157,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
         <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-purple-900/30">
           <button
             onClick={() => {
-              playClick();
+              playCursedEnergyCharge();
               setActiveCategory('buff');
             }}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
@@ -169,7 +175,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
 
           <button
             onClick={() => {
-              playClick();
+              playBreakShatter();
               setActiveCategory('debuff');
             }}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
@@ -187,7 +193,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
 
           <button
             onClick={() => {
-              playClick();
+              playBlackFlash();
               setActiveCategory('dmgUp');
             }}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${

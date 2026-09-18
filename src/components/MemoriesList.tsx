@@ -5,7 +5,7 @@ import { Search, Sparkles, Clock, Shield, Check } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 import { useJjkStore } from '../store/useJjkStore';
 import { useTranslation } from '../i18n';
-import { playClick, playCollectionToggle } from '../utils/sound';
+import { playClick, playCollectionToggle, playMemoryEquip } from '../utils/sound';
 
 interface MemoriesListProps {
   memories: Memory[];
@@ -162,7 +162,8 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
           return (
             <div
               key={mem.id}
-              className={`bg-[#120e24] border-2 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 ${borderClass}`}
+              onClick={() => playMemoryEquip()}
+              className={`bg-[#120e24] border-2 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 cursor-pointer ${borderClass}`}
             >
               <div>
                 {/* Header Image */}

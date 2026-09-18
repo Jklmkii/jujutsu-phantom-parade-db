@@ -4,7 +4,17 @@ import { ElementBadge, RarityBadge, TagBadge } from './Badges';
 import { ArrowLeft, Zap, Shield, Sparkles, Swords, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { useTranslation, translateRole, translateFocus } from '../i18n';
-import { playClick, playStarToggle, playTransformSurge, playLevelUp, playDomainExpansion, playBlackFlash } from '../utils/sound';
+import { 
+  playClick, 
+  playStarToggle, 
+  playTransformSurge, 
+  playLevelUp, 
+  playDomainExpansion, 
+  playBlackFlash,
+  playUltimateSkill,
+  playCursedEnergyCharge,
+  playElementalTone
+} from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
 
 interface CharacterDetailProps {
@@ -190,7 +200,11 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute top-3 right-3">
+            <div 
+              className="absolute top-3 right-3 cursor-pointer transition-transform hover:scale-110 active:scale-95"
+              onClick={() => playElementalTone(character.element)}
+              title={character.element}
+            >
               <ElementBadge element={character.element} />
             </div>
             <div className="absolute bottom-3 left-3 flex items-center gap-2">
@@ -542,7 +556,11 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
                       {/* Skill Icon Thumbnail */}
-                      <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-[#090614] border-2 border-purple-500/40 shrink-0 shadow-md flex items-center justify-center">
+                      <div 
+                        onClick={() => playCursedEnergyCharge()}
+                        className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-[#090614] border-2 border-purple-500/40 shrink-0 shadow-md flex items-center justify-center cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+                        title={language === 'pt' ? 'Ouvir carga de Energia Amaldiçoada' : 'Play Cursed Energy SFX'}
+                      >
                         <img 
                           src={getSkillIconUrl(icon)} 
                           alt={name}
@@ -680,7 +698,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                           if (v.id === 'changed' || /domain|expans[aã]o|ryoiki/i.test(v.name || '')) {
                             playDomainExpansion();
                           } else {
-                            playTransformSurge();
+                            playUltimateSkill();
                           }
                           setSelectedUltVariant(v.id);
                         }}
@@ -703,7 +721,11 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
                       {/* Ultimate Icon Thumbnail */}
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-[#090614] border-2 border-amber-500/50 shrink-0 shadow-lg shadow-amber-950/50 flex items-center justify-center">
+                      <div 
+                        onClick={() => playUltimateSkill()}
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden bg-[#090614] border-2 border-amber-500/50 shrink-0 shadow-lg shadow-amber-950/50 flex items-center justify-center cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+                        title={language === 'pt' ? 'Ouvir ativação da Habilidade Suprema' : 'Play Ultimate Skill SFX'}
+                      >
                         <img 
                           src={getSkillIconUrl(icon)} 
                           alt={name}

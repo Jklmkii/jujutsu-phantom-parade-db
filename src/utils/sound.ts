@@ -437,3 +437,331 @@ export function playClearFilters(): void {
     // Silent fail
   }
 }
+
+/** Ultimate / Supreme Skill invocation (Sub-bass buildup + harmonic chime) */
+export function playUltimateSkill(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    const duration = 0.55;
+
+    // 1. Ascending energy sweep
+    const sweepOsc = ctx.createOscillator();
+    const sweepGain = ctx.createGain();
+    sweepOsc.type = 'sawtooth';
+    sweepOsc.frequency.setValueAtTime(140, now);
+    sweepOsc.frequency.exponentialRampToValueAtTime(880, now + 0.35);
+
+    sweepGain.gain.setValueAtTime(0.02, now);
+    sweepGain.gain.linearRampToValueAtTime(0.1, now + 0.25);
+    sweepGain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+    // Lowpass filter for smooth energy feeling
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(400, now);
+    filter.frequency.exponentialRampToValueAtTime(2800, now + 0.35);
+
+    sweepOsc.connect(filter);
+    filter.connect(sweepGain);
+    sweepGain.connect(ctx.destination);
+
+    sweepOsc.start(now);
+    sweepOsc.stop(now + 0.38);
+
+    // 2. Heavy impact boom on culmination
+    const boomOsc = ctx.createOscillator();
+    const boomGain = ctx.createGain();
+    boomOsc.type = 'sine';
+    boomOsc.frequency.setValueAtTime(180, now + 0.28);
+    boomOsc.frequency.exponentialRampToValueAtTime(32, now + duration);
+
+    boomGain.gain.setValueAtTime(0.14, now + 0.28);
+    boomGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    boomOsc.connect(boomGain);
+    boomGain.connect(ctx.destination);
+
+    boomOsc.start(now + 0.28);
+    boomOsc.stop(now + duration);
+
+    // 3. High celestial shimmer
+    [1046.5, 1318.5, 1567.98].forEach((f, idx) => {
+      const chimeOsc = ctx.createOscillator();
+      const chimeGain = ctx.createGain();
+      const start = now + 0.3 + idx * 0.03;
+
+      chimeOsc.type = 'sine';
+      chimeOsc.frequency.setValueAtTime(f, start);
+
+      chimeGain.gain.setValueAtTime(0.06, start);
+      chimeGain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
+
+      chimeOsc.connect(chimeGain);
+      chimeGain.connect(ctx.destination);
+
+      chimeOsc.start(start);
+      chimeOsc.stop(start + 0.22);
+    });
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Break effect / Cursed barrier shatter */
+export function playBreakShatter(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+
+    // Metallic dissonant crack (ring modulation effect)
+    [320, 580, 890, 1420].forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = idx % 2 === 0 ? 'triangle' : 'sawtooth';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.3, now + 0.12);
+
+      gain.gain.setValueAtTime(0.08 / (idx + 1), now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.14);
+    });
+
+    // Sub click
+    const subOsc = ctx.createOscillator();
+    const subGain = ctx.createGain();
+    subOsc.type = 'sine';
+    subOsc.frequency.setValueAtTime(160, now);
+    subOsc.frequency.exponentialRampToValueAtTime(30, now + 0.08);
+
+    subGain.gain.setValueAtTime(0.12, now);
+    subGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+    subOsc.connect(subGain);
+    subGain.connect(ctx.destination);
+
+    subOsc.start(now);
+    subOsc.stop(now + 0.08);
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Memory equip / Sacred scroll lock */
+export function playMemoryEquip(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    // Two-tone harmonic bell (A4 -> E5) with soft sine vibration
+    const notes = [440, 659.25, 880];
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const start = now + i * 0.035;
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, start);
+
+      gain.gain.setValueAtTime(0.07, start);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.18);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(start);
+      osc.stop(start + 0.18);
+    });
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Cube Summon / Gacha pull sparkle chime */
+export function playCubeSummonChime(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    // Ascending 5-note pentatonic arpeggio (C5, D5, E5, G5, A5, C6)
+    const arpeggio = [523.25, 587.33, 659.25, 783.99, 880, 1046.5];
+    arpeggio.forEach((f, idx) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const noteStart = now + idx * 0.03;
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(f, noteStart);
+
+      gain.gain.setValueAtTime(0.06, noteStart);
+      gain.gain.exponentialRampToValueAtTime(0.001, noteStart + 0.16);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(noteStart);
+      osc.stop(noteStart + 0.16);
+    });
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Team Synergy Resonance pulse (Full formation chord) */
+export function playTeamSynergyPulse(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    const chord = [261.63, 329.63, 392.00, 523.25]; // C major chord
+    chord.forEach((freq) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.3);
+    });
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Triumph / Goal achievement fanfare */
+export function playSuccessFanfare(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    const notes = [
+      { f: 523.25, d: 0.07, delay: 0 },
+      { f: 659.25, d: 0.07, delay: 0.07 },
+      { f: 783.99, d: 0.07, delay: 0.14 },
+      { f: 1046.5, d: 0.22, delay: 0.21 }
+    ];
+
+    notes.forEach((item) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const start = now + item.delay;
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(item.f, start);
+
+      gain.gain.setValueAtTime(0.09, start);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + item.d);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(start);
+      osc.stop(start + item.d);
+    });
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Trash delete / Reset percussive hollow knock */
+export function playTrashDelete(): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(320, now);
+    osc.frequency.exponentialRampToValueAtTime(80, now + 0.08);
+
+    gain.gain.setValueAtTime(0.1, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.08);
+  } catch {
+    // Silent fail
+  }
+}
+
+/** Elemental acoustic tone (Unique signature for each element) */
+export function playElementalTone(element: string): void {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    const elem = element.toLowerCase();
+    if (elem.includes('blue') || elem.includes('azul') || elem.includes('fantasma') || elem.includes('幻')) {
+      // Blue: Deep fluid resonance (Water / Phantom)
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(330, now);
+      osc.frequency.exponentialRampToValueAtTime(440, now + 0.1);
+    } else if (elem.includes('red') || elem.includes('vermelho') || elem.includes('chamas') || elem.includes('夜')) {
+      // Red: Aggressive sawtooth strike (Fire / Night)
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.exponentialRampToValueAtTime(550, now + 0.09);
+    } else if (elem.includes('green') || elem.includes('verde') || elem.includes('sombra') || elem.includes('影')) {
+      // Green: Harmonic triangle chord (Shadow / Taijutsu)
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(330, now + 0.1);
+    } else {
+      // Yellow: Bright metallic spark (Decay / Flow)
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(587.33, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+    }
+
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.1);
+  } catch {
+    // Silent fail
+  }
+}
+

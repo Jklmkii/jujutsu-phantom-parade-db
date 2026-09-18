@@ -19,7 +19,7 @@ import {
   CalendarCheck,
   X
 } from 'lucide-react';
-import { playClick, playSelect } from '../utils/sound';
+import { playClick, playSelect, playCubeSummonChime, playTrashDelete, playLevelUp } from '../utils/sound';
 import { useJjkStore } from '../store/useJjkStore';
 import { formatDateDisplay, getDeviceLocalDateString } from '../utils/date';
 import { useTranslation } from '../i18n';
@@ -290,7 +290,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
-                    playClick();
+                    playLevelUp();
                     simulateNextDay();
                   }}
                   className="flex items-center gap-1 px-3 py-1.5 bg-purple-600/20 hover:bg-purple-600/35 border border-purple-500/40 rounded-xl text-purple-300 hover:text-white font-bold text-[11px] transition-all cursor-pointer shadow-sm"
@@ -301,7 +301,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 </button>
                 <button
                   onClick={() => {
-                    playClick();
+                    playTrashDelete();
                     resetSavingsPlan();
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 bg-gray-800/40 hover:bg-gray-800/80 border border-gray-700/50 rounded-xl text-gray-400 hover:text-gray-200 text-[11px] transition-all cursor-pointer"
@@ -360,7 +360,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   />
                   <button
                     onClick={() => {
-                      playClick();
+                      playCubeSummonChime();
                       updateSavingsPlan({ currentCubes: currentCubes + 3000, lastUpdatedDate: getDeviceLocalDateString() });
                     }}
                     className="px-2.5 py-1 bg-amber-500/20 border border-amber-500/40 rounded-xl text-xs font-bold text-amber-300 hover:bg-amber-500/30 transition-all cursor-pointer whitespace-nowrap"
@@ -425,7 +425,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   />
                   <button
                     onClick={() => {
-                      playClick();
+                      playCubeSummonChime();
                       updateSavingsPlan({ pityPoints: Math.min(250, pityPoints + 1) });
                     }}
                     className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-xl text-xs font-bold text-cyan-300 hover:bg-cyan-500/30 transition-all cursor-pointer whitespace-nowrap"
@@ -435,7 +435,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   </button>
                   <button
                     onClick={() => {
-                      playClick();
+                      playCubeSummonChime();
                       updateSavingsPlan({ pityPoints: Math.min(250, pityPoints + 10) });
                     }}
                     className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-xl text-xs font-bold text-cyan-300 hover:bg-cyan-500/30 transition-all cursor-pointer whitespace-nowrap"

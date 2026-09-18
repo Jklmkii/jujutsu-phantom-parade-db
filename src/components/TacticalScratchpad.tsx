@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { useTranslation } from '../i18n';
+import { playTrashDelete, playClick } from '../utils/sound';
 
 export type ScratchpadTool = 'pen' | 'eraser';
 
@@ -137,12 +138,14 @@ export const TacticalScratchpad: React.FC = () => {
   };
 
   const undoLastStroke = () => {
+    playClick();
     strokesRef.current.pop();
     setHasStrokes(strokesRef.current.length > 0);
     redrawCanvas();
   };
 
   const clearCanvas = () => {
+    playTrashDelete();
     strokesRef.current = [];
     setHasStrokes(false);
     redrawCanvas();
