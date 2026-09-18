@@ -101,3 +101,10 @@ npm run lint
 
 ### D. Sincronização Obrigatória com o Vault JJK_Scraper
 * A documentação de arquitetura, changelog, ADRs e histórico de demandas está centralizada no cofre dedicado **`JJK_Scraper/JJK_Database/Projeto/`** (com acesso pelo `Dashboard.md`). Sempre mantenha essas notas sincronizadas após novas implementações.
+
+### E. Estilo Conversacional de Pair-Programming Ativo (Narração Passo a Passo em Tempo Real)
+* **Princípio Mandatório:** O desenvolvedor prefere expressamente a condução em tempo real passo a passo demonstrada pelo Claude. O agente NUNCA deve operar de forma silenciosa ou emitir blocos massivos sem contexto.
+* **Comunicação Ativa:** Antes de cada ferramenta ou edição, contextualizar brevemente a ação em frases curtas (ex: *"Agora vou inspecionar o arquivo X:"*, *"Edit 1: Adicionar filtro de coleção ao useMemo:"*).
+* **Diagnóstico Aberto:** Se um replace corromper linhas ou a compilação falhar, relatar o diagnóstico e a correção em andamento abertamente.
+* **Feedback Atômico de Qualidade:** Reportar compilação e linter imediatamente com marcadores visuais (ex: *"Build passou com código 0! ✅ Agora vou rodar o lint:"*).
+* **Tabela de Fechamento:** Ao concluir, estruturar a tabela resumo com Tarefa, Status, Build e Lint com checkmarks verdes (`✅`).
