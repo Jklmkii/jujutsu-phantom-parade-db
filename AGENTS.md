@@ -99,5 +99,5 @@ npm run lint
   * `#minor` no commit para avanço de versão secundária (`x.y.z -> x.(y+1).0`).
   * `#major` no commit para quebras de compatibilidade arquitetural.
 
-### D. Sincronização Obrigatória com o Obsidian-Vault
-* Sempre mantenha as notas do projeto em `Obsidian-Vault/Projetos/Jujutsu/` e o `00 - Visao Geral/Dashboard.md` sincronizados após novas implementações.
+### D. Sincronização Obrigatória com o Vault JJK_Scraper
+* A documentação de arquitetura, changelog, ADRs e histórico de demandas está centralizada no cofre dedicado **`JJK_Scraper/JJK_Database/Projeto/`** (com acesso pelo `Dashboard.md`). Sempre mantenha essas notas sincronizadas após novas implementações.
