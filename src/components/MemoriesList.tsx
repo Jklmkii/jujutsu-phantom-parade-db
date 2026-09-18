@@ -1,8 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import type { Memory } from '../types';
 import { RarityBadge } from './Badges';
-import { Search, Sparkles, Clock, Shield } from 'lucide-react';
+import { Search, Sparkles, Clock, Shield, Check } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
+import { useJjkStore } from '../store/useJjkStore';
+import { playClick } from '../utils/sound';
 
 interface MemoriesListProps {
   memories: Memory[];
@@ -11,14 +13,22 @@ interface MemoriesListProps {
 export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRarity, setSelectedRarity] = useState<string>('ALL');
+  const [collectionFilter, setCollectionFilter] = useState<'ALL' | 'OWNED' | 'NOT_OWNED'>('ALL');
+
+  const { isMemoryOwned, toggleOwnedMemory, ownedMemoryIds } = useJjkStore();
 
   const filteredMemories = useMemo(() => {
     return memories.filter((mem) => {
       const matchSearch = !searchTerm || mem.title.toLowerCase().includes(searchTerm.toLowerCase());
       const matchRarity = selectedRarity === 'ALL' || mem.rarity === selectedRarity;
-      return matchSearch && matchRarity;
+      if (!matchSearch || !matchRarity) return false;
+
+      if (collectionFilter === 'OWNED' && !isMemoryOwned(mem.id)) return false;
+      if (collectionFilter === 'NOT_OWNED' && isMemoryOwned(mem.id)) return false;
+
+      return true;
     });
-  }, [memories, searchTerm, selectedRarity]);
+  }, [memories, searchTerm, selectedRarity, collectionFilter, isMemoryOwned]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
@@ -47,23 +57,79 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
         </div>
       </div>
 
-      {/* Rarity Buttons & Counter */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          {['ALL', 'SSR', 'SR', 'R'].map((r) => (
+      {/* Filters: Rarity + Collection & Counter */}
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-[#120e24] border border-[#251b40] p-3 rounded-2xl">
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Rarity */}
+          <div className="flex items-center gap-1.5">
+            {['ALL', 'SSR', 'SR', 'R'].map((r) => (
+              <button
+                key={r}
+                onClick={() => {
+                  playClick();
+                  setSelectedRarity(r);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-black uppercase border transition-all cursor-pointer ${
+                  selectedRarity === r
+                    ? 'bg-purple-600 border-purple-400 text-white shadow-md'
+                    : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
+                }`}
+              >
+                {r === 'ALL' ? 'Todas Raridades' : r}
+              </button>
+            ))}
+          </div>
+
+          <div className="h-5 w-[1px] bg-[#2d2250] hidden sm:block" />
+
+          {/* Collection Toggles */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs font-bold text-gray-400 hidden sm:inline">
+              Coleção ({ownedMemoryIds.length}/{memories.length}):
+            </span>
             <button
-              key={r}
-              onClick={() => setSelectedRarity(r)}
-              className={`px-4 py-1.5 rounded-xl text-xs font-black uppercase border transition-all ${
-                selectedRarity === r
-                  ? 'bg-purple-600 border-purple-400 text-white shadow-md'
-                  : 'bg-[#120e24] border-[#291f47] text-gray-400 hover:text-white'
+              onClick={() => {
+                playClick();
+                setCollectionFilter('ALL');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                collectionFilter === 'ALL'
+                  ? 'bg-purple-600/40 border-purple-400 text-white ring-1 ring-purple-400'
+                  : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
               }`}
             >
-              {r === 'ALL' ? 'Todas' : r}
+              Todas
             </button>
-          ))}
+            <button
+              onClick={() => {
+                playClick();
+                setCollectionFilter(collectionFilter === 'OWNED' ? 'ALL' : 'OWNED');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1 ${
+                collectionFilter === 'OWNED'
+                  ? 'bg-emerald-950/80 border-emerald-400 text-emerald-300 ring-1 ring-emerald-500/50'
+                  : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
+              }`}
+            >
+              <Check className="w-3.5 h-3.5" />
+              <span>Tenho</span>
+            </button>
+            <button
+              onClick={() => {
+                playClick();
+                setCollectionFilter(collectionFilter === 'NOT_OWNED' ? 'ALL' : 'NOT_OWNED');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                collectionFilter === 'NOT_OWNED'
+                  ? 'bg-rose-950/80 border-rose-400 text-rose-300 ring-1 ring-rose-500/50'
+                  : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
+              }`}
+            >
+              ✗ Faltam
+            </button>
+          </div>
         </div>
+
         <div className="text-xs font-mono text-gray-400">
           Exibindo <span className="text-white font-bold">{filteredMemories.length}</span> de {memories.length} memórias
         </div>
@@ -75,8 +141,11 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
           const imgUrl = getAssetUrl(mem.image);
           const isSSR = mem.rarity === 'SSR';
           const isSR = mem.rarity === 'SR';
+          const isOwned = isMemoryOwned(mem.id);
 
-          const borderClass = isSSR
+          const borderClass = isOwned
+            ? 'border-emerald-500/60 shadow-md shadow-emerald-950/30'
+            : isSSR
             ? 'border-amber-500/50 hover:border-amber-400 shadow-sm shadow-amber-950/30'
             : isSR
             ? 'border-sky-500/40 hover:border-sky-300 shadow-sm shadow-sky-950/20'
@@ -98,9 +167,29 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                       (e.target as HTMLImageElement).src = getAssetUrl();
                     }}
                   />
-                  <div className="absolute top-2.5 left-2.5">
+
+                  {/* Left: Rarity & Checkmark Toggle */}
+                  <div className="absolute top-2.5 left-2.5 flex items-center gap-2">
                     <RarityBadge rarity={mem.rarity} />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        playClick();
+                        toggleOwnedMemory(mem.id);
+                      }}
+                      className={`w-6 h-6 rounded-full flex items-center justify-center transition-all z-10 cursor-pointer ${
+                        isOwned
+                          ? 'bg-emerald-500 border-2 border-emerald-300 shadow-md shadow-emerald-500/50'
+                          : 'bg-black/60 border-2 border-gray-400/50 hover:border-gray-200'
+                      }`}
+                      title={isOwned ? 'Remover da coleção' : 'Adicionar à coleção'}
+                    >
+                      {isOwned && (
+                        <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                      )}
+                    </button>
                   </div>
+
                   {mem.active_cooldown && mem.active_cooldown !== '0' && (
                     <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[11px] font-bold bg-black/70 border border-purple-500/40 text-purple-300 flex items-center gap-1">
                       <Clock className="w-3 h-3" />
