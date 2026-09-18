@@ -3,7 +3,7 @@ import type { Character, SkillVariant } from '../types';
 import { ElementBadge, RarityBadge, TagBadge } from './Badges';
 import { ArrowLeft, Zap, Shield, Sparkles, Swords, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
-import { playClick, playStarToggle, playTransformSurge, playLevelUp } from '../utils/sound';
+import { playClick, playStarToggle, playTransformSurge, playLevelUp, playDomainExpansion, playBlackFlash } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
 
 interface CharacterDetailProps {
@@ -675,7 +675,11 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                       <button
                         key={v.id}
                         onClick={() => {
-                          playTransformSurge();
+                          if (v.id === 'changed' || /domain|expans[aã]o|ryoiki/i.test(v.name || '')) {
+                            playDomainExpansion();
+                          } else {
+                            playTransformSurge();
+                          }
                           setSelectedUltVariant(v.id);
                         }}
                         className={`py-3.5 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${
@@ -861,7 +865,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                         </button>
                         <button
                           onClick={() => {
-                            playTransformSurge();
+                            playBlackFlash();
                             setSelectedSkillVariants(prev => ({ ...prev, [spStateKey]: 'sp' }));
                           }}
                           className={`py-3 px-1 text-center text-xs font-extrabold transition-all cursor-pointer border-l-4 ${

@@ -4,7 +4,7 @@ import { RarityBadge } from './Badges';
 import { Search, Sparkles, Clock, Shield, Check } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 import { useJjkStore } from '../store/useJjkStore';
-import { playClick } from '../utils/sound';
+import { playClick, playCollectionToggle } from '../utils/sound';
 
 interface MemoriesListProps {
   memories: Memory[];
@@ -174,7 +174,8 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        playClick();
+                        const willBeOwned = !isOwned;
+                        playCollectionToggle(willBeOwned);
                         toggleOwnedMemory(mem.id);
                       }}
                       className={`w-6 h-6 rounded-full flex items-center justify-center transition-all z-10 cursor-pointer ${

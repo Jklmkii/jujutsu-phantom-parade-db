@@ -20,7 +20,7 @@ import {
   ShieldCheck, 
   Star 
 } from 'lucide-react';
-import { playClick, playSelect } from '../utils/sound';
+import { playClick, playSelect, playTierDrop } from '../utils/sound';
 import { getAssetPath, getStaticThumbUrl } from '../utils/assets';
 import officialTierlistsData from '../data/tierlists.json';
 
@@ -133,7 +133,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
     const charId = e.dataTransfer.getData('text/plain') || draggedCharId;
     if (charId) {
       setTierForChar(charId, tierId);
-      playClick();
+      playTierDrop();
     }
     setDraggedCharId(null);
     setDragOverTier(null);

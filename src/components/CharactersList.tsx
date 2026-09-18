@@ -3,7 +3,7 @@ import type { Character } from '../types';
 import { ElementBadge, RarityBadge } from './Badges';
 import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw, Check } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
-import { playClick } from '../utils/sound';
+import { playClick, playCollectionToggle, playCursedEnergyCharge, playClearFilters } from '../utils/sound';
 import { getAssetUrl } from '../utils/assets';
 
 interface CharactersListProps {
@@ -155,7 +155,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
   }, [characters, searchTerm, selectedElement, selectedRarity, selectedFocus, filterSP, filterLimited, poolFilter, selectedTags, onlyFavorites, isFavoriteChar, collectionFilter, isCharacterOwned]);
 
   const resetFilters = () => {
-    playClick();
+    playClearFilters();
     setSearchTerm('');
     setSelectedElement('ALL');
     setSelectedRarity('ALL');
@@ -259,7 +259,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                   <button
                     key={el.id}
                     onClick={() => {
-                      playClick();
+                      playCursedEnergyCharge();
                       setSelectedElement(isSelected ? 'ALL' : el.id);
                     }}
                     title={el.name}
@@ -607,7 +607,8 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          playClick();
+                          const willBeOwned = !isCharacterOwned(char.id);
+                          playCollectionToggle(willBeOwned);
                           toggleOwnedCharacter(char.id);
                         }}
                         className={`absolute top-1.5 left-1.5 w-6 h-6 rounded-full flex items-center justify-center transition-all z-10 cursor-pointer ${
