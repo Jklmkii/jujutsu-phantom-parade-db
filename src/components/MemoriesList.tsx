@@ -4,6 +4,7 @@ import { RarityBadge } from './Badges';
 import { Search, Sparkles, Clock, Shield, Check } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 import { useJjkStore } from '../store/useJjkStore';
+import { useTranslation } from '../i18n';
 import { playClick, playCollectionToggle } from '../utils/sound';
 
 interface MemoriesListProps {
@@ -11,6 +12,7 @@ interface MemoriesListProps {
 }
 
 export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
+  const { t, language } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRarity, setSelectedRarity] = useState<string>('ALL');
   const [collectionFilter, setCollectionFilter] = useState<'ALL' | 'OWNED' | 'NOT_OWNED'>('ALL');
@@ -37,10 +39,12 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
         <div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight flex items-center gap-3">
             <Sparkles className="w-7 h-7 text-amber-400" />
-            CARTAS DE MEMÓRIA (REC. BITS)
+            {language === 'pt' ? 'CARTAS DE MEMÓRIA (REC. BITS)' : 'MEMORY CARDS (REC. BITS)'}
           </h1>
           <p className="text-sm text-gray-400">
-            Catálogo com 241 memórias, aumentos percentuais de atributos, tempos de recarga e passivas.
+            {language === 'pt'
+              ? 'Catálogo com 241 memórias, aumentos percentuais de atributos, tempos de recarga e passivas.'
+              : 'Catalog with 241 memory cards, stat buffs, cooldowns and passive abilities.'}
           </p>
         </div>
 
@@ -49,7 +53,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-purple-400" />
           <input
             type="text"
-            placeholder="Buscar memória..."
+            placeholder={t.memories.searchPlaceholder}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-[#120e24] border border-[#2d2250] rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors shadow-inner"
@@ -75,7 +79,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                     : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
                 }`}
               >
-                {r === 'ALL' ? 'Todas Raridades' : r}
+                {r === 'ALL' ? (language === 'pt' ? 'Todas Raridades' : 'All Rarities') : r}
               </button>
             ))}
           </div>
@@ -85,7 +89,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
           {/* Collection Toggles */}
           <div className="flex items-center gap-1.5">
             <span className="text-xs font-bold text-gray-400 hidden sm:inline">
-              Coleção ({ownedMemoryIds.length}/{memories.length}):
+              {language === 'pt' ? 'Coleção' : 'Collection'} ({ownedMemoryIds.length}/{memories.length}):
             </span>
             <button
               onClick={() => {
@@ -98,7 +102,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                   : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
               }`}
             >
-              Todas
+              {language === 'pt' ? 'Todas' : 'All'}
             </button>
             <button
               onClick={() => {
@@ -112,7 +116,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
               }`}
             >
               <Check className="w-3.5 h-3.5" />
-              <span>Tenho</span>
+              <span>{language === 'pt' ? 'Tenho' : 'Owned'}</span>
             </button>
             <button
               onClick={() => {
@@ -125,13 +129,17 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                   : 'bg-[#18122f] border-[#291f47] text-gray-400 hover:text-white'
               }`}
             >
-              ✗ Faltam
+              {language === 'pt' ? '✗ Faltam' : '✗ Missing'}
             </button>
           </div>
         </div>
 
         <div className="text-xs font-mono text-gray-400">
-          Exibindo <span className="text-white font-bold">{filteredMemories.length}</span> de {memories.length} memórias
+          {language === 'pt' ? (
+            <>Exibindo <span className="text-white font-bold">{filteredMemories.length}</span> de {memories.length} memórias</>
+          ) : (
+            <>Showing <span className="text-white font-bold">{filteredMemories.length}</span> of {memories.length} memories</>
+          )}
         </div>
       </div>
 
@@ -183,7 +191,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                           ? 'bg-emerald-500 border-2 border-emerald-300 shadow-md shadow-emerald-500/50'
                           : 'bg-black/60 border-2 border-gray-400/50 hover:border-gray-200'
                       }`}
-                      title={isOwned ? 'Remover da coleção' : 'Adicionar à coleção'}
+                      title={isOwned ? (language === 'pt' ? 'Remover da coleção' : 'Remove from collection') : (language === 'pt' ? 'Adicionar à coleção' : 'Add to collection')}
                     >
                       {isOwned && (
                         <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
@@ -226,7 +234,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                     <div className="bg-[#0b0817] p-3.5 rounded-xl border border-[#22183d] space-y-1">
                       <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400 flex items-center gap-1.5">
                         <Sparkles className="w-3 h-3" />
-                        Habilidade de Comando
+                        {language === 'pt' ? 'Habilidade de Comando' : 'Command Skill'}
                       </span>
                       <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line">
                         {mem.active_skill.description}
@@ -239,7 +247,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                     <div className="bg-[#0b0817] p-3.5 rounded-xl border border-[#22183d] space-y-1">
                       <span className="text-[11px] uppercase font-bold tracking-wider text-indigo-400 flex items-center gap-1.5">
                         <Shield className="w-3 h-3" />
-                        Habilidade Automática (Passiva)
+                        {language === 'pt' ? 'Habilidade Automática (Passiva)' : 'Auto Skill (Passive)'}
                       </span>
                       <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line">
                         {mem.passive_skill.description}
@@ -251,12 +259,23 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
 
               {/* Release date */}
               <div className="px-5 py-2.5 bg-[#0e0a1d] border-t border-[#201738] text-[11px] text-gray-500">
-                Lançamento: {mem.release_date}
+                {language === 'pt' ? 'Lançamento' : 'Release'}: {mem.release_date}
               </div>
             </div>
           );
         })}
       </div>
+
+      {filteredMemories.length === 0 && (
+        <div className="text-center py-16 bg-[#120e24] border border-[#251b40] rounded-2xl p-8 space-y-3">
+          <p className="text-lg font-bold text-gray-300">{t.memories.emptyTitle}</p>
+          <p className="text-sm text-gray-500">
+            {language === 'pt'
+              ? 'Nenhuma carta de memória encontrada com os filtros atuais.'
+              : 'No memory cards found with the current filters.'}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

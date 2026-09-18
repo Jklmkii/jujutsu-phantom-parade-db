@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { X, Volume2, VolumeX, Download, Upload, Trash2, CheckCircle2, AlertCircle, ShieldCheck, Database, RefreshCw, Sparkles, ArrowRight, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { X, Volume2, VolumeX, Download, Upload, Trash2, CheckCircle2, AlertCircle, ShieldCheck, Database, RefreshCw, Sparkles, ArrowRight, ExternalLink, Globe } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
+import { useTranslation } from '../i18n';
 import { playClick, playTransformSurge } from '../utils/sound';
 import type { UpdaterStatus } from '../types';
 
@@ -10,6 +11,7 @@ interface SettingsModalProps {
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
+  const { t, language, setLanguage } = useTranslation();
   const {
     soundEnabled,
     toggleSound,
@@ -195,12 +197,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             </div>
             <div>
               <div className="flex items-center gap-2.5">
-                <h2 className="text-lg font-black text-white tracking-wide">CONFIGURAÇÕES & BACKUP</h2>
+                <h2 className="text-lg font-black text-white tracking-wide">{t.settings.title.toUpperCase()}</h2>
                 <span className="text-[10px] font-mono font-bold text-purple-300 bg-purple-950/90 px-2 py-0.5 rounded-full border border-purple-500/40 shadow-sm">
                   v{appVersion}
                 </span>
               </div>
-              <p className="text-xs text-gray-400">Gerencie armazenamento local e preferências offline</p>
+              <p className="text-xs text-gray-400">{t.settings.subtitle}</p>
             </div>
           </div>
           <button
@@ -232,10 +234,62 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           </div>
         )}
 
+        {/* Section 0: Application Language / Idioma */}
+        <div className="space-y-3">
+          <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
+            {t.settings.languageTitle}
+          </label>
+          <div className="flex items-center justify-between p-4 bg-[#16102c] border border-[#271d47] rounded-2xl">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-purple-950/60 rounded-xl border border-purple-500/30 text-purple-400">
+                <Globe className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white">
+                  {language === 'pt' ? 'Português (Brasil)' : 'English (US)'}
+                </p>
+                <p className="text-xs text-gray-400">{t.settings.languageSubtitle}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 bg-[#100b20] p-1 rounded-xl border border-[#2c2050]">
+              <button
+                type="button"
+                onClick={() => {
+                  playClick();
+                  setLanguage('pt');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  language === 'pt'
+                    ? 'bg-purple-600 text-white shadow-md shadow-purple-900/50'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <span>🇧🇷</span>
+                <span>Português</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClick();
+                  setLanguage('en');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  language === 'en'
+                    ? 'bg-purple-600 text-white shadow-md shadow-purple-900/50'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <span>🇺🇸</span>
+                <span>English</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Section 1: Sound Effects */}
         <div className="space-y-3">
           <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
-            Áudio & Resposta Tátil
+            {t.settings.soundTitle}
           </label>
           <div className="flex items-center justify-between p-4 bg-[#16102c] border border-[#271d47] rounded-2xl">
             <div className="flex items-center gap-3">
@@ -245,8 +299,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 <VolumeX className="w-5 h-5 text-gray-500" />
               )}
               <div>
-                <p className="text-sm font-bold text-white">Efeitos Sonoros (SFX)</p>
-                <p className="text-xs text-gray-400">Sons táteis sintetizados para ações e transformações</p>
+                <p className="text-sm font-bold text-white">{t.settings.soundTitle}</p>
+                <p className="text-xs text-gray-400">{t.settings.soundSubtitle}</p>
               </div>
             </div>
             <button
@@ -256,13 +310,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                   setTimeout(() => playClick(), 50);
                 }
               }}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                 soundEnabled
                   ? 'bg-purple-600 border-purple-400 text-white shadow-lg shadow-purple-900/50'
                   : 'bg-[#22183d] border-[#382663] text-gray-400 hover:text-white'
               }`}
             >
-              {soundEnabled ? 'Ativado' : 'Desativado'}
+              {soundEnabled ? t.settings.soundOn : t.settings.soundOff}
             </button>
           </div>
         </div>
@@ -270,26 +324,32 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         {/* Section 2: Local Storage Data Overview */}
         <div className="space-y-3">
           <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
-            Estatísticas do Cofre Local
+            {language === 'pt' ? 'Estatísticas do Cofre Local' : 'Local Storage Overview'}
           </label>
           <div className="grid grid-cols-3 gap-3">
             <div className="p-3 bg-[#16102c] border border-[#271d47] rounded-xl text-center">
               <span className="text-xl font-black text-amber-400 block">
                 {favoriteCharIds.length + favoriteMemoryIds.length}
               </span>
-              <span className="text-[11px] font-semibold text-gray-400">Favoritos</span>
+              <span className="text-[11px] font-semibold text-gray-400">
+                {language === 'pt' ? 'Favoritos' : 'Favorites'}
+              </span>
             </div>
             <div className="p-3 bg-[#16102c] border border-[#271d47] rounded-xl text-center">
               <span className="text-xl font-black text-purple-400 block">
                 {teams.length}
               </span>
-              <span className="text-[11px] font-semibold text-gray-400">Equipes</span>
+              <span className="text-[11px] font-semibold text-gray-400">
+                {language === 'pt' ? 'Equipes' : 'Teams'}
+              </span>
             </div>
             <div className="p-3 bg-[#16102c] border border-[#271d47] rounded-xl text-center">
               <span className="text-xl font-black text-cyan-400 block">
                 {tierCount}
               </span>
-              <span className="text-[11px] font-semibold text-gray-400">Ranqueados</span>
+              <span className="text-[11px] font-semibold text-gray-400">
+                {language === 'pt' ? 'Ranqueados' : 'Ranked'}
+              </span>
             </div>
           </div>
         </div>
@@ -297,23 +357,23 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         {/* Section 3: Backup & Restore Actions */}
         <div className="space-y-3">
           <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
-            Backup & Restauração
+            {t.settings.backupTitle}
           </label>
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={handleExport}
-              className="flex items-center justify-center gap-2 p-3 bg-purple-900/30 hover:bg-purple-900/50 border border-purple-500/40 rounded-xl text-xs font-bold text-purple-200 transition-all shadow-md"
+              className="flex items-center justify-center gap-2 p-3 bg-purple-900/30 hover:bg-purple-900/50 border border-purple-500/40 rounded-xl text-xs font-bold text-purple-200 transition-all shadow-md cursor-pointer"
             >
               <Download className="w-4 h-4 text-purple-400" />
-              <span>Exportar Backup (.json)</span>
+              <span>{t.settings.exportBackup}</span>
             </button>
 
             <button
               onClick={handleImport}
-              className="flex items-center justify-center gap-2 p-3 bg-indigo-900/30 hover:bg-indigo-900/50 border border-indigo-500/40 rounded-xl text-xs font-bold text-indigo-200 transition-all shadow-md"
+              className="flex items-center justify-center gap-2 p-3 bg-indigo-900/30 hover:bg-indigo-900/50 border border-indigo-500/40 rounded-xl text-xs font-bold text-indigo-200 transition-all shadow-md cursor-pointer"
             >
               <Upload className="w-4 h-4 text-indigo-400" />
-              <span>Importar Backup (.json)</span>
+              <span>{t.settings.importBackup}</span>
             </button>
           </div>
         </div>
@@ -322,11 +382,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <label className="text-xs uppercase font-bold text-gray-400 block tracking-wider">
-              Atualizações do Aplicativo
+              {t.settings.updatesTitle}
             </label>
             <span className="text-[11px] font-mono text-purple-200 bg-purple-950/80 px-2.5 py-0.5 rounded-lg border border-purple-500/40 flex items-center gap-1.5 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              Versão Instalada: v{appVersion}
+              {t.settings.currentVersion}: v{appVersion}
             </span>
           </div>
 
@@ -342,7 +402,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     v{appVersion}
                   </span>
                 </div>
-                <p className="text-xs text-gray-400">Canal oficial de atualizações via GitHub Releases</p>
+                <p className="text-xs text-gray-400">{t.settings.updatesSubtitle}</p>
               </div>
             </div>
             <button
@@ -351,7 +411,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               className="flex items-center gap-2 px-3.5 py-2 bg-purple-600/80 hover:bg-purple-600 disabled:opacity-50 border border-purple-400/50 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-purple-900/30 cursor-pointer"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${checkingUpdate || updaterStatus?.status === 'checking' ? 'animate-spin' : ''}`} />
-              <span>{checkingUpdate || updaterStatus?.status === 'checking' ? 'Verificando...' : 'Verificar Atualizações'}</span>
+              <span>{checkingUpdate || updaterStatus?.status === 'checking' ? t.settings.checkingUpdates : t.settings.checkUpdates}</span>
             </button>
           </div>
 
@@ -363,7 +423,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                   <div className="flex items-center justify-between text-xs">
                     <span className="flex items-center gap-2 text-purple-300 font-semibold">
                       <RefreshCw className="w-3.5 h-3.5 animate-spin text-purple-400" />
-                      Baixando atualização do JJKPPDB ({updaterStatus.version ? `v${updaterStatus.version}` : 'nova versão'})...
+                      {language === 'pt' ? `Baixando atualização do JJKPPDB (${updaterStatus.version ? `v${updaterStatus.version}` : 'nova versão'})...` : `Downloading JJKPPDB update (${updaterStatus.version ? `v${updaterStatus.version}` : 'new version'})...`}
                     </span>
                     <span className="font-mono font-bold text-white">{updaterStatus.percent ?? 0}%</span>
                   </div>
@@ -377,7 +437,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     <span>
                       {updaterStatus.transferred && updaterStatus.total
                         ? `${(updaterStatus.transferred / (1024 * 1024)).toFixed(1)} MB / ${(updaterStatus.total / (1024 * 1024)).toFixed(1)} MB`
-                        : `${updaterStatus.percent ?? 0}% transferido`}
+                        : `${updaterStatus.percent ?? 0}%`}
                     </span>
                     {updaterStatus.bytesPerSecond ? (
                       <span className="text-purple-300">{(updaterStatus.bytesPerSecond / (1024 * 1024)).toFixed(1)} MB/s</span>
@@ -392,10 +452,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     <Sparkles className="w-5 h-5 text-yellow-300 fill-yellow-300 animate-pulse shrink-0" />
                     <div>
                       <p className="text-xs font-bold text-white">
-                        Nova versão {updaterStatus.version ? `v${updaterStatus.version}` : ''} pronta para ser aplicada!
+                        {language === 'pt' ? `Nova versão ${updaterStatus.version ? `v${updaterStatus.version}` : ''} pronta para ser aplicada!` : `New version ${updaterStatus.version ? `v${updaterStatus.version}` : ''} ready to apply!`}
                       </p>
                       <p className="text-[11px] text-emerald-300">
-                        Clique abaixo para reiniciar o aplicativo e concluir a atualização.
+                        {language === 'pt' ? 'Clique abaixo para reiniciar o aplicativo e concluir a atualização.' : 'Click below to restart the application and complete update.'}
                       </p>
                     </div>
                   </div>
@@ -407,7 +467,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     }}
                     className="px-3.5 py-2 bg-gradient-to-r from-emerald-400 to-teal-300 text-slate-950 rounded-xl font-black text-xs hover:brightness-110 flex items-center gap-1.5 shadow-md active:scale-95 transition-all cursor-pointer shrink-0"
                   >
-                    <span>Reiniciar e Aplicar</span>
+                    <span>{language === 'pt' ? 'Reiniciar e Aplicar' : 'Restart & Apply'}</span>
                     <ArrowRight size={13} />
                   </button>
                 </div>
@@ -416,14 +476,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               {updaterStatus.status === 'not-available' && (
                 <div className="flex items-center gap-2 p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-xs text-emerald-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Você já está utilizando a versão mais recente disponível no GitHub Releases.</span>
+                  <span>{language === 'pt' ? 'Você já está utilizando a versão mais recente disponível no GitHub Releases.' : 'You are already running the latest version available on GitHub Releases.'}</span>
                 </div>
               )}
 
               {updaterStatus.status === 'available' && (
                 <div className="flex items-center gap-2 p-3 bg-purple-950/50 border border-purple-500/40 rounded-xl text-xs text-purple-300">
                   <RefreshCw className="w-4 h-4 text-purple-400 animate-spin shrink-0" />
-                  <span>Nova versão {updaterStatus.version ? `v${updaterStatus.version}` : ''} encontrada! Iniciando download...</span>
+                  <span>{language === 'pt' ? `Nova versão ${updaterStatus.version ? `v${updaterStatus.version}` : ''} encontrada! Iniciando download...` : `New version ${updaterStatus.version ? `v${updaterStatus.version}` : ''} found! Starting download...`}</span>
                 </div>
               )}
 
@@ -431,7 +491,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 <div className="p-3 bg-red-950/40 border border-red-500/40 rounded-xl space-y-1.5">
                   <div className="flex items-center gap-2 text-xs text-red-300">
                     <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
-                    <span>{updaterStatus.message || 'Não foi possível verificar atualizações no momento.'}</span>
+                    <span>{updaterStatus.message || (language === 'pt' ? 'Não foi possível verificar atualizações no momento.' : 'Could not check for updates at this time.')}</span>
                   </div>
                   <a
                     href="https://github.com/Jklmkii/jujutsu-phantom-parade-db/releases/latest"
@@ -439,7 +499,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] text-purple-300 hover:text-white underline font-semibold"
                   >
-                    Abrir página de downloads do GitHub Releases <ExternalLink className="w-3 h-3" />
+                    {language === 'pt' ? 'Abrir página de downloads do GitHub Releases' : 'Open GitHub Releases download page'} <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
               )}
@@ -452,20 +512,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           {confirmReset ? (
             <div className="p-4 bg-red-950/40 border border-red-500/40 rounded-2xl space-y-3">
               <p className="text-xs font-bold text-red-300">
-                Tem certeza? Isso apagará todos os seus favoritos, equipes e tier lists salvas neste dispositivo.
+                {t.settings.resetConfirmText}
               </p>
               <div className="flex gap-2">
                 <button
                   onClick={handleReset}
-                  className="flex-1 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-lg"
+                  className="flex-1 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-lg cursor-pointer"
                 >
-                  Sim, apagar tudo
+                  {t.settings.resetConfirmYes}
                 </button>
                 <button
                   onClick={() => setConfirmReset(false)}
-                  className="px-4 py-2 bg-[#22183d] text-gray-300 rounded-xl text-xs font-bold hover:text-white"
+                  className="px-4 py-2 bg-[#22183d] text-gray-300 rounded-xl text-xs font-bold hover:text-white cursor-pointer"
                 >
-                  Cancelar
+                  {t.settings.resetCancel}
                 </button>
               </div>
             </div>
@@ -475,10 +535,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 playClick();
                 setConfirmReset(true);
               }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 text-xs font-bold text-red-400/80 hover:text-red-400 hover:bg-red-950/20 rounded-xl transition-all"
+              className="w-full flex items-center justify-center gap-2 py-2.5 text-xs font-bold text-red-400/80 hover:text-red-400 hover:bg-red-950/20 rounded-xl transition-all cursor-pointer"
             >
               <Trash2 className="w-3.5 h-3.5" />
-              <span>Limpar todos os dados salvos</span>
+              <span>{t.settings.resetData}</span>
             </button>
           )}
         </div>
@@ -486,7 +546,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         {/* Offline Badge Footer */}
         <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-gray-500 pt-2 border-t border-[#201736]">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-          <span>JJKPPDB Offline v{appVersion} • 100% Offline • Sem telemetria • Armazenamento Local Seguro</span>
+          <span>JJKPPDB Offline v{appVersion} • {language === 'pt' ? '100% Offline • Sem telemetria • Armazenamento Local Seguro' : '100% Offline • Zero Telemetry • Secure Local Storage'}</span>
         </div>
 
       </div>

@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { playClick, playSelect, playTierDrop } from '../utils/sound';
 import { getAssetPath, getStaticThumbUrl } from '../utils/assets';
+import { useTranslation } from '../i18n';
 import officialTierlistsData from '../data/tierlists.json';
 
 interface TierlistMakerProps {
@@ -32,6 +33,7 @@ interface TierlistMakerProps {
 type ViewMode = 'official' | 'custom';
 
 export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSelectCharacter }) => {
+  const { t, language } = useTranslation();
   const { tierList, setTierForChar, removeTierForChar, resetTierList } = useJjkStore();
   const [viewMode, setViewMode] = useState<ViewMode>('official');
   const [selectedOfficialCat, setSelectedOfficialCat] = useState<string>('damage');
@@ -165,10 +167,12 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
           </div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight flex items-center gap-3">
             <Award className="w-8 h-8 text-yellow-400" />
-            TIER LISTS OFICIAIS & RANKINGS
+            {language === 'pt' ? 'TIER LISTS OFICIAIS & RANKINGS' : 'OFFICIAL TIER LISTS & RANKINGS'}
           </h1>
           <p className="text-sm text-gray-400 mt-1">
-            Consulte os rankings oficiais do JJKPPDB por Categoria / Elemento ou monte sua própria classificação interativa.
+            {language === 'pt'
+              ? 'Consulte os rankings oficiais do JJKPPDB por Categoria / Elemento ou monte sua própria classificação interativa.'
+              : 'Browse official JJKPPDB meta rankings by Category / Element or build your own interactive tier list.'}
           </p>
         </div>
 
@@ -186,7 +190,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
             }`}
           >
             <Sparkles className="w-4 h-4" />
-            Oficiais (JJKPPDB)
+            {language === 'pt' ? 'Oficiais (JJKPPDB)' : 'Official (JJKPPDB)'}
           </button>
           <button
             onClick={() => {
@@ -200,7 +204,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
             }`}
           >
             <Sliders className="w-4 h-4" />
-            Criador Customizado
+            {language === 'pt' ? 'Criador Customizado' : 'Custom Builder'}
           </button>
         </div>
       </div>
@@ -243,10 +247,10 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
             <button
               onClick={() => cloneOfficialToCustom(currentOfficial)}
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-950/80 hover:bg-purple-900 text-purple-200 border border-purple-700/50 hover:border-purple-500 text-xs font-bold transition-all shrink-0"
-              title="Copiar esta lista para o Criador Customizado para editar à sua vontade"
+              title={language === 'pt' ? 'Copiar esta lista para o Criador Customizado para editar à sua vontade' : 'Copy this tier list to Custom Builder to edit freely'}
             >
               <Copy className="w-4 h-4" />
-              Editar no Criador Customizado
+              {language === 'pt' ? 'Editar no Criador Customizado' : 'Edit in Custom Builder'}
             </button>
           </div>
 
@@ -278,7 +282,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                       {tier.rank}
                     </span>
                     <span className="text-[11px] font-bold text-gray-400">
-                      {uniqueSlots.length} unidades
+                      {uniqueSlots.length} {language === 'pt' ? 'unidades' : 'units'}
                     </span>
                   </div>
 
@@ -298,7 +302,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                             if (localChar) onSelectCharacter(localChar);
                           }}
                           className="group relative flex flex-col items-center p-2 rounded-xl bg-[#171030] hover:bg-[#221848] border border-[#2c1f4e] hover:border-purple-400 transition-all duration-200 cursor-pointer w-24 text-center hover:scale-105 shadow-md"
-                          title={`${slot.title}\nClique para ver detalhes`}
+                          title={`${slot.title}\n${language === 'pt' ? 'Clique para ver detalhes' : 'Click to view details'}`}
                         >
                           {/* Avatar */}
                           <div className="w-14 h-14 rounded-lg overflow-hidden border border-purple-900/60 group-hover:border-purple-400 relative mb-1.5 shadow">
@@ -311,7 +315,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                               }}
                             />
                             {slot.hasDupeScaling && (
-                              <span className="absolute bottom-0 right-0 bg-red-600/90 text-[9px] font-black text-white px-1 rounded-tl" title="Escala com Duplicatas">
+                              <span className="absolute bottom-0 right-0 bg-red-600/90 text-[9px] font-black text-white px-1 rounded-tl" title={language === 'pt' ? 'Escala com Duplicatas' : 'Scales with Duplicates'}>
                                 ★
                               </span>
                             )}
@@ -348,14 +352,17 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
           {/* Custom Action Bar */}
           <div className="flex items-center justify-between bg-[#120d24] border border-[#231a40] rounded-xl p-4">
             <div className="text-sm text-gray-300">
-              <span className="font-bold text-white">Modo Criador:</span> Arraste os feiticeiros entre os tiers ou solte na lixeira para desclassificar.
+              <span className="font-bold text-white">{language === 'pt' ? 'Modo Criador:' : 'Builder Mode:'}</span>{' '}
+              {language === 'pt'
+                ? 'Arraste os feiticeiros entre os tiers ou solte na lixeira para desclassificar.'
+                : 'Drag sorcerers between tiers or drop into the trash to unrank.'}
             </div>
             <button
               onClick={resetTierList}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a1333] hover:bg-red-950 text-gray-300 hover:text-red-300 border border-[#2d2250] hover:border-red-500/40 text-xs font-bold transition-all"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Resetar Customização</span>
+              <span>{t.tierlist.resetDefault}</span>
             </button>
           </div>
 
@@ -380,7 +387,9 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
             >
               <Trash2 className="w-5 h-5 animate-pulse text-red-400" />
               <span className="text-sm font-bold tracking-wide">
-                Solte aqui para remover "{draggedChar?.name}" do tier e mover para não classificados
+                {language === 'pt'
+                  ? `Solte aqui para remover "${draggedChar?.name}" do tier e mover para não classificados`
+                  : `Drop here to remove "${draggedChar?.name}" from tier and unrank`}
               </span>
             </div>
           )}
@@ -414,7 +423,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                   <div className={`w-full md:w-28 p-4 flex flex-row md:flex-col items-center justify-between md:justify-center gap-2 border-b md:border-b-0 md:border-r border-[#231a40] shrink-0 ${tier.color}`}>
                     <span className="text-2xl font-black">{tier.label}</span>
                     <span className="text-[11px] font-bold opacity-75">
-                      {charsInTier.length} unidades
+                      {charsInTier.length} {language === 'pt' ? 'unidades' : 'units'}
                     </span>
                   </div>
 
@@ -432,7 +441,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                           className={`group relative flex items-center gap-2 p-1.5 pr-2.5 rounded-xl bg-[#160f2d] hover:bg-[#201642] border border-[#2c1f4e] hover:border-purple-400 transition-all duration-200 cursor-grab active:cursor-grabbing select-none ${
                             isBeingDragged ? 'opacity-30 border-dashed border-purple-400' : ''
                           }`}
-                          title={`${c.title}\nArraste para mover ou dê duplo clique para abrir a ficha`}
+                          title={`${c.title}\n${language === 'pt' ? 'Arraste para mover ou dê duplo clique para abrir a ficha' : 'Drag to move or double-click to view details'}`}
                         >
                           <GripVertical className="w-3.5 h-3.5 text-gray-500 group-hover:text-purple-300 -mr-1" />
                           <div className="w-10 h-10 rounded-lg overflow-hidden border border-purple-900/50 group-hover:border-purple-400 shrink-0 relative">
@@ -456,7 +465,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                               removeTierForChar(c.id);
                             }}
                             className="text-gray-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity p-0.5 ml-0.5"
-                            title="Remover deste tier"
+                            title={language === 'pt' ? 'Remover deste tier' : 'Remove from this tier'}
                           >
                             <X className="w-3.5 h-3.5" />
                           </button>
@@ -466,7 +475,11 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
 
                     {charsInTier.length === 0 && (
                       <div className="text-xs font-medium text-gray-500 italic flex items-center gap-2 p-2">
-                        <span>Arraste os feiticeiros aqui para ranquear em {tier.label}</span>
+                        <span>
+                          {language === 'pt'
+                            ? `Arraste os feiticeiros aqui para ranquear em ${tier.label}`
+                            : `Drag sorcerers here to rank in ${tier.label}`}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -480,20 +493,24 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <span>Feiticeiros Não Classificados</span>
+                  <span>{t.tierlist.unranked}</span>
                   <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-900/40 text-purple-300 border border-purple-700/40">
                     {unrankedCharacters.length}
                   </span>
                 </h3>
                 <p className="text-xs text-gray-400 mt-0.5">
-                  Arraste qualquer feiticeiro diretamente para os tiers acima ou selecione um tier de destino rápido.
+                  {language === 'pt'
+                    ? 'Arraste qualquer feiticeiro diretamente para os tiers acima ou selecione um tier de destino rápido.'
+                    : 'Drag any sorcerer directly to tiers above or select a quick rank destination.'}
                 </p>
               </div>
 
               {/* Quick Destination Select & Search */}
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-1.5 bg-[#0a0714] p-1 rounded-xl border border-[#251a44]">
-                  <span className="text-[11px] font-semibold text-gray-400 px-2">Destino Rápido:</span>
+                  <span className="text-[11px] font-semibold text-gray-400 px-2">
+                    {language === 'pt' ? 'Destino Rápido:' : 'Quick Rank:'}
+                  </span>
                   {TIERS.map((t) => (
                     <button
                       key={t.id}
@@ -515,7 +532,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Filtrar feiticeiros..."
+                    placeholder={language === 'pt' ? 'Filtrar feiticeiros...' : 'Filter sorcerers...'}
                     className="w-full pl-9 pr-4 py-1.5 bg-[#0a0714] border border-[#251a44] rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
                   />
                 </div>
@@ -540,7 +557,7 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                     className={`group relative flex flex-col items-center p-2 rounded-xl bg-[#0e0a1c] hover:bg-[#191136] border border-[#20183b] hover:border-purple-400 transition-all duration-200 cursor-grab active:cursor-grabbing text-center hover:scale-[1.02] shadow-sm select-none ${
                       isBeingDragged ? 'opacity-30 border-dashed border-purple-400' : ''
                     }`}
-                    title={`${c.title}\nClique para adicionar ao tier ${activeTier} ou arraste até a linha desejada`}
+                    title={`${c.title}\n${language === 'pt' ? `Clique para adicionar ao tier ${activeTier} ou arraste até a linha desejada` : `Click to add to tier ${activeTier} or drag to desired tier`}`}
                   >
                     <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#2b1f4c] group-hover:border-purple-400 relative mb-1.5 shrink-0 shadow">
                       <img

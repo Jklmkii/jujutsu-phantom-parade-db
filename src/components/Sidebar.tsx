@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import type { ActiveTab } from '../types';
 import { useJjkStore } from '../store/useJjkStore';
+import { useTranslation } from '../i18n';
 import { playTabSwitch, playClick } from '../utils/sound';
 import { getAssetPath } from '../utils/assets';
 
@@ -31,6 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onClearSelection
 }) => {
   const [collapsed, setCollapsed] = React.useState(false);
+  const { t } = useTranslation();
   const { 
     isScratchpadOpen, 
     toggleScratchpad, 
@@ -40,13 +42,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   } = useJjkStore();
 
   const navItems: { id: ActiveTab; label: string; icon: React.ReactNode }[] = [
-    { id: 'home', label: 'Home', icon: <Home className="w-5 h-5" /> },
-    { id: 'characters', label: 'Characters', icon: <Users className="w-5 h-5" /> },
-    { id: 'memories', label: 'Rec. Bits', icon: <Sparkles className="w-5 h-5" /> },
-    { id: 'tierlist', label: 'Tierlists', icon: <Award className="w-5 h-5" /> },
-    { id: 'teams', label: 'Best Teams', icon: <ShieldCheck className="w-5 h-5" /> },
-    { id: 'buffs', label: 'Buffs & Debuffs', icon: <Zap className="w-5 h-5" /> },
-    { id: 'timeline', label: 'Cronograma JP', icon: <Calendar className="w-5 h-5" /> },
+    { id: 'home', label: t.nav.home, icon: <Home className="w-5 h-5" /> },
+    { id: 'characters', label: t.nav.characters, icon: <Users className="w-5 h-5" /> },
+    { id: 'memories', label: t.nav.memories, icon: <Sparkles className="w-5 h-5" /> },
+    { id: 'tierlist', label: t.nav.tierlist, icon: <Award className="w-5 h-5" /> },
+    { id: 'teams', label: t.nav.teams, icon: <ShieldCheck className="w-5 h-5" /> },
+    { id: 'buffs', label: t.nav.buffs, icon: <Zap className="w-5 h-5" /> },
+    { id: 'timeline', label: t.nav.timeline, icon: <Calendar className="w-5 h-5" /> },
   ];
 
   const handleNav = (tab: ActiveTab) => {
@@ -79,7 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 JJKPPDB
               </span>
               <span className="text-[10px] font-bold tracking-widest text-purple-400/80 uppercase">
-                Offline DB
+                {t.nav.offlineDatabase}
               </span>
             </div>
           )}
@@ -90,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             setCollapsed(!collapsed);
           }}
           className="text-gray-400 hover:text-purple-300 p-1 rounded transition-colors"
-          title="Alternar Sidebar"
+          title={t.nav.toggleSidebar}
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -133,12 +135,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
               ? 'bg-purple-900/40 border-purple-500 text-purple-200 shadow-md shadow-purple-900/30'
               : 'border-transparent text-gray-400 hover:bg-[#181228] hover:text-gray-200'
           }`}
-          title="Lousa Tática (Scratchpad)"
+          title={t.nav.scratchpad}
         >
           <PenTool className="w-4 h-4 text-purple-400 shrink-0" />
           {!collapsed && (
             <span className="flex items-center justify-between w-full">
-              <span>Lousa Tática</span>
+              <span>{t.nav.scratchpad}</span>
               {isScratchpadOpen && <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />}
             </span>
           )}
@@ -153,14 +155,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }
           }}
           className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-gray-400 hover:bg-[#181228] hover:text-gray-200 transition-all"
-          title={soundEnabled ? 'Desativar Sons' : 'Ativar Sons'}
+          title={soundEnabled ? t.nav.soundDisable : t.nav.soundEnable}
         >
           {soundEnabled ? (
             <Volume2 className="w-4 h-4 text-purple-400 shrink-0" />
           ) : (
             <VolumeX className="w-4 h-4 text-gray-500 shrink-0" />
           )}
-          {!collapsed && <span>Sons Táteis</span>}
+          {!collapsed && <span>{t.nav.soundActive}</span>}
         </button>
 
         {/* Settings & Backup Modal button */}
@@ -170,10 +172,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
             toggleSettings();
           }}
           className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-gray-400 hover:bg-[#181228] hover:text-gray-200 transition-all"
-          title="Configurações & Backup"
+          title={t.nav.settings}
         >
           <Settings className="w-4 h-4 text-purple-400 shrink-0" />
-          {!collapsed && <span>Configurações</span>}
+          {!collapsed && <span>{t.nav.settings}</span>}
         </button>
       </div>
 
@@ -183,10 +185,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="bg-[#140f24] p-2.5 rounded-xl border border-purple-900/30">
             <div className="flex items-center gap-2 text-[11px] font-bold text-purple-400 mb-0.5">
               <Zap className="w-3.5 h-3.5 text-purple-400" />
-              <span>Offline Database</span>
+              <span>{t.nav.offlineDatabase}</span>
             </div>
             <p className="text-[10px] text-gray-400 leading-tight">
-              109 Feiticeiros & 241 Memórias
+              {t.nav.statsFooter}
             </p>
           </div>
         ) : (

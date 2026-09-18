@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import {
   Pencil,
   Eraser,
@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
+import { useTranslation } from '../i18n';
 
 export type ScratchpadTool = 'pen' | 'eraser';
 
@@ -23,21 +24,22 @@ export interface Stroke {
   isEraser: boolean;
 }
 
-const COLOR_PALETTE = [
-  { name: 'Branco', value: '#ffffff', bgClass: 'bg-white' },
-  { name: 'Amarelo', value: '#facc15', bgClass: 'bg-yellow-400' },
-  { name: 'Ciano', value: '#38bdf8', bgClass: 'bg-sky-400' },
-  { name: 'Roxo', value: '#c084fc', bgClass: 'bg-purple-400' },
-  { name: 'Vermelho', value: '#f87171', bgClass: 'bg-red-400' },
-  { name: 'Verde', value: '#4ade80', bgClass: 'bg-green-400' },
-];
-
 export const TacticalScratchpad: React.FC = () => {
+  const { t } = useTranslation();
   const { isScratchpadOpen, toggleScratchpad } = useJjkStore();
   const [tool, setTool] = useState<ScratchpadTool>('pen');
   const [selectedColor, setSelectedColor] = useState('#c084fc');
   const [strokeWidth, setStrokeWidth] = useState(3);
   const [hasStrokes, setHasStrokes] = useState(false);
+
+  const colorPalette = useMemo(() => [
+    { name: t.scratchpad.colorWhite, value: '#ffffff', bgClass: 'bg-white' },
+    { name: t.scratchpad.colorYellow, value: '#facc15', bgClass: 'bg-yellow-400' },
+    { name: t.scratchpad.colorSky, value: '#38bdf8', bgClass: 'bg-sky-400' },
+    { name: t.scratchpad.colorPurple, value: '#c084fc', bgClass: 'bg-purple-400' },
+    { name: t.scratchpad.colorRed, value: '#f87171', bgClass: 'bg-red-400' },
+    { name: t.scratchpad.colorGreen, value: '#4ade80', bgClass: 'bg-green-400' },
+  ], [t]);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -151,10 +153,10 @@ export const TacticalScratchpad: React.FC = () => {
       <button
         onClick={toggleScratchpad}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-xl shadow-purple-950/70 border border-purple-400/40 font-bold text-xs transition-all hover:scale-105 active:scale-95 group"
-        title="Abrir Lousa Tática (Anotações sobre a tela)"
+        title={t.scratchpad.openScratchpadTitle}
       >
         <Pencil className="w-4 h-4 text-purple-200 group-hover:rotate-12 transition-transform" />
-        <span>Lousa Tática</span>
+        <span>{t.scratchpad.openScratchpad}</span>
       </button>
     );
   }
@@ -175,7 +177,7 @@ export const TacticalScratchpad: React.FC = () => {
         {/* Brand/Title */}
         <div className="flex items-center gap-1.5 pl-2 pr-3 border-r border-[#2d2250] text-purple-300 font-bold text-xs">
           <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-          <span>Lousa Tática</span>
+          <span>{t.scratchpad.title}</span>
         </div>
 
         {/* Tools: Pen / Eraser */}
@@ -185,7 +187,7 @@ export const TacticalScratchpad: React.FC = () => {
             className={`p-2 rounded-lg transition-colors ${
               tool === 'pen' ? 'bg-purple-600 text-white shadow-sm' : 'text-gray-400 hover:text-white'
             }`}
-            title="Caneta"
+            title={t.scratchpad.pen}
           >
             <Pencil className="w-4 h-4" />
           </button>
@@ -194,7 +196,7 @@ export const TacticalScratchpad: React.FC = () => {
             className={`p-2 rounded-lg transition-colors ${
               tool === 'eraser' ? 'bg-purple-600 text-white shadow-sm' : 'text-gray-400 hover:text-white'
             }`}
-            title="Borracha"
+            title={t.scratchpad.eraser}
           >
             <Eraser className="w-4 h-4" />
           </button>
@@ -203,7 +205,7 @@ export const TacticalScratchpad: React.FC = () => {
         {/* Colors */}
         {tool === 'pen' && (
           <div className="flex items-center gap-1.5 px-2 border-r border-[#2d2250]">
-            {COLOR_PALETTE.map((c) => (
+            {colorPalette.map((c) => (
               <button
                 key={c.value}
                 onClick={() => setSelectedColor(c.value)}
@@ -219,9 +221,9 @@ export const TacticalScratchpad: React.FC = () => {
         {/* Stroke Width Selector */}
         <div className="flex items-center gap-1 px-2 border-r border-[#2d2250]">
           {[
-            { label: 'Fina', w: 2 },
-            { label: 'Média', w: 4 },
-            { label: 'Grossa', w: 7 },
+            { label: t.scratchpad.thicknessThin, w: 2 },
+            { label: t.scratchpad.thicknessMedium, w: 4 },
+            { label: t.scratchpad.thicknessThick, w: 7 },
           ].map((item) => (
             <button
               key={item.w}
@@ -243,7 +245,7 @@ export const TacticalScratchpad: React.FC = () => {
             onClick={undoLastStroke}
             disabled={!hasStrokes}
             className="p-2 rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
-            title="Desfazer"
+            title={t.scratchpad.undo}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -251,14 +253,14 @@ export const TacticalScratchpad: React.FC = () => {
             onClick={clearCanvas}
             disabled={!hasStrokes}
             className="p-2 rounded-lg text-gray-400 hover:text-red-400 disabled:opacity-30 disabled:pointer-events-none transition-colors"
-            title="Limpar tudo"
+            title={t.scratchpad.clearAll}
           >
             <Trash2 className="w-4 h-4" />
           </button>
           <button
             onClick={toggleScratchpad}
             className="p-2 ml-2 rounded-lg bg-red-950/80 hover:bg-red-800 text-red-300 hover:text-white border border-red-500/40 transition-colors"
-            title="Fechar Lousa"
+            title={t.scratchpad.close}
           >
             <X className="w-4 h-4" />
           </button>

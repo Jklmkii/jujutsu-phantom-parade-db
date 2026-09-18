@@ -22,6 +22,7 @@ import {
 import { playClick, playSelect } from '../utils/sound';
 import { useJjkStore } from '../store/useJjkStore';
 import { formatDateDisplay, getDeviceLocalDateString } from '../utils/date';
+import { useTranslation } from '../i18n';
 
 interface TimelineViewProps {
   events: TimelineEvent[];
@@ -43,6 +44,7 @@ const formatDMY = (date: Date) => {
 };
 
 export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
+  const { t, language } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'ALL' | 'RELEASED' | 'UPCOMING'>('ALL');
   const [showCalculator, setShowCalculator] = useState(true);
@@ -139,22 +141,22 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30">
-              Servidor JP & Previsão Global
+              {t.timeline.serverJpAndGlobal}
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
               <Sparkle className="w-3 h-3 text-emerald-400" />
-              Lag Calibrado Oficial: 79 Dias
+              {t.timeline.lagCalibrated.replace('{days}', '79')}
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
-              Marco: Ijichi 17/09 às 12:00
+              {t.timeline.milestoneIjichi}
             </span>
           </div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight flex items-center gap-3">
             <Calendar className="w-8 h-8 text-blue-400" />
-            CRONOGRAMA & PREVISÕES DE BANNERS
+            {t.timeline.title.toUpperCase()}
           </h1>
           <p className="text-sm text-gray-400 mt-1">
-            Histórico completo de eventos da versão japonesa (JP) sincronizado com a previsão calibrada para o servidor Global.
+            {t.timeline.subtitle}
           </p>
         </div>
 
@@ -163,7 +165,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-purple-400" />
           <input
             type="text"
-            placeholder="Buscar evento ou banner..."
+            placeholder={t.timeline.searchPlaceholder}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-[#120e24] border border-[#2d2250] rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors shadow-inner"
@@ -178,13 +180,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
         </div>
         <div className="space-y-1 text-xs text-gray-300">
           <h3 className="font-bold text-sm text-blue-200 flex items-center gap-2">
-            <span>Calibração Oficial em Tempo Real (Marco: Kiyotaka Ijichi)</span>
+            <span>{t.timeline.calibCardTitle}</span>
             <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40">
-              17/09/2026 às 12:00
+              {t.timeline.calibCardDate}
             </span>
           </h3>
           <p className="leading-relaxed">
-            Hoje, dia <strong>17/09/2026 às 12:00</strong>, o evento <em>Featured Gacha & Story Event: Ijichi's Unrelenting Vacation</em> chegou oficialmente ao Global. Esse marco calibrou a distância real entre os servidores em exatamente <strong>79 dias</strong> (de 30/06/2026 no JP até hoje). Todas as previsões da calculadora e cronograma abaixo utilizam essa métrica precisa.
+            {t.timeline.calibCardDesc}
           </p>
         </div>
       </div>
@@ -202,13 +204,15 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
             </div>
             <div>
               <h2 className="text-xl font-black text-white flex items-center gap-2">
-                <span>CALCULADORA DE PREVISÃO & ECONOMIA DE CUBOS</span>
+                <span>{t.timeline.calculatorTitle.toUpperCase()}</span>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
-                  Interativa
+                  {t.timeline.calculatorBadge}
                 </span>
               </h2>
               <p className="text-xs text-gray-400">
-                Simule datas de chegada, acumulação de cubos e planejamento de pity para qualquer banner futuro.
+                {language === 'pt' 
+                  ? 'Simule datas de chegada, acumulação de cubos e planejamento de pity para qualquer banner futuro.' 
+                  : 'Simulate arrival dates, cube accumulation, and pity planning for any upcoming banner.'}
               </p>
             </div>
           </div>
@@ -220,7 +224,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
             }}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#120c24] border border-[#2d2250] text-gray-300 hover:text-white text-xs font-bold transition-all cursor-pointer"
           >
-            <span>{showCalculator ? 'Recolher' : 'Expandir'}</span>
+            <span>{showCalculator ? t.timeline.collapse : t.timeline.expand}</span>
             {showCalculator ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
@@ -236,13 +240,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   </div>
                   <div>
                     <span className="font-black text-emerald-300 text-sm flex items-center gap-2">
-                      <span>🎉 Acumulação Diária Aplicada com Sucesso!</span>
+                      <span>{t.timeline.dailyAppliedTitle}</span>
                       <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 font-mono">
-                        +{savingsPlan.lastIncrementDays} dia(s)
+                        {t.timeline.dailyAppliedDays.replace('{days}', String(savingsPlan.lastIncrementDays ?? 1))}
                       </span>
                     </span>
                     <p className="text-gray-300 mt-0.5">
-                      Foram adicionados automaticamente <strong className="text-emerald-300 font-mono">+{savingsPlan.lastIncrementAmount?.toLocaleString()} cubos</strong> à sua reserva com base na sua estimativa de ganho diário.
+                      {t.timeline.dailyAppliedDesc.replace('{amount}', (savingsPlan.lastIncrementAmount ?? 0).toLocaleString())}
                     </p>
                   </div>
                 </div>
@@ -252,7 +256,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     dismissDailyIncrementAlert();
                   }}
                   className="p-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 transition-colors cursor-pointer shrink-0"
-                  title="Dispensar aviso"
+                  title={t.timeline.dismissAlert}
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -273,13 +277,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     className="accent-purple-500 rounded cursor-pointer w-4 h-4"
                   />
                   <span className="font-bold text-gray-300 hover:text-white transition-colors">
-                    Acumulação Automática Diária (24h)
+                    {t.timeline.autoDailyIncrement}
                   </span>
                 </label>
                 <span className="text-gray-600 text-[11px] hidden sm:inline">•</span>
                 <span className="text-[11px] text-gray-400 flex items-center gap-1.5">
                   <CalendarCheck className="w-3.5 h-3.5 text-purple-400" />
-                  Última sincronização: <strong className="text-purple-300 font-mono">{formatDateDisplay(savingsPlan.lastUpdatedDate)}</strong>
+                  {t.timeline.lastSync} <strong className="text-purple-300 font-mono">{formatDateDisplay(savingsPlan.lastUpdatedDate)}</strong>
                 </span>
               </div>
 
@@ -290,10 +294,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     simulateNextDay();
                   }}
                   className="flex items-center gap-1 px-3 py-1.5 bg-purple-600/20 hover:bg-purple-600/35 border border-purple-500/40 rounded-xl text-purple-300 hover:text-white font-bold text-[11px] transition-all cursor-pointer shadow-sm"
-                  title="Simula o avanço de 24 horas creditando o ganho diário imediatamente para teste"
+                  title={t.timeline.simulateDayTitle}
                 >
                   <TrendingUp className="w-3 h-3 text-purple-400" />
-                  <span>Simular +1 Dia (+{dailyCubesIncome.toLocaleString()} cubos)</span>
+                  <span>{t.timeline.simulateDay.replace('{amount}', dailyCubesIncome.toLocaleString())}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -301,10 +305,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     resetSavingsPlan();
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 bg-gray-800/40 hover:bg-gray-800/80 border border-gray-700/50 rounded-xl text-gray-400 hover:text-gray-200 text-[11px] transition-all cursor-pointer"
-                  title="Restaurar valores padrões da calculadora"
+                  title={t.timeline.restoreTitle}
                 >
                   <RotateCcw className="w-3 h-3" />
-                  <span>Restaurar</span>
+                  <span>{t.timeline.restore}</span>
                 </button>
               </div>
             </div>
@@ -315,7 +319,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
                   <Target className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Banner / Evento Alvo:</span>
+                  <span>{t.timeline.bannerTarget}</span>
                 </label>
                 <select
                   value={selectedBannerIndex}
@@ -327,12 +331,12 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 >
                   {upcomingEvents.map((ev) => (
                     <option key={ev.index} value={ev.index}>
-                      #{ev.index} — {ev.name} ({ev.days || 'Futuro'})
+                      #{ev.index} — {ev.name} ({ev.days || (language === 'pt' ? 'Futuro' : 'Future')})
                     </option>
                   ))}
                 </select>
                 <span className="text-[10px] text-gray-500 block truncate">
-                  Lançamento JP: <strong>{selectedEvent.jp_date}</strong>
+                  {t.timeline.jpReleaseLabel} <strong>{selectedEvent.jp_date}</strong>
                 </span>
               </div>
 
@@ -340,7 +344,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
                   <Coins className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Cubos Atuais:</span>
+                  <span>{t.timeline.currentCubesLabel}</span>
                 </label>
                 <div className="flex gap-2">
                   <input
@@ -360,13 +364,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                       updateSavingsPlan({ currentCubes: currentCubes + 3000, lastUpdatedDate: getDeviceLocalDateString() });
                     }}
                     className="px-2.5 py-1 bg-amber-500/20 border border-amber-500/40 rounded-xl text-xs font-bold text-amber-300 hover:bg-amber-500/30 transition-all cursor-pointer whitespace-nowrap"
-                    title="+3.000 Cubos (10 giros)"
+                    title={t.timeline.add3kCubesTitle}
                   >
                     +3k
                   </button>
                 </div>
                 <span className="text-[10px] text-gray-500 block">
-                  Equivale a <strong>{Math.floor(currentCubes / 300)} giros</strong> em cubos.
+                  {t.timeline.cubesEquivalent.replace('{pulls}', String(Math.floor(currentCubes / 300)))}
                 </span>
               </div>
 
@@ -374,7 +378,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
                   <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Ganho Diário Estimado:</span>
+                  <span>{t.timeline.dailyIncomeLabel}</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -388,10 +392,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     }}
                     className="w-full bg-[#0e0a1c] border border-[#302257] rounded-xl px-3.5 py-2 text-sm font-mono text-emerald-300 focus:outline-none focus:border-emerald-400 shadow-inner"
                   />
-                  <span className="text-xs text-gray-400 shrink-0">cubos/dia</span>
+                  <span className="text-xs text-gray-400 shrink-0">{t.timeline.cubesPerDay}</span>
                 </div>
                 <span className="text-[10px] text-gray-500 block">
-                  ~{(dailyCubesIncome * 30).toLocaleString()} cubos/mês estimados
+                  {t.timeline.estimatedMonthly.replace('{amount}', (dailyCubesIncome * 30).toLocaleString())}
                 </span>
               </div>
 
@@ -400,10 +404,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 <label className="text-xs font-bold text-gray-300 flex items-center justify-between">
                   <span className="flex items-center gap-1.5">
                     <Ticket className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Pontos / Cartas de Pity:</span>
+                    <span>{t.timeline.pityPointsLabel}</span>
                   </span>
                   <span className="text-[10px] text-cyan-400 font-mono font-bold">
-                    {pityPoints}/250 pts
+                    {t.timeline.pityPointsCounter.replace('{points}', String(pityPoints))}
                   </span>
                 </label>
                 <div className="flex gap-1.5">
@@ -425,7 +429,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                       updateSavingsPlan({ pityPoints: Math.min(250, pityPoints + 1) });
                     }}
                     className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-xl text-xs font-bold text-cyan-300 hover:bg-cyan-500/30 transition-all cursor-pointer whitespace-nowrap"
-                    title="+1 Ponto de Gacha / Carta de Pity (+1 giro)"
+                    title={t.timeline.add1PointTitle}
                   >
                     +1
                   </button>
@@ -435,7 +439,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                       updateSavingsPlan({ pityPoints: Math.min(250, pityPoints + 10) });
                     }}
                     className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded-xl text-xs font-bold text-cyan-300 hover:bg-cyan-500/30 transition-all cursor-pointer whitespace-nowrap"
-                    title="+10 Pontos de Gacha / Cartas de Pity (+10 giros)"
+                    title={t.timeline.add10PointsTitle}
                   >
                     +10
                   </button>
@@ -443,10 +447,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 <span className="text-[10px] text-gray-500 block truncate">
                   {pityPoints > 0 ? (
                     <span className="text-cyan-400 font-medium">
-                      Abate <strong>{(pityPoints * 300).toLocaleString()} cubos</strong> do Pity.
+                      {t.timeline.pityPointsAbate.replace('{amount}', (pityPoints * 300).toLocaleString())}
                     </span>
                   ) : (
-                    <span>1 pt/carta = 1 giro (300 cubos) a menos.</span>
+                    <span>{t.timeline.pityPointsHint}</span>
                   )}
                 </span>
               </div>
@@ -456,13 +460,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
             <div className="bg-[#0f0b1f] border border-[#2c1f4e] rounded-2xl p-4 space-y-2">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-gray-300 font-bold flex items-center gap-2">
-                  <span>Ajuste Dinâmico de Lag (Dias JP → Global):</span>
+                  <span>{t.timeline.lagSliderLabel}</span>
                   <span className="font-mono text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/40">
-                    {customLag} dias
+                    {t.timeline.lagSliderDays.replace('{days}', String(customLag))}
                   </span>
                   {customLag === DEFAULT_LAG && (
                     <span className="text-[10px] text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/30">
-                      ✓ Calibração Oficial Ijichi
+                      {t.timeline.lagSliderOfficial}
                     </span>
                   )}
                 </span>
@@ -475,7 +479,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     className="flex items-center gap-1 text-[11px] text-purple-400 hover:text-purple-200 cursor-pointer transition-colors"
                   >
                     <RotateCcw className="w-3 h-3" />
-                    <span>Resetar para 79d</span>
+                    <span>{t.timeline.resetLag}</span>
                   </button>
                 )}
               </div>
@@ -498,39 +502,43 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
               {/* Card 1: Data Prevista */}
               <div className="bg-[#0f0a21] border border-blue-500/30 rounded-2xl p-4 space-y-1">
                 <span className="text-[10px] text-blue-400 uppercase font-bold tracking-wider">
-                  Previsão de Chegada
+                  {t.timeline.cardArrival}
                 </span>
                 <div className="text-xl font-black text-white font-mono">
                   {calcResults.predictedGlobalFormatted}
                 </div>
                 <span className="text-xs text-blue-300/80 font-bold">
-                  {calcResults.daysRemaining === 0 ? 'Chega Hoje!' : `Faltam ${calcResults.daysRemaining} dias`}
+                  {calcResults.daysRemaining === 0 
+                    ? t.timeline.arrivesToday 
+                    : t.timeline.daysRemainingCount.replace('{days}', String(calcResults.daysRemaining))}
                 </span>
               </div>
 
               {/* Card 2: Acúmulo no Período */}
               <div className="bg-[#0f0a21] border border-purple-500/30 rounded-2xl p-4 space-y-1">
                 <span className="text-[10px] text-purple-400 uppercase font-bold tracking-wider">
-                  Ganhos até o Banner
+                  {t.timeline.cardIncome}
                 </span>
                 <div className="text-xl font-black text-purple-200 font-mono">
                   +{calcResults.accumulatedCubes.toLocaleString()}
                 </div>
                 <span className="text-xs text-gray-400">
-                  {calcResults.daysRemaining} dias × {dailyCubesIncome} cubos/dia
+                  {t.timeline.incomeFormula
+                    .replace('{days}', String(calcResults.daysRemaining))
+                    .replace('{daily}', String(dailyCubesIncome))}
                 </span>
               </div>
 
               {/* Card 3: Total Projetado */}
               <div className="bg-[#0f0a21] border border-amber-500/30 rounded-2xl p-4 space-y-1">
                 <span className="text-[10px] text-amber-400 uppercase font-bold tracking-wider">
-                  Cubos no Dia do Banner
+                  {t.timeline.cardTotal}
                 </span>
                 <div className="text-xl font-black text-amber-300 font-mono">
                   {calcResults.totalProjectedCubes.toLocaleString()}
                 </div>
                 <span className="text-xs text-amber-200/80 font-bold">
-                  {calcResults.pullsFromCubes} giros de cubos {pityPoints > 0 && `+ ${pityPoints} pts pity`}
+                  {t.timeline.cardTotalPulls.replace('{pulls}', String(calcResults.pullsFromCubes))} {pityPoints > 0 && t.timeline.cardTotalPityExtra.replace('{pts}', String(pityPoints))}
                 </span>
               </div>
 
@@ -541,7 +549,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   : 'bg-[#0f0a21] border-rose-500/30'
               }`}>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">
-                  Meta Pity (250 Giros / Pts)
+                  {t.timeline.cardPityTarget}
                 </span>
                 <div className="flex items-center justify-between">
                   <span className={`text-xl font-black font-mono ${
@@ -550,7 +558,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     {calcResults.pityProgress}%
                   </span>
                   <span className="text-[11px] text-gray-400 font-mono">
-                    {calcResults.totalPulls} / 250 giros
+                    {t.timeline.pullsFraction.replace('{total}', String(calcResults.totalPulls))}
                   </span>
                 </div>
                 <div className="w-full bg-[#1e1436] rounded-full h-2 overflow-hidden">
@@ -565,7 +573,9 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 </div>
                 {pityPoints > 0 && (
                   <span className="text-[10px] text-cyan-400 font-mono block">
-                    Inclui {pityPoints} pts/cartas ({pityPoints * 300} cubos abatidos)
+                    {t.timeline.includesPityPts
+                      .replace('{pts}', String(pityPoints))
+                      .replace('{cubes}', (pityPoints * 300).toLocaleString())}
                   </span>
                 )}
               </div>
@@ -586,14 +596,25 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 <div>
                   <div className="font-bold text-sm">
                     {calcResults.isGuaranteed 
-                      ? '🎉 PITY GARANTIDO (100% de Certeza)!' 
-                      : `⚠️ Quase lá! Faltam ${calcResults.missingCubes.toLocaleString()} cubos (${calcResults.missingPulls} giros/pontos) para o Pity Garantido.`
+                      ? t.timeline.pityGuaranteedTitle
+                      : t.timeline.pityMissingTitle
+                          .replace('{cubes}', calcResults.missingCubes.toLocaleString())
+                          .replace('{pulls}', String(calcResults.missingPulls))
                     }
                   </div>
                   <p className="text-[11px] opacity-80 mt-0.5 leading-relaxed">
                     {calcResults.isGuaranteed
-                      ? `Você terá ${calcResults.totalPulls} giros/pontos no total (${calcResults.pullsFromCubes} giros vindos de ${calcResults.totalProjectedCubes.toLocaleString()} cubos + ${calcResults.pityPoints} pontos/cartas de pity), superando a meta de 250 pontos para o Câmbio do Banner!`
-                      : `Com o ritmo diário atual de ${dailyCubesIncome} cubos/dia e seus ${calcResults.pityPoints} pts de pity/cartas, você acumulará ${calcResults.totalPulls} de 250 giros até o banner. Faltam ${calcResults.missingCubes.toLocaleString()} cubos (${calcResults.missingPulls} giros). Considere completar missões extras da Torre Ilusória ou eventos especiais.`
+                      ? t.timeline.pityGuaranteedDesc
+                          .replace('{total}', String(calcResults.totalPulls))
+                          .replace('{pulls}', String(calcResults.pullsFromCubes))
+                          .replace('{cubes}', calcResults.totalProjectedCubes.toLocaleString())
+                          .replace('{pts}', String(calcResults.pityPoints))
+                      : t.timeline.pityMissingDesc
+                          .replace('{daily}', String(dailyCubesIncome))
+                          .replace('{pts}', String(calcResults.pityPoints))
+                          .replace('{total}', String(calcResults.totalPulls))
+                          .replace('{cubes}', calcResults.missingCubes.toLocaleString())
+                          .replace('{pulls}', String(calcResults.missingPulls))
                     }
                   </p>
                 </div>
@@ -616,7 +637,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
               : 'bg-[#120e24] border-[#291f47] text-gray-400 hover:text-white'
           }`}
         >
-          Todos ({events.length})
+          {t.timeline.tabAll} ({events.length})
         </button>
         <button
           onClick={() => {
@@ -630,7 +651,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
           }`}
         >
           <Flame className="w-3.5 h-3.5 text-amber-400" />
-          <span>Próximos Banners ({upcomingCount})</span>
+          <span>{t.timeline.tabUpcoming} ({upcomingCount})</span>
         </button>
         <button
           onClick={() => {
@@ -644,7 +665,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
           }`}
         >
           <CheckCircle2 className="w-3.5 h-3.5" />
-          <span>Já Lançados ({releasedCount})</span>
+          <span>{t.timeline.tabReleased} ({releasedCount})</span>
         </button>
       </div>
 
@@ -685,7 +706,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                     ) : (
                       <Clock className="w-3.5 h-3.5" />
                     )}
-                    {ev.status_label || (isReleased ? 'Já Lançado no Global' : 'Próximo no Global')}
+                    {ev.status_label || (isReleased ? t.timeline.releasedInGlobal : t.timeline.upcomingInGlobal)}
                   </span>
                   
                   {ev.days && (
@@ -722,7 +743,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                 <div className="flex items-center gap-6 bg-[#0a0714] px-4 py-3 rounded-xl border border-[#23183d] justify-between md:justify-end text-xs shadow-inner">
                   <div>
                     <span className="text-[10px] text-gray-500 block uppercase font-bold tracking-wider">
-                      Lançamento JP
+                      {language === 'pt' ? 'Lançamento JP' : 'JP Release'}
                     </span>
                     <span className="font-mono font-bold text-gray-300 text-sm">
                       {ev.jp_date}
@@ -731,7 +752,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
 
                   <div className="border-l border-[#241a42] pl-5">
                     <span className="text-[10px] text-purple-400 block uppercase font-bold tracking-wider">
-                      Previsão Global
+                      {language === 'pt' ? 'Previsão Global' : 'Global Forecast'}
                     </span>
                     <span className="font-mono font-black text-purple-200 text-sm">
                       {ev.global_date}
@@ -743,10 +764,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
                   <button
                     onClick={() => handleSelectBannerForCalc(ev.index)}
                     className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/40 text-purple-300 hover:text-white text-xs font-bold transition-all cursor-pointer whitespace-nowrap"
-                    title="Simular este banner na calculadora de cubos"
+                    title={t.timeline.calculateTitle}
                   >
                     <Calculator className="w-3.5 h-3.5" />
-                    <span>Calcular</span>
+                    <span>{t.timeline.calculate}</span>
                   </button>
                 )}
               </div>
@@ -757,9 +778,9 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
         {filteredEvents.length === 0 && (
           <div className="text-center py-12 bg-[#120e24] border border-[#251b40] rounded-2xl">
             <Calendar className="w-10 h-10 text-gray-600 mx-auto mb-2" />
-            <div className="text-base font-bold text-gray-300">Nenhum evento encontrado</div>
+            <div className="text-base font-bold text-gray-300">{t.timeline.noEventsFound}</div>
             <div className="text-xs text-gray-500 mt-1">
-              Tente redefinir a busca ou alternar entre os filtros de lançados/próximos.
+              {t.timeline.noEventsDesc}
             </div>
           </div>
         )}

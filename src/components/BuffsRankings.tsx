@@ -13,6 +13,7 @@ import {
 import type { Character, BuffItem } from '../types';
 import buffsRawData from '../data/buffs.json';
 import { getAssetPath } from '../utils/assets';
+import { useTranslation } from '../i18n';
 import { playClick, playSelect } from '../utils/sound';
 
 interface BuffsRankingsProps {
@@ -26,6 +27,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
   characters,
   onSelectCharacter
 }) => {
+  const { language } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<BuffCategory>('buff');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedElement, setSelectedElement] = useState<string>('all');
@@ -125,10 +127,12 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
             </div>
             <h1 className="text-3xl font-black text-white tracking-tight flex items-center gap-3">
               <Zap className="w-8 h-8 text-amber-400 fill-amber-400/20" />
-              Rankings de Buffs & Debuffs
+              {language === 'pt' ? 'Rankings de Buffs & Debuffs' : 'Buffs & Debuffs Rankings'}
             </h1>
             <p className="text-gray-400 text-sm mt-1 max-w-2xl">
-              Tabelas analíticas dos maiores amplificadores de dano, quebras de defesa e acumuladores de atributos (Max Stacks) para otimização máxima de DPS em combates de alto nível.
+              {language === 'pt'
+                ? 'Tabelas analíticas dos maiores amplificadores de dano, quebras de defesa e acumuladores de atributos (Max Stacks) para otimização máxima de DPS em combates de alto nível.'
+                : 'Analytical rankings of top damage boosters, defense breaks and attribute multipliers (Max Stacks) for DPS optimization in high-level combat.'}
             </p>
           </div>
 
@@ -136,7 +140,9 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
           <div className="flex items-center gap-3 bg-[#0c0916]/80 border border-[#201833] rounded-xl px-4 py-3">
             <div className="text-right">
               <div className="text-2xl font-black text-purple-300">{filteredList.length}</div>
-              <div className="text-[11px] text-gray-400 uppercase tracking-wider font-semibold">Feiticeiros Listados</div>
+              <div className="text-[11px] text-gray-400 uppercase tracking-wider font-semibold">
+                {language === 'pt' ? 'Feiticeiros Listados' : 'Listed Sorcerers'}
+              </div>
             </div>
           </div>
         </div>
@@ -155,7 +161,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
             }`}
           >
             <TrendingUp className="w-4 h-4" />
-            Stat Buffs (+Taijutsu / +Jujutsu)
+            {language === 'pt' ? 'Stat Buffs (+Taijutsu / +Jujutsu)' : 'Stat Buffs (+Taijutsu / +Jujutsu)'}
             <span className="ml-1 text-xs px-2 py-0.5 rounded-full bg-black/30">
               {buffsRawData.buff.length}
             </span>
@@ -173,7 +179,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
             }`}
           >
             <TrendingDown className="w-4 h-4" />
-            Stat Debuffs (-Defesa / -Atributos)
+            {language === 'pt' ? 'Stat Debuffs (-Defesa / -Atributos)' : 'Stat Debuffs (-Defense / -Stats)'}
             <span className="ml-1 text-xs px-2 py-0.5 rounded-full bg-black/30">
               {buffsRawData.debuff.length}
             </span>
@@ -191,7 +197,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
             }`}
           >
             <Sparkles className="w-4 h-4" />
-            Damage Up (Aumento Direto de Dano)
+            {language === 'pt' ? 'Damage Up (Aumento Direto de Dano)' : 'Damage Up (Direct Damage Increase)'}
             <span className="ml-1 text-xs px-2 py-0.5 rounded-full bg-black/30">
               {buffsRawData.dmgUp.length}
             </span>
@@ -208,7 +214,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Buscar por nome, habilidade ou efeito..."
+            placeholder={language === 'pt' ? 'Buscar por nome, habilidade ou efeito...' : 'Search by name, skill or effect...'}
             className="w-full pl-9 pr-3 py-2 bg-[#0c0916] border border-[#2a1e4d] rounded-lg text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-purple-500"
           />
         </div>
@@ -218,7 +224,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
           {/* Element Filter */}
           <div className="flex items-center gap-1 text-xs font-semibold text-gray-400 mr-1">
             <Filter className="w-3.5 h-3.5" />
-            Elemento:
+            {language === 'pt' ? 'Elemento:' : 'Element:'}
           </div>
           {['all', 'Blue', 'Red', 'Green', 'Yellow'].map(el => (
             <button
@@ -233,7 +239,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
                   : 'bg-[#191233] text-gray-400 hover:text-gray-200 hover:bg-[#211842]'
               }`}
             >
-              {el === 'all' ? 'Todos' : el}
+              {el === 'all' ? (language === 'pt' ? 'Todos' : 'All') : el}
             </button>
           ))}
 
@@ -254,7 +260,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
                       : 'bg-[#191233] text-gray-400 hover:text-gray-200 hover:bg-[#211842]'
                   }`}
                 >
-                  {st === 'all' ? 'Todos Stats' : st}
+                  {st === 'all' ? (language === 'pt' ? 'Todos Stats' : 'All Stats') : st}
                 </button>
               ))}
             </>
@@ -275,7 +281,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
                   : 'bg-[#191233] text-gray-400 hover:text-gray-200 hover:bg-[#211842]'
               }`}
             >
-              {tg === 'all' ? 'Todos Alvos' : tg.toUpperCase()}
+              {tg === 'all' ? (language === 'pt' ? 'Todos Alvos' : 'All Targets') : tg.toUpperCase()}
             </button>
           ))}
         </div>
@@ -354,7 +360,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-xs font-semibold text-gray-400 flex items-center gap-1">
                       <Layers className="w-3.5 h-3.5 text-purple-400" />
-                      Efeito Base:
+                      {language === 'pt' ? 'Efeito Base:' : 'Base Effect:'}
                     </span>
                     <span className="text-xs font-bold text-gray-300">
                       {item.buff}
@@ -363,7 +369,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
 
                   <div className="flex items-center justify-between pt-1.5 border-t border-[#1e1538]">
                     <span className="text-xs font-bold text-amber-400 uppercase tracking-wide">
-                      Stack Máximo:
+                      {language === 'pt' ? 'Stack Máximo:' : 'Max Stack:'}
                     </span>
                     <span className="text-base font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
                       {item.maxStack}
@@ -374,7 +380,9 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
                 {/* Notes / Activation Breakdown */}
                 {item.notes && (
                   <div className="text-xs text-gray-400 bg-[#120d24]/60 border border-[#20183b] rounded-lg p-2.5 leading-relaxed">
-                    <span className="font-semibold text-gray-300 block mb-0.5">Detalhe de Ativação:</span>
+                    <span className="font-semibold text-gray-300 block mb-0.5">
+                      {language === 'pt' ? 'Detalhe de Ativação:' : 'Activation Details:'}
+                    </span>
                     {item.notes}
                   </div>
                 )}
@@ -382,7 +390,7 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
 
               {/* Card Footer */}
               <div className="mt-4 pt-3 border-t border-[#1b1433] flex items-center justify-between text-[11px] text-gray-500 group-hover:text-purple-300 transition-colors">
-                <span>Clique para abrir ficha técnica</span>
+                <span>{language === 'pt' ? 'Clique para abrir ficha técnica' : 'Click to view full profile'}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -393,9 +401,13 @@ export const BuffsRankings: React.FC<BuffsRankingsProps> = ({
       {filteredList.length === 0 && (
         <div className="text-center py-16 bg-[#100b22] border border-[#221740] rounded-2xl">
           <Zap className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-          <div className="text-lg font-bold text-gray-300">Nenhum feiticeiro encontrado</div>
+          <div className="text-lg font-bold text-gray-300">
+            {language === 'pt' ? 'Nenhum feiticeiro encontrado' : 'No sorcerers found'}
+          </div>
           <div className="text-sm text-gray-500 mt-1">
-            Tente ajustar o termo de pesquisa ou redefinir os filtros selecionados.
+            {language === 'pt'
+              ? 'Tente ajustar o termo de pesquisa ou redefinir os filtros selecionados.'
+              : 'Try adjusting your search query or reset selected filters.'}
           </div>
         </div>
       )}

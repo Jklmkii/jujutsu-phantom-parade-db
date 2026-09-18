@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { playClick, playSelect } from '../utils/sound';
 import { getAssetUrl, getStaticThumbUrl, getAssetPath } from '../utils/assets';
+import { useTranslation } from '../i18n';
 import metaTeamsData from '../data/meta_teams.json';
 
 interface BestTeamsProps {
@@ -45,6 +46,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
   memories, 
   onSelectCharacter 
 }) => {
+  const { language } = useTranslation();
   const { teams, addTeam, updateTeam, deleteTeam } = useJjkStore();
   const [viewMode, setViewMode] = useState<TeamViewMode>('meta');
   const [selectedMetaElement, setSelectedMetaElement] = useState<string>('Blue');
@@ -247,10 +249,12 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
           </div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight flex items-center gap-3">
             <Shield className="w-8 h-8 text-indigo-400" />
-            COMPOSIÇÕES DE EQUIPE (BEST TEAMS)
+            {language === 'pt' ? 'COMPOSIÇÕES DE EQUIPE (BEST TEAMS)' : 'BEST TEAM FORMATIONS'}
           </h1>
           <p className="text-sm text-gray-400 mt-1">
-            Consulte as composições ideais da meta (Taijutsu e Jujutsu) para cada elemento ou monte suas equipes personalizadas com memórias.
+            {language === 'pt'
+              ? 'Consulte as composições ideais da meta (Taijutsu e Jujutsu) para cada elemento ou monte suas equipes personalizadas com memórias.'
+              : 'Browse top meta compositions (Taijutsu and Jujutsu) for each element or build custom squads with memories.'}
           </p>
         </div>
 
@@ -268,7 +272,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
             }`}
           >
             <Sparkles className="w-4 h-4" />
-            Times Meta (JJKPPDB)
+            {language === 'pt' ? 'Times Meta (JJKPPDB)' : 'Meta Teams (JJKPPDB)'}
           </button>
           <button
             onClick={() => {
@@ -282,7 +286,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
             }`}
           >
             <Sliders className="w-4 h-4" />
-            Meus Times Customizados
+            {language === 'pt' ? 'Meus Times Customizados' : 'Custom Teams'}
             <span className="ml-1 px-1.5 py-0.2 rounded-full bg-black/40 text-[10px]">
               {teams.length}
             </span>
@@ -299,13 +303,13 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-3 bg-[#120d24] border border-[#231a40] p-4 rounded-2xl">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-2">
-                Elemento:
+                {language === 'pt' ? 'Elemento:' : 'Element:'}
               </span>
               {[
-                { id: 'Blue', label: 'Noite (Azul)' },
-                { id: 'Red', label: 'Chamas (Vermelho)' },
-                { id: 'Green', label: 'Fantasma (Verde)' },
-                { id: 'Yellow', label: 'Decaimento (Amarelo)' },
+                { id: 'Blue', label: language === 'pt' ? 'Noite (Azul)' : 'Blue (蒼)' },
+                { id: 'Red', label: language === 'pt' ? 'Chamas (Vermelho)' : 'Red (幻)' },
+                { id: 'Green', label: language === 'pt' ? 'Fantasma (Verde)' : 'Green (夜)' },
+                { id: 'Yellow', label: language === 'pt' ? 'Decaimento (Amarelo)' : 'Yellow (行)' },
               ].map((el) => (
                 <button
                   key={el.id}
@@ -358,16 +362,18 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                 <div className="flex items-center gap-3">
                   <h2 className="text-2xl font-black text-white flex items-center gap-2.5">
                     {getElementIcon(activeMetaTeam.element)}
-                    Equipe Meta: {activeMetaTeam.element} ({activeMetaTeam.label})
+                    {language === 'pt' ? 'Equipe Meta:' : 'Meta Team:'} {activeMetaTeam.element} ({activeMetaTeam.label})
                   </h2>
                   {activeMetaTeam.best && (
                     <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-amber-500/20 to-yellow-500/20 text-yellow-300 border border-yellow-400/50 shadow-sm">
-                      ★ Formação Principal Recomendada
+                      {language === 'pt' ? '★ Formação Principal Recomendada' : '★ Top Recommended Formation'}
                     </span>
                   )}
                 </div>
                 <p className="text-xs text-gray-400 mt-1">
-                  Composição ideal de 5 posições estratégicas desenvolvida pela comunidade do JJKPPDB com alternativas viáveis.
+                  {language === 'pt'
+                    ? 'Composição ideal de 5 posições estratégicas desenvolvida pela comunidade do JJKPPDB com alternativas viáveis.'
+                    : 'Ideal 5-position tactical layout developed by the JJKPPDB community with viable alternatives.'}
                 </p>
               </div>
 
@@ -375,10 +381,10 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
               <button
                 onClick={() => handleImportMetaTeam(activeMetaTeam)}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow-lg shadow-purple-900/40 transition-all cursor-pointer shrink-0"
-                title="Copiar esta formação para a aba Meus Times Customizados para editar e equipar memórias"
+                title={language === 'pt' ? 'Copiar esta formação para a aba Meus Times Customizados para editar e equipar memórias' : 'Copy this formation to Custom Teams to edit and equip memories'}
               >
                 <Download className="w-4 h-4" />
-                <span>Importar para Meus Times</span>
+                <span>{language === 'pt' ? 'Importar para Meus Times' : 'Import to Custom Teams'}</span>
               </button>
             </div>
 
@@ -402,7 +408,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                       <span className={`text-[11px] font-black uppercase tracking-wider ${
                         isSubSlot ? 'text-amber-400' : 'text-purple-300'
                       }`}>
-                        {isSubSlot ? 'Slot 5 (Reserva)' : `Slot ${idx + 1}`}
+                        {isSubSlot ? (language === 'pt' ? 'Slot 5 (Reserva)' : 'Slot 5 (Sub)') : `Slot ${idx + 1}`}
                       </span>
                       <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#1e153b] text-teal-300 border border-teal-900/40 truncate max-w-[120px]" title={slot.role}>
                         {slot.role}
@@ -416,10 +422,10 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                         if (localMain) onSelectCharacter(localMain);
                       }}
                       className="group flex flex-col items-center p-3 rounded-xl bg-[#0e0a1c] hover:bg-[#1a1236] border border-[#251944] hover:border-purple-400 transition-all cursor-pointer text-center shadow-md relative"
-                      title={`${slot.main.title}\nClique para ver ficha completa`}
+                      title={`${slot.main.title}\n${language === 'pt' ? 'Clique para ver ficha completa' : 'Click to view full profile'}`}
                     >
                       <span className="absolute top-2 left-2 text-[9px] font-black px-1.5 py-0.2 rounded bg-purple-600 text-white uppercase tracking-wider">
-                        Principal
+                        {language === 'pt' ? 'Principal' : 'Main'}
                       </span>
                       <div className="w-16 h-16 rounded-xl overflow-hidden border border-purple-900/60 group-hover:border-purple-400 mb-2 mt-2 shadow relative">
                         <img
@@ -443,7 +449,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     {/* Viable Substitutes */}
                     <div className="flex-1 flex flex-col pt-3 border-t border-[#231840] space-y-2">
                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
-                        Substitutos Viáveis:
+                        {language === 'pt' ? 'Substitutos Viáveis:' : 'Viable Substitutes:'}
                       </span>
                       {slot.substitutes && slot.substitutes.length > 0 ? (
                         <div className="flex flex-col gap-1.5 flex-1">
@@ -453,11 +459,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                               <div
                                 key={sIdx}
                                 onClick={() => {
-                                  playSelect();
-                                  if (localSub) onSelectCharacter(localSub);
+                                   playSelect();
+                                   if (localSub) onSelectCharacter(localSub);
                                 }}
                                 className="group flex items-center gap-2 p-1.5 rounded-lg bg-[#0b0816] hover:bg-[#1a1236] border border-[#1e1438] hover:border-purple-500/50 transition-all cursor-pointer"
-                                title={`${sub.title}\nClique para ver detalhes`}
+                                title={`${sub.title}\n${language === 'pt' ? 'Clique para ver detalhes' : 'Click to view details'}`}
                               >
                                 <div className="w-8 h-8 rounded-lg overflow-hidden border border-[#2b1f4c] shrink-0">
                                   <img
@@ -480,8 +486,12 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                         </div>
                       ) : (
                         <div className="flex-1 flex flex-col items-center justify-center p-4 rounded-xl bg-[#0b0816]/40 border border-dashed border-[#231840] text-center min-h-[90px]">
-                          <span className="text-[11px] text-gray-500 italic">Posição única do meta</span>
-                          <span className="text-[9px] text-gray-600 mt-0.5">Sem substituto direto recomendado</span>
+                          <span className="text-[11px] text-gray-500 italic">
+                            {language === 'pt' ? 'Posição única do meta' : 'Unique meta position'}
+                          </span>
+                          <span className="text-[9px] text-gray-600 mt-0.5">
+                            {language === 'pt' ? 'Sem substituto direto recomendado' : 'No direct substitute recommended'}
+                          </span>
                         </div>
                       )}
                     </div>
@@ -501,14 +511,17 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
           {/* Custom Action Bar */}
           <div className="flex items-center justify-between bg-[#120d24] border border-[#231a40] rounded-xl p-4">
             <div className="text-sm text-gray-300">
-              <span className="font-bold text-white">Meus Times:</span> Crie formações personalizadas, equipe cartas de memória e teste sinergias de combate.
+              <span className="font-bold text-white">{language === 'pt' ? 'Meus Times:' : 'Custom Teams:'}</span>{' '}
+              {language === 'pt'
+                ? 'Crie formações personalizadas, equipe cartas de memória e teste sinergias de combate.'
+                : 'Create custom teams, equip memory cards, and test combat synergies.'}
             </div>
             <button
               onClick={handleOpenCreateModal}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg shadow-purple-900/40 transition-all cursor-pointer"
             >
               <Plus className="w-4 h-4" />
-              <span>Criar Nova Equipe</span>
+              <span>{language === 'pt' ? 'Criar Nova Equipe' : 'Create New Team'}</span>
             </button>
           </div>
 
@@ -519,7 +532,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                 <div className="flex items-center justify-between border-b border-[#241c3e] pb-3">
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
                     <Shield className="w-5 h-5 text-purple-400" />
-                    <span>{editingTeamId ? 'Editar Equipe' : 'Criar Nova Equipe'}</span>
+                    <span>
+                      {editingTeamId
+                        ? (language === 'pt' ? 'Editar Equipe' : 'Edit Team')
+                        : (language === 'pt' ? 'Criar Nova Equipe' : 'Create New Team')}
+                    </span>
                   </h3>
                   <button
                     onClick={() => setShowTeamModal(false)}
@@ -532,11 +549,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                 <form onSubmit={handleSaveTeamModal} className="space-y-4">
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-400 mb-1">
-                      Nome da Formação *
+                      {language === 'pt' ? 'Nome da Formação *' : 'Team Name *'}
                     </label>
                     <input
                       type="text"
-                      placeholder="Ex: Time Mono Red - Raid Jogo"
+                      placeholder={language === 'pt' ? 'Ex: Time Mono Red - Raid Jogo' : 'E.g.: Mono Red Team - Jogo Raid'}
                       value={teamNameInput}
                       onChange={(e) => setTeamNameInput(e.target.value)}
                       className="w-full bg-[#0c0918] border border-[#2e234e] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-purple-500"
@@ -547,11 +564,11 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
 
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-400 mb-1">
-                      Descrição ou Estratégia
+                      {language === 'pt' ? 'Descrição ou Estratégia' : 'Description or Strategy'}
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Ex: Focado em quebra de postura rápida e dano crítico com buff de Taijutsu..."
+                      placeholder={language === 'pt' ? 'Ex: Focado em quebra de postura rápida e dano crítico com buff de Taijutsu...' : 'E.g.: Focused on rapid break gauge and critical damage with Taijutsu buffs...'}
                       value={teamDescInput}
                       onChange={(e) => setTeamDescInput(e.target.value)}
                       className="w-full bg-[#0c0918] border border-[#2e234e] rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-purple-500 resize-none"
@@ -564,13 +581,13 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                       onClick={() => setShowTeamModal(false)}
                       className="px-4 py-2 rounded-xl text-xs font-bold text-gray-400 hover:text-white"
                     >
-                      Cancelar
+                      {language === 'pt' ? 'Cancelar' : 'Cancel'}
                     </button>
                     <button
                       type="submit"
                       className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-md cursor-pointer"
                     >
-                      Salvar Equipe
+                      {language === 'pt' ? 'Salvar Equipe' : 'Save Team'}
                     </button>
                   </div>
                 </form>
@@ -586,10 +603,16 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                   <div>
                     <h3 className="text-lg font-bold text-white flex items-center gap-2">
                       <UserPlus className="w-5 h-5 text-purple-400" />
-                      <span>Selecionar Feiticeiro (Slot {picker.slotNumber})</span>
+                      <span>
+                        {language === 'pt'
+                          ? `Selecionar Feiticeiro (Slot ${picker.slotNumber})`
+                          : `Select Sorcerer (Slot ${picker.slotNumber})`}
+                      </span>
                     </h3>
                     <p className="text-xs text-gray-400">
-                      Escolha um feiticeiro para ocupar esta posição estratégica na equipe.
+                      {language === 'pt'
+                        ? 'Escolha um feiticeiro para ocupar esta posição estratégica na equipe.'
+                        : 'Choose a sorcerer to occupy this strategic position in the team.'}
                     </p>
                   </div>
 
@@ -606,7 +629,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                     <input
                       type="text"
-                      placeholder="Buscar por nome ou título..."
+                      placeholder={language === 'pt' ? 'Buscar por nome ou título...' : 'Search by name or title...'}
                       value={pickerSearch}
                       onChange={(e) => setPickerSearch(e.target.value)}
                       className="w-full bg-[#070510] border border-[#251b40] rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-purple-500"
@@ -625,7 +648,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                             : 'text-gray-400 hover:text-white'
                         }`}
                       >
-                        {elem === 'ALL' ? 'Todos' : elem}
+                        {elem === 'ALL' ? (language === 'pt' ? 'Todos' : 'All') : elem}
                       </button>
                     ))}
                   </div>
@@ -641,7 +664,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                             : 'text-gray-400 hover:text-white'
                         }`}
                       >
-                        {rar === 'ALL' ? 'Todas' : rar}
+                        {rar === 'ALL' ? (language === 'pt' ? 'Todas' : 'All') : rar}
                       </button>
                     ))}
                   </div>
@@ -650,7 +673,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     onClick={() => handleSelectCharacterForSlot(null)}
                     className="px-3 py-1.5 rounded-xl bg-red-950/60 hover:bg-red-900 border border-red-500/40 text-red-300 text-xs font-bold transition-all"
                   >
-                    Desocupar Slot
+                    {language === 'pt' ? 'Desocupar Slot' : 'Empty Slot'}
                   </button>
                 </div>
 
@@ -694,10 +717,16 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                   <div>
                     <h3 className="text-lg font-bold text-white flex items-center gap-2">
                       <BookOpen className="w-5 h-5 text-indigo-400" />
-                      <span>Equipar Memória (Slot {picker.slotNumber})</span>
+                      <span>
+                        {language === 'pt'
+                          ? `Equipar Memória (Slot ${picker.slotNumber})`
+                          : `Equip Memory (Slot ${picker.slotNumber})`}
+                      </span>
                     </h3>
                     <p className="text-xs text-gray-400">
-                      Selecione uma Carta de Memória (Recollection Bit) para equipar neste feiticeiro.
+                      {language === 'pt'
+                        ? 'Selecione uma Carta de Memória (Recollection Bit) para equipar neste feiticeiro.'
+                        : 'Select a Memory Card (Recollection Bit) to equip on this sorcerer.'}
                     </p>
                   </div>
 
@@ -714,7 +743,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                     <input
                       type="text"
-                      placeholder="Buscar memória pelo título..."
+                      placeholder={language === 'pt' ? 'Buscar memória pelo título...' : 'Search memory by title...'}
                       value={pickerSearch}
                       onChange={(e) => setPickerSearch(e.target.value)}
                       className="w-full bg-[#070510] border border-[#251b40] rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
@@ -733,7 +762,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                             : 'text-gray-400 hover:text-white'
                         }`}
                       >
-                        {rar === 'ALL' ? 'Todas' : rar}
+                        {rar === 'ALL' ? (language === 'pt' ? 'Todas' : 'All') : rar}
                       </button>
                     ))}
                   </div>
@@ -742,7 +771,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     onClick={() => handleSelectMemoryForSlot(null)}
                     className="px-3 py-1.5 rounded-xl bg-red-950/60 hover:bg-red-900 border border-red-500/40 text-red-300 text-xs font-bold transition-all"
                   >
-                    Desequipar Memória
+                    {language === 'pt' ? 'Desequipar Memória' : 'Unequip Memory'}
                   </button>
                 </div>
 
@@ -831,16 +860,16 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                       <button
                         onClick={() => handleOpenEditModal(team)}
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1c1536] hover:bg-purple-900/60 border border-[#312354] hover:border-purple-500 text-gray-300 hover:text-white text-xs font-bold transition-all"
-                        title="Editar nome e estratégia da equipe"
+                        title={language === 'pt' ? 'Editar nome e estratégia da equipe' : 'Edit team name and strategy'}
                       >
                         <Edit3 className="w-3.5 h-3.5" />
-                        <span>Editar</span>
+                        <span>{language === 'pt' ? 'Editar' : 'Edit'}</span>
                       </button>
 
                       <button
                         onClick={() => handleDuplicateTeam(team)}
                         className="p-2 rounded-xl bg-[#1c1536] hover:bg-[#251c47] border border-[#312354] text-gray-300 hover:text-white transition-all"
-                        title="Duplicar equipe"
+                        title={language === 'pt' ? 'Duplicar equipe' : 'Duplicate team'}
                       >
                         <Copy className="w-4 h-4" />
                       </button>
@@ -848,13 +877,16 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                       {teams.length > 1 && (
                         <button
                           onClick={() => {
-                            if (window.confirm(`Deseja realmente excluir a equipe "${team.name}"?`)) {
+                            const confirmMsg = language === 'pt'
+                              ? `Deseja realmente excluir a equipe "${team.name}"?`
+                              : `Do you really want to delete team "${team.name}"?`;
+                            if (window.confirm(confirmMsg)) {
                               deleteTeam(team.id);
                               playClick();
                             }
                           }}
                           className="p-2 rounded-xl bg-[#1c1536] hover:bg-red-950 border border-[#312354] hover:border-red-500/40 text-gray-300 hover:text-red-300 transition-all"
-                          title="Excluir equipe"
+                          title={language === 'pt' ? 'Excluir equipe' : 'Delete team'}
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -882,7 +914,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                             <span className={`text-[11px] font-black uppercase tracking-wider ${
                               isSub ? 'text-amber-400' : 'text-purple-300'
                             }`}>
-                              {isSub ? 'Slot 5 (Reserva)' : `Slot ${slotItem.slot}`}
+                              {isSub ? (language === 'pt' ? 'Slot 5 (Reserva)' : 'Slot 5 (Sub)') : `Slot ${slotItem.slot}`}
                             </span>
                             {char && (
                               <ElementBadge element={char.element} showLabel={false} className="scale-75 origin-right" />
@@ -896,7 +928,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                                 <div
                                   onClick={() => onSelectCharacter(char)}
                                   className="cursor-pointer relative w-16 h-16 rounded-xl overflow-hidden border border-purple-500/40 group-hover:border-purple-400 mb-2 shadow"
-                                  title="Ver ficha técnica"
+                                  title={language === 'pt' ? 'Ver ficha técnica' : 'View profile'}
                                 >
                                   <img
                                     src={getStaticThumbUrl(char.id, char.image)}
@@ -915,7 +947,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                                   onClick={() => openPicker(team.id, slotItem.slot, 'character')}
                                   className="mt-2 text-[10px] font-semibold text-purple-400 hover:text-purple-200 underline"
                                 >
-                                  Trocar Feiticeiro
+                                  {language === 'pt' ? 'Trocar Feiticeiro' : 'Switch Sorcerer'}
                                 </button>
                               </>
                             ) : (
@@ -926,7 +958,9 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                                 <div className="w-10 h-10 rounded-full bg-[#181130] flex items-center justify-center border border-dashed border-[#342759]">
                                   <UserPlus className="w-5 h-5" />
                                 </div>
-                                <span className="text-xs font-bold">Adicionar Feiticeiro</span>
+                                <span className="text-xs font-bold">
+                                  {language === 'pt' ? 'Adicionar Feiticeiro' : 'Add Sorcerer'}
+                                </span>
                               </button>
                             )}
                           </div>
@@ -957,7 +991,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                                       onClick={() => openPicker(team.id, slotItem.slot, 'memory')}
                                       className="text-[9px] text-gray-400 hover:text-white underline"
                                     >
-                                      Trocar
+                                      {language === 'pt' ? 'Trocar' : 'Switch'}
                                     </button>
                                     <button
                                       onClick={() => {
@@ -968,9 +1002,9 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                                         playClick();
                                       }}
                                       className="text-[9px] text-red-400 hover:text-red-300"
-                                      title="Desequipar memória"
+                                      title={language === 'pt' ? 'Desequipar memória' : 'Unequip memory'}
                                     >
-                                      Remover
+                                      {language === 'pt' ? 'Remover' : 'Remove'}
                                     </button>
                                   </div>
                                 </div>
@@ -981,7 +1015,7 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                                 className="flex items-center justify-center gap-2 py-2 text-gray-500 hover:text-indigo-400 text-xs font-bold transition-colors w-full"
                               >
                                 <BookOpen className="w-4 h-4" />
-                                <span>Equipar Memória</span>
+                                <span>{language === 'pt' ? 'Equipar Memória' : 'Equip Memory'}</span>
                               </button>
                             )}
                           </div>

@@ -1,3 +1,4 @@
+export type Language = 'pt' | 'en';
 export type Rarity = 'SSR' | 'SR' | 'R';
 export type ElementType = 'Blue' | 'Red' | 'Green' | 'Yellow';
 

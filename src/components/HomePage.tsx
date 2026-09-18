@@ -13,6 +13,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
+import { useTranslation, translateRole, translateFocus } from '../i18n';
 
 interface HomePageProps {
   characters: Character[];
@@ -25,6 +26,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectCharacter,
   onNavigate 
 }) => {
+  const { language } = useTranslation();
+
   // Helper to parse DD-MM-YYYY or DD/MM/YYYY into timestamp
   const parseDate = (str?: string): number => {
     if (!str) return 0;
@@ -67,7 +70,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     }
   };
 
-  const faqs = [
+  const faqs = language === 'pt' ? [
     {
       q: "Quais são as melhores unidades atuais em Phantom Parade?",
       a: "Unidades com alta autossuficiência, aumento maciço de dano para a equipe e quebra rápida de postura (Break) lideram o meta. Personagens como Satoru Gojo (0.2s / Hollow Purple), Yuta Okkotsu, Yuji Itadori (Zone) e Toji Fushiguro mantêm utilidade excepcional em combates de alto nível."
@@ -79,6 +82,19 @@ export const HomePage: React.FC<HomePageProps> = ({
     {
       q: "Como a Linha do Tempo calcula as previsões para o Global?",
       a: "O servidor Global foi acelerado para diminuir a distância com a versão japonesa. Atualmente, o atraso real (lag) está calibrado em exatamente 79 dias (marco oficial do evento de Kiyotaka Ijichi lançado em 17/09/2026 às 12:00), permitindo prever a chegada exata dos próximos banners."
+    }
+  ] : [
+    {
+      q: "What are the top tier units currently in Phantom Parade?",
+      a: "Units with high self-sufficiency, massive team-wide damage amplification, and swift posture break lead the meta. Characters like Satoru Gojo (0.2s / Hollow Purple), Yuta Okkotsu, Yuji Itadori (Zone), and Toji Fushiguro maintain top-tier utility in endgame battles."
+    },
+    {
+      q: "How do transformed combat abilities work (Base / Changed Mode)?",
+      a: "Certain sorcerers enter special forms (such as Red Yuji's Ferocious Mode, Megumi's Domain Expansion, or Mahito's True Form). During transformation, their Cursed Energy costs and skill effects are completely altered."
+    },
+    {
+      q: "How does the Timeline calculate Global version forecasts?",
+      a: "The Global server is accelerated to catch up with the JP timeline. Currently, the actual delay (lag) is calibrated to exactly 79 days (official event benchmark: Kiyotaka Ijichi event released on 09/17/2026 at 12:00), projecting accurate upcoming banner releases."
     }
   ];
 
@@ -95,7 +111,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-600/30 text-red-400 border border-red-500/40">
-                    Recente JP #{currentIndex + 1}
+                    {language === 'pt' ? `Recente JP #${currentIndex + 1}` : `Latest JP #${currentIndex + 1}`}
                   </span>
                   {currentUnit.epithet && (
                     <p className="text-xs md:text-sm font-bold tracking-wider uppercase text-red-400">
@@ -112,25 +128,26 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <RarityBadge rarity={currentUnit.rarity} />
                 <ElementBadge element={currentUnit.element} />
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#1e1638] text-purple-300 border border-purple-800/40">
-                  {currentUnit.focus}
+                  {translateFocus(currentUnit.focus, language)}
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#1e1638] text-gray-300 border border-purple-800/40">
-                  {currentUnit.role}
+                  {translateRole(currentUnit.role, language)}
                 </span>
               </div>
 
               {currentUnit.release_date && currentUnit.release_date !== 'N/A' && (
                 <p className="text-xs text-gray-400">
-                  Lançamento no Japão: <span className="text-gray-200 font-semibold">{currentUnit.release_date}</span>
+                  {language === 'pt' ? 'Lançamento no Japão:' : 'Release in Japan:'}{' '}
+                  <span className="text-gray-200 font-semibold">{currentUnit.release_date}</span>
                 </p>
               )}
 
               <div className="pt-3">
                 <button
                   onClick={() => onSelectCharacter(currentUnit)}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-purple-900/40 transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-purple-900/40 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <span>Ver personagem</span>
+                  <span>{language === 'pt' ? 'Ver personagem' : 'View character'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -190,12 +207,21 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
             <h3 className="text-xs uppercase font-extrabold tracking-wider text-purple-400">
-              O que há de novo na base de dados (Offline)
+              {language === 'pt' ? 'O que há de novo na base de dados (Offline)' : "What's New in the Offline Database"}
             </h3>
           </div>
           <p className="text-sm text-gray-300 leading-relaxed">
-            • <strong>Habilidades com Estados Dinâmicos:</strong> Suporte completo para alternância entre modo <em>Base</em> e modo <em>Mudado</em> (Estilo Feroz do Yuji, Domínio do Megumi e Forma Espiritual do Mahito).<br />
-            • <strong>Progressão Nível 1 ↔ Nível 10:</strong> Multiplicadores de combate escalando em tempo real com badges de Taxa Crítica e Flash Negro.
+            {language === 'pt' ? (
+              <>
+                • <strong>Habilidades com Estados Dinâmicos:</strong> Suporte completo para alternância entre modo <em>Base</em> e modo <em>Mudado</em> (Estilo Feroz do Yuji, Domínio do Megumi e Forma Espiritual do Mahito).<br />
+                • <strong>Progressão Nível 1 ↔ Nível 10:</strong> Multiplicadores de combate escalando em tempo real com badges de Taxa Crítica e Flash Negro.
+              </>
+            ) : (
+              <>
+                • <strong>Dynamic Skill States:</strong> Complete support for switching between <em>Base</em> and <em>Changed</em> mode (Ferocious Yuji, Megumi Domain, True Form Mahito).<br />
+                • <strong>Level 1 ↔ Level 10 Progression:</strong> Real-time scaling combat multipliers with Critical Rate and Black Flash badges.
+              </>
+            )}
           </p>
         </div>
       </div>
@@ -203,22 +229,22 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 3. Find a Character Search Box */}
       <div className="text-center space-y-4 max-w-2xl mx-auto pt-4">
         <h2 className="text-2xl font-bold text-white font-serif tracking-wide">
-          BUSCAR UM FEITICEIRO
+          {language === 'pt' ? 'BUSCAR UM FEITICEIRO' : 'SEARCH A SORCERER'}
         </h2>
         <form onSubmit={handleSearchSubmit} className="relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
           <input
             type="text"
-            placeholder="Digite o nome ou epíteto (ex: Satoru Gojo, Yuji, Sukuna)..."
+            placeholder={language === 'pt' ? "Digite o nome ou epíteto (ex: Satoru Gojo, Yuji, Sukuna)..." : "Type sorcerer name or epithet (e.g. Satoru Gojo, Yuji, Sukuna)..."}
             value={quickSearch}
             onChange={(e) => setQuickSearch(e.target.value)}
             className="w-full bg-[#130f26] border-2 border-[#2f2354] focus:border-purple-500 rounded-2xl pl-12 pr-28 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-all shadow-xl shadow-purple-950/30"
           />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-colors shadow-md"
+            className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-colors shadow-md cursor-pointer"
           >
-            Buscar
+            {language === 'pt' ? 'Buscar' : 'Search'}
           </button>
         </form>
       </div>
@@ -234,10 +260,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
           <div className="text-4xl font-black text-white font-mono tracking-tight">109</div>
           <div className="text-xs uppercase font-bold tracking-wider text-purple-300 mt-1">
-            Personagens Catalogados
+            {language === 'pt' ? 'Personagens Catalogados' : 'Cataloged Characters'}
           </div>
           <p className="text-xs text-gray-400 mt-2">
-            Fichas completas com escalonamento Lv 1 → Lv 10 e artes.
+            {language === 'pt' ? 'Fichas completas com escalonamento Lv 1 → Lv 10 e artes.' : 'Complete profiles with Lv 1 → Lv 10 scaling and art assets.'}
           </p>
         </div>
 
@@ -250,10 +276,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
           <div className="text-4xl font-black text-white font-mono tracking-tight">241</div>
           <div className="text-xs uppercase font-bold tracking-wider text-amber-300 mt-1">
-            Cartas de Memória (Rec. Bits)
+            {language === 'pt' ? 'Cartas de Memória (Rec. Bits)' : 'Memory Bits (Rec. Bits)'}
           </div>
           <p className="text-xs text-gray-400 mt-2">
-            Atributos máximos, recargas (CD), habilidades ativas e passivas.
+            {language === 'pt' ? 'Atributos máximos, recargas (CD), habilidades ativas e passivas.' : 'Max stats, cooldowns (CD), active skills and passives.'}
           </p>
         </div>
 
@@ -266,10 +292,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
           <div className="text-4xl font-black text-white font-mono tracking-tight">179</div>
           <div className="text-xs uppercase font-bold tracking-wider text-blue-300 mt-1">
-            Eventos e Banners Oficiais
+            {language === 'pt' ? 'Eventos e Banners Oficiais' : 'Official Events & Banners'}
           </div>
           <p className="text-xs text-gray-400 mt-2">
-            Cronologia japonesa e previsão calibrada para a versão Global.
+            {language === 'pt' ? 'Cronologia japonesa e previsão calibrada para a versão Global.' : 'Japanese release chronology and calibrated Global schedule.'}
           </p>
         </div>
       </div>
@@ -278,7 +304,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <div className="max-w-3xl mx-auto space-y-4 pt-6">
         <h2 className="text-xl font-bold text-white font-serif tracking-wide text-center flex items-center justify-center gap-2">
           <HelpCircle className="w-5 h-5 text-purple-400" />
-          PERGUNTAS FREQUENTES (FAQ)
+          {language === 'pt' ? 'PERGUNTAS FREQUENTES (FAQ)' : 'FREQUENTLY ASKED QUESTIONS (FAQ)'}
         </h2>
 
         <div className="space-y-2.5">

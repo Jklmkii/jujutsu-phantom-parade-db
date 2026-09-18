@@ -3,6 +3,7 @@ import type { Character } from '../types';
 import { ElementBadge, RarityBadge } from './Badges';
 import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw, Check } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
+import { useTranslation } from '../i18n';
 import { playClick, playCollectionToggle, playCursedEnergyCharge, playClearFilters } from '../utils/sound';
 import { getAssetUrl } from '../utils/assets';
 
@@ -45,6 +46,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
   onSelectCharacter,
   initialSearch = ""
 }) => {
+  const { t, language } = useTranslation();
   const { isFavoriteChar, isCharacterOwned, toggleOwnedCharacter, ownedCharacterIds } = useJjkStore();
   const [searchTerm, setSearchTerm] = useState(initialSearch);
 
@@ -187,10 +189,10 @@ export const CharactersList: React.FC<CharactersListProps> = ({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#251b40] pb-6">
         <div>
           <h1 className="text-3xl font-black text-white font-serif tracking-tight">
-            CATÁLOGO DE PERSONAGENS
+            {language === 'pt' ? 'CATÁLOGO DE PERSONAGENS' : 'CHARACTER ROSTER'}
           </h1>
           <p className="text-sm text-gray-400">
-            Fichas completas com estatísticas, habilidades escaláveis, variantes de SP e tags de combate.
+            {language === 'pt' ? 'Fichas completas com estatísticas, habilidades escaláveis, variantes de SP e tags de combate.' : 'Complete profiles with stats, scaling skills, SP variants, and combat tags.'}
           </p>
         </div>
 
@@ -199,7 +201,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-purple-400" />
           <input
             type="text"
-            placeholder="Buscar por nome, epíteto ou tag..."
+            placeholder={t.characters.searchPlaceholder}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-[#120e24] border border-[#2d2250] rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors shadow-inner"
@@ -224,7 +226,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           <div className="flex items-center justify-between border-b border-[#201538] pb-3">
             <span className="text-sm font-black tracking-wider text-purple-300 flex items-center gap-1.5 uppercase">
               <Filter className="w-4 h-4 text-purple-400" />
-              FILTERS
+              {language === 'pt' ? 'FILTROS' : 'FILTERS'}
             </span>
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono font-bold text-gray-400">
@@ -233,7 +235,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
               {hasActiveFilters && (
                 <button
                   onClick={resetFilters}
-                  title="Resetar todos os filtros"
+                  title={language === 'pt' ? "Resetar todos os filtros" : "Reset all filters"}
                   className="p-1 rounded-md text-gray-400 hover:text-purple-300 hover:bg-[#1a1233] transition-all cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
@@ -245,7 +247,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           {/* 1. Element Filter */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-400 block tracking-wide">
-              Element
+              {language === 'pt' ? 'Elemento' : 'Element'}
             </label>
             <div className="grid grid-cols-4 gap-2">
               {[
@@ -277,7 +279,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           {/* 2. Rarity Filter */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-400 block tracking-wide">
-              Rarity
+              {language === 'pt' ? 'Raridade' : 'Rarity'}
             </label>
             <div className="grid grid-cols-3 gap-2">
               {[
@@ -309,17 +311,21 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           {/* 3. Damage Type (Focus) */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-400 block tracking-wide">
-              Damage Type
+              {language === 'pt' ? 'Foco de Combate' : 'Combat Focus'}
             </label>
             <div className="grid grid-cols-3 gap-1.5">
-              {['Taijutsu', 'Jujutsu', 'Hybrid'].map((f) => {
-                const isSelected = selectedFocus === f;
+              {[
+                { id: 'Taijutsu', label: 'Taijutsu' },
+                { id: 'Jujutsu', label: 'Jujutsu' },
+                { id: 'Hybrid', label: language === 'pt' ? 'Misto' : 'Hybrid' },
+              ].map((f) => {
+                const isSelected = selectedFocus === f.id;
                 return (
                   <button
-                    key={f}
+                    key={f.id}
                     onClick={() => {
                       playClick();
-                      setSelectedFocus(isSelected ? 'ALL' : f);
+                      setSelectedFocus(isSelected ? 'ALL' : f.id);
                     }}
                     className={`py-1.5 rounded-full text-xs font-bold border text-center transition-all cursor-pointer ${
                       isSelected
@@ -327,7 +333,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                         : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-purple-500/40'
                     }`}
                   >
-                    {f}
+                    {f.label}
                   </button>
                 );
               })}
@@ -337,7 +343,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           {/* 4. Special: SP & Limited */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-400 block tracking-wide">
-              Special
+              {language === 'pt' ? 'Especial' : 'Special'}
             </label>
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -364,7 +370,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     : 'bg-[#140f29] border-red-900/30 text-red-400/70 hover:border-red-500/50'
                 }`}
               >
-                Limited
+                {language === 'pt' ? 'Limitado' : 'Limited'}
               </button>
             </div>
           </div>
@@ -373,11 +379,15 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-gray-400 block tracking-wide">
-                Standard Pool
+                {language === 'pt' ? 'Pool Padrão' : 'Standard Pool'}
               </label>
               {poolFilter !== 'ALL' && (
                 <span className="text-[10px] font-mono text-purple-300">
-                  {poolFilter === 'IN_POOL' ? '72 no pool' : poolFilter === 'WAITING' ? '16 aguardando' : '37 fora'}
+                  {poolFilter === 'IN_POOL' 
+                    ? (language === 'pt' ? '72 no pool' : '72 in pool') 
+                    : poolFilter === 'WAITING' 
+                    ? (language === 'pt' ? '16 aguardando' : '16 pending') 
+                    : (language === 'pt' ? '37 fora' : '37 off pool')}
                 </span>
               )}
             </div>
@@ -392,9 +402,9 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     ? 'bg-cyan-950/80 border-cyan-400 text-cyan-300 ring-2 ring-cyan-500/40 shadow-sm shadow-cyan-500/20'
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-cyan-500/40'
                 }`}
-                title="Personagens que já entraram oficialmente na rotação permanente do banner padrão"
+                title={language === 'pt' ? "Personagens que já entraram oficialmente na rotação permanente do banner padrão" : "Characters permanently available in the standard banner"}
               >
-                In Pool
+                {language === 'pt' ? 'No Pool' : 'In Pool'}
               </button>
               <button
                 onClick={() => {
@@ -406,9 +416,9 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     ? 'bg-amber-950/80 border-amber-400 text-amber-300 ring-2 ring-amber-500/40 shadow-sm shadow-amber-500/20'
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-amber-500/40'
                 }`}
-                title="Banner padrão mas que ainda não entraram no pool permanente (Kenjaku, Kusakabe, Megumi Coelho, etc.)"
+                title={language === 'pt' ? "Banner padrão mas que ainda não entraram no pool permanente" : "Standard units pending official addition to the permanent pool"}
               >
-                Aguardando
+                {language === 'pt' ? 'Aguardando' : 'Pending'}
               </button>
               <button
                 onClick={() => {
@@ -420,9 +430,9 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     ? 'bg-pink-950/80 border-pink-400 text-pink-300 ring-2 ring-pink-500/40 shadow-sm shadow-pink-500/20'
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-pink-500/40'
                 }`}
-                title="Todos os personagens que atualmente não estão no pool permanente (Aguardando + Limitados)"
+                title={language === 'pt' ? "Todos os personagens que atualmente não estão no pool permanente" : "All units currently outside the permanent pool"}
               >
-                Fora Pool
+                {language === 'pt' ? 'Fora Pool' : 'Off Pool'}
               </button>
             </div>
           </div>
@@ -438,7 +448,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                   onClick={() => setSelectedTags([])}
                   className="text-[10px] text-purple-400 hover:underline cursor-pointer"
                 >
-                  Limpar tags
+                  {language === 'pt' ? 'Limpar tags' : 'Clear tags'}
                 </button>
               )}
             </div>
@@ -450,10 +460,10 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                   <button
                     key={tag}
                     onClick={() => toggleTag(tag)}
-                    className={`px-2.5 py-1 rounded-full text-[11px] font-semibold border transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold border transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-purple-600/50 border-purple-400 text-purple-200 ring-1 ring-purple-400 shadow-sm'
-                        : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-purple-500/40'
+                        ? 'bg-purple-600 border-purple-400 text-white shadow-sm shadow-purple-900/50'
+                        : 'bg-[#130d24] border-[#291e4a] text-gray-400 hover:text-gray-200 hover:border-purple-600/40'
                     }`}
                   >
                     {tag}
@@ -462,21 +472,27 @@ export const CharactersList: React.FC<CharactersListProps> = ({
               })}
             </div>
 
-            {/* Show more / Show less toggle */}
-            <button
-              onClick={() => setIsTagsExpanded(!isTagsExpanded)}
-              className="w-full pt-1.5 flex items-center justify-center gap-1 text-[11px] font-bold text-gray-400 hover:text-purple-300 transition-colors cursor-pointer"
-            >
-              <span>{isTagsExpanded ? 'Show less' : 'Show more'}</span>
-              {isTagsExpanded ? (
-                <ChevronUp className="w-3.5 h-3.5" />
-              ) : (
-                <ChevronDown className="w-3.5 h-3.5" />
-              )}
-            </button>
+            {ALL_TAGS.length > 8 && (
+              <button
+                onClick={() => setIsTagsExpanded(!isTagsExpanded)}
+                className="text-[11px] font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1 pt-1 cursor-pointer"
+              >
+                {isTagsExpanded ? (
+                  <>
+                    <span>{language === 'pt' ? 'Ver menos' : 'Show less'}</span>
+                    <ChevronUp className="w-3 h-3" />
+                  </>
+                ) : (
+                  <>
+                    <span>{language === 'pt' ? `Ver mais (+${ALL_TAGS.length - 8} tags)` : `Show more (+${ALL_TAGS.length - 8} tags)`}</span>
+                    <ChevronDown className="w-3 h-3" />
+                  </>
+                )}
+              </button>
+            )}
           </div>
 
-          {/* 7. Special Toggles: Favorites */}
+          {/* 7. Favorites Filter */}
           <div className="pt-2 border-t border-[#201538] space-y-2">
             <button
               onClick={() => {
@@ -490,14 +506,14 @@ export const CharactersList: React.FC<CharactersListProps> = ({
               }`}
             >
               <Star className={`w-3.5 h-3.5 ${onlyFavorites ? 'fill-amber-400 text-amber-400' : ''}`} />
-              <span>{onlyFavorites ? '✓ Apenas Favoritos' : 'Filtrar Favoritos'}</span>
+              <span>{onlyFavorites ? (language === 'pt' ? '✓ Apenas Favoritos' : '✓ Favorites Only') : (language === 'pt' ? 'Filtrar Favoritos' : 'Filter Favorites')}</span>
             </button>
           </div>
 
           {/* 8. Collection Filter: Minha Coleção */}
           <div className="pt-2 border-t border-[#201538] space-y-2">
             <label className="text-xs font-bold text-gray-400 block tracking-wide">
-              Minha Coleção ({ownedCharacterIds.length}/{characters.length})
+              {language === 'pt' ? `Minha Coleção (${ownedCharacterIds.length}/${characters.length})` : `My Collection (${ownedCharacterIds.length}/${characters.length})`}
             </label>
             <div className="grid grid-cols-3 gap-1.5">
               <button
@@ -511,7 +527,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-purple-500/40'
                 }`}
               >
-                Todos
+                {language === 'pt' ? 'Todos' : 'All'}
               </button>
               <button
                 onClick={() => {
@@ -524,7 +540,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-emerald-500/40'
                 }`}
               >
-                ✓ Tenho
+                {language === 'pt' ? '✓ Tenho' : '✓ Owned'}
               </button>
               <button
                 onClick={() => {
@@ -537,7 +553,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-rose-500/40'
                 }`}
               >
-                ✗ Faltam
+                {language === 'pt' ? '✗ Faltam' : '✗ Missing'}
               </button>
             </div>
           </div>
@@ -548,7 +564,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                 onClick={resetFilters}
                 className="w-full py-2 text-xs font-bold text-purple-400 hover:text-purple-300 underline text-center cursor-pointer block"
               >
-                Limpar todos os filtros
+                {language === 'pt' ? 'Limpar todos os filtros' : 'Clear all filters'}
               </button>
             )}
           </div>
@@ -559,13 +575,13 @@ export const CharactersList: React.FC<CharactersListProps> = ({
           {filteredCharacters.length === 0 ? (
             <div className="bg-[#120e24] border border-[#251b40] rounded-2xl p-12 text-center space-y-3">
               <p className="text-gray-400 text-base">
-                Nenhum personagem encontrado para os filtros selecionados.
+                {language === 'pt' ? 'Nenhum personagem encontrado para os filtros selecionados.' : 'No characters found for the selected filters.'}
               </p>
               <button
                 onClick={resetFilters}
                 className="px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-bold hover:bg-purple-500 transition-colors cursor-pointer"
               >
-                Resetar Filtros
+                {language === 'pt' ? 'Resetar Filtros' : 'Reset Filters'}
               </button>
             </div>
           ) : (
@@ -616,7 +632,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                             ? 'bg-emerald-500 border-2 border-emerald-300 shadow-md shadow-emerald-500/50'
                             : 'bg-black/50 border-2 border-gray-500/50 hover:border-gray-300/70'
                         }`}
-                        title={isCharacterOwned(char.id) ? 'Remover da coleção' : 'Adicionar à coleção'}
+                        title={isCharacterOwned(char.id) ? (language === 'pt' ? 'Remover da coleção' : 'Remove from collection') : (language === 'pt' ? 'Adicionar à coleção' : 'Add to collection')}
                       >
                         {isCharacterOwned(char.id) && (
                           <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />

@@ -3,6 +3,7 @@ import type { Character, SkillVariant } from '../types';
 import { ElementBadge, RarityBadge, TagBadge } from './Badges';
 import { ArrowLeft, Zap, Shield, Sparkles, Swords, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
+import { useTranslation, translateRole, translateFocus } from '../i18n';
 import { playClick, playStarToggle, playTransformSurge, playLevelUp, playDomainExpansion, playBlackFlash } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
 
@@ -12,6 +13,7 @@ interface CharacterDetailProps {
 }
 
 export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onBack }) => {
+  const { t, language } = useTranslation();
   const [selectedNormalAttackVariant, setSelectedNormalAttackVariant] = useState<string>('regular');
   const [selectedSkillVariants, setSelectedSkillVariants] = useState<Record<number, string>>({});
   const [selectedUltVariant, setSelectedUltVariant] = useState<string>('regular');
@@ -154,7 +156,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#161126] hover:bg-[#201838] text-purple-300 hover:text-white border border-[#2b2149] transition-all text-sm font-medium shadow-sm cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Todos os personagens</span>
+          <span>{t.characterDetail.backToList}</span>
         </button>
 
         <button
@@ -167,10 +169,10 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               ? 'bg-amber-950/80 border-amber-500 text-amber-300'
               : 'bg-[#161126] border-[#2b2149] text-gray-400 hover:text-white'
           }`}
-          title={isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+          title={isFavorite ? (language === 'pt' ? 'Remover dos favoritos' : 'Remove from favorites') : (language === 'pt' ? 'Adicionar aos favoritos' : 'Add to favorites')}
         >
           <Star className={`w-4 h-4 ${isFavorite ? 'fill-amber-400 text-amber-400' : ''}`} />
-          <span>{isFavorite ? 'Favoritado' : 'Favoritar'}</span>
+          <span>{isFavorite ? t.characterDetail.favorited : t.characterDetail.favorite}</span>
         </button>
       </div>
 
@@ -195,7 +197,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               <RarityBadge rarity={character.rarity} />
               {character.limited && (
                 <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-950/80 border border-red-500/40 text-red-300">
-                  Limitado
+                  {t.characters.limited}
                 </span>
               )}
             </div>
@@ -218,8 +220,8 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <RarityBadge rarity={character.rarity} />
               <ElementBadge element={character.element} />
-              <TagBadge label={character.focus || 'Taijutsu'} variant="amber" />
-              <TagBadge label={character.role || 'Attacker'} variant="purple" />
+              <TagBadge label={translateFocus(character.focus || 'Taijutsu', language)} variant="amber" />
+              <TagBadge label={translateRole(character.role || 'Attacker', language)} variant="purple" />
               {character.sp && (
                 <span className="px-2.5 py-0.5 rounded-md text-xs font-black tracking-wider uppercase bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm shadow-amber-500/20">
                   SP
@@ -227,15 +229,15 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               )}
               {character.limited ? (
                 <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-950/80 text-red-300 border border-red-500/50">
-                  Limitado
+                  {t.characters.limited}
                 </span>
               ) : character.pool_status === 'waiting' ? (
-                <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-950/80 text-amber-300 border border-amber-500/50" title="Banner Padrão: Aguardando adição ao Pool Permanente">
-                  ⏳ Padrão (Aguardando Pool)
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-950/80 text-amber-300 border border-amber-500/50" title={language === 'pt' ? 'Banner Padrão: Aguardando adição ao Pool Permanente' : 'Standard Banner: Pending addition to Permanent Pool'}>
+                  {language === 'pt' ? '⏳ Padrão (Aguardando Pool)' : '⏳ Standard (Pending Pool)'}
                 </span>
               ) : (
                 <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/50">
-                  ✓ No Pool Padrão
+                  {language === 'pt' ? '✓ No Pool Padrão' : '✓ Standard Pool'}
                 </span>
               )}
             </div>
@@ -256,12 +258,12 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
 
             {/* Sub Info */}
             <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400 pt-2 border-t border-[#251b40]">
-              <span className="px-3 py-1 rounded-full bg-[#18122c] border border-[#2b2149] text-gray-300">
-                🏫 {character.affiliation || 'Escola de Jiu-Jitsu de Tóquio'}
+              <span className="px-3 py-1 rounded-full bg-[#181230] border border-[#2b2149] text-gray-300">
+                🏫 {character.affiliation || (language === 'pt' ? 'Escola de Jiu-Jitsu de Tóquio' : 'Tokyo Jujutsu High')}
               </span>
               {character.release_date && character.release_date !== 'N/A' && (
-                <span className="px-3 py-1 rounded-full bg-[#18122c] border border-[#2b2149] text-gray-300">
-                  📅 Lançamento: {character.release_date}
+                <span className="px-3 py-1 rounded-full bg-[#181230] border border-[#2b2149] text-gray-300">
+                  📅 {t.characterDetail.releaseDate}: {character.release_date}
                 </span>
               )}
               <span className={`px-3 py-1 rounded-full border ${
@@ -272,10 +274,10 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                   : 'bg-emerald-950/40 border-emerald-800/40 text-emerald-300'
               }`}>
                 {character.limited
-                  ? '🚫 Banner Limitado (Exclusivo)'
+                  ? (language === 'pt' ? '🚫 Banner Limitado (Exclusivo)' : '🚫 Limited Banner (Exclusive)')
                   : character.pool_status === 'waiting'
-                  ? '⏳ Banner Padrão (Aguardando Entrada no Pool)'
-                  : '✨ Disponível no Pool Padrão Permanente'}
+                  ? (language === 'pt' ? '⏳ Banner Padrão (Aguardando Entrada no Pool)' : '⏳ Standard Banner (Pending Pool Addition)')
+                  : (language === 'pt' ? '✨ Disponível no Pool Padrão Permanente' : '✨ Available in Permanent Standard Pool')}
               </span>
             </div>
           </div>
@@ -290,7 +292,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           <div className="flex items-center justify-between border-b border-[#251b40] pb-3">
             <h2 className="text-xl font-bold tracking-wide text-purple-200 flex items-center gap-2">
               <Swords className="w-5 h-5 text-purple-400" />
-              HABILIDADES
+              {language === 'pt' ? 'HABILIDADES' : 'SKILLS'}
             </h2>
 
             {/* Global Skill Level Switcher */}
@@ -307,7 +309,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Nível 1
+                {t.characterDetail.level1}
               </button>
               <button
                 onClick={() => {
@@ -321,7 +323,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Nível 10 (Máx)
+                {t.characterDetail.level10}
               </button>
             </div>
           </div>
@@ -397,7 +399,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                       {/* Title & Level Selector */}
                       <div>
                         <span className="text-[11px] uppercase font-bold tracking-wider text-purple-400 block">
-                          SKILL 1 • ATAQUE BÁSICO
+                          {language === 'pt' ? 'SKILL 1 • ATAQUE BÁSICO' : 'SKILL 1 • BASIC ATTACK'}
                         </span>
                         <h3 className="text-base sm:text-lg font-black text-white leading-tight mt-0.5">
                           {name}
@@ -716,7 +718,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                       <div>
                         <span className="text-xs uppercase font-extrabold tracking-wider text-amber-400 flex items-center gap-1.5">
                           <Sparkles className="w-3.5 h-3.5" />
-                          ULTIMATE SKILL • TÉCNICA SUPREMA
+                          {language === 'pt' ? 'ULTIMATE SKILL • TÉCNICA SUPREMA' : 'ULTIMATE SKILL • SPECIAL TECHNIQUE'}
                         </span>
                         <h3 className="text-lg sm:text-xl font-black text-white leading-tight mt-0.5">
                           {name}
@@ -789,7 +791,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                   {character.ultimate.combo && (
                     <div className="mt-2 p-3 rounded-lg bg-indigo-950/30 border border-indigo-500/30 space-y-1">
                       <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider block">
-                        ⚡ Efeito em Combo de Especial:
+                        ⚡ {t.characterDetail.comboEffect}:
                       </span>
                       <p className="text-xs text-gray-300 whitespace-pre-line">
                         {character.ultimate.combo}
@@ -808,7 +810,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             <div className="space-y-4 pt-4 border-t border-[#251b40]">
               <h2 className="text-xl font-bold tracking-wide text-purple-200 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-purple-400" />
-                HABILIDADES AUTOMÁTICAS (PASSIVAS)
+                {language === 'pt' ? 'HABILIDADES AUTOMÁTICAS (PASSIVAS)' : 'AUTO SKILLS (PASSIVES)'}
               </h2>
 
               <div className="grid grid-cols-1 gap-3">
@@ -923,7 +925,7 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
           <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-3.5">
             <h2 className="text-sm font-black tracking-wider uppercase text-purple-300 border-b border-[#251b40] pb-2.5 flex items-center gap-2">
               <Zap className="w-4 h-4 text-purple-400" />
-              SKILL PRIORITY
+              {language === 'pt' ? 'PRIORIDADE DE HABILIDADES' : 'SKILL PRIORITY'}
             </h2>
             
             <div className="grid grid-cols-4 gap-2">
@@ -956,39 +958,41 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             </div>
 
             <p className="text-[11px] text-gray-400 leading-normal pt-1">
-              Ordem recomendada para investimento de materiais e livros de técnicas amaldiçoadas.
+              {language === 'pt'
+                ? 'Ordem recomendada para investimento de materiais e livros de técnicas amaldiçoadas.'
+                : 'Recommended order for skill books and enhancement materials.'}
             </p>
           </div>
 
           {/* Stats Box */}
           <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-5 shadow-lg space-y-4">
             <h2 className="text-lg font-bold tracking-wide text-purple-200 border-b border-[#251b40] pb-2">
-              ESTATÍSTICAS MÁXIMAS
+              {t.characterDetail.maxStats.toUpperCase()}
             </h2>
 
             <div className="space-y-2.5 text-sm">
               <div className="flex justify-between items-center py-1 border-b border-[#1c1533]">
-                <span className="text-gray-400">HP Máximo</span>
+                <span className="text-gray-400">{t.characterDetail.hp}</span>
                 <span className="font-mono font-bold text-white">{character.stats.hp}</span>
               </div>
               <div className="flex justify-between items-center py-1 border-b border-[#1c1533]">
-                <span className="text-gray-400">Taijutsu (Ataque Físico)</span>
+                <span className="text-gray-400">{language === 'pt' ? 'Taijutsu (Ataque Físico)' : 'Taijutsu (Physical ATK)'}</span>
                 <span className="font-mono font-bold text-red-400">{character.stats.attack}</span>
               </div>
               <div className="flex justify-between items-center py-1 border-b border-[#1c1533]">
-                <span className="text-gray-400">Jujutsu (Poder Amaldiçoado)</span>
+                <span className="text-gray-400">{language === 'pt' ? 'Jujutsu (Poder Amaldiçoado)' : 'Jujutsu (Cursed ATK)'}</span>
                 <span className="font-mono font-bold text-blue-400">{character.stats.jujutsu}</span>
               </div>
               <div className="flex justify-between items-center py-1 border-b border-[#1c1533]">
-                <span className="text-gray-400">Energia Inicial</span>
+                <span className="text-gray-400">{t.characterDetail.initialEnergy}</span>
                 <span className="font-mono font-bold text-purple-300">{character.stats.initial_energy} CE</span>
               </div>
               <div className="flex justify-between items-center py-1 border-b border-[#1c1533]">
-                <span className="text-gray-400">Energia Máxima</span>
+                <span className="text-gray-400">{t.characterDetail.maxEnergy}</span>
                 <span className="font-mono font-bold text-purple-300">{character.stats.max_energy} CE</span>
               </div>
               <div className="flex justify-between items-center py-1">
-                <span className="text-gray-400">Medidor Supremo</span>
+                <span className="text-gray-400">{t.characterDetail.specialGauge}</span>
                 <span className="font-mono font-bold text-amber-400">{character.stats.special_gauge}</span>
               </div>
             </div>
@@ -996,10 +1000,12 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
             {/* Special info traits */}
             <div className="pt-3 border-t border-[#251b40] space-y-2">
               <span className="text-xs uppercase font-bold text-gray-400 block">
-                Características do Personagem:
+                {language === 'pt' ? 'Características do Personagem:' : 'Character Traits:'}
               </span>
               <p className="text-xs text-yellow-300/90 leading-relaxed bg-yellow-950/20 border border-yellow-800/30 p-2.5 rounded-lg">
-                🛡️ Dados de combate sincronizados com os registros de técnicas de Phantom Parade.
+                {language === 'pt'
+                  ? '🛡️ Dados de combate sincronizados com os registros de técnicas de Phantom Parade.'
+                  : '🛡️ Combat data synchronized with Phantom Parade technique records.'}
               </p>
             </div>
           </div>

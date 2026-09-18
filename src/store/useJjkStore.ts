@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import type { CalculatorSavingsPlan } from '../types';
+import type { CalculatorSavingsPlan, Language } from '../types';
 import { getDeviceLocalDateString, getDaysBetweenDates } from '../utils/date';
 
 export const DEFAULT_SAVINGS_PLAN: CalculatorSavingsPlan = {
@@ -93,6 +93,10 @@ export interface CustomTeam {
 }
 
 interface JjkState {
+  // Language / Idioma
+  language: Language;
+  setLanguage: (lang: Language) => void;
+
   // Sound
   soundEnabled: boolean;
   toggleSound: () => void;
@@ -152,6 +156,9 @@ interface JjkState {
 export const useJjkStore = create<JjkState>()(
   persist(
     (set, get) => ({
+      language: 'pt',
+      setLanguage: (lang) => set({ language: lang }),
+
       soundEnabled: true,
       toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
 
@@ -362,6 +369,7 @@ export const useJjkStore = create<JjkState>()(
             teams: Array.isArray(data.teams) ? data.teams : [],
             tierList: typeof data.tierList === 'object' && data.tierList !== null ? data.tierList : {},
             soundEnabled: typeof data.soundEnabled === 'boolean' ? data.soundEnabled : true,
+            language: data.language === 'en' || data.language === 'pt' ? data.language : 'pt',
             savingsPlan:
               data.savingsPlan && typeof data.savingsPlan === 'object'
                 ? { ...DEFAULT_SAVINGS_PLAN, ...data.savingsPlan }
