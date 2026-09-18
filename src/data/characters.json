@@ -1,117 +1,5 @@
 [
   {
-    "id": "__fwoo_hyoi___shoko_ieiri__teen_",
-    "title": "(\"Fwoo Hyoi\") Shoko Ieiri (Teen)",
-    "name": "Shoko Ieiri",
-    "epithet": "'\"Fwoo Hyoi\"'",
-    "card_name": "Shoko Ieiri",
-    "rarity": "SSR",
-    "element": "Green",
-    "role": "Attacker",
-    "focus": "Taijutsu",
-    "affiliation": "Jujutsu High",
-    "release_date": "2026-09-18",
-    "limited": false,
-    "stats": {
-      "hp": "25000",
-      "attack": "6000",
-      "jujutsu": "10000",
-      "initial_energy": "30",
-      "max_energy": "100",
-      "special_gauge": "1500"
-    },
-    "image": "GreenSSRShokoArt1.gif",
-    "normal_attack": {
-      "name": "Normal Attack",
-      "description": "",
-      "description_10": ""
-    },
-    "skills": [
-      {
-        "slot": 1,
-        "name": "Skill 1",
-        "cost": "20",
-        "description": "",
-        "description_10": ""
-      },
-      {
-        "slot": 2,
-        "name": "Skill 2",
-        "cost": "25",
-        "description": "",
-        "description_10": ""
-      },
-      {
-        "slot": 3,
-        "name": "Skill 3",
-        "cost": "30",
-        "description": "",
-        "description_10": ""
-      }
-    ],
-    "ultimate": {
-      "name": "Ultimate Skill",
-      "description": "",
-      "description_10": ""
-    }
-  },
-  {
-    "id": "_innate_talent__maki_ze_nin",
-    "title": "(Innate Talent) Maki Ze’nin",
-    "name": "Maki Ze’nin",
-    "epithet": "'Innate Talent'",
-    "card_name": "Maki Ze’nin",
-    "rarity": "SSR",
-    "element": "Green",
-    "role": "Attacker",
-    "focus": "Taijutsu",
-    "affiliation": "Jujutsu High",
-    "release_date": "2026-09-18",
-    "limited": false,
-    "stats": {
-      "hp": "25000",
-      "attack": "6000",
-      "jujutsu": "10000",
-      "initial_energy": "30",
-      "max_energy": "100",
-      "special_gauge": "1500"
-    },
-    "image": "RedMakiRArt1.gif",
-    "normal_attack": {
-      "name": "Normal Attack",
-      "description": "",
-      "description_10": ""
-    },
-    "skills": [
-      {
-        "slot": 1,
-        "name": "Skill 1",
-        "cost": "20",
-        "description": "",
-        "description_10": ""
-      },
-      {
-        "slot": 2,
-        "name": "Skill 2",
-        "cost": "25",
-        "description": "",
-        "description_10": ""
-      },
-      {
-        "slot": 3,
-        "name": "Skill 3",
-        "cost": "30",
-        "description": "",
-        "description_10": ""
-      }
-    ],
-    "ultimate": {
-      "name": "Ultimate Skill",
-      "description": "",
-      "description_10": ""
-    }
-  },
-  {
     "id": "__Fwoo_Hyoi___Shoko_Ieiri__Teen_",
     "title": "('Fwoo Hyoi') Shoko Ieiri (Teen)",
     "name": "Shoko Ieiri (Teen)",
@@ -616,10 +504,10 @@
         "description": "▼ When self launches a Black Flash\nApplies 45.00% Jujutsu Increase (Special) to self for 6 turns (can be overwritten)\nRecovers 15 Cursed Energy for self\n※ Available 1 time only during the turn",
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png",
-        "sp_description": "â▼¼ When self launches a Black Flash\nApplies 45.00% Jujutsu Increase (Special) to self for 8 turns (can be overwritten)\nApplies 25.00% Damage Dealt Increase (Special) to self for 8 turns (can be overwritten)\nRecovers 15 Cursed Energy for self\nâ※» Available 1 time only during the turn",
+        "sp_description": "▼ When self launches a Black Flash\nApplies 45.00% Jujutsu Increase (Special) to self for 8 turns (can be overwritten)\nApplies 25.00% Damage Dealt Increase (Special) to self for 8 turns (can be overwritten)\nRecovers 15 Cursed Energy for self\n※ Available 1 time only during the turn",
         "sp": {
           "name": "Zone In",
-          "description": "â▼¼ When self launches a Black Flash\nApplies 45.00% Jujutsu Increase (Special) to self for 8 turns (can be overwritten)\nApplies 25.00% Damage Dealt Increase (Special) to self for 8 turns (can be overwritten)\nRecovers 15 Cursed Energy for self\nâ※» Available 1 time only during the turn",
+          "description": "▼ When self launches a Black Flash\nApplies 45.00% Jujutsu Increase (Special) to self for 8 turns (can be overwritten)\nApplies 25.00% Damage Dealt Increase (Special) to self for 8 turns (can be overwritten)\nRecovers 15 Cursed Energy for self\n※ Available 1 time only during the turn",
           "image_key": "AutoSkillZone(SP)",
           "icon": "skill_icons/AutoSkillZone(SP).png"
         }
@@ -981,7 +869,7 @@
       },
       {
         "name": "Zone In",
-        "description": "$1a",
+        "description": "▼ When Black Flash is performed (1 time per turn):\n· Applies \"Zone\" Status to self (5 turns/cannot be stacked)\n· Black Flash Count +1\n· Reduces the effectiveness of \"Taijutsu Decrease\", \"Taijutsu Damage Taken Increase\", or \"Jujutsu Damage Taken Increase\" debuffs by 5.00%\n· Applies 30.00% Black Flash Rate Increase to all \"夜\" (Green) allies (3 turns) (only to characters that can perform Black Flash)\n· Recovers 60 Ultimate Gauge to all \"夜\" (Green) allies\n\n▼ While in \"Zone\" Status:\n· Increases \"Counterattack Uppercut\" activation chance to 20.00%\n· Applies 36.00% Taijutsu Increase to self (5 turns/cannot be stacked) (scales by +6.00% per Black Flash count, up to 60.00% with 5 counts)\n· Applies 30.00% Black Flash Rate Increase to self (5 turns/cannot be stacked)",
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png"
       }
@@ -1366,7 +1254,7 @@
     "auto_skills": [
       {
         "name": "Are you satisfied with that?",
-        "description": "$1a",
+        "description": "▼ After all allies have performed their attack, performs a follow-up attack on the selected enemy (Counter Bypass):\n· If any ally launched a Black Flash during the turn (1 time during battle; attacks from auto skills excluded):\n  - Applies Guaranteed Hit to self (1 time).\n  - Deals melee Taijutsu damage equal to 300.00% to the selected enemy (Guaranteed Black Flash).\n  - Applies 15.00% Taijutsu Increase (3 turns) & 45.00% Black Flash Rate Increase (3 turns) to self.\n  - Applies 15.00% Taijutsu Increase (3 turns) & 30.00% Black Flash Rate Increase (3 turns) to ally in \"Best Friend\" status.\n· Otherwise, chance to perform \"Boogie Woogie (Follow-up Attack)\":\n  - Deals melee Taijutsu damage equal to 300.00% to the selected enemy.\n  - Applies 45.00% Taijutsu Increase to self (2 turns/cannot be stacked).\n  - Applies 60.00% Taijutsu Increase to ally in \"Best Friend\" status (3 turns/cannot be stacked).",
         "image_key": "120Todo(BF)",
         "icon": "skill_icons/120Todo(BF).png"
       },
@@ -3245,7 +3133,7 @@
       },
       {
         "name": "Counterattack Uppercut",
-        "description": "$1a",
+        "description": "▼ Condition: When hit by an enemy melee attack while in Counterattack status:\n· If the enemy has \"Chain Mark\" and self is not in \"Full Throttle\" status (once per turn):\n  - Deals melee Taijutsu damage equal to 90.00% to the attacker (scales up to 180.00% at Chain Count 10).\n  - Removes \"Chain Mark\", gains Chain Count +1, and applies 25.00% Taijutsu Increase to self (3 turns).\n· If the enemy does NOT have \"Chain Mark\" and self is not in \"Full Throttle\" status (once per turn):\n  - Deals melee Taijutsu damage equal to 50.00% to the attacker (scales up to 100.00% at Chain Count 10).\n· If self is in \"Full Throttle\" status (2 times per turn):\n  - Deals melee Taijutsu damage equal to 210.00% to the attacker (3 hits in total).\n  - Applies 25.00% Taijutsu Increase to self (3 turns) and recovers 60 Ultimate Gauge for self.",
         "image_key": "CMCounterUpperAutoSkill",
         "icon": "skill_icons/CMCounterUpperAutoSkill.png"
       },
@@ -4098,10 +3986,10 @@
         "description": "▼ When self launches a Black Flash\nApplies 100% Black Flash Rate Increase to self (3 turns, cannot be stacked)\nApplies 30% Taijutsu Increase to self (3 turns)\nRecovers 5 Cursed Energy for self",
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png",
-        "sp_description": "â▼¼ When self launches a Black Flash\nApplies Zone Status to self (3 turns)\nRecovers 10 Cursed Energy for self\nâ※» Available 1 time only during the turn\n\nâ▼¼ When in Zone Status (can be overwritten)\nIncreases 100.00% Black Flash Rate\nIncreases 50.00% Damage Dealt during Black Flash\nIncreases 100.00% Taijutsu",
+        "sp_description": "▼ When self launches a Black Flash\nApplies Zone Status to self (3 turns)\nRecovers 10 Cursed Energy for self\n※ Available 1 time only during the turn\n\n▼ When in Zone Status (can be overwritten)\nIncreases 100.00% Black Flash Rate\nIncreases 50.00% Damage Dealt during Black Flash\nIncreases 100.00% Taijutsu",
         "sp": {
           "name": "Zone In",
-          "description": "â▼¼ When self launches a Black Flash\nApplies Zone Status to self (3 turns)\nRecovers 10 Cursed Energy for self\nâ※» Available 1 time only during the turn\n\nâ▼¼ When in Zone Status (can be overwritten)\nIncreases 100.00% Black Flash Rate\nIncreases 50.00% Damage Dealt during Black Flash\nIncreases 100.00% Taijutsu",
+          "description": "▼ When self launches a Black Flash\nApplies Zone Status to self (3 turns)\nRecovers 10 Cursed Energy for self\n※ Available 1 time only during the turn\n\n▼ When in Zone Status (can be overwritten)\nIncreases 100.00% Black Flash Rate\nIncreases 50.00% Damage Dealt during Black Flash\nIncreases 100.00% Taijutsu",
           "image_key": "AutoSkillZone(SP)",
           "icon": "skill_icons/AutoSkillZone(SP).png"
         }
@@ -4699,7 +4587,7 @@
       },
       {
         "name": "Critical Hit Enhancement",
-        "description": "None",
+        "description": "Skill unlocked via SP Awakening (Desbloqueado via Despertar SP)",
         "image_key": "CritUpEnhance(SP)",
         "icon": "skill_icons/CritUpEnhance(SP).png",
         "sp_description": "When Critical Hit is performed\nIncreases all \"影\" (Blue) allies' Taijutsu Stat by 15% (3 Turns)\n\nIncreases own Taijutsu Stat by 15% (3 Turns)\nIncreases own Critical Hit Rate by 20% (3 Turns)\nReduces own Damage Received by 10% (2 Turns)\nEvades enemy's attack (Chance: 10%. 3 Turns, cannot be stacked)",
@@ -8953,10 +8841,10 @@
         "description": "▼ When turn starts, if an ally's HP (other than self) is no more than 60%, and HP Recovery (Special) is applied to self, and Cursed Energy is no less than 10\nRecovers 25% HP for all allies other than self (Reverse Cursed Technique)\nDecreases self's Cursed Energy by 10, and decreases HP Recovery (Special) by 1\nRecovers 200 Ultimate Gauge for self\nApplies 10.00% Taijutsu Increase and 10.00% Jujutsu Increase to self\n\n▼ When battle starts\nApplies HP Recovery (Special) to self for 3 times",
         "image_key": "YutaHeal1",
         "icon": "skill_icons/YutaHeal1.png",
-        "sp_description": "â▼¼ When turn starts, if an ally's HP (other than self) is no more than 60%, and HP Recovery (Special) is applied to self, and Cursed Energy is no less than 10\nRecovers 25% HP for all allies other than self (Reverse Cursed Technique)\nDecreases self's Cursed Energy by 10, and decreases HP Recovery (Special) by 1\nRecovers 200 Ultimate Gauge for self\nApplies 10.00% Taijutsu Increase and 10.00% Jujutsu Increase to self\n\nâ▼¼ When battle starts\nApplies HP Recovery (Special) to self for 4 times",
+        "sp_description": "▼ When turn starts, if an ally's HP (other than self) is no more than 60%, and HP Recovery (Special) is applied to self, and Cursed Energy is no less than 10\nRecovers 25% HP for all allies other than self (Reverse Cursed Technique)\nDecreases self's Cursed Energy by 10, and decreases HP Recovery (Special) by 1\nRecovers 200 Ultimate Gauge for self\nApplies 10.00% Taijutsu Increase and 10.00% Jujutsu Increase to self\n\n▼ When battle starts\nApplies HP Recovery (Special) to self for 4 times",
         "sp": {
           "name": "I Won't Let You Die!",
-          "description": "â▼¼ When turn starts, if an ally's HP (other than self) is no more than 60%, and HP Recovery (Special) is applied to self, and Cursed Energy is no less than 10\nRecovers 25% HP for all allies other than self (Reverse Cursed Technique)\nDecreases self's Cursed Energy by 10, and decreases HP Recovery (Special) by 1\nRecovers 200 Ultimate Gauge for self\nApplies 10.00% Taijutsu Increase and 10.00% Jujutsu Increase to self\n\nâ▼¼ When battle starts\nApplies HP Recovery (Special) to self for 4 times",
+          "description": "▼ When turn starts, if an ally's HP (other than self) is no more than 60%, and HP Recovery (Special) is applied to self, and Cursed Energy is no less than 10\nRecovers 25% HP for all allies other than self (Reverse Cursed Technique)\nDecreases self's Cursed Energy by 10, and decreases HP Recovery (Special) by 1\nRecovers 200 Ultimate Gauge for self\nApplies 10.00% Taijutsu Increase and 10.00% Jujutsu Increase to self\n\n▼ When battle starts\nApplies HP Recovery (Special) to self for 4 times",
           "image_key": "YutaHeal1",
           "icon": "skill_icons/YutaHeal1.png"
         }
@@ -8966,10 +8854,10 @@
         "description": "When battle starts, applies the Counterattack Status to self\n\n▼ Counterattack Status\nWhen hit by a melee attack, deals melee attack damage equal to 120.00% of Jujutsu to the attacker (Activates with a certain chance)",
         "image_key": "RikaAuto1",
         "icon": "skill_icons/RikaAuto1.png",
-        "sp_description": "When battle starts, applies the Counterattack Status to self\n\nâ▼¼ Counterattack Status\nWhen hit by a melee attack, deals melee attack damage equal to 300.00% of Jujutsu (ignoring Darkness) to the attacker (Activates with a certain chance)",
+        "sp_description": "When battle starts, applies the Counterattack Status to self\n\n▼ Counterattack Status\nWhen hit by a melee attack, deals melee attack damage equal to 300.00% of Jujutsu (ignoring Darkness) to the attacker (Activates with a certain chance)",
         "sp": {
           "name": "Do Not Bully Yuta!",
-          "description": "When battle starts, applies the Counterattack Status to self\n\nâ▼¼ Counterattack Status\nWhen hit by a melee attack, deals melee attack damage equal to 300.00% of Jujutsu (ignoring Darkness) to the attacker (Activates with a certain chance)",
+          "description": "When battle starts, applies the Counterattack Status to self\n\n▼ Counterattack Status\nWhen hit by a melee attack, deals melee attack damage equal to 300.00% of Jujutsu (ignoring Darkness) to the attacker (Activates with a certain chance)",
           "image_key": "RikaAuto1",
           "icon": "skill_icons/RikaAuto1.png"
         }
@@ -8979,23 +8867,23 @@
         "description": "▼ When self launches a Black Flash, applies the following effect to self\n· 20% Jujutsu Increase (3 turns)",
         "image_key": "AutoSkillZone",
         "icon": "skill_icons/AutoSkillZone.png",
-        "sp_description": "â▼¼ When self launches a Black Flash, applies the following effects to self\n· 60.00% Jujutsu Increase (5 turns/can be overwritten)\n· Recovers 5 Cursed Energy\n· Recovers 110 Ultimate Gauge\nâ※» Available 1 time only during the turn",
+        "sp_description": "▼ When self launches a Black Flash, applies the following effects to self\n· 60.00% Jujutsu Increase (5 turns/can be overwritten)\n· Recovers 5 Cursed Energy\n· Recovers 110 Ultimate Gauge\n※ Available 1 time only during the turn",
         "sp": {
           "name": "Zone In",
-          "description": "â▼¼ When self launches a Black Flash, applies the following effects to self\n· 60.00% Jujutsu Increase (5 turns/can be overwritten)\n· Recovers 5 Cursed Energy\n· Recovers 110 Ultimate Gauge\nâ※» Available 1 time only during the turn",
+          "description": "▼ When self launches a Black Flash, applies the following effects to self\n· 60.00% Jujutsu Increase (5 turns/can be overwritten)\n· Recovers 5 Cursed Energy\n· Recovers 110 Ultimate Gauge\n※ Available 1 time only during the turn",
           "image_key": "AutoSkillZone(SP)",
           "icon": "skill_icons/AutoSkillZone(SP).png"
         }
       },
       {
         "name": "CRIT Enhance",
-        "description": "None",
+        "description": "Skill unlocked via SP Awakening (Desbloqueado via Despertar SP)",
         "image_key": "CritUpEnhance(SP)",
         "icon": "skill_icons/CritUpEnhance(SP).png",
-        "sp_description": "â▼¼ When self launches a Black Flash or lands a CRIT Hit, applies the following effects to self:\n· 15.00% Taijutsu Increase for 4 turns\n· 15.00% Jujutsu Increase for 4 turns\nâ※» Available 1 time only during the turn\n\nSP strengthened: \"Zone, Outburst\" and \"I Won't Let You Die!\" Auto Skill",
+        "sp_description": "▼ When self launches a Black Flash or lands a CRIT Hit, applies the following effects to self:\n· 15.00% Taijutsu Increase for 4 turns\n· 15.00% Jujutsu Increase for 4 turns\n※ Available 1 time only during the turn\n\nSP strengthened: \"Zone, Outburst\" and \"I Won't Let You Die!\" Auto Skill",
         "sp": {
           "name": "CRIT Enhance",
-          "description": "â▼¼ When self launches a Black Flash or lands a CRIT Hit, applies the following effects to self:\n· 15.00% Taijutsu Increase for 4 turns\n· 15.00% Jujutsu Increase for 4 turns\nâ※» Available 1 time only during the turn\n\nSP strengthened: \"Zone, Outburst\" and \"I Won't Let You Die!\" Auto Skill",
+          "description": "▼ When self launches a Black Flash or lands a CRIT Hit, applies the following effects to self:\n· 15.00% Taijutsu Increase for 4 turns\n· 15.00% Jujutsu Increase for 4 turns\n※ Available 1 time only during the turn\n\nSP strengthened: \"Zone, Outburst\" and \"I Won't Let You Die!\" Auto Skill",
           "image_key": "CritUpEnhance(SP)",
           "icon": "skill_icons/CritUpEnhance(SP).png"
         }
@@ -9819,7 +9707,7 @@
       },
       {
         "name": "Extracurricular Lesson",
-        "description": "none",
+        "description": "Skill unlocked via SP Awakening (Desbloqueado via Despertar SP)",
         "image_key": "YellowGojoPassive3",
         "icon": "skill_icons/YellowGojoPassive3.png",
         "sp_description": "At the start of the battle, grants to \"è¡\" (Yellow) allies:\nIncreases Taijutsu Stat by 30% (Extracurricular Lesson)\nIncreases Jujutsu Stat by 30% (Extracurricular Lesson)\nIncreases Damage Dealt by 30% (Extracurricular Lesson)\n(Re-applied at the start of the next turn if the effect granted to self is removed/Cannot be Stacked)\n(All effects are removed if self leaves the battle)",
@@ -11325,7 +11213,7 @@
     "auto_skills": [
       {
         "name": "Information Sharing",
-        "description": "$1a",
+        "description": "▼ At the start of wave/battle:\n· Clears all \"Information Gathering\" counts from self.\n· Applies to all other \"夜\" (Green) allies:\n  - 7.50% Damage Dealt Increase with \"夜\" (Green) attribute (cannot be stacked / up to 15.00%).\n  - 20.00% Jujutsu Increase (cannot be stacked / up to 100.00% at 25 counts).\n  ※ Renews every 5 turns.\n· At the start of turn, gains +1 \"Information Gathering\" count (+3 counts if self took no damage on previous turn).\n▼ If disabled in combat, applies to all \"夜\" (Green) allies:\n· 7.50% Damage Dealt Increase (up to 15.00%) & 6.00% Jujutsu Increase (up to 30.00% at 25 counts)\n· Recovers 110 Ultimate Gauge",
         "image_key": "InformationSharingAutoIcon",
         "icon": "skill_icons/InformationSharingAutoIcon.png"
       }
@@ -13603,13 +13491,13 @@
       },
       {
         "name": "Critical Hit Enhancement",
-        "description": "None",
+        "description": "Skill unlocked via SP Awakening (Desbloqueado via Despertar SP)",
         "image_key": "CritUpEnhance(SP)",
         "icon": "skill_icons/CritUpEnhance(SP).png",
-        "sp_description": "â▼¼ When self launches a Black Flash or lands a CRIT Hit (once every turn)\nApplies 20.00% CRIT Rate Increase to self (4 turns)\nApplies 10.00% Black Flash Rate Increase to self (4 turns)\nApplies 50.00% Taijutsu Increase (Special) to self (4 turns/Overwrite/Cannot be enhanced or debuffed)\n\nApplies 10.00% Ultimate Gauge Fill Rate Increase (Special) to self and the ally one position ahead of self in formation order (4 turns/Overwrite/Cannot be enhanced or debuffed)",
+        "sp_description": "▼ When self launches a Black Flash or lands a CRIT Hit (once every turn)\nApplies 20.00% CRIT Rate Increase to self (4 turns)\nApplies 10.00% Black Flash Rate Increase to self (4 turns)\nApplies 50.00% Taijutsu Increase (Special) to self (4 turns/Overwrite/Cannot be enhanced or debuffed)\n\nApplies 10.00% Ultimate Gauge Fill Rate Increase (Special) to self and the ally one position ahead of self in formation order (4 turns/Overwrite/Cannot be enhanced or debuffed)",
         "sp": {
           "name": "Critical Hit Enhancement",
-          "description": "â▼¼ When self launches a Black Flash or lands a CRIT Hit (once every turn)\nApplies 20.00% CRIT Rate Increase to self (4 turns)\nApplies 10.00% Black Flash Rate Increase to self (4 turns)\nApplies 50.00% Taijutsu Increase (Special) to self (4 turns/Overwrite/Cannot be enhanced or debuffed)\n\nApplies 10.00% Ultimate Gauge Fill Rate Increase (Special) to self and the ally one position ahead of self in formation order (4 turns/Overwrite/Cannot be enhanced or debuffed)",
+          "description": "▼ When self launches a Black Flash or lands a CRIT Hit (once every turn)\nApplies 20.00% CRIT Rate Increase to self (4 turns)\nApplies 10.00% Black Flash Rate Increase to self (4 turns)\nApplies 50.00% Taijutsu Increase (Special) to self (4 turns/Overwrite/Cannot be enhanced or debuffed)\n\nApplies 10.00% Ultimate Gauge Fill Rate Increase (Special) to self and the ally one position ahead of self in formation order (4 turns/Overwrite/Cannot be enhanced or debuffed)",
           "image_key": "CritUpEnhance(SP)",
           "icon": "skill_icons/CritUpEnhance(SP).png"
         }
@@ -13826,10 +13714,10 @@
         "description": "▼ At the start of each turn, applies effects to self based on Batto Count\n1+: Applies 11.00% Taijutsu Increase (Batto) (1 turn)\n4+: Applies 14.00% Ultimate Gauge Fill Rate Increase (Batto) (1 turn)\n18+: Applies 50.00% CRIT Damage Increase\n24+: Applies Cursed Energy Efficiency Increase (-5 Cursed Energy Cost)\n\n(Each effect scales with Batto Count)\n(For every 1 Batto Count, increases by 1.00%)\n(Effect is maximized at Batto Count 40, Maximum increase is 50.00%)\n\nIncreases own Batto Count when utilizing Skills\n(Can only increase when at 39 Counts or below)",
         "image_key": "BattoAutoSkillIcon1",
         "icon": "skill_icons/BattoAutoSkillIcon1.png",
-        "sp_description": "â▼¼ At the start of each turn, applies effects to self based on Batto Count\n1+:\nApplies 11.00% Taijutsu Increase (Batto) (1 turn/up to 50.00%)\nApplies 14.00% Ultimate Gauge Fill Rate Increase (Batto) (1 turn/up to 50.00%)\n(Each effect scales with Batto Count)\n(Effect is maximized at Batto Count 40)\n\n10+:\nCRIT Damage Increase 50.00%\nCursed Energy Efficiency Increase\n\nâ▼¼ When landing a CRIT Hit, applies the following effects to all allies with the \"å¤\" (Green) Attribute\n· Applies 15.00% CRIT Rate Increase (3 turns)\n· Applies 40.00% Taijutsu Increase (3 turns)\n· Applies 40.00% Jujutsu Increase (3 turns)",
+        "sp_description": "▼ At the start of each turn, applies effects to self based on Batto Count\n1+:\nApplies 11.00% Taijutsu Increase (Batto) (1 turn/up to 50.00%)\nApplies 14.00% Ultimate Gauge Fill Rate Increase (Batto) (1 turn/up to 50.00%)\n(Each effect scales with Batto Count)\n(Effect is maximized at Batto Count 40)\n\n10+:\nCRIT Damage Increase 50.00%\nCursed Energy Efficiency Increase\n\n▼ When landing a CRIT Hit, applies the following effects to all allies with the \"å¤\" (Green) Attribute\n· Applies 15.00% CRIT Rate Increase (3 turns)\n· Applies 40.00% Taijutsu Increase (3 turns)\n· Applies 40.00% Jujutsu Increase (3 turns)",
         "sp": {
           "name": "Batto Sword Drawing",
-          "description": "â▼¼ At the start of each turn, applies effects to self based on Batto Count\n1+:\nApplies 11.00% Taijutsu Increase (Batto) (1 turn/up to 50.00%)\nApplies 14.00% Ultimate Gauge Fill Rate Increase (Batto) (1 turn/up to 50.00%)\n(Each effect scales with Batto Count)\n(Effect is maximized at Batto Count 40)\n\n10+:\nCRIT Damage Increase 50.00%\nCursed Energy Efficiency Increase\n\nâ▼¼ When landing a CRIT Hit, applies the following effects to all allies with the \"å¤\" (Green) Attribute\n· Applies 15.00% CRIT Rate Increase (3 turns)\n· Applies 40.00% Taijutsu Increase (3 turns)\n· Applies 40.00% Jujutsu Increase (3 turns)",
+          "description": "▼ At the start of each turn, applies effects to self based on Batto Count\n1+:\nApplies 11.00% Taijutsu Increase (Batto) (1 turn/up to 50.00%)\nApplies 14.00% Ultimate Gauge Fill Rate Increase (Batto) (1 turn/up to 50.00%)\n(Each effect scales with Batto Count)\n(Effect is maximized at Batto Count 40)\n\n10+:\nCRIT Damage Increase 50.00%\nCursed Energy Efficiency Increase\n\n▼ When landing a CRIT Hit, applies the following effects to all allies with the \"å¤\" (Green) Attribute\n· Applies 15.00% CRIT Rate Increase (3 turns)\n· Applies 40.00% Taijutsu Increase (3 turns)\n· Applies 40.00% Jujutsu Increase (3 turns)",
           "image_key": "Sword sheathingSP",
           "icon": "skill_icons/Sword sheathingSP.png"
         }
@@ -16865,7 +16753,7 @@
     "auto_skills": [
       {
         "name": "Intelligence Sharing",
-        "description": "$1a",
+        "description": "▼ At the start of wave:\n· Clears all stacks of \"Reconnaissance\" and buffs applied to \"幻\" (Red) allies via \"Intelligence Sharing\".\n· Gains 1 stack of \"Reconnaissance\".\n▼ At the start of turn, applies to all \"幻\" (Red) allies:\n· Increases Taijutsu & Jujutsu by 2.72% with 1 stack of \"Reconnaissance\" (+0.72% per stack, up to 20.00% at 25 stacks).\n· Increases Break Damage by 15.00% at 3+ stacks.\n· Increases Ultimate Gauge fill rate by 10.00% at 7+ stacks.\n▼ Grants Evasion to self:\n· 0-2 stacks: 20.00% chance (1 turn / 1 time)\n· 3-6 stacks: 25.00% chance (1 turn)\n· 7+ stacks: 30.00% chance (1 turn)",
         "image_key": "InformationSharingAutoIcon",
         "icon": "skill_icons/InformationSharingAutoIcon.png"
       },
@@ -19078,10 +18966,10 @@
         "description": "▼ When dealing a CRIT Hit\nIncreases the Sheathing Count of self by 2\n\n▼ When the turn starts, applies effects to self according to the following conditions\n· If self is in the Counterattack Status\n  Increases the Sheathing Count by 1\n· When the Sheathing Count is 1-3\n  Applies 15.00% Taijutsu Damage Taken Decrease to self (1 turn)\n· When the Sheathing Count is 4-6\n  Applies 50.00% Break Damage Increase to self (1 turn)\n· When the Sheathing Count is 7 or higher\n  Applies 50.00% CRIT Damage Dealt Increase to self (1 turn)\n\n※ The Sheathing Count has a maximum of 15",
         "image_key": "Sword sheathing",
         "icon": "skill_icons/Sword sheathing.png",
-        "sp_description": "â▼¼ When the Battle starts\nIncreases the Sheathing Count of self by 5\n\nâ▼¼ When dealing a CRIT Hit\nIncreases the Sheathing Count of self by 2\n\nâ▼¼ When the turn starts, applies effects to self according to the following conditions\n· If self is in the Counterattack Status\n  Increases the Sheathing Count by 1\n· When the Sheathing Count is 1 or higher\n  Applies 25.00% Taijutsu Damage Taken Decrease to self (1 turn)\n· When the Sheathing Count is 4 or higher\n  Applies 80.00% Break Damage Increase to self (1 turn)\n· When the Sheathing Count is 7 or higher\n  Applies 80.00% CRIT Damage Dealt Increase to self (1 turn)\n\nâ※» The Sheathing Count has a maximum of 15\n\n(Unlocked automatically via SP Ultimate Skill)",
+        "sp_description": "▼ When the Battle starts\nIncreases the Sheathing Count of self by 5\n\n▼ When dealing a CRIT Hit\nIncreases the Sheathing Count of self by 2\n\n▼ When the turn starts, applies effects to self according to the following conditions\n· If self is in the Counterattack Status\n  Increases the Sheathing Count by 1\n· When the Sheathing Count is 1 or higher\n  Applies 25.00% Taijutsu Damage Taken Decrease to self (1 turn)\n· When the Sheathing Count is 4 or higher\n  Applies 80.00% Break Damage Increase to self (1 turn)\n· When the Sheathing Count is 7 or higher\n  Applies 80.00% CRIT Damage Dealt Increase to self (1 turn)\n\n※ The Sheathing Count has a maximum of 15\n\n(Unlocked automatically via SP Ultimate Skill)",
         "sp": {
           "name": "Strengthened Sheathing",
-          "description": "â▼¼ When the Battle starts\nIncreases the Sheathing Count of self by 5\n\nâ▼¼ When dealing a CRIT Hit\nIncreases the Sheathing Count of self by 2\n\nâ▼¼ When the turn starts, applies effects to self according to the following conditions\n· If self is in the Counterattack Status\n  Increases the Sheathing Count by 1\n· When the Sheathing Count is 1 or higher\n  Applies 25.00% Taijutsu Damage Taken Decrease to self (1 turn)\n· When the Sheathing Count is 4 or higher\n  Applies 80.00% Break Damage Increase to self (1 turn)\n· When the Sheathing Count is 7 or higher\n  Applies 80.00% CRIT Damage Dealt Increase to self (1 turn)\n\nâ※» The Sheathing Count has a maximum of 15\n\n(Unlocked automatically via SP Ultimate Skill)",
+          "description": "▼ When the Battle starts\nIncreases the Sheathing Count of self by 5\n\n▼ When dealing a CRIT Hit\nIncreases the Sheathing Count of self by 2\n\n▼ When the turn starts, applies effects to self according to the following conditions\n· If self is in the Counterattack Status\n  Increases the Sheathing Count by 1\n· When the Sheathing Count is 1 or higher\n  Applies 25.00% Taijutsu Damage Taken Decrease to self (1 turn)\n· When the Sheathing Count is 4 or higher\n  Applies 80.00% Break Damage Increase to self (1 turn)\n· When the Sheathing Count is 7 or higher\n  Applies 80.00% CRIT Damage Dealt Increase to self (1 turn)\n\n※ The Sheathing Count has a maximum of 15\n\n(Unlocked automatically via SP Ultimate Skill)",
           "image_key": "Sword sheathingSP",
           "icon": "skill_icons/Sword sheathingSP.png"
         }
@@ -19091,10 +18979,10 @@
         "description": "▼ When in Counterattack status, if self takes a melee attack/when Sheathing Count is no less than 1\nApplies 20.00% Damage Dealt Increase to self (removed after skill activation/the effect scales with Sheathing Count/up to 140.00%)\n※ Effect maxed at Count 15\n\nDeals melee counterattack Hybrid Damage to the attacker equal to 160.00% Taijutsu and 50.00% Jujutsu of self\n\nIncreases 110 Ultimate Gauge, and reduces Sheathing Count by 1\n\nApplies 10.00% Taijutsu Increase to self (3 turns/Cannot be stacked)",
         "image_key": "ProjectionSorcery(Counter)",
         "icon": "skill_icons/ProjectionSorcery(Counter).png",
-        "sp_description": "â▼¼ When in Counterattack status, if self takes a melee attack/when Sheathing Count is no less than 1\nApplies 20.00% Damage Dealt Increase to self (removed after skill activation/the effect scales with Sheathing Count/up to 140.00%)\nâ※» Effect maxed at Count 15\n\nDeals melee counterattack Hybrid Damage to the attacker equal to 300.00% Taijutsu and 100.00% Jujutsu of self\n\nIncreases 110 Ultimate Gauge, and reduces Sheathing Count by 1\n\nApplies 10.00% Taijutsu Increase to self (3 turns/Cannot be stacked)\n\nâ▼¼ To all allies with the \"影\" (Blue) Attribute\nApplies 65.00% Taijutsu Increase (Special) (4 turns, can be overwritten)\nApplies 65.00% Jujutsu Increase (Special) (4 turns, can be overwritten)\n\n(Unlocked automatically via SP Ultimate Skill)",
+        "sp_description": "▼ When in Counterattack status, if self takes a melee attack/when Sheathing Count is no less than 1\nApplies 20.00% Damage Dealt Increase to self (removed after skill activation/the effect scales with Sheathing Count/up to 140.00%)\n※ Effect maxed at Count 15\n\nDeals melee counterattack Hybrid Damage to the attacker equal to 300.00% Taijutsu and 100.00% Jujutsu of self\n\nIncreases 110 Ultimate Gauge, and reduces Sheathing Count by 1\n\nApplies 10.00% Taijutsu Increase to self (3 turns/Cannot be stacked)\n\n▼ To all allies with the \"影\" (Blue) Attribute\nApplies 65.00% Taijutsu Increase (Special) (4 turns, can be overwritten)\nApplies 65.00% Jujutsu Increase (Special) (4 turns, can be overwritten)\n\n(Unlocked automatically via SP Ultimate Skill)",
         "sp": {
           "name": "Counterattack: Batto Sword Drawing",
-          "description": "â▼¼ When in Counterattack status, if self takes a melee attack/when Sheathing Count is no less than 1\nApplies 20.00% Damage Dealt Increase to self (removed after skill activation/the effect scales with Sheathing Count/up to 140.00%)\nâ※» Effect maxed at Count 15\n\nDeals melee counterattack Hybrid Damage to the attacker equal to 300.00% Taijutsu and 100.00% Jujutsu of self\n\nIncreases 110 Ultimate Gauge, and reduces Sheathing Count by 1\n\nApplies 10.00% Taijutsu Increase to self (3 turns/Cannot be stacked)\n\nâ▼¼ To all allies with the \"影\" (Blue) Attribute\nApplies 65.00% Taijutsu Increase (Special) (4 turns, can be overwritten)\nApplies 65.00% Jujutsu Increase (Special) (4 turns, can be overwritten)\n\n(Unlocked automatically via SP Ultimate Skill)",
+          "description": "▼ When in Counterattack status, if self takes a melee attack/when Sheathing Count is no less than 1\nApplies 20.00% Damage Dealt Increase to self (removed after skill activation/the effect scales with Sheathing Count/up to 140.00%)\n※ Effect maxed at Count 15\n\nDeals melee counterattack Hybrid Damage to the attacker equal to 300.00% Taijutsu and 100.00% Jujutsu of self\n\nIncreases 110 Ultimate Gauge, and reduces Sheathing Count by 1\n\nApplies 10.00% Taijutsu Increase to self (3 turns/Cannot be stacked)\n\n▼ To all allies with the \"影\" (Blue) Attribute\nApplies 65.00% Taijutsu Increase (Special) (4 turns, can be overwritten)\nApplies 65.00% Jujutsu Increase (Special) (4 turns, can be overwritten)\n\n(Unlocked automatically via SP Ultimate Skill)",
           "image_key": "ProjectionSorcery(Counter)SP",
           "icon": "skill_icons/ProjectionSorcery(Counter)SP.png"
         }
