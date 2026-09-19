@@ -17,6 +17,8 @@ import charactersData from './data/characters.json';
 import memoriesData from './data/memories.json';
 import timelineData from './data/timeline.json';
 
+import { playCubeSummonChime } from './utils/sound';
+
 import type { ActiveTab, Character, Memory, TimelineEvent } from './types';
 
 export function App() {
@@ -26,8 +28,33 @@ export function App() {
 
   const { isSettingsOpen, toggleSettings, checkAndApplyDailySavings } = useJjkStore();
 
+  // Monitor de virada de dia em tempo real: verifica no mount, a cada 30s e ao focar/retornar à janela
   useEffect(() => {
-    checkAndApplyDailySavings();
+    const handleCheck = () => {
+      const res = checkAndApplyDailySavings();
+      if (res.applied) {
+        playCubeSummonChime();
+      }
+    };
+
+    handleCheck();
+
+    const interval = setInterval(handleCheck, 30000);
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        handleCheck();
+      }
+    };
+    const onFocus = () => handleCheck();
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('focus', onFocus);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('focus', onFocus);
+    };
   }, [checkAndApplyDailySavings]);
   const characters = charactersData as Character[];
   const memories = memoriesData as Memory[];

@@ -21,27 +21,20 @@ import {
 } from 'lucide-react';
 import { playClick, playSelect, playCubeSummonChime, playTrashDelete, playLevelUp } from '../utils/sound';
 import { useJjkStore } from '../store/useJjkStore';
-import { formatDateDisplay, getDeviceLocalDateString } from '../utils/date';
+import { 
+  formatDateDisplay, 
+  getDeviceLocalDateString, 
+  parseDMY, 
+  formatDMY, 
+  calculateRealtimeEventStatus 
+} from '../utils/date';
 import { useTranslation } from '../i18n';
 
 interface TimelineViewProps {
   events: TimelineEvent[];
 }
 
-const TODAY_DATE = new Date(Date.UTC(2026, 8, 17, 12, 0, 0)); // 17/09/2026 12:00
 const DEFAULT_LAG = 79; // Calibrado: Ijichi lançado em 17/09/2026 às 12:00
-
-const parseDMY = (s: string) => {
-  const parts = s.split('/');
-  return new Date(Date.UTC(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10), 12, 0, 0));
-};
-
-const formatDMY = (date: Date) => {
-  const d = String(date.getUTCDate()).padStart(2, '0');
-  const m = String(date.getUTCMonth() + 1).padStart(2, '0');
-  const y = date.getUTCFullYear();
-  return `${d}/${m}/${y}`;
-};
 
 export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   const { t, language } = useTranslation();
@@ -49,8 +42,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   const [filterStatus, setFilterStatus] = useState<'ALL' | 'RELEASED' | 'UPCOMING'>('ALL');
   const [showCalculator, setShowCalculator] = useState(true);
   
+  // Relógio do dispositivo em tempo real com auto-atualização contínua
+  const [currentTime, setCurrentTime] = useState<Date>(() => new Date());
+
   // Calculator state from persistent store
-  const upcomingEvents = useMemo(() => events.filter(e => e.status !== 'released'), [events]);
   const savingsPlan = useJjkStore((state) => state.savingsPlan);
   const updateSavingsPlan = useJjkStore((state) => state.updateSavingsPlan);
   const checkAndApplyDailySavings = useJjkStore((state) => state.checkAndApplyDailySavings);
@@ -58,31 +53,55 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   const resetSavingsPlan = useJjkStore((state) => state.resetSavingsPlan);
   const dismissDailyIncrementAlert = useJjkStore((state) => state.dismissDailyIncrementAlert);
 
-  // Check and apply 24h daily increment on mount
+  // Sincronização em tempo real: checa virada de dia e atualiza o relógio a cada 10 segundos
   useEffect(() => {
     checkAndApplyDailySavings();
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+      checkAndApplyDailySavings();
+    }, 10000);
+    return () => clearInterval(interval);
   }, [checkAndApplyDailySavings]);
 
-  const selectedBannerIndex = savingsPlan.selectedBannerIndex ?? (upcomingEvents[0]?.index ?? 161);
   const customLag = savingsPlan.customLag ?? DEFAULT_LAG;
   const currentCubes = savingsPlan.currentCubes ?? 15000;
   const dailyCubesIncome = savingsPlan.dailyIncome ?? 350;
   const pityPoints = savingsPlan.pityPoints ?? 0;
 
+  // Processa todos os eventos com cálculo em tempo real de data e status Global
+  const processedEvents = useMemo(() => {
+    return events.map((ev) => {
+      const rt = calculateRealtimeEventStatus(ev.jp_date, customLag, currentTime);
+      return {
+        ...ev,
+        status: rt.status,
+        status_label: language === 'pt' ? rt.statusLabelPt : rt.statusLabelEn,
+        days: language === 'pt' ? rt.daysBadgePt : rt.daysBadgeEn,
+        global_date: `${rt.predictedGlobalFormatted} (12:00)`,
+        diff_days: rt.diffDays,
+      };
+    });
+  }, [events, customLag, currentTime, language]);
+
+  const upcomingEvents = useMemo(() => processedEvents.filter(e => e.status !== 'released'), [processedEvents]);
+  const selectedBannerIndex = savingsPlan.selectedBannerIndex ?? (upcomingEvents[0]?.index ?? 161);
+
   const calcSectionRef = useRef<HTMLDivElement>(null);
 
   const selectedEvent = useMemo(() => {
-    return events.find(e => e.index === selectedBannerIndex) || upcomingEvents[0] || events[0];
-  }, [events, selectedBannerIndex, upcomingEvents]);
+    return processedEvents.find(e => e.index === selectedBannerIndex) || upcomingEvents[0] || processedEvents[0];
+  }, [processedEvents, selectedBannerIndex, upcomingEvents]);
 
-  // Dynamic calculations with Pity Points and Cards
+  // Dynamic calculations with Pity Points and Cards baseados na data em tempo real
   const calcResults = useMemo(() => {
     if (!selectedEvent) return null;
     const jpDate = parseDMY(selectedEvent.jp_date);
     const predictedGlobal = new Date(jpDate.getTime());
     predictedGlobal.setUTCDate(predictedGlobal.getUTCDate() + customLag);
 
-    const diffMs = predictedGlobal.getTime() - TODAY_DATE.getTime();
+    // Normaliza para meio-dia UTC para cálculo de dias exatos de calendário em relação a HOJE
+    const nowNorm = new Date(Date.UTC(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), 12, 0, 0));
+    const diffMs = predictedGlobal.getTime() - nowNorm.getTime();
     const daysRemaining = Math.max(0, Math.round(diffMs / (1000 * 60 * 60 * 24)));
 
     const accumulatedCubes = daysRemaining * dailyCubesIncome;
@@ -108,7 +127,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
       missingPulls,
       isGuaranteed
     };
-  }, [selectedEvent, customLag, currentCubes, dailyCubesIncome, pityPoints]);
+  }, [selectedEvent, customLag, currentCubes, dailyCubesIncome, pityPoints, currentTime]);
 
   const handleSelectBannerForCalc = (evIndex: number) => {
     playSelect();
@@ -118,7 +137,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   };
 
   const filteredEvents = useMemo(() => {
-    return events.filter((ev) => {
+    return processedEvents.filter((ev) => {
       const q = searchTerm.toLowerCase();
       const matchName = ev.name.toLowerCase().includes(q);
       const matchBanners = ev.banners?.some(b => b.toLowerCase().includes(q));
@@ -129,10 +148,10 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
       if (filterStatus === 'UPCOMING') return matchSearch && !isReleased;
       return matchSearch;
     });
-  }, [events, searchTerm, filterStatus]);
+  }, [processedEvents, searchTerm, filterStatus]);
 
-  const releasedCount = useMemo(() => events.filter(e => e.status === 'released').length, [events]);
-  const upcomingCount = useMemo(() => events.filter(e => e.status !== 'released').length, [events]);
+  const releasedCount = useMemo(() => processedEvents.filter(e => e.status === 'released').length, [processedEvents]);
+  const upcomingCount = useMemo(() => processedEvents.filter(e => e.status !== 'released').length, [processedEvents]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
@@ -145,7 +164,11 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
               <Sparkle className="w-3 h-3 text-emerald-400" />
-              {t.timeline.lagCalibrated.replace('{days}', '79')}
+              {t.timeline.lagCalibrated.replace('{days}', String(customLag))}
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1.5 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+              <span>{language === 'pt' ? `Hoje (Tempo Real): ${formatDMY(currentTime)}` : `Today (Real-Time): ${formatDMY(currentTime)}`}</span>
             </span>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
               {t.timeline.milestoneIjichi}
@@ -181,8 +204,8 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
         <div className="space-y-1 text-xs text-gray-300">
           <h3 className="font-bold text-sm text-blue-200 flex items-center gap-2">
             <span>{t.timeline.calibCardTitle}</span>
-            <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40">
-              {t.timeline.calibCardDate}
+            <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 font-mono">
+              {language === 'pt' ? `Hoje: ${formatDMY(currentTime)}` : `Today: ${formatDMY(currentTime)}`}
             </span>
           </h3>
           <p className="leading-relaxed">

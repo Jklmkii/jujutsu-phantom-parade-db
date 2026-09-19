@@ -280,17 +280,26 @@ export const useJjkStore = create<JjkState>()(
         const { savingsPlan } = get();
         const todayStr = getDeviceLocalDateString();
 
+        // Se não houver data gravada anterior, registra a data de hoje como marco inicial
         if (!savingsPlan.lastUpdatedDate) {
           set((state) => ({
-            savingsPlan: { ...state.savingsPlan, lastUpdatedDate: todayStr },
+            savingsPlan: { 
+              ...state.savingsPlan, 
+              lastUpdatedDate: todayStr,
+              autoDailyIncrementEnabled: state.savingsPlan.autoDailyIncrementEnabled ?? true,
+            },
           }));
           return { applied: false, daysAdded: 0, cubesAdded: 0 };
         }
 
         const daysDiff = getDaysBetweenDates(savingsPlan.lastUpdatedDate, todayStr);
-        if (daysDiff > 0 && savingsPlan.autoDailyIncrementEnabled) {
-          const cubesAdded = daysDiff * savingsPlan.dailyIncome;
-          const newCurrentCubes = Math.max(0, savingsPlan.currentCubes + cubesAdded);
+        const isEnabled = savingsPlan.autoDailyIncrementEnabled !== false;
+
+        if (daysDiff > 0 && isEnabled) {
+          const income = savingsPlan.dailyIncome || 350;
+          const cubesAdded = daysDiff * income;
+          const newCurrentCubes = Math.max(0, (savingsPlan.currentCubes || 0) + cubesAdded);
+
           set((state) => ({
             savingsPlan: {
               ...state.savingsPlan,
@@ -298,6 +307,7 @@ export const useJjkStore = create<JjkState>()(
               lastUpdatedDate: todayStr,
               lastIncrementAmount: cubesAdded,
               lastIncrementDays: daysDiff,
+              autoDailyIncrementEnabled: true,
             },
           }));
           return { applied: true, daysAdded: daysDiff, cubesAdded };
