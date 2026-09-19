@@ -6,11 +6,8 @@ echo =======================================================
 echo.
 cd /d "%~dp0"
 
-echo [1/2] Verificando arquivos de distribuicao...
-if not exist "dist\index.html" (
-    echo Compilando aplicacao pela primeira vez...
-    call npm run build
-)
+echo [1/2] Sincronizando e compilando aplicacao...
+call npm run build
 
 echo [2/2] Iniciando janela nativa Desktop...
 call npx electron .
