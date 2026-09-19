@@ -79,7 +79,8 @@ export const calculateRealtimeEventStatus = (
   jpDateStr: string,
   lagDays: number = 79,
   now: Date = new Date(),
-  eventDurationDays: number = 14
+  eventDurationDays: number = 14,
+  forceReleased: boolean = false
 ): RealtimeEventStatus => {
   const jpDate = parseDMY(jpDateStr);
   const predictedGlobal = new Date(jpDate.getTime());
@@ -90,6 +91,18 @@ export const calculateRealtimeEventStatus = (
   const diffMs = predictedGlobal.getTime() - nowNorm.getTime();
   const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
   const predictedGlobalFormatted = formatDMY(predictedGlobal);
+
+  if (forceReleased) {
+    return {
+      status: 'released',
+      statusLabelPt: 'Já Lançado no Global',
+      statusLabelEn: 'Already Released in Global',
+      daysBadgePt: '',
+      daysBadgeEn: '',
+      predictedGlobalFormatted,
+      diffDays,
+    };
+  }
 
   if (diffDays === 0) {
     return {
@@ -115,8 +128,8 @@ export const calculateRealtimeEventStatus = (
         statusLabelEn: daysSinceLaunch === 1 
           ? '🔥 Active in Global (Launched Yesterday)' 
           : `🔥 Active in Global (Launched ${daysSinceLaunch} days ago)`,
-        daysBadgePt: `Ativo (${remainingDays}d restantes)`,
-        daysBadgeEn: `Active (${remainingDays}d left)`,
+        daysBadgePt: remainingDays === 1 ? 'Ativo (1d restante)' : `Ativo (${remainingDays}d restantes)`,
+        daysBadgeEn: remainingDays === 1 ? 'Active (1d left)' : `Active (${remainingDays}d left)`,
         predictedGlobalFormatted,
         diffDays,
       };

@@ -71,7 +71,18 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ events }) => {
   // Processa todos os eventos com cálculo em tempo real de data e status Global
   const processedEvents = useMemo(() => {
     return events.map((ev) => {
-      const rt = calculateRealtimeEventStatus(ev.jp_date, customLag, currentTime);
+      let eventDuration = 14;
+      let forceReleased = false;
+
+      if (ev.index === 159 || /mahoraga/i.test(ev.name)) {
+        // Raid Battle VS Mahoraga: duração calibrada para terminar em 1 dia (20/09/2026)
+        eventDuration = 9;
+      } else if (ev.index < 159) {
+        // Eventos anteriores ao Mahoraga (Kyoto Dead School, Anniversary) já foram finalizados no Global
+        forceReleased = true;
+      }
+
+      const rt = calculateRealtimeEventStatus(ev.jp_date, customLag, currentTime, eventDuration, forceReleased);
       return {
         ...ev,
         status: rt.status,
