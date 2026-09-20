@@ -7,6 +7,7 @@ import { MemoriesList } from './components/MemoriesList';
 import { TimelineView } from './components/TimelineView';
 import { TierlistMaker } from './components/TierlistMaker';
 import { BestTeams } from './components/BestTeams';
+import { CharacterCompare } from './components/CharacterCompare';
 import { BuffsRankings } from './components/BuffsRankings';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { SettingsModal } from './components/SettingsModal';
@@ -112,6 +113,13 @@ export function App() {
                 characters={characters}
                 onSelectCharacter={handleSelectCharacter}
                 initialSearch={charactersSearch}
+              />
+            )}
+
+            {activeTab === 'compare' && (
+              <CharacterCompare 
+                characters={characters}
+                onSelectCharacter={handleSelectCharacter}
               />
             )}
 

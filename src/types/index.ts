@@ -139,7 +139,17 @@ export interface TimelineEvent {
   days?: string;
 }
 
-export type ActiveTab = 'home' | 'characters' | 'memories' | 'tierlist' | 'teams' | 'buffs' | 'timeline';
+export type ActiveTab = 
+  | 'home' 
+  | 'characters' 
+  | 'memories' 
+  | 'tierlist' 
+  | 'teams' 
+  | 'buffs' 
+  | 'timeline' 
+  | 'compare' 
+  | 'gacha' 
+  | 'dps';
 
 export interface OfficialTierSlot {
   characterId: string;

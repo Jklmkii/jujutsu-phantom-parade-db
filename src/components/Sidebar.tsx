@@ -10,6 +10,7 @@ import {
   Award,
   PenTool,
   Settings,
+  Scale,
   Volume2,
   VolumeX
 } from 'lucide-react';
@@ -44,6 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const navItems: { id: ActiveTab; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: t.nav.home, icon: <Home className="w-5 h-5" /> },
     { id: 'characters', label: t.nav.characters, icon: <Users className="w-5 h-5" /> },
+    { id: 'compare', label: t.nav.compare, icon: <Scale className="w-5 h-5" /> },
     { id: 'memories', label: t.nav.memories, icon: <Sparkles className="w-5 h-5" /> },
     { id: 'tierlist', label: t.nav.tierlist, icon: <Award className="w-5 h-5" /> },
     { id: 'teams', label: t.nav.teams, icon: <ShieldCheck className="w-5 h-5" /> },
