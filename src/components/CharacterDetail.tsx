@@ -16,6 +16,7 @@ import {
   playElementalTone
 } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
+import { StatRadarChart } from './StatRadarChart';
 
 interface CharacterDetailProps {
   character: Character;
@@ -984,6 +985,17 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
                 ? 'Ordem recomendada para investimento de materiais e livros de técnicas amaldiçoadas.'
                 : 'Recommended order for skill books and enhancement materials.'}
             </p>
+          </div>
+
+          {/* Radar Pentagram */}
+          <div className="bg-[#120e24] border border-[#291f47] rounded-xl p-4 shadow-lg space-y-3">
+            <h2 className="text-sm font-black tracking-wider uppercase text-purple-300 border-b border-[#251b40] pb-2 flex items-center gap-2">
+              <Shield className="w-4 h-4 text-purple-400" />
+              {language === 'pt' ? 'RADAR TÁTICO DE COMBATE' : 'TACTICAL COMBAT RADAR'}
+            </h2>
+            <div className="flex justify-center">
+              <StatRadarChart characterA={character} size={270} language={language} showLegend={false} />
+            </div>
           </div>
 
           {/* Stats Box */}

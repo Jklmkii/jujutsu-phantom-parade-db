@@ -23,6 +23,7 @@ import {
   playElementalTone 
 } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
+import { StatRadarChart } from './StatRadarChart';
 
 interface CharacterCompareProps {
   characters: Character[];
@@ -552,8 +553,13 @@ export const CharacterCompare: React.FC<CharacterCompareProps> = ({
                 <span>{t.compare.baseStats}</span>
               </h2>
               <span className="text-xs text-gray-400">
-                {language === 'pt' ? 'Barras proporcionais lado a lado' : 'Side-by-side proportional bars'}
+                {language === 'pt' ? 'Radar Pentagonal & Barras Proporcionais' : 'Pentagonal Radar & Proportional Bars'}
               </span>
+            </div>
+
+            {/* Radar Comparison Chart */}
+            <div className="flex justify-center py-2">
+              <StatRadarChart characterA={charA} characterB={charB} size={330} language={language} showLegend={true} />
             </div>
 
             <div className="space-y-3">
