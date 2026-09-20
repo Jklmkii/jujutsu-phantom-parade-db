@@ -8,6 +8,7 @@ import { TimelineView } from './components/TimelineView';
 import { TierlistMaker } from './components/TierlistMaker';
 import { BestTeams } from './components/BestTeams';
 import { CharacterCompare } from './components/CharacterCompare';
+import { GachaSimulator } from './components/GachaSimulator';
 import { BuffsRankings } from './components/BuffsRankings';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { SettingsModal } from './components/SettingsModal';
@@ -154,6 +155,14 @@ export function App() {
             {activeTab === 'timeline' && (
               <TimelineView 
                 events={timeline}
+              />
+            )}
+
+            {activeTab === 'gacha' && (
+              <GachaSimulator 
+                characters={characters}
+                memories={memories}
+                onSelectCharacter={handleSelectCharacter}
               />
             )}
           </>

@@ -11,6 +11,7 @@ import {
   PenTool,
   Settings,
   Scale,
+  Dices,
   Volume2,
   VolumeX
 } from 'lucide-react';
@@ -51,6 +52,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'teams', label: t.nav.teams, icon: <ShieldCheck className="w-5 h-5" /> },
     { id: 'buffs', label: t.nav.buffs, icon: <Zap className="w-5 h-5" /> },
     { id: 'timeline', label: t.nav.timeline, icon: <Calendar className="w-5 h-5" /> },
+    { id: 'gacha', label: t.nav.gacha, icon: <Dices className="w-5 h-5" /> },
   ];
 
   const handleNav = (tab: ActiveTab) => {
