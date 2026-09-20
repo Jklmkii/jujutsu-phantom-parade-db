@@ -9,6 +9,7 @@ import { TierlistMaker } from './components/TierlistMaker';
 import { BestTeams } from './components/BestTeams';
 import { CharacterCompare } from './components/CharacterCompare';
 import { GachaSimulator } from './components/GachaSimulator';
+import { DpsCalculator } from './components/DpsCalculator';
 import { BuffsRankings } from './components/BuffsRankings';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { SettingsModal } from './components/SettingsModal';
@@ -160,6 +161,14 @@ export function App() {
 
             {activeTab === 'gacha' && (
               <GachaSimulator 
+                characters={characters}
+                memories={memories}
+                onSelectCharacter={handleSelectCharacter}
+              />
+            )}
+
+            {activeTab === 'dps' && (
+              <DpsCalculator 
                 characters={characters}
                 memories={memories}
                 onSelectCharacter={handleSelectCharacter}
