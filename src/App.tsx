@@ -13,6 +13,7 @@ import { DpsCalculator } from './components/DpsCalculator';
 import { BuffsRankings } from './components/BuffsRankings';
 import { RaidBossGuide } from './components/RaidBossGuide';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
+import { TacticalSoundboardModal } from './components/TacticalSoundboardModal';
 import { SettingsModal } from './components/SettingsModal';
 import { UpdateBanner } from './components/UpdateBanner';
 import { useJjkStore } from './store/useJjkStore';
@@ -30,7 +31,13 @@ export function App() {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [charactersSearch, setCharactersSearch] = useState<string>('');
 
-  const { isSettingsOpen, toggleSettings, checkAndApplyDailySavings } = useJjkStore();
+  const { 
+    isSettingsOpen, 
+    toggleSettings, 
+    isSoundboardOpen, 
+    toggleSoundboard, 
+    checkAndApplyDailySavings 
+  } = useJjkStore();
 
   // Monitor de virada de dia em tempo real: verifica no mount, a cada 30s e ao focar/retornar à janela
   useEffect(() => {
@@ -189,6 +196,12 @@ export function App() {
 
       {/* Tactical Floating Scratchpad */}
       <TacticalScratchpad />
+
+      {/* Tactical Soundboard Modal */}
+      <TacticalSoundboardModal 
+        isOpen={isSoundboardOpen} 
+        onClose={toggleSoundboard} 
+      />
 
       {/* Settings & Backup Modal */}
       <SettingsModal 

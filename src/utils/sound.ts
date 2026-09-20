@@ -22,6 +22,27 @@ function getAudioContext(): AudioContext | null {
   return audioCtx;
 }
 
+let masterGainNode: GainNode | null = null;
+
+function getMasterDestination(ctx: AudioContext): AudioNode {
+  let volume = 0.8;
+  try {
+    const v = useJjkStore.getState().soundVolume;
+    if (typeof v === 'number') volume = Math.max(0, Math.min(1, v));
+  } catch {
+    // fallback
+  }
+
+  if (!masterGainNode || masterGainNode.context !== ctx) {
+    masterGainNode = ctx.createGain();
+    masterGainNode.gain.setValueAtTime(volume, ctx.currentTime);
+    masterGainNode.connect(ctx.destination);
+  } else {
+    masterGainNode.gain.setValueAtTime(volume, ctx.currentTime);
+  }
+  return masterGainNode;
+}
+
 function isAudioAllowed(): boolean {
   try {
     return useJjkStore.getState().soundEnabled;
@@ -49,7 +70,7 @@ export function playClick(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.04);
@@ -77,7 +98,7 @@ export function playSelect(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.06);
@@ -105,7 +126,7 @@ export function playTabSwitch(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.06);
@@ -136,7 +157,7 @@ export function playStarToggle(starred: boolean): void {
       gain.gain.exponentialRampToValueAtTime(0.001, startTime + stepDuration);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(startTime);
       osc.stop(startTime + stepDuration);
@@ -165,7 +186,7 @@ export function playTransformSurge(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.14);
@@ -193,7 +214,7 @@ export function playLevelUp(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.09);
@@ -226,7 +247,7 @@ export function playCollectionToggle(owned: boolean): void {
         gain.gain.exponentialRampToValueAtTime(0.001, noteStart + 0.12);
 
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(getMasterDestination(ctx));
 
         osc.start(noteStart);
         osc.stop(noteStart + 0.12);
@@ -244,7 +265,7 @@ export function playCollectionToggle(owned: boolean): void {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(now);
       osc.stop(now + 0.08);
@@ -279,7 +300,7 @@ export function playCursedEnergyCharge(): void {
 
     osc1.connect(gain);
     osc2.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc1.start(now);
     osc2.start(now);
@@ -311,7 +332,7 @@ export function playDomainExpansion(): void {
     subGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
     subOsc.connect(subGain);
-    subGain.connect(ctx.destination);
+    subGain.connect(getMasterDestination(ctx));
 
     subOsc.start(now);
     subOsc.stop(now + duration);
@@ -329,7 +350,7 @@ export function playDomainExpansion(): void {
       gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(now);
       osc.stop(now + duration);
@@ -359,7 +380,7 @@ export function playBlackFlash(): void {
     bassGain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
 
     bassOsc.connect(bassGain);
-    bassGain.connect(ctx.destination);
+    bassGain.connect(getMasterDestination(ctx));
     bassOsc.start(now);
     bassOsc.stop(now + 0.2);
 
@@ -374,7 +395,7 @@ export function playBlackFlash(): void {
     sparkGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
     sparkOsc.connect(sparkGain);
-    sparkGain.connect(ctx.destination);
+    sparkGain.connect(getMasterDestination(ctx));
     sparkOsc.start(now);
     sparkOsc.stop(now + 0.08);
   } catch {
@@ -401,7 +422,7 @@ export function playTierDrop(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.05);
@@ -429,7 +450,7 @@ export function playClearFilters(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.12);
@@ -467,7 +488,7 @@ export function playUltimateSkill(): void {
 
     sweepOsc.connect(filter);
     filter.connect(sweepGain);
-    sweepGain.connect(ctx.destination);
+    sweepGain.connect(getMasterDestination(ctx));
 
     sweepOsc.start(now);
     sweepOsc.stop(now + 0.38);
@@ -483,7 +504,7 @@ export function playUltimateSkill(): void {
     boomGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
     boomOsc.connect(boomGain);
-    boomGain.connect(ctx.destination);
+    boomGain.connect(getMasterDestination(ctx));
 
     boomOsc.start(now + 0.28);
     boomOsc.stop(now + duration);
@@ -501,7 +522,7 @@ export function playUltimateSkill(): void {
       chimeGain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
 
       chimeOsc.connect(chimeGain);
-      chimeGain.connect(ctx.destination);
+      chimeGain.connect(getMasterDestination(ctx));
 
       chimeOsc.start(start);
       chimeOsc.stop(start + 0.22);
@@ -533,7 +554,7 @@ export function playBreakShatter(): void {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(now);
       osc.stop(now + 0.14);
@@ -550,7 +571,7 @@ export function playBreakShatter(): void {
     subGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
     subOsc.connect(subGain);
-    subGain.connect(ctx.destination);
+    subGain.connect(getMasterDestination(ctx));
 
     subOsc.start(now);
     subOsc.stop(now + 0.08);
@@ -581,7 +602,7 @@ export function playMemoryEquip(): void {
       gain.gain.exponentialRampToValueAtTime(0.001, start + 0.18);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(start);
       osc.stop(start + 0.18);
@@ -613,7 +634,7 @@ export function playCubeSummonChime(): void {
       gain.gain.exponentialRampToValueAtTime(0.001, noteStart + 0.16);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(noteStart);
       osc.stop(noteStart + 0.16);
@@ -643,7 +664,7 @@ export function playTeamSynergyPulse(): void {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(now);
       osc.stop(now + 0.3);
@@ -680,7 +701,7 @@ export function playSuccessFanfare(): void {
       gain.gain.exponentialRampToValueAtTime(0.001, start + item.d);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(getMasterDestination(ctx));
 
       osc.start(start);
       osc.stop(start + item.d);
@@ -709,7 +730,7 @@ export function playTrashDelete(): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.08);
@@ -756,7 +777,7 @@ export function playElementalTone(element: string): void {
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(getMasterDestination(ctx));
 
     osc.start(now);
     osc.stop(now + 0.1);

@@ -97,9 +97,13 @@ interface JjkState {
   language: Language;
   setLanguage: (lang: Language) => void;
 
-  // Sound
+  // Sound & Tactical Audio
   soundEnabled: boolean;
   toggleSound: () => void;
+  soundVolume: number;
+  setSoundVolume: (vol: number) => void;
+  isSoundboardOpen: boolean;
+  toggleSoundboard: () => void;
 
   // Settings Modal
   isSettingsOpen: boolean;
@@ -161,6 +165,10 @@ export const useJjkStore = create<JjkState>()(
 
       soundEnabled: true,
       toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
+      soundVolume: 0.8,
+      setSoundVolume: (vol) => set({ soundVolume: Math.max(0, Math.min(1, vol)) }),
+      isSoundboardOpen: false,
+      toggleSoundboard: () => set((state) => ({ isSoundboardOpen: !state.isSoundboardOpen })),
 
       isSettingsOpen: false,
       toggleSettings: () => set((state) => ({ isSettingsOpen: !state.isSettingsOpen })),

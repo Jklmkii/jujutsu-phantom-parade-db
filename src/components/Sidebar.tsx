@@ -14,6 +14,7 @@ import {
   Dices,
   Calculator,
   Skull,
+  Radio,
   Volume2,
   VolumeX
 } from 'lucide-react';
@@ -42,7 +43,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     toggleScratchpad, 
     toggleSettings, 
     soundEnabled, 
-    toggleSound 
+    toggleSound,
+    toggleSoundboard 
   } = useJjkStore();
 
   const navItems: { id: ActiveTab; label: string; icon: React.ReactNode }[] = [
@@ -171,6 +173,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <VolumeX className="w-4 h-4 text-gray-500 shrink-0" />
           )}
           {!collapsed && <span>{t.nav.soundActive}</span>}
+        </button>
+
+        {/* Tactical Soundboard Modal button */}
+        <button
+          onClick={() => {
+            playClick();
+            toggleSoundboard();
+          }}
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-gray-400 hover:bg-[#181228] hover:text-purple-300 transition-all cursor-pointer"
+          title="Soundboard Tático Procedural"
+        >
+          <Radio className="w-4 h-4 text-purple-400 shrink-0" />
+          {!collapsed && <span>Soundboard</span>}
         </button>
 
         {/* Settings & Backup Modal button */}
