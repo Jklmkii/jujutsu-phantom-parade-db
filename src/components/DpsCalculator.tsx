@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import type { Character, Memory } from '../types';
+import type { Character, Memory, CombatRates } from '../types';
 import { ElementBadge, RarityBadge } from './Badges';
 import { 
   Calculator, 
@@ -110,6 +110,98 @@ function extractSkillMultipliers(desc?: string, desc10?: string, level: number =
   return { taijutsuPct, jujutsuPct, isDirectDamage, maxStackPct, stackResource };
 }
 
+// Extractor and analyzer for Black Flash (Kokusen) mechanics
+interface BlackFlashInfo {
+  canBlackFlash: boolean;
+  isGuaranteed: boolean;
+  rateDisplay: string;
+  multiplier: number;
+  multiplierDisplay: string;
+}
+
+function getBlackFlashInfo(
+  attacker: Character | null,
+  skillData: { desc?: string; desc10?: string; combatRates?: CombatRates } | null
+): BlackFlashInfo {
+  if (!attacker || !skillData) {
+    return {
+      canBlackFlash: false,
+      isGuaranteed: false,
+      rateDisplay: '0%',
+      multiplier: 0,
+      multiplierDisplay: 'N/A',
+    };
+  }
+
+  const desc = (skillData.desc10 || skillData.desc || '').toLowerCase();
+  const rawRate = skillData.combatRates?.black_flash || attacker.combat_rates?.black_flash;
+  const rawDmg = skillData.combatRates?.black_flash_dmg || attacker.combat_rates?.black_flash_dmg;
+
+  const isGuaranteed =
+    desc.includes('guaranteed black flash') ||
+    desc.includes('always perform a black flash') ||
+    (typeof rawRate === 'string' && rawRate.trim() === '100%');
+
+  let canBlackFlash = false;
+  let rateDisplay = '0%';
+
+  if (isGuaranteed) {
+    canBlackFlash = true;
+    rateDisplay = '100% (Garantido)';
+  } else if (rawRate && rawRate !== '0%' && rawRate !== '0.0%' && rawRate !== '0.00%') {
+    const matches = [...rawRate.matchAll(/(\d+(?:\.\d+)?)\s*%/g)];
+    const nums = matches.map((m) => parseFloat(m[1])).filter((n) => !isNaN(n));
+    const maxNum = nums.length > 0 ? Math.max(...nums) : 0;
+    if (maxNum > 0) {
+      canBlackFlash = true;
+      rateDisplay = rawRate.trim();
+    }
+  }
+
+  if (!canBlackFlash) {
+    return {
+      canBlackFlash: false,
+      isGuaranteed: false,
+      rateDisplay: '0%',
+      multiplier: 0,
+      multiplierDisplay: 'N/A',
+    };
+  }
+
+  // Parse accurate multiplier from game rates
+  let multiplier = 2.0; // fallback standard Kokusen multiplier
+  if (rawDmg && rawDmg !== '0%') {
+    const dmgMatches = [...rawDmg.matchAll(/(\d+(?:\.\d+)?)\s*%/g)];
+    const dmgNums = dmgMatches.map((m) => parseFloat(m[1])).filter((n) => !isNaN(n) && n > 0);
+    const maxDmgNum = dmgNums.length > 0 ? Math.max(...dmgNums) : 0;
+
+    if (rawDmg.includes('66.6%') && rawDmg.includes('All Hits')) {
+      multiplier = 2.0; // Todo multi-hit Ult
+    } else if (maxDmgNum >= 100) {
+      multiplier = maxDmgNum / 100;
+    } else if (maxDmgNum > 0) {
+      multiplier = 1 + maxDmgNum / 100;
+    }
+  } else {
+    // Lore / Character archetype fallbacks if combat rates don't specify explicit damage
+    const cName = attacker.name.toLowerCase();
+    if (cName.includes('yuji') || cName.includes('gojo')) {
+      multiplier = 3.0;
+    } else {
+      multiplier = 2.0;
+    }
+  }
+
+  const multiplierDisplay = `${multiplier.toFixed(2)}x (${Math.round(multiplier * 100)}%)`;
+  return {
+    canBlackFlash: true,
+    isGuaranteed,
+    rateDisplay,
+    multiplier,
+    multiplierDisplay,
+  };
+}
+
 // Extractor of innate buffs from passive descriptions
 interface ParsedPassiveBuff {
   id: string;
@@ -216,49 +308,36 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     return parsePassiveBuffs(list);
   }, [attacker]);
 
-  // Selected Skill Object & Description
-  const currentSkillData = useMemo(() => {
+  // Selected Raw Skill item from character
+  const selectedSkillRaw = useMemo(() => {
     if (!attacker) return null;
-    if (selectedSlot === 'na') {
-      return {
-        name: attacker.normal_attack?.name || 'Ataque Normal',
-        icon: attacker.normal_attack?.icon || attacker.normal_attack?.image_key,
-        desc: attacker.normal_attack?.description,
-        desc10: attacker.normal_attack?.description_10,
-        cost: '0',
-        combatRates: attacker.normal_attack?.variants?.[0]?.combat_rates || attacker.combat_rates,
-      };
-    } else if (selectedSlot === 'skill2') {
-      const sk = attacker.skills?.[0];
-      return {
-        name: sk?.name || 'Skill 2',
-        icon: sk?.icon || sk?.image_key,
-        desc: sk?.description,
-        desc10: sk?.description_10,
-        cost: sk?.cost || '0',
-        combatRates: sk?.variants?.[0]?.combat_rates || attacker.combat_rates,
-      };
-    } else if (selectedSlot === 'skill3') {
-      const sk = attacker.skills?.[1];
-      return {
-        name: sk?.name || 'Skill 3',
-        icon: sk?.icon || sk?.image_key,
-        desc: sk?.description,
-        desc10: sk?.description_10,
-        cost: sk?.cost || '0',
-        combatRates: sk?.variants?.[0]?.combat_rates || attacker.combat_rates,
-      };
-    } else {
-      return {
-        name: attacker.ultimate?.name || 'Técnica Suprema',
-        icon: attacker.ultimate?.icon || attacker.ultimate?.image_key,
-        desc: attacker.ultimate?.description,
-        desc10: attacker.ultimate?.description_10,
-        cost: `Gauge ${attacker.stats?.special_gauge || '1000'}`,
-        combatRates: attacker.ultimate?.variants?.[0]?.combat_rates || attacker.combat_rates,
-      };
-    }
+    if (selectedSlot === 'na') return attacker.normal_attack;
+    if (selectedSlot === 'skill2') return attacker.skills?.[0];
+    if (selectedSlot === 'skill3') return attacker.skills?.[1];
+    return attacker.ultimate;
   }, [attacker, selectedSlot]);
+
+  // Skill variant selection (e.g. Base vs Changed vs SP)
+  const [selectedVariantIdx, setSelectedVariantIdx] = useState<number>(0);
+  const activeVariantIdx = Math.min(selectedVariantIdx, Math.max(0, (selectedSkillRaw?.variants?.length || 1) - 1));
+  const activeVariant = selectedSkillRaw?.variants?.[activeVariantIdx];
+
+  // Selected Skill Object & Description with active variant
+  const currentSkillData = useMemo(() => {
+    if (!attacker || !selectedSkillRaw) return null;
+    const v = activeVariant;
+    const variants = selectedSkillRaw.variants || [];
+    return {
+      name: v?.name || selectedSkillRaw.name || (selectedSlot === 'na' ? 'Ataque Normal' : selectedSlot === 'ult' ? 'Técnica Suprema' : 'Skill'),
+      icon: v?.icon || v?.image_key || selectedSkillRaw.icon || selectedSkillRaw.image_key,
+      desc: v?.description || selectedSkillRaw.description,
+      desc10: v?.description_10 || selectedSkillRaw.description_10,
+      cost: String(v?.cost || ('cost' in selectedSkillRaw ? (selectedSkillRaw as { cost?: string }).cost || '0' : selectedSlot === 'ult' ? `Gauge ${attacker.stats?.special_gauge || '1000'}` : '0')),
+      combatRates: v?.combat_rates || attacker.combat_rates,
+      variants,
+      activeVariantLabel: v?.label || 'Base',
+    };
+  }, [attacker, selectedSkillRaw, activeVariant, selectedSlot]);
 
   // Skill scaling extraction
   const { taijutsuPct, jujutsuPct, isDirectDamage, maxStackPct, stackResource } = useMemo(() => {
@@ -266,12 +345,12 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     return extractSkillMultipliers(currentSkillData.desc, currentSkillData.desc10, skillLevel);
   }, [currentSkillData, skillLevel]);
 
-  // Detect guaranteed Black Flash on skill
-  const isGuaranteedBlackFlash = useMemo(() => {
-    const text = (currentSkillData?.desc10 || currentSkillData?.desc || '').toLowerCase();
-    const crBf = currentSkillData?.combatRates?.black_flash;
-    return text.includes('guaranteed black flash') || crBf === '100%';
-  }, [currentSkillData]);
+  // Comprehensive Black Flash data and eligibility
+  const blackFlashInfo = useMemo(() => {
+    return getBlackFlashInfo(attacker, currentSkillData);
+  }, [attacker, currentSkillData]);
+
+  const isGuaranteedBlackFlash = blackFlashInfo.isGuaranteed;
 
   // Dynamic Skill Multiplier with Stack Interpolation
   const effectiveSkillMultiplier = useMemo(() => {
@@ -380,6 +459,8 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     return getElementalFactor(attacker.element, targetElement);
   }, [attacker, targetElement]);
 
+  const attackerFocus = attacker?.focus?.toLowerCase() || '';
+
   // Final Damage Calculations
   const calculatedDamage = useMemo(() => {
     let activeTaiPct = taijutsuPct;
@@ -391,9 +472,9 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     }
 
     if (!isDirectDamage) {
-      if (attacker?.focus?.toLowerCase().includes('taijutsu')) {
+      if (attackerFocus.includes('taijutsu')) {
         activeTaiPct = customMultiplier;
-      } else if (attacker?.focus?.toLowerCase().includes('jujutsu')) {
+      } else if (attackerFocus.includes('jujutsu')) {
         activeJujuPct = customMultiplier;
       } else {
         activeTaiPct = customMultiplier / 2;
@@ -413,20 +494,15 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
 
     let normal = Math.round(rawDamage * dmgDealtMult * elemMult * defenseReduction * debuffMult);
     
-    // Custom Black Flash multiplier from combat rates if present (e.g. 300% = x3.0)
-    let bfMultiplier = 2.75;
-    if (currentSkillData?.combatRates?.black_flash_dmg) {
-      const parsedBf = parseFloat(currentSkillData.combatRates.black_flash_dmg.replace('%', ''));
-      if (!isNaN(parsedBf) && parsedBf > 100) {
-        bfMultiplier = parsedBf / 100;
-      }
-    }
+    // Official Black Flash calculation from kit rates
+    const canBlackFlash = blackFlashInfo.canBlackFlash;
+    const bfMultiplier = canBlackFlash ? blackFlashInfo.multiplier : 0;
 
     let crit = Math.round(normal * 1.50);
-    let blackFlash = Math.round(normal * bfMultiplier);
+    let blackFlash = canBlackFlash ? Math.round(normal * bfMultiplier) : 0;
 
     // If the skill has guaranteed Black Flash (e.g. Yuji Ult), normal hit IS a Black Flash!
-    if (isGuaranteedBlackFlash) {
+    if (blackFlashInfo.isGuaranteed && canBlackFlash) {
       normal = blackFlash;
       crit = blackFlash;
     }
@@ -446,6 +522,7 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
       totalTaiBuff: innateBuffs.tai + taijutsuBuff,
       totalJujuBuff: innateBuffs.juju + jujutsuBuff,
       bfMultiplier,
+      canBlackFlash,
     };
   }, [
     effectiveTaijutsu, 
@@ -456,7 +533,6 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     effectiveSkillMultiplier,
     isDirectDamage, 
     customMultiplier, 
-    attacker, 
     innateBuffs,
     damageDealtBuff, 
     taijutsuBuff,
@@ -465,8 +541,8 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     elementalBuff, 
     targetDefense, 
     enemyDebuff,
-    currentSkillData,
-    isGuaranteedBlackFlash
+    blackFlashInfo,
+    attackerFocus
   ]);
 
   // Filtered lists for modals
@@ -724,8 +800,33 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                   )}
                 </div>
 
+                {/* Variant Selector (if skill has multiple variants like Base vs SP / Changed) */}
+                {currentSkillData.variants.length > 1 && (
+                  <div className="flex items-center gap-2 pt-1 pb-1 border-b border-[#1f1636]">
+                    <span className="text-[11px] text-gray-400 font-semibold">{t.dps.variantSelector}</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {currentSkillData.variants.map((v, vIdx) => (
+                        <button
+                          key={v.id || vIdx}
+                          onClick={() => {
+                            playClick();
+                            setSelectedVariantIdx(vIdx);
+                          }}
+                          className={`px-2.5 py-0.5 rounded-lg text-[10px] font-bold border transition-all cursor-pointer ${
+                            activeVariantIdx === vIdx
+                              ? 'bg-purple-800 border-purple-400 text-white shadow-sm'
+                              : 'bg-[#150e29] border-purple-950 text-gray-400 hover:text-gray-200'
+                          }`}
+                        >
+                          {v.label || v.name || `Modo ${vIdx + 1}`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {isDirectDamage ? (
-                  <div className="flex flex-wrap items-center gap-3 text-xs font-mono pt-1">
+                  <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono pt-1">
                     {taijutsuPct > 0 && (
                       <span className="px-2 py-0.5 rounded bg-red-950/80 text-red-300 border border-red-800/40 font-bold">
                         Taijutsu: {effectiveSkillMultiplier}%
@@ -739,6 +840,16 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                     {maxStackPct > Math.max(taijutsuPct, jujutsuPct) && (
                       <span className="px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-600/50 font-bold">
                         Máx com Stacks: {maxStackPct}%
+                      </span>
+                    )}
+                    {blackFlashInfo.canBlackFlash ? (
+                      <span className="px-2 py-0.5 rounded bg-red-950/90 text-red-300 border border-red-600/60 font-bold flex items-center gap-1">
+                        <Flame className="w-3 h-3 text-red-400" />
+                        <span>Kokusen: {blackFlashInfo.rateDisplay} • {blackFlashInfo.multiplier.toFixed(2)}x</span>
+                      </span>
+                    ) : (
+                      <span className="px-2 py-0.5 rounded bg-purple-950/40 text-gray-400 border border-purple-900/30 text-[11px]">
+                        {t.dps.noBlackFlash}
                       </span>
                     )}
                   </div>
@@ -1143,23 +1254,56 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                 </div>
               </div>
 
-              {/* Black Flash Card (Interactive Click) */}
-              <div 
-                onClick={() => playBlackFlash()}
-                className="group bg-gradient-to-r from-red-950/90 via-black to-red-950/90 border-2 border-red-600/70 hover:border-red-500 rounded-2xl p-4 flex items-center justify-between shadow-2xl shadow-red-950/60 cursor-pointer transition-all hover:scale-[1.02]"
-                title="Clique para ouvir o impacto de Black Flash!"
-              >
-                <div>
-                  <span className="text-xs uppercase font-black tracking-wider text-red-400 flex items-center gap-1.5">
-                    <Flame className="w-4 h-4 text-red-500 group-hover:animate-bounce" />
-                    <span>{t.dps.blackFlashDamage}</span>
-                  </span>
-                  <span className="text-[10px] text-red-300/80">Kokusen • Multiplicador {calculatedDamage.bfMultiplier.toFixed(2)}x</span>
+              {/* Black Flash Card (Active / Ineligible Handling) */}
+              {calculatedDamage.canBlackFlash ? (
+                <div 
+                  onClick={() => playBlackFlash()}
+                  className="group bg-gradient-to-r from-red-950/90 via-black to-red-950/90 border-2 border-red-600/70 hover:border-red-500 rounded-2xl p-4 flex items-center justify-between shadow-2xl shadow-red-950/60 cursor-pointer transition-all hover:scale-[1.02]"
+                  title="Clique para ouvir o impacto de Black Flash!"
+                >
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs uppercase font-black tracking-wider text-red-400 flex items-center gap-1.5">
+                        <Flame className="w-4 h-4 text-red-500 group-hover:animate-bounce" />
+                        <span>{t.dps.blackFlashDamage}</span>
+                      </span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-red-600/30 text-red-300 border border-red-500/40">
+                        {blackFlashInfo.multiplier.toFixed(2)}x Dano
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-red-300/80 block">
+                      Chance: <strong className="text-red-200">{blackFlashInfo.rateDisplay}</strong>
+                    </span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-red-400 font-mono drop-shadow-[0_0_12px_rgba(239,68,68,0.8)]">
+                    {calculatedDamage.blackFlash.toLocaleString('pt-BR')}
+                  </div>
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-red-400 font-mono drop-shadow-[0_0_12px_rgba(239,68,68,0.8)]">
-                  {calculatedDamage.blackFlash.toLocaleString('pt-BR')}
+              ) : (
+                <div 
+                  onClick={() => playClick()}
+                  className="bg-[#120a1c]/80 border border-purple-950/60 rounded-2xl p-4 flex items-center justify-between opacity-60 select-none cursor-not-allowed"
+                  title={t.dps.noBlackFlashDesc}
+                >
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs uppercase font-extrabold tracking-wider text-gray-400 flex items-center gap-1.5">
+                        <Flame className="w-4 h-4 text-gray-500" />
+                        <span>{t.dps.blackFlashDamage}</span>
+                      </span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-purple-950/60 text-gray-400 border border-purple-900/40">
+                        {t.dps.noBlackFlash}
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-gray-400 block">
+                      {t.dps.noBlackFlashDesc}
+                    </span>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-gray-500 font-mono">
+                    —
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* 3-Turn Rotation Estimated DPS */}
@@ -1206,6 +1350,18 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
               <div className="flex justify-between text-gray-300 py-1 border-b border-[#1b1336]">
                 <span className="text-gray-400">Fator de Afinidade Elemental:</span>
                 <span className="text-emerald-400">x{(elementalMatch.factor * (1 + elementalBuff / 100)).toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between text-gray-300 py-1 border-b border-[#1b1336]">
+                <span className="text-gray-400">Kokusen (Black Flash):</span>
+                {calculatedDamage.canBlackFlash ? (
+                  <span className="text-red-400 font-bold">
+                    {blackFlashInfo.multiplier.toFixed(2)}x ({blackFlashInfo.rateDisplay})
+                  </span>
+                ) : (
+                  <span className="text-gray-500">
+                    {t.dps.noBlackFlash}
+                  </span>
+                )}
               </div>
               <div className="flex justify-between text-gray-300 py-1">
                 <span className="text-gray-400">Resistência do Inimigo:</span>

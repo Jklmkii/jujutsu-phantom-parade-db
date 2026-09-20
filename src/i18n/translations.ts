@@ -460,6 +460,11 @@ export const translations = {
       baseStacksButton: 'Sem Stacks',
       guaranteedBlackFlash: 'Kokusen Garantido na Técnica',
       turnCounter: 'Turno da Batalha',
+      noBlackFlash: 'Inaplicável (Sem Kokusen)',
+      noBlackFlashDesc: 'Esta unidade ou técnica não possui Kokusen (Black Flash) em seu kit.',
+      variantSelector: 'Variante da Técnica:',
+      blackFlashChance: 'Chance de Disparo:',
+      blackFlashMultiplier: 'Multiplicador Kokusen:',
     },
 
     // Update Banner
@@ -960,6 +965,11 @@ export const translations = {
       baseStacksButton: 'Base (No Stacks)',
       guaranteedBlackFlash: 'Guaranteed Black Flash',
       turnCounter: 'Battle Turn',
+      noBlackFlash: 'Inapplicable (No Black Flash)',
+      noBlackFlashDesc: 'This unit or technique does not possess Black Flash in its combat kit.',
+      variantSelector: 'Technique Variant:',
+      blackFlashChance: 'Trigger Chance:',
+      blackFlashMultiplier: 'Black Flash Multiplier:',
     },
 
     // Update Banner
