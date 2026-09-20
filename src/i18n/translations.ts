@@ -452,6 +452,14 @@ export const translations = {
       effectiveAttack: 'Poder de Ataque Efetivo:',
       elementalModifier: 'Modificador Elemental:',
       totalDamageOutput: 'Dano Final Estimado:',
+      innatePassivesTitle: 'Passivas Nativas & Condições do Feiticeiro',
+      enableAllPassives: 'Ativar Todas as Passivas',
+      disableAllPassives: 'Desativar Todas',
+      techniqueStacksTitle: 'Acúmulo de Stacks da Técnica',
+      maxStacksButton: 'Stack Máximo',
+      baseStacksButton: 'Sem Stacks',
+      guaranteedBlackFlash: 'Kokusen Garantido na Técnica',
+      turnCounter: 'Turno da Batalha',
     },
 
     // Update Banner
@@ -944,6 +952,14 @@ export const translations = {
       effectiveAttack: 'Effective Attack Power:',
       elementalModifier: 'Elemental Multiplier:',
       totalDamageOutput: 'Estimated Final Damage:',
+      innatePassivesTitle: 'Innate Sorcerer Passives & Conditions',
+      enableAllPassives: 'Enable All Passives',
+      disableAllPassives: 'Disable All',
+      techniqueStacksTitle: 'Technique Stacks & Resource Scaling',
+      maxStacksButton: 'Max Stacks',
+      baseStacksButton: 'Base (No Stacks)',
+      guaranteedBlackFlash: 'Guaranteed Black Flash',
+      turnCounter: 'Battle Turn',
     },
 
     // Update Banner
