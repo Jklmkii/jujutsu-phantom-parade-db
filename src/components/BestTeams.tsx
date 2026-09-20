@@ -33,6 +33,7 @@ import {
 import { getAssetUrl, getStaticThumbUrl, getAssetPath } from '../utils/assets';
 import { useTranslation } from '../i18n';
 import metaTeamsData from '../data/meta_teams.json';
+import { exportTeamAsImage } from '../utils/exportImage';
 
 interface BestTeamsProps {
   characters: Character[];
@@ -873,6 +874,18 @@ export const BestTeams: React.FC<BestTeamsProps> = ({
                     </div>
 
                     <div className="flex items-center gap-1.5 self-end sm:self-auto">
+                      <button
+                        onClick={() => {
+                          playSuccessFanfare();
+                          exportTeamAsImage(team, characters, memories, language);
+                        }}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 hover:text-white text-xs font-bold transition-all shadow-sm cursor-pointer"
+                        title={language === 'pt' ? 'Exportar formação em imagem PNG de alta resolução' : 'Export formation as high-resolution PNG image'}
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>{language === 'pt' ? 'Exportar PNG' : 'Export PNG'}</span>
+                      </button>
+
                       <button
                         onClick={() => handleOpenEditModal(team)}
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#1c1536] hover:bg-purple-900/60 border border-[#312354] hover:border-purple-500 text-gray-300 hover:text-white text-xs font-bold transition-all"

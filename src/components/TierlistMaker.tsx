@@ -18,12 +18,14 @@ import {
   Skull, 
   Sword, 
   ShieldCheck, 
-  Star 
+  Star,
+  Download
 } from 'lucide-react';
-import { playClick, playSelect, playTierDrop } from '../utils/sound';
+import { playClick, playSelect, playTierDrop, playSuccessFanfare } from '../utils/sound';
 import { getAssetPath, getStaticThumbUrl } from '../utils/assets';
 import { useTranslation } from '../i18n';
 import officialTierlistsData from '../data/tierlists.json';
+import { exportTierlistAsImage } from '../utils/exportImage';
 
 interface TierlistMakerProps {
   characters: Character[];
@@ -155,6 +157,33 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
   const draggedChar = draggedCharId ? characters.find((c) => c.id === draggedCharId) : null;
   const isDraggedRanked = draggedCharId ? Boolean(tierList[draggedCharId]) : false;
 
+  const handleExportOfficial = () => {
+    playSuccessFanfare();
+    const tiersData = currentOfficial.tiers.map((t) => {
+      const chars = t.slots
+        .map((s) => characters.find((c) => c.id === s.characterId))
+        .filter((c): c is Character => Boolean(c));
+      return {
+        rank: t.rank,
+        characters: chars,
+      };
+    });
+    exportTierlistAsImage(currentOfficial.title, tiersData, language);
+  };
+
+  const handleExportCustom = () => {
+    playSuccessFanfare();
+    const tiersData = TIERS.map((t) => ({
+      rank: t.label,
+      characters: getCharactersInTier(t.id),
+    }));
+    exportTierlistAsImage(
+      language === 'pt' ? 'Minha Tier List Personalizada' : 'My Custom Tier List',
+      tiersData,
+      language
+    );
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
       {/* Header Banner */}
@@ -244,14 +273,25 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
               </h2>
               <p className="text-sm text-gray-400 mt-1">{currentOfficial.description}</p>
             </div>
-            <button
-              onClick={() => cloneOfficialToCustom(currentOfficial)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-950/80 hover:bg-purple-900 text-purple-200 border border-purple-700/50 hover:border-purple-500 text-xs font-bold transition-all shrink-0"
-              title={language === 'pt' ? 'Copiar esta lista para o Criador Customizado para editar à sua vontade' : 'Copy this tier list to Custom Builder to edit freely'}
-            >
-              <Copy className="w-4 h-4" />
-              {language === 'pt' ? 'Editar no Criador Customizado' : 'Edit in Custom Builder'}
-            </button>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={handleExportOfficial}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all shadow-sm cursor-pointer"
+                title={language === 'pt' ? 'Exportar esta lista oficial como imagem PNG' : 'Export this official list as PNG image'}
+              >
+                <Download className="w-4 h-4" />
+                <span>{language === 'pt' ? 'Exportar PNG' : 'Export PNG'}</span>
+              </button>
+
+              <button
+                onClick={() => cloneOfficialToCustom(currentOfficial)}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-950/80 hover:bg-purple-900 text-purple-200 border border-purple-700/50 hover:border-purple-500 text-xs font-bold transition-all"
+                title={language === 'pt' ? 'Copiar esta lista para o Criador Customizado para editar à sua vontade' : 'Copy this tier list to Custom Builder to edit freely'}
+              >
+                <Copy className="w-4 h-4" />
+                <span>{language === 'pt' ? 'Editar no Criador Customizado' : 'Edit in Custom Builder'}</span>
+              </button>
+            </div>
           </div>
 
           {/* Official Tiers Display */}
@@ -357,13 +397,24 @@ export const TierlistMaker: React.FC<TierlistMakerProps> = ({ characters, onSele
                 ? 'Arraste os feiticeiros entre os tiers ou solte na lixeira para desclassificar.'
                 : 'Drag sorcerers between tiers or drop into the trash to unrank.'}
             </div>
-            <button
-              onClick={resetTierList}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a1333] hover:bg-red-950 text-gray-300 hover:text-red-300 border border-[#2d2250] hover:border-red-500/40 text-xs font-bold transition-all"
-            >
-              <RotateCcw className="w-4 h-4" />
-              <span>{t.tierlist.resetDefault}</span>
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleExportCustom}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all shadow-sm cursor-pointer"
+                title={language === 'pt' ? 'Exportar sua Tierlist personalizada como imagem PNG' : 'Export your custom Tier List as PNG image'}
+              >
+                <Download className="w-4 h-4" />
+                <span>{language === 'pt' ? 'Exportar PNG' : 'Export PNG'}</span>
+              </button>
+
+              <button
+                onClick={resetTierList}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1a1333] hover:bg-red-950 text-gray-300 hover:text-red-300 border border-[#2d2250] hover:border-red-500/40 text-xs font-bold transition-all cursor-pointer"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>{t.tierlist.resetDefault}</span>
+              </button>
+            </div>
           </div>
 
           {/* Drop Zone to remove / unrank character (Shown while dragging an already ranked unit) */}
