@@ -106,6 +106,16 @@ export const translations = {
       badgeTransform: 'Transformação',
       inPool: 'No Pool Padrão',
       limited: 'Limitado',
+      statusEffects: {
+        title: 'Efeitos de Combate & CC',
+        all: 'Todos Efeitos',
+        kokusen: 'Kokusen (Black Flash)',
+        stun: 'Atordoamento / Quebra',
+        heal: 'Cura / Regeneração',
+        defDown: 'Quebra de Defesa',
+        domain: 'Expansão de Domínio',
+        taunt: 'Provocar / Evasão',
+      },
     },
 
     // Character Detail
@@ -619,6 +629,16 @@ export const translations = {
       badgeTransform: 'Transform',
       inPool: 'Standard Pool',
       limited: 'Limited',
+      statusEffects: {
+        title: 'Combat Effects & CC',
+        all: 'All Effects',
+        kokusen: 'Black Flash (Kokusen)',
+        stun: 'Stun / Disruption',
+        heal: 'Heal / Recovery',
+        defDown: 'Def Down / Debuff',
+        domain: 'Domain Expansion',
+        taunt: 'Taunt / Evasion',
+      },
     },
 
     // Character Detail

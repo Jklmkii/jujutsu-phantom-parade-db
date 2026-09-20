@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import type { Character } from '../types';
 import { ElementBadge, RarityBadge } from './Badges';
-import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw, Check } from 'lucide-react';
+import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw, Check, Flame, Zap, Heart, ShieldAlert, Sparkles, Eye } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
 import { useTranslation } from '../i18n';
 import { playClick, playCollectionToggle, playCursedEnergyCharge, playClearFilters } from '../utils/sound';
 import { getAssetUrl } from '../utils/assets';
+import { matchesCombatEffect, type CombatEffectKey } from '../utils/combatEffects';
 
 interface CharactersListProps {
   characters: Character[];
@@ -57,6 +58,9 @@ export const CharactersList: React.FC<CharactersListProps> = ({
   const [selectedElement, setSelectedElement] = useState<string>('ALL');
   const [selectedRarity, setSelectedRarity] = useState<string>('ALL');
   const [selectedFocus, setSelectedFocus] = useState<string>('ALL');
+  
+  // Tactical Status Effects & CC Filter
+  const [selectedCombatEffect, setSelectedCombatEffect] = useState<CombatEffectKey>('ALL');
   
   // Special: SP & Limited
   const [filterSP, setFilterSP] = useState<boolean>(false);
@@ -144,7 +148,14 @@ export const CharactersList: React.FC<CharactersListProps> = ({
         return false;
       }
 
-      // 10. Collection filter (Minha Coleção)
+      // 10. Combat Status Effect filter (CC & Buffs)
+      if (selectedCombatEffect !== 'ALL') {
+        if (!matchesCombatEffect(char, selectedCombatEffect)) {
+          return false;
+        }
+      }
+
+      // 11. Collection filter (Minha Coleção)
       if (collectionFilter === 'OWNED' && !isCharacterOwned(char.id)) {
         return false;
       }
@@ -154,7 +165,18 @@ export const CharactersList: React.FC<CharactersListProps> = ({
 
       return true;
     });
-  }, [characters, searchTerm, selectedElement, selectedRarity, selectedFocus, filterSP, filterLimited, poolFilter, selectedTags, onlyFavorites, isFavoriteChar, collectionFilter, isCharacterOwned]);
+  }, [characters, searchTerm, selectedElement, selectedRarity, selectedFocus, selectedCombatEffect, filterSP, filterLimited, poolFilter, selectedTags, onlyFavorites, isFavoriteChar, collectionFilter, isCharacterOwned]);
+
+  const effectCounts = useMemo(() => {
+    return {
+      kokusen: characters.filter(c => matchesCombatEffect(c, 'kokusen')).length,
+      stun: characters.filter(c => matchesCombatEffect(c, 'stun')).length,
+      heal: characters.filter(c => matchesCombatEffect(c, 'heal')).length,
+      defDown: characters.filter(c => matchesCombatEffect(c, 'defDown')).length,
+      domain: characters.filter(c => matchesCombatEffect(c, 'domain')).length,
+      taunt: characters.filter(c => matchesCombatEffect(c, 'taunt')).length,
+    };
+  }, [characters]);
 
   const resetFilters = () => {
     playClearFilters();
@@ -162,6 +184,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
     setSelectedElement('ALL');
     setSelectedRarity('ALL');
     setSelectedFocus('ALL');
+    setSelectedCombatEffect('ALL');
     setFilterSP(false);
     setFilterLimited(false);
     setPoolFilter('ALL');
@@ -174,6 +197,7 @@ export const CharactersList: React.FC<CharactersListProps> = ({
     selectedElement !== 'ALL' || 
     selectedRarity !== 'ALL' || 
     selectedFocus !== 'ALL' || 
+    selectedCombatEffect !== 'ALL' ||
     filterSP || 
     filterLimited || 
     poolFilter !== 'ALL' || 
@@ -571,7 +595,162 @@ export const CharactersList: React.FC<CharactersListProps> = ({
         </div>
 
         {/* Right Character Grid */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 space-y-4">
+          {/* Quick Combat Effects & CC Filter Strip */}
+          <div className="bg-[#0e0a1d] border border-[#261942] rounded-2xl p-3 sm:p-3.5 shadow-xl">
+            <div className="flex items-center justify-between gap-2 mb-2 px-1">
+              <span className="text-xs font-black tracking-wider text-purple-300 uppercase flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                {t.characters.statusEffects?.title || (language === 'pt' ? 'Efeitos de Combate & CC' : 'Combat Effects & CC')}
+              </span>
+              {selectedCombatEffect !== 'ALL' && (
+                <button
+                  onClick={() => {
+                    playClick();
+                    setSelectedCombatEffect('ALL');
+                  }}
+                  className="text-[11px] text-purple-400 hover:text-purple-300 underline font-medium cursor-pointer"
+                >
+                  {language === 'pt' ? 'Mostrar Todos' : 'Show All'}
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-purple-900 scrollbar-track-transparent">
+              {/* All */}
+              <button
+                onClick={() => {
+                  playClick();
+                  setSelectedCombatEffect('ALL');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'ALL'
+                    ? 'bg-purple-600/40 border-purple-400 text-white ring-2 ring-purple-500/50 shadow-md shadow-purple-950/40'
+                    : 'bg-[#140f29] border-[#251b40] text-gray-400 hover:text-white hover:border-purple-500/40'
+                }`}
+              >
+                <span>{t.characters.statusEffects?.all || (language === 'pt' ? 'Todos' : 'All')}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-black/40 text-gray-300">
+                  {characters.length}
+                </span>
+              </button>
+
+              {/* Kokusen / Black Flash */}
+              <button
+                onClick={() => {
+                  playCursedEnergyCharge();
+                  setSelectedCombatEffect(selectedCombatEffect === 'kokusen' ? 'ALL' : 'kokusen');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'kokusen'
+                    ? 'bg-red-950/90 border-red-500 text-red-100 ring-2 ring-red-500/60 shadow-lg shadow-red-950/60'
+                    : 'bg-[#140f29] border-red-900/40 text-red-400/80 hover:text-red-300 hover:border-red-500/50'
+                }`}
+              >
+                <Flame className="w-3.5 h-3.5 text-red-500 fill-red-500/30" />
+                <span>{t.characters.statusEffects?.kokusen || 'Kokusen'}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-red-950/60 text-red-300 border border-red-800/50">
+                  {effectCounts.kokusen}
+                </span>
+              </button>
+
+              {/* Stun / Disruption */}
+              <button
+                onClick={() => {
+                  playClick();
+                  setSelectedCombatEffect(selectedCombatEffect === 'stun' ? 'ALL' : 'stun');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'stun'
+                    ? 'bg-amber-950/90 border-amber-400 text-amber-100 ring-2 ring-amber-500/60 shadow-lg shadow-amber-950/60'
+                    : 'bg-[#140f29] border-amber-900/40 text-amber-400/80 hover:text-amber-300 hover:border-amber-500/50'
+                }`}
+              >
+                <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400/30" />
+                <span>{t.characters.statusEffects?.stun || 'Stun'}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-amber-950/60 text-amber-300 border border-amber-800/50">
+                  {effectCounts.stun}
+                </span>
+              </button>
+
+              {/* Heal / Regen */}
+              <button
+                onClick={() => {
+                  playClick();
+                  setSelectedCombatEffect(selectedCombatEffect === 'heal' ? 'ALL' : 'heal');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'heal'
+                    ? 'bg-emerald-950/90 border-emerald-400 text-emerald-100 ring-2 ring-emerald-500/60 shadow-lg shadow-emerald-950/60'
+                    : 'bg-[#140f29] border-emerald-900/40 text-emerald-400/80 hover:text-emerald-300 hover:border-emerald-500/50'
+                }`}
+              >
+                <Heart className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/30" />
+                <span>{t.characters.statusEffects?.heal || 'Cura'}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-emerald-950/60 text-emerald-300 border border-emerald-800/50">
+                  {effectCounts.heal}
+                </span>
+              </button>
+
+              {/* Def Down / Vulnerability */}
+              <button
+                onClick={() => {
+                  playClick();
+                  setSelectedCombatEffect(selectedCombatEffect === 'defDown' ? 'ALL' : 'defDown');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'defDown'
+                    ? 'bg-orange-950/90 border-orange-400 text-orange-100 ring-2 ring-orange-500/60 shadow-lg shadow-orange-950/60'
+                    : 'bg-[#140f29] border-orange-900/40 text-orange-400/80 hover:text-orange-300 hover:border-orange-500/50'
+                }`}
+              >
+                <ShieldAlert className="w-3.5 h-3.5 text-orange-400" />
+                <span>{t.characters.statusEffects?.defDown || 'Quebra Defesa'}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-orange-950/60 text-orange-300 border border-orange-800/50">
+                  {effectCounts.defDown}
+                </span>
+              </button>
+
+              {/* Domain Expansion */}
+              <button
+                onClick={() => {
+                  playCursedEnergyCharge();
+                  setSelectedCombatEffect(selectedCombatEffect === 'domain' ? 'ALL' : 'domain');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'domain'
+                    ? 'bg-fuchsia-950/90 border-fuchsia-400 text-fuchsia-100 ring-2 ring-fuchsia-500/60 shadow-lg shadow-fuchsia-950/60'
+                    : 'bg-[#140f29] border-fuchsia-900/40 text-fuchsia-400/80 hover:text-fuchsia-300 hover:border-fuchsia-500/50'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-fuchsia-400" />
+                <span>{t.characters.statusEffects?.domain || 'Domínio'}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-fuchsia-950/60 text-fuchsia-300 border border-fuchsia-800/50">
+                  {effectCounts.domain}
+                </span>
+              </button>
+
+              {/* Taunt / Evasion / Counter */}
+              <button
+                onClick={() => {
+                  playClick();
+                  setSelectedCombatEffect(selectedCombatEffect === 'taunt' ? 'ALL' : 'taunt');
+                }}
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  selectedCombatEffect === 'taunt'
+                    ? 'bg-cyan-950/90 border-cyan-400 text-cyan-100 ring-2 ring-cyan-500/60 shadow-lg shadow-cyan-950/60'
+                    : 'bg-[#140f29] border-cyan-900/40 text-cyan-400/80 hover:text-cyan-300 hover:border-cyan-500/50'
+                }`}
+              >
+                <Eye className="w-3.5 h-3.5 text-cyan-400" />
+                <span>{t.characters.statusEffects?.taunt || 'Provocação'}</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-cyan-950/60 text-cyan-300 border border-cyan-800/50">
+                  {effectCounts.taunt}
+                </span>
+              </button>
+            </div>
+          </div>
+
           {filteredCharacters.length === 0 ? (
             <div className="bg-[#120e24] border border-[#251b40] rounded-2xl p-12 text-center space-y-3">
               <p className="text-gray-400 text-base">
