@@ -15,7 +15,8 @@ import {
   Clock,
   Swords,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Users
 } from 'lucide-react';
 import { useTranslation, translateRole } from '../i18n';
 import { 
@@ -27,6 +28,7 @@ import {
 } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
 import { getBestInSlotMemory } from '../utils/buildOptimizer';
+import { TeamDpsSimulator } from './TeamDpsSimulator';
 
 interface DpsCalculatorProps {
   characters: Character[];
@@ -331,7 +333,8 @@ function extractSelfBuffSkills(attacker: Character | null, isSp: boolean): SelfB
 
 export const DpsCalculator: React.FC<DpsCalculatorProps> = ({ 
   characters, 
-  memories 
+  memories,
+  onSelectCharacter
 }) => {
   const { t, language } = useTranslation();
 
@@ -343,6 +346,9 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
       characters[0]
     );
   }, [characters]);
+
+  // Mode Switcher: Solo vs Team
+  const [calcMode, setCalcMode] = useState<'solo' | 'team'>('solo');
 
   const [attackerId, setAttackerId] = useState<string>(defaultChar?.id || '');
   const attacker = useMemo(() => characters.find(c => c.id === attackerId) || defaultChar, [characters, attackerId, defaultChar]);
@@ -707,10 +713,49 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
         <p className="text-sm text-gray-400 mt-1">
           {t.dps.subtitle}
         </p>
+
+        {/* Mode Switcher: Solo vs Team */}
+        <div className="flex items-center gap-2 mt-4">
+          <button
+            onClick={() => {
+              playClick();
+              setCalcMode('solo');
+            }}
+            className={`px-4 py-2 rounded-xl text-xs font-black border transition-all cursor-pointer flex items-center gap-2 ${
+              calcMode === 'solo'
+                ? 'bg-purple-600 border-purple-400 text-white ring-2 ring-purple-500/50 shadow-md'
+                : 'bg-[#140e28] border-[#291e47] text-gray-400 hover:text-white'
+            }`}
+          >
+            <span>{language === 'pt' ? 'Feiticeiro Solo (Análise Profunda)' : 'Solo Sorcerer (In-Depth)'}</span>
+          </button>
+
+          <button
+            onClick={() => {
+              playClick();
+              setCalcMode('team');
+            }}
+            className={`px-4 py-2 rounded-xl text-xs font-black border transition-all cursor-pointer flex items-center gap-2 ${
+              calcMode === 'team'
+                ? 'bg-gradient-to-r from-purple-600 to-amber-600 border-amber-400 text-white ring-2 ring-amber-500/50 shadow-md'
+                : 'bg-[#140e28] border-[#291e47] text-gray-400 hover:text-white'
+            }`}
+          >
+            <Users className="w-3.5 h-3.5" />
+            <span>{language === 'pt' ? 'Rotação de Time (4 Feiticeiros + Sinergia)' : 'Team Rotation (4 Sorcerers)'}</span>
+          </button>
+        </div>
       </div>
 
-      {/* Main Grid: Left Config Panel (2/3), Right Output Panel (1/3) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      {calcMode === 'team' ? (
+        <TeamDpsSimulator
+          characters={characters}
+          memories={memories}
+          onSelectCharacter={onSelectCharacter}
+        />
+      ) : (
+        /* Main Grid: Left Config Panel (2/3), Right Output Panel (1/3) */
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         {/* Left Column: Attacker, Skills, Innate Passives & Stacks, Memory, Buffs, Target */}
         <div className="lg:col-span-7 space-y-6">
@@ -1679,6 +1724,7 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
           </div>
         </div>
       </div>
+      )}
 
       {/* Attacker Picker Modal */}
       {isCharModalOpen && (
