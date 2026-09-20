@@ -36,3 +36,10 @@ export const getStaticThumbUrl = (imageNameOrId?: string, fallbackImage?: string
   const baseName = cleanName.replace(/\.[^/.]+$/, '');
   return `./assets/static_thumbs/${baseName}.jpg`;
 };
+
+export const getAudioUrl = (audioFileName?: string): string => {
+  if (!audioFileName) return '';
+  const clean = audioFileName.replace(/^\/+/, '').replace(/^assets\//, '').replace(/^audio\//, '');
+  return `./assets/audio/${clean}`;
+};
+

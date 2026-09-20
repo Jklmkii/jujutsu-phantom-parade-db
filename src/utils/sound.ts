@@ -5,8 +5,40 @@
  */
 
 import { useJjkStore } from '../store/useJjkStore';
+import { getAudioUrl } from './assets';
 
 let audioCtx: AudioContext | null = null;
+
+const audioBufferCache = new Map<string, AudioBuffer>();
+
+/** Plays an offline audio clip from public/assets/audio/ routed through the master gain node */
+export async function playAudioClip(fileName: string, volume = 1.0): Promise<void> {
+  if (!isAudioAllowed()) return;
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const url = getAudioUrl(fileName);
+    let buffer = audioBufferCache.get(url);
+    if (!buffer) {
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const arrayBuffer = await res.arrayBuffer();
+      buffer = await ctx.decodeAudioData(arrayBuffer);
+      audioBufferCache.set(url, buffer);
+    }
+
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(Math.max(0, Math.min(1.5, volume)), ctx.currentTime);
+    source.connect(gain);
+    gain.connect(getMasterDestination(ctx));
+    source.start(0);
+  } catch (err) {
+    console.warn('Audio clip playback failed:', err);
+  }
+}
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === 'undefined') return null;
@@ -311,9 +343,26 @@ export function playCursedEnergyCharge(): void {
   }
 }
 
-/** Domain Expansion / Barrier Resonance (Atmospheric ethereal chord + sub-bass) */
-export function playDomainExpansion(): void {
+/** Domain Expansion ethereal chord or anime voice */
+export function playDomainExpansion(type?: 'gojo' | 'sukuna' | 'mahito' | 'synth'): void {
   if (!isAudioAllowed()) return;
+
+  if (type === 'gojo') {
+    playDomainInfiniteVoid();
+    return;
+  }
+  if (type === 'sukuna') {
+    playDomainMalevolentShrine();
+    return;
+  }
+  if (type === 'mahito') {
+    playDomainSelfEmbodiment();
+    return;
+  }
+
+  // Trigger anime domain audio + synthesized ethereal chord layer
+  playDomainInfiniteVoid();
+
   const ctx = getAudioContext();
   if (!ctx) return;
 
@@ -360,9 +409,82 @@ export function playDomainExpansion(): void {
   }
 }
 
-/** Black Flash / Kokusen distortion impact */
-export function playBlackFlash(): void {
+/** Official Anime Black Flash / Kokusen Impact sound */
+export function playAnimeKokusen(): void {
+  playAudioClip('kokusen_impact.mp3', 1.0);
+}
+
+/** Official Yuji Itadori "KOKUSEN!!" voice call */
+export function playKokusenVoice(): void {
+  playAudioClip('kokusen_yuji_voice.mp3', 1.1);
+}
+
+/** Official Black Flash Electric Sparks */
+export function playKokusenSparks(): void {
+  playAudioClip('kokusen_sparks.mp3', 0.9);
+}
+
+/** Official Black Flash Explosive Blast */
+export function playKokusenBlast(): void {
+  playAudioClip('kokusen_blast.mp3', 1.0);
+}
+
+/** Official Black Flash Multi-Hit Chain */
+export function playKokusenChain(): void {
+  playAudioClip('kokusen_chain.mp3', 1.0);
+}
+
+/** Satoru Gojo: Domain Expansion — Infinite Void (Muryōkūsho) */
+export function playDomainInfiniteVoid(): void {
+  playAudioClip('domain_infinite_void.mp3', 1.1);
+}
+
+/** Ryomen Sukuna: Domain Expansion — Malevolent Shrine (Fukuma Mizushi) */
+export function playDomainMalevolentShrine(): void {
+  playAudioClip('domain_malevolent_shrine.mp3', 1.1);
+}
+
+/** Mahito: Domain Expansion — Self-Embodiment of Perfection (Jihei Endon-ka) */
+export function playDomainSelfEmbodiment(): void {
+  playAudioClip('domain_self_embodiment.mp3', 1.1);
+}
+
+/** Ryomen Sukuna: World Cutting Slash */
+export function playWorldCuttingSlash(): void {
+  playAudioClip('world_cutting_slash.mp3', 1.0);
+}
+
+/** Character Quotes */
+export function playCharacterQuote(character: 'yuji' | 'gojo' | 'sukuna' | 'toji'): void {
+  const map: Record<string, string> = {
+    yuji: 'quote_yuji.mp3',
+    gojo: 'quote_gojo.mp3',
+    sukuna: 'quote_sukuna.mp3',
+    toji: 'quote_toji.mp3',
+  };
+  const file = map[character];
+  if (file) {
+    playAudioClip(file, 1.0);
+  }
+}
+
+/** Black Flash / Kokusen distortion impact with anime audio */
+export function playBlackFlash(mode: 'hybrid' | 'anime' | 'voice' | 'synth' = 'hybrid'): void {
   if (!isAudioAllowed()) return;
+
+  if (mode === 'voice') {
+    playKokusenVoice();
+    return;
+  }
+
+  if (mode === 'anime') {
+    playAnimeKokusen();
+    return;
+  }
+
+  // Hybrid: plays real anime Kokusen impact + subtle synth distortion layer
+  playAnimeKokusen();
+
   const ctx = getAudioContext();
   if (!ctx) return;
 
@@ -376,7 +498,7 @@ export function playBlackFlash(): void {
     bassOsc.frequency.setValueAtTime(240, now);
     bassOsc.frequency.exponentialRampToValueAtTime(40, now + 0.18);
 
-    bassGain.gain.setValueAtTime(0.12, now);
+    bassGain.gain.setValueAtTime(0.08, now);
     bassGain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
 
     bassOsc.connect(bassGain);
@@ -391,7 +513,7 @@ export function playBlackFlash(): void {
     sparkOsc.frequency.setValueAtTime(1400, now);
     sparkOsc.frequency.exponentialRampToValueAtTime(320, now + 0.08);
 
-    sparkGain.gain.setValueAtTime(0.09, now);
+    sparkGain.gain.setValueAtTime(0.06, now);
     sparkGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
     sparkOsc.connect(sparkGain);

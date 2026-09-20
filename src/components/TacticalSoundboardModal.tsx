@@ -20,7 +20,17 @@ import {
   playCubeSummonChime, 
   playTeamSynergyPulse, 
   playSuccessFanfare, 
-  playElementalTone 
+  playElementalTone,
+  playAnimeKokusen,
+  playKokusenVoice,
+  playKokusenSparks,
+  playKokusenBlast,
+  playKokusenChain,
+  playDomainInfiniteVoid,
+  playDomainMalevolentShrine,
+  playDomainSelfEmbodiment,
+  playWorldCuttingSlash,
+  playCharacterQuote
 } from '../utils/sound';
 import { 
   Volume2, 
@@ -35,7 +45,9 @@ import {
   Radio, 
   Music, 
   Activity,
-  Layers
+  Layers,
+  Mic,
+  AudioLines
 } from 'lucide-react';
 
 interface TacticalSoundboardModalProps {
@@ -47,7 +59,7 @@ interface SoundPadDef {
   id: string;
   name: string;
   nameEn: string;
-  category: 'combat' | 'elemental' | 'summon' | 'tactical';
+  category: 'combat' | 'elemental' | 'summon' | 'tactical' | 'anime';
   color: string;
   borderColor: string;
   icon: React.ReactNode;
@@ -60,7 +72,7 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
 }) => {
   const { language } = useTranslation();
   const { soundEnabled, toggleSound, soundVolume, setSoundVolume } = useJjkStore();
-  const [activeCategory, setActiveCategory] = useState<'all' | 'combat' | 'elemental' | 'summon' | 'tactical'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'combat' | 'elemental' | 'summon' | 'tactical' | 'anime'>('all');
   const [lastPlayedId, setLastPlayedId] = useState<string | null>(null);
 
   if (!isOpen) return null;
@@ -301,6 +313,138 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
       icon: <Activity className="w-5 h-5 text-rose-400" />,
       trigger: () => playClearFilters(),
     },
+
+    // 5. Anime — Vozes & SFX Oficiais do Anime
+    {
+      id: 'anime-kokusen-impact',
+      name: 'Kokusen — Impacto (Black Flash)',
+      nameEn: 'Kokusen — Impact (Black Flash)',
+      category: 'anime',
+      color: 'from-red-950/90 to-black',
+      borderColor: 'border-red-500 hover:border-red-400',
+      icon: <AudioLines className="w-5 h-5 text-red-500" />,
+      trigger: () => playAnimeKokusen(),
+    },
+    {
+      id: 'anime-kokusen-voice',
+      name: '虎杖 Yuji — "KOKUSEN!!" (Voz)',
+      nameEn: '虎杖 Yuji — "KOKUSEN!!" (Voice)',
+      category: 'anime',
+      color: 'from-orange-950/90 to-black',
+      borderColor: 'border-orange-500 hover:border-orange-400',
+      icon: <Mic className="w-5 h-5 text-orange-400" />,
+      trigger: () => playKokusenVoice(),
+    },
+    {
+      id: 'anime-kokusen-sparks',
+      name: 'Kokusen — Faíscas Elétricas',
+      nameEn: 'Kokusen — Electric Sparks',
+      category: 'anime',
+      color: 'from-yellow-950/90 to-black',
+      borderColor: 'border-yellow-500 hover:border-yellow-400',
+      icon: <Zap className="w-5 h-5 text-yellow-400" />,
+      trigger: () => playKokusenSparks(),
+    },
+    {
+      id: 'anime-kokusen-blast',
+      name: 'Kokusen — Explosão',
+      nameEn: 'Kokusen — Blast',
+      category: 'anime',
+      color: 'from-amber-950/90 to-black',
+      borderColor: 'border-amber-500 hover:border-amber-400',
+      icon: <Flame className="w-5 h-5 text-amber-500 fill-amber-500/30" />,
+      trigger: () => playKokusenBlast(),
+    },
+    {
+      id: 'anime-kokusen-chain',
+      name: 'Kokusen — Cadeia de Golpes',
+      nameEn: 'Kokusen — Multi-Hit Chain',
+      category: 'anime',
+      color: 'from-rose-950/90 to-black',
+      borderColor: 'border-rose-500 hover:border-rose-400',
+      icon: <Swords className="w-5 h-5 text-rose-400" />,
+      trigger: () => playKokusenChain(),
+    },
+    {
+      id: 'anime-domain-gojo',
+      name: '五条 Gojo — 無量空処 (Muryōkūsho)',
+      nameEn: '五条 Gojo — Infinite Void',
+      category: 'anime',
+      color: 'from-blue-950/90 to-black',
+      borderColor: 'border-blue-500 hover:border-blue-400',
+      icon: <Mic className="w-5 h-5 text-blue-400" />,
+      trigger: () => playDomainInfiniteVoid(),
+    },
+    {
+      id: 'anime-domain-sukuna',
+      name: '宿儺 Sukuna — 伏魔御厨子 (Fukuma Mizushi)',
+      nameEn: '宿儺 Sukuna — Malevolent Shrine',
+      category: 'anime',
+      color: 'from-purple-950/90 to-black',
+      borderColor: 'border-purple-500 hover:border-purple-400',
+      icon: <Mic className="w-5 h-5 text-purple-400" />,
+      trigger: () => playDomainMalevolentShrine(),
+    },
+    {
+      id: 'anime-domain-mahito',
+      name: '真人 Mahito — 自閉円頓裹 (Jihei Endon-ka)',
+      nameEn: '真人 Mahito — Self-Embodiment of Perfection',
+      category: 'anime',
+      color: 'from-teal-950/90 to-black',
+      borderColor: 'border-teal-500 hover:border-teal-400',
+      icon: <Mic className="w-5 h-5 text-teal-400" />,
+      trigger: () => playDomainSelfEmbodiment(),
+    },
+    {
+      id: 'anime-world-cutting-slash',
+      name: '宿儺 Sukuna — 解 (Fuga: Corte Mundial)',
+      nameEn: '宿儺 Sukuna — World Cutting Slash',
+      category: 'anime',
+      color: 'from-violet-950/90 to-black',
+      borderColor: 'border-violet-500 hover:border-violet-400',
+      icon: <Swords className="w-5 h-5 text-violet-400" />,
+      trigger: () => playWorldCuttingSlash(),
+    },
+    {
+      id: 'anime-quote-yuji',
+      name: '虎杖悠仁 — Frase Icônica',
+      nameEn: '虎杖悠仁 Yuji — Iconic Quote',
+      category: 'anime',
+      color: 'from-orange-950/90 to-black',
+      borderColor: 'border-orange-400 hover:border-orange-300',
+      icon: <Mic className="w-5 h-5 text-orange-300" />,
+      trigger: () => playCharacterQuote('yuji'),
+    },
+    {
+      id: 'anime-quote-gojo',
+      name: '五条悟 — Frase Icônica',
+      nameEn: '五条悟 Gojo — Iconic Quote',
+      category: 'anime',
+      color: 'from-blue-950/90 to-black',
+      borderColor: 'border-blue-400 hover:border-blue-300',
+      icon: <Mic className="w-5 h-5 text-blue-300" />,
+      trigger: () => playCharacterQuote('gojo'),
+    },
+    {
+      id: 'anime-quote-sukuna',
+      name: '両面宿儺 — Frase Icônica',
+      nameEn: '両面宿儺 Sukuna — Iconic Quote',
+      category: 'anime',
+      color: 'from-purple-950/90 to-black',
+      borderColor: 'border-purple-400 hover:border-purple-300',
+      icon: <Mic className="w-5 h-5 text-purple-300" />,
+      trigger: () => playCharacterQuote('sukuna'),
+    },
+    {
+      id: 'anime-quote-toji',
+      name: '禪院甚爾 Toji — Frase Icônica',
+      nameEn: '禪院甚爾 Toji — Iconic Quote',
+      category: 'anime',
+      color: 'from-slate-900 to-black',
+      borderColor: 'border-slate-400 hover:border-slate-300',
+      icon: <Mic className="w-5 h-5 text-slate-300" />,
+      trigger: () => playCharacterQuote('toji'),
+    },
   ];
 
   const filteredPads = activeCategory === 'all'
@@ -318,12 +462,12 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-white font-serif tracking-wide">
-                {language === 'pt' ? 'SOUNDBOARD TÁTICO PROCEDURAL' : 'PROCEDURAL TACTICAL SOUNDBOARD'}
+                {language === 'pt' ? 'SOUNDBOARD TÁTICO' : 'TACTICAL SOUNDBOARD'}
               </h2>
               <p className="text-xs text-gray-400">
                 {language === 'pt'
-                  ? 'Sintetizador Web Audio API em tempo real — zero arquivos externos, latência zero.'
-                  : 'Real-time Web Audio API procedural synthesizer — zero external audio files, zero latency.'}
+                  ? 'Sintetizador Web Audio API + 14 clipes de áudio reais do anime — 100% offline, latência zero.'
+                  : 'Web Audio API synthesizer + 14 real anime audio clips — 100% offline, zero latency.'}
               </p>
             </div>
           </div>
@@ -394,6 +538,7 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
             { id: 'elemental', labelPt: 'Ressonância Elemental', labelEn: 'Elemental Resonance' },
             { id: 'summon', labelPt: 'Invocação & Gacha', labelEn: 'Summon & Gacha' },
             { id: 'tactical', labelPt: 'Interface & Tático', labelEn: 'Tactical UI' },
+            { id: 'anime', labelPt: '🎙️ Anime Voices & SFX', labelEn: '🎙️ Anime Voices & SFX' },
           ].map(cat => (
             <button
               key={cat.id}
