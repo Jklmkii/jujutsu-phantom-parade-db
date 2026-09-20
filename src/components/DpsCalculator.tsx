@@ -26,6 +26,7 @@ import {
   playElementalTone 
 } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
+import { getBestInSlotMemory } from '../utils/buildOptimizer';
 
 interface DpsCalculatorProps {
   characters: Character[];
@@ -786,6 +787,21 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
               </div>
 
               <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    if (!attacker) return;
+                    const bis = getBestInSlotMemory(attacker, memories);
+                    if (bis) {
+                      playSelect();
+                      setMemoryId(bis.id);
+                    }
+                  }}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-black bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black shadow-md shadow-amber-950/40 flex items-center gap-1 transition-all cursor-pointer"
+                  title="Equipar automaticamente a melhor memória calculada (BiS) para este personagem"
+                >
+                  <Sparkles className="w-3.5 h-3.5 fill-black" />
+                  <span>Auto BiS</span>
+                </button>
                 {selectedMemory && (
                   <button
                     onClick={() => {

@@ -98,6 +98,7 @@ export function App() {
           <CharacterDetail
             key={selectedCharacter.id}
             character={selectedCharacter}
+            memories={memories}
             onBack={() => setSelectedCharacter(null)}
           />
         ) : (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Character, SkillVariant } from '../types';
+import type { Character, SkillVariant, Memory } from '../types';
 import { ElementBadge, RarityBadge, TagBadge } from './Badges';
 import { ArrowLeft, Zap, Shield, Sparkles, Swords, Star } from 'lucide-react';
 import { useJjkStore } from '../store/useJjkStore';
@@ -17,13 +17,16 @@ import {
 } from '../utils/sound';
 import { getAssetUrl, getSkillIconUrl } from '../utils/assets';
 import { StatRadarChart } from './StatRadarChart';
+import { RecommendedMemoriesWidget } from './RecommendedMemoriesWidget';
+import memoriesData from '../data/memories.json';
 
 interface CharacterDetailProps {
   character: Character;
+  memories?: Memory[];
   onBack: () => void;
 }
 
-export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onBack }) => {
+export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, memories, onBack }) => {
   const { t, language } = useTranslation();
   const [selectedNormalAttackVariant, setSelectedNormalAttackVariant] = useState<string>('regular');
   const [selectedSkillVariants, setSelectedSkillVariants] = useState<Record<number, string>>({});
@@ -1043,6 +1046,13 @@ export const CharacterDetail: React.FC<CharacterDetailProps> = ({ character, onB
               </p>
             </div>
           </div>
+
+          {/* Recommended BiS Memories */}
+          <RecommendedMemoriesWidget
+            character={character}
+            memories={memories || (memoriesData as unknown as Memory[])}
+            language={language}
+          />
         </div>
       </div>
     </div>
