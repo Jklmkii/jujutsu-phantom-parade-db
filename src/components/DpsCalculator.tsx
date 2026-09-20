@@ -208,28 +208,57 @@ interface ParsedPassiveBuff {
   name: string;
   description: string;
   icon?: string;
-  taijutsu: number;
-  jujutsu: number;
-  damageDealt: number;
+  hasSp: boolean;
+  baseTai: number;
+  baseJuju: number;
+  baseDmg: number;
+  critTaiPerStack: number;
+  critJujuPerStack: number;
+  critDmgPerStack: number;
   isConditional: boolean;
 }
 
-function parsePassiveBuffs(passivesList: { name: string; description: string; sp_description?: string; icon?: string; image_key?: string }[]): ParsedPassiveBuff[] {
+function parsePassiveBuffs(
+  passivesList: { name: string; description: string; sp_description?: string; icon?: string; image_key?: string }[],
+  isSp: boolean
+): ParsedPassiveBuff[] {
   return passivesList.map((p, idx) => {
-    const text = p.sp_description || p.description || '';
+    const hasSp = !!p.sp_description;
+    const text = (isSp && p.sp_description) ? p.sp_description : (p.description || '');
     
-    let taijutsu = 0;
-    let jujutsu = 0;
-    let damageDealt = 0;
+    let baseTai = 0;
+    let baseJuju = 0;
+    let baseDmg = 0;
 
-    const taiMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Taijutsu Increase|Aumento de Taijutsu)/i);
-    if (taiMatch) taijutsu = parseFloat(taiMatch[1]) || 0;
+    let critTaiPerStack = 0;
+    let critJujuPerStack = 0;
+    let critDmgPerStack = 0;
 
-    const jujuMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Jujutsu Increase|Aumento de Jujutsu)/i);
-    if (jujuMatch) jujutsu = parseFloat(jujuMatch[1]) || 0;
+    const sections = text.split('▼');
+    const unconditionalText = sections[0] || '';
+    const conditionalText = sections.slice(1).join(' ');
 
-    const dmgMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Damage Dealt Increase|Aumento de Dano)/i);
-    if (dmgMatch) damageDealt = parseFloat(dmgMatch[1]) || 0;
+    // 1. Unconditional buffs (at battle start)
+    const uTai = unconditionalText.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Taijutsu Increase|Aumento de Taijutsu)/i);
+    if (uTai) baseTai = parseFloat(uTai[1]) || 0;
+
+    const uJuju = unconditionalText.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Jujutsu Increase|Aumento de Jujutsu)/i);
+    if (uJuju) baseJuju = parseFloat(uJuju[1]) || 0;
+
+    const uDmg = unconditionalText.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Damage Dealt Increase|Aumento de Dano)/i);
+    if (uDmg) baseDmg = parseFloat(uDmg[1]) || 0;
+
+    // 2. Conditional buffs on CRIT or Black Flash (e.g. Nanami Working Overtime / Zone Outburst)
+    if (conditionalText.toLowerCase().includes('crit') || conditionalText.toLowerCase().includes('black flash')) {
+      const cTai = conditionalText.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Taijutsu Increase|Aumento de Taijutsu)/i);
+      if (cTai) critTaiPerStack = parseFloat(cTai[1]) || 0;
+
+      const cJuju = conditionalText.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Jujutsu Increase|Aumento de Jujutsu)/i);
+      if (cJuju) critJujuPerStack = parseFloat(cJuju[1]) || 0;
+
+      const cDmg = conditionalText.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Damage Dealt Increase|Aumento de Dano)/i);
+      if (cDmg) critDmgPerStack = parseFloat(cDmg[1]) || 0;
+    }
 
     const isConditional = text.includes('▼') || text.includes('Break') || text.includes('turn') || text.includes('Turn');
 
@@ -238,12 +267,65 @@ function parsePassiveBuffs(passivesList: { name: string; description: string; sp
       name: p.name,
       description: text,
       icon: p.icon || p.image_key,
-      taijutsu,
-      jujutsu,
-      damageDealt,
+      hasSp,
+      baseTai,
+      baseJuju,
+      baseDmg,
+      critTaiPerStack,
+      critJujuPerStack,
+      critDmgPerStack,
       isConditional,
     };
   });
+}
+
+// Extractor of self-buffs from sorcerer active skills (e.g. Nanami's "I Hate Overtime")
+interface SelfBuffSkill {
+  slotKey: 'skill2' | 'skill3';
+  name: string;
+  icon?: string;
+  dmgBuff: number;
+  taiBuff: number;
+  jujuBuff: number;
+  description: string;
+}
+
+function extractSelfBuffSkills(attacker: Character | null, isSp: boolean): SelfBuffSkill[] {
+  if (!attacker || !attacker.skills) return [];
+  const list: SelfBuffSkill[] = [];
+
+  attacker.skills.forEach((sk, sIdx) => {
+    const slotKey = sIdx === 0 ? 'skill2' : 'skill3';
+    const v = (isSp && sk.variants?.[1]) ? sk.variants[1] : (sk.variants?.[0] || sk);
+    const text = v.description_10 || v.description || sk.description_10 || sk.description || '';
+
+    let dmgBuff = 0;
+    let taiBuff = 0;
+    let jujuBuff = 0;
+
+    const dmgMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Damage Dealt Increase|Aumento de Dano)/i);
+    if (dmgMatch) dmgBuff = parseFloat(dmgMatch[1]) || 0;
+
+    const taiMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Taijutsu Increase|Aumento de Taijutsu)/i);
+    if (taiMatch) taiBuff = parseFloat(taiMatch[1]) || 0;
+
+    const jujuMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:Jujutsu Increase|Aumento de Jujutsu)/i);
+    if (jujuMatch) jujuBuff = parseFloat(jujuMatch[1]) || 0;
+
+    if (dmgBuff > 0 || taiBuff > 0 || jujuBuff > 0) {
+      list.push({
+        slotKey,
+        name: v.name || sk.name,
+        icon: v.icon || v.image_key || sk.icon || sk.image_key,
+        dmgBuff,
+        taiBuff,
+        jujuBuff,
+        description: text,
+      });
+    }
+  });
+
+  return list;
 }
 
 export const DpsCalculator: React.FC<DpsCalculatorProps> = ({ 
@@ -278,8 +360,26 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
   // Innate Stacks and Turn progression state
   const [techniqueStackPct, setTechniqueStackPct] = useState<number>(0); // 0% to 100% stack
   const [battleTurn, setBattleTurn] = useState<number>(1); // Turn 1 to 10 (Gojo 0.2 All or Nothing)
+  const [critStacks, setCritStacks] = useState<number>(1); // 0 to 6 (Nanami Working Overtime / CRIT stacks)
   const [isEnemyBreak, setIsEnemyBreak] = useState<boolean>(false); // Break status (+50% for Gojo 0.2)
   const [isZoneActive, setIsZoneActive] = useState<boolean>(true); // Zone in toggle
+
+  // Check if attacker has SP unlocked capabilities
+  const hasSpCapabilities = useMemo(() => {
+    if (!attacker) return false;
+    const hasSpAuto = (attacker.auto_skills || []).some(a => a.sp_description || a.sp);
+    const hasSpPassives = (attacker.passives || []).some(p => p.sp_description || p.sp);
+    const hasSpSkills = (attacker.skills || []).some(s => (s.variants || []).some(v => v.id?.includes('sp') || v.label?.toLowerCase().includes('sp')));
+    return !!(attacker.sp || hasSpAuto || hasSpPassives || hasSpSkills);
+  }, [attacker]);
+
+  const [isSpMode, setIsSpMode] = useState<boolean>(true);
+  const [activeSelfBuffs, setActiveSelfBuffs] = useState<Record<string, boolean>>({});
+
+  // Self buffing active skills available for current attacker
+  const selfBuffSkills = useMemo(() => {
+    return extractSelfBuffSkills(attacker, isSpMode);
+  }, [attacker, isSpMode]);
 
   // Innate Passives disabled map (id -> boolean). By default, all passives are enabled (!disabledPassives[id])
   const [disabledPassives, setDisabledPassives] = useState<Record<string, boolean>>({});
@@ -305,8 +405,8 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
   // Parsed innate passives of attacker
   const parsedPassives = useMemo(() => {
     const list = attacker.auto_skills || attacker.passives || [];
-    return parsePassiveBuffs(list);
-  }, [attacker]);
+    return parsePassiveBuffs(list, isSpMode);
+  }, [attacker, isSpMode]);
 
   // Selected Raw Skill item from character
   const selectedSkillRaw = useMemo(() => {
@@ -362,7 +462,7 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
     return baseMult;
   }, [taijutsuPct, jujutsuPct, maxStackPct, techniqueStackPct]);
 
-  // Compute total buffs from active innate passives
+  // Compute total buffs from active innate passives and self-buff skills
   const innateBuffs = useMemo(() => {
     let tai = 0;
     let juju = 0;
@@ -370,9 +470,21 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
 
     parsedPassives.forEach(p => {
       if (!disabledPassives[p.id]) {
-        tai += p.taijutsu;
-        juju += p.jujutsu;
-        dmg += p.damageDealt;
+        // 1. Unconditional baseline buffs
+        tai += p.baseTai;
+        juju += p.baseJuju;
+        dmg += p.baseDmg;
+
+        // 2. CRIT / Black Flash conditional stacks (e.g. Nanami Going into Overtime)
+        if (critStacks > 0) {
+          const addedTai = Math.min(100, critStacks * p.critTaiPerStack);
+          const addedJuju = Math.min(100, critStacks * p.critJujuPerStack);
+          const addedDmg = Math.min(135, critStacks * p.critDmgPerStack);
+
+          tai += addedTai;
+          juju += addedJuju;
+          dmg += addedDmg;
+        }
 
         // Special handling for Gojo 0.2 "All or Nothing" (Turn scaling up to 80%)
         if (p.name.includes('All or Nothing') || p.description.includes('All or Nothing')) {
@@ -386,18 +498,41 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
           dmg += 50;
         }
 
-        // Special handling for "Zone In" passives
+        // Special handling for "Zone" passives (Nanami Zone Outburst, Yuji Zone)
         if (p.name.includes('Zone') && isZoneActive) {
           if (p.description.includes('48.00%') || p.description.includes('80.00%')) {
-            // Yuji Vermelho Zone: scales up to 80%
             tai += 32;
+          }
+          if (p.name.includes('Zone, Outburst') && isSpMode) {
+            tai += 5;
+            juju += 5;
           }
         }
       }
     });
 
+    // 3. Self-buff active skills (e.g. Nanami's "I Hate Overtime")
+    selfBuffSkills.forEach(sb => {
+      if (activeSelfBuffs[sb.slotKey] && selectedSlot !== sb.slotKey) {
+        tai += sb.taiBuff;
+        juju += sb.jujuBuff;
+        dmg += sb.dmgBuff;
+      }
+    });
+
     return { tai, juju, dmg };
-  }, [parsedPassives, disabledPassives, battleTurn, isEnemyBreak, isZoneActive]);
+  }, [
+    parsedPassives, 
+    disabledPassives, 
+    critStacks, 
+    battleTurn, 
+    isEnemyBreak, 
+    isZoneActive, 
+    isSpMode, 
+    selfBuffSkills, 
+    activeSelfBuffs, 
+    selectedSlot
+  ]);
 
   // Presets
   const applyPreset = (type: 'pure' | 'standard' | 'burst') => {
@@ -923,11 +1058,40 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
 
           {/* Innate Character Passives & Battle Conditions */}
           <div className="bg-[#120d24] border border-[#271d44] rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl">
-            <div className="flex items-center justify-between border-b border-[#201838] pb-3">
-              <span className="text-xs uppercase font-extrabold tracking-wider text-purple-300 flex items-center gap-1.5">
-                <Swords className="w-4 h-4 text-purple-400" />
-                <span>{t.dps.innatePassivesTitle}</span>
-              </span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#201838] pb-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase font-extrabold tracking-wider text-purple-300 flex items-center gap-1.5">
+                  <Swords className="w-4 h-4 text-purple-400" />
+                  <span>{t.dps.innatePassivesTitle}</span>
+                </span>
+
+                {/* SP Passives Toggle (Base vs SP) */}
+                {hasSpCapabilities && (
+                  <div className="flex items-center gap-1 bg-[#1a1133] p-0.5 rounded-xl border border-purple-900/60 ml-1">
+                    <button
+                      onClick={() => { playClick(); setIsSpMode(false); }}
+                      className={`px-2 py-0.5 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+                        !isSpMode 
+                          ? 'bg-purple-800 text-white shadow-sm' 
+                          : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      {t.dps.baseMode}
+                    </button>
+                    <button
+                      onClick={() => { playClick(); setIsSpMode(true); }}
+                      className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1 ${
+                        isSpMode 
+                          ? 'bg-gradient-to-r from-amber-600 to-yellow-500 text-black shadow-md' 
+                          : 'text-amber-400/80 hover:text-amber-300'
+                      }`}
+                    >
+                      <span>{t.dps.spMode}</span>
+                      {isSpMode && <Sparkles className="w-3 h-3 text-black" />}
+                    </button>
+                  </div>
+                )}
+              </div>
 
               <div className="flex items-center gap-2">
                 <button
@@ -960,9 +1124,9 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
               </div>
             </div>
 
-            {/* Battle Turn & Conditionals Row (Gojo 0.2, Break, Zone) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 rounded-xl bg-[#0b0717] border border-purple-950 text-xs">
-              {/* Turn Counter (Gojo 0.2) */}
+            {/* Battle Conditionals Grid (Turn, Crit Stacks, Break, Zone) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 p-3 rounded-xl bg-[#0b0717] border border-purple-950 text-xs">
+              {/* Turn Counter */}
               <div className="space-y-1">
                 <div className="flex justify-between items-center text-gray-400 font-semibold">
                   <span className="flex items-center gap-1">
@@ -975,6 +1139,23 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                   type="range" min="1" max="10" value={battleTurn} 
                   onChange={(e) => setBattleTurn(parseInt(e.target.value, 10))} 
                   className="w-full accent-purple-500 cursor-pointer" 
+                />
+              </div>
+
+              {/* CRIT / Black Flash Stacks (Nanami Working Overtime) */}
+              <div className="space-y-1">
+                <div className="flex justify-between items-center text-gray-400 font-semibold">
+                  <span className="flex items-center gap-1">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>{t.dps.critStacksTitle}:</span>
+                  </span>
+                  <span className="font-mono text-amber-300 font-bold">{critStacks}x Crítico</span>
+                </div>
+                <input 
+                  type="range" min="0" max="6" value={critStacks} 
+                  onChange={(e) => setCritStacks(parseInt(e.target.value, 10))} 
+                  className="w-full accent-amber-500 cursor-pointer" 
+                  title={t.dps.critStacksHint}
                 />
               </div>
 
@@ -1009,6 +1190,10 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                 ) : (
                   parsedPassives.map((p) => {
                     const isChecked = !disabledPassives[p.id];
+                    const activeCritTai = critStacks > 0 ? Math.min(100, critStacks * p.critTaiPerStack) : 0;
+                    const activeCritJuju = critStacks > 0 ? Math.min(100, critStacks * p.critJujuPerStack) : 0;
+                    const activeCritDmg = critStacks > 0 ? Math.min(135, critStacks * p.critDmgPerStack) : 0;
+
                     return (
                       <div 
                         key={p.id}
@@ -1033,27 +1218,49 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between gap-2">
-                            <span className="text-xs font-bold text-white line-clamp-1">{p.name}</span>
-                            <div className="flex items-center gap-1.5 shrink-0">
-                              {p.taijutsu > 0 && (
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs font-bold text-white line-clamp-1">{p.name}</span>
+                              {isSpMode && p.hasSp && (
+                                <span className="px-1.5 py-0.2 rounded text-[9px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-600 to-yellow-500 text-black shadow-sm shrink-0">
+                                  {t.dps.spUnlocked}
+                                </span>
+                              )}
+                            </div>
+                            <div className="flex flex-wrap items-center gap-1.5 shrink-0 justify-end">
+                              {p.baseTai > 0 && (
                                 <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-red-950 text-red-300 border border-red-800/50">
-                                  +{p.taijutsu}% Tai
+                                  +{p.baseTai}% Tai
                                 </span>
                               )}
-                              {p.jujutsu > 0 && (
+                              {p.baseJuju > 0 && (
                                 <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-blue-950 text-blue-300 border border-blue-800/50">
-                                  +{p.jujutsu}% Juju
+                                  +{p.baseJuju}% Juju
                                 </span>
                               )}
-                              {p.damageDealt > 0 && (
+                              {p.baseDmg > 0 && (
                                 <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-purple-950 text-purple-300 border border-purple-800/50">
-                                  +{p.damageDealt}% Dano
+                                  +{p.baseDmg}% Dano
                                 </span>
                               )}
-                              {isChecked ? <CheckSquare className="w-4 h-4 text-purple-400" /> : <Square className="w-4 h-4 text-gray-600" />}
+                              {activeCritTai > 0 && (
+                                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-950 text-amber-300 border border-amber-600/50">
+                                  +{activeCritTai}% Tai (CRIT)
+                                </span>
+                              )}
+                              {activeCritJuju > 0 && (
+                                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-950 text-amber-300 border border-amber-600/50">
+                                  +{activeCritJuju}% Juju (CRIT)
+                                </span>
+                              )}
+                              {activeCritDmg > 0 && (
+                                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-950 text-amber-300 border border-amber-600/50">
+                                  +{activeCritDmg}% Dano Azul
+                                </span>
+                              )}
+                              {isChecked ? <CheckSquare className="w-4 h-4 text-purple-400 ml-1" /> : <Square className="w-4 h-4 text-gray-600 ml-1" />}
                             </div>
                           </div>
-                          <p className="text-[10px] text-gray-400 line-clamp-2 mt-0.5 leading-relaxed">
+                          <p className="text-[10px] text-gray-400 line-clamp-3 mt-1 leading-relaxed whitespace-pre-line">
                             {p.description}
                           </p>
                         </div>
@@ -1061,6 +1268,81 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                     );
                   })
                 )}
+              </div>
+            )}
+
+            {/* Sorcerer Self-Buffing Active Skills (e.g. Nanami's "I Hate Overtime") */}
+            {selfBuffSkills.length > 0 && (
+              <div className="pt-3 border-t border-[#201838] space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>{t.dps.selfSkillBuffsTitle}</span>
+                  </span>
+                  <span className="text-[10px] text-gray-400">Ative buffs aplicados por outras habilidades da unidade</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {selfBuffSkills.map(sb => {
+                    const isCurrentAttack = selectedSlot === sb.slotKey;
+                    const isChecked = !!activeSelfBuffs[sb.slotKey];
+
+                    return (
+                      <div 
+                        key={sb.slotKey}
+                        onClick={() => {
+                          if (isCurrentAttack) return;
+                          playClick();
+                          setActiveSelfBuffs(prev => ({ ...prev, [sb.slotKey]: !prev[sb.slotKey] }));
+                        }}
+                        className={`p-2.5 rounded-xl border flex items-center justify-between transition-all ${
+                          isCurrentAttack 
+                            ? 'opacity-40 bg-[#120a1c] border-purple-950 cursor-not-allowed select-none'
+                            : isChecked 
+                              ? 'bg-amber-950/40 border-amber-500/80 text-amber-200 cursor-pointer shadow-md'
+                              : 'bg-[#150f29] border-purple-950/70 text-gray-400 hover:text-gray-200 cursor-pointer'
+                        }`}
+                        title={isCurrentAttack ? 'Esta habilidade é a técnica atualmente selecionada para ataque' : sb.description}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-lg overflow-hidden bg-[#070412] border border-purple-800/40 shrink-0">
+                            <img 
+                              src={getSkillIconUrl(sb.icon)} 
+                              alt={sb.name} 
+                              className="w-full h-full object-cover" 
+                              onError={(e) => { (e.target as HTMLImageElement).src = getSkillIconUrl(); }}
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-white line-clamp-1">{sb.name}</span>
+                              {isCurrentAttack && (
+                                <span className="text-[9px] text-gray-400 bg-purple-950 px-1.5 py-0.2 rounded border border-purple-900/40 shrink-0">
+                                  (Em Uso)
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-[10px] text-amber-300 font-mono block">
+                              {sb.dmgBuff > 0 ? `+${sb.dmgBuff}% Dano ` : ''}
+                              {sb.taiBuff > 0 ? `+${sb.taiBuff}% Tai ` : ''}
+                              {sb.jujuBuff > 0 ? `+${sb.jujuBuff}% Juju` : ''}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="shrink-0 pl-2">
+                          {isCurrentAttack ? (
+                            <Square className="w-4 h-4 text-gray-600" />
+                          ) : isChecked ? (
+                            <CheckSquare className="w-4 h-4 text-amber-400" />
+                          ) : (
+                            <Square className="w-4 h-4 text-gray-500" />
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -1344,9 +1626,19 @@ export const DpsCalculator: React.FC<DpsCalculatorProps> = ({
                 </span>
               </div>
               <div className="flex justify-between text-gray-300 py-1 border-b border-[#1b1336]">
-                <span className="text-gray-400">Buffs Nativos + Suporte (Dano):</span>
+                <span className="text-gray-400">Buffs Totais de Dano:</span>
                 <span className="text-purple-300">+{calculatedDamage.totalDmgDealt}% (x{(1 + calculatedDamage.totalDmgDealt / 100).toFixed(2)})</span>
               </div>
+              {(innateBuffs.tai > 0 || innateBuffs.juju > 0 || innateBuffs.dmg > 0) && (
+                <div className="flex justify-between text-gray-400 py-1 border-b border-[#1b1336] text-[11px]">
+                  <span>Passivas {isSpMode ? '[SP]' : '[Base]'} + Buffs Próprios:</span>
+                  <span className="text-amber-300 font-bold">
+                    {innateBuffs.tai > 0 ? `+${innateBuffs.tai}% Tai ` : ''}
+                    {innateBuffs.juju > 0 ? `+${innateBuffs.juju}% Juju ` : ''}
+                    {innateBuffs.dmg > 0 ? `+${innateBuffs.dmg}% Dano` : ''}
+                  </span>
+                </div>
+              )}
               <div className="flex justify-between text-gray-300 py-1 border-b border-[#1b1336]">
                 <span className="text-gray-400">Fator de Afinidade Elemental:</span>
                 <span className="text-emerald-400">x{(elementalMatch.factor * (1 + elementalBuff / 100)).toFixed(2)}</span>

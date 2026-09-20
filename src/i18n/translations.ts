@@ -465,6 +465,14 @@ export const translations = {
       variantSelector: 'Variante da Técnica:',
       blackFlashChance: 'Chance de Disparo:',
       blackFlashMultiplier: 'Multiplicador Kokusen:',
+      spPassivesTitle: 'Modo das Passivas:',
+      spUnlocked: 'SP Desbloqueado',
+      baseMode: 'Base',
+      spMode: 'SP',
+      critStacksTitle: 'Acertos Críticos / Kokusen',
+      critStacksHint: 'Stacks de acerto crítico/Kokusen acumulados (ex: Nanami)',
+      selfSkillBuffsTitle: 'Buffs de Técnicas Próprias do Feiticeiro',
+      selfBuffActive: 'Buff Ativo',
     },
 
     // Update Banner
@@ -970,6 +978,14 @@ export const translations = {
       variantSelector: 'Technique Variant:',
       blackFlashChance: 'Trigger Chance:',
       blackFlashMultiplier: 'Black Flash Multiplier:',
+      spPassivesTitle: 'Passives Mode:',
+      spUnlocked: 'SP Unlocked',
+      baseMode: 'Base',
+      spMode: 'SP',
+      critStacksTitle: 'CRIT / Black Flash Hits',
+      critStacksHint: 'Accumulated critical hit/Black Flash stacks (e.g. Nanami)',
+      selfSkillBuffsTitle: 'Sorcerer Self-Buffing Skills',
+      selfBuffActive: 'Buff Active',
     },
 
     // Update Banner
