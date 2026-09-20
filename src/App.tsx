@@ -11,6 +11,7 @@ import { CharacterCompare } from './components/CharacterCompare';
 import { GachaSimulator } from './components/GachaSimulator';
 import { DpsCalculator } from './components/DpsCalculator';
 import { BuffsRankings } from './components/BuffsRankings';
+import { RaidBossGuide } from './components/RaidBossGuide';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { SettingsModal } from './components/SettingsModal';
 import { UpdateBanner } from './components/UpdateBanner';
@@ -172,6 +173,13 @@ export function App() {
               <DpsCalculator 
                 characters={characters}
                 memories={memories}
+                onSelectCharacter={handleSelectCharacter}
+              />
+            )}
+
+            {activeTab === 'raids' && (
+              <RaidBossGuide 
+                characters={characters}
                 onSelectCharacter={handleSelectCharacter}
               />
             )}

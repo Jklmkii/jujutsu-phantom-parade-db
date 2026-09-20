@@ -1,0 +1,261 @@
+[
+  {
+    "id": "mahoraga",
+    "name": "Eight-Handled Sword Divergent Sila Divine General Mahoraga",
+    "shortName": "General Divino Mahoraga",
+    "shortNameEn": "Divine General Mahoraga",
+    "japaneseName": "八握剣異戒神将魔虚羅",
+    "element": "None",
+    "recommendedElements": ["Red", "Blue", "Green", "Yellow"],
+    "image": "MahoragaRaidEventMem.gif",
+    "difficulty": "Raid EX • Muito Difícil",
+    "difficultyEn": "Raid EX • Very Hard",
+    "description": "O Shikigami invicto da Técnica das Dez Sombras. Sua roda no topo da cabeça gira a cada golpe recebido, adaptando-se a qualquer fenômeno e reduzindo o dano subsequente a quase zero.",
+    "descriptionEn": "The undefeated Shikigami of the Ten Shadows technique. His wheel turns after receiving attacks, adapting to any phenomenon and reducing subsequent damage of that type to almost zero.",
+    "gimmick": {
+      "title": "Adaptação da Roda das Oito Lâminas",
+      "titleEn": "Eight-Grip Wheel Adaptation",
+      "effect": "Após sofrer 3 ataques do mesmo tipo (Taijutsu ou Jujutsu), ganha 85% de Resistência a esse tipo. Golpear com o tipo oposto desacelera e reseta a adaptação.",
+      "effectEn": "After taking 3 hits of the same damage type (Taijutsu or Jujutsu), gains 85% resistance. Hitting with the opposite damage type slows and resets adaptation."
+    },
+    "wipeCondition": {
+      "turn": 7,
+      "name": "Adaptação Total: Espada da Exterminação",
+      "nameEn": "Total Adaptation: Sword of Extermination",
+      "detail": "No Turno 7, desfere golpe inevitável que aniquila todos os membros da equipe instantaneamente.",
+      "detailEn": "On Turn 7, unleashes an unavoidable strike that instantly wipes out the entire party."
+    },
+    "turnPatterns": [
+      { "turn": 1, "action": "Golpe Pesado no Maior Atacante", "actionEn": "Heavy Strike on Top Attacker", "danger": "low", "note": "Ataca o feiticeiro com maior valor de ataque." },
+      { "turn": 2, "action": "Giro da Roda (Adaptação Nível 1)", "actionEn": "Wheel Turn (Adaptation 1)", "danger": "medium", "note": "Ganha 30% de resistência ao tipo mais frequente sofrido." },
+      { "turn": 3, "action": "Varredura em Área (AoE Cleave)", "actionEn": "AoE Melee Cleave", "danger": "medium", "note": "Causa dano moderado em toda a equipe." },
+      { "turn": 4, "action": "Giro da Roda (Adaptação Nível 2)", "actionEn": "Wheel Turn (Adaptation 2)", "danger": "high", "note": "Resistência sobe para 65%. Momento ideal para quebra de barra (Break)!" },
+      { "turn": 5, "action": "Ataque Devastador no Tanque", "actionEn": "Devastating Tank Buster", "danger": "high", "note": "Exige redução de dano de memória ou provocação ativa." },
+      { "turn": 6, "action": "Postura de Carga Pré-Wipe", "actionEn": "Pre-Wipe Charge Stance", "danger": "critical", "note": "Ganha imunidade a novos debuffs. Descarregue todas as Ultimates e Kokusen agora!" },
+      { "turn": 7, "action": "ESPADA DA EXTERMINAÇÃO (WIPE TOTAL)", "actionEn": "SWORD OF EXTERMINATION (TOTAL WIPE)", "danger": "wipe", "note": "Derrota imediata se a barra de vida não for zerada antes deste turno." }
+    ],
+    "tacticalTips": [
+      "Alterne golpes de Taijutsu e Jujutsu em cada turno para impedir que a Roda complete a adaptação.",
+      "Guarde os Combos de Técnica Suprema (Combo Ultimate) para o Turno 5 ou 6 logo após a Quebra de Barra.",
+      "Feiticeiros com Kokusen ou multiplicadores de dano acima de 1500% conseguem queimar o restante da vida em uma única rotação."
+    ],
+    "tacticalTipsEn": [
+      "Alternate between Taijutsu and Jujutsu hits each turn to disrupt the wheel's adaptation.",
+      "Save Combo Ultimates for Turn 5 or 6 immediately following a Break.",
+      "Sorcerers with Black Flash or 1500%+ multipliers can burn down the remaining HP in a single rotation."
+    ],
+    "recommendedCounterIds": [
+      "_The_Strongest__Satoru_Gojo",
+      "Ryomen_Sukuna",
+      "Yuji_Itadori",
+      "First-Grade_Sorcerer__Kento_Nanami",
+      "Aoi_Todo"
+    ]
+  },
+  {
+    "id": "sukuna",
+    "name": "Ryomen Sukuna (King of Curses)",
+    "shortName": "Rei das Maldições Sukuna",
+    "shortNameEn": "King of Curses Sukuna",
+    "japaneseName": "両面宿儺",
+    "element": "Red",
+    "recommendedElements": ["Blue"],
+    "image": "YellowSSRSukunaArt1.webp",
+    "difficulty": "Raid EX • Extremo",
+    "difficultyEn": "Raid EX • Extreme",
+    "description": "O Rei das Maldições que governou a Era de Ouro do Jujutsu. Desfere cortes invisíveis rápidos (Dismantle) e ataques adaptáveis em área (Cleave), finalizando com a expansão de domínio Relicário Malevolente.",
+    "descriptionEn": "The King of Curses who ruled the Golden Age of Jujutsu. Unleashes invisible slashes (Dismantle) and adaptive area attacks (Cleave), culminating in Malevolent Shrine.",
+    "gimmick": {
+      "title": "Cortes Cumulativos & Debuff de Sangramento",
+      "titleEn": "Cumulative Slashes & Bleed Debuff",
+      "effect": "Cada acerto de Sukuna aplica 1 stack de Corte (Aumento de Dano Recebido em 15%, acumula até 5 vezes). Se atingir 5 stacks, o próximo ataque é um golpe crítico garantido.",
+      "effectEn": "Each hit from Sukuna inflicts 1 Slash stack (+15% Damage Taken, stacks up to 5x). Reaching 5 stacks guarantees his next hit is a critical blow."
+    },
+    "wipeCondition": {
+      "turn": 5,
+      "name": "Expansão de Domínio: Relicário Malevolente",
+      "nameEn": "Domain Expansion: Malevolent Shrine",
+      "detail": "No Turno 5, ativa o Relicário Malevolente desferindo chuvas incessantes de cortes que eliminam equipes sem defesa mágica maciça.",
+      "detailEn": "On Turn 5, activates Malevolent Shrine dealing non-stop slashes that wipe teams without massive defensive buffs."
+    },
+    "turnPatterns": [
+      { "turn": 1, "action": "Desmantelar (Dismantle) Duplo", "actionEn": "Double Dismantle", "danger": "low", "note": "Ataca 2 feiticeiros aleatórios e aplica 1 stack de Corte." },
+      { "turn": 2, "action": "Clivar (Cleave) Penetrante", "actionEn": "Penetrating Cleave", "danger": "medium", "note": "Dano alto focado no feiticeiro com mais stacks de Corte." },
+      { "turn": 3, "action": "Chama Negra (Fuga)", "actionEn": "Black Flame (Fuga)", "danger": "high", "note": "Dano AoE de atributo Fogo que remove escudos temporários." },
+      { "turn": 4, "action": "Concentração de Energia Amaldiçoada", "actionEn": "Cursed Energy Surge", "danger": "critical", "note": "Carrega o domínio. Aplique Atordoar (Stun) ou quebre a barra de Break agora!" },
+      { "turn": 5, "action": "RELICÁRIO MALEVOLENTE (WIPE DE DOMÍNIO)", "actionEn": "MALEVOLENT SHRINE (DOMAIN WIPE)", "danger": "wipe", "note": "Domínio aberto sem barreira com acerto garantido em toda a equipe." }
+    ],
+    "tacticalTips": [
+      "Utilize feiticeiros do Atributo Azul (苍) para obter 50% de bônus de dano e quebrar a barra de Break antes do Turno 5.",
+      "Leve um suporte com limpeza de debuffs ou cura contínua (como Shoko Ieiri).",
+      "Atordoar Sukuna no Turno 4 atrasa a ativação do Relicário Malevolente em 1 turno completo."
+    ],
+    "tacticalTipsEn": [
+      "Deploy Blue (苍) attribute sorcerers for 50% damage advantage and rapid Break gauge depletion before Turn 5.",
+      "Include a cleanser or continuous healer (like Shoko Ieiri) to manage Slash stacks.",
+      "Stunning Sukuna on Turn 4 delays Malevolent Shrine by an entire turn."
+    ],
+    "recommendedCounterIds": [
+      "_The_Strongest__Satoru_Gojo",
+      "First-Grade_Sorcerer__Kento_Nanami",
+      "Shoko_Ieiri",
+      "Megumi_Fushiguro",
+      "Yuta_Okkotsu"
+    ]
+  },
+  {
+    "id": "hanami",
+    "name": "Hanami (Disaster Curse of Nature)",
+    "shortName": "Hanami da Natureza",
+    "shortNameEn": "Nature Curse Hanami",
+    "japaneseName": "花御",
+    "element": "Green",
+    "recommendedElements": ["Red"],
+    "image": "RedHanamiSSRArt1.webp",
+    "difficulty": "Raid Difícil",
+    "difficultyEn": "Raid Hard",
+    "description": "Espírito amaldiçoado especial nascido do medo humano das florestas e da natureza. Possui a carcaça física mais resistente entre as maldições dos desastres e absorve a energia amaldiçoada de seus adversários.",
+    "descriptionEn": "Special Grade cursed spirit born from human fear of forests. Boasts the toughest physical shell among disaster curses and leeches Cursed Energy from opponents.",
+    "gimmick": {
+      "title": "Absorção de Energia Amaldiçoada & Brotos Parasitas",
+      "titleEn": "Cursed Energy Drain & Parasitic Buds",
+      "effect": "A cada turno, drena 10 CE de todos os feiticeiros. Feiticeiros com 0 CE recebem dano aumentado em 40%.",
+      "effectEn": "Drains 10 CE from all sorcerers each turn. Sorcerers at 0 CE suffer 40% increased damage."
+    },
+    "wipeCondition": {
+      "turn": 6,
+      "name": "Cerimônia do Mar de Flores (Wipe)",
+      "nameEn": "Sea of Flowers Ceremony (Wipe)",
+      "detail": "No Turno 6, as raízes de flores cobrem o campo de batalha, retirando toda a vontade de lutar da equipe.",
+      "detailEn": "On Turn 6, flower roots engulf the battlefield, nullifying the party's will to fight."
+    },
+    "turnPatterns": [
+      { "turn": 1, "action": "Campos de Flores Enfeitiçantes", "actionEn": "Enchanting Flower Fields", "danger": "low", "note": "Reduz o ganho de energia amaldiçoada dos aliados." },
+      { "turn": 2, "action": "Projéteis de Raízes de Madeira", "actionEn": "Wood Root Projectiles", "danger": "medium", "note": "Ataca a linha de frente e drena 10 CE de cada alvo." },
+      { "turn": 3, "action": "Manto de Espinhos", "actionEn": "Thorn Mantle", "danger": "medium", "note": "Ganha 40% de redução de dano de Jujutsu por 2 turnos." },
+      { "turn": 4, "action": "Golpe Brutal com o Braço Esquerdo", "actionEn": "Brutal Left Arm Smash", "danger": "high", "note": "Causa dano físico maciço em alvo único." },
+      { "turn": 5, "action": "Desabrochar da Flor do Ombro", "actionEn": "Shoulder Flower Bloom", "danger": "critical", "note": "Prepara a técnica de encerramento. Foque em dano Taijutsu Vermelho!" },
+      { "turn": 6, "action": "MAR DE FLORES CELESTE (WIPE)", "actionEn": "CELESTIAL SEA OF FLOWERS (WIPE)", "danger": "wipe", "note": "Causa atordoamento perpétuo e nocaute na equipe." }
+    ],
+    "tacticalTips": [
+      "Use atacantes focados em Taijutsu do Atributo Vermelho (夜), como Yuji Itadori ou Maki Zen'in.",
+      "Equipe memórias que recuperam Energia Amaldiçoada por turno para contra-atacar a drenagem de Hanami.",
+      "Não use ataques de Jujutsu durante o Turno 3-4 enquanto o Manto de Espinhos estiver ativo."
+    ],
+    "tacticalTipsEn": [
+      "Bring Red (夜) attribute Taijutsu attackers such as Yuji Itadori or Maki Zen'in.",
+      "Equip memories that grant CE recovery per turn to counter Hanami's leech mechanic.",
+      "Avoid Jujutsu attacks during Turns 3-4 while Thorn Mantle is up."
+    ],
+    "recommendedCounterIds": [
+      "Yuji_Itadori",
+      "Maki_Zen_in",
+      "Aoi_Todo",
+      "Nobara_Kugisaki",
+      "Kento_Nanami"
+    ]
+  },
+  {
+    "id": "jogo",
+    "name": "Jogo (Disaster Curse of Fire & Earth)",
+    "shortName": "Jogo das Chamas Vulcânicas",
+    "shortNameEn": "Volcano Curse Jogo",
+    "japaneseName": "漏瑚",
+    "element": "Red",
+    "recommendedElements": ["Blue"],
+    "image": "RedSSRJogoArt1.webp",
+    "difficulty": "Raid Difícil",
+    "difficultyEn": "Raid Hard",
+    "description": "Espírito amaldiçoado especial nascido do medo da humanidade pelos vulcões e do fogo da terra. Extremamente veloz, dispara insetos de brasa e rochas vulcânicas incandescentes.",
+    "descriptionEn": "Special Grade cursed spirit born from human fear of volcanoes and earth fire. Extremely fast, summons ember insects and molten volcanic meteorites.",
+    "gimmick": {
+      "title": "Queimadura Vulcânica Contínua (DoT)",
+      "titleEn": "Continuous Volcanic Burn (DoT)",
+      "effect": "Todos os ataques de Jogo aplicam Queimadura. Cada stack de queimadura consome 8% do HP máximo por turno e diminui a defesa em 10%.",
+      "effectEn": "All of Jogo's attacks inflict Burn. Each stack consumes 8% max HP per turn and reduces defense by 10%."
+    },
+    "wipeCondition": {
+      "turn": 5,
+      "name": "Expansão de Domínio: Caixão da Montanha de Ferro",
+      "nameEn": "Domain Expansion: Coffin of the Iron Mountain",
+      "detail": "No Turno 5, prende todos dentro de uma câmara de magma ardente onde seres normais viram cinzas instantaneamente.",
+      "detailEn": "On Turn 5, traps the entire team in molten magma, incinerating everyone without domain countermeasure."
+    },
+    "turnPatterns": [
+      { "turn": 1, "action": "Erupção do Solo", "actionEn": "Ground Eruption", "danger": "low", "note": "Ataca os 2 feiticeiros da retaguarda com dano de fogo." },
+      { "turn": 2, "action": "Insetos de Brasa Acústicos", "actionEn": "Ember Sound Insects", "danger": "medium", "note": "Ataque rápido com chance de atordoar um aliado." },
+      { "turn": 3, "action": "Meteoro Incandescente", "actionEn": "Incandescent Meteor", "danger": "high", "note": "Dano massivo em área de Jujutsu. Exige barreira defensiva." },
+      { "turn": 4, "action": "Superaquecimento Pré-Domínio", "actionEn": "Pre-Domain Overheating", "danger": "critical", "note": "Aumenta a própria velocidade e poder. Aplique Break!" },
+      { "turn": 5, "action": "CAIXÃO DA MONTANHA DE FERRO (WIPE)", "actionEn": "COFFIN OF THE IRON MOUNTAIN (WIPE)", "danger": "wipe", "note": "Incinerador em área de morte instantânea." }
+    ],
+    "tacticalTips": [
+      "Use atacantes Azuis de alto burst para finalizar a batalha antes do Turno 5.",
+      "Gojo Satoru é o counter definitivo para anular a Queimadura com o Ilimitado.",
+      "Mantenha os níveis de vida sempre acima de 70% para não ser nocauteado pelo Meteoro do Turno 3."
+    ],
+    "tacticalTipsEn": [
+      "Deploy high-burst Blue sorcerers to finish the fight before Turn 5.",
+      "Satoru Gojo is the ultimate counter, completely nullifying Burn damage with Limitless.",
+      "Keep party HP above 70% to survive Turn 3's Incandescent Meteor."
+    ],
+    "recommendedCounterIds": [
+      "_The_Strongest__Satoru_Gojo",
+      "First-Grade_Sorcerer__Kento_Nanami",
+      "Shoko_Ieiri",
+      "Yuta_Okkotsu",
+      "Panda"
+    ]
+  },
+  {
+    "id": "dagon",
+    "name": "Dagon (Disaster Curse of the Oceans)",
+    "shortName": "Dagon dos Mares",
+    "shortNameEn": "Ocean Curse Dagon",
+    "japaneseName": "陀艮",
+    "element": "Blue",
+    "recommendedElements": ["Yellow"],
+    "image": "YellowSSRDagonArt1.gif",
+    "difficulty": "Raid Normal • Médio",
+    "difficultyEn": "Raid Normal • Medium",
+    "description": "Espírito amaldiçoado especial nascido do medo dos oceanos. Em sua forma desperta, manipula torrentes inesgotáveis de água e convoca enxames de shikigamis marinhos vorazes.",
+    "descriptionEn": "Special Grade cursed spirit born from human fear of the oceans. In his awakened form, summons infinite water torrents and ravenous sea shikigami swarms.",
+    "gimmick": {
+      "title": "Enxame Voraz de Shikigamis (Death Swarm)",
+      "titleEn": "Ravenous Shikigami Death Swarm",
+      "effect": "Cria um escudo hidro-defensivo que absorve até 30% do dano total. Enquanto o escudo estiver ativo, shikigamis atacam aleatoriamente no fim do turno.",
+      "effectEn": "Creates a hydro-defensive shield absorbing 30% total damage. While active, shikigami retaliate at the end of each turn."
+    },
+    "wipeCondition": {
+      "turn": 6,
+      "name": "Expansão de Domínio: Horizonte do Skandha Cativante",
+      "nameEn": "Domain Expansion: Horizon of the Captivating Skandha",
+      "detail": "No Turno 6, afoga a equipe inteira no mar infinito sob o enxame de peixes shikigami com acerto garantido.",
+      "detailEn": "On Turn 6, drowns the entire party in an endless sea with guaranteed shikigami strikes."
+    },
+    "turnPatterns": [
+      { "turn": 1, "action": "Torrente de Água de Alta Pressão", "actionEn": "High-Pressure Water Torrent", "danger": "low", "note": "Ataca a linha de frente e reduz a velocidade do time." },
+      { "turn": 2, "action": "Invocação do Escudo Hidráulico", "actionEn": "Hydro Shield Summon", "danger": "medium", "note": "Cria escudo de 30% do HP máximo." },
+      { "turn": 3, "action": "Enxame de Peixes Canibais", "actionEn": "Cannibal Fish Swarm", "danger": "medium", "note": "Múltiplos golpes em área que causam sangramento." },
+      { "turn": 4, "action": "Tromba D'água Devastadora", "actionEn": "Devastating Waterspout", "danger": "high", "note": "Dano pesado focado no feiticeiro de maior dano." },
+      { "turn": 5, "action": "Mar Revolto Pré-Domínio", "actionEn": "Raging Sea Pre-Domain", "danger": "critical", "note": "Prepara o Horizonte do Skandha. Quebre a barreira agora!" },
+      { "turn": 6, "action": "HORIZONTE DO SKANDHA CATIVANTE (WIPE)", "actionEn": "HORIZON OF CAPTIVATING SKANDHA (WIPE)", "danger": "wipe", "note": "Afogamento inevitável com derrota imediata." }
+    ],
+    "tacticalTips": [
+      "Utilize feiticeiros do Atributo Amarelo (行) para aproveitar a fraqueza elementar direta de Dagon.",
+      "Quebre o Escudo Hidráulico rapidamente com habilidades de dano multi-hit.",
+      "Personagens com Domínio Próprio ou Domínio Simples conseguem mitigar o wipe do Turno 6."
+    ],
+    "tacticalTipsEn": [
+      "Use Yellow (行) attribute sorcerers to exploit Dagon's direct elemental vulnerability.",
+      "Break down the Hydro Shield swiftly using multi-hit skills.",
+      "Sorcerers with their own Domain or Simple Domain can counter the Turn 6 wipe."
+    ],
+    "recommendedCounterIds": [
+      "Naobito_Zenin",
+      "Kento_Nanami",
+      "Megumi_Fushiguro",
+      "Maki_Zen_in",
+      "Aoi_Todo"
+    ]
+  }
+]

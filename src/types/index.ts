@@ -149,7 +149,8 @@ export type ActiveTab =
   | 'timeline' 
   | 'compare' 
   | 'gacha' 
-  | 'dps';
+  | 'dps'
+  | 'raids';
 
 export interface OfficialTierSlot {
   characterId: string;
