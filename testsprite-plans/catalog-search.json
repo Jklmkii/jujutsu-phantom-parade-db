@@ -1,0 +1,25 @@
+{
+  "projectId": "5423f180-7ad7-4c0b-8bb8-3eb2fe3dcd3f",
+  "type": "frontend",
+  "name": "Character Catalog — filter by element and search for Gojo",
+  "description": "Verify that navigating to the Character Catalog, filtering by element and searching for Gojo displays matching character cards with proper badges.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to the homepage"
+    },
+    {
+      "type": "action",
+      "description": "Click the Personagens (Characters) navigation link in the sidebar"
+    },
+    {
+      "type": "action",
+      "description": "Type 'Gojo' into the search input box"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the character grid updates to display Satoru Gojo character cards with their epithet and element badges, and the filter counter updates"
+    }
+  ]
+}

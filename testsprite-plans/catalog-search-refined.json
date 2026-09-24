@@ -1,0 +1,20 @@
+{
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to http://127.0.0.1:5173"
+    },
+    {
+      "type": "action",
+      "description": "Click the Personagens navigation button with data-testid 'nav-characters' in the sidebar to open the character roster"
+    },
+    {
+      "type": "action",
+      "description": "Type 'Gojo' into the search input with data-testid 'character-search-input'"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the character catalog updates to display Satoru Gojo character cards with data-testid 'character-card'"
+    }
+  ]
+}

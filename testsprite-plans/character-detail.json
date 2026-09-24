@@ -1,0 +1,25 @@
+{
+  "projectId": "5423f180-7ad7-4c0b-8bb8-3eb2fe3dcd3f",
+  "type": "frontend",
+  "name": "Character Detail — open detail modal and view skills",
+  "description": "Verify clicking on a character card in the catalog opens the character detail modal displaying combat stats, skills and radar chart.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to the homepage"
+    },
+    {
+      "type": "action",
+      "description": "Click the Personagens (Characters) item in the sidebar to open the catalog"
+    },
+    {
+      "type": "action",
+      "description": "Click the first character card in the catalog grid"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the character detail modal opens over the screen, showing the character art, attributes (HP, Taijutsu, Jujutsu), and vertical tabs for combat skills and ultimate technique"
+    }
+  ]
+}

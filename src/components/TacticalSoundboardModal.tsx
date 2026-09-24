@@ -367,8 +367,8 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
     },
     {
       id: 'anime-domain-gojo',
-      name: '五条 Gojo — 無量空処 (Muryōkūsho)',
-      nameEn: '五条 Gojo — Infinite Void',
+      name: '五条 Gojo — Expansão de Domínio: 無量空処',
+      nameEn: 'Gojo — Domain Expansion: Infinite Void',
       category: 'anime',
       color: 'from-blue-950/90 to-black',
       borderColor: 'border-blue-500 hover:border-blue-400',
@@ -377,8 +377,8 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
     },
     {
       id: 'anime-domain-sukuna',
-      name: '宿儺 Sukuna — 伏魔御厨子 (Fukuma Mizushi)',
-      nameEn: '宿儺 Sukuna — Malevolent Shrine',
+      name: '宿儺 Sukuna — Expansão de Domínio: 伏魔御厨子',
+      nameEn: 'Sukuna — Domain Expansion: Malevolent Shrine',
       category: 'anime',
       color: 'from-purple-950/90 to-black',
       borderColor: 'border-purple-500 hover:border-purple-400',
@@ -387,8 +387,8 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
     },
     {
       id: 'anime-domain-mahito',
-      name: '真人 Mahito — 自閉円頓裹 (Jihei Endon-ka)',
-      nameEn: '真人 Mahito — Self-Embodiment of Perfection',
+      name: '真人 Mahito — Expansão de Domínio: 自閉円頓裹',
+      nameEn: 'Mahito — Domain Expansion: Self-Embodiment of Perfection',
       category: 'anime',
       color: 'from-teal-950/90 to-black',
       borderColor: 'border-teal-500 hover:border-teal-400',
@@ -453,7 +453,7 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
-      <div className="bg-[#100b24] border-2 border-purple-500/50 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <div data-testid="soundboard-modal" className="bg-[#100b24] border-2 border-purple-500/50 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="p-5 border-b border-[#251b40] flex items-center justify-between bg-[#140e2d]">
           <div className="flex items-center gap-3">
@@ -514,6 +514,8 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
                 step="0.05"
                 value={soundVolume ?? 0.8}
                 onChange={(e) => setSoundVolume(parseFloat(e.target.value))}
+                data-testid="master-volume-slider"
+                aria-label="Controle de Volume Mestre"
                 className="w-full h-1.5 bg-[#251b40] rounded-lg appearance-none cursor-pointer accent-purple-500"
               />
             </div>
@@ -567,6 +569,8 @@ export const TacticalSoundboardModal: React.FC<TacticalSoundboardModalProps> = (
               <button
                 key={pad.id}
                 onClick={() => handleTrigger(pad.id, pad.trigger)}
+                data-testid={`soundpad-${pad.id}`}
+                aria-label={padName}
                 className={`p-4 rounded-xl border bg-gradient-to-b ${pad.color} ${pad.borderColor} text-left transition-all duration-200 cursor-pointer flex flex-col justify-between h-28 relative overflow-hidden group active:scale-95 ${
                   isPlaying ? 'ring-2 ring-white scale-102 shadow-2xl shadow-purple-500/50' : 'shadow-lg hover:shadow-purple-950/40'
                 }`}

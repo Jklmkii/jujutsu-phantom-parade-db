@@ -1,0 +1,20 @@
+{
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to http://127.0.0.1:5173"
+    },
+    {
+      "type": "action",
+      "description": "Click the Soundboard button with data-testid 'nav-soundboard' in the sidebar"
+    },
+    {
+      "type": "action",
+      "description": "Click the category tab button with text '🎙️ Anime Voices & SFX'"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Tactical Soundboard modal is open with master volume slider and displays anime pads for Kokusen and Expansão de Domínio"
+    }
+  ]
+}

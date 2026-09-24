@@ -228,6 +228,8 @@ export const CharactersList: React.FC<CharactersListProps> = ({
             placeholder={t.characters.searchPlaceholder}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            data-testid="character-search-input"
+            aria-label="Pesquisar personagens"
             className="w-full bg-[#120e24] border border-[#2d2250] rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors shadow-inner"
           />
           {searchTerm && (
@@ -780,6 +782,9 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                   <div
                     key={char.id}
                     onClick={() => onSelectCharacter(char)}
+                    data-testid="character-card"
+                    role="button"
+                    tabIndex={0}
                     className={`group relative rounded-xl overflow-hidden border-2 bg-[#120e22] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] flex flex-col ${borderClass}`}
                   >
                     {/* Portrait Image */}

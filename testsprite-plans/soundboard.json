@@ -1,0 +1,25 @@
+{
+  "projectId": "5423f180-7ad7-4c0b-8bb8-3eb2fe3dcd3f",
+  "type": "frontend",
+  "name": "Tactical Soundboard — open modal and view anime voice pads",
+  "description": "Verify clicking the Soundboard button in the sidebar opens the Tactical Soundboard modal, and selecting the Anime category displays the Kokusen and Domain pads.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to the homepage"
+    },
+    {
+      "type": "action",
+      "description": "Click the Soundboard button in the navigation sidebar"
+    },
+    {
+      "type": "action",
+      "description": "Click the Anime Voices & SFX category tab filter"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Tactical Soundboard modal is visible with master volume controls, and the grid displays anime audio pads including Kokusen and Domain Expansion"
+    }
+  ]
+}

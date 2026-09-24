@@ -116,6 +116,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               key={item.id}
               onClick={() => handleNav(item.id)}
+              data-testid={`nav-${item.id}`}
+              aria-label={item.label}
               className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
                 isActive
                   ? 'bg-gradient-to-r from-purple-900/60 to-purple-800/30 text-purple-200 border-l-4 border-purple-500 shadow-md shadow-purple-950/40'
@@ -181,6 +183,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             playClick();
             toggleSoundboard();
           }}
+          data-testid="nav-soundboard"
+          aria-label="Soundboard"
           className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-gray-400 hover:bg-[#181228] hover:text-purple-300 transition-all cursor-pointer"
           title="Soundboard Tático Procedural"
         >
