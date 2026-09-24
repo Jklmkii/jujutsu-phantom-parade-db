@@ -434,6 +434,36 @@ export function playKokusenChain(): void {
   playAudioClip('kokusen_chain.mp3', 1.0);
 }
 
+/** In-Game Kokusen (Phantom Parade): Yuji Itadori (Voz + Soco) */
+export function playKokusenGameYuji(): void {
+  playAudioClip('kokusen_game_yuji.mp3', 1.1);
+}
+
+/** In-Game Kokusen (Phantom Parade): Nobara Kugisaki (Prego + Martelo) */
+export function playKokusenGameNobara(): void {
+  playAudioClip('kokusen_game_nobara.mp3', 1.1);
+}
+
+/** In-Game Kokusen (Phantom Parade): Aoi Todo (Boogie Woogie + Soco) */
+export function playKokusenGameTodo(): void {
+  playAudioClip('kokusen_game_todo.mp3', 1.1);
+}
+
+/** In-Game Kokusen (Phantom Parade): Kento Nanami (Proporção 7:3 + Lâmina) */
+export function playKokusenGameNanami(): void {
+  playAudioClip('kokusen_game_nanami.mp3', 1.1);
+}
+
+/** In-Game Kokusen (Phantom Parade): Yuta Okkotsu (Rika + Corte Katana) */
+export function playKokusenGameYuta(): void {
+  playAudioClip('kokusen_game_yuta.mp3', 1.1);
+}
+
+/** In-Game Kokusen (Phantom Parade): Satoru Gojo (Infinito + Chute Kokusen) */
+export function playKokusenGameGojo(): void {
+  playAudioClip('kokusen_game_gojo.mp3', 1.1);
+}
+
 /** Satoru Gojo: Domain Expansion — Infinite Void (Muryōkūsho) */
 export function playDomainInfiniteVoid(): void {
   playAudioClip('domain_infinite_void.mp3', 1.1);

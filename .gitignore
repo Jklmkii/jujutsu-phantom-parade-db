@@ -37,3 +37,8 @@ build/
 *.sw?
 __pycache__/
 *.pyc
+
+# Raw media & audio processing scratch
+*.mp4
+*.wav
+temp_*/
