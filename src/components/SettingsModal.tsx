@@ -68,6 +68,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
     };
   }, [showNotification]);
 
+  // Fechamento instantâneo via tecla Escape (ESC)
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        playClick();
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleCheckUpdate = async () => {
@@ -177,8 +190,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const tierCount = Object.keys(tierList).length;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-[#110d22] border border-[#2f2256] rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          playClick();
+          onClose();
+        }
+      }}
+    >
+      <div 
+        className="relative w-full max-w-lg max-h-[90vh] sm:max-h-[85vh] bg-[#110d22] border border-[#2f2256] rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-scaleUp"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settings-modal-title"
+      >
         
         {/* Hidden File Input for Browser Fallback */}
         <input
@@ -189,15 +215,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           className="hidden"
         />
 
-        {/* Modal Header */}
-        <div className="flex items-center justify-between border-b border-[#251b44] pb-4">
+        {/* Modal Header Fixo (shrink-0) - Botão X e título sempre visíveis */}
+        <div className="flex items-center justify-between border-b border-[#251b44] p-5 sm:p-6 bg-[#140e2d] shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-purple-900/40 rounded-xl border border-purple-500/30 text-purple-400">
               <Database className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2.5">
-                <h2 className="text-lg font-black text-white tracking-wide">{t.settings.title.toUpperCase()}</h2>
+                <h2 id="settings-modal-title" className="text-lg font-black text-white tracking-wide">{t.settings.title.toUpperCase()}</h2>
                 <span className="text-[10px] font-mono font-bold text-purple-300 bg-purple-950/90 px-2 py-0.5 rounded-full border border-purple-500/40 shadow-sm">
                   v{appVersion}
                 </span>
@@ -210,11 +236,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               playClick();
               onClose();
             }}
-            className="p-2 text-gray-400 hover:text-white rounded-xl hover:bg-[#1f1738] transition-colors"
+            className="p-2 text-gray-400 hover:text-white rounded-xl hover:bg-[#1f1738] transition-colors cursor-pointer"
+            title="Fechar (ESC)"
+            aria-label="Fechar configurações"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Modal Body com Rolagem Suave */}
+        <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 custom-scrollbar">
 
         {/* Notification Toast */}
         {notification && (
@@ -543,10 +574,23 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           )}
         </div>
 
-        {/* Offline Badge Footer */}
-        <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-gray-500 pt-2 border-t border-[#201736]">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-          <span>JJKPPDB Offline v{appVersion} • {language === 'pt' ? '100% Offline • Sem telemetria • Armazenamento Local Seguro' : '100% Offline • Zero Telemetry • Secure Local Storage'}</span>
+        </div>
+
+        {/* Rodapé Fixo (shrink-0) com Botão Fechar e Badge Offline */}
+        <div className="border-t border-[#251b44] px-5 py-3.5 bg-[#0f0b1e] shrink-0 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-[11px] font-mono text-gray-400 min-w-0">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <span className="truncate">JJKPPDB Offline v{appVersion} • {language === 'pt' ? '100% Offline • Sem telemetria' : '100% Offline • Zero Telemetry'}</span>
+          </div>
+          <button
+            onClick={() => {
+              playClick();
+              onClose();
+            }}
+            className="px-4 py-1.5 bg-[#251b44] hover:bg-[#34265f] text-gray-200 hover:text-white rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0"
+          >
+            {language === 'pt' ? 'Fechar' : 'Close'}
+          </button>
         </div>
 
       </div>

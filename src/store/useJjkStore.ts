@@ -104,10 +104,14 @@ interface JjkState {
   setSoundVolume: (vol: number) => void;
   isSoundboardOpen: boolean;
   toggleSoundboard: () => void;
+  openSoundboard: () => void;
+  closeSoundboard: () => void;
 
   // Settings Modal
   isSettingsOpen: boolean;
   toggleSettings: () => void;
+  openSettings: () => void;
+  closeSettings: () => void;
 
   // Favorites
   favoriteCharIds: string[];
@@ -169,9 +173,13 @@ export const useJjkStore = create<JjkState>()(
       setSoundVolume: (vol) => set({ soundVolume: Math.max(0, Math.min(1, vol)) }),
       isSoundboardOpen: false,
       toggleSoundboard: () => set((state) => ({ isSoundboardOpen: !state.isSoundboardOpen })),
+      openSoundboard: () => set({ isSoundboardOpen: true }),
+      closeSoundboard: () => set({ isSoundboardOpen: false }),
 
       isSettingsOpen: false,
       toggleSettings: () => set((state) => ({ isSettingsOpen: !state.isSettingsOpen })),
+      openSettings: () => set({ isSettingsOpen: true }),
+      closeSettings: () => set({ isSettingsOpen: false }),
 
       favoriteCharIds: [],
       favoriteMemoryIds: [],
@@ -417,6 +425,18 @@ export const useJjkStore = create<JjkState>()(
     {
       name: 'jjkppdb-user-storage',
       storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        language: state.language,
+        soundEnabled: state.soundEnabled,
+        soundVolume: state.soundVolume,
+        favoriteCharIds: state.favoriteCharIds,
+        favoriteMemoryIds: state.favoriteMemoryIds,
+        ownedCharacterIds: state.ownedCharacterIds,
+        ownedMemoryIds: state.ownedMemoryIds,
+        teams: state.teams,
+        tierList: state.tierList,
+        savingsPlan: state.savingsPlan,
+      }),
     }
   )
 );

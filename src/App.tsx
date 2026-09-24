@@ -33,11 +33,16 @@ export function App() {
 
   const { 
     isSettingsOpen, 
-    toggleSettings, 
+    closeSettings,
     isSoundboardOpen, 
-    toggleSoundboard, 
+    closeSoundboard,
     checkAndApplyDailySavings 
   } = useJjkStore();
+
+  // Garante que o aplicativo sempre inicie na Home/Catálogo com todos os modais de UI fechados
+  useEffect(() => {
+    useJjkStore.setState({ isSettingsOpen: false, isSoundboardOpen: false });
+  }, []);
 
   // Monitor de virada de dia em tempo real: verifica no mount, a cada 30s e ao focar/retornar à janela
   useEffect(() => {
@@ -200,13 +205,13 @@ export function App() {
       {/* Tactical Soundboard Modal */}
       <TacticalSoundboardModal 
         isOpen={isSoundboardOpen} 
-        onClose={toggleSoundboard} 
+        onClose={closeSoundboard} 
       />
 
       {/* Settings & Backup Modal */}
       <SettingsModal 
         isOpen={isSettingsOpen} 
-        onClose={toggleSettings} 
+        onClose={closeSettings} 
       />
     </div>
   );
