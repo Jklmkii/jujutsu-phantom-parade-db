@@ -1,5 +1,117 @@
 [
   {
+    "id": "__fwoo_hyoi___shoko_ieiri__teen_",
+    "title": "(\"Fwoo Hyoi\") Shoko Ieiri (Teen)",
+    "name": "Shoko Ieiri",
+    "epithet": "'\"Fwoo Hyoi\"'",
+    "card_name": "Shoko Ieiri",
+    "rarity": "SSR",
+    "element": "Green",
+    "role": "Attacker",
+    "focus": "Taijutsu",
+    "affiliation": "Jujutsu High",
+    "release_date": "2026-09-24",
+    "limited": false,
+    "stats": {
+      "hp": "25000",
+      "attack": "6000",
+      "jujutsu": "10000",
+      "initial_energy": "30",
+      "max_energy": "100",
+      "special_gauge": "1500"
+    },
+    "image": "GreenSSRShokoArt1.gif",
+    "normal_attack": {
+      "name": "Normal Attack",
+      "description": "",
+      "description_10": ""
+    },
+    "skills": [
+      {
+        "slot": 1,
+        "name": "Skill 1",
+        "cost": "20",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 2,
+        "name": "Skill 2",
+        "cost": "25",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 3,
+        "name": "Skill 3",
+        "cost": "30",
+        "description": "",
+        "description_10": ""
+      }
+    ],
+    "ultimate": {
+      "name": "Ultimate Skill",
+      "description": "",
+      "description_10": ""
+    }
+  },
+  {
+    "id": "_innate_talent__maki_ze_nin",
+    "title": "(Innate Talent) Maki Ze’nin",
+    "name": "Maki Ze’nin",
+    "epithet": "'Innate Talent'",
+    "card_name": "Maki Ze’nin",
+    "rarity": "SSR",
+    "element": "Green",
+    "role": "Attacker",
+    "focus": "Taijutsu",
+    "affiliation": "Jujutsu High",
+    "release_date": "2026-09-24",
+    "limited": false,
+    "stats": {
+      "hp": "25000",
+      "attack": "6000",
+      "jujutsu": "10000",
+      "initial_energy": "30",
+      "max_energy": "100",
+      "special_gauge": "1500"
+    },
+    "image": "RedMakiRArt1.gif",
+    "normal_attack": {
+      "name": "Normal Attack",
+      "description": "",
+      "description_10": ""
+    },
+    "skills": [
+      {
+        "slot": 1,
+        "name": "Skill 1",
+        "cost": "20",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 2,
+        "name": "Skill 2",
+        "cost": "25",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 3,
+        "name": "Skill 3",
+        "cost": "30",
+        "description": "",
+        "description_10": ""
+      }
+    ],
+    "ultimate": {
+      "name": "Ultimate Skill",
+      "description": "",
+      "description_10": ""
+    }
+  },
+  {
     "id": "__Fwoo_Hyoi___Shoko_Ieiri__Teen_",
     "title": "('Fwoo Hyoi') Shoko Ieiri (Teen)",
     "name": "Shoko Ieiri (Teen)",
