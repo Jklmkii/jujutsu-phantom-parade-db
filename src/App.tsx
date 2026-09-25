@@ -12,6 +12,9 @@ import { GachaSimulator } from './components/GachaSimulator';
 import { DpsCalculator } from './components/DpsCalculator';
 import { BuffsRankings } from './components/BuffsRankings';
 import { RaidBossGuide } from './components/RaidBossGuide';
+import { Jujutsudle } from './components/Jujutsudle';
+import { StaminaTracker } from './components/StaminaTracker';
+import { AscensionPlanner } from './components/AscensionPlanner';
 import { TacticalScratchpad } from './components/TacticalScratchpad';
 import { TacticalSoundboardModal } from './components/TacticalSoundboardModal';
 import { SettingsModal } from './components/SettingsModal';
@@ -192,6 +195,22 @@ export function App() {
             {activeTab === 'raids' && (
               <RaidBossGuide 
                 characters={characters}
+                onSelectCharacter={handleSelectCharacter}
+              />
+            )}
+
+            {activeTab === 'jujutsudle' && (
+              <Jujutsudle 
+                onSelectCharacter={handleSelectCharacter}
+              />
+            )}
+
+            {activeTab === 'stamina' && (
+              <StaminaTracker />
+            )}
+
+            {activeTab === 'planner' && (
+              <AscensionPlanner 
                 onSelectCharacter={handleSelectCharacter}
               />
             )}

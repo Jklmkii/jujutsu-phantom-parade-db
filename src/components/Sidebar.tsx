@@ -16,7 +16,10 @@ import {
   Skull,
   Radio,
   Volume2,
-  VolumeX
+  VolumeX,
+  Gamepad2,
+  Clock,
+  Package
 } from 'lucide-react';
 import type { ActiveTab } from '../types';
 import { useJjkStore } from '../store/useJjkStore';
@@ -57,8 +60,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'buffs', label: t.nav.buffs, icon: <Zap className="w-5 h-5" /> },
     { id: 'timeline', label: t.nav.timeline, icon: <Calendar className="w-5 h-5" /> },
     { id: 'gacha', label: t.nav.gacha, icon: <Dices className="w-5 h-5" /> },
+    { id: 'planner', label: t.nav.planner, icon: <Package className="w-5 h-5 text-amber-400" /> },
+    { id: 'stamina', label: t.nav.stamina, icon: <Clock className="w-5 h-5 text-emerald-400" /> },
     { id: 'dps', label: t.nav.dps, icon: <Calculator className="w-5 h-5" /> },
     { id: 'raids', label: t.nav.raids, icon: <Skull className="w-5 h-5 text-red-400" /> },
+    { id: 'jujutsudle', label: t.nav.jujutsudle, icon: <Gamepad2 className="w-5 h-5 text-purple-400" /> },
   ];
 
   const handleNav = (tab: ActiveTab) => {

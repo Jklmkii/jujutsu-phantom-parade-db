@@ -150,7 +150,10 @@ export type ActiveTab =
   | 'compare' 
   | 'gacha' 
   | 'dps'
-  | 'raids';
+  | 'raids'
+  | 'jujutsudle'
+  | 'stamina'
+  | 'planner';
 
 export interface OfficialTierSlot {
   characterId: string;

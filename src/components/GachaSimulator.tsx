@@ -12,8 +12,10 @@ import {
   Layers, 
   PlusCircle, 
   Search,
-  Award
+  Award,
+  Calculator
 } from 'lucide-react';
+import { GachaProbabilityMatrix } from './GachaProbabilityMatrix';
 import { useJjkStore } from '../store/useJjkStore';
 import { useTranslation, translateRole } from '../i18n';
 import { 
@@ -65,6 +67,9 @@ export const GachaSimulator: React.FC<GachaSimulatorProps> = ({
   // Sandbox or Real savings mode
   const [sandboxMode, setSandboxMode] = useState<boolean>(true);
   const [sandboxCubes, setSandboxCubes] = useState<number>(45000);
+
+  // Sub-tab: Simulator or Probability Matrix
+  const [activeSubTab, setActiveSubTab] = useState<'simulator' | 'matrix'>('simulator');
 
   // Available pools by rarity
   const pool = useMemo(() => {
@@ -478,8 +483,48 @@ export const GachaSimulator: React.FC<GachaSimulatorProps> = ({
         </div>
       </div>
 
-      {/* Main Banner Viewport or Summon Animation */}
-      {animationStep === 'summoning' ? (
+      {/* Sub-Tab Navigation: Summon Simulator vs Probability Matrix */}
+      <div className="flex items-center gap-2 border-b border-[#251b40] pb-3">
+        <button
+          onClick={() => {
+            playTabSwitch();
+            setActiveSubTab('simulator');
+          }}
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+            activeSubTab === 'simulator'
+              ? 'bg-gradient-to-r from-purple-900/80 to-purple-800/40 text-purple-200 border border-purple-500/60 shadow-lg shadow-purple-950/50'
+              : 'text-gray-400 hover:text-gray-200 hover:bg-[#181133]'
+          }`}
+        >
+          <Sparkles className="w-4 h-4 text-purple-400" />
+          <span>{t.probabilityMatrix.tabSimulator}</span>
+        </button>
+
+        <button
+          onClick={() => {
+            playTabSwitch();
+            setActiveSubTab('matrix');
+          }}
+          className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+            activeSubTab === 'matrix'
+              ? 'bg-gradient-to-r from-purple-900/80 to-cyan-900/40 text-cyan-200 border border-cyan-500/60 shadow-lg shadow-cyan-950/50'
+              : 'text-gray-400 hover:text-gray-200 hover:bg-[#181133]'
+          }`}
+        >
+          <Calculator className="w-4 h-4 text-cyan-400" />
+          <span>{t.probabilityMatrix.tabMatrix}</span>
+          <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-700/50">
+            Binomial
+          </span>
+        </button>
+      </div>
+
+      {activeSubTab === 'matrix' ? (
+        <GachaProbabilityMatrix />
+      ) : (
+        <>
+          {/* Main Banner Viewport or Summon Animation */}
+          {animationStep === 'summoning' ? (
         /* Cinematic Summoning Animation Screen */
         <div className="relative min-h-[460px] rounded-3xl bg-gradient-to-b from-[#140b2b] via-[#090514] to-[#120a26] border-2 border-purple-500/60 p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl">
           {/* Cursed Aura Lights */}
@@ -867,8 +912,10 @@ export const GachaSimulator: React.FC<GachaSimulatorProps> = ({
           </div>
         </div>
       </div>
+    </>
+  )}
 
-      {/* Official Rates Modal */}
+    {/* Official Rates Modal */}
       {isRatesModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#120c24] border-2 border-purple-500/50 rounded-2xl w-full max-w-lg p-6 shadow-2xl space-y-4 animate-scaleUp">
