@@ -108,3 +108,6 @@ npm run lint
 * **Diagnóstico Aberto:** Se um replace corromper linhas ou a compilação falhar, relatar o diagnóstico e a correção em andamento abertamente.
 * **Feedback Atômico de Qualidade:** Reportar compilação e linter imediatamente com marcadores visuais (ex: *"Build passou com código 0! ✅ Agora vou rodar o lint:"*).
 * **Tabela de Fechamento:** Ao concluir, estruturar a tabela resumo com Tarefa, Status, Build e Lint com checkmarks verdes (`✅`).
+
+### F. Link Mandatório de Acompanhamento de Commits
+* **Regra Obrigatória:** Sempre que realizar um `git push` ou concluir uma tarefa que resulte em novo commit, o agente DEVE expressamente fornecer o link clicável direto para o commit no GitHub (`https://github.com/Jklmkii/jujutsu-phantom-parade-db/commit/<hash>`), permitindo ao desenvolvedor auditar e acompanhar o diff e os workflows de CI/CD em tempo real.
