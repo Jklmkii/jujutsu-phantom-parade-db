@@ -85,6 +85,25 @@ function parseTemplateAttributes(wikitext) {
   return attrs;
 }
 
+function canonicalKey(str) {
+  if (!str) return '';
+  return str
+    .toLowerCase()
+    // Normalizar aspas curvas e retas (simples e duplas)
+    .replace(/[\u2018\u2019\u201A\u201B\u2032']/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F\u2033"]/g, '"')
+    // Substituir erro de digitação clássico da wiki: Ze'nin ou Ze’nin -> Zen'in
+    .replace(/\bze['"’]nin\b/g, "zen'in")
+    .replace(/\bze\s*['"’]?\s*nin\b/g, "zen'in")
+    // Remover todas as aspas (simples e duplas) para matching de títulos
+    .replace(/['"]/g, '')
+    // Remover pontuação e caracteres não alfanuméricos
+    .replace(/[^a-z0-9\s]/g, '')
+    // Compactar múltiplos espaços
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 async function syncCharacters(existingChars) {
   console.log('\n[1/2] Verificando novos personagens no Phantom Parade Wiki...');
   const templates = [
@@ -104,8 +123,8 @@ async function syncCharacters(existingChars) {
     }
   }
 
-  const existingTitles = new Set(existingChars.map(c => c.title));
-  const newTitles = [...remoteTitles].filter(t => !existingTitles.has(t));
+  const existingKeys = new Set(existingChars.map(c => canonicalKey(c.title)));
+  const newTitles = [...remoteTitles].filter(t => !existingKeys.has(canonicalKey(t)));
 
   console.log(`Total no wiki: ${remoteTitles.size} | Total local: ${existingChars.length}`);
   if (newTitles.length === 0) {
@@ -217,8 +236,8 @@ async function syncMemories(existingMemories) {
   const list = data?.query?.embeddedin || [];
 
   const remoteTitles = new Set(list.map(m => m.title));
-  const existingTitles = new Set(existingMemories.map(m => m.title));
-  const newTitles = [...remoteTitles].filter(t => !existingTitles.has(t));
+  const existingKeys = new Set(existingMemories.map(m => canonicalKey(m.title)));
+  const newTitles = [...remoteTitles].filter(t => !existingKeys.has(canonicalKey(t)));
 
   console.log(`Total no wiki: ${remoteTitles.size} | Total local: ${existingMemories.length}`);
   if (newTitles.length === 0) {
