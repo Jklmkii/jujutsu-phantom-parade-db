@@ -530,6 +530,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         <div className="inline-flex flex-wrap justify-center p-1 rounded-2xl bg-[#120d24] border border-purple-500/30 shadow-inner gap-1">
           <button
             onClick={() => handleSwitchMode('classic')}
+            data-testid="tab-classic"
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'classic'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
@@ -542,6 +543,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
           <button
             onClick={() => handleSwitchMode('silhouette')}
+            data-testid="tab-silhouette"
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'silhouette'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
@@ -554,6 +556,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
           <button
             onClick={() => handleSwitchMode('skill')}
+            data-testid="tab-skill"
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'skill'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
@@ -566,6 +569,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
           <button
             onClick={() => handleSwitchMode('free')}
+            data-testid="tab-free"
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'free'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
@@ -903,6 +907,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             <input
               ref={searchInputRef}
               type="text"
+              data-testid="jujutsudle-search-input"
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -918,6 +923,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {filteredCharacters.length > 0 && searchQuery.trim() && (
               <button
                 onClick={() => handleMakeGuess(filteredCharacters[0])}
+                data-testid="jujutsudle-guess-button"
                 className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm cursor-pointer"
               >
                 {t.jujutsudle.guessButton}
@@ -939,6 +945,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                       key={char.id}
                       onClick={() => handleMakeGuess(char)}
                       onMouseEnter={() => setSelectedIndex(index)}
+                      data-testid="jujutsudle-autocomplete-option"
                       className={`flex items-center gap-3 p-2.5 transition cursor-pointer ${
                         isSelected ? 'bg-purple-600/30 text-purple-100' : 'hover:bg-purple-900/20 text-gray-300'
                       }`}
@@ -1084,7 +1091,7 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
   };
 
   return (
-    <div className="grid grid-cols-6 gap-2">
+    <div className="grid grid-cols-6 gap-2" data-testid="guess-row">
       {/* 1. Feiticeiro (Retrato + Nome) */}
       <div 
         onClick={() => onSelectCharacter && onSelectCharacter(character)}
@@ -1146,6 +1153,7 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
 
       {/* 6. Lançamento Cronológico */}
       <div 
+        data-testid="guess-chrono-cell"
         style={{ animationDelay: `${rowIndex * 100 + 500}ms` }}
         className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getChronoColor(chronological.status)}`}
       >

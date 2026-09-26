@@ -202,28 +202,58 @@ export function getRandomCharacter(excludeId?: string): Character {
 }
 
 /**
- * Normaliza datas com múltiplos formatos (YYYY-MM-DD ou D-M-YYYY / DD-MM-YYYY)
- * para um timestamp epoch numérico para comparação cronológica precisa.
+ * Normaliza datas com múltiplos formatos (YYYY-MM-DD, D/M/YYYY, DD-MM-YYYY, etc.)
+ * para um timestamp epoch numérico em UTC para comparação cronológica 100% precisa.
  */
 export function parseReleaseDateToEpoch(dateStr: string): number {
   if (!dateStr) return 0;
   const clean = dateStr.trim();
   
-  // Formato YYYY-MM-DD
-  if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(clean)) {
-    const [y, m, d] = clean.split('-').map(Number);
-    return new Date(y, m - 1, d).getTime();
+  // Divide por qualquer separador comum: hífen (-), barra (/), ponto (.) ou espaço
+  const parts = clean.split(/[-/.\s]+/);
+  if (parts.length === 3) {
+    const p0 = parseInt(parts[0], 10);
+    const p1 = parseInt(parts[1], 10);
+    const p2 = parseInt(parts[2], 10);
+
+    if (!isNaN(p0) && !isNaN(p1) && !isNaN(p2)) {
+      // Caso 1: YYYY-MM-DD ou YYYY/MM/DD
+      if (p0 > 1000) {
+        return Date.UTC(p0, p1 - 1, p2);
+      }
+      // Caso 2: DD-MM-YYYY, D/M/YYYY ou DD/MM/YYYY (onde o terceiro termo é o ano de 4 dígitos)
+      if (p2 > 1000) {
+        return Date.UTC(p2, p1 - 1, p0);
+      }
+    }
   }
 
-  // Formato D-M-YYYY ou DD-MM-YYYY
-  if (/^\d{1,2}-\d{1,2}-\d{4}$/.test(clean)) {
-    const [d, m, y] = clean.split('-').map(Number);
-    return new Date(y, m - 1, d).getTime();
-  }
-
-  // Fallback padrão
+  // Fallback padrão se não for 3 partes numéricas
   const parsed = Date.parse(clean);
   return isNaN(parsed) ? 0 : parsed;
+}
+
+/**
+ * Formata qualquer data de lançamento para a exibição canônica DD/MM/YYYY na tabela.
+ */
+export function formatReleaseDateDisplay(dateStr: string): string {
+  if (!dateStr) return '—';
+  const clean = dateStr.trim();
+  const parts = clean.split(/[-/.\s]+/);
+  if (parts.length === 3) {
+    const p0 = parseInt(parts[0], 10);
+    const p1 = parseInt(parts[1], 10);
+    const p2 = parseInt(parts[2], 10);
+    if (!isNaN(p0) && !isNaN(p1) && !isNaN(p2)) {
+      if (p0 > 1000) {
+        return `${String(p2).padStart(2, '0')}/${String(p1).padStart(2, '0')}/${p0}`;
+      }
+      if (p2 > 1000) {
+        return `${String(p0).padStart(2, '0')}/${String(p1).padStart(2, '0')}/${p2}`;
+      }
+    }
+  }
+  return clean;
 }
 
 /**
@@ -319,7 +349,7 @@ export function evaluateGuess(guess: Character, target: Character): GuessEvaluat
     chronological: { 
       status: chronologicalStatus, 
       value: guess.release_date,
-      formattedDate: guess.release_date 
+      formattedDate: formatReleaseDateDisplay(guess.release_date) 
     },
     isCorrect,
   };

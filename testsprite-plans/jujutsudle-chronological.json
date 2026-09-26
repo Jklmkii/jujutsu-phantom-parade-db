@@ -1,0 +1,31 @@
+{
+  "projectId": "5423f180-7ad7-4c0b-8bb8-3eb2fe3dcd3f",
+  "type": "frontend",
+  "name": "Jujutsudle — guess characters and verify release date chronology",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Navigate to http://127.0.0.1:5173"
+    },
+    {
+      "type": "action",
+      "description": "Click the Jujutsudle navigation button with data-testid 'nav-jujutsudle' in the sidebar to open the minigame"
+    },
+    {
+      "type": "action",
+      "description": "Click the classic mode tab with data-testid 'tab-classic'"
+    },
+    {
+      "type": "action",
+      "description": "Type 'Megumi' into the search input with data-testid 'jujutsudle-search-input'"
+    },
+    {
+      "type": "action",
+      "description": "Click the guess button with data-testid 'jujutsudle-guess-button' to submit the guess"
+    },
+    {
+      "type": "assertion",
+      "description": "Verify a guess row with data-testid 'guess-row' appears in the table with data-testid 'guess-chrono-cell' showing formatted release date and chronological arrow"
+    }
+  ]
+}
