@@ -44,9 +44,13 @@ interface JujutsudleProps {
   onSelectCharacter?: (char: Character) => void;
 }
 
-function getInitialDailyState(allCharacters: Character[], todayStr: string) {
-  const dailyChar = getDailyCharacter(todayStr);
-  const savedState = loadDailyState(todayStr);
+function getInitialDailyState(
+  allCharacters: Character[], 
+  todayStr: string, 
+  mode: 'classic' | 'silhouette' = 'classic'
+) {
+  const dailyChar = getDailyCharacter(todayStr, mode);
+  const savedState = loadDailyState(todayStr, mode);
   if (savedState && savedState.guesses.length > 0) {
     const restoredGuesses = savedState.guesses
       .map(id => allCharacters.find(c => c.id === id))
@@ -66,7 +70,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const [gameMode, setGameMode] = useState<'classic' | 'silhouette' | 'free'>('classic');
 
   // Alvo atual e palpites da sessão
-  const [initialData] = useState(() => getInitialDailyState(getJujutsudleCharacters(), getDeviceLocalDateString()));
+  const [initialData] = useState(() => getInitialDailyState(getJujutsudleCharacters(), getDeviceLocalDateString(), 'classic'));
   const [targetChar, setTargetChar] = useState<Character>(initialData.dailyChar);
   const [guesses, setGuesses] = useState<Character[]>(initialData.guesses);
   const [evaluations, setEvaluations] = useState<GuessEvaluation[]>(initialData.evals);
@@ -88,7 +92,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const isWon = evaluations.some(e => e.isCorrect);
   const isGameOver = isWon || (gameMode !== 'free' && guesses.length >= maxGuesses);
 
-  // Alternar entre abas/modos de jogo com transição limpa
+  // Alternar entre abas/modos de jogo com transição limpa e carregamento do personagem específico do modo
   const handleSwitchMode = (mode: 'classic' | 'silhouette' | 'free') => {
     playTabSwitch();
     setGameMode(mode);
@@ -101,17 +105,18 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       setGuesses([]);
       setEvaluations([]);
     } else {
-      const dailyChar = getDailyCharacter(todayStr);
-      setTargetChar(dailyChar);
+      // Obtém o feiticeiro diário específico para o modo (o modo silhueta possui personagem diferente do clássico)
+      const modeDailyChar = getDailyCharacter(todayStr, mode);
+      setTargetChar(modeDailyChar);
 
-      const savedState = loadDailyState(todayStr);
+      const savedState = loadDailyState(todayStr, mode);
       if (savedState && savedState.guesses.length > 0) {
         const restoredGuesses = savedState.guesses
           .map(id => allCharacters.find(c => c.id === id))
           .filter((c): c is Character => Boolean(c));
 
         setGuesses(restoredGuesses);
-        setEvaluations(restoredGuesses.map(g => evaluateGuess(g, dailyChar)));
+        setEvaluations(restoredGuesses.map(g => evaluateGuess(g, modeDailyChar)));
       } else {
         setGuesses([]);
         setEvaluations([]);

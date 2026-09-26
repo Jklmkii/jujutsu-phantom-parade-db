@@ -58,16 +58,35 @@ export function hashStringDjb2(str: string): number {
 }
 
 /**
- * Obtém o personagem do dia baseado na data local ("YYYY-MM-DD").
+ * Obtém o personagem do dia baseado na data local ("YYYY-MM-DD") e no modo de jogo ('classic' | 'silhouette').
+ * Garante que o modo Silhueta sempre receba um personagem diferente do modo Clássico no mesmo dia.
  */
-export function getDailyCharacter(dateStr: string = getDeviceLocalDateString()): Character {
+export function getDailyCharacter(
+  dateStr: string = getDeviceLocalDateString(),
+  mode: 'classic' | 'silhouette' = 'classic'
+): Character {
   const characters = getJujutsudleCharacters();
   if (characters.length === 0) {
     throw new Error('No characters found in database');
   }
-  const hash = hashStringDjb2(`jjkppdb-daily-sorcerer-${dateStr}`);
-  const index = hash % characters.length;
-  return characters[index];
+
+  // Hash determinístico padrão para o modo clássico
+  const classicHash = hashStringDjb2(`jjkppdb-daily-sorcerer-classic-${dateStr}`);
+  const classicIndex = classicHash % characters.length;
+
+  if (mode === 'silhouette') {
+    // Hash determinístico exclusivo para o modo silhueta usando salt distinto
+    const silhouetteHash = hashStringDjb2(`jjkppdb-daily-sorcerer-silhouette-${dateStr}`);
+    let silhouetteIndex = silhouetteHash % characters.length;
+
+    // Se por coincidência de hash colidir, garante que seja um personagem diferente
+    if (silhouetteIndex === classicIndex) {
+      silhouetteIndex = (silhouetteIndex + 1) % characters.length;
+    }
+    return characters[silhouetteIndex];
+  }
+
+  return characters[classicIndex];
 }
 
 /**
@@ -342,12 +361,21 @@ export function recordGameResult(isWin: boolean, guessCount: number, dateStr: st
 }
 
 /**
- * Carrega o progresso diário salvo para permitir continuar a partida ao recarregar a tela.
+ * Carrega o progresso diário salvo para permitir continuar a partida ao recarregar a tela,
+ * preservando estados independentes para o modo clássico e o modo silhueta.
  */
-export function loadDailyState(today: string = getDeviceLocalDateString()): DailyGameState | null {
+export function loadDailyState(
+  today: string = getDeviceLocalDateString(),
+  mode: 'classic' | 'silhouette' = 'classic'
+): DailyGameState | null {
   if (typeof window === 'undefined') return null;
   try {
-    const saved = localStorage.getItem(DAILY_STORAGE_KEY);
+    const key = `${DAILY_STORAGE_KEY}-${mode}`;
+    let saved = localStorage.getItem(key);
+    // Fallback retrocompatível para o modo clássico se salvo na chave legada
+    if (!saved && mode === 'classic') {
+      saved = localStorage.getItem(DAILY_STORAGE_KEY);
+    }
     if (!saved) return null;
     const parsed: DailyGameState = JSON.parse(saved);
     if (parsed.date === today) {
@@ -360,12 +388,14 @@ export function loadDailyState(today: string = getDeviceLocalDateString()): Dail
 }
 
 /**
- * Salva o progresso diário no localStorage.
+ * Salva o progresso diário no localStorage segregado por modo de jogo.
  */
 export function saveDailyState(state: DailyGameState): void {
   if (typeof window === 'undefined') return;
   try {
-    localStorage.setItem(DAILY_STORAGE_KEY, JSON.stringify(state));
+    const mode = state.gameMode === 'silhouette' ? 'silhouette' : 'classic';
+    const key = `${DAILY_STORAGE_KEY}-${mode}`;
+    localStorage.setItem(key, JSON.stringify(state));
   } catch (err) {
     console.warn('Erro ao salvar daily state:', err);
   }
