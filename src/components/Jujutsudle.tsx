@@ -8,6 +8,7 @@ import {
   getRandomSkill,
   evaluateGuess, 
   generateShareResult,
+  normalizeAffiliation,
   playJujutsudleClueAudio,
   playJujutsudleVictorySound,
   loadJujutsudleStats,
@@ -665,7 +666,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                 {t.jujutsudle.clueAffiliation}
               </span>
               {guesses.length >= 4 || isWon ? (
-                <span className="text-[11px] font-bold truncate max-w-[120px]">{targetChar.affiliation || 'Jujutsu High'}</span>
+                <span className="text-[11px] font-bold truncate max-w-[120px]">{normalizeAffiliation(targetChar.affiliation)}</span>
               ) : (
                 <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '4')}</span>
               )}
@@ -964,7 +965,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                           {char.title}
                         </p>
                         <p className="text-[11px] text-gray-400 truncate">
-                          {char.name} • {char.affiliation || 'Jujutsu Sorcerer'}
+                          {char.name} • {normalizeAffiliation(char.affiliation)}
                         </p>
                       </div>
 

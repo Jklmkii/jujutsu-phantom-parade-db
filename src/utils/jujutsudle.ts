@@ -272,12 +272,50 @@ export function normalizeCombatFocus(focus?: string): 'Taijutsu' | 'Jujutsu' | '
 }
 
 /**
+ * Normaliza e padroniza a afiliação para uma nomenclatura canônica única.
+ * Converte formatos invertidos como 'Year 2 Tokyo Jujutsu High' -> 'Tokyo Jujutsu High Year 2',
+ * unifica singular/plural ('Curse Users' -> 'Curse User') e remove tags HTML residuais.
+ */
+export function normalizeAffiliation(affiliation?: string): string {
+  if (!affiliation) return 'Jujutsu High';
+  const clean = affiliation.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+  // Caso 'Year X School Jujutsu High' -> 'School Jujutsu High Year X'
+  const m1 = clean.match(/^Year\s*(\d)\s+([A-Za-z]+)\s+Jujutsu\s+High$/i);
+  if (m1) {
+    const school = m1[2].charAt(0).toUpperCase() + m1[2].slice(1).toLowerCase();
+    return `${school} Jujutsu High Year ${m1[1]}`;
+  }
+
+  // Caso 'School Jujutsu High Year X' (assegura casing padronizado)
+  const m2 = clean.match(/^([A-Za-z]+)\s+Jujutsu\s+High\s+Year\s*(\d)$/i);
+  if (m2) {
+    const school = m2[1].charAt(0).toUpperCase() + m2[1].slice(1).toLowerCase();
+    return `${school} Jujutsu High Year ${m2[2]}`;
+  }
+
+  if (/^Tokyo\s+Jujutsu\s+High\s+Teacher$/i.test(clean)) {
+    return 'Tokyo Jujutsu High Officials';
+  }
+
+  if (/^Curse\s*Users?$/i.test(clean)) {
+    return 'Curse User';
+  }
+
+  if (/^Incarnation/i.test(clean)) {
+    return 'Incarnation';
+  }
+
+  return clean;
+}
+
+/**
  * Extrai o grupo principal de afiliação para permitir correspondências parciais inteligentes.
  * Exemplo: Tóquio (Tokyo Jujutsu High), Kyoto (Kyoto Jujutsu High), Maldição (Cursed Spirit, Curse Users).
  */
 export function getAffiliationGroup(affiliation?: string): string {
   if (!affiliation) return 'Outro';
-  const norm = affiliation.toLowerCase();
+  const norm = normalizeAffiliation(affiliation).toLowerCase();
 
   if (norm.includes('tokyo') || norm.includes('tóquio')) return 'Tokyo High';
   if (norm.includes('kyoto') || norm.includes('quioto')) return 'Kyoto High';
@@ -285,7 +323,7 @@ export function getAffiliationGroup(affiliation?: string): string {
   if (norm.includes('curse user') || norm.includes('sorcerer killer')) return 'Curse User';
   if (norm.includes('fukuoka')) return 'Fukuoka High';
   if (norm.includes('jujutsu high')) return 'Tokyo High';
-  return affiliation;
+  return norm;
 }
 
 /**
@@ -313,8 +351,8 @@ export function evaluateGuess(guess: Character, target: Character): GuessEvaluat
 
   // 4. Afiliação / Origem:
   // Match exato (Verde), Parcial se pertencerem ao mesmo cluster/escola (Amarelo), ou Diferente (Vermelho)
-  const guessAffil = guess.affiliation?.trim() || 'Desconhecida';
-  const targetAffil = target.affiliation?.trim() || 'Desconhecida';
+  const guessAffil = normalizeAffiliation(guess.affiliation);
+  const targetAffil = normalizeAffiliation(target.affiliation);
   const guessGroup = getAffiliationGroup(guessAffil);
   const targetGroup = getAffiliationGroup(targetAffil);
 

@@ -104,6 +104,39 @@ function canonicalKey(str) {
     .trim();
 }
 
+function canonicalAffiliation(str) {
+  if (!str) return 'Jujutsu High';
+  let clean = str.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  
+  // Year X School Jujutsu High -> School Jujutsu High Year X
+  const m1 = clean.match(/^Year\s*(\d)\s+([A-Za-z]+)\s+Jujutsu\s+High$/i);
+  if (m1) {
+    const school = m1[2].charAt(0).toUpperCase() + m1[2].slice(1).toLowerCase();
+    return `${school} Jujutsu High Year ${m1[1]}`;
+  }
+  
+  // School Jujutsu High Year X (garantir casing padronizado)
+  const m2 = clean.match(/^([A-Za-z]+)\s+Jujutsu\s+High\s+Year\s*(\d)$/i);
+  if (m2) {
+    const school = m2[1].charAt(0).toUpperCase() + m2[1].slice(1).toLowerCase();
+    return `${school} Jujutsu High Year ${m2[2]}`;
+  }
+
+  if (/^Tokyo\s+Jujutsu\s+High\s+Teacher$/i.test(clean)) {
+    return 'Tokyo Jujutsu High Officials';
+  }
+
+  if (/^Curse\s*Users?$/i.test(clean)) {
+    return 'Curse User';
+  }
+
+  if (/^Incarnation/i.test(clean)) {
+    return 'Incarnation';
+  }
+
+  return clean;
+}
+
 async function syncCharacters(existingChars) {
   console.log('\n[1/2] Verificando novos personagens no Phantom Parade Wiki...');
   const templates = [
@@ -176,7 +209,7 @@ async function syncCharacters(existingChars) {
       element,
       role,
       focus,
-      affiliation: attrs['Affiliation'] || 'Jujutsu High',
+      affiliation: canonicalAffiliation(attrs['Affiliation']),
       release_date: releaseDate.replace(/\//g, '-'),
       limited,
       stats: {

@@ -688,7 +688,7 @@
     "element": "Green",
     "role": "Enhancer",
     "focus": "Taijutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "9-1-2026",
     "limited": true,
     "stats": {
@@ -2029,7 +2029,7 @@
     "element": "Red",
     "role": "Attacker",
     "focus": "Taijutsu",
-    "affiliation": "Year 3 Kyoto Jujutsu High",
+    "affiliation": "Kyoto Jujutsu High Year 3",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -2531,7 +2531,7 @@
     "element": "Green",
     "role": "Debuffer",
     "focus": "Jujutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "31-10-2024",
     "limited": false,
     "stats": {
@@ -3827,7 +3827,7 @@
     "element": "Green",
     "role": "Attacker",
     "focus": "Taijutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -4447,7 +4447,7 @@
     "element": "Blue",
     "role": "Obstructor",
     "focus": "Taijutsu",
-    "affiliation": "Curse Users",
+    "affiliation": "Curse User",
     "release_date": "13-12-2024",
     "limited": true,
     "stats": {
@@ -4938,7 +4938,7 @@
     "element": "Green",
     "role": "Tank",
     "focus": "Taijutsu",
-    "affiliation": "Year 2 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -5818,7 +5818,7 @@
     "element": "Yellow",
     "role": "Attacker",
     "focus": "Hybrid",
-    "affiliation": "Year 2 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "27-3-2026",
     "limited": true,
     "stats": {
@@ -6190,7 +6190,7 @@
     "element": "Green",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Incarnation<br>Cursed Womb: Death Paintings",
+    "affiliation": "Incarnation",
     "release_date": "31-7-2025",
     "limited": false,
     "stats": {
@@ -6629,7 +6629,7 @@
     "element": "Yellow",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -7829,7 +7829,7 @@
     "element": "Blue",
     "role": "Agitator",
     "focus": "Jujutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -8514,7 +8514,7 @@
     "element": "Green",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "22-10-2024",
     "limited": false,
     "stats": {
@@ -8680,7 +8680,7 @@
     "element": "Red",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Year 1 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 1",
     "release_date": "15-12-2023",
     "limited": true,
     "stats": {
@@ -9235,7 +9235,7 @@
     "element": "Red",
     "role": "Attacker",
     "focus": "Taijutsu",
-    "affiliation": "Year 2 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -12483,7 +12483,7 @@
     "element": "Yellow",
     "role": "Support",
     "focus": "Jujutsu",
-    "affiliation": "Year 2 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -12966,7 +12966,7 @@
     "element": "Blue",
     "role": "Support",
     "focus": "Jujutsu",
-    "affiliation": "Year 2 Tokyo Jujutsu High",
+    "affiliation": "Tokyo Jujutsu High Year 2",
     "release_date": "30-9-2024",
     "limited": false,
     "stats": {
@@ -15092,7 +15092,7 @@
     "element": "Red",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Curse Users",
+    "affiliation": "Curse User",
     "release_date": "24-4-2026",
     "limited": false,
     "stats": {
@@ -15792,7 +15792,7 @@
     "element": "Blue",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Tokyo Jujutsu High Teacher",
+    "affiliation": "Tokyo Jujutsu High Officials",
     "release_date": "21-11-2023",
     "limited": false,
     "stats": {
@@ -16135,7 +16135,7 @@
     "element": "Blue",
     "role": "Attacker",
     "focus": "Jujutsu",
-    "affiliation": "Curse Users",
+    "affiliation": "Curse User",
     "release_date": "18-12-2023",
     "limited": true,
     "stats": {
