@@ -11,9 +11,20 @@ export interface GuessEvaluation {
   element: { status: MatchStatus; value: string };
   rarity: { status: MatchStatus; value: string };
   combatType: { status: MatchStatus; value: string }; // Taijutsu, Jujutsu, Hybrid (Misto)
+  role: { status: MatchStatus; value: string }; // Attacker, Defender, Support, Debuffer, Healer
   affiliation: { status: MatchStatus; value: string };
   chronological: { status: DirectionStatus; value: string; formattedDate: string };
   isCorrect: boolean;
+}
+
+export interface ProgressiveClues {
+  storyArc: string;
+  tacticalGauge: {
+    hasDomain: boolean;
+    specialGauge: string;
+    initialEnergy: string;
+  };
+  firstLetter: string;
 }
 
 export interface JujutsudleStats {
@@ -327,6 +338,71 @@ export function getAffiliationGroup(affiliation?: string): string {
 }
 
 /**
+ * Normaliza a função em combate (role) para categorização comparativa.
+ */
+export function normalizeRole(role?: string): string {
+  if (!role) return 'Attacker';
+  const norm = role.toLowerCase();
+  if (norm.includes('attack') || norm.includes('atacante')) return 'Attacker';
+  if (norm.includes('defend') || norm.includes('tank') || norm.includes('tanque')) return 'Defender';
+  if (norm.includes('heal') || norm.includes('cura')) return 'Healer';
+  if (norm.includes('debuff') || norm.includes('obstruct') || norm.includes('interfer')) return 'Debuffer';
+  if (norm.includes('support') || norm.includes('enhance') || norm.includes('agitator')) return 'Support';
+  return role;
+}
+
+export function getRoleCategory(role?: string): string {
+  const norm = normalizeRole(role);
+  if (norm === 'Healer' || norm === 'Support') return 'SupportGroup';
+  if (norm === 'Defender') return 'DefenseGroup';
+  if (norm === 'Debuffer') return 'DebuffGroup';
+  return 'AttackGroup';
+}
+
+/**
+ * Deriva as pistas progressivas táticas para o feiticeiro alvo (Arcos narrativos, Domínio/Custo e Inicial).
+ */
+export function getProgressiveClues(target: Character): ProgressiveClues {
+  const fullText = (
+    target.title + ' ' + 
+    target.name + ' ' + 
+    (target.tags || []).join(' ') + ' ' + 
+    (target.affiliation || '')
+  ).toLowerCase();
+
+  let storyArc = 'Temporada 1';
+  if (fullText.includes('teen') || fullText.includes('hidden inventory') || fullText.includes('premature death') || target.name === 'Toji Fushiguro') {
+    storyArc = 'Inventário Oculto (Passado)';
+  } else if (fullText.includes('fukuoka') || fullText.includes('saki rindo') || fullText.includes('kaito yuki') || fullText.includes('eiji urushi')) {
+    storyArc = 'Phantom Parade (Fukuoka)';
+  } else if (fullText.includes('shibuya') || fullText.includes('choso') || fullText.includes('0.2') || fullText.includes('shibuya incident') || fullText.includes('death painting') || fullText.includes('dagon') || fullText.includes('naobito')) {
+    storyArc = 'Incidente de Shibuya';
+  } else if (fullText.includes('movie') || fullText.includes('jjk 0') || (target.name.includes('Yuta') && !fullText.includes('executioner')) || target.name.includes('miguel')) {
+    storyArc = 'Jujutsu Kaisen 0 (Filme)';
+  }
+
+  const hasDomain = Boolean(
+    target.has_transformation || 
+    (target.tags || []).includes('Domain') || 
+    (target.ultimate?.name && (target.ultimate.name.toLowerCase().includes('domain') || target.ultimate.name.includes('領域展開')))
+  );
+
+  const specialGauge = target.stats?.special_gauge || '1500';
+  const initialEnergy = target.stats?.initial_energy || '30';
+  const firstLetter = target.name ? target.name.charAt(0).toUpperCase() : '?';
+
+  return {
+    storyArc,
+    tacticalGauge: {
+      hasDomain,
+      specialGauge,
+      initialEnergy,
+    },
+    firstLetter,
+  };
+}
+
+/**
  * Avalia um palpite comparando suas propriedades com o feiticeiro alvo.
  */
 export function evaluateGuess(guess: Character, target: Character): GuessEvaluation {
@@ -349,7 +425,18 @@ export function evaluateGuess(guess: Character, target: Character): GuessEvaluat
     combatStatus = 'partial';
   }
 
-  // 4. Afiliação / Origem:
+  // 4. Função em Combate (Role: Attacker, Defender, Support, Debuffer, Healer):
+  // Match Exato (Verde), Parcial se for mesma categoria macro (ex: Healer e Support) (Amarelo), ou Diferente (Vermelho)
+  const guessRole = normalizeRole(guess.role);
+  const targetRole = normalizeRole(target.role);
+  let roleStatus: MatchStatus = 'incorrect';
+  if (guessRole === targetRole) {
+    roleStatus = 'correct';
+  } else if (getRoleCategory(guessRole) === getRoleCategory(targetRole)) {
+    roleStatus = 'partial';
+  }
+
+  // 5. Afiliação / Origem:
   // Match exato (Verde), Parcial se pertencerem ao mesmo cluster/escola (Amarelo), ou Diferente (Vermelho)
   const guessAffil = normalizeAffiliation(guess.affiliation);
   const targetAffil = normalizeAffiliation(target.affiliation);
@@ -363,7 +450,7 @@ export function evaluateGuess(guess: Character, target: Character): GuessEvaluat
     affiliationStatus = 'partial';
   }
 
-  // 5. Comparação Cronológica (Data de Lançamento / Ordem):
+  // 6. Comparação Cronológica (Data de Lançamento / Ordem):
   const guessEpoch = parseReleaseDateToEpoch(guess.release_date);
   const targetEpoch = parseReleaseDateToEpoch(target.release_date);
 
@@ -383,6 +470,7 @@ export function evaluateGuess(guess: Character, target: Character): GuessEvaluat
     element: { status: elementStatus, value: guess.element },
     rarity: { status: rarityStatus, value: guess.rarity },
     combatType: { status: combatStatus, value: guessCombat },
+    role: { status: roleStatus, value: guessRole },
     affiliation: { status: affiliationStatus, value: guessAffil },
     chronological: { 
       status: chronologicalStatus, 
@@ -425,6 +513,7 @@ export function generateShareResult(
       toEmoji(e.element.status),
       toEmoji(e.rarity.status),
       toEmoji(e.combatType.status),
+      toEmoji(e.role.status),
       toEmoji(e.affiliation.status),
       chronoEmoji(e.chronological.status),
     ].join('');

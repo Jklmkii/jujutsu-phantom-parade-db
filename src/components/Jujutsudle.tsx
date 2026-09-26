@@ -9,6 +9,7 @@ import {
   evaluateGuess, 
   generateShareResult,
   normalizeAffiliation,
+  getProgressiveClues,
   playJujutsudleClueAudio,
   playJujutsudleVictorySound,
   loadJujutsudleStats,
@@ -24,7 +25,7 @@ import {
 } from '../utils/jujutsudle';
 import { getAssetUrl } from '../utils/assets';
 import { playClick, playTabSwitch, playKokusenVoice } from '../utils/sound';
-import { useTranslation, translateElement, translateFocus } from '../i18n';
+import { useTranslation, translateElement, translateFocus, translateRole } from '../i18n';
 import { ElementBadge, RarityBadge } from './Badges';
 import { JujutsudleCalendarModal } from './JujutsudleCalendarModal';
 import { 
@@ -115,6 +116,9 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const maxGuesses = 6;
   const isWon = evaluations.some(e => e.isCorrect);
   const isGameOver = isWon || (gameMode !== 'free' && guesses.length >= maxGuesses);
+
+  // Pistas progressivas calculadas deterministicamente para o personagem alvo
+  const progressiveClues = useMemo(() => getProgressiveClues(targetChar), [targetChar]);
 
   // Alternar entre abas/modos de jogo com transição limpa e carregamento do personagem específico do modo
   const handleSwitchMode = (mode: GameMode) => {
@@ -884,6 +888,85 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       )}
 
+      {/* Pistas Táticas Desbloqueáveis Progressivas (Modos Clássico e Livre) */}
+      {(gameMode === 'classic' || gameMode === 'free') && (
+        <div className="max-w-xl mx-auto rounded-2xl p-3 sm:p-4 bg-[#120d24]/90 border border-purple-500/25 shadow-lg space-y-2.5">
+          <div className="flex items-center justify-between text-xs font-bold text-gray-300">
+            <span className="flex items-center gap-1.5 text-purple-300">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              {t.jujutsudle.progressiveHintsTitle}
+            </span>
+            <span className="text-[11px] font-mono text-purple-400">
+              {Math.min(
+                (guesses.length >= 3 || isWon ? 1 : 0) + (guesses.length >= 5 || isWon ? 1 : 0) + (guesses.length >= 7 || isWon ? 1 : 0),
+                3
+              )} / 3
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            {/* Pista 1: Arco / Origem (Palpite 3) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[58px] ${
+              guesses.length >= 3 || isWon 
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200 shadow-sm' 
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 3 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueArc}
+              </span>
+              {guesses.length >= 3 || isWon ? (
+                <span className="text-[11px] font-bold text-amber-300 truncate max-w-full">
+                  {progressiveClues.storyArc}
+                </span>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.progressiveHintUnlockAt.replace('{count}', '3')}</span>
+              )}
+            </div>
+
+            {/* Pista 2: Mecânica Tática / Especial (Palpite 5) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[58px] ${
+              guesses.length >= 5 || isWon 
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200 shadow-sm' 
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 5 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueSpecial}
+              </span>
+              {guesses.length >= 5 || isWon ? (
+                <span className="text-[11px] font-bold text-teal-300 truncate max-w-full">
+                  {progressiveClues.tacticalGauge.hasDomain
+                    ? t.jujutsudle.domainYes
+                    : t.jujutsudle.domainNo.replace('{gauge}', progressiveClues.tacticalGauge.specialGauge)}
+                </span>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.progressiveHintUnlockAt.replace('{count}', '5')}</span>
+              )}
+            </div>
+
+            {/* Pista 3: Primeira Letra (Palpite 7) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[58px] ${
+              guesses.length >= 7 || isWon 
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200 shadow-sm' 
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 7 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueFirstLetter}
+              </span>
+              {guesses.length >= 7 || isWon ? (
+                <span className="text-xs font-bold text-purple-200">
+                  {t.jujutsudle.letterHint.replace('{letter}', progressiveClues.firstLetter)}
+                </span>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.progressiveHintUnlockAt.replace('{count}', '7')}</span>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Caixa de Entrada e Autocomplete */}
       {!isGameOver && (
         <div className="relative max-w-xl mx-auto space-y-2">
@@ -1013,11 +1096,12 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       {/* Tabela de Palpites estilo Wordle */}
       <div className="space-y-3">
         {/* Cabeçalho da Grade */}
-        <div className="grid grid-cols-6 gap-2 text-center text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
+        <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
           <div>{t.jujutsudle.colCharacter}</div>
           <div>{t.jujutsudle.colElement}</div>
           <div>{t.jujutsudle.colRarity}</div>
           <div>{t.jujutsudle.colCombat}</div>
+          <div>{t.jujutsudle.colRole}</div>
           <div>{t.jujutsudle.colAffiliation}</div>
           <div>{t.jujutsudle.colRelease}</div>
         </div>
@@ -1072,7 +1156,7 @@ interface GuessRowProps {
 
 const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectCharacter }) => {
   const { language } = useTranslation();
-  const { character, element, rarity, combatType, affiliation, chronological, isCorrect } = evaluation;
+  const { character, element, rarity, combatType, role, affiliation, chronological, isCorrect } = evaluation;
 
   const getStatusColor = (status: MatchStatus) => {
     if (status === 'correct') {
@@ -1092,78 +1176,88 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
   };
 
   return (
-    <div className="grid grid-cols-6 gap-2" data-testid="guess-row">
+    <div className="grid grid-cols-7 gap-1.5 sm:gap-2" data-testid="guess-row">
       {/* 1. Feiticeiro (Retrato + Nome) */}
       <div 
         onClick={() => onSelectCharacter && onSelectCharacter(character)}
         style={{ animationDelay: `${rowIndex * 100}ms` }}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
           isCorrect ? 'bg-emerald-950/70 border-emerald-500/80 shadow-md' : 'bg-[#150f29] border-purple-500/30'
         } ${onSelectCharacter ? 'cursor-pointer hover:border-purple-400' : ''}`}
       >
-        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-1">
+        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-1">
           <img 
             src={getAssetUrl(character.image)} 
             alt={character.name} 
             className="w-full h-full object-contain"
           />
         </div>
-        <span className="text-[11px] sm:text-xs font-bold text-gray-200 line-clamp-1">
+        <span className="text-[10px] sm:text-xs font-bold text-gray-200 line-clamp-1">
           {character.name}
         </span>
       </div>
 
       {/* 2. Elemento */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 100}ms` }}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(element.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 80}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(element.status)}`}
       >
         <ElementBadge element={character.element} showLabel={false} />
-        <span className="text-[10px] sm:text-xs font-semibold mt-1">
+        <span className="text-[9px] sm:text-xs font-semibold mt-1">
           {translateElement(character.element, language).split(' ')[0]}
         </span>
       </div>
 
       {/* 3. Raridade */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 200}ms` }}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(rarity.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 160}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(rarity.status)}`}
       >
         <RarityBadge rarity={character.rarity} />
       </div>
 
       {/* 4. Tipo de Combate (Taijutsu, Jujutsu, Misto) */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 300}ms` }}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(combatType.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 240}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(combatType.status)}`}
       >
-        <span className="text-[10px] sm:text-xs font-bold">
+        <span className="text-[9px] sm:text-xs font-bold">
           {translateFocus(character.focus || combatType.value, language).split(' ')[0]}
         </span>
       </div>
 
-      {/* 5. Afiliação */}
+      {/* 5. Função de Combate (Role) */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 320}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(role.status)}`}
+      >
+        <span className="text-[9px] sm:text-xs font-bold truncate max-w-full">
+          {translateRole(role.value || character.role, language).split(' ')[0]}
+        </span>
+      </div>
+
+      {/* 6. Afiliação */}
       <div 
         style={{ animationDelay: `${rowIndex * 100 + 400}ms` }}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(affiliation.status)}`}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(affiliation.status)}`}
       >
-        <span className="text-[9px] sm:text-xs font-medium line-clamp-2">
+        <span className="text-[8px] sm:text-xs font-medium line-clamp-2 leading-tight">
           {affiliation.value}
         </span>
       </div>
 
-      {/* 6. Lançamento Cronológico */}
+      {/* 7. Lançamento Cronológico */}
       <div 
         data-testid="guess-chrono-cell"
-        style={{ animationDelay: `${rowIndex * 100 + 500}ms` }}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getChronoColor(chronological.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 480}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getChronoColor(chronological.status)}`}
       >
         <div className="flex items-center gap-1 font-bold">
-          {chronological.status === 'higher' && <ArrowUp className="w-4 h-4 text-purple-300 animate-bounce" />}
-          {chronological.status === 'lower' && <ArrowDown className="w-4 h-4 text-purple-300 animate-bounce" />}
-          {chronological.status === 'correct' && <Check className="w-4 h-4 text-emerald-400" />}
+          {chronological.status === 'higher' && <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />}
+          {chronological.status === 'lower' && <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />}
+          {chronological.status === 'correct' && <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />}
         </div>
-        <span className="text-[9px] sm:text-[11px] font-mono mt-0.5">
+        <span className="text-[8px] sm:text-[11px] font-mono mt-0.5">
           {chronological.formattedDate || '—'}
         </span>
       </div>
