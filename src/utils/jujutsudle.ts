@@ -428,36 +428,50 @@ export function saveJujutsudleStats(stats: JujutsudleStats): void {
 /**
  * Registra a conclusão de uma partida nas estatísticas persistidas.
  */
+/**
+ * Status de resolução de um dia específico no Arquivo do Calendário.
+ */
+export type ArchiveDayStatus = 'won' | 'lost' | 'played' | 'unplayed';
+
+/**
+ * Registra a conclusão de uma partida nas estatísticas persistidas.
+ * Se a partida for de um dia anterior (Arquivo Histórico), vitórias somam aos totais sem
+ * resetar o streak do jogador atual se perder o dia retrô.
+ */
 export function recordGameResult(isWin: boolean, guessCount: number, dateStr: string = getDeviceLocalDateString()): JujutsudleStats {
   const stats = loadJujutsudleStats();
+  const todayStr = getDeviceLocalDateString();
+  const isHistorical = dateStr !== todayStr;
 
   stats.gamesPlayed += 1;
-  stats.lastPlayedDate = dateStr;
+  stats.lastPlayedDate = todayStr;
 
   if (isWin) {
     stats.gamesWon += 1;
     
-    // Calcula streak diário
-    if (stats.lastWonDate) {
-      const daysDiff = getDaysBetweenDates(stats.lastWonDate, dateStr);
-      if (daysDiff === 1) {
-        stats.currentStreak += 1;
-      } else if (daysDiff > 1) {
-        stats.currentStreak = 1; // Quebrou o streak
+    // Calcula streak diário somente para jogos do dia de hoje (não afeta negativamente ao jogar o arquivo)
+    if (!isHistorical) {
+      if (stats.lastWonDate) {
+        const daysDiff = getDaysBetweenDates(stats.lastWonDate, dateStr);
+        if (daysDiff === 1) {
+          stats.currentStreak += 1;
+        } else if (daysDiff > 1) {
+          stats.currentStreak = 1; // Quebrou o streak
+        }
+      } else {
+        stats.currentStreak = 1;
       }
-    } else {
-      stats.currentStreak = 1;
-    }
 
-    if (stats.currentStreak > stats.maxStreak) {
-      stats.maxStreak = stats.currentStreak;
-    }
+      if (stats.currentStreak > stats.maxStreak) {
+        stats.maxStreak = stats.currentStreak;
+      }
 
-    stats.lastWonDate = dateStr;
+      stats.lastWonDate = dateStr;
+    }
 
     // Registra distribuição de palpites
     stats.guessDistribution[guessCount] = (stats.guessDistribution[guessCount] || 0) + 1;
-  } else {
+  } else if (!isHistorical) {
     stats.currentStreak = 0;
   }
 
@@ -466,24 +480,34 @@ export function recordGameResult(isWin: boolean, guessCount: number, dateStr: st
 }
 
 /**
- * Carrega o progresso diário salvo para permitir continuar a partida ao recarregar a tela,
- * preservando estados independentes para o modo clássico e o modo silhueta.
+ * Carrega o progresso diário salvo para uma data específica e modo de jogo,
+ * permitindo continuar a partida ou navegar no Arquivo de Dias Anteriores.
  */
 export function loadDailyState(
-  today: string = getDeviceLocalDateString(),
+  dateStr: string = getDeviceLocalDateString(),
   mode: GameMode = 'classic'
 ): DailyGameState | null {
   if (typeof window === 'undefined') return null;
   try {
-    const key = `${DAILY_STORAGE_KEY}-${mode}`;
-    let saved = localStorage.getItem(key);
-    // Fallback retrocompatível para o modo clássico se salvo na chave legada
+    // 1. Tenta carregar pela chave indexada por data e modo
+    const specificKey = `${DAILY_STORAGE_KEY}-${mode}-${dateStr}`;
+    const specificSaved = localStorage.getItem(specificKey);
+    if (specificSaved) {
+      return JSON.parse(specificSaved);
+    }
+
+    // 2. Fallback: chave genérica do modo
+    const modeKey = `${DAILY_STORAGE_KEY}-${mode}`;
+    let saved = localStorage.getItem(modeKey);
+    
+    // 3. Fallback retrocompatível para o modo clássico se salvo na chave legada raiz
     if (!saved && mode === 'classic') {
       saved = localStorage.getItem(DAILY_STORAGE_KEY);
     }
+
     if (!saved) return null;
     const parsed: DailyGameState = JSON.parse(saved);
-    if (parsed.date === today) {
+    if (parsed.date === dateStr) {
       return parsed;
     }
   } catch (err) {
@@ -493,16 +517,42 @@ export function loadDailyState(
 }
 
 /**
- * Salva o progresso diário no localStorage segregado por modo de jogo.
+ * Salva o progresso diário no localStorage segregado por data e modo de jogo.
  */
 export function saveDailyState(state: DailyGameState): void {
   if (typeof window === 'undefined') return;
   try {
     const mode = state.gameMode || 'classic';
-    const key = `${DAILY_STORAGE_KEY}-${mode}`;
-    localStorage.setItem(key, JSON.stringify(state));
+    const todayStr = getDeviceLocalDateString();
+
+    // Salva na chave indexada pela data do desafio (preserva histórico perpétuo do calendário)
+    const specificKey = `${DAILY_STORAGE_KEY}-${mode}-${state.date}`;
+    const serialized = JSON.stringify(state);
+    localStorage.setItem(specificKey, serialized);
+
+    // Se for o dia de hoje, mantém sincronizado com a chave do modo para retrocompatibilidade
+    if (state.date === todayStr) {
+      const modeKey = `${DAILY_STORAGE_KEY}-${mode}`;
+      localStorage.setItem(modeKey, serialized);
+    }
   } catch (err) {
     console.warn('Erro ao salvar daily state:', err);
+  }
+}
+
+/**
+ * Consulta o status de um dia específico para marcação visual nas células do Calendário.
+ */
+export function getArchiveDayStatus(dateStr: string, mode: GameMode = 'classic'): ArchiveDayStatus {
+  if (typeof window === 'undefined') return 'unplayed';
+  try {
+    const state = loadDailyState(dateStr, mode);
+    if (!state || state.guesses.length === 0) return 'unplayed';
+    if (state.solved) return 'won';
+    if (state.guesses.length >= 6) return 'lost';
+    return 'played';
+  } catch {
+    return 'unplayed';
   }
 }
 

@@ -25,6 +25,7 @@ import { getAssetUrl } from '../utils/assets';
 import { playClick, playTabSwitch, playKokusenVoice } from '../utils/sound';
 import { useTranslation, translateElement, translateFocus } from '../i18n';
 import { ElementBadge, RarityBadge } from './Badges';
+import { JujutsudleCalendarModal } from './JujutsudleCalendarModal';
 import { 
   Sparkles, 
   Volume2, 
@@ -33,7 +34,6 @@ import {
   Search, 
   CheckCircle2, 
   XCircle, 
-  HelpCircle, 
   ArrowUp, 
   ArrowDown, 
   Flame, 
@@ -43,9 +43,11 @@ import {
   BarChart2,
   Zap,
   Lock,
-  Unlock
+  Unlock,
+  Calendar as CalendarIcon,
+  Focus
 } from 'lucide-react';
-import { getDeviceLocalDateString } from '../utils/date';
+import { getDeviceLocalDateString, formatDateDisplay } from '../utils/date';
 
 interface JujutsudleProps {
   onSelectCharacter?: (char: Character) => void;
@@ -79,6 +81,11 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const { t } = useTranslation();
   const allCharacters = useMemo(() => getJujutsudleCharacters(), []);
   const todayStr = useMemo(() => getDeviceLocalDateString(), []);
+
+  // Data ativa selecionada (padrão: hoje; permite escolher qualquer dia passado via Calendário)
+  const [selectedDate, setSelectedDate] = useState<string>(todayStr);
+  const [showCalendarModal, setShowCalendarModal] = useState<boolean>(false);
+  const isToday = selectedDate === todayStr;
 
   // Modos de jogo: Clássico Diário, Silhueta, Habilidade ou Prática Livre
   const [gameMode, setGameMode] = useState<GameMode>('classic');
@@ -122,11 +129,11 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       setGuesses([]);
       setEvaluations([]);
     } else if (mode === 'skill') {
-      const skillTarget = getDailySkill(todayStr);
+      const skillTarget = getDailySkill(selectedDate);
       setTargetSkill(skillTarget);
       setTargetChar(skillTarget.character);
 
-      const savedState = loadDailyState(todayStr, 'skill');
+      const savedState = loadDailyState(selectedDate, 'skill');
       if (savedState && savedState.guesses.length > 0) {
         const restoredGuesses = savedState.guesses
           .map(id => allCharacters.find(c => c.id === id))
@@ -140,11 +147,62 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       }
     } else {
       // Obtém o feiticeiro diário específico para o modo (o modo silhueta possui personagem diferente do clássico)
-      const modeDailyChar = getDailyCharacter(todayStr, mode);
+      const modeDailyChar = getDailyCharacter(selectedDate, mode);
       setTargetChar(modeDailyChar);
       setTargetSkill(undefined);
 
-      const savedState = loadDailyState(todayStr, mode);
+      const savedState = loadDailyState(selectedDate, mode);
+      if (savedState && savedState.guesses.length > 0) {
+        const restoredGuesses = savedState.guesses
+          .map(id => allCharacters.find(c => c.id === id))
+          .filter((c): c is Character => Boolean(c));
+
+        setGuesses(restoredGuesses);
+        setEvaluations(restoredGuesses.map(g => evaluateGuess(g, modeDailyChar)));
+      } else {
+        setGuesses([]);
+        setEvaluations([]);
+      }
+    }
+  };
+
+  // Seleciona uma data (Hoje ou dia anterior do Arquivo do Calendário)
+  const handleSelectDate = (newDate: string) => {
+    playTabSwitch();
+    setSelectedDate(newDate);
+    setShowCalendarModal(false);
+    setSearchQuery('');
+    setIsDropdownOpen(false);
+
+    // Se estiver no modo livre, comuta para o modo clássico para carregar o enigma daquela data
+    const activeMode = gameMode === 'free' ? 'classic' : gameMode;
+    if (gameMode === 'free') {
+      setGameMode('classic');
+    }
+
+    if (activeMode === 'skill') {
+      const skillTarget = getDailySkill(newDate);
+      setTargetSkill(skillTarget);
+      setTargetChar(skillTarget.character);
+
+      const savedState = loadDailyState(newDate, 'skill');
+      if (savedState && savedState.guesses.length > 0) {
+        const restoredGuesses = savedState.guesses
+          .map(id => allCharacters.find(c => c.id === id))
+          .filter((c): c is Character => Boolean(c));
+
+        setGuesses(restoredGuesses);
+        setEvaluations(restoredGuesses.map(g => evaluateGuess(g, skillTarget.character)));
+      } else {
+        setGuesses([]);
+        setEvaluations([]);
+      }
+    } else {
+      const modeDailyChar = getDailyCharacter(newDate, activeMode);
+      setTargetChar(modeDailyChar);
+      setTargetSkill(undefined);
+
+      const savedState = loadDailyState(newDate, activeMode);
       if (savedState && savedState.guesses.length > 0) {
         const restoredGuesses = savedState.guesses
           .map(id => allCharacters.find(c => c.id === id))
@@ -204,10 +262,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     setSearchQuery('');
     setIsDropdownOpen(false);
 
-    // Se for modo diário (classic ou silhouette), persiste progresso no localStorage
+    // Se for modo diário (classic, silhouette ou skill), persiste progresso no localStorage indexado por selectedDate
     if (gameMode !== 'free') {
       saveDailyState({
-        date: todayStr,
+        date: selectedDate,
         targetId: targetChar.id,
         guesses: newGuesses.map(g => g.id),
         solved: evaluation.isCorrect,
@@ -228,11 +286,11 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       setTimeout(() => {
         setShowKokusenEffect(false);
       }, 2500);
-      const updatedStats = recordGameResult(true, newGuesses.length, todayStr);
+      const updatedStats = recordGameResult(true, newGuesses.length, selectedDate);
       setStats(updatedStats);
     } else if (gameMode !== 'free' && newGuesses.length >= maxGuesses) {
       // Derrota
-      const updatedStats = recordGameResult(false, newGuesses.length, todayStr);
+      const updatedStats = recordGameResult(false, newGuesses.length, selectedDate);
       setStats(updatedStats);
     }
   };
@@ -298,19 +356,61 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     }
   };
 
-  // Cálculo de nitidez da silhueta conforme palpites errados
-  const silhouetteFilterStyle = useMemo(() => {
-    if (isWon) {
-      return 'brightness-100 contrast-100 drop-shadow-[0_0_25px_rgba(168,85,247,0.7)]';
+  // Cálculo de nitidez óptica da silhueta conforme palpites errados (Lente de Foco Progressivo)
+  const silhouetteFocusData = useMemo(() => {
+    if (isWon || (isGameOver && !isWon)) {
+      return {
+        filterClass: 'blur-none brightness-100 contrast-100 drop-shadow-[0_0_25px_rgba(168,85,247,0.7)]',
+        scaleClass: 'scale-100',
+        percent: 100,
+      };
     }
     const count = evaluations.length;
-    if (count === 0) return 'brightness-0 contrast-200 invert-0';
-    if (count === 1) return 'brightness-[0.20] contrast-175';
-    if (count === 2) return 'brightness-[0.40] contrast-150';
-    if (count === 3) return 'brightness-[0.60] contrast-125';
-    if (count === 4) return 'brightness-[0.80] contrast-110';
-    return 'brightness-[0.95] contrast-105';
-  }, [evaluations.length, isWon]);
+    switch (count) {
+      case 0:
+        return {
+          filterClass: 'blur-[28px] brightness-90 contrast-125 saturate-125',
+          scaleClass: 'scale-125',
+          percent: 15,
+        };
+      case 1:
+        return {
+          filterClass: 'blur-[20px] brightness-90 contrast-120 saturate-120',
+          scaleClass: 'scale-118',
+          percent: 30,
+        };
+      case 2:
+        return {
+          filterClass: 'blur-[13px] brightness-95 contrast-115 saturate-110',
+          scaleClass: 'scale-112',
+          percent: 45,
+        };
+      case 3:
+        return {
+          filterClass: 'blur-[8px] brightness-95 contrast-110 saturate-105',
+          scaleClass: 'scale-107',
+          percent: 60,
+        };
+      case 4:
+        return {
+          filterClass: 'blur-[4.5px] brightness-100 contrast-105 saturate-100',
+          scaleClass: 'scale-103',
+          percent: 75,
+        };
+      case 5:
+        return {
+          filterClass: 'blur-[2px] brightness-100 contrast-100',
+          scaleClass: 'scale-100',
+          percent: 90,
+        };
+      default:
+        return {
+          filterClass: 'blur-none brightness-100 contrast-100',
+          scaleClass: 'scale-100',
+          percent: 100,
+        };
+    }
+  }, [evaluations.length, isGameOver, isWon]);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-8 animate-fadeIn relative">
@@ -336,7 +436,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       )}
 
-      {/* Header com Título, Streak e Ações */}
+      {/* Header com Título, Streak, Calendário e Ações */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-purple-500/20">
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-3">
@@ -352,8 +452,23 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </p>
         </div>
 
-        {/* Barra de utilitários: Sequência, Pista Sonora e Estatísticas */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Barra de utilitários: Calendário, Sequência, Pista Sonora e Estatísticas */}
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
+          {/* Botão de Calendário / Arquivo de Dias Anteriores */}
+          <button
+            onClick={() => { playClick(); setShowCalendarModal(true); }}
+            aria-label={t.jujutsudle.calendarBtn}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition cursor-pointer ${
+              !isToday
+                ? 'bg-amber-950/60 border-amber-500/70 text-amber-300 shadow-sm shadow-amber-950/40 animate-pulse'
+                : 'bg-[#15102a] border-purple-500/30 text-purple-300 hover:text-purple-200 hover:border-purple-400'
+            }`}
+            title={t.jujutsudle.calendarTitle}
+          >
+            <CalendarIcon className="w-4 h-4 text-purple-400" />
+            <span>{isToday ? t.jujutsudle.calendarToday : formatDateDisplay(selectedDate)}</span>
+          </button>
+
           {/* Badge de Streak */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#15102a] border border-orange-500/30 text-orange-400 shadow-sm" title={t.jujutsudle.currentStreak}>
             <Flame className="w-4 h-4 text-orange-400 animate-pulse" />
@@ -391,6 +506,24 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </button>
         </div>
       </div>
+
+      {/* Faixa Informativa de Modo Arquivo Histórico se dia selecionado for passado */}
+      {!isToday && (
+        <div className="flex items-center justify-between px-4 py-2.5 rounded-2xl bg-amber-950/40 border border-amber-500/40 text-amber-200 text-xs sm:text-sm animate-fadeIn gap-3">
+          <div className="flex items-center gap-2 min-w-0">
+            <CalendarIcon className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="truncate">
+              {t.jujutsudle.calendarPlayingPast.replace('{date}', formatDateDisplay(selectedDate))}
+            </span>
+          </div>
+          <button
+            onClick={() => handleSelectDate(todayStr)}
+            className="px-3 py-1 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition cursor-pointer shadow-sm shrink-0"
+          >
+            {t.jujutsudle.calendarReturnToday}
+          </button>
+        </div>
+      )}
 
       {/* Seletor de Modo: Clássico, Silhueta, Habilidade, Prática Livre */}
       <div className="flex justify-center">
@@ -445,26 +578,32 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       </div>
 
-      {/* Card Visual Especial para Modo Silhueta com Blur Progressivo e Pistas com Cadeado */}
+      {/* Card Visual Especial para Modo Silhueta com Desfoque Óptico Progressivo */}
       {gameMode === 'silhouette' && (
-        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden space-y-5">
+        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden space-y-4">
           <div className="w-full flex items-center justify-between text-xs text-purple-300/70 font-mono px-2">
-            <span className="flex items-center gap-1">
-              <HelpCircle className="w-3.5 h-3.5" />
-              <span>{t.jujutsudle.silhouetteHint}</span>
+            <span className="flex items-center gap-1.5">
+              <Focus className="w-4 h-4 text-purple-400" />
+              <span>{t.jujutsudle.focusLevel.replace('{percent}', String(silhouetteFocusData.percent))}</span>
             </span>
             <span>
               {guesses.length} / {maxGuesses} {t.jujutsudle.guessButton.toLowerCase()}s
             </span>
           </div>
 
+          {/* Barra de Progresso de Foco da Lente */}
+          <div className="w-full max-w-sm h-1.5 rounded-full bg-[#0e091d] overflow-hidden border border-purple-500/20">
+            <div 
+              className="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-400 transition-all duration-700 rounded-full"
+              style={{ width: `${silhouetteFocusData.percent}%` }}
+            />
+          </div>
+
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden bg-[#090616] border-2 border-purple-500/40 p-2 flex items-center justify-center">
             <img 
               src={getAssetUrl(targetChar.image)} 
-              alt="Silhouette Target"
-              className={`w-full h-full object-contain transition-all duration-700 select-none pointer-events-none ${silhouetteFilterStyle} ${
-                guesses.length === 0 ? 'scale-125' : guesses.length === 1 ? 'scale-115' : 'scale-100'
-              }`}
+              alt="Focus Target"
+              className={`w-full h-full object-contain transition-all duration-700 select-none pointer-events-none ${silhouetteFocusData.filterClass} ${silhouetteFocusData.scaleClass}`}
             />
             {isWon && (
               <div className="absolute inset-0 bg-emerald-950/20 backdrop-blur-[0.5px] flex items-center justify-center">
@@ -899,6 +1038,17 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         <StatsModal 
           stats={stats} 
           onClose={() => setShowStatsModal(false)} 
+        />
+      )}
+
+      {/* Modal de Calendário / Arquivo de Dias Anteriores */}
+      {showCalendarModal && (
+        <JujutsudleCalendarModal
+          selectedDate={selectedDate}
+          todayStr={todayStr}
+          gameMode={gameMode}
+          onSelectDate={handleSelectDate}
+          onClose={() => setShowCalendarModal(false)}
         />
       )}
     </div>
