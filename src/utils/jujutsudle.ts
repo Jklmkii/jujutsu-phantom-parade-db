@@ -26,12 +26,24 @@ export interface JujutsudleStats {
   lastWonDate: string;
 }
 
+export type GameMode = 'classic' | 'silhouette' | 'skill' | 'free';
+
+export interface TargetSkillInfo {
+  character: Character;
+  skillName: string;
+  skillIcon: string;
+  skillType: 'skill' | 'ultimate';
+  skillSlot?: number;
+  cost?: string;
+}
+
 export interface DailyGameState {
   date: string;
   targetId: string;
   guesses: string[]; // character IDs
   solved: boolean;
-  gameMode: 'classic' | 'silhouette' | 'free';
+  gameMode: GameMode;
+  targetSkill?: TargetSkillInfo;
 }
 
 const STATS_STORAGE_KEY = 'jjkppdb-jujutsudle-stats';
@@ -58,12 +70,12 @@ export function hashStringDjb2(str: string): number {
 }
 
 /**
- * Obtém o personagem do dia baseado na data local ("YYYY-MM-DD") e no modo de jogo ('classic' | 'silhouette').
- * Garante que o modo Silhueta sempre receba um personagem diferente do modo Clássico no mesmo dia.
+ * Obtém o personagem do dia baseado na data local ("YYYY-MM-DD") e no modo de jogo ('classic' | 'silhouette' | 'skill').
+ * Garante que os modos Silhueta e Habilidade sempre recebam alvos diferentes do modo Clássico no mesmo dia.
  */
 export function getDailyCharacter(
   dateStr: string = getDeviceLocalDateString(),
-  mode: 'classic' | 'silhouette' = 'classic'
+  mode: GameMode = 'classic'
 ): Character {
   const characters = getJujutsudleCharacters();
   if (characters.length === 0) {
@@ -86,7 +98,97 @@ export function getDailyCharacter(
     return characters[silhouetteIndex];
   }
 
+  if (mode === 'skill') {
+    // Hash determinístico exclusivo para o modo habilidade
+    const skillTarget = getDailySkill(dateStr, characters[classicIndex].id);
+    return skillTarget.character;
+  }
+
   return characters[classicIndex];
+}
+
+/**
+ * Obtém a Habilidade/Técnica do dia para o Modo Habilidade.
+ */
+export function getDailySkill(
+  dateStr: string = getDeviceLocalDateString(),
+  excludeCharId?: string
+): TargetSkillInfo {
+  const characters = getJujutsudleCharacters();
+  const eligibleChars = characters.filter(c => 
+    c.id !== excludeCharId &&
+    (c.skills?.some(s => Boolean(s.icon)) || Boolean(c.ultimate?.icon))
+  );
+
+  const charHash = hashStringDjb2(`jjkppdb-daily-skill-char-${dateStr}`);
+  const character = eligibleChars[charHash % eligibleChars.length];
+
+  const allSkills: TargetSkillInfo[] = [];
+  if (character.skills) {
+    character.skills.forEach((s) => {
+      if (s.icon) {
+        allSkills.push({
+          character,
+          skillName: s.name,
+          skillIcon: s.icon,
+          skillType: 'skill',
+          skillSlot: s.slot,
+          cost: s.cost || '0'
+        });
+      }
+    });
+  }
+  if (character.ultimate?.icon) {
+    allSkills.push({
+      character,
+      skillName: character.ultimate.name,
+      skillIcon: character.ultimate.icon,
+      skillType: 'ultimate',
+      cost: 'Special'
+    });
+  }
+
+  const skillHash = hashStringDjb2(`jjkppdb-daily-skill-pick-${dateStr}`);
+  return allSkills[skillHash % allSkills.length];
+}
+
+/**
+ * Sorteia uma técnica aleatória para o Modo Habilidade em Prática Livre.
+ */
+export function getRandomSkill(excludeCharId?: string): TargetSkillInfo {
+  const characters = getJujutsudleCharacters();
+  const eligibleChars = characters.filter(c => 
+    c.id !== excludeCharId &&
+    (c.skills?.some(s => Boolean(s.icon)) || Boolean(c.ultimate?.icon))
+  );
+  const character = eligibleChars[Math.floor(Math.random() * eligibleChars.length)];
+
+  const allSkills: TargetSkillInfo[] = [];
+  if (character.skills) {
+    character.skills.forEach((s) => {
+      if (s.icon) {
+        allSkills.push({
+          character,
+          skillName: s.name,
+          skillIcon: s.icon,
+          skillType: 'skill',
+          skillSlot: s.slot,
+          cost: s.cost || '0'
+        });
+      }
+    });
+  }
+  if (character.ultimate?.icon) {
+    allSkills.push({
+      character,
+      skillName: character.ultimate.name,
+      skillIcon: character.ultimate.icon,
+      skillType: 'ultimate',
+      cost: 'Special'
+    });
+  }
+
+  return allSkills[Math.floor(Math.random() * allSkills.length)];
 }
 
 /**
@@ -228,10 +330,13 @@ export function evaluateGuess(guess: Character, target: Character): GuessEvaluat
  */
 export function generateShareResult(
   evaluations: GuessEvaluation[], 
-  gameMode: 'classic' | 'silhouette' | 'free', 
+  gameMode: GameMode, 
   dateStr: string = getDeviceLocalDateString()
 ): string {
-  const modeLabel = gameMode === 'classic' ? 'Clássico' : gameMode === 'silhouette' ? 'Silhueta' : 'Prática Livre';
+  const modeLabel = 
+    gameMode === 'classic' ? 'Clássico' : 
+    gameMode === 'silhouette' ? 'Silhueta' : 
+    gameMode === 'skill' ? 'Habilidade' : 'Prática Livre';
   const isWon = evaluations.some(e => e.isCorrect);
   const count = isWon ? evaluations.length : 'X';
 
@@ -366,7 +471,7 @@ export function recordGameResult(isWin: boolean, guessCount: number, dateStr: st
  */
 export function loadDailyState(
   today: string = getDeviceLocalDateString(),
-  mode: 'classic' | 'silhouette' = 'classic'
+  mode: GameMode = 'classic'
 ): DailyGameState | null {
   if (typeof window === 'undefined') return null;
   try {
@@ -393,7 +498,7 @@ export function loadDailyState(
 export function saveDailyState(state: DailyGameState): void {
   if (typeof window === 'undefined') return;
   try {
-    const mode = state.gameMode === 'silhouette' ? 'silhouette' : 'classic';
+    const mode = state.gameMode || 'classic';
     const key = `${DAILY_STORAGE_KEY}-${mode}`;
     localStorage.setItem(key, JSON.stringify(state));
   } catch (err) {

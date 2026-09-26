@@ -3,7 +3,9 @@ import type { Character } from '../types';
 import { 
   getJujutsudleCharacters, 
   getDailyCharacter, 
+  getDailySkill,
   getRandomCharacter,
+  getRandomSkill,
   evaluateGuess, 
   generateShareResult,
   playJujutsudleClueAudio,
@@ -15,10 +17,12 @@ import {
   type GuessEvaluation,
   type JujutsudleStats,
   type MatchStatus,
-  type DirectionStatus
+  type DirectionStatus,
+  type TargetSkillInfo,
+  type GameMode
 } from '../utils/jujutsudle';
 import { getAssetUrl } from '../utils/assets';
-import { playClick, playTabSwitch, playTrashDelete } from '../utils/sound';
+import { playClick, playTabSwitch, playKokusenVoice } from '../utils/sound';
 import { useTranslation, translateElement, translateFocus } from '../i18n';
 import { ElementBadge, RarityBadge } from './Badges';
 import { 
@@ -36,7 +40,10 @@ import {
   Trophy, 
   Eye, 
   Check,
-  BarChart2
+  BarChart2,
+  Zap,
+  Lock,
+  Unlock
 } from 'lucide-react';
 import { getDeviceLocalDateString } from '../utils/date';
 
@@ -47,18 +54,25 @@ interface JujutsudleProps {
 function getInitialDailyState(
   allCharacters: Character[], 
   todayStr: string, 
-  mode: 'classic' | 'silhouette' = 'classic'
+  mode: GameMode = 'classic'
 ) {
   const dailyChar = getDailyCharacter(todayStr, mode);
+  const dailySkill = mode === 'skill' ? getDailySkill(todayStr) : undefined;
   const savedState = loadDailyState(todayStr, mode);
   if (savedState && savedState.guesses.length > 0) {
     const restoredGuesses = savedState.guesses
       .map(id => allCharacters.find(c => c.id === id))
       .filter((c): c is Character => Boolean(c));
-    const restoredEvals = restoredGuesses.map(g => evaluateGuess(g, dailyChar));
-    return { dailyChar, guesses: restoredGuesses, evals: restoredEvals };
+    const target = savedState.targetSkill?.character || dailyChar;
+    const restoredEvals = restoredGuesses.map(g => evaluateGuess(g, target));
+    return { 
+      dailyChar: target, 
+      dailySkill: savedState.targetSkill || dailySkill, 
+      guesses: restoredGuesses, 
+      evals: restoredEvals 
+    };
   }
-  return { dailyChar, guesses: [], evals: [] };
+  return { dailyChar, dailySkill, guesses: [], evals: [] };
 }
 
 export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => {
@@ -66,12 +80,13 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const allCharacters = useMemo(() => getJujutsudleCharacters(), []);
   const todayStr = useMemo(() => getDeviceLocalDateString(), []);
 
-  // Modos de jogo: Clássico Diário, Silhueta ou Prática Livre
-  const [gameMode, setGameMode] = useState<'classic' | 'silhouette' | 'free'>('classic');
+  // Modos de jogo: Clássico Diário, Silhueta, Habilidade ou Prática Livre
+  const [gameMode, setGameMode] = useState<GameMode>('classic');
 
   // Alvo atual e palpites da sessão
   const [initialData] = useState(() => getInitialDailyState(getJujutsudleCharacters(), getDeviceLocalDateString(), 'classic'));
   const [targetChar, setTargetChar] = useState<Character>(initialData.dailyChar);
+  const [targetSkill, setTargetSkill] = useState<TargetSkillInfo | undefined>(initialData.dailySkill);
   const [guesses, setGuesses] = useState<Character[]>(initialData.guesses);
   const [evaluations, setEvaluations] = useState<GuessEvaluation[]>(initialData.evals);
 
@@ -86,6 +101,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [copyFeedback, setCopyFeedback] = useState(false);
   const [showStatsModal, setShowStatsModal] = useState(false);
+  const [showKokusenEffect, setShowKokusenEffect] = useState(false);
   const [stats, setStats] = useState<JujutsudleStats>(() => loadJujutsudleStats());
 
   const maxGuesses = 6;
@@ -93,7 +109,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const isGameOver = isWon || (gameMode !== 'free' && guesses.length >= maxGuesses);
 
   // Alternar entre abas/modos de jogo com transição limpa e carregamento do personagem específico do modo
-  const handleSwitchMode = (mode: 'classic' | 'silhouette' | 'free') => {
+  const handleSwitchMode = (mode: GameMode) => {
     playTabSwitch();
     setGameMode(mode);
     setSearchQuery('');
@@ -102,12 +118,31 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     if (mode === 'free') {
       const randomChar = getRandomCharacter(targetChar.id);
       setTargetChar(randomChar);
+      setTargetSkill(undefined);
       setGuesses([]);
       setEvaluations([]);
+    } else if (mode === 'skill') {
+      const skillTarget = getDailySkill(todayStr);
+      setTargetSkill(skillTarget);
+      setTargetChar(skillTarget.character);
+
+      const savedState = loadDailyState(todayStr, 'skill');
+      if (savedState && savedState.guesses.length > 0) {
+        const restoredGuesses = savedState.guesses
+          .map(id => allCharacters.find(c => c.id === id))
+          .filter((c): c is Character => Boolean(c));
+
+        setGuesses(restoredGuesses);
+        setEvaluations(restoredGuesses.map(g => evaluateGuess(g, skillTarget.character)));
+      } else {
+        setGuesses([]);
+        setEvaluations([]);
+      }
     } else {
       // Obtém o feiticeiro diário específico para o modo (o modo silhueta possui personagem diferente do clássico)
       const modeDailyChar = getDailyCharacter(todayStr, mode);
       setTargetChar(modeDailyChar);
+      setTargetSkill(undefined);
 
       const savedState = loadDailyState(todayStr, mode);
       if (savedState && savedState.guesses.length > 0) {
@@ -177,14 +212,22 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         guesses: newGuesses.map(g => g.id),
         solved: evaluation.isCorrect,
         gameMode,
+        targetSkill: gameMode === 'skill' ? targetSkill : undefined,
       });
     }
 
     // Vitória!
     if (evaluation.isCorrect) {
+      setShowKokusenEffect(true);
+      setTimeout(() => {
+        playKokusenVoice();
+      }, 100);
       setTimeout(() => {
         playJujutsudleVictorySound();
-      }, 300);
+      }, 500);
+      setTimeout(() => {
+        setShowKokusenEffect(false);
+      }, 2500);
       const updatedStats = recordGameResult(true, newGuesses.length, todayStr);
       setStats(updatedStats);
     } else if (gameMode !== 'free' && newGuesses.length >= maxGuesses) {
@@ -223,11 +266,18 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     }, 1800);
   };
 
-  // Reiniciar no modo livre
+  // Reiniciar no modo livre ou passar para o Próximo Desafio
   const handleResetFreePractice = () => {
-    playTrashDelete();
-    const nextChar = getRandomCharacter(targetChar.id);
-    setTargetChar(nextChar);
+    playTabSwitch();
+    if (gameMode === 'skill') {
+      const nextSkill = getRandomSkill(targetChar.id);
+      setTargetSkill(nextSkill);
+      setTargetChar(nextSkill.character);
+    } else {
+      const nextChar = getRandomCharacter(targetChar.id);
+      setTargetChar(nextChar);
+      setTargetSkill(undefined);
+    }
     setGuesses([]);
     setEvaluations([]);
     setSearchQuery('');
@@ -263,7 +313,29 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   }, [evaluations.length, isWon]);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8 animate-fadeIn">
+    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8 animate-fadeIn relative">
+      {/* Overlay Visual de Impacto Kokusen (Black Flash) na Vitória */}
+      {showKokusenEffect && (
+        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center overflow-hidden animate-fadeIn">
+          <div className="absolute inset-0 bg-black/90 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-600/70 via-purple-950/50 to-black/95 animate-pulse" />
+          <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 space-y-4">
+            <div className="relative">
+              <Zap className="w-24 h-24 sm:w-32 sm:h-32 text-red-500 animate-bounce drop-shadow-[0_0_35px_rgba(239,68,68,1)]" />
+              <div className="absolute inset-0 text-red-400 blur-md animate-ping flex items-center justify-center">
+                <Zap className="w-24 h-24 sm:w-32 sm:h-32" />
+              </div>
+            </div>
+            <h2 className="text-4xl sm:text-6xl font-black italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-300 to-red-600 drop-shadow-[0_0_25px_rgba(255,0,0,0.9)] uppercase">
+              {t.jujutsudle.kokusenImpact}
+            </h2>
+            <p className="text-sm sm:text-base font-bold text-red-200 tracking-wider">
+              120% DE POTENCIAL LIBERADO!
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Header com Título, Streak e Ações */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-purple-500/20">
         <div className="text-center md:text-left">
@@ -320,12 +392,12 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       </div>
 
-      {/* Seletor de Modo: Clássico, Silhueta, Prática Livre */}
+      {/* Seletor de Modo: Clássico, Silhueta, Habilidade, Prática Livre */}
       <div className="flex justify-center">
-        <div className="inline-flex p-1 rounded-2xl bg-[#120d24] border border-purple-500/30 shadow-inner">
+        <div className="inline-flex flex-wrap justify-center p-1 rounded-2xl bg-[#120d24] border border-purple-500/30 shadow-inner gap-1">
           <button
             onClick={() => handleSwitchMode('classic')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'classic'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
                 : 'text-gray-400 hover:text-gray-200'
@@ -337,7 +409,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
           <button
             onClick={() => handleSwitchMode('silhouette')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'silhouette'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
                 : 'text-gray-400 hover:text-gray-200'
@@ -348,8 +420,20 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </button>
 
           <button
+            onClick={() => handleSwitchMode('skill')}
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+              gameMode === 'skill'
+                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
+                : 'text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            <Zap className="w-4 h-4" />
+            <span>{t.jujutsudle.tabSkill}</span>
+          </button>
+
+          <button
             onClick={() => handleSwitchMode('free')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'free'
                 ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
                 : 'text-gray-400 hover:text-gray-200'
@@ -361,32 +445,210 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       </div>
 
-      {/* Card Visual Especial para Modo Silhueta */}
+      {/* Card Visual Especial para Modo Silhueta com Blur Progressivo e Pistas com Cadeado */}
       {gameMode === 'silhouette' && (
-        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden">
-          <div className="absolute top-3 right-3 text-xs text-purple-300/70 flex items-center gap-1 font-mono">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>{t.jujutsudle.silhouetteHint}</span>
+        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden space-y-5">
+          <div className="w-full flex items-center justify-between text-xs text-purple-300/70 font-mono px-2">
+            <span className="flex items-center gap-1">
+              <HelpCircle className="w-3.5 h-3.5" />
+              <span>{t.jujutsudle.silhouetteHint}</span>
+            </span>
+            <span>
+              {guesses.length} / {maxGuesses} {t.jujutsudle.guessButton.toLowerCase()}s
+            </span>
           </div>
 
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden bg-[#090616] border-2 border-purple-500/40 p-2 flex items-center justify-center">
             <img 
               src={getAssetUrl(targetChar.image)} 
               alt="Silhouette Target"
-              className={`w-full h-full object-contain transition-all duration-700 select-none pointer-events-none ${silhouetteFilterStyle}`}
+              className={`w-full h-full object-contain transition-all duration-700 select-none pointer-events-none ${silhouetteFilterStyle} ${
+                guesses.length === 0 ? 'scale-125' : guesses.length === 1 ? 'scale-115' : 'scale-100'
+              }`}
             />
-            {!isWon && !isGameOver && (
-              <div className="absolute bottom-2 inset-x-2 bg-black/60 backdrop-blur-xs py-1 rounded text-center text-[10px] text-purple-300 font-mono">
-                {guesses.length} / {maxGuesses} {t.jujutsudle.guessButton.toLowerCase()}s
+            {isWon && (
+              <div className="absolute inset-0 bg-emerald-950/20 backdrop-blur-[0.5px] flex items-center justify-center">
+                <span className="text-emerald-400 font-black text-lg bg-black/70 px-4 py-1.5 rounded-xl border border-emerald-500/40">
+                  {targetChar.name}
+                </span>
               </div>
             )}
           </div>
 
-          {isWon && (
-            <p className="mt-3 text-sm font-bold text-emerald-400 animate-bounce">
-              {targetChar.title}
-            </p>
-          )}
+          {/* Grade de 4 Pistas Progressivas com Cadeados Destrancáveis por Palpite */}
+          <div className="w-full max-w-xl grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+            {/* Pista 1: Raridade (Palpite 2) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 2 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 2 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueRarity}
+              </span>
+              {guesses.length >= 2 || isWon ? (
+                <RarityBadge rarity={targetChar.rarity} />
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '2')}</span>
+              )}
+            </div>
+
+            {/* Pista 2: Elemento (Palpite 3) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 3 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 3 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueElement}
+              </span>
+              {guesses.length >= 3 || isWon ? (
+                <ElementBadge element={targetChar.element} />
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '3')}</span>
+              )}
+            </div>
+
+            {/* Pista 3: Afiliação (Palpite 4) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 4 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 4 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueAffiliation}
+              </span>
+              {guesses.length >= 4 || isWon ? (
+                <span className="text-[11px] font-bold truncate max-w-[120px]">{targetChar.affiliation || 'Jujutsu High'}</span>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '4')}</span>
+              )}
+            </div>
+
+            {/* Pista 4: Áudio (Palpite 5) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 5 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 5 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueAudio}
+              </span>
+              {guesses.length >= 5 || isWon ? (
+                <button
+                  onClick={handlePlayAudioClue}
+                  className="px-2 py-0.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-[11px] font-bold flex items-center gap-1 cursor-pointer"
+                >
+                  <Volume2 className="w-3 h-3" />
+                  <span>Ouvir</span>
+                </button>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '5')}</span>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Card Visual Especial para Modo Habilidade / Técnica */}
+      {gameMode === 'skill' && targetSkill && (
+        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden space-y-4">
+          <div className="w-full flex items-center justify-between text-xs text-purple-300/70 font-mono px-2">
+            <span className="flex items-center gap-1">
+              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              <span>{t.jujutsudle.skillHint}</span>
+            </span>
+            <span>
+              {guesses.length} / {maxGuesses} {t.jujutsudle.guessButton.toLowerCase()}s
+            </span>
+          </div>
+
+          {/* Ícone Oficial da Técnica */}
+          <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden bg-[#090616] border-2 border-purple-500/50 p-3 flex flex-col items-center justify-center shadow-2xl group">
+            <img 
+              src={getAssetUrl(targetSkill.skillIcon)} 
+              alt={targetSkill.skillName}
+              className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-transform duration-300 group-hover:scale-105"
+            />
+            {isWon && (
+              <div className="absolute inset-0 bg-emerald-950/80 backdrop-blur-xs flex flex-col items-center justify-center p-2 text-center">
+                <span className="text-emerald-400 font-black text-sm sm:text-base">
+                  {targetSkill.skillName}
+                </span>
+                <span className="text-[10px] text-gray-300 mt-1">
+                  {targetSkill.character.name}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="text-center">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-900/40 text-purple-300 border border-purple-500/30">
+              {targetSkill.skillType === 'ultimate' ? '⚡ Técnica Suprema' : '🥋 Habilidade de Combate'}
+            </span>
+          </div>
+
+          {/* Grade de 3 Pistas da Habilidade Destrancadas por Palpites */}
+          <div className="w-full max-w-lg grid grid-cols-3 gap-2.5 pt-2">
+            {/* Pista 1: Tipo / Custo (Palpite 2) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 2 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 2 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueSkillCost}
+              </span>
+              {guesses.length >= 2 || isWon ? (
+                <span className="text-xs font-bold font-mono text-purple-300">
+                  {targetSkill.cost ? `${targetSkill.cost} CE` : 'Passiva / Zero'}
+                </span>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '2')}</span>
+              )}
+            </div>
+
+            {/* Pista 2: Elemento do Feiticeiro (Palpite 3) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 3 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 3 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueElement}
+              </span>
+              {guesses.length >= 3 || isWon ? (
+                <ElementBadge element={targetChar.element} />
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '3')}</span>
+              )}
+            </div>
+
+            {/* Pista 3: 1ª Letra do Feiticeiro (Palpite 4) */}
+            <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
+              guesses.length >= 4 || isWon
+                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+                : 'bg-[#100b24] border-gray-800 text-gray-500'
+            }`}>
+              <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                {guesses.length >= 4 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
+                {t.jujutsudle.clueSkillFirstLetter}
+              </span>
+              {guesses.length >= 4 || isWon ? (
+                <span className="text-sm font-black text-amber-400 font-mono">
+                  {targetChar.name.charAt(0)}...
+                </span>
+              ) : (
+                <span className="text-[11px] font-mono">{t.jujutsudle.clueLocked.replace('{count}', '4')}</span>
+              )}
+            </div>
+          </div>
         </div>
       )}
 
@@ -456,13 +718,21 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                 )}
               </button>
 
-              {gameMode === 'free' && (
+              {gameMode === 'free' ? (
                 <button
                   onClick={handleResetFreePractice}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-purple-600/40 hover:bg-purple-600/60 border border-purple-400/40 text-purple-200 transition cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-purple-600 hover:bg-purple-500 border border-purple-400/40 text-white shadow-lg shadow-purple-900/40 transition cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
-                  <span>{t.jujutsudle.playAgain}</span>
+                  <span>{t.jujutsudle.nextFreeChallenge}</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleSwitchMode('free')}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-purple-900/50 hover:bg-purple-800/60 border border-purple-400/40 text-purple-200 transition cursor-pointer"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  <span>{t.jujutsudle.tabFree}</span>
                 </button>
               )}
             </div>
@@ -664,14 +934,12 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
   };
 
   return (
-    <div 
-      className={`grid grid-cols-6 gap-2 animate-flipIn`}
-      style={{ animationDelay: `${rowIndex * 60}ms` }}
-    >
+    <div className="grid grid-cols-6 gap-2">
       {/* 1. Feiticeiro (Retrato + Nome) */}
       <div 
         onClick={() => onSelectCharacter && onSelectCharacter(character)}
-        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition ${
+        style={{ animationDelay: `${rowIndex * 100}ms` }}
+        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
           isCorrect ? 'bg-emerald-950/70 border-emerald-500/80 shadow-md' : 'bg-[#150f29] border-purple-500/30'
         } ${onSelectCharacter ? 'cursor-pointer hover:border-purple-400' : ''}`}
       >
@@ -688,7 +956,10 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
       </div>
 
       {/* 2. Elemento */}
-      <div className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center ${getStatusColor(element.status)}`}>
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 100}ms` }}
+        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(element.status)}`}
+      >
         <ElementBadge element={character.element} showLabel={false} />
         <span className="text-[10px] sm:text-xs font-semibold mt-1">
           {translateElement(character.element, language).split(' ')[0]}
@@ -696,26 +967,38 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
       </div>
 
       {/* 3. Raridade */}
-      <div className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center ${getStatusColor(rarity.status)}`}>
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 200}ms` }}
+        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(rarity.status)}`}
+      >
         <RarityBadge rarity={character.rarity} />
       </div>
 
       {/* 4. Tipo de Combate (Taijutsu, Jujutsu, Misto) */}
-      <div className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 ${getStatusColor(combatType.status)}`}>
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 300}ms` }}
+        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(combatType.status)}`}
+      >
         <span className="text-[10px] sm:text-xs font-bold">
           {translateFocus(character.focus || combatType.value, language).split(' ')[0]}
         </span>
       </div>
 
       {/* 5. Afiliação */}
-      <div className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 ${getStatusColor(affiliation.status)}`}>
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 400}ms` }}
+        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(affiliation.status)}`}
+      >
         <span className="text-[9px] sm:text-xs font-medium line-clamp-2">
           {affiliation.value}
         </span>
       </div>
 
       {/* 6. Lançamento Cronológico */}
-      <div className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center ${getChronoColor(chronological.status)}`}>
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 500}ms` }}
+        className={`p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getChronoColor(chronological.status)}`}
+      >
         <div className="flex items-center gap-1 font-bold">
           {chronological.status === 'higher' && <ArrowUp className="w-4 h-4 text-purple-300 animate-bounce" />}
           {chronological.status === 'lower' && <ArrowDown className="w-4 h-4 text-purple-300 animate-bounce" />}
