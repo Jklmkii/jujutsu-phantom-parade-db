@@ -23,11 +23,25 @@ import {
   type TargetSkillInfo,
   type GameMode
 } from '../utils/jujutsudle';
+import {
+  getCanonicalCharacters,
+  getDailyCanonicalCharacter,
+  evaluateCanonGuess,
+  generateCanonShareText,
+  loadCanonCutoffPreference,
+  saveCanonCutoffPreference,
+  loadDailyCanonGameState,
+  saveDailyCanonGameState,
+  type CanonicalCharacter,
+  type CanonCutoff,
+  type CanonGuessEvaluation
+} from '../utils/jujutsudleCanon';
 import { getAssetUrl } from '../utils/assets';
 import { playClick, playTabSwitch, playKokusenVoice } from '../utils/sound';
 import { useTranslation, translateElement, translateFocus, translateRole } from '../i18n';
 import { ElementBadge, RarityBadge } from './Badges';
 import { JujutsudleCalendarModal } from './JujutsudleCalendarModal';
+import { JujutsudleSpoilerModal } from './JujutsudleSpoilerModal';
 import { 
   Sparkles, 
   Volume2, 
@@ -47,7 +61,9 @@ import {
   Lock,
   Unlock,
   Calendar as CalendarIcon,
-  Focus
+  Focus,
+  BookOpen,
+  ShieldAlert
 } from 'lucide-react';
 import { getDeviceLocalDateString, formatDateDisplay } from '../utils/date';
 
@@ -89,7 +105,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const [showCalendarModal, setShowCalendarModal] = useState<boolean>(false);
   const isToday = selectedDate === todayStr;
 
-  // Modos de jogo: Clássico Diário, Silhueta, Habilidade ou Prática Livre
+  // Modos de jogo: Clássico Diário, Silhueta, Habilidade, Cânone ou Prática Livre
   const [gameMode, setGameMode] = useState<GameMode>('classic');
 
   // Alvo atual e palpites da sessão
@@ -98,6 +114,27 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const [targetSkill, setTargetSkill] = useState<TargetSkillInfo | undefined>(initialData.dailySkill);
   const [guesses, setGuesses] = useState<Character[]>(initialData.guesses);
   const [evaluations, setEvaluations] = useState<GuessEvaluation[]>(initialData.evals);
+
+  // Estados do Modo Cânone (Anime & Mangá com proteção anti-spoiler)
+  const [canonCutoff, setCanonCutoff] = useState<CanonCutoff>(() => loadCanonCutoffPreference());
+  const [showSpoilerModal, setShowSpoilerModal] = useState<boolean>(false);
+  const [canonTargetChar, setCanonTargetChar] = useState<CanonicalCharacter>(() => 
+    getDailyCanonicalCharacter(todayStr, loadCanonCutoffPreference())
+  );
+  const [canonGuesses, setCanonGuesses] = useState<CanonicalCharacter[]>(() => {
+    const pref = loadCanonCutoffPreference();
+    const saved = loadDailyCanonGameState(todayStr, pref);
+    const allCanon = getCanonicalCharacters(pref);
+    return saved.guesses.map(id => allCanon.find(c => c.id === id)).filter(Boolean) as CanonicalCharacter[];
+  });
+  const [canonEvaluations, setCanonEvaluations] = useState<CanonGuessEvaluation[]>(() => {
+    const pref = loadCanonCutoffPreference();
+    const saved = loadDailyCanonGameState(todayStr, pref);
+    const allCanon = getCanonicalCharacters(pref);
+    const target = getDailyCanonicalCharacter(todayStr, pref);
+    const restored = saved.guesses.map(id => allCanon.find(c => c.id === id)).filter(Boolean) as CanonicalCharacter[];
+    return restored.map(g => evaluateCanonGuess(g, target));
+  });
 
   // Estados de busca autocomplete
   const [searchQuery, setSearchQuery] = useState('');
@@ -116,6 +153,9 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
   const maxGuesses = 6;
   const isWon = evaluations.some(e => e.isCorrect);
   const isGameOver = isWon || (gameMode !== 'free' && guesses.length >= maxGuesses);
+
+  const isCanonWon = canonEvaluations.some(e => e.isCorrect);
+  const isCanonGameOver = isCanonWon || canonGuesses.length >= maxGuesses;
 
   // Pistas progressivas calculadas deterministicamente para o personagem alvo
   const progressiveClues = useMemo(() => getProgressiveClues(targetChar), [targetChar]);
@@ -150,6 +190,14 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         setGuesses([]);
         setEvaluations([]);
       }
+    } else if (mode === 'canon') {
+      const canonTarget = getDailyCanonicalCharacter(selectedDate, canonCutoff);
+      setCanonTargetChar(canonTarget);
+      const savedState = loadDailyCanonGameState(selectedDate, canonCutoff);
+      const allCanon = getCanonicalCharacters(canonCutoff);
+      const restored = savedState.guesses.map(id => allCanon.find(c => c.id === id)).filter(Boolean) as CanonicalCharacter[];
+      setCanonGuesses(restored);
+      setCanonEvaluations(restored.map(g => evaluateCanonGuess(g, canonTarget)));
     } else {
       // Obtém o feiticeiro diário específico para o modo (o modo silhueta possui personagem diferente do clássico)
       const modeDailyChar = getDailyCharacter(selectedDate, mode);
@@ -171,6 +219,19 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     }
   };
 
+  // Seleciona corte anti-spoiler
+  const handleSelectCutoff = (newCutoff: CanonCutoff) => {
+    saveCanonCutoffPreference(newCutoff);
+    setCanonCutoff(newCutoff);
+    const newTarget = getDailyCanonicalCharacter(selectedDate, newCutoff);
+    setCanonTargetChar(newTarget);
+    const savedState = loadDailyCanonGameState(selectedDate, newCutoff);
+    const allCanon = getCanonicalCharacters(newCutoff);
+    const restored = savedState.guesses.map(id => allCanon.find(c => c.id === id)).filter(Boolean) as CanonicalCharacter[];
+    setCanonGuesses(restored);
+    setCanonEvaluations(restored.map(g => evaluateCanonGuess(g, newTarget)));
+  };
+
   // Seleciona uma data (Hoje ou dia anterior do Arquivo do Calendário)
   const handleSelectDate = (newDate: string) => {
     playTabSwitch();
@@ -185,7 +246,15 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       setGameMode('classic');
     }
 
-    if (activeMode === 'skill') {
+    if (activeMode === 'canon') {
+      const canonTarget = getDailyCanonicalCharacter(newDate, canonCutoff);
+      setCanonTargetChar(canonTarget);
+      const savedState = loadDailyCanonGameState(newDate, canonCutoff);
+      const allCanon = getCanonicalCharacters(canonCutoff);
+      const restored = savedState.guesses.map(id => allCanon.find(c => c.id === id)).filter(Boolean) as CanonicalCharacter[];
+      setCanonGuesses(restored);
+      setCanonEvaluations(restored.map(g => evaluateCanonGuess(g, canonTarget)));
+    } else if (activeMode === 'skill') {
       const skillTarget = getDailySkill(newDate);
       setTargetSkill(skillTarget);
       setTargetChar(skillTarget.character);
@@ -222,7 +291,23 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     }
   };
 
-  // Lista de personagens filtrados para o autocomplete (excluindo já palpitados)
+  // Catálogo canônico filtrado por corte
+  const canonicalCharacters = useMemo(() => getCanonicalCharacters(canonCutoff), [canonCutoff]);
+  const guessedCanonIds = useMemo(() => new Set(canonGuesses.map(g => g.id)), [canonGuesses]);
+  const filteredCanonCharacters = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase().trim();
+    return canonicalCharacters
+      .filter(c => !guessedCanonIds.has(c.id))
+      .filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.kanji.includes(q) ||
+        c.innateTechnique.toLowerCase().includes(q)
+      )
+      .slice(0, 8);
+  }, [canonicalCharacters, guessedCanonIds, searchQuery]);
+
+  // Lista de personagens do jogo filtrados para o autocomplete (excluindo já palpitados)
   const guessedIds = useMemo(() => new Set(guesses.map(g => g.id)), [guesses]);
   const filteredCharacters = useMemo(() => {
     if (!searchQuery.trim()) return [];
@@ -300,8 +385,62 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
     }
   };
 
-  // Teclas no campo de busca
+  // Envia palpite no Modo Cânone (Anime & Mangá)
+  const handleMakeCanonGuess = (chosen: CanonicalCharacter) => {
+    if (isCanonGameOver || guessedCanonIds.has(chosen.id)) return;
+    playClick();
+
+    const evaluation = evaluateCanonGuess(chosen, canonTargetChar);
+    const newGuesses = [...canonGuesses, chosen];
+    const newEvals = [...canonEvaluations, evaluation];
+
+    setCanonGuesses(newGuesses);
+    setCanonEvaluations(newEvals);
+    setSearchQuery('');
+    setIsDropdownOpen(false);
+
+    saveDailyCanonGameState({
+      date: selectedDate,
+      cutoff: canonCutoff,
+      targetId: canonTargetChar.id,
+      guesses: newGuesses.map(g => g.id),
+      solved: evaluation.isCorrect,
+    });
+
+    if (evaluation.isCorrect) {
+      setShowKokusenEffect(true);
+      setTimeout(() => {
+        playKokusenVoice();
+      }, 100);
+      setTimeout(() => {
+        playJujutsudleVictorySound();
+      }, 500);
+      setTimeout(() => {
+        setShowKokusenEffect(false);
+      }, 2500);
+    }
+  };
+
+  // Teclas no campo de busca (suporta catálogo do jogo ou cânone)
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (gameMode === 'canon') {
+      if (!isDropdownOpen || filteredCanonCharacters.length === 0) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev + 1) % filteredCanonCharacters.length);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev - 1 + filteredCanonCharacters.length) % filteredCanonCharacters.length);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const chosen = filteredCanonCharacters[selectedIndex];
+        if (chosen) handleMakeCanonGuess(chosen);
+      } else if (e.key === 'Escape') {
+        setIsDropdownOpen(false);
+      }
+      return;
+    }
+
     if (!isDropdownOpen || filteredCharacters.length === 0) return;
 
     if (e.key === 'ArrowDown') {
@@ -316,6 +455,21 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       if (chosen) handleMakeGuess(chosen);
     } else if (e.key === 'Escape') {
       setIsDropdownOpen(false);
+    }
+  };
+
+  // Copiar compartilhamento em emojis do modo cânone
+  const handleShareCanonResult = async () => {
+    playClick();
+    const text = generateCanonShareText(canonEvaluations, selectedDate, canonCutoff);
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        setCopyFeedback(true);
+        setTimeout(() => setCopyFeedback(false), 2500);
+      }
+    } catch (err) {
+      console.warn('Erro ao copiar para clipboard:', err);
     }
   };
 
@@ -573,6 +727,22 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </button>
 
           <button
+            onClick={() => handleSwitchMode('canon')}
+            data-testid="tab-canon"
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+              gameMode === 'canon'
+                ? 'bg-gradient-to-r from-purple-600 via-indigo-600 to-amber-600 text-white shadow-md shadow-purple-600/30'
+                : 'text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            <BookOpen className="w-4 h-4 text-amber-300" />
+            <span>{t.jujutsudle.tabCanon}</span>
+            <span className="px-1.5 py-0.2 text-[9px] rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 font-mono">
+              {canonCutoff === 'sendai' ? 'Sendai' : 'Manga'}
+            </span>
+          </button>
+
+          <button
             onClick={() => handleSwitchMode('free')}
             data-testid="tab-free"
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
@@ -586,6 +756,38 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </button>
         </div>
       </div>
+
+      {/* Banner Informativo & Seletor de Filtro Anti-Spoiler para o Modo Cânone */}
+      {gameMode === 'canon' && (
+        <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-3xl bg-gradient-to-r from-[#1b1233] via-[#140e28] to-[#1a112e] border border-amber-500/30 shadow-xl gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-amber-400">
+              <ShieldAlert className="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-white">
+                  {t.jujutsudle.antiSpoilerConfig}:
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-purple-500/20 text-purple-300 border border-purple-500/40 font-mono">
+                  {canonCutoff === 'sendai' ? t.jujutsudle.canonCutoffBadgeSendai : t.jujutsudle.canonCutoffBadgeShinjuku}
+                </span>
+              </div>
+              <p className="text-xs text-gray-400 mt-0.5">
+                {t.jujutsudle.canonSubtitle} ({canonicalCharacters.length} {t.jujutsudle.colCharacter.toLowerCase()}s)
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setShowSpoilerModal(true)}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-900/60 hover:bg-purple-800/80 border border-purple-400/40 text-purple-200 text-xs font-bold transition shadow-sm cursor-pointer shrink-0"
+          >
+            <ShieldAlert className="w-4 h-4 text-amber-400" />
+            <span>{t.jujutsudle.antiSpoilerConfig}</span>
+          </button>
+        </div>
+      )}
 
       {/* Card Visual Especial para Modo Silhueta com Desfoque Óptico Progressivo */}
       {gameMode === 'silhouette' && (
@@ -800,8 +1002,92 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       )}
 
-      {/* Banner de Vitória ou Derrota quando encerrado */}
-      {isGameOver && (
+      {/* Banner de Vitória ou Derrota para o Modo Cânone */}
+      {gameMode === 'canon' && isCanonGameOver && (
+        <div className={`p-6 rounded-3xl border shadow-2xl relative overflow-hidden animate-slideDown ${
+          isCanonWon
+            ? 'bg-gradient-to-r from-emerald-950/80 via-[#13271d] to-[#0a1811] border-emerald-500/40 text-emerald-200 shadow-emerald-950/50'
+            : 'bg-gradient-to-r from-rose-950/80 via-[#271317] to-[#180a0d] border-rose-500/40 text-rose-200 shadow-rose-950/50'
+        }`}>
+          <div className="flex flex-col sm:flex-row items-center gap-6 justify-between">
+            <div className="flex items-center gap-4">
+              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-purple-500/50 bg-[#090616] shrink-0 shadow-lg flex items-center justify-center">
+                {canonTargetChar.gameImage ? (
+                  <img 
+                    src={getAssetUrl(canonTargetChar.gameImage)} 
+                    alt={canonTargetChar.name} 
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <span className="text-2xl font-black text-purple-300 font-mono">
+                    {canonTargetChar.kanji.slice(0, 2)}
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black flex items-center gap-2">
+                  {isCanonWon ? (
+                    <>
+                      <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                      <span>{t.jujutsudle.winTitle}</span>
+                    </>
+                  ) : (
+                    <>
+                      <XCircle className="w-6 h-6 text-rose-400" />
+                      <span>{t.jujutsudle.lossTitle}</span>
+                    </>
+                  )}
+                </h3>
+                <p className="text-sm text-gray-300 mt-1">
+                  {isCanonWon 
+                    ? t.jujutsudle.winSubtitle.replace('{guesses}', String(canonEvaluations.length))
+                    : t.jujutsudle.lossSubtitle.replace('{name}', `${canonTargetChar.name} (${canonTargetChar.kanji})`)
+                  }
+                </p>
+                <div className="flex flex-wrap items-center gap-2 mt-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                    {canonTargetChar.grade}
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                    {canonTargetChar.species}
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30">
+                    {canonTargetChar.debutArc}
+                  </span>
+                </div>
+                {canonTargetChar.innateTechnique && (
+                  <p className="text-xs text-purple-300/80 mt-1.5 font-mono">
+                    ✦ Técnica Inata: {canonTargetChar.innateTechnique}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                onClick={handleShareCanonResult}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-700/30 transition cursor-pointer"
+              >
+                {copyFeedback ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    <span>{t.jujutsudle.shareSuccess}</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-4 h-4" />
+                    <span>{t.jujutsudle.shareBtn}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Banner de Vitória ou Derrota quando encerrado (Modos de Jogo Padrão) */}
+      {gameMode !== 'canon' && isGameOver && (
         <div className={`p-6 rounded-3xl border shadow-2xl relative overflow-hidden animate-slideDown ${
           isWon
             ? 'bg-gradient-to-r from-emerald-950/80 via-[#13271d] to-[#0a1811] border-emerald-500/40 text-emerald-200 shadow-emerald-950/50'
@@ -968,17 +1254,17 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       )}
 
       {/* Caixa de Entrada e Autocomplete */}
-      {!isGameOver && (
+      {!(gameMode === 'canon' ? isCanonGameOver : isGameOver) && (
         <div className="relative max-w-xl mx-auto space-y-2">
           <div className="flex items-center justify-between text-xs text-gray-400 px-1">
             <span>
               {t.jujutsudle.guessesCount
-                .replace('{current}', String(guesses.length + 1))
+                .replace('{current}', String((gameMode === 'canon' ? canonGuesses.length : guesses.length) + 1))
                 .replace('{max}', String(gameMode === 'free' ? '∞' : maxGuesses))}
             </span>
             {gameMode !== 'free' && (
               <span className="text-purple-400 font-mono">
-                {t.jujutsudle.remaining.replace('{count}', String(maxGuesses - guesses.length))}
+                {t.jujutsudle.remaining.replace('{count}', String(maxGuesses - (gameMode === 'canon' ? canonGuesses.length : guesses.length)))}
               </span>
             )}
           </div>
@@ -1004,14 +1290,26 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
               className="w-full pl-11 pr-24 py-3.5 bg-[#120d24] border border-purple-500/30 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 rounded-2xl text-sm text-gray-100 placeholder-gray-500 outline-none transition shadow-inner"
             />
 
-            {filteredCharacters.length > 0 && searchQuery.trim() && (
-              <button
-                onClick={() => handleMakeGuess(filteredCharacters[0])}
-                data-testid="jujutsudle-guess-button"
-                className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm cursor-pointer"
-              >
-                {t.jujutsudle.guessButton}
-              </button>
+            {gameMode === 'canon' ? (
+              filteredCanonCharacters.length > 0 && searchQuery.trim() && (
+                <button
+                  onClick={() => handleMakeCanonGuess(filteredCanonCharacters[0])}
+                  data-testid="jujutsudle-guess-button"
+                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm cursor-pointer"
+                >
+                  {t.jujutsudle.guessButton}
+                </button>
+              )
+            ) : (
+              filteredCharacters.length > 0 && searchQuery.trim() && (
+                <button
+                  onClick={() => handleMakeGuess(filteredCharacters[0])}
+                  data-testid="jujutsudle-guess-button"
+                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm cursor-pointer"
+                >
+                  {t.jujutsudle.guessButton}
+                </button>
+              )
             )}
           </div>
 
@@ -1021,48 +1319,105 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
               ref={dropdownRef}
               className="absolute z-40 left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-2xl bg-[#140e28] border border-purple-500/40 shadow-2xl divide-y divide-purple-500/10 custom-scrollbar"
             >
-              {filteredCharacters.length > 0 ? (
-                filteredCharacters.map((char, index) => {
-                  const isSelected = index === selectedIndex;
-                  return (
-                    <div
-                      key={char.id}
-                      onClick={() => handleMakeGuess(char)}
-                      onMouseEnter={() => setSelectedIndex(index)}
-                      data-testid="jujutsudle-autocomplete-option"
-                      className={`flex items-center gap-3 p-2.5 transition cursor-pointer ${
-                        isSelected ? 'bg-purple-600/30 text-purple-100' : 'hover:bg-purple-900/20 text-gray-300'
-                      }`}
-                    >
-                      <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#090616] border border-purple-500/30 shrink-0">
-                        <img 
-                          src={getAssetUrl(char.image)} 
-                          alt={char.name} 
-                          className="w-full h-full object-contain"
-                          loading="lazy"
-                        />
-                      </div>
+              {gameMode === 'canon' ? (
+                filteredCanonCharacters.length > 0 ? (
+                  filteredCanonCharacters.map((cChar, index) => {
+                    const isSelected = index === selectedIndex;
+                    return (
+                      <div
+                        key={cChar.id}
+                        onClick={() => handleMakeCanonGuess(cChar)}
+                        onMouseEnter={() => setSelectedIndex(index)}
+                        data-testid="jujutsudle-autocomplete-option"
+                        className={`flex items-center gap-3 p-2.5 transition cursor-pointer ${
+                          isSelected ? 'bg-purple-600/30 text-purple-100' : 'hover:bg-purple-900/20 text-gray-300'
+                        }`}
+                      >
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#090616] border border-purple-500/30 shrink-0 flex items-center justify-center">
+                          {cChar.gameImage ? (
+                            <img 
+                              src={getAssetUrl(cChar.gameImage)} 
+                              alt={cChar.name} 
+                              className="w-full h-full object-contain"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span className="text-xs font-black text-purple-300 font-mono">
+                              {cChar.kanji ? cChar.kanji.slice(0, 2) : cChar.name.slice(0, 2)}
+                            </span>
+                          )}
+                        </div>
 
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs sm:text-sm font-bold truncate">
-                          {char.title}
-                        </p>
-                        <p className="text-[11px] text-gray-400 truncate">
-                          {char.name} • {normalizeAffiliation(char.affiliation)}
-                        </p>
-                      </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs sm:text-sm font-bold truncate flex items-center gap-1.5">
+                            <span>{cChar.name}</span>
+                            <span className="text-[10px] text-purple-400 font-mono">({cChar.kanji})</span>
+                          </p>
+                          <p className="text-[11px] text-gray-400 truncate">
+                            {cChar.species} • {cChar.affiliation}
+                          </p>
+                        </div>
 
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        <ElementBadge element={char.element} showLabel={false} />
-                        <RarityBadge rarity={char.rarity} />
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                            {cChar.grade}
+                          </span>
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30">
+                            {cChar.debutArc}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })
+                    );
+                  })
+                ) : (
+                  <div className="p-4 text-center text-xs text-gray-400">
+                    {t.jujutsudle.noResults}
+                  </div>
+                )
               ) : (
-                <div className="p-4 text-center text-xs text-gray-400">
-                  {t.jujutsudle.noResults}
-                </div>
+                filteredCharacters.length > 0 ? (
+                  filteredCharacters.map((char, index) => {
+                    const isSelected = index === selectedIndex;
+                    return (
+                      <div
+                        key={char.id}
+                        onClick={() => handleMakeGuess(char)}
+                        onMouseEnter={() => setSelectedIndex(index)}
+                        data-testid="jujutsudle-autocomplete-option"
+                        className={`flex items-center gap-3 p-2.5 transition cursor-pointer ${
+                          isSelected ? 'bg-purple-600/30 text-purple-100' : 'hover:bg-purple-900/20 text-gray-300'
+                        }`}
+                      >
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#090616] border border-purple-500/30 shrink-0">
+                          <img 
+                            src={getAssetUrl(char.image)} 
+                            alt={char.name} 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs sm:text-sm font-bold truncate">
+                            {char.title}
+                          </p>
+                          <p className="text-[11px] text-gray-400 truncate">
+                            {char.name} • {normalizeAffiliation(char.affiliation)}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <ElementBadge element={char.element} showLabel={false} />
+                          <RarityBadge rarity={char.rarity} />
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className="p-4 text-center text-xs text-gray-400">
+                    {t.jujutsudle.noResults}
+                  </div>
+                )
               )}
             </div>
           )}
@@ -1096,32 +1451,62 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       {/* Tabela de Palpites estilo Wordle */}
       <div className="space-y-3">
         {/* Cabeçalho da Grade */}
-        <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
-          <div>{t.jujutsudle.colCharacter}</div>
-          <div>{t.jujutsudle.colElement}</div>
-          <div>{t.jujutsudle.colRarity}</div>
-          <div>{t.jujutsudle.colCombat}</div>
-          <div>{t.jujutsudle.colRole}</div>
-          <div>{t.jujutsudle.colAffiliation}</div>
-          <div>{t.jujutsudle.colRelease}</div>
-        </div>
-
-        {/* Linhas de Palpites avaliados */}
-        {evaluations.length === 0 ? (
-          <div className="p-8 text-center rounded-2xl bg-[#120d24]/40 border border-dashed border-purple-500/20 text-gray-500 text-sm">
-            {t.jujutsudle.searchPlaceholder}
+        {gameMode === 'canon' ? (
+          <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
+            <div>{t.jujutsudle.colCharacter}</div>
+            <div>{t.jujutsudle.colSpecies}</div>
+            <div>{t.jujutsudle.colGender}</div>
+            <div>{t.jujutsudle.colGrade}</div>
+            <div>{t.jujutsudle.colAffiliation}</div>
+            <div>{t.jujutsudle.colDomain}</div>
+            <div>{t.jujutsudle.colDebut}</div>
           </div>
         ) : (
-          <div className="space-y-2">
-            {evaluations.map((evalItem, rowIndex) => (
-              <GuessRow 
-                key={`${evalItem.character.id}-${rowIndex}`} 
-                evaluation={evalItem} 
-                rowIndex={rowIndex}
-                onSelectCharacter={onSelectCharacter}
-              />
-            ))}
+          <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
+            <div>{t.jujutsudle.colCharacter}</div>
+            <div>{t.jujutsudle.colElement}</div>
+            <div>{t.jujutsudle.colRarity}</div>
+            <div>{t.jujutsudle.colCombat}</div>
+            <div>{t.jujutsudle.colRole}</div>
+            <div>{t.jujutsudle.colAffiliation}</div>
+            <div>{t.jujutsudle.colRelease}</div>
           </div>
+        )}
+
+        {/* Linhas de Palpites avaliados */}
+        {gameMode === 'canon' ? (
+          canonEvaluations.length === 0 ? (
+            <div className="p-8 text-center rounded-2xl bg-[#120d24]/40 border border-dashed border-purple-500/20 text-gray-500 text-sm">
+              {t.jujutsudle.searchPlaceholder}
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {canonEvaluations.map((evalItem, rowIndex) => (
+                <CanonGuessRow 
+                  key={`${evalItem.character.id}-${rowIndex}`} 
+                  evaluation={evalItem} 
+                  rowIndex={rowIndex}
+                />
+              ))}
+            </div>
+          )
+        ) : (
+          evaluations.length === 0 ? (
+            <div className="p-8 text-center rounded-2xl bg-[#120d24]/40 border border-dashed border-purple-500/20 text-gray-500 text-sm">
+              {t.jujutsudle.searchPlaceholder}
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {evaluations.map((evalItem, rowIndex) => (
+                <GuessRow 
+                  key={`${evalItem.character.id}-${rowIndex}`} 
+                  evaluation={evalItem} 
+                  rowIndex={rowIndex}
+                  onSelectCharacter={onSelectCharacter}
+                />
+              ))}
+            </div>
+          )
         )}
       </div>
 
@@ -1143,6 +1528,14 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           onClose={() => setShowCalendarModal(false)}
         />
       )}
+
+      {/* Modal Anti-Spoiler para o Modo Cânone */}
+      <JujutsudleSpoilerModal
+        isOpen={showSpoilerModal}
+        onClose={() => setShowSpoilerModal(false)}
+        currentCutoff={canonCutoff}
+        onSelectCutoff={handleSelectCutoff}
+      />
     </div>
   );
 };
@@ -1259,6 +1652,138 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
         </div>
         <span className="text-[8px] sm:text-[11px] font-mono mt-0.5">
           {chronological.formattedDate || '—'}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+// Subcomponente de Linha de Palpite do Modo Cânone (Anime & Mangá)
+interface CanonGuessRowProps {
+  evaluation: CanonGuessEvaluation;
+  rowIndex: number;
+}
+
+const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) => {
+  const { character, species, gender, grade, affiliation, hasDomain, debutArc, isCorrect } = evaluation;
+
+  const getStatusColor = (status: MatchStatus) => {
+    if (status === 'correct') {
+      return 'bg-emerald-950/60 border-emerald-500/70 text-emerald-300 shadow-sm shadow-emerald-950/40';
+    }
+    if (status === 'partial') {
+      return 'bg-amber-950/60 border-amber-500/70 text-amber-300 shadow-sm shadow-amber-950/40';
+    }
+    return 'bg-rose-950/60 border-rose-700/60 text-rose-300 shadow-sm shadow-rose-950/40';
+  };
+
+  const getDirectionArrow = (direction: DirectionStatus) => {
+    if (direction === 'higher') return <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />;
+    if (direction === 'lower') return <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />;
+    return <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />;
+  };
+
+  const imgSource = character.gameImage ? getAssetUrl(character.gameImage) : null;
+
+  return (
+    <div className="grid grid-cols-7 gap-1.5 sm:gap-2" data-testid="canon-guess-row">
+      {/* 1. Feiticeiro (Retrato/Kanji + Nome) */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
+          isCorrect ? 'bg-emerald-950/70 border-emerald-500/80 shadow-md' : 'bg-[#150f29] border-purple-500/30'
+        }`}
+      >
+        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-1 flex items-center justify-center">
+          {imgSource ? (
+            <img 
+              src={imgSource} 
+              alt={character.name} 
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <span className="text-xs sm:text-sm font-black text-purple-300 font-mono">
+              {character.kanji ? character.kanji.slice(0, 2) : character.name.slice(0, 2)}
+            </span>
+          )}
+        </div>
+        <span className="text-[10px] sm:text-xs font-bold text-gray-200 line-clamp-1">
+          {character.name}
+        </span>
+        <span className="text-[8px] text-purple-400 font-mono line-clamp-1">
+          {character.kanji}
+        </span>
+      </div>
+
+      {/* 2. Espécie */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 80}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(species.status)}`}
+      >
+        <span className="text-[9px] sm:text-xs font-semibold leading-tight">
+          {species.value}
+        </span>
+      </div>
+
+      {/* 3. Gênero */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 160}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(gender.status)}`}
+      >
+        <span className="text-[9px] sm:text-xs font-bold">
+          {gender.value}
+        </span>
+      </div>
+
+      {/* 4. Grau (com indicador de direção ↑/↓) */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 240}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(grade.status)}`}
+      >
+        <div className="flex items-center gap-1 font-bold">
+          {getDirectionArrow(grade.direction)}
+        </div>
+        <span className="text-[8px] sm:text-xs font-bold leading-tight mt-0.5">
+          {grade.value}
+        </span>
+      </div>
+
+      {/* 5. Afiliação */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 320}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(affiliation.status)}`}
+      >
+        <span className="text-[8px] sm:text-xs font-medium line-clamp-2 leading-tight">
+          {affiliation.value}
+        </span>
+      </div>
+
+      {/* 6. Expansão de Domínio */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 400}ms` }}
+        title={hasDomain.domainName ? `Domínio: ${hasDomain.domainName}` : undefined}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(hasDomain.status)}`}
+      >
+        <span className="text-[9px] sm:text-xs font-bold">
+          {hasDomain.value}
+        </span>
+        {hasDomain.domainName && (
+          <span className="text-[7px] sm:text-[9px] text-amber-300 font-mono line-clamp-1 mt-0.5" title={hasDomain.domainName}>
+            🌌 {hasDomain.domainName}
+          </span>
+        )}
+      </div>
+
+      {/* 7. Estreia na Obra (com indicador de direção cronológica ↑/↓) */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 480}ms` }}
+        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(debutArc.status)}`}
+      >
+        <div className="flex items-center gap-1 font-bold">
+          {getDirectionArrow(debutArc.direction)}
+        </div>
+        <span className="text-[8px] sm:text-[11px] font-mono leading-tight mt-0.5">
+          {debutArc.value}
         </span>
       </div>
     </div>

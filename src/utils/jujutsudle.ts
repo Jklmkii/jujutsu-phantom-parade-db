@@ -37,7 +37,7 @@ export interface JujutsudleStats {
   lastWonDate: string;
 }
 
-export type GameMode = 'classic' | 'silhouette' | 'skill' | 'free';
+export type GameMode = 'classic' | 'silhouette' | 'skill' | 'canon' | 'free';
 
 export interface TargetSkillInfo {
   character: Character;
