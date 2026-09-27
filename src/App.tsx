@@ -27,12 +27,12 @@ function TabLoadingFallback() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-8 space-y-4 animate-pulse">
       <div 
-        className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-400/30 animate-spin" 
+        className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 border border-cyan-400/40 animate-spin" 
         style={{ animationDuration: '3s' }}
       >
-        <div className="w-6 h-6 rounded-lg bg-[#090710]" />
+        <div className="w-6 h-6 rounded-lg bg-[#06070c]" />
       </div>
-      <p className="text-xs uppercase tracking-widest text-purple-400 font-semibold">
+      <p className="text-xs uppercase tracking-widest text-cyan-400 font-semibold font-mono">
         Manipulando Energia Amaldiçoada...
       </p>
     </div>
@@ -114,7 +114,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#090710] text-gray-100 flex relative">
+    <div className="min-h-screen bg-[#06070c] text-slate-100 flex relative selection:bg-cyan-500/30 selection:text-cyan-200">
       {/* Fixed Left Sidebar */}
       <Sidebar 
         activeTab={activeTab} 

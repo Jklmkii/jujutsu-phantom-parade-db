@@ -595,14 +595,22 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       )}
 
-      {/* Header com Título, Streak, Calendário e Ações */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-purple-500/20">
-        <div className="text-center md:text-left">
+      {/* Header com Título, Kanji de Fundo, Streak, Calendário e Ações */}
+      <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-[#1e263d]">
+        {/* Kanji decorativo translúcido */}
+        <span 
+          aria-hidden="true" 
+          className="absolute -top-4 right-2 text-7xl sm:text-8xl font-black text-cyan-500/5 select-none pointer-events-none font-mono"
+        >
+          呪術旋戦
+        </span>
+
+        <div className="text-center md:text-left relative z-10">
           <div className="flex items-center justify-center md:justify-start gap-3">
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300">
+            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-300 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
               {t.jujutsudle.title}
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-sm shadow-purple-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-950/50 text-cyan-300 border border-cyan-500/40 shadow-sm shadow-cyan-950/50">
               {gameMode === 'free' ? t.jujutsudle.freeBadge : t.jujutsudle.dailyBadge}
             </span>
           </div>
@@ -612,24 +620,24 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
 
         {/* Barra de utilitários: Calendário, Sequência, Pista Sonora e Estatísticas */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-center relative z-10">
           {/* Botão de Calendário / Arquivo de Dias Anteriores */}
           <button
             onClick={() => { playClick(); setShowCalendarModal(true); }}
             aria-label={t.jujutsudle.calendarBtn}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition cursor-pointer backdrop-blur-md ${
               !isToday
                 ? 'bg-amber-950/60 border-amber-500/70 text-amber-300 shadow-sm shadow-amber-950/40 animate-pulse'
-                : 'bg-[#15102a] border-purple-500/30 text-purple-300 hover:text-purple-200 hover:border-purple-400'
+                : 'bg-[#0f131f]/80 border-[#1e263d] text-cyan-300 hover:text-cyan-100 hover:border-cyan-500/50'
             }`}
             title={t.jujutsudle.calendarTitle}
           >
-            <CalendarIcon className="w-4 h-4 text-purple-400" />
+            <CalendarIcon className="w-4 h-4 text-cyan-400" />
             <span>{isToday ? t.jujutsudle.calendarToday : formatDateDisplay(selectedDate)}</span>
           </button>
 
           {/* Badge de Streak */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#15102a] border border-orange-500/30 text-orange-400 shadow-sm" title={t.jujutsudle.currentStreak}>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0f131f]/80 border border-orange-500/30 text-orange-400 shadow-sm backdrop-blur-md" title={t.jujutsudle.currentStreak}>
             <Flame className="w-4 h-4 text-orange-400 animate-pulse" />
             <span className="text-xs font-black">{stats.currentStreak}</span>
             <span className="text-[10px] text-gray-400 hidden sm:inline">Streak</span>
@@ -640,14 +648,14 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             onClick={handlePlayAudioClue}
             disabled={isAudioPlaying}
             aria-label={t.jujutsudle.clueSound}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 cursor-pointer backdrop-blur-md ${
               isAudioPlaying
-                ? 'bg-purple-600/40 border-purple-400 text-purple-200 animate-pulse'
-                : 'bg-[#15102a] border-purple-500/30 text-purple-300 hover:bg-purple-900/30 hover:border-purple-400'
+                ? 'bg-cyan-600/40 border-cyan-400 text-cyan-200 animate-pulse'
+                : 'bg-[#0f131f]/80 border-[#1e263d] text-cyan-300 hover:bg-cyan-950/40 hover:border-cyan-400'
             }`}
             title={t.jujutsudle.clueSound}
           >
-            <Volume2 className={`w-4 h-4 ${isAudioPlaying ? 'animate-bounce' : ''}`} />
+            <Volume2 className={`w-4 h-4 ${isAudioPlaying ? 'animate-bounce text-cyan-300' : 'text-cyan-400'}`} />
             <span className="hidden sm:inline">
               {isAudioPlaying ? t.jujutsudle.clueSoundPlaying : t.jujutsudle.clueSound}
             </span>
@@ -657,10 +665,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           <button
             onClick={() => { playClick(); setShowStatsModal(true); }}
             aria-label={t.jujutsudle.statsTitle}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#15102a] border border-purple-500/30 text-gray-300 hover:text-purple-300 hover:border-purple-400 transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#0f131f]/80 border border-[#1e263d] text-gray-300 hover:text-cyan-300 hover:border-cyan-400 transition cursor-pointer backdrop-blur-md"
             title={t.jujutsudle.statsTitle}
           >
-            <BarChart2 className="w-4 h-4" />
+            <BarChart2 className="w-4 h-4 text-cyan-400" />
             <span className="hidden sm:inline">{t.jujutsudle.played}</span>
           </button>
         </div>
@@ -684,16 +692,16 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       )}
 
-      {/* Seletor de Modo: Clássico, Silhueta, Habilidade, Prática Livre */}
+      {/* Seletor de Modo: Cápsula de Vidro Segmentada */}
       <div className="flex justify-center">
-        <div className="inline-flex flex-wrap justify-center p-1 rounded-2xl bg-[#120d24] border border-purple-500/30 shadow-inner gap-1">
+        <div className="inline-flex flex-wrap justify-center p-1.5 rounded-2xl bg-[#0a0d14]/90 backdrop-blur-xl border border-[#1e263d] shadow-xl gap-1.5">
           <button
             onClick={() => handleSwitchMode('classic')}
             data-testid="tab-classic"
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'classic'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
-                : 'text-gray-400 hover:text-gray-200'
+                ? 'bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white shadow-lg shadow-cyan-900/50 border border-cyan-400/30'
+                : 'text-gray-400 hover:text-cyan-200 hover:bg-[#161c2e]/60'
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -703,10 +711,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           <button
             onClick={() => handleSwitchMode('silhouette')}
             data-testid="tab-silhouette"
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'silhouette'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
-                : 'text-gray-400 hover:text-gray-200'
+                ? 'bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white shadow-lg shadow-cyan-900/50 border border-cyan-400/30'
+                : 'text-gray-400 hover:text-cyan-200 hover:bg-[#161c2e]/60'
             }`}
           >
             <Eye className="w-4 h-4" />
@@ -716,10 +724,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           <button
             onClick={() => handleSwitchMode('skill')}
             data-testid="tab-skill"
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'skill'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
-                : 'text-gray-400 hover:text-gray-200'
+                ? 'bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white shadow-lg shadow-cyan-900/50 border border-cyan-400/30'
+                : 'text-gray-400 hover:text-cyan-200 hover:bg-[#161c2e]/60'
             }`}
           >
             <Zap className="w-4 h-4" />
@@ -729,15 +737,15 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           <button
             onClick={() => handleSwitchMode('canon')}
             data-testid="tab-canon"
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'canon'
-                ? 'bg-gradient-to-r from-purple-600 via-indigo-600 to-amber-600 text-white shadow-md shadow-purple-600/30'
-                : 'text-gray-400 hover:text-gray-200'
+                ? 'bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-cyan-900/50 border border-cyan-400/30'
+                : 'text-gray-400 hover:text-cyan-200 hover:bg-[#161c2e]/60'
             }`}
           >
-            <BookOpen className="w-4 h-4 text-amber-300" />
+            <BookOpen className="w-4 h-4 text-cyan-300" />
             <span>{t.jujutsudle.tabCanon}</span>
-            <span className="px-1.5 py-0.2 text-[9px] rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 font-mono">
+            <span className="px-1.5 py-0.2 text-[9px] rounded-full bg-cyan-400/20 text-cyan-300 border border-cyan-400/30 font-mono">
               {canonCutoff === 'sendai' ? 'Sendai' : 'Manga'}
             </span>
           </button>
@@ -745,10 +753,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           <button
             onClick={() => handleSwitchMode('free')}
             data-testid="tab-free"
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
               gameMode === 'free'
-                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30'
-                : 'text-gray-400 hover:text-gray-200'
+                ? 'bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white shadow-lg shadow-cyan-900/50 border border-cyan-400/30'
+                : 'text-gray-400 hover:text-cyan-200 hover:bg-[#161c2e]/60'
             }`}
           >
             <RotateCcw className="w-4 h-4" />
@@ -759,9 +767,9 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
       {/* Banner Informativo & Seletor de Filtro Anti-Spoiler para o Modo Cânone */}
       {gameMode === 'canon' && (
-        <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-3xl bg-gradient-to-r from-[#1b1233] via-[#140e28] to-[#1a112e] border border-amber-500/30 shadow-xl gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between p-4 rounded-3xl bg-gradient-to-r from-[#0a0d14] via-[#0f131f] to-[#121726] border border-cyan-500/30 shadow-xl gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-amber-400">
+            <div className="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-2xl text-cyan-400">
               <ShieldAlert className="w-6 h-6 animate-pulse" />
             </div>
             <div>
@@ -769,7 +777,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                 <span className="text-sm font-bold text-white">
                   {t.jujutsudle.antiSpoilerConfig}:
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-purple-500/20 text-purple-300 border border-purple-500/40 font-mono">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-mono">
                   {canonCutoff === 'sendai' ? t.jujutsudle.canonCutoffBadgeSendai : t.jujutsudle.canonCutoffBadgeShinjuku}
                 </span>
               </div>
@@ -781,9 +789,9 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
           <button
             onClick={() => setShowSpoilerModal(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-900/60 hover:bg-purple-800/80 border border-purple-400/40 text-purple-200 text-xs font-bold transition shadow-sm cursor-pointer shrink-0"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/80 border border-cyan-400/40 text-cyan-200 text-xs font-bold transition shadow-sm cursor-pointer shrink-0"
           >
-            <ShieldAlert className="w-4 h-4 text-amber-400" />
+            <ShieldAlert className="w-4 h-4 text-cyan-400" />
             <span>{t.jujutsudle.antiSpoilerConfig}</span>
           </button>
         </div>
@@ -791,10 +799,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
       {/* Card Visual Especial para Modo Silhueta com Desfoque Óptico Progressivo */}
       {gameMode === 'silhouette' && (
-        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden space-y-4">
-          <div className="w-full flex items-center justify-between text-xs text-purple-300/70 font-mono px-2">
+        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#0f131f] to-[#0a0d14] border border-[#1e263d] shadow-xl relative overflow-hidden space-y-4">
+          <div className="w-full flex items-center justify-between text-xs text-cyan-300/70 font-mono px-2">
             <span className="flex items-center gap-1.5">
-              <Focus className="w-4 h-4 text-purple-400" />
+              <Focus className="w-4 h-4 text-cyan-400" />
               <span>{t.jujutsudle.focusLevel.replace('{percent}', String(silhouetteFocusData.percent))}</span>
             </span>
             <span>
@@ -803,14 +811,14 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </div>
 
           {/* Barra de Progresso de Foco da Lente */}
-          <div className="w-full max-w-sm h-1.5 rounded-full bg-[#0e091d] overflow-hidden border border-purple-500/20">
+          <div className="w-full max-w-sm h-1.5 rounded-full bg-[#06070c] overflow-hidden border border-[#1e263d]">
             <div 
-              className="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-400 transition-all duration-700 rounded-full"
+              className="h-full bg-gradient-to-r from-cyan-600 via-sky-400 to-indigo-400 transition-all duration-700 rounded-full"
               style={{ width: `${silhouetteFocusData.percent}%` }}
             />
           </div>
 
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden bg-[#090616] border-2 border-purple-500/40 p-2 flex items-center justify-center">
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden bg-[#06070c] border-2 border-cyan-500/40 p-2 flex items-center justify-center shadow-[0_0_25px_rgba(6,182,212,0.15)]">
             <img 
               src={getAssetUrl(targetChar.image)} 
               alt="Focus Target"
@@ -830,8 +838,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 1: Raridade (Palpite 2) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 2 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 2 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -847,8 +855,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 2: Elemento (Palpite 3) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 3 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 3 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -864,8 +872,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 3: Afiliação (Palpite 4) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 4 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 4 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -881,8 +889,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 4: Áudio (Palpite 5) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 5 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 5 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -891,7 +899,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
               {guesses.length >= 5 || isWon ? (
                 <button
                   onClick={handlePlayAudioClue}
-                  className="px-2 py-0.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-[11px] font-bold flex items-center gap-1 cursor-pointer"
+                  className="px-2 py-0.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-[11px] font-bold flex items-center gap-1 cursor-pointer shadow-sm shadow-cyan-900/50"
                 >
                   <Volume2 className="w-3 h-3" />
                   <span>Ouvir</span>
@@ -906,10 +914,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
       {/* Card Visual Especial para Modo Habilidade / Técnica */}
       {gameMode === 'skill' && targetSkill && (
-        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#181133] to-[#0c081d] border border-purple-500/30 shadow-xl relative overflow-hidden space-y-4">
-          <div className="w-full flex items-center justify-between text-xs text-purple-300/70 font-mono px-2">
+        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-[#0f131f] to-[#0a0d14] border border-[#1e263d] shadow-xl relative overflow-hidden space-y-4">
+          <div className="w-full flex items-center justify-between text-xs text-cyan-300/70 font-mono px-2">
             <span className="flex items-center gap-1">
-              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              <Zap className="w-3.5 h-3.5 text-cyan-400" />
               <span>{t.jujutsudle.skillHint}</span>
             </span>
             <span>
@@ -918,11 +926,11 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </div>
 
           {/* Ícone Oficial da Técnica */}
-          <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden bg-[#090616] border-2 border-purple-500/50 p-3 flex flex-col items-center justify-center shadow-2xl group">
+          <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden bg-[#06070c] border-2 border-cyan-500/50 p-3 flex flex-col items-center justify-center shadow-2xl group">
             <img 
               src={getAssetUrl(targetSkill.skillIcon)} 
               alt={targetSkill.skillName}
-              className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-transform duration-300 group-hover:scale-105"
             />
             {isWon && (
               <div className="absolute inset-0 bg-emerald-950/80 backdrop-blur-xs flex flex-col items-center justify-center p-2 text-center">
@@ -937,7 +945,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           </div>
 
           <div className="text-center">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-900/40 text-purple-300 border border-purple-500/30">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-950/50 text-cyan-300 border border-cyan-500/30">
               {targetSkill.skillType === 'ultimate' ? '⚡ Técnica Suprema' : '🥋 Habilidade de Combate'}
             </span>
           </div>
@@ -947,15 +955,15 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 1: Tipo / Custo (Palpite 2) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 2 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 2 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
                 {t.jujutsudle.clueSkillCost}
               </span>
               {guesses.length >= 2 || isWon ? (
-                <span className="text-xs font-bold font-mono text-purple-300">
+                <span className="text-xs font-bold font-mono text-cyan-300">
                   {targetSkill.cost ? `${targetSkill.cost} CE` : 'Passiva / Zero'}
                 </span>
               ) : (
@@ -966,8 +974,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 2: Elemento do Feiticeiro (Palpite 3) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 3 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 3 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -983,15 +991,15 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 3: 1ª Letra do Feiticeiro (Palpite 4) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[64px] ${
               guesses.length >= 4 || isWon
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200'
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200'
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 4 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
                 {t.jujutsudle.clueSkillFirstLetter}
               </span>
               {guesses.length >= 4 || isWon ? (
-                <span className="text-sm font-black text-amber-400 font-mono">
+                <span className="text-sm font-black text-cyan-300 font-mono">
                   {targetChar.name.charAt(0)}...
                 </span>
               ) : (
@@ -1006,12 +1014,12 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       {gameMode === 'canon' && isCanonGameOver && (
         <div className={`p-6 rounded-3xl border shadow-2xl relative overflow-hidden animate-slideDown ${
           isCanonWon
-            ? 'bg-gradient-to-r from-emerald-950/80 via-[#13271d] to-[#0a1811] border-emerald-500/40 text-emerald-200 shadow-emerald-950/50'
-            : 'bg-gradient-to-r from-rose-950/80 via-[#271317] to-[#180a0d] border-rose-500/40 text-rose-200 shadow-rose-950/50'
+            ? 'bg-gradient-to-r from-emerald-950/90 via-[#0b241b] to-[#071711] border-emerald-400/60 text-emerald-200 shadow-[0_0_30px_rgba(16,185,129,0.25)]'
+            : 'bg-gradient-to-r from-rose-950/90 via-[#270b13] to-[#120509] border-rose-500/60 text-rose-200 shadow-[0_0_30px_rgba(244,63,94,0.25)]'
         }`}>
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-between">
             <div className="flex items-center gap-4">
-              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-purple-500/50 bg-[#090616] shrink-0 shadow-lg flex items-center justify-center">
+              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-cyan-500/50 bg-[#06070c] shrink-0 shadow-lg flex items-center justify-center">
                 {canonTargetChar.gameImage || canonTargetChar.image ? (
                   <img 
                     src={getAssetUrl(canonTargetChar.gameImage || canonTargetChar.image)} 
@@ -1019,7 +1027,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <span className="text-2xl font-black text-purple-300 font-mono">
+                  <span className="text-2xl font-black text-cyan-300 font-mono">
                     {canonTargetChar.kanji.slice(0, 2)}
                   </span>
                 )}
@@ -1046,7 +1054,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                   }
                 </p>
                 <div className="flex flex-wrap items-center gap-2 mt-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
                     {canonTargetChar.grade}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
@@ -1057,7 +1065,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                   </span>
                 </div>
                 {canonTargetChar.innateTechnique && (
-                  <p className="text-xs text-purple-300/80 mt-1.5 font-mono">
+                  <p className="text-xs text-cyan-300/80 mt-1.5 font-mono">
                     ✦ Técnica Inata: {canonTargetChar.innateTechnique}
                   </p>
                 )}
@@ -1090,12 +1098,12 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       {gameMode !== 'canon' && isGameOver && (
         <div className={`p-6 rounded-3xl border shadow-2xl relative overflow-hidden animate-slideDown ${
           isWon
-            ? 'bg-gradient-to-r from-emerald-950/80 via-[#13271d] to-[#0a1811] border-emerald-500/40 text-emerald-200 shadow-emerald-950/50'
-            : 'bg-gradient-to-r from-rose-950/80 via-[#271317] to-[#180a0d] border-rose-500/40 text-rose-200 shadow-rose-950/50'
+            ? 'bg-gradient-to-r from-emerald-950/90 via-[#0b241b] to-[#071711] border-emerald-400/60 text-emerald-200 shadow-[0_0_30px_rgba(16,185,129,0.25)]'
+            : 'bg-gradient-to-r from-rose-950/90 via-[#270b13] to-[#120509] border-rose-500/60 text-rose-200 shadow-[0_0_30px_rgba(244,63,94,0.25)]'
         }`}>
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-between">
             <div className="flex items-center gap-4">
-              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-purple-500/50 bg-[#090616] shrink-0 shadow-lg">
+              <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-cyan-500/50 bg-[#06070c] shrink-0 shadow-lg">
                 <img 
                   src={getAssetUrl(targetChar.image)} 
                   alt={targetChar.name} 
@@ -1155,7 +1163,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
               {gameMode === 'free' ? (
                 <button
                   onClick={handleResetFreePractice}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-purple-600 hover:bg-purple-500 border border-purple-400/40 text-white shadow-lg shadow-purple-900/40 transition cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-cyan-600 hover:bg-cyan-500 border border-cyan-400/40 text-white shadow-lg shadow-cyan-900/40 transition cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
                   <span>{t.jujutsudle.nextFreeChallenge}</span>
@@ -1163,7 +1171,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
               ) : (
                 <button
                   onClick={() => handleSwitchMode('free')}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-purple-900/50 hover:bg-purple-800/60 border border-purple-400/40 text-purple-200 transition cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-cyan-950/50 hover:bg-cyan-900/60 border border-cyan-400/40 text-cyan-200 transition cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
                   <span>{t.jujutsudle.tabFree}</span>
@@ -1176,13 +1184,13 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
 
       {/* Pistas Táticas Desbloqueáveis Progressivas (Modos Clássico e Livre) */}
       {(gameMode === 'classic' || gameMode === 'free') && (
-        <div className="max-w-xl mx-auto rounded-2xl p-3 sm:p-4 bg-[#120d24]/90 border border-purple-500/25 shadow-lg space-y-2.5">
+        <div className="max-w-xl mx-auto rounded-2xl p-3 sm:p-4 bg-[#0a0d14]/90 border border-[#1e263d] shadow-lg space-y-2.5 backdrop-blur-md">
           <div className="flex items-center justify-between text-xs font-bold text-gray-300">
-            <span className="flex items-center gap-1.5 text-purple-300">
-              <Sparkles className="w-4 h-4 text-amber-400" />
+            <span className="flex items-center gap-1.5 text-cyan-300">
+              <Sparkles className="w-4 h-4 text-cyan-400" />
               {t.jujutsudle.progressiveHintsTitle}
             </span>
-            <span className="text-[11px] font-mono text-purple-400">
+            <span className="text-[11px] font-mono text-cyan-400 font-bold">
               {Math.min(
                 (guesses.length >= 3 || isWon ? 1 : 0) + (guesses.length >= 5 || isWon ? 1 : 0) + (guesses.length >= 7 || isWon ? 1 : 0),
                 3
@@ -1194,8 +1202,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 1: Arco / Origem (Palpite 3) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[58px] ${
               guesses.length >= 3 || isWon 
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200 shadow-sm' 
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200 shadow-sm' 
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 3 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -1213,8 +1221,8 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 2: Mecânica Tática / Especial (Palpite 5) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[58px] ${
               guesses.length >= 5 || isWon 
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200 shadow-sm' 
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200 shadow-sm' 
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 5 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
@@ -1234,15 +1242,15 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             {/* Pista 3: Primeira Letra (Palpite 7) */}
             <div className={`p-2.5 rounded-xl border text-center transition flex flex-col items-center justify-center min-h-[58px] ${
               guesses.length >= 7 || isWon 
-                ? 'bg-purple-950/40 border-purple-500/40 text-purple-200 shadow-sm' 
-                : 'bg-[#100b24] border-gray-800 text-gray-500'
+                ? 'bg-cyan-950/40 border-cyan-500/40 text-cyan-200 shadow-sm' 
+                : 'bg-[#0f131f] border-[#1e263d] text-gray-500'
             }`}>
               <span className="text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
                 {guesses.length >= 7 || isWon ? <Unlock className="w-3 h-3 text-emerald-400" /> : <Lock className="w-3 h-3" />}
                 {t.jujutsudle.clueFirstLetter}
               </span>
               {guesses.length >= 7 || isWon ? (
-                <span className="text-xs font-bold text-purple-200">
+                <span className="text-xs font-bold text-cyan-200">
                   {t.jujutsudle.letterHint.replace('{letter}', progressiveClues.firstLetter)}
                 </span>
               ) : (
@@ -1253,24 +1261,50 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         </div>
       )}
 
-      {/* Caixa de Entrada e Autocomplete */}
+      {/* Caixa de Entrada, Orbes de Energia Amaldiçoada e Autocomplete */}
       {!(gameMode === 'canon' ? isCanonGameOver : isGameOver) && (
-        <div className="relative max-w-xl mx-auto space-y-2">
-          <div className="flex items-center justify-between text-xs text-gray-400 px-1">
-            <span>
-              {t.jujutsudle.guessesCount
-                .replace('{current}', String((gameMode === 'canon' ? canonGuesses.length : guesses.length) + 1))
-                .replace('{max}', String(gameMode === 'free' ? '∞' : maxGuesses))}
-            </span>
-            {gameMode !== 'free' && (
-              <span className="text-purple-400 font-mono">
-                {t.jujutsudle.remaining.replace('{count}', String(maxGuesses - (gameMode === 'canon' ? canonGuesses.length : guesses.length)))}
+        <div className="relative max-w-xl mx-auto space-y-3">
+          {/* Orbes Holográficos de Energia Amaldiçoada */}
+          <div className="flex items-center justify-between px-2 py-1 bg-[#0a0d14]/70 rounded-xl border border-[#1e263d]/80 backdrop-blur-md">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+                <span className="text-[11px] uppercase tracking-wider text-gray-400">Energia Amaldiçoada:</span>
               </span>
-            )}
+              {gameMode === 'free' ? (
+                <span className="text-xs font-black text-cyan-300 font-mono tracking-widest animate-pulse">
+                  ∞ ILIMITADA
+                </span>
+              ) : (
+                <div className="flex items-center gap-1.5">
+                  {Array.from({ length: maxGuesses }).map((_, orbIdx) => {
+                    const currentCount = gameMode === 'canon' ? canonGuesses.length : guesses.length;
+                    const isAvailable = orbIdx >= currentCount;
+                    return (
+                      <div
+                        key={orbIdx}
+                        className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
+                          isAvailable
+                            ? 'bg-gradient-to-tr from-cyan-600 to-cyan-300 border border-cyan-200 shadow-[0_0_10px_rgba(6,182,212,0.8)] energy-orb-active'
+                            : 'bg-[#121726] border border-[#1e263d] opacity-35 scale-90'
+                        }`}
+                        title={isAvailable ? 'Palpite disponível' : 'Energia consumida'}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            <span className="text-xs font-mono text-cyan-400 font-bold">
+              {gameMode === 'free' 
+                ? `${guesses.length} palpites` 
+                : `${(gameMode === 'canon' ? canonGuesses.length : guesses.length)} / ${maxGuesses}`}
+            </span>
           </div>
 
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-purple-400">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cyan-400">
               <Search className="w-5 h-5" />
             </div>
 
@@ -1287,7 +1321,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
               onFocus={() => setIsDropdownOpen(true)}
               onKeyDown={handleKeyDown}
               placeholder={t.jujutsudle.searchPlaceholder}
-              className="w-full pl-11 pr-24 py-3.5 bg-[#120d24] border border-purple-500/30 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 rounded-2xl text-sm text-gray-100 placeholder-gray-500 outline-none transition shadow-inner"
+              className="w-full pl-11 pr-24 py-3.5 bg-[#0f131f]/90 border border-[#1e263d] focus:border-cyan-400 focus:ring-4 focus:ring-cyan-500/20 rounded-2xl text-sm text-gray-100 placeholder-gray-500 outline-none transition shadow-inner backdrop-blur-md"
             />
 
             {gameMode === 'canon' ? (
@@ -1295,7 +1329,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                 <button
                   onClick={() => handleMakeCanonGuess(filteredCanonCharacters[0])}
                   data-testid="jujutsudle-guess-button"
-                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm cursor-pointer"
+                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold transition shadow-md shadow-cyan-900/50 cursor-pointer"
                 >
                   {t.jujutsudle.guessButton}
                 </button>
@@ -1305,7 +1339,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                 <button
                   onClick={() => handleMakeGuess(filteredCharacters[0])}
                   data-testid="jujutsudle-guess-button"
-                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm cursor-pointer"
+                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold transition shadow-md shadow-cyan-900/50 cursor-pointer"
                 >
                   {t.jujutsudle.guessButton}
                 </button>
@@ -1317,7 +1351,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           {isDropdownOpen && searchQuery.trim() && (
             <div 
               ref={dropdownRef}
-              className="absolute z-40 left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-2xl bg-[#140e28] border border-purple-500/40 shadow-2xl divide-y divide-purple-500/10 custom-scrollbar"
+              className="absolute z-40 left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-2xl bg-[#0a0d14] border border-[#1e263d] shadow-2xl divide-y divide-[#1e263d]/60 custom-scrollbar backdrop-blur-xl"
             >
               {gameMode === 'canon' ? (
                 filteredCanonCharacters.length > 0 ? (
@@ -1330,10 +1364,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                         onMouseEnter={() => setSelectedIndex(index)}
                         data-testid="jujutsudle-autocomplete-option"
                         className={`flex items-center gap-3 p-2.5 transition cursor-pointer ${
-                          isSelected ? 'bg-purple-600/30 text-purple-100' : 'hover:bg-purple-900/20 text-gray-300'
+                          isSelected ? 'bg-cyan-950/60 text-cyan-100 border-l-2 border-cyan-400' : 'hover:bg-[#121726] text-gray-300'
                         }`}
                       >
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#090616] border border-purple-500/30 shrink-0 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#06070c] border border-cyan-500/30 shrink-0 flex items-center justify-center">
                           {cChar.gameImage || cChar.image ? (
                             <img 
                               src={getAssetUrl(cChar.gameImage || cChar.image)} 
@@ -1342,7 +1376,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                               loading="lazy"
                             />
                           ) : (
-                            <span className="text-xs font-black text-purple-300 font-mono">
+                            <span className="text-xs font-black text-cyan-300 font-mono">
                               {cChar.kanji ? cChar.kanji.slice(0, 2) : cChar.name.slice(0, 2)}
                             </span>
                           )}
@@ -1351,7 +1385,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                         <div className="flex-1 min-w-0">
                           <p className="text-xs sm:text-sm font-bold truncate flex items-center gap-1.5">
                             <span>{cChar.name}</span>
-                            <span className="text-[10px] text-purple-400 font-mono">({cChar.kanji})</span>
+                            <span className="text-[10px] text-cyan-400 font-mono">({cChar.kanji})</span>
                           </p>
                           <p className="text-[11px] text-gray-400 truncate">
                             {cChar.species} • {cChar.affiliation}
@@ -1359,7 +1393,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                         </div>
 
                         <div className="flex items-center gap-1.5 shrink-0">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
                             {cChar.grade}
                           </span>
                           <span className="px-2 py-0.5 rounded-full text-[10px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30">
@@ -1385,10 +1419,10 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                         onMouseEnter={() => setSelectedIndex(index)}
                         data-testid="jujutsudle-autocomplete-option"
                         className={`flex items-center gap-3 p-2.5 transition cursor-pointer ${
-                          isSelected ? 'bg-purple-600/30 text-purple-100' : 'hover:bg-purple-900/20 text-gray-300'
+                          isSelected ? 'bg-cyan-950/60 text-cyan-100 border-l-2 border-cyan-400' : 'hover:bg-[#121726] text-gray-300'
                         }`}
                       >
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#090616] border border-purple-500/30 shrink-0">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#06070c] border border-cyan-500/30 shrink-0">
                           <img 
                             src={getAssetUrl(char.image)} 
                             alt={char.name} 
@@ -1425,26 +1459,26 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       )}
 
       {/* Legenda de Pistas (Verde, Amarelo, Vermelho, Setas) */}
-      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 px-2 py-2.5 rounded-xl bg-[#120d24]/60 border border-purple-500/20">
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 px-3 py-2.5 rounded-2xl bg-[#0a0d14]/80 border border-[#1e263d] backdrop-blur-md">
         <div className="flex items-center gap-1.5">
-          <span className="w-3.5 h-3.5 rounded-md bg-emerald-500/40 border border-emerald-400 shrink-0"></span>
-          <span>{t.jujutsudle.legendExact}</span>
+          <span className="w-3.5 h-3.5 rounded-md bg-emerald-500/40 border border-emerald-400 shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.3)]"></span>
+          <span className="text-gray-300 font-medium">{t.jujutsudle.legendExact}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-3.5 h-3.5 rounded-md bg-amber-500/40 border border-amber-400 shrink-0"></span>
-          <span>{t.jujutsudle.legendPartial}</span>
+          <span className="w-3.5 h-3.5 rounded-md bg-amber-500/40 border border-amber-400 shrink-0 shadow-[0_0_8px_rgba(245,158,11,0.3)]"></span>
+          <span className="text-gray-300 font-medium">{t.jujutsudle.legendPartial}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-3.5 h-3.5 rounded-md bg-rose-500/40 border border-rose-400 shrink-0"></span>
-          <span>{t.jujutsudle.legendWrong}</span>
+          <span className="w-3.5 h-3.5 rounded-md bg-rose-500/40 border border-rose-400 shrink-0 shadow-[0_0_8px_rgba(244,63,94,0.3)]"></span>
+          <span className="text-gray-300 font-medium">{t.jujutsudle.legendWrong}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <ArrowUp className="w-3.5 h-3.5 text-purple-400" />
-          <span>{t.jujutsudle.legendNewer}</span>
+          <ArrowUp className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="text-gray-300 font-medium">{t.jujutsudle.legendNewer}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <ArrowDown className="w-3.5 h-3.5 text-purple-400" />
-          <span>{t.jujutsudle.legendOlder}</span>
+          <ArrowDown className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="text-gray-300 font-medium">{t.jujutsudle.legendOlder}</span>
         </div>
       </div>
 
@@ -1452,7 +1486,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       <div className="space-y-3">
         {/* Cabeçalho da Grade */}
         {gameMode === 'canon' ? (
-          <div className="grid grid-cols-9 gap-1 sm:gap-1.5 text-center text-[8px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wider px-1">
+          <div className="grid grid-cols-9 gap-1 sm:gap-1.5 text-center text-[8px] sm:text-[11px] font-bold text-cyan-400/80 uppercase tracking-wider px-1 font-mono">
             <div>{t.jujutsudle.colCharacter}</div>
             <div>{t.jujutsudle.colSpecies}</div>
             <div>{t.jujutsudle.colGender}</div>
@@ -1464,7 +1498,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
             <div>{t.jujutsudle.colDebut}</div>
           </div>
         ) : (
-          <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
+          <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-cyan-400/80 uppercase tracking-wider px-1 font-mono">
             <div>{t.jujutsudle.colCharacter}</div>
             <div>{t.jujutsudle.colElement}</div>
             <div>{t.jujutsudle.colRarity}</div>
@@ -1478,7 +1512,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
         {/* Linhas de Palpites avaliados */}
         {gameMode === 'canon' ? (
           canonEvaluations.length === 0 ? (
-            <div className="p-8 text-center rounded-2xl bg-[#120d24]/40 border border-dashed border-purple-500/20 text-gray-500 text-sm">
+            <div className="p-8 text-center rounded-2xl bg-[#0a0d14]/60 border border-dashed border-[#1e263d] text-gray-500 text-sm">
               {t.jujutsudle.searchPlaceholder}
             </div>
           ) : (
@@ -1494,7 +1528,7 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           )
         ) : (
           evaluations.length === 0 ? (
-            <div className="p-8 text-center rounded-2xl bg-[#120d24]/40 border border-dashed border-purple-500/20 text-gray-500 text-sm">
+            <div className="p-8 text-center rounded-2xl bg-[#0a0d14]/60 border border-dashed border-[#1e263d] text-gray-500 text-sm">
               {t.jujutsudle.searchPlaceholder}
             </div>
           ) : (
@@ -1555,19 +1589,19 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
 
   const getStatusColor = (status: MatchStatus) => {
     if (status === 'correct') {
-      return 'bg-emerald-950/60 border-emerald-500/70 text-emerald-300 shadow-sm shadow-emerald-950/40';
+      return 'bg-emerald-950/70 border-emerald-400/70 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.25)]';
     }
     if (status === 'partial') {
-      return 'bg-amber-950/60 border-amber-500/70 text-amber-300 shadow-sm shadow-amber-950/40';
+      return 'bg-amber-950/70 border-amber-400/70 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.25)]';
     }
-    return 'bg-rose-950/60 border-rose-700/60 text-rose-300 shadow-sm shadow-rose-950/40';
+    return 'bg-rose-950/70 border-rose-500/70 text-rose-200 shadow-[0_0_12px_rgba(244,63,94,0.25)]';
   };
 
   const getChronoColor = (status: DirectionStatus) => {
     if (status === 'correct') {
-      return 'bg-emerald-950/60 border-emerald-500/70 text-emerald-300 shadow-sm shadow-emerald-950/40';
+      return 'bg-emerald-950/70 border-emerald-400/70 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.25)]';
     }
-    return 'bg-rose-950/60 border-rose-700/60 text-rose-300 shadow-sm shadow-rose-950/40';
+    return 'bg-rose-950/70 border-rose-500/70 text-rose-200 shadow-[0_0_12px_rgba(244,63,94,0.25)]';
   };
 
   return (
@@ -1577,10 +1611,12 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
         onClick={() => onSelectCharacter && onSelectCharacter(character)}
         style={{ animationDelay: `${rowIndex * 100}ms` }}
         className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
-          isCorrect ? 'bg-emerald-950/70 border-emerald-500/80 shadow-md' : 'bg-[#150f29] border-purple-500/30'
-        } ${onSelectCharacter ? 'cursor-pointer hover:border-purple-400' : ''}`}
+          isCorrect 
+            ? 'bg-emerald-950/80 border-emerald-400/80 shadow-[0_0_15px_rgba(16,185,129,0.3)]' 
+            : 'bg-[#0f131f] border-[#1e263d]'
+        } ${onSelectCharacter ? 'cursor-pointer hover:border-cyan-400/80' : ''}`}
       >
-        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-1">
+        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-[#06070c] border border-cyan-500/30 mb-1">
           <img 
             src={getAssetUrl(character.image)} 
             alt={character.name} 
@@ -1648,8 +1684,8 @@ const GuessRow: React.FC<GuessRowProps> = ({ evaluation, rowIndex, onSelectChara
         className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getChronoColor(chronological.status)}`}
       >
         <div className="flex items-center gap-1 font-bold">
-          {chronological.status === 'higher' && <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />}
-          {chronological.status === 'lower' && <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />}
+          {chronological.status === 'higher' && <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300 animate-bounce" />}
+          {chronological.status === 'lower' && <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300 animate-bounce" />}
           {chronological.status === 'correct' && <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />}
         </div>
         <span className="text-[8px] sm:text-[11px] font-mono mt-0.5">
@@ -1671,17 +1707,17 @@ const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) =
 
   const getStatusColor = (status: MatchStatus) => {
     if (status === 'correct') {
-      return 'bg-emerald-950/60 border-emerald-500/70 text-emerald-300 shadow-sm shadow-emerald-950/40';
+      return 'bg-emerald-950/70 border-emerald-400/70 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.25)]';
     }
     if (status === 'partial') {
-      return 'bg-amber-950/60 border-amber-500/70 text-amber-300 shadow-sm shadow-amber-950/40';
+      return 'bg-amber-950/70 border-amber-400/70 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.25)]';
     }
-    return 'bg-rose-950/60 border-rose-700/60 text-rose-300 shadow-sm shadow-rose-950/40';
+    return 'bg-rose-950/70 border-rose-500/70 text-rose-200 shadow-[0_0_12px_rgba(244,63,94,0.25)]';
   };
 
   const getDirectionArrow = (direction: DirectionStatus) => {
-    if (direction === 'higher') return <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />;
-    if (direction === 'lower') return <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-300 animate-bounce" />;
+    if (direction === 'higher') return <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300 animate-bounce" />;
+    if (direction === 'lower') return <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300 animate-bounce" />;
     return <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />;
   };
 
@@ -1697,10 +1733,12 @@ const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) =
       <div 
         style={{ animationDelay: `${rowIndex * 100}ms` }}
         className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
-          isCorrect ? 'bg-emerald-950/70 border-emerald-500/80 shadow-md' : 'bg-[#150f29] border-purple-500/30'
+          isCorrect 
+            ? 'bg-emerald-950/80 border-emerald-400/80 shadow-[0_0_15px_rgba(16,185,129,0.3)]' 
+            : 'bg-[#0f131f] border-[#1e263d]'
         }`}
       >
-        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-0.5 flex items-center justify-center">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-[#06070c] border border-cyan-500/30 mb-0.5 flex items-center justify-center">
           {imgSource ? (
             <img 
               src={imgSource} 
@@ -1708,7 +1746,7 @@ const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) =
               className="w-full h-full object-contain"
             />
           ) : (
-            <span className="text-[10px] sm:text-xs font-black text-purple-300 font-mono">
+            <span className="text-[10px] sm:text-xs font-black text-cyan-300 font-mono">
               {character.kanji ? character.kanji.slice(0, 2) : character.name.slice(0, 2)}
             </span>
           )}
@@ -1716,7 +1754,7 @@ const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) =
         <span className="text-[9px] sm:text-[11px] font-bold text-gray-200 line-clamp-1">
           {character.name}
         </span>
-        <span className="text-[7px] sm:text-[8px] text-purple-400 font-mono line-clamp-1">
+        <span className="text-[7px] sm:text-[8px] text-cyan-400 font-mono line-clamp-1">
           {character.kanji}
         </span>
       </div>
@@ -1831,16 +1869,16 @@ const StatsModal: React.FC<StatsModalProps> = ({ stats, onClose }) => {
   const maxFreq = Math.max(...Object.values(stats.guessDistribution), 1);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-      <div className="w-full max-w-md bg-[#140e28] border border-purple-500/40 rounded-3xl p-6 shadow-2xl space-y-6 animate-scaleUp">
-        <div className="flex items-center justify-between pb-3 border-b border-purple-500/20">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+      <div className="w-full max-w-md bg-[#0a0d14] border border-[#1e263d] rounded-3xl p-6 shadow-2xl space-y-6 animate-scaleUp">
+        <div className="flex items-center justify-between pb-3 border-b border-[#1e263d]">
           <div className="flex items-center gap-2">
             <Trophy className="w-5 h-5 text-amber-400" />
             <h3 className="text-lg font-black text-white">{t.jujutsudle.statsTitle}</h3>
           </div>
           <button 
             onClick={onClose}
-            className="p-1 rounded-xl text-gray-400 hover:text-white hover:bg-purple-900/30 transition cursor-pointer"
+            className="p-1 rounded-xl text-gray-400 hover:text-white hover:bg-[#121726] transition cursor-pointer"
           >
             ✕
           </button>
@@ -1848,19 +1886,19 @@ const StatsModal: React.FC<StatsModalProps> = ({ stats, onClose }) => {
 
         {/* 4 KPIs de Estatísticas */}
         <div className="grid grid-cols-4 gap-2 text-center">
-          <div className="p-2.5 rounded-2xl bg-[#0e091d] border border-purple-500/20">
-            <p className="text-xl sm:text-2xl font-black text-purple-300">{stats.gamesPlayed}</p>
+          <div className="p-2.5 rounded-2xl bg-[#0f131f] border border-[#1e263d]">
+            <p className="text-xl sm:text-2xl font-black text-cyan-300">{stats.gamesPlayed}</p>
             <p className="text-[10px] text-gray-400 uppercase tracking-wider">{t.jujutsudle.played}</p>
           </div>
-          <div className="p-2.5 rounded-2xl bg-[#0e091d] border border-purple-500/20">
+          <div className="p-2.5 rounded-2xl bg-[#0f131f] border border-[#1e263d]">
             <p className="text-xl sm:text-2xl font-black text-emerald-400">{winRate}%</p>
             <p className="text-[10px] text-gray-400 uppercase tracking-wider">{t.jujutsudle.winRate}</p>
           </div>
-          <div className="p-2.5 rounded-2xl bg-[#0e091d] border border-purple-500/20">
+          <div className="p-2.5 rounded-2xl bg-[#0f131f] border border-[#1e263d]">
             <p className="text-xl sm:text-2xl font-black text-orange-400">{stats.currentStreak}</p>
             <p className="text-[10px] text-gray-400 uppercase tracking-wider">Streak</p>
           </div>
-          <div className="p-2.5 rounded-2xl bg-[#0e091d] border border-purple-500/20">
+          <div className="p-2.5 rounded-2xl bg-[#0f131f] border border-[#1e263d]">
             <p className="text-xl sm:text-2xl font-black text-amber-400">{stats.maxStreak}</p>
             <p className="text-[10px] text-gray-400 uppercase tracking-wider">Max</p>
           </div>
@@ -1878,11 +1916,11 @@ const StatsModal: React.FC<StatsModalProps> = ({ stats, onClose }) => {
               return (
                 <div key={num} className="flex items-center gap-2 text-xs">
                   <span className="w-3 font-mono font-bold text-gray-400 text-right">{num}</span>
-                  <div className="flex-1 h-5 rounded-lg bg-[#0e091d] overflow-hidden p-0.5 border border-purple-500/10">
+                  <div className="flex-1 h-5 rounded-lg bg-[#06070c] overflow-hidden p-0.5 border border-[#1e263d]">
                     <div 
                       className={`h-full rounded-md transition-all duration-500 flex items-center justify-end pr-1.5 font-mono text-[10px] font-bold ${
                         count > 0 
-                          ? 'bg-gradient-to-r from-purple-600 to-indigo-500 text-white min-w-[24px]' 
+                          ? 'bg-gradient-to-r from-cyan-600 to-blue-500 text-white min-w-[24px]' 
                           : 'bg-transparent text-gray-600'
                       }`}
                       style={{ width: `${Math.max(percent, count > 0 ? 8 : 0)}%` }}
@@ -1898,7 +1936,7 @@ const StatsModal: React.FC<StatsModalProps> = ({ stats, onClose }) => {
 
         <button
           onClick={onClose}
-          className="w-full py-2.5 rounded-xl font-bold text-xs bg-purple-600 hover:bg-purple-500 text-white transition cursor-pointer"
+          className="w-full py-2.5 rounded-xl font-bold text-xs bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white transition cursor-pointer shadow-md shadow-cyan-900/40"
         >
           {t.settings.close}
         </button>
