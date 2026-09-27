@@ -13,7 +13,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Yuji_Itadori.png",
-    "gameImage": "GreenItadoriSSRArt2.gif"
+    "gameImage": "GreenItadoriSSRArt2.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "megumi_fushiguro",
@@ -29,7 +31,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Megumi_Fushiguro.png",
-    "gameImage": "GreenMegumiSSRArt1.gif"
+    "gameImage": "GreenMegumiSSRArt1.gif",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "nobara_kugisaki",
@@ -44,7 +48,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Nobara_Kugisaki.png",
-    "gameImage": "RedNobaraSSRArt1.gif"
+    "gameImage": "RedNobaraSSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "yuta_okkotsu",
@@ -60,7 +66,9 @@
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
     "image": "Yuta_Okkotsu.png",
-    "gameImage": "YellowSSRYutaArt1.gif"
+    "gameImage": "YellowSSRYutaArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Espada / Katana"
   },
   {
     "id": "maki_zenin",
@@ -74,7 +82,10 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Maki_Zenin.png"
+    "image": "Maki_Zenin.png",
+    "techniqueType": "Restrição Celestial",
+    "combatStyle": "Ferramenta Amaldiçoada",
+    "gameImage": "RedMakiSSRArt1.gif"
   },
   {
     "id": "toge_inumaki",
@@ -89,7 +100,9 @@
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
     "image": "Toge_Inumaki.png",
-    "gameImage": "RedTogeRArt1.gif"
+    "gameImage": "RedTogeRArt1.gif",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "panda",
@@ -104,7 +117,9 @@
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
     "image": "Panda.png",
-    "gameImage": "GreenPandaSSRArt1.gif"
+    "gameImage": "GreenPandaSSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "kinji_hakari",
@@ -119,7 +134,9 @@
     "domainName": "Aposta da Morte Ociosa (Idle Death Gamble)",
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Kinji_Hakari.png"
+    "image": "canonical/kinji_hakari.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "kirara_hoshi",
@@ -133,7 +150,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Kirara_Hoshi.png"
+    "image": "canonical/kirara_hoshi.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "satoru_gojo",
@@ -149,7 +168,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Satoru_Gojo.png",
-    "gameImage": "BlueSSRGojoArt2.gif"
+    "gameImage": "BlueSSRGojoArt2.gif",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "kento_nanami",
@@ -164,7 +185,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Kento_Nanami.png",
-    "gameImage": "RedNanamiSRArt1.gif"
+    "gameImage": "RedNanamiSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "atsuya_kusakabe",
@@ -179,7 +202,9 @@
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
     "image": "Atsuya_Kusakabe.png",
-    "gameImage": "YellowSSRKusakabeArt1.gif"
+    "gameImage": "YellowSSRKusakabeArt1.gif",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Espada / Katana"
   },
   {
     "id": "masamichi_yaga",
@@ -194,7 +219,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Masamichi_Yaga.png",
-    "gameImage": "RedYagaSRArt1.gif"
+    "gameImage": "RedYagaSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "shoko_ieiri",
@@ -209,7 +236,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Shoko_Ieiri.png",
-    "gameImage": "GreenSSRShokoArt1.gif"
+    "gameImage": "GreenSSRShokoArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Reversa"
   },
   {
     "id": "kiyotaka_ijichi",
@@ -224,7 +253,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Kiyotaka_Ijichi.png",
-    "gameImage": "GreenIjichiRArt1.gif"
+    "gameImage": "GreenIjichiRArt1.gif",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Suporte / Barreiras"
   },
   {
     "id": "akari_nitta",
@@ -238,7 +269,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Akari_Nitta.png"
+    "image": "canonical/akari_nitta.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Suporte / Barreiras"
   },
   {
     "id": "arata_nitta",
@@ -252,7 +285,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Arata_Nitta.png"
+    "image": "canonical/arata_nitta.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Suporte / Reversa"
   },
   {
     "id": "yu_haibara",
@@ -267,7 +302,9 @@
     "debutArc": "Inventário Oculto",
     "cutoff": "sendai",
     "image": "Yu_Haibara.png",
-    "gameImage": "RedSSRHaibaraArt1.gif"
+    "gameImage": "RedSSRHaibaraArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "aoi_todo",
@@ -282,7 +319,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Aoi_Todo.png",
-    "gameImage": "GreenSSRTodoArt1.gif"
+    "gameImage": "GreenSSRTodoArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "noritoshi_kamo",
@@ -297,7 +336,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Noritoshi_Kamo.png",
-    "gameImage": "BlueNoritoshiSSRArt1.gif"
+    "gameImage": "BlueNoritoshiSSRArt1.gif",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "mai_zenin",
@@ -311,7 +352,10 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Mai_Zenin.png"
+    "image": "Mai_Zenin.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance",
+    "gameImage": "YellowMaiSRArt1.gif"
   },
   {
     "id": "kasumi_miwa",
@@ -326,7 +370,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Kasumi_Miwa.png",
-    "gameImage": "RedMiwaSRArt1.gif"
+    "gameImage": "RedMiwaSRArt1.gif",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Espada / Katana"
   },
   {
     "id": "kokichi_muta",
@@ -340,7 +386,10 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Kokichi_Muta.png"
+    "image": "Kokichi_Muta.png",
+    "techniqueType": "Restrição Celestial",
+    "combatStyle": "Disparo / Longo Alcance",
+    "gameImage": "GreenSSRMutaArt1.gif"
   },
   {
     "id": "momo_nishimiya",
@@ -355,7 +404,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Momo_Nishimiya.png",
-    "gameImage": "GreenMomoSRArt1.gif"
+    "gameImage": "GreenMomoSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "utahime_iori",
@@ -369,7 +420,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Utahime_Iori.png"
+    "image": "canonical/utahime_iori.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Ritual"
   },
   {
     "id": "yoshinobu_gakuganji",
@@ -384,7 +437,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Yoshinobu_Gakuganji.png",
-    "gameImage": "RedSSRGakuganjiArt1.gif"
+    "gameImage": "RedSSRGakuganjiArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "toji_fushiguro",
@@ -399,7 +454,9 @@
     "debutArc": "Inventário Oculto",
     "cutoff": "sendai",
     "image": "Toji_Fushiguro.png",
-    "gameImage": "YellowSSRTojiArt1.gif"
+    "gameImage": "YellowSSRTojiArt1.gif",
+    "techniqueType": "Restrição Celestial",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "naobito_zenin",
@@ -413,7 +470,10 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Naobito_Zenin.png"
+    "image": "Naobito_Zenin.png",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Corpo a Corpo / Punhos",
+    "gameImage": "BlueSSRNaobitoArt1.gif"
   },
   {
     "id": "naoya_zenin",
@@ -427,7 +487,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Naoya_Zenin.png"
+    "image": "canonical/naoya_zenin.png",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Velocidade / Adagas"
   },
   {
     "id": "ogi_zenin",
@@ -441,7 +503,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Ogi_Zenin.png"
+    "image": "canonical/ogi_zenin.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Espada / Katana"
   },
   {
     "id": "jinichi_zenin",
@@ -455,7 +519,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Jinichi_Zenin.png"
+    "image": "canonical/jinichi_zenin.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "chojuro_zenin",
@@ -469,7 +535,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Chojuro_Zenin.png"
+    "image": "canonical/chojuro_zenin.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "ranta_zenin",
@@ -483,7 +551,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Ranta_Zenin.png"
+    "image": "canonical/ranta_zenin.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Barreira"
   },
   {
     "id": "nobuaki_zenin",
@@ -497,7 +567,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Nobuaki_Zenin.png"
+    "image": "canonical/nobuaki_zenin.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "mei_mei",
@@ -512,7 +584,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Mei_Mei.png",
-    "gameImage": "RedSSRMeiMeiArt1.gif"
+    "gameImage": "RedSSRMeiMeiArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "ui_ui",
@@ -526,7 +600,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Ui_Ui.png"
+    "image": "canonical/ui_ui.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Teletransporte"
   },
   {
     "id": "yuki_tsukumo",
@@ -541,7 +617,9 @@
     "domainName": "Domínio Inato de Yuki Tsukumo",
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Yuki_Tsukumo.png"
+    "image": "canonical/yuki_tsukumo.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "takuma_ino",
@@ -556,7 +634,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Takuma_Ino.png",
-    "gameImage": "GreenInoSSRArt1.gif"
+    "gameImage": "GreenInoSSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "master_tengen",
@@ -570,7 +650,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Master_Tengen.png"
+    "image": "canonical/master_tengen.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Barreiras"
   },
   {
     "id": "ryomen_sukuna",
@@ -586,7 +668,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Ryomen_Sukuna.png",
-    "gameImage": "YellowSSRSukunaArt1.gif"
+    "gameImage": "YellowSSRSukunaArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "mahito",
@@ -602,7 +686,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Mahito.png",
-    "gameImage": "GreenMahitoSSRArt1.gif"
+    "gameImage": "GreenMahitoSSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "jogo",
@@ -618,7 +704,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Jogo.png",
-    "gameImage": "RedSSRJogoArt1.gif"
+    "gameImage": "RedSSRJogoArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "hanami",
@@ -634,7 +722,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Hanami.png",
-    "gameImage": "RedHanamiSSRArt1.gif"
+    "gameImage": "RedHanamiSSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "dagon",
@@ -650,7 +740,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Dagon.png",
-    "gameImage": "YellowSSRDagonArt1.gif"
+    "gameImage": "YellowSSRDagonArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "choso",
@@ -665,7 +757,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Choso.png",
-    "gameImage": "GreenSSRChosoArt1.gif"
+    "gameImage": "GreenSSRChosoArt1.gif",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "eso",
@@ -679,8 +773,10 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Eso.png",
-    "gameImage": "BlueNoritoshiSSRArt1.gif"
+    "image": "canonical/eso.png",
+    "gameImage": "BlueNoritoshiSSRArt1.gif",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "kechizu",
@@ -694,7 +790,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Kechizu.png"
+    "image": "canonical/kechizu.png",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "kurourushi",
@@ -708,7 +806,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Kurourushi.png"
+    "image": "canonical/kurourushi.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "smallpox_deity",
@@ -723,7 +823,9 @@
     "domainName": "Domínio do Cemitério e Lápide",
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Smallpox_Deity.png"
+    "image": "canonical/smallpox_deity.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "ko_guy",
@@ -737,7 +839,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Ko_Guy.png"
+    "image": "canonical/ko_guy.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "rika",
@@ -751,7 +855,9 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Rika.png"
+    "image": "canonical/rika.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "kenjaku",
@@ -766,7 +872,9 @@
     "domainName": "Womb Profusion (Abundância Uterina)",
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Kenjaku.png"
+    "image": "canonical/kenjaku.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "suguru_geto",
@@ -781,7 +889,9 @@
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
     "image": "Suguru_Geto.png",
-    "gameImage": "BlueGetoSSRArt1.gif"
+    "gameImage": "BlueGetoSSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "uraume",
@@ -796,7 +906,9 @@
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
     "image": "Uraume.png",
-    "gameImage": "YellowSSRUraumeArt1.gif"
+    "gameImage": "YellowSSRUraumeArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "miguel_oduol",
@@ -810,7 +922,10 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Miguel.png"
+    "image": "Miguel.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada",
+    "gameImage": "BlueSSRMiguelArt1.gif"
   },
   {
     "id": "larue",
@@ -824,7 +939,9 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Larue.png"
+    "image": "canonical/larue.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "mimiko_hasaba",
@@ -838,7 +955,9 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Mimiko_Hasaba.png"
+    "image": "canonical/mimiko_hasaba.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "nanako_hasaba",
@@ -852,7 +971,9 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Nanako_Hasaba.png"
+    "image": "canonical/nanako_hasaba.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "manami_suda",
@@ -866,7 +987,9 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Manami_Suda.png"
+    "image": "canonical/manami_suda.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Suporte / Barreiras"
   },
   {
     "id": "toshihisa_negi",
@@ -880,7 +1003,9 @@
     "hasDomain": false,
     "debutArc": "Jujutsu Kaisen 0",
     "cutoff": "sendai",
-    "image": "Toshihisa_Negi.png"
+    "image": "canonical/toshihisa_negi.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "juzo_kumiya",
@@ -894,7 +1019,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Juzo_Kumiya.png"
+    "image": "canonical/juzo_kumiya.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "haruta_shigemo",
@@ -908,7 +1035,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Haruta_Shigemo.png"
+    "image": "canonical/haruta_shigemo.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "jiro_awasaka",
@@ -922,7 +1051,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Jiro_Awasaka.png"
+    "image": "canonical/jiro_awasaka.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "granny_ogami",
@@ -936,7 +1067,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Granny_Ogami.png"
+    "image": "canonical/granny_ogami.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Reversa"
   },
   {
     "id": "ogamis_grandson",
@@ -950,7 +1083,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Ogamis_Grandson.png"
+    "image": "canonical/ogamis_grandson.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "hiromi_higuruma",
@@ -965,7 +1100,9 @@
     "domainName": "Sentença Mortal (Deadly Sentencing)",
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Hiromi_Higuruma.png"
+    "image": "canonical/hiromi_higuruma.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "hajime_kashimo",
@@ -979,7 +1116,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Hajime_Kashimo.png"
+    "image": "canonical/hajime_kashimo.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "ryu_ishigori",
@@ -994,7 +1133,9 @@
     "domainName": "Domínio Inato de Ryu Ishigori",
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Ryu_Ishigori.png"
+    "image": "canonical/ryu_ishigori.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "takako_uro",
@@ -1009,7 +1150,9 @@
     "domainName": "Domínio Inato de Takako Uro",
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Takako_Uro.png"
+    "image": "canonical/takako_uro.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "dhruv_lakdawalla",
@@ -1023,7 +1166,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Dhruv_Lakdawalla.png"
+    "image": "canonical/dhruv_lakdawalla.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "reggie_star",
@@ -1037,7 +1182,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Reggie_Star.png"
+    "image": "canonical/reggie_star.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "fumihiko_takaba",
@@ -1051,7 +1198,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Fumihiko_Takaba.png"
+    "image": "canonical/fumihiko_takaba.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "iori_hazenoki",
@@ -1065,7 +1214,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Iori_Hazenoki.png"
+    "image": "canonical/iori_hazenoki.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "chizuru_hari",
@@ -1079,7 +1230,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Chizuru_Hari.png"
+    "image": "canonical/chizuru_hari.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "remi",
@@ -1093,7 +1246,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Remi.png"
+    "image": "canonical/remi.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "charles_bernard",
@@ -1107,7 +1262,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Charles_Bernard.png"
+    "image": "canonical/charles_bernard.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Ferramenta Amaldiçoada"
   },
   {
     "id": "hana_kurusu",
@@ -1121,7 +1278,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Hana_Kurusu.png"
+    "image": "canonical/hana_kurusu.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "rin_amai",
@@ -1135,7 +1294,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Rin_Amai.png"
+    "image": "canonical/rin_amai.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Suporte / Barreiras"
   },
   {
     "id": "haba",
@@ -1149,7 +1310,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Haba.png"
+    "image": "canonical/haba.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
     "id": "hanyu",
@@ -1163,7 +1326,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
-    "image": "Hanyu.png"
+    "image": "canonical/hanyu.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Disparo / Longo Alcance"
   },
   {
     "id": "kaori_itadori",
@@ -1177,7 +1342,9 @@
     "hasDomain": false,
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
-    "image": "Kaori_Itadori.png"
+    "image": "canonical/kaori_itadori.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "junpei_yoshino",
@@ -1192,7 +1359,9 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "Junpei_Yoshino.png",
-    "gameImage": "BlueJunpeiSRArt1.gif"
+    "gameImage": "BlueJunpeiSRArt1.gif",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Shikigami / Sombras"
   },
   {
     "id": "noritoshi_kamo_ancestor",
@@ -1206,7 +1375,9 @@
     "hasDomain": false,
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
-    "image": "Noritoshi_Kamo_Ancestor.png"
+    "image": "canonical/noritoshi_kamo_ancestor.png",
+    "techniqueType": "Técnica Herdada",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "shiu_kong",
@@ -1220,7 +1391,9 @@
     "hasDomain": false,
     "debutArc": "Inventário Oculto",
     "cutoff": "sendai",
-    "image": "Shiu_Kong.png"
+    "image": "canonical/shiu_kong.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Suporte / Barreiras"
   },
   {
     "id": "naoya_zenin_curse",
@@ -1235,7 +1408,9 @@
     "domainName": "Palácio da Lua Célula Temporal (Time Cell Moon Palace)",
     "debutArc": "Jogo do Abate",
     "cutoff": "shinjuku",
-    "image": "Naoya_Zenin_Curse.png"
+    "image": "canonical/naoya_zenin_curse.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Velocidade / Adagas"
   },
   {
     "id": "yorozu",
@@ -1250,7 +1425,9 @@
     "domainName": "Três Camadas de Aflição (Threefold Affliction)",
     "debutArc": "Jogo do Abate",
     "cutoff": "shinjuku",
-    "image": "Yorozu.png"
+    "image": "canonical/yorozu.png",
+    "techniqueType": "Técnica Inata",
+    "combatStyle": "Feitiçaria Pura"
   },
   {
     "id": "hagane_daido",
@@ -1264,7 +1441,9 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "shinjuku",
-    "image": "Hagane_Daido.png"
+    "image": "canonical/hagane_daido.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Espada / Katana"
   },
   {
     "id": "rokujushi_miyo",
@@ -1278,6 +1457,8 @@
     "hasDomain": false,
     "debutArc": "Jogo do Abate",
     "cutoff": "shinjuku",
-    "image": "Rokujushi_Miyo.png"
+    "image": "canonical/rokujushi_miyo.png",
+    "techniqueType": "Sem Técnica Inata",
+    "combatStyle": "Corpo a Corpo / Punhos"
   }
 ]

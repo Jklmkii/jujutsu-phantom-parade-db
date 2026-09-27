@@ -1012,9 +1012,9 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-between">
             <div className="flex items-center gap-4">
               <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-purple-500/50 bg-[#090616] shrink-0 shadow-lg flex items-center justify-center">
-                {canonTargetChar.gameImage ? (
+                {canonTargetChar.gameImage || canonTargetChar.image ? (
                   <img 
-                    src={getAssetUrl(canonTargetChar.gameImage)} 
+                    src={getAssetUrl(canonTargetChar.gameImage || canonTargetChar.image)} 
                     alt={canonTargetChar.name} 
                     className="w-full h-full object-contain"
                   />
@@ -1334,9 +1334,9 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
                         }`}
                       >
                         <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#090616] border border-purple-500/30 shrink-0 flex items-center justify-center">
-                          {cChar.gameImage ? (
+                          {cChar.gameImage || cChar.image ? (
                             <img 
-                              src={getAssetUrl(cChar.gameImage)} 
+                              src={getAssetUrl(cChar.gameImage || cChar.image)} 
                               alt={cChar.name} 
                               className="w-full h-full object-contain"
                               loading="lazy"
@@ -1452,12 +1452,14 @@ export const Jujutsudle: React.FC<JujutsudleProps> = ({ onSelectCharacter }) => 
       <div className="space-y-3">
         {/* Cabeçalho da Grade */}
         {gameMode === 'canon' ? (
-          <div className="grid grid-cols-7 gap-1.5 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
+          <div className="grid grid-cols-9 gap-1 sm:gap-1.5 text-center text-[8px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wider px-1">
             <div>{t.jujutsudle.colCharacter}</div>
             <div>{t.jujutsudle.colSpecies}</div>
             <div>{t.jujutsudle.colGender}</div>
             <div>{t.jujutsudle.colGrade}</div>
             <div>{t.jujutsudle.colAffiliation}</div>
+            <div>{t.jujutsudle.colTechniqueType}</div>
+            <div>{t.jujutsudle.colCombatStyle}</div>
             <div>{t.jujutsudle.colDomain}</div>
             <div>{t.jujutsudle.colDebut}</div>
           </div>
@@ -1665,7 +1667,7 @@ interface CanonGuessRowProps {
 }
 
 const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) => {
-  const { character, species, gender, grade, affiliation, hasDomain, debutArc, isCorrect } = evaluation;
+  const { character, species, gender, grade, affiliation, techniqueType, combatStyle, hasDomain, debutArc, isCorrect } = evaluation;
 
   const getStatusColor = (status: MatchStatus) => {
     if (status === 'correct') {
@@ -1683,18 +1685,22 @@ const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) =
     return <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />;
   };
 
-  const imgSource = character.gameImage ? getAssetUrl(character.gameImage) : null;
+  const imgSource = character.gameImage 
+    ? getAssetUrl(character.gameImage) 
+    : character.image 
+    ? getAssetUrl(character.image) 
+    : null;
 
   return (
-    <div className="grid grid-cols-7 gap-1.5 sm:gap-2" data-testid="canon-guess-row">
+    <div className="grid grid-cols-9 gap-1 sm:gap-1.5" data-testid="canon-guess-row">
       {/* 1. Feiticeiro (Retrato/Kanji + Nome) */}
       <div 
         style={{ animationDelay: `${rowIndex * 100}ms` }}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center transition animate-flipIn ${
           isCorrect ? 'bg-emerald-950/70 border-emerald-500/80 shadow-md' : 'bg-[#150f29] border-purple-500/30'
         }`}
       >
-        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-1 flex items-center justify-center">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-[#090616] border border-purple-500/30 mb-0.5 flex items-center justify-center">
           {imgSource ? (
             <img 
               src={imgSource} 
@@ -1702,87 +1708,107 @@ const CanonGuessRow: React.FC<CanonGuessRowProps> = ({ evaluation, rowIndex }) =
               className="w-full h-full object-contain"
             />
           ) : (
-            <span className="text-xs sm:text-sm font-black text-purple-300 font-mono">
+            <span className="text-[10px] sm:text-xs font-black text-purple-300 font-mono">
               {character.kanji ? character.kanji.slice(0, 2) : character.name.slice(0, 2)}
             </span>
           )}
         </div>
-        <span className="text-[10px] sm:text-xs font-bold text-gray-200 line-clamp-1">
+        <span className="text-[9px] sm:text-[11px] font-bold text-gray-200 line-clamp-1">
           {character.name}
         </span>
-        <span className="text-[8px] text-purple-400 font-mono line-clamp-1">
+        <span className="text-[7px] sm:text-[8px] text-purple-400 font-mono line-clamp-1">
           {character.kanji}
         </span>
       </div>
 
       {/* 2. Espécie */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 80}ms` }}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(species.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 60}ms` }}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(species.status)}`}
       >
-        <span className="text-[9px] sm:text-xs font-semibold leading-tight">
+        <span className="text-[8px] sm:text-[11px] font-semibold leading-tight">
           {species.value}
         </span>
       </div>
 
       {/* 3. Gênero */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 160}ms` }}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(gender.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 120}ms` }}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(gender.status)}`}
       >
-        <span className="text-[9px] sm:text-xs font-bold">
+        <span className="text-[8px] sm:text-[11px] font-bold">
           {gender.value}
         </span>
       </div>
 
       {/* 4. Grau (com indicador de direção ↑/↓) */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 240}ms` }}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(grade.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 180}ms` }}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center px-0.5 animate-flipIn ${getStatusColor(grade.status)}`}
       >
-        <div className="flex items-center gap-1 font-bold">
+        <div className="flex items-center gap-0.5 font-bold">
           {getDirectionArrow(grade.direction)}
         </div>
-        <span className="text-[8px] sm:text-xs font-bold leading-tight mt-0.5">
+        <span className="text-[7px] sm:text-[10px] font-bold leading-tight mt-0.5">
           {grade.value}
         </span>
       </div>
 
       {/* 5. Afiliação */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 320}ms` }}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(affiliation.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 240}ms` }}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center px-0.5 animate-flipIn ${getStatusColor(affiliation.status)}`}
       >
-        <span className="text-[8px] sm:text-xs font-medium line-clamp-2 leading-tight">
+        <span className="text-[7px] sm:text-[10px] font-medium line-clamp-2 leading-tight">
           {affiliation.value}
         </span>
       </div>
 
-      {/* 6. Expansão de Domínio */}
+      {/* 6. Tipo de Técnica */}
       <div 
-        style={{ animationDelay: `${rowIndex * 100 + 400}ms` }}
-        title={hasDomain.domainName ? `Domínio: ${hasDomain.domainName}` : undefined}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center px-1 animate-flipIn ${getStatusColor(hasDomain.status)}`}
+        style={{ animationDelay: `${rowIndex * 100 + 300}ms` }}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center px-0.5 animate-flipIn ${getStatusColor(techniqueType.status)}`}
       >
-        <span className="text-[9px] sm:text-xs font-bold">
+        <span className="text-[7px] sm:text-[10px] font-bold leading-tight">
+          {techniqueType.value}
+        </span>
+      </div>
+
+      {/* 7. Estilo de Combate */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 360}ms` }}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center px-0.5 animate-flipIn ${getStatusColor(combatStyle.status)}`}
+      >
+        <span className="text-[7px] sm:text-[10px] font-semibold leading-tight line-clamp-2">
+          {combatStyle.value}
+        </span>
+      </div>
+
+      {/* 8. Expansão de Domínio */}
+      <div 
+        style={{ animationDelay: `${rowIndex * 100 + 420}ms` }}
+        title={hasDomain.domainName ? `Domínio: ${hasDomain.domainName}` : undefined}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center px-0.5 animate-flipIn ${getStatusColor(hasDomain.status)}`}
+      >
+        <span className="text-[8px] sm:text-[11px] font-bold">
           {hasDomain.value}
         </span>
         {hasDomain.domainName && (
-          <span className="text-[7px] sm:text-[9px] text-amber-300 font-mono line-clamp-1 mt-0.5" title={hasDomain.domainName}>
+          <span className="text-[6px] sm:text-[8px] text-amber-300 font-mono line-clamp-1 mt-0.5" title={hasDomain.domainName}>
             🌌 {hasDomain.domainName}
           </span>
         )}
       </div>
 
-      {/* 7. Estreia na Obra (com indicador de direção cronológica ↑/↓) */}
+      {/* 9. Estreia na Obra (com indicador de direção cronológica ↑/↓) */}
       <div 
         style={{ animationDelay: `${rowIndex * 100 + 480}ms` }}
-        className={`p-1.5 sm:p-2 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(debutArc.status)}`}
+        className={`p-1 sm:p-1.5 rounded-2xl border flex flex-col items-center justify-center text-center animate-flipIn ${getStatusColor(debutArc.status)}`}
       >
-        <div className="flex items-center gap-1 font-bold">
+        <div className="flex items-center gap-0.5 font-bold">
           {getDirectionArrow(debutArc.direction)}
         </div>
-        <span className="text-[8px] sm:text-[11px] font-mono leading-tight mt-0.5">
+        <span className="text-[7px] sm:text-[10px] font-mono leading-tight mt-0.5">
           {debutArc.value}
         </span>
       </div>

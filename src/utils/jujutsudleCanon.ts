@@ -11,6 +11,8 @@ export interface CanonicalCharacter {
   gender: string;
   grade: string;
   affiliation: string;
+  techniqueType: string;
+  combatStyle: string;
   innateTechnique: string;
   hasDomain: boolean;
   domainName?: string;
@@ -29,6 +31,8 @@ export interface CanonGuessEvaluation {
   gender: { status: MatchStatus; value: string };
   grade: { status: MatchStatus; direction: DirectionStatus; value: string };
   affiliation: { status: MatchStatus; value: string };
+  techniqueType: { status: MatchStatus; value: string };
+  combatStyle: { status: MatchStatus; value: string };
   hasDomain: { status: MatchStatus; value: string; domainName?: string };
   debutArc: { status: MatchStatus; direction: DirectionStatus; value: string };
   isCorrect: boolean;
@@ -63,9 +67,11 @@ export const GRADE_RANK: Record<string, number> = {
 export const ARC_CHRONOLOGY: Record<string, number> = {
   'Jujutsu Kaisen 0': 1,
   'Temporada 1': 2,
+  'Inventário Oculto': 3,
   'Passado de Gojo': 3,
   'Incidente de Shibuya': 4,
   'Preparação Culling Game': 5,
+  'Jogo do Abate': 6,
   'Jogo do Abate (Sendai)': 6,
   'Batalha de Shinjuku': 7,
 };
@@ -165,12 +171,42 @@ export function evaluateCanonGuess(
     affiliationStatus = 'partial';
   }
 
-  // 5. Expansão de Domínio
+  // 5. Tipo de Técnica (Herdada vs Inata vs Restrição vs Sem Técnica)
+  const gTech = (guessedChar.techniqueType || 'Técnica Inata').toLowerCase();
+  const tTech = (targetChar.techniqueType || 'Técnica Inata').toLowerCase();
+  let techStatus: MatchStatus = 'incorrect';
+  if (gTech === tTech) {
+    techStatus = 'correct';
+  } else if (
+    (gTech.includes('técnica') && tTech.includes('técnica')) ||
+    (gTech.includes('suporte') && tTech.includes('suporte'))
+  ) {
+    techStatus = 'partial';
+  }
+
+  // 6. Estilo de Combate / Foco de Luta
+  const gStyle = (guessedChar.combatStyle || 'Feitiçaria Pura').toLowerCase();
+  const tStyle = (targetChar.combatStyle || 'Feitiçaria Pura').toLowerCase();
+  let styleStatus: MatchStatus = 'incorrect';
+  if (gStyle === tStyle) {
+    styleStatus = 'correct';
+  } else if (
+    (gStyle.includes('corpo a corpo') && tStyle.includes('corpo a corpo')) ||
+    (gStyle.includes('espada') && tStyle.includes('espada')) ||
+    (gStyle.includes('ferramenta') && tStyle.includes('ferramenta')) ||
+    (gStyle.includes('disparo') && tStyle.includes('disparo')) ||
+    (gStyle.includes('suporte') && tStyle.includes('suporte')) ||
+    (gStyle.includes('feitiçaria') && tStyle.includes('feitiçaria'))
+  ) {
+    styleStatus = 'partial';
+  }
+
+  // 7. Expansão de Domínio
   const domainStatus: MatchStatus = guessedChar.hasDomain === targetChar.hasDomain
     ? 'correct'
     : 'incorrect';
 
-  // 6. Arco de Estreia com direção cronológica
+  // 8. Arco de Estreia com direção cronológica
   const guessedArcRank = ARC_CHRONOLOGY[guessedChar.debutArc] ?? 1;
   const targetArcRank = ARC_CHRONOLOGY[targetChar.debutArc] ?? 1;
   let arcStatus: MatchStatus = 'incorrect';
@@ -192,6 +228,8 @@ export function evaluateCanonGuess(
     gender: { status: genderMatch, value: guessedChar.gender },
     grade: { status: gradeStatus, direction: gradeDirection, value: guessedChar.grade },
     affiliation: { status: affiliationStatus, value: guessedChar.affiliation },
+    techniqueType: { status: techStatus, value: guessedChar.techniqueType || 'Técnica Inata' },
+    combatStyle: { status: styleStatus, value: guessedChar.combatStyle || 'Feitiçaria Pura' },
     hasDomain: {
       status: domainStatus,
       value: guessedChar.hasDomain ? 'Sim' : 'Não',
@@ -307,10 +345,12 @@ export function generateCanonShareText(
     const genEmoji = statusToEmoji(ev.gender.status);
     const grEmoji = statusToEmoji(ev.grade.status, ev.grade.direction);
     const afEmoji = statusToEmoji(ev.affiliation.status);
+    const techEmoji = statusToEmoji(ev.techniqueType.status);
+    const combatEmoji = statusToEmoji(ev.combatStyle.status);
     const dmEmoji = statusToEmoji(ev.hasDomain.status);
     const arcEmoji = statusToEmoji(ev.debutArc.status, ev.debutArc.direction);
 
-    text += `${spEmoji}${genEmoji}${grEmoji}${afEmoji}${dmEmoji}${arcEmoji}\n`;
+    text += `${spEmoji}${genEmoji}${grEmoji}${afEmoji}${techEmoji}${combatEmoji}${dmEmoji}${arcEmoji}\n`;
   });
 
   text += '\nJogue em: JJKPPDB Offline';
