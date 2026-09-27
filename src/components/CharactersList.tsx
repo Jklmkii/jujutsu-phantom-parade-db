@@ -5,7 +5,7 @@ import { Search, Filter, X, Star, ChevronDown, ChevronUp, RotateCcw, Check, Flam
 import { useJjkStore } from '../store/useJjkStore';
 import { useTranslation } from '../i18n';
 import { playClick, playCollectionToggle, playCursedEnergyCharge, playClearFilters } from '../utils/sound';
-import { getAssetUrl } from '../utils/assets';
+import { getAssetUrl, getStaticThumbUrl } from '../utils/assets';
 import { matchesCombatEffect, type CombatEffectKey } from '../utils/combatEffects';
 
 interface CharactersListProps {
@@ -767,8 +767,8 @@ export const CharactersList: React.FC<CharactersListProps> = ({
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3.5">
-              {filteredCharacters.map((char) => {
-                const imgUrl = getAssetUrl(char.image);
+              {filteredCharacters.map((char, index) => {
+                const thumbUrl = getStaticThumbUrl(char.image, char.image);
                 const isSSR = char.rarity === 'SSR';
                 const isSR = char.rarity === 'SR';
 
@@ -785,16 +785,25 @@ export const CharactersList: React.FC<CharactersListProps> = ({
                     data-testid="character-card"
                     role="button"
                     tabIndex={0}
-                    className={`group relative rounded-xl overflow-hidden border-2 bg-[#120e22] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] flex flex-col ${borderClass}`}
+                    className={`character-card-container group relative rounded-xl overflow-hidden border-2 bg-[#120e22] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] flex flex-col ${borderClass}`}
                   >
                     {/* Portrait Image */}
                     <div className="relative aspect-square w-full overflow-hidden bg-[#0a0714]">
                       <img
-                        src={imgUrl}
+                        src={thumbUrl}
                         alt={char.title}
+                        loading={index < 10 ? 'eager' : 'lazy'}
+                        fetchPriority={index < 5 ? 'high' : 'auto'}
+                        decoding="async"
                         className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = getAssetUrl();
+                          const target = e.target as HTMLImageElement;
+                          const fallbackFull = getAssetUrl(char.image);
+                          if (target.src !== fallbackFull && !target.src.endsWith(fallbackFull.replace(/^\.\//, ''))) {
+                            target.src = fallbackFull;
+                          } else {
+                            target.src = getAssetUrl();
+                          }
                         }}
                       />
 

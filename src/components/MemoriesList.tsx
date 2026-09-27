@@ -145,7 +145,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
 
       {/* Memories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {filteredMemories.map((mem) => {
+        {filteredMemories.map((mem, index) => {
           const imgUrl = getAssetUrl(mem.image);
           const isSSR = mem.rarity === 'SSR';
           const isSR = mem.rarity === 'SR';
@@ -163,7 +163,7 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
             <div
               key={mem.id}
               onClick={() => playMemoryEquip()}
-              className={`bg-[#120e24] border-2 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 cursor-pointer ${borderClass}`}
+              className={`memory-card-container bg-[#120e24] border-2 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 cursor-pointer ${borderClass}`}
             >
               <div>
                 {/* Header Image */}
@@ -171,6 +171,9 @@ export const MemoriesList: React.FC<MemoriesListProps> = ({ memories }) => {
                   <img
                     src={imgUrl}
                     alt={mem.title}
+                    loading={index < 6 ? 'eager' : 'lazy'}
+                    fetchPriority={index < 3 ? 'high' : 'auto'}
+                    decoding="async"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = getAssetUrl();

@@ -17,5 +17,30 @@ export default defineConfig({
     strictPort: true,
     host: '127.0.0.1',
   },
+  json: {
+    stringify: true,
+  },
+  build: {
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 800,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-icons';
+          }
+          if (id.includes('node_modules/zustand')) {
+            return 'vendor-store';
+          }
+          if (id.includes('src/data/') && id.endsWith('.json')) {
+            return 'game-database';
+          }
+        },
+      },
+    },
+  },
 })
 

@@ -3,6 +3,13 @@ const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
 
+// Otimizacoes de Performance & Memoria do Chromium / Electron
+app.commandLine.appendSwitch('enable-gpu-rasterization');
+app.commandLine.appendSwitch('enable-zero-copy');
+app.commandLine.appendSwitch('ignore-gpu-blocklist');
+app.commandLine.appendSwitch('v8-cache-options', 'code');
+app.commandLine.appendSwitch('disk-cache-size', '52428800'); // 50 MB de cache máximo
+
 // Configuracao do autoUpdater
 autoUpdater.autoDownload = true;
 autoUpdater.autoInstallOnAppQuit = true;
@@ -25,6 +32,7 @@ function createSplashWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      spellcheck: false,
     },
   });
 
@@ -52,6 +60,8 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
+      spellcheck: false,
+      backgroundThrottling: true,
     },
   });
 

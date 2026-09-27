@@ -1,25 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { HomePage } from './components/HomePage';
-import { CharactersList } from './components/CharactersList';
-import { CharacterDetail } from './components/CharacterDetail';
-import { MemoriesList } from './components/MemoriesList';
-import { TimelineView } from './components/TimelineView';
-import { TierlistMaker } from './components/TierlistMaker';
-import { BestTeams } from './components/BestTeams';
-import { CharacterCompare } from './components/CharacterCompare';
-import { GachaSimulator } from './components/GachaSimulator';
-import { DpsCalculator } from './components/DpsCalculator';
-import { BuffsRankings } from './components/BuffsRankings';
-import { RaidBossGuide } from './components/RaidBossGuide';
-import { Jujutsudle } from './components/Jujutsudle';
-import { StaminaTracker } from './components/StaminaTracker';
-import { AscensionPlanner } from './components/AscensionPlanner';
-import { TacticalScratchpad } from './components/TacticalScratchpad';
-import { TacticalSoundboardModal } from './components/TacticalSoundboardModal';
-import { SettingsModal } from './components/SettingsModal';
 import { UpdateBanner } from './components/UpdateBanner';
 import { useJjkStore } from './store/useJjkStore';
+
+// Code-Splitting: Lazy loading dinâmico de abas e modais pesados
+const CharactersList = lazy(() => import('./components/CharactersList').then(m => ({ default: m.CharactersList })));
+const CharacterDetail = lazy(() => import('./components/CharacterDetail').then(m => ({ default: m.CharacterDetail })));
+const MemoriesList = lazy(() => import('./components/MemoriesList').then(m => ({ default: m.MemoriesList })));
+const TimelineView = lazy(() => import('./components/TimelineView').then(m => ({ default: m.TimelineView })));
+const TierlistMaker = lazy(() => import('./components/TierlistMaker').then(m => ({ default: m.TierlistMaker })));
+const BestTeams = lazy(() => import('./components/BestTeams').then(m => ({ default: m.BestTeams })));
+const CharacterCompare = lazy(() => import('./components/CharacterCompare').then(m => ({ default: m.CharacterCompare })));
+const GachaSimulator = lazy(() => import('./components/GachaSimulator').then(m => ({ default: m.GachaSimulator })));
+const DpsCalculator = lazy(() => import('./components/DpsCalculator').then(m => ({ default: m.DpsCalculator })));
+const BuffsRankings = lazy(() => import('./components/BuffsRankings').then(m => ({ default: m.BuffsRankings })));
+const RaidBossGuide = lazy(() => import('./components/RaidBossGuide').then(m => ({ default: m.RaidBossGuide })));
+const Jujutsudle = lazy(() => import('./components/Jujutsudle').then(m => ({ default: m.Jujutsudle })));
+const StaminaTracker = lazy(() => import('./components/StaminaTracker').then(m => ({ default: m.StaminaTracker })));
+const AscensionPlanner = lazy(() => import('./components/AscensionPlanner').then(m => ({ default: m.AscensionPlanner })));
+const TacticalScratchpad = lazy(() => import('./components/TacticalScratchpad').then(m => ({ default: m.TacticalScratchpad })));
+const TacticalSoundboardModal = lazy(() => import('./components/TacticalSoundboardModal').then(m => ({ default: m.TacticalSoundboardModal })));
+const SettingsModal = lazy(() => import('./components/SettingsModal').then(m => ({ default: m.SettingsModal })));
+
+function TabLoadingFallback() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-8 space-y-4 animate-pulse">
+      <div 
+        className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-400/30 animate-spin" 
+        style={{ animationDuration: '3s' }}
+      >
+        <div className="w-6 h-6 rounded-lg bg-[#090710]" />
+      </div>
+      <p className="text-xs uppercase tracking-widest text-purple-400 font-semibold">
+        Manipulando Energia Amaldiçoada...
+      </p>
+    </div>
+  );
+}
 
 import charactersData from './data/characters.json';
 import memoriesData from './data/memories.json';
@@ -110,128 +128,130 @@ export function App() {
         {/* Auto-Updater Toast Banner */}
         <UpdateBanner />
 
-        {selectedCharacter ? (
-          <CharacterDetail
-            key={selectedCharacter.id}
-            character={selectedCharacter}
-            memories={memories}
-            onBack={() => setSelectedCharacter(null)}
-          />
-        ) : (
-          <>
-            {activeTab === 'home' && (
-              <HomePage 
-                characters={characters}
-                onSelectCharacter={handleSelectCharacter}
-                onNavigate={handleNavigate}
-              />
-            )}
+        <Suspense fallback={<TabLoadingFallback />}>
+          {selectedCharacter ? (
+            <CharacterDetail
+              key={selectedCharacter.id}
+              character={selectedCharacter}
+              memories={memories}
+              onBack={() => setSelectedCharacter(null)}
+            />
+          ) : (
+            <>
+              {activeTab === 'home' && (
+                <HomePage 
+                  characters={characters}
+                  onSelectCharacter={handleSelectCharacter}
+                  onNavigate={handleNavigate}
+                />
+              )}
 
-            {activeTab === 'characters' && (
-              <CharactersList 
-                characters={characters}
-                onSelectCharacter={handleSelectCharacter}
-                initialSearch={charactersSearch}
-              />
-            )}
+              {activeTab === 'characters' && (
+                <CharactersList 
+                  characters={characters}
+                  onSelectCharacter={handleSelectCharacter}
+                  initialSearch={charactersSearch}
+                />
+              )}
 
-            {activeTab === 'compare' && (
-              <CharacterCompare 
-                characters={characters}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'compare' && (
+                <CharacterCompare 
+                  characters={characters}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'memories' && (
-              <MemoriesList 
-                memories={memories}
-              />
-            )}
+              {activeTab === 'memories' && (
+                <MemoriesList 
+                  memories={memories}
+                />
+              )}
 
-            {activeTab === 'tierlist' && (
-              <TierlistMaker 
-                characters={characters}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'tierlist' && (
+                <TierlistMaker 
+                  characters={characters}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'teams' && (
-              <BestTeams 
-                characters={characters}
-                memories={memories}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'teams' && (
+                <BestTeams 
+                  characters={characters}
+                  memories={memories}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'buffs' && (
-              <BuffsRankings 
-                characters={characters}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'buffs' && (
+                <BuffsRankings 
+                  characters={characters}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'timeline' && (
-              <TimelineView 
-                events={timeline}
-              />
-            )}
+              {activeTab === 'timeline' && (
+                <TimelineView 
+                  events={timeline}
+                />
+              )}
 
-            {activeTab === 'gacha' && (
-              <GachaSimulator 
-                characters={characters}
-                memories={memories}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'gacha' && (
+                <GachaSimulator 
+                  characters={characters}
+                  memories={memories}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'dps' && (
-              <DpsCalculator 
-                characters={characters}
-                memories={memories}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'dps' && (
+                <DpsCalculator 
+                  characters={characters}
+                  memories={memories}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'raids' && (
-              <RaidBossGuide 
-                characters={characters}
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'raids' && (
+                <RaidBossGuide 
+                  characters={characters}
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'jujutsudle' && (
-              <Jujutsudle 
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
+              {activeTab === 'jujutsudle' && (
+                <Jujutsudle 
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
 
-            {activeTab === 'stamina' && (
-              <StaminaTracker />
-            )}
+              {activeTab === 'stamina' && (
+                <StaminaTracker />
+              )}
 
-            {activeTab === 'planner' && (
-              <AscensionPlanner 
-                onSelectCharacter={handleSelectCharacter}
-              />
-            )}
-          </>
-        )}
+              {activeTab === 'planner' && (
+                <AscensionPlanner 
+                  onSelectCharacter={handleSelectCharacter}
+                />
+              )}
+            </>
+          )}
+        </Suspense>
       </main>
 
-      {/* Tactical Floating Scratchpad */}
-      <TacticalScratchpad />
+      {/* Tactical Floating Scratchpad & Modals */}
+      <Suspense fallback={null}>
+        <TacticalScratchpad />
 
-      {/* Tactical Soundboard Modal */}
-      <TacticalSoundboardModal 
-        isOpen={isSoundboardOpen} 
-        onClose={closeSoundboard} 
-      />
+        <TacticalSoundboardModal 
+          isOpen={isSoundboardOpen} 
+          onClose={closeSoundboard} 
+        />
 
-      {/* Settings & Backup Modal */}
-      <SettingsModal 
-        isOpen={isSettingsOpen} 
-        onClose={closeSettings} 
-      />
+        <SettingsModal 
+          isOpen={isSettingsOpen} 
+          onClose={closeSettings} 
+        />
+      </Suspense>
     </div>
   );
 }

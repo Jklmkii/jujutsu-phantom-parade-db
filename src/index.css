@@ -71,3 +71,14 @@ body {
   border-color: rgba(250, 204, 21, 0.4);
   background-color: rgba(250, 204, 21, 0.1);
 }
+
+/* Content-Visibility optimization for high-density cards & lists */
+.character-card-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 340px;
+}
+
+.memory-card-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 360px;
+}
