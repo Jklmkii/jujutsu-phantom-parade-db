@@ -3,10 +3,7 @@ const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const fs = require('fs');
 
-// Otimizacoes de Performance & Memoria do Chromium / Electron
-app.commandLine.appendSwitch('enable-gpu-rasterization');
-app.commandLine.appendSwitch('enable-zero-copy');
-app.commandLine.appendSwitch('ignore-gpu-blocklist');
+// Otimizacoes de Memoria e Cache do Chromium / Electron (estabilidade grafica sem zero-copy)
 app.commandLine.appendSwitch('v8-cache-options', 'code');
 app.commandLine.appendSwitch('disk-cache-size', '52428800'); // 50 MB de cache máximo
 
@@ -17,18 +14,24 @@ autoUpdater.autoInstallOnAppQuit = true;
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 let mainWindow = null;
 let splashWindow = null;
+let splashStartTime = 0;
 
 function createSplashWindow() {
+  splashStartTime = Date.now();
+  const iconPath = fs.existsSync(path.join(__dirname, 'logo.png'))
+    ? path.join(__dirname, 'logo.png')
+    : path.join(__dirname, '../public/assets/logo.png');
+
   splashWindow = new BrowserWindow({
-    width: 460,
-    height: 320,
+    width: 480,
+    height: 340,
     frame: false,
     resizable: false,
     alwaysOnTop: true,
     center: true,
-    show: true,
-    backgroundColor: '#0a0614',
-    icon: fs.existsSync(path.join(__dirname, '../public/assets/logo.png')) ? path.join(__dirname, '../public/assets/logo.png') : undefined,
+    show: false, // Só exibe após o primeiro frame estar pronto no ready-to-show
+    backgroundColor: '#06070c',
+    icon: fs.existsSync(iconPath) ? iconPath : undefined,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -40,19 +43,32 @@ function createSplashWindow() {
   if (fs.existsSync(splashPath)) {
     splashWindow.loadFile(splashPath);
   }
+
+  splashWindow.once('ready-to-show', () => {
+    if (splashWindow && !splashWindow.isDestroyed()) {
+      splashWindow.show();
+    }
+  });
+
+  splashWindow.webContents.on('did-fail-load', (_event, errorCode, errorDescription) => {
+    console.error('Falha ao carregar splash window:', errorCode, errorDescription);
+  });
 }
 
 function createWindow() {
   createSplashWindow();
 
-  const iconPath = path.join(__dirname, '../public/assets/logo.png');
+  const iconPath = fs.existsSync(path.join(__dirname, 'logo.png'))
+    ? path.join(__dirname, 'logo.png')
+    : path.join(__dirname, '../public/assets/logo.png');
+
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 850,
     minWidth: 900,
     minHeight: 600,
     title: 'Jujutsu Kaisen: Phantom Parade DB (Offline)',
-    backgroundColor: '#0a0614',
+    backgroundColor: '#06070c',
     icon: fs.existsSync(iconPath) ? iconPath : undefined,
     show: false,
     webPreferences: {
@@ -80,6 +96,11 @@ function createWindow() {
   }
 
   mainWindow.once('ready-to-show', () => {
+    // Garante tempo mínimo de splash para o usuário visualizar a aura cósmica e a logo
+    const MIN_SPLASH_TIME = 1000;
+    const elapsed = Date.now() - splashStartTime;
+    const remainingDelay = Math.max(0, MIN_SPLASH_TIME - elapsed);
+
     setTimeout(() => {
       if (splashWindow && !splashWindow.isDestroyed()) {
         splashWindow.destroy();
@@ -87,8 +108,9 @@ function createWindow() {
       }
       if (mainWindow && !mainWindow.isDestroyed()) {
         mainWindow.show();
+        mainWindow.focus();
       }
-    }, 450);
+    }, remainingDelay);
   });
 
   // External links open in default OS browser
