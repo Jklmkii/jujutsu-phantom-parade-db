@@ -32,15 +32,15 @@ const ogi = data.find(c => c.id === 'ogi_zenin');
 const toji = data.find(c => c.id === 'toji_fushiguro');
 
 console.log('\n📊 Comparativo de Atributos dos Zenin:');
-console.log(`- Jinichi Zenin: [Técnica: ${jinichi.techniqueType}] | [Combate: ${jinichi.combatStyle}] | [Imagem: ${jinichi.image}]`);
-console.log(`- Naoya Zenin:   [Técnica: ${naoya.techniqueType}] | [Combate: ${naoya.combatStyle}] | [Imagem: ${naoya.image}]`);
-console.log(`- Ogi Zenin:     [Técnica: ${ogi.techniqueType}] | [Combate: ${ogi.combatStyle}] | [Imagem: ${ogi.image}]`);
-console.log(`- Toji Fushiguro:[Técnica: ${toji.techniqueType}] | [Combate: ${toji.combatStyle}] | [Imagem: ${toji.gameImage}]`);
+console.log(`- Jinichi Zenin: [Técnica: ${jinichi.techniqueType}] | [Combate: ${jinichi.combatStyle}] | [Inata: ${jinichi.innateTechnique}]`);
+console.log(`- Naoya Zenin:   [Técnica: ${naoya.techniqueType}] | [Combate: ${naoya.combatStyle}] | [Inata: ${naoya.innateTechnique}]`);
+console.log(`- Ogi Zenin:     [Técnica: ${ogi.techniqueType}] | [Combate: ${ogi.combatStyle}] | [Inata: ${ogi.innateTechnique}]`);
+console.log(`- Toji Fushiguro:[Técnica: ${toji.techniqueType}] | [Combate: ${toji.combatStyle}] | [Inata: ${toji.innateTechnique}]`);
 
-if (jinichi.techniqueType !== naoya.techniqueType && jinichi.combatStyle !== naoya.combatStyle) {
-  console.log('✅ Teste 2: Jinichi e Naoya agora são 100% distinguíveis e únicos!');
+if (jinichi.combatStyle !== naoya.combatStyle && jinichi.innateTechnique !== naoya.innateTechnique) {
+  console.log('✅ Teste 2: Jinichi e Naoya são 100% distinguíveis por Estilo de Combate e Técnica Inata!');
 } else {
-  console.error('❌ Falha: Jinichi e Naoya ainda compartilham a mesma técnica ou estilo.');
+  console.error('❌ Falha: Jinichi e Naoya ainda compartilham o mesmo estilo ou técnica inata.');
   process.exit(1);
 }
 

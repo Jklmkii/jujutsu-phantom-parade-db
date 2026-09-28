@@ -171,16 +171,17 @@ export function evaluateCanonGuess(
     affiliationStatus = 'partial';
   }
 
-  // 5. Tipo de Técnica (Herdada vs Inata vs Restrição vs Sem Técnica)
+  // 5. Tipo de Técnica (Técnica Inata vs Restrição Celestial vs Sem Técnica Inata)
   const gTech = (guessedChar.techniqueType || 'Técnica Inata').toLowerCase();
   const tTech = (targetChar.techniqueType || 'Técnica Inata').toLowerCase();
   let techStatus: MatchStatus = 'incorrect';
   if (gTech === tTech) {
     techStatus = 'correct';
   } else if (
-    (gTech.includes('técnica') && tTech.includes('técnica')) ||
-    (gTech.includes('suporte') && tTech.includes('suporte'))
+    (gTech.includes('sem') && tTech.includes('restrição')) ||
+    (gTech.includes('restrição') && tTech.includes('sem'))
   ) {
+    // Parcial: ambos são casos de lutadores que não possuem técnica inata gravada
     techStatus = 'partial';
   }
 

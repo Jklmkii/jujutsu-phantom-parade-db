@@ -32,7 +32,7 @@
     "cutoff": "sendai",
     "image": "Megumi_Fushiguro.png",
     "gameImage": "GreenMegumiSSRArt1.gif",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Shikigami / Sombras"
   },
   {
@@ -101,7 +101,7 @@
     "cutoff": "sendai",
     "image": "Toge_Inumaki.png",
     "gameImage": "RedTogeRArt1.gif",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Feitiçaria Pura"
   },
   {
@@ -169,7 +169,7 @@
     "cutoff": "sendai",
     "image": "Satoru_Gojo.png",
     "gameImage": "BlueSSRGojoArt2.gif",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Feitiçaria Pura"
   },
   {
@@ -337,7 +337,7 @@
     "cutoff": "sendai",
     "image": "Noritoshi_Kamo.png",
     "gameImage": "BlueNoritoshiSSRArt1.gif",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Disparo / Longo Alcance"
   },
   {
@@ -471,7 +471,7 @@
     "debutArc": "Incidente de Shibuya",
     "cutoff": "sendai",
     "image": "Naobito_Zenin.png",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Corpo a Corpo / Punhos",
     "gameImage": "BlueSSRNaobitoArt1.gif"
   },
@@ -488,7 +488,7 @@
     "debutArc": "Jogo do Abate",
     "cutoff": "sendai",
     "image": "canonical/naoya_zenin.png",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Velocidade / Adagas"
   },
   {
@@ -758,7 +758,7 @@
     "cutoff": "sendai",
     "image": "Choso.png",
     "gameImage": "GreenSSRChosoArt1.gif",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Disparo / Longo Alcance"
   },
   {
@@ -775,7 +775,7 @@
     "cutoff": "sendai",
     "image": "canonical/eso.png",
     "gameImage": "BlueNoritoshiSSRArt1.gif",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Disparo / Longo Alcance"
   },
   {
@@ -791,7 +791,7 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "canonical/kechizu.png",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Corpo a Corpo / Punhos"
   },
   {
@@ -1376,7 +1376,7 @@
     "debutArc": "Temporada 1",
     "cutoff": "sendai",
     "image": "canonical/noritoshi_kamo_ancestor.png",
-    "techniqueType": "Técnica Herdada",
+    "techniqueType": "Técnica Inata",
     "combatStyle": "Feitiçaria Pura"
   },
   {
