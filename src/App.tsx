@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { Sidebar } from './components/Sidebar';
+import { TopHeaderBar } from './components/TopHeaderBar';
 import { HomePage } from './components/HomePage';
 import { UpdateBanner } from './components/UpdateBanner';
 import { useJjkStore } from './store/useJjkStore';
@@ -114,17 +114,20 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06070c] text-slate-100 flex relative selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Fixed Left Sidebar */}
-      <Sidebar 
+    <div className="min-h-screen bg-[#06070c] text-slate-100 flex flex-col relative selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Top Holographic Navigation Header Bar */}
+      <TopHeaderBar 
         activeTab={activeTab} 
         setActiveTab={handleNavigate}
-        selectedCharId={selectedCharacter?.id || null}
-        onClearSelection={() => setSelectedCharacter(null)}
+        selectedCharacter={selectedCharacter}
+        onBackToHub={() => {
+          setSelectedCharacter(null);
+          handleNavigate('home');
+        }}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1 ml-16 md:ml-64 min-h-screen p-4 md:p-8 overflow-y-auto pb-24">
+      {/* Main Full-Width Content Area */}
+      <main className="flex-1 w-full min-h-screen p-3 sm:p-5 md:p-8 overflow-y-auto pb-24">
         {/* Auto-Updater Toast Banner */}
         <UpdateBanner />
 
