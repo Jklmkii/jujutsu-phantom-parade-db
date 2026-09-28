@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 import { useTranslation, translateRole, translateFocus } from '../i18n';
+import { TacticalHoloDeck } from './TacticalHoloDeck';
 
 interface HomePageProps {
   characters: Character[];
@@ -99,18 +100,21 @@ export const HomePage: React.FC<HomePageProps> = ({
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-12 animate-fadeIn">
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 py-6 md:py-8 space-y-12 animate-fadeIn">
       
-      {/* 1. Hero Carousel */}
+      {/* 1. Tactical Holo-Deck 3D (Quantora Style Centerpiece) */}
+      <TacticalHoloDeck onNavigate={onNavigate} />
+
+      {/* 2. Hero Carousel - Recent JP Releases */}
       {currentUnit && (
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#120e24] via-[#16112c] to-[#0d091a] border border-[#2e2252] shadow-2xl shadow-purple-950/50 p-6 md:p-10">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#0d111d] via-[#101626] to-[#070b14] border border-[#1f2942] shadow-2xl p-6 md:p-10">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
             
             {/* Left Info */}
             <div className="space-y-4 max-w-xl z-10">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-600/30 text-red-400 border border-red-500/40">
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-black uppercase tracking-wider bg-cyan-950/80 text-cyan-300 border border-cyan-500/40">
                     {language === 'pt' ? `Recente JP #${currentIndex + 1}` : `Latest JP #${currentIndex + 1}`}
                   </span>
                   {currentUnit.epithet && (
@@ -145,7 +149,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="pt-3">
                 <button
                   onClick={() => onSelectCharacter(currentUnit)}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-purple-900/40 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white shadow-lg shadow-cyan-950/50 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <span>{language === 'pt' ? 'Ver personagem' : 'View character'}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -154,7 +158,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* Right Banner Art */}
-            <div className="relative w-full max-w-md aspect-[16/10] rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-2xl shadow-purple-900/30 bg-[#090612] group">
+            <div className="relative w-full max-w-md aspect-[16/10] rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-2xl shadow-cyan-950/40 bg-[#070b14] group">
               <img
                 src={getAssetUrl(currentUnit.image)}
                 alt={currentUnit.title}
@@ -163,21 +167,21 @@ export const HomePage: React.FC<HomePageProps> = ({
                   (e.target as HTMLImageElement).src = getAssetUrl();
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c081a] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
 
           {/* Carousel Arrows */}
           <button
             onClick={() => setCurrentIndex((prev) => (prev - 1 + featuredUnits.length) % featuredUnits.length)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-purple-900/80 text-white border border-purple-500/30 transition-all z-20"
+            className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-cyan-950/80 text-white border border-cyan-500/40 transition-all z-20 cursor-pointer"
             title="Anterior"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => setCurrentIndex((prev) => (prev + 1) % featuredUnits.length)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-purple-900/80 text-white border border-purple-500/30 transition-all z-20"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-cyan-950/80 text-white border border-cyan-500/40 transition-all z-20 cursor-pointer"
             title="Próximo"
           >
             <ChevronRight className="w-5 h-5" />
@@ -189,8 +193,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === idx ? 'w-8 bg-purple-500 shadow-sm shadow-purple-400' : 'w-2 bg-gray-600 hover:bg-gray-400'
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentIndex === idx ? 'w-8 bg-cyan-400 shadow-sm shadow-cyan-400' : 'w-2 bg-gray-700 hover:bg-gray-500'
                 }`}
               />
             ))}
@@ -198,26 +202,28 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       )}
 
-      {/* 2. What's New Card */}
-      <div className="bg-[#120e24] border border-[#271d44] rounded-2xl p-5 shadow-lg flex items-start gap-4">
-        <div className="p-2.5 rounded-xl bg-purple-950/80 border border-purple-600/40 text-purple-300">
+      {/* 3. What's New Card */}
+      <div className="bg-[#090d18]/90 border border-[#1b2640] rounded-2xl p-5 shadow-lg flex items-start gap-4">
+        <div className="p-2.5 rounded-xl bg-cyan-950/80 border border-cyan-600/40 text-cyan-300">
           <Sparkles className="w-5 h-5" />
         </div>
         <div className="space-y-1 flex-1">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-            <h3 className="text-xs uppercase font-extrabold tracking-wider text-purple-400">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            <h3 className="text-xs uppercase font-extrabold tracking-wider text-cyan-400 font-mono">
               {language === 'pt' ? 'O que há de novo na base de dados (Offline)' : "What's New in the Offline Database"}
             </h3>
           </div>
           <p className="text-sm text-gray-300 leading-relaxed">
             {language === 'pt' ? (
               <>
+                • <strong>Centro de Comando Tático Holográfico:</strong> Carrossel 3D interativo para navegação ultrarrápida entre os principais módulos táticos do app.<br />
                 • <strong>Habilidades com Estados Dinâmicos:</strong> Suporte completo para alternância entre modo <em>Base</em> e modo <em>Mudado</em> (Estilo Feroz do Yuji, Domínio do Megumi e Forma Espiritual do Mahito).<br />
                 • <strong>Progressão Nível 1 ↔ Nível 10:</strong> Multiplicadores de combate escalando em tempo real com badges de Taxa Crítica e Flash Negro.
               </>
             ) : (
               <>
+                • <strong>Tactical Holographic Command Center:</strong> Interactive 3D coverflow carousel for swift navigation across the database's premier modules.<br />
                 • <strong>Dynamic Skill States:</strong> Complete support for switching between <em>Base</em> and <em>Changed</em> mode (Ferocious Yuji, Megumi Domain, True Form Mahito).<br />
                 • <strong>Level 1 ↔ Level 10 Progression:</strong> Real-time scaling combat multipliers with Critical Rate and Black Flash badges.
               </>
@@ -226,40 +232,40 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </div>
 
-      {/* 3. Find a Character Search Box */}
+      {/* 4. Find a Character Search Box */}
       <div className="text-center space-y-4 max-w-2xl mx-auto pt-4">
         <h2 className="text-2xl font-bold text-white font-serif tracking-wide">
           {language === 'pt' ? 'BUSCAR UM FEITICEIRO' : 'SEARCH A SORCERER'}
         </h2>
         <form onSubmit={handleSearchSubmit} className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-400" />
           <input
             type="text"
             placeholder={language === 'pt' ? "Digite o nome ou epíteto (ex: Satoru Gojo, Yuji, Sukuna)..." : "Type sorcerer name or epithet (e.g. Satoru Gojo, Yuji, Sukuna)..."}
             value={quickSearch}
             onChange={(e) => setQuickSearch(e.target.value)}
-            className="w-full bg-[#130f26] border-2 border-[#2f2354] focus:border-purple-500 rounded-2xl pl-12 pr-28 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-all shadow-xl shadow-purple-950/30"
+            className="w-full bg-[#070b14] border-2 border-[#1c2842] focus:border-cyan-400 focus:shadow-[0_0_20px_rgba(6,182,212,0.3)] rounded-2xl pl-12 pr-28 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-all shadow-xl"
           />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-colors shadow-md cursor-pointer"
+            className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs transition-all shadow-md cursor-pointer active:scale-95"
           >
             {language === 'pt' ? 'Buscar' : 'Search'}
           </button>
         </form>
       </div>
 
-      {/* 4. Global Database Counters */}
+      {/* 5. Global Database Counters */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div 
           onClick={() => onNavigate('characters')}
-          className="bg-[#120e24] border border-[#251b40] hover:border-purple-500/50 rounded-2xl p-6 text-center cursor-pointer transition-all hover:-translate-y-1 shadow-lg group"
+          className="bg-[#090d18]/90 border border-[#1b2640] hover:border-cyan-500/50 rounded-2xl p-6 text-center cursor-pointer transition-all hover:-translate-y-1 shadow-lg group hover:shadow-[0_0_20px_rgba(6,182,212,0.2)]"
         >
-          <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-950/60 border border-purple-600/30 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-cyan-950/60 border border-cyan-600/30 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
             <Users className="w-6 h-6" />
           </div>
           <div className="text-4xl font-black text-white font-mono tracking-tight">109</div>
-          <div className="text-xs uppercase font-bold tracking-wider text-purple-300 mt-1">
+          <div className="text-xs uppercase font-bold tracking-wider text-cyan-300 mt-1">
             {language === 'pt' ? 'Personagens Catalogados' : 'Cataloged Characters'}
           </div>
           <p className="text-xs text-gray-400 mt-2">
@@ -269,7 +275,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         <div 
           onClick={() => onNavigate('memories')}
-          className="bg-[#120e24] border border-[#251b40] hover:border-purple-500/50 rounded-2xl p-6 text-center cursor-pointer transition-all hover:-translate-y-1 shadow-lg group"
+          className="bg-[#090d18]/90 border border-[#1b2640] hover:border-amber-500/50 rounded-2xl p-6 text-center cursor-pointer transition-all hover:-translate-y-1 shadow-lg group hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]"
         >
           <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-amber-950/60 border border-amber-600/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
             <Sparkles className="w-6 h-6" />
@@ -285,7 +291,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         <div 
           onClick={() => onNavigate('timeline')}
-          className="bg-[#120e24] border border-[#251b40] hover:border-purple-500/50 rounded-2xl p-6 text-center cursor-pointer transition-all hover:-translate-y-1 shadow-lg group"
+          className="bg-[#090d18]/90 border border-[#1b2640] hover:border-blue-500/50 rounded-2xl p-6 text-center cursor-pointer transition-all hover:-translate-y-1 shadow-lg group hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]"
         >
           <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-950/60 border border-blue-600/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
             <Calendar className="w-6 h-6" />
@@ -300,10 +306,10 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </div>
 
-      {/* 5. FAQ Section */}
+      {/* 6. FAQ Section */}
       <div className="max-w-3xl mx-auto space-y-4 pt-6">
         <h2 className="text-xl font-bold text-white font-serif tracking-wide text-center flex items-center justify-center gap-2">
-          <HelpCircle className="w-5 h-5 text-purple-400" />
+          <HelpCircle className="w-5 h-5 text-cyan-400" />
           {language === 'pt' ? 'PERGUNTAS FREQUENTES (FAQ)' : 'FREQUENTLY ASKED QUESTIONS (FAQ)'}
         </h2>
 
@@ -311,17 +317,17 @@ export const HomePage: React.FC<HomePageProps> = ({
           {faqs.map((faq, idx) => (
             <div 
               key={idx}
-              className="bg-[#120e24] border border-[#271d44] rounded-xl overflow-hidden transition-colors"
+              className="bg-[#090d18]/90 border border-[#1b2640] rounded-xl overflow-hidden transition-colors"
             >
               <button
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                className="w-full flex items-center justify-between p-4 text-left font-bold text-sm text-gray-200 hover:text-purple-300 transition-colors"
+                className="w-full flex items-center justify-between p-4 text-left font-bold text-sm text-gray-200 hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 <span>{faq.q}</span>
-                <ChevronDown className={`w-4 h-4 text-purple-400 transition-transform duration-200 ${openFaq === idx ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-cyan-400 transition-transform duration-200 ${openFaq === idx ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === idx && (
-                <div className="p-4 pt-0 text-xs text-gray-300 leading-relaxed border-t border-[#1c1533]">
+                <div className="p-4 pt-0 text-xs text-gray-300 leading-relaxed border-t border-[#141d33]">
                   {faq.a}
                 </div>
               )}

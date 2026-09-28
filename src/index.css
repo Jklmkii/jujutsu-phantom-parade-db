@@ -141,3 +141,104 @@ body {
   animation: cursedPulse 2.4s ease-in-out infinite;
 }
 
+/* ========================================================
+   QUANTORA HOLOGRAPHIC 3D DECK & COSMIC AMBIENCE STYLES
+   ======================================================== */
+
+.holo-perspective {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+/* Specular Glass Highlight */
+.glass-specular {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 30%, transparent 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* 360-degree Neon Glowing Frames */
+.neon-frame-cyan {
+  border: 2px solid rgba(34, 211, 238, 0.95);
+  box-shadow: 
+    0 0 25px rgba(6, 182, 212, 0.55),
+    0 0 50px rgba(6, 182, 212, 0.25),
+    inset 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+.neon-frame-crimson {
+  border: 2px solid rgba(251, 113, 133, 0.95);
+  box-shadow: 
+    0 0 25px rgba(244, 63, 94, 0.55),
+    0 0 50px rgba(244, 63, 94, 0.25),
+    inset 0 0 20px rgba(244, 63, 94, 0.2);
+}
+
+.neon-frame-gold {
+  border: 2px solid rgba(251, 191, 36, 0.95);
+  box-shadow: 
+    0 0 25px rgba(245, 158, 11, 0.55),
+    0 0 50px rgba(245, 158, 11, 0.25),
+    inset 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.neon-frame-purple {
+  border: 2px solid rgba(192, 132, 252, 0.95);
+  box-shadow: 
+    0 0 25px rgba(168, 85, 247, 0.55),
+    0 0 50px rgba(168, 85, 247, 0.25),
+    inset 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.neon-frame-emerald {
+  border: 2px solid rgba(52, 211, 153, 0.95);
+  box-shadow: 
+    0 0 25px rgba(16, 185, 129, 0.55),
+    0 0 50px rgba(16, 185, 129, 0.25),
+    inset 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Subtle side card border */
+.neon-frame-subtle {
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Cursed Energy Flame Aura Animations */
+@keyframes flameBreathing {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    filter: drop-shadow(0 0 18px currentColor);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05) translateY(-3px);
+    filter: drop-shadow(0 0 32px currentColor);
+    opacity: 1;
+  }
+}
+
+.flame-aura-anim {
+  animation: flameBreathing 3s ease-in-out infinite;
+}
+
+@keyframes cosmicFloatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.cosmic-float {
+  animation: cosmicFloatSlow 5s ease-in-out infinite;
+}
+
+/* Digital segmented bar ticks */
+.seg-bar-tick {
+  width: 6px;
+  height: 3px;
+  border-radius: 1px;
+}
+
+
