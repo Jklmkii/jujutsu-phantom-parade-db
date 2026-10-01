@@ -1,5 +1,45 @@
 [
   {
+    "id": "Ping_Pong__",
+    "title": "Ping Pong!!",
+    "rarity": "SSR",
+    "release_date": "2026-10-01",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "PingPongArt.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
+    "id": "The_World_Seen_Through_Ui_Ui_s_Eyes",
+    "title": "The World Seen Through Ui Ui’s Eyes",
+    "rarity": "SSR",
+    "release_date": "2026-10-01",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "WorldSeenThroughUiUiEyesArt.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
     "id": "I_m_glad_I_gave_birth_to_you___",
     "title": "I'm glad I gave birth to you...",
     "rarity": "SSR",

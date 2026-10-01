@@ -1,5 +1,61 @@
 [
   {
+    "id": "_dance_of_the_beautiful_blades__mei_mei",
+    "title": "(Dance of the Beautiful Blades) Mei Mei",
+    "name": "Mei Mei",
+    "epithet": "'Dance of the Beautiful Blades'",
+    "card_name": "Mei Mei",
+    "rarity": "SSR",
+    "element": "Green",
+    "role": "Attacker",
+    "focus": "Taijutsu",
+    "affiliation": "Jujutsu High",
+    "release_date": "2026-10-01",
+    "limited": false,
+    "stats": {
+      "hp": "25000",
+      "attack": "6000",
+      "jujutsu": "10000",
+      "initial_energy": "30",
+      "max_energy": "100",
+      "special_gauge": "1500"
+    },
+    "image": "GreenMeiMeiSSRArt1.gif",
+    "normal_attack": {
+      "name": "Normal Attack",
+      "description": "",
+      "description_10": ""
+    },
+    "skills": [
+      {
+        "slot": 1,
+        "name": "Skill 1",
+        "cost": "20",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 2,
+        "name": "Skill 2",
+        "cost": "25",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 3,
+        "name": "Skill 3",
+        "cost": "30",
+        "description": "",
+        "description_10": ""
+      }
+    ],
+    "ultimate": {
+      "name": "Ultimate Skill",
+      "description": "",
+      "description_10": ""
+    }
+  },
+  {
     "id": "__Fwoo_Hyoi___Shoko_Ieiri__Teen_",
     "title": "('Fwoo Hyoi') Shoko Ieiri (Teen)",
     "name": "Shoko Ieiri (Teen)",
