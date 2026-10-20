@@ -1,5 +1,45 @@
 [
   {
+    "id": "The_Clear_Stream_Duo",
+    "title": "The Clear Stream Duo",
+    "rarity": "SSR",
+    "release_date": "2026-10-20",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "default_memory.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
+    "id": "Adults__Afternoon",
+    "title": "Adults' Afternoon",
+    "rarity": "SSR",
+    "release_date": "2026-10-20",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "default_memory.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
     "id": "Ping_Pong__",
     "title": "Ping Pong!!",
     "rarity": "SSR",
