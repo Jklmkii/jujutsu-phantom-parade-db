@@ -1,5 +1,61 @@
 [
   {
+    "id": "_mastery_of_24_frames_per_second__naoya_zen_in",
+    "title": "(Mastery of 24 Frames Per Second) Naoya Zen'in",
+    "name": "Naoya Zen'in",
+    "epithet": "'Mastery of 24 Frames Per Second'",
+    "card_name": "Naoya Zen'in",
+    "rarity": "SSR",
+    "element": "Green",
+    "role": "Attacker",
+    "focus": "Taijutsu",
+    "affiliation": "Jujutsu High",
+    "release_date": "2026-10-30",
+    "limited": false,
+    "stats": {
+      "hp": "25000",
+      "attack": "6000",
+      "jujutsu": "10000",
+      "initial_energy": "30",
+      "max_energy": "100",
+      "special_gauge": "1500"
+    },
+    "image": "default_character.gif",
+    "normal_attack": {
+      "name": "Normal Attack",
+      "description": "",
+      "description_10": ""
+    },
+    "skills": [
+      {
+        "slot": 1,
+        "name": "Skill 1",
+        "cost": "20",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 2,
+        "name": "Skill 2",
+        "cost": "25",
+        "description": "",
+        "description_10": ""
+      },
+      {
+        "slot": 3,
+        "name": "Skill 3",
+        "cost": "30",
+        "description": "",
+        "description_10": ""
+      }
+    ],
+    "ultimate": {
+      "name": "Ultimate Skill",
+      "description": "",
+      "description_10": ""
+    }
+  },
+  {
     "id": "_cold_light_of_dusk__atsuya_kusakabe",
     "title": "(Cold Light of Dusk) Atsuya Kusakabe",
     "name": "Atsuya Kusakabe",
