@@ -1,5 +1,45 @@
 [
   {
+    "id": "The_Man_Who_Breaks_One_Second",
+    "title": "The Man Who Breaks One Second",
+    "rarity": "SSR",
+    "release_date": "2026-10-31",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "default_memory.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
+    "id": "Dazzled_By_The_Distant_Day",
+    "title": "Dazzled By The Distant Day",
+    "rarity": "SSR",
+    "release_date": "2026-10-31",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "default_memory.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
     "id": "The_Clear_Stream_Duo",
     "title": "The Clear Stream Duo",
     "rarity": "SSR",
