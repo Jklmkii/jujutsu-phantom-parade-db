@@ -1,5 +1,25 @@
 [
   {
+    "id": "Phanpara_Grand_Thanksgiving_Festival_2026",
+    "title": "Phanpara Grand Thanksgiving Festival 2026",
+    "rarity": "SSR",
+    "release_date": "2026-11-05",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "PhanparaThanksgiving2026Art.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
     "id": "The_Man_Who_Breaks_One_Second",
     "title": "The Man Who Breaks One Second",
     "rarity": "SSR",
