@@ -1,5 +1,25 @@
 [
   {
+    "id": "Friendship_That_Shines_in_the_Darkness",
+    "title": "Friendship That Shines in the Darkness",
+    "rarity": "SSR",
+    "release_date": "2026-11-14",
+    "stats": {
+      "hp": "30%",
+      "taijutsu": "20%",
+      "jujutsu": "20%"
+    },
+    "active_cooldown": "5",
+    "passive_cooldown": "/",
+    "image": "default_memory.gif",
+    "active_skill": {
+      "description": ""
+    },
+    "passive_skill": {
+      "description": ""
+    }
+  },
+  {
     "id": "Phanpara_Grand_Thanksgiving_Festival_2026",
     "title": "Phanpara Grand Thanksgiving Festival 2026",
     "rarity": "SSR",
